@@ -9,5 +9,7 @@ Name | Type | Description | Notes
 **platform** | **string** |  |
 **username** | **string** |  |
 **display_name** | **string** |  | [optional]
+**reconnected** | **bool** | Present and true when a reconnect restored an existing account in place, keeping its accountId. | [optional]
+**replaced_account_id** | **string** | The IMAP account this connection replaces, when a reconnected mailbox moved to Google or Microsoft. That account is retired at the same time, with account.disconnected and reasonCode replaced. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

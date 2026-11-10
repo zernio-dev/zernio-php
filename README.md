@@ -623,6 +623,7 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**getConnectHandoff**](docs/Api/ConnectApi.md#getconnecthandoff) | **GET** /v1/connect/handoffs/{handoffId} | Get a phone handoff
 *ConnectApi* | [**getConnectUrl**](docs/Api/ConnectApi.md#getconnecturl) | **GET** /v1/connect/{platform} | Get OAuth connect URL
 *ConnectApi* | [**getConnectWelcomeScreen**](docs/Api/ConnectApi.md#getconnectwelcomescreen) | **GET** /v1/connect/welcome-screen | Get the saved welcome screen
+*ConnectApi* | [**getEmailConnectUrl**](docs/Api/ConnectApi.md#getemailconnecturl) | **GET** /v1/connect/email | Get a hosted link to connect any mailbox
 *ConnectApi* | [**getFacebookPages**](docs/Api/ConnectApi.md#getfacebookpages) | **GET** /v1/accounts/{accountId}/facebook-page | List Facebook pages
 *ConnectApi* | [**getGmbLocations**](docs/Api/ConnectApi.md#getgmblocations) | **GET** /v1/accounts/{accountId}/gmb-locations | List Google Business Profile locations
 *ConnectApi* | [**getGoogleAnalyticsConnectUrl**](docs/Api/ConnectApi.md#getgoogleanalyticsconnecturl) | **GET** /v1/connect/googleanalytics | Get Google Analytics OAuth connect URL
@@ -787,11 +788,13 @@ Class | Method | HTTP request | Description
 *EmailApi* | [**createEmailDraft**](docs/Api/EmailApi.md#createemaildraft) | **POST** /v1/email/drafts | Create a draft
 *EmailApi* | [**createEmailLabel**](docs/Api/EmailApi.md#createemaillabel) | **POST** /v1/email/labels | Create a label
 *EmailApi* | [**createEmailSignature**](docs/Api/EmailApi.md#createemailsignature) | **POST** /v1/email/signatures | Create a signature
+*EmailApi* | [**createImapAccount**](docs/Api/EmailApi.md#createimapaccount) | **POST** /v1/email/imap/accounts | Connect an IMAP mailbox
 *EmailApi* | [**declareEmailSendAs**](docs/Api/EmailApi.md#declareemailsendas) | **POST** /v1/email/send-as | Declare a send-as address
 *EmailApi* | [**deleteEmailDraft**](docs/Api/EmailApi.md#deleteemaildraft) | **DELETE** /v1/email/drafts/{draftId} | Delete a draft
 *EmailApi* | [**deleteEmailLabel**](docs/Api/EmailApi.md#deleteemaillabel) | **DELETE** /v1/email/labels/{labelId} | Delete a label
 *EmailApi* | [**deleteEmailSendAs**](docs/Api/EmailApi.md#deleteemailsendas) | **DELETE** /v1/email/send-as/{email} | Remove a declared send-as address
 *EmailApi* | [**deleteEmailSignature**](docs/Api/EmailApi.md#deleteemailsignature) | **DELETE** /v1/email/signatures/{signatureId} | Delete a signature
+*EmailApi* | [**discoverImapSettings**](docs/Api/EmailApi.md#discoverimapsettings) | **POST** /v1/email/imap/discover | Find the mail settings for an address
 *EmailApi* | [**downloadEmailAttachment**](docs/Api/EmailApi.md#downloademailattachment) | **GET** /v1/email/attachments/{attachmentId} | Download an attachment
 *EmailApi* | [**forwardEmailMessage**](docs/Api/EmailApi.md#forwardemailmessage) | **POST** /v1/email/messages/{messageId}/forward | Forward a message
 *EmailApi* | [**getEmailDraft**](docs/Api/EmailApi.md#getemaildraft) | **GET** /v1/email/drafts/{draftId} | Get a draft
@@ -2048,6 +2051,10 @@ Class | Method | HTTP request | Description
 - [CreateGoogleBusinessPlaceActionRequest](docs/Model/CreateGoogleBusinessPlaceActionRequest.md)
 - [CreateHighDemandPeriod201Response](docs/Model/CreateHighDemandPeriod201Response.md)
 - [CreateHighDemandPeriodRequest](docs/Model/CreateHighDemandPeriodRequest.md)
+- [CreateImapAccountRequest](docs/Model/CreateImapAccountRequest.md)
+- [CreateImapAccountRequestIdentitiesInner](docs/Model/CreateImapAccountRequestIdentitiesInner.md)
+- [CreateImapAccountRequestImap](docs/Model/CreateImapAccountRequestImap.md)
+- [CreateImapAccountRequestSmtp](docs/Model/CreateImapAccountRequestSmtp.md)
 - [CreateImessageGroup202Response](docs/Model/CreateImessageGroup202Response.md)
 - [CreateImessageGroupRequest](docs/Model/CreateImessageGroupRequest.md)
 - [CreateImessageOptInLink200Response](docs/Model/CreateImessageOptInLink200Response.md)
@@ -2314,6 +2321,8 @@ Class | Method | HTTP request | Description
 - [DiscordRole](docs/Model/DiscordRole.md)
 - [DiscordScheduledEvent](docs/Model/DiscordScheduledEvent.md)
 - [DiscordScheduledEventEntityMetadata](docs/Model/DiscordScheduledEventEntityMetadata.md)
+- [DiscoverImapSettings200Response](docs/Model/DiscoverImapSettings200Response.md)
+- [DiscoverImapSettingsRequest](docs/Model/DiscoverImapSettingsRequest.md)
 - [DismissAdsAlert200Response](docs/Model/DismissAdsAlert200Response.md)
 - [DismissGoogleRecommendationsRequest](docs/Model/DismissGoogleRecommendationsRequest.md)
 - [DmButton](docs/Model/DmButton.md)
@@ -2602,6 +2611,7 @@ Class | Method | HTTP request | Description
 - [GetDsaDefaults200Response](docs/Model/GetDsaDefaults200Response.md)
 - [GetDsaDefaults200ResponseDsaDefaults](docs/Model/GetDsaDefaults200ResponseDsaDefaults.md)
 - [GetDsaRecommendations200Response](docs/Model/GetDsaRecommendations200Response.md)
+- [GetEmailConnectUrl200Response](docs/Model/GetEmailConnectUrl200Response.md)
 - [GetEmailThread200Response](docs/Model/GetEmailThread200Response.md)
 - [GetEmailThread200ResponseData](docs/Model/GetEmailThread200ResponseData.md)
 - [GetEvent200Response](docs/Model/GetEvent200Response.md)
@@ -3006,6 +3016,17 @@ Class | Method | HTTP request | Description
 - [HideInboxCommentRequest](docs/Model/HideInboxCommentRequest.md)
 - [HubSpotSettings](docs/Model/HubSpotSettings.md)
 - [Ids](docs/Model/Ids.md)
+- [ImapConnectResult](docs/Model/ImapConnectResult.md)
+- [ImapConnectResultAccount](docs/Model/ImapConnectResultAccount.md)
+- [ImapConnectResultFolders](docs/Model/ImapConnectResultFolders.md)
+- [ImapConnectResultSettings](docs/Model/ImapConnectResultSettings.md)
+- [ImapConnectResultStages](docs/Model/ImapConnectResultStages.md)
+- [ImapDiscovery](docs/Model/ImapDiscovery.md)
+- [ImapDiscoveryAuth](docs/Model/ImapDiscoveryAuth.md)
+- [ImapDiscoveryImap](docs/Model/ImapDiscoveryImap.md)
+- [ImapDiscoveryPreflightInner](docs/Model/ImapDiscoveryPreflightInner.md)
+- [ImapDiscoveryProvider](docs/Model/ImapDiscoveryProvider.md)
+- [ImapDiscoverySmtp](docs/Model/ImapDiscoverySmtp.md)
 - [ImessageAudienceContact](docs/Model/ImessageAudienceContact.md)
 - [ImessageAudienceContactOptIn](docs/Model/ImessageAudienceContactOptIn.md)
 - [ImessageSandboxContact](docs/Model/ImessageSandboxContact.md)
@@ -4818,6 +4839,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.551.1`
+- API version: `1.552.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

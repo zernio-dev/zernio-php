@@ -30,6 +30,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getConnectHandoff()**](ConnectApi.md#getConnectHandoff) | **GET** /v1/connect/handoffs/{handoffId} | Get a phone handoff |
 | [**getConnectUrl()**](ConnectApi.md#getConnectUrl) | **GET** /v1/connect/{platform} | Get OAuth connect URL |
 | [**getConnectWelcomeScreen()**](ConnectApi.md#getConnectWelcomeScreen) | **GET** /v1/connect/welcome-screen | Get the saved welcome screen |
+| [**getEmailConnectUrl()**](ConnectApi.md#getEmailConnectUrl) | **GET** /v1/connect/email | Get a hosted link to connect any mailbox |
 | [**getFacebookPages()**](ConnectApi.md#getFacebookPages) | **GET** /v1/accounts/{accountId}/facebook-page | List Facebook pages |
 | [**getGmbLocations()**](ConnectApi.md#getGmbLocations) | **GET** /v1/accounts/{accountId}/gmb-locations | List Google Business Profile locations |
 | [**getGoogleAnalyticsConnectUrl()**](ConnectApi.md#getGoogleAnalyticsConnectUrl) | **GET** /v1/connect/googleanalytics | Get Google Analytics OAuth connect URL |
@@ -1598,6 +1599,74 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**\Zernio\Model\ConnectWelcomeScreen**](../Model/ConnectWelcomeScreen.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getEmailConnectUrl()`
+
+```php
+getEmailConnectUrl($profile_id, $redirect_url, $email, $name, $reconnect_account_id): \Zernio\Model\GetEmailConnectUrl200Response
+```
+
+Get a hosted link to connect any mailbox
+
+One link for any address. The page asks for the email first, sends Gmail, Google Workspace, Outlook.com and Microsoft 365 (found by domain or MX) to their OAuth connect, and every other mailbox to IMAP with the provider's app-password steps. Valid for one hour.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$profile_id = 'profile_id_example'; // string
+$redirect_url = 'redirect_url_example'; // string | Where the page sends the user afterwards, with status, accountId, platform and email (or status=error and error).
+$email = 'email_example'; // string | Prefills the address and skips the first screen.
+$name = 'name_example'; // string | Display name for sent mail; the page asks for it when absent.
+$reconnect_account_id = 'reconnect_account_id_example'; // string | Opens the reconnect variant for an IMAP account: only the new password is asked for, and the accountId stays the same.
+
+try {
+    $result = $apiInstance->getEmailConnectUrl($profile_id, $redirect_url, $email, $name, $reconnect_account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->getEmailConnectUrl: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **profile_id** | **string**|  | |
+| **redirect_url** | **string**| Where the page sends the user afterwards, with status, accountId, platform and email (or status&#x3D;error and error). | [optional] |
+| **email** | **string**| Prefills the address and skips the first screen. | [optional] |
+| **name** | **string**| Display name for sent mail; the page asks for it when absent. | [optional] |
+| **reconnect_account_id** | **string**| Opens the reconnect variant for an IMAP account: only the new password is asked for, and the accountId stays the same. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\GetEmailConnectUrl200Response**](../Model/GetEmailConnectUrl200Response.md)
 
 ### Authorization
 

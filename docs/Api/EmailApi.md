@@ -10,11 +10,13 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**createEmailDraft()**](EmailApi.md#createEmailDraft) | **POST** /v1/email/drafts | Create a draft |
 | [**createEmailLabel()**](EmailApi.md#createEmailLabel) | **POST** /v1/email/labels | Create a label |
 | [**createEmailSignature()**](EmailApi.md#createEmailSignature) | **POST** /v1/email/signatures | Create a signature |
+| [**createImapAccount()**](EmailApi.md#createImapAccount) | **POST** /v1/email/imap/accounts | Connect an IMAP mailbox |
 | [**declareEmailSendAs()**](EmailApi.md#declareEmailSendAs) | **POST** /v1/email/send-as | Declare a send-as address |
 | [**deleteEmailDraft()**](EmailApi.md#deleteEmailDraft) | **DELETE** /v1/email/drafts/{draftId} | Delete a draft |
 | [**deleteEmailLabel()**](EmailApi.md#deleteEmailLabel) | **DELETE** /v1/email/labels/{labelId} | Delete a label |
 | [**deleteEmailSendAs()**](EmailApi.md#deleteEmailSendAs) | **DELETE** /v1/email/send-as/{email} | Remove a declared send-as address |
 | [**deleteEmailSignature()**](EmailApi.md#deleteEmailSignature) | **DELETE** /v1/email/signatures/{signatureId} | Delete a signature |
+| [**discoverImapSettings()**](EmailApi.md#discoverImapSettings) | **POST** /v1/email/imap/discover | Find the mail settings for an address |
 | [**downloadEmailAttachment()**](EmailApi.md#downloadEmailAttachment) | **GET** /v1/email/attachments/{attachmentId} | Download an attachment |
 | [**forwardEmailMessage()**](EmailApi.md#forwardEmailMessage) | **POST** /v1/email/messages/{messageId}/forward | Forward a message |
 | [**getEmailDraft()**](EmailApi.md#getEmailDraft) | **GET** /v1/email/drafts/{draftId} | Get a draft |
@@ -271,6 +273,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\CreateEmailSignature201Response**](../Model/CreateEmailSignature201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createImapAccount()`
+
+```php
+createImapAccount($create_imap_account_request): \Zernio\Model\ImapConnectResult
+```
+
+Connect an IMAP mailbox
+
+Connects any IMAP/SMTP mailbox without the hosted page. Email and password are enough when discovery finds the servers. Every check runs before anything is stored; a failure answers 422 with the failing stage's code. An address already on the profile is updated in place and keeps its accountId.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\EmailApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_imap_account_request = new \Zernio\Model\CreateImapAccountRequest(); // \Zernio\Model\CreateImapAccountRequest
+
+try {
+    $result = $apiInstance->createImapAccount($create_imap_account_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EmailApi->createImapAccount: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_imap_account_request** | [**\Zernio\Model\CreateImapAccountRequest**](../Model/CreateImapAccountRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\ImapConnectResult**](../Model/ImapConnectResult.md)
 
 ### Authorization
 
@@ -581,6 +643,66 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `discoverImapSettings()`
+
+```php
+discoverImapSettings($discover_imap_settings_request): \Zernio\Model\DiscoverImapSettings200Response
+```
+
+Find the mail settings for an address
+
+The routing decision the hosted page makes, for your own connect form: Google or Microsoft OAuth, IMAP with the servers and the provider's app-password steps, or unsupported. Sources run in parallel inside 15 seconds: presets, MX, autoconfig, Thunderbird's ISPDB (sent the domain only), SRV records, then a probe.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\EmailApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$discover_imap_settings_request = new \Zernio\Model\DiscoverImapSettingsRequest(); // \Zernio\Model\DiscoverImapSettingsRequest
+
+try {
+    $result = $apiInstance->discoverImapSettings($discover_imap_settings_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EmailApi->discoverImapSettings: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **discover_imap_settings_request** | [**\Zernio\Model\DiscoverImapSettingsRequest**](../Model/DiscoverImapSettingsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\DiscoverImapSettings200Response**](../Model/DiscoverImapSettings200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
