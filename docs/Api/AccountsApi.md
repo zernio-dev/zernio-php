@@ -341,7 +341,7 @@ getFollowerStats($account_ids, $profile_id, $from_date, $to_date, $granularity, 
 
 Get follower stats
 
-Returns follower count history and growth metrics for connected accounts. Requires analytics add-on subscription. Follower counts are refreshed once per day.  ### Limits  - At most 25 accounts per request: up to 25 `accountIds`, or a page of accounts. More than 25 `accountIds` returns 400. - Without `accountIds`, the response is the first page of 25 accounts even when `limit` and `cursor` are omitted. Pass `pagination.nextCursor` back as `cursor` for the next one. - When that default page cuts the list, the response also carries a `warning` and the headers `X-Result-Truncated: true` and `X-Result-Limit: 25`. - At most 1 year between `fromDate` and `toDate`. A longer range returns 400.
+Returns follower count history and growth metrics for connected accounts. Requires analytics add-on subscription. Follower counts are refreshed once per day.  ### Limits  - At most 25 accounts per request: up to 25 `accountIds`, or a page of accounts. More than 25 `accountIds` returns 400. - Without `accountIds`, the response is the first page of 25 accounts even when `limit` and `cursor` are omitted. Pass `pagination.nextCursor` back as `cursor` for the next one. - When that default page cuts the list, the response also carries a `warning` and the headers `X-Result-Truncated: true` and `X-Result-Limit: 25`. - At most 1 year between `fromDate` and `toDate`. A longer range is cut to the year before `toDate`: `dateRange.from` shows where the data starts and the response carries a `warning`.
 
 ### Example
 
@@ -362,7 +362,7 @@ $apiInstance = new Zernio\Api\AccountsApi(
 );
 $account_ids = 'account_ids_example'; // string | Comma-separated list of up to 25 account IDs. Optional: without it, the response pages through all your accounts.
 $profile_id = 'profile_id_example'; // string | Filter by profile ID
-$from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start date in YYYY-MM-DD format (defaults to one year before toDate). At most one year before toDate.
+$from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start date in YYYY-MM-DD format (defaults to one year before toDate). An earlier date is moved to one year before toDate.
 $to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End date in YYYY-MM-DD format (defaults to today)
 $granularity = 'daily'; // string | Data aggregation level
 $limit = 56; // int | Accounts per page, ordered by account id; the response carries `pagination.nextCursor`. Without limit or cursor, a request without accountIds still gets a first page of 25.
@@ -382,7 +382,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_ids** | **string**| Comma-separated list of up to 25 account IDs. Optional: without it, the response pages through all your accounts. | [optional] |
 | **profile_id** | **string**| Filter by profile ID | [optional] |
-| **from_date** | **\DateTime**| Start date in YYYY-MM-DD format (defaults to one year before toDate). At most one year before toDate. | [optional] |
+| **from_date** | **\DateTime**| Start date in YYYY-MM-DD format (defaults to one year before toDate). An earlier date is moved to one year before toDate. | [optional] |
 | **to_date** | **\DateTime**| End date in YYYY-MM-DD format (defaults to today) | [optional] |
 | **granularity** | **string**| Data aggregation level | [optional] [default to &#39;daily&#39;] |
 | **limit** | **int**| Accounts per page, ordered by account id; the response carries &#x60;pagination.nextCursor&#x60;. Without limit or cursor, a request without accountIds still gets a first page of 25. | [optional] |
