@@ -16,6 +16,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listEmailFolders()**](EmailApi.md#listEmailFolders) | **GET** /v1/email/folders | List mailbox folders |
 | [**listEmailLabels()**](EmailApi.md#listEmailLabels) | **GET** /v1/email/labels | List labels |
 | [**listEmailMessages()**](EmailApi.md#listEmailMessages) | **GET** /v1/email/messages | List email messages |
+| [**listEmailSendAs()**](EmailApi.md#listEmailSendAs) | **GET** /v1/email/send-as | List send-as addresses |
 | [**listEmailThreads()**](EmailApi.md#listEmailThreads) | **GET** /v1/email/threads | List email threads |
 | [**listScheduledEmails()**](EmailApi.md#listScheduledEmails) | **GET** /v1/email/messages/scheduled | List scheduled emails |
 | [**replyEmailMessage()**](EmailApi.md#replyEmailMessage) | **POST** /v1/email/messages/{messageId}/reply | Reply to a message |
@@ -655,6 +656,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListEmailMessages200Response**](../Model/ListEmailMessages200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listEmailSendAs()`
+
+```php
+listEmailSendAs($account_id): \Zernio\Model\ListEmailSendAs200Response
+```
+
+List send-as addresses
+
+The addresses a mailbox can send from, for the `from` field of a send or reply. Gmail lists every send-as alias with its signature, and `from` must be one of them. Outlook lists the mailbox address and its aliases; Exchange checks any other `from` at send time.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\EmailApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+
+try {
+    $result = $apiInstance->listEmailSendAs($account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EmailApi->listEmailSendAs: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The connected Google or Microsoft account. | |
+
+### Return type
+
+[**\Zernio\Model\ListEmailSendAs200Response**](../Model/ListEmailSendAs200Response.md)
 
 ### Authorization
 

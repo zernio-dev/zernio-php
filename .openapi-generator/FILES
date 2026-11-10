@@ -1150,6 +1150,7 @@ docs/Model/EmailLabelColor.md
 docs/Model/EmailListMeta.md
 docs/Model/EmailMessage.md
 docs/Model/EmailMessagePatch.md
+docs/Model/EmailSendAs.md
 docs/Model/EmailThread.md
 docs/Model/EnableSmsOnNumber200Response.md
 docs/Model/EnableSmsOnNumber200ResponseReusable.md
@@ -2061,6 +2062,8 @@ docs/Model/ListDiscordScheduledEvents200Response.md
 docs/Model/ListEmailFolders200Response.md
 docs/Model/ListEmailLabels200Response.md
 docs/Model/ListEmailMessages200Response.md
+docs/Model/ListEmailSendAs200Response.md
+docs/Model/ListEmailSendAs200ResponseMeta.md
 docs/Model/ListEmailThreads200Response.md
 docs/Model/ListEventDestinations200Response.md
 docs/Model/ListEvents200Response.md
@@ -4710,6 +4713,7 @@ lib/Model/EmailLabelColor.php
 lib/Model/EmailListMeta.php
 lib/Model/EmailMessage.php
 lib/Model/EmailMessagePatch.php
+lib/Model/EmailSendAs.php
 lib/Model/EmailThread.php
 lib/Model/EnableSmsOnNumber200Response.php
 lib/Model/EnableSmsOnNumber200ResponseReusable.php
@@ -5621,6 +5625,8 @@ lib/Model/ListDiscordScheduledEvents200Response.php
 lib/Model/ListEmailFolders200Response.php
 lib/Model/ListEmailLabels200Response.php
 lib/Model/ListEmailMessages200Response.php
+lib/Model/ListEmailSendAs200Response.php
+lib/Model/ListEmailSendAs200ResponseMeta.php
 lib/Model/ListEmailThreads200Response.php
 lib/Model/ListEventDestinations200Response.php
 lib/Model/ListEvents200Response.php
@@ -7121,3 +7127,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/EmailSendAsTest.php
+test/Model/ListEmailSendAs200ResponseMetaTest.php
+test/Model/ListEmailSendAs200ResponseTest.php
