@@ -61,7 +61,8 @@ class RsvpCalendarEventRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'account_id' => 'string',
         'calendar_id' => 'string',
         'status' => 'string',
-        'comment' => 'string'
+        'comment' => 'string',
+        'send_response' => 'bool'
     ];
 
     /**
@@ -75,7 +76,8 @@ class RsvpCalendarEventRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'account_id' => null,
         'calendar_id' => null,
         'status' => null,
-        'comment' => null
+        'comment' => null,
+        'send_response' => null
     ];
 
     /**
@@ -87,7 +89,8 @@ class RsvpCalendarEventRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'account_id' => false,
         'calendar_id' => false,
         'status' => false,
-        'comment' => false
+        'comment' => false,
+        'send_response' => false
     ];
 
     /**
@@ -179,7 +182,8 @@ class RsvpCalendarEventRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'account_id' => 'accountId',
         'calendar_id' => 'calendarId',
         'status' => 'status',
-        'comment' => 'comment'
+        'comment' => 'comment',
+        'send_response' => 'sendResponse'
     ];
 
     /**
@@ -191,7 +195,8 @@ class RsvpCalendarEventRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'account_id' => 'setAccountId',
         'calendar_id' => 'setCalendarId',
         'status' => 'setStatus',
-        'comment' => 'setComment'
+        'comment' => 'setComment',
+        'send_response' => 'setSendResponse'
     ];
 
     /**
@@ -203,7 +208,8 @@ class RsvpCalendarEventRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'account_id' => 'getAccountId',
         'calendar_id' => 'getCalendarId',
         'status' => 'getStatus',
-        'comment' => 'getComment'
+        'comment' => 'getComment',
+        'send_response' => 'getSendResponse'
     ];
 
     /**
@@ -284,6 +290,7 @@ class RsvpCalendarEventRequest implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('calendar_id', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('comment', $data ?? [], null);
+        $this->setIfExists('send_response', $data ?? [], true);
     }
 
     /**
@@ -465,6 +472,33 @@ class RsvpCalendarEventRequest implements ModelInterface, ArrayAccess, \JsonSeri
         }
 
         $this->container['comment'] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Gets send_response
+     *
+     * @return bool|null
+     */
+    public function getSendResponse()
+    {
+        return $this->container['send_response'];
+    }
+
+    /**
+     * Sets send_response
+     *
+     * @param bool|null $send_response false records the response without emailing the organizer.
+     *
+     * @return self
+     */
+    public function setSendResponse($send_response)
+    {
+        if (is_null($send_response)) {
+            throw new \InvalidArgumentException('non-nullable send_response cannot be null');
+        }
+        $this->container['send_response'] = $send_response;
 
         return $this;
     }

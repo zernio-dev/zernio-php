@@ -1097,15 +1097,16 @@ class CalendarApi
      * @param  string $event_id event_id (required)
      * @param  string $account_id The connected Google, Microsoft or IMAP account. (required)
      * @param  string|null $calendar_id The calendar holding the event (an id from GET /v1/calendar/calendars). Defaults to the primary calendar. (optional)
+     * @param  string|null $notify_participants Who gets the cancellation email. Google only; &#x60;external&#x60; and &#x60;none&#x60; answer 400 on a Microsoft account. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCalendarEvent'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\DeleteEmailDraft200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
-    public function deleteCalendarEvent($event_id, $account_id, $calendar_id = null, string $contentType = self::contentTypes['deleteCalendarEvent'][0])
+    public function deleteCalendarEvent($event_id, $account_id, $calendar_id = null, $notify_participants = 'all', string $contentType = self::contentTypes['deleteCalendarEvent'][0])
     {
-        list($response) = $this->deleteCalendarEventWithHttpInfo($event_id, $account_id, $calendar_id, $contentType);
+        list($response) = $this->deleteCalendarEventWithHttpInfo($event_id, $account_id, $calendar_id, $notify_participants, $contentType);
         return $response;
     }
 
@@ -1117,15 +1118,16 @@ class CalendarApi
      * @param  string $event_id (required)
      * @param  string $account_id The connected Google, Microsoft or IMAP account. (required)
      * @param  string|null $calendar_id The calendar holding the event (an id from GET /v1/calendar/calendars). Defaults to the primary calendar. (optional)
+     * @param  string|null $notify_participants Who gets the cancellation email. Google only; &#x60;external&#x60; and &#x60;none&#x60; answer 400 on a Microsoft account. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCalendarEvent'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\DeleteEmailDraft200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteCalendarEventWithHttpInfo($event_id, $account_id, $calendar_id = null, string $contentType = self::contentTypes['deleteCalendarEvent'][0])
+    public function deleteCalendarEventWithHttpInfo($event_id, $account_id, $calendar_id = null, $notify_participants = 'all', string $contentType = self::contentTypes['deleteCalendarEvent'][0])
     {
-        $request = $this->deleteCalendarEventRequest($event_id, $account_id, $calendar_id, $contentType);
+        $request = $this->deleteCalendarEventRequest($event_id, $account_id, $calendar_id, $notify_participants, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1260,14 +1262,15 @@ class CalendarApi
      * @param  string $event_id (required)
      * @param  string $account_id The connected Google, Microsoft or IMAP account. (required)
      * @param  string|null $calendar_id The calendar holding the event (an id from GET /v1/calendar/calendars). Defaults to the primary calendar. (optional)
+     * @param  string|null $notify_participants Who gets the cancellation email. Google only; &#x60;external&#x60; and &#x60;none&#x60; answer 400 on a Microsoft account. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCalendarEvent'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteCalendarEventAsync($event_id, $account_id, $calendar_id = null, string $contentType = self::contentTypes['deleteCalendarEvent'][0])
+    public function deleteCalendarEventAsync($event_id, $account_id, $calendar_id = null, $notify_participants = 'all', string $contentType = self::contentTypes['deleteCalendarEvent'][0])
     {
-        return $this->deleteCalendarEventAsyncWithHttpInfo($event_id, $account_id, $calendar_id, $contentType)
+        return $this->deleteCalendarEventAsyncWithHttpInfo($event_id, $account_id, $calendar_id, $notify_participants, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1283,15 +1286,16 @@ class CalendarApi
      * @param  string $event_id (required)
      * @param  string $account_id The connected Google, Microsoft or IMAP account. (required)
      * @param  string|null $calendar_id The calendar holding the event (an id from GET /v1/calendar/calendars). Defaults to the primary calendar. (optional)
+     * @param  string|null $notify_participants Who gets the cancellation email. Google only; &#x60;external&#x60; and &#x60;none&#x60; answer 400 on a Microsoft account. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCalendarEvent'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteCalendarEventAsyncWithHttpInfo($event_id, $account_id, $calendar_id = null, string $contentType = self::contentTypes['deleteCalendarEvent'][0])
+    public function deleteCalendarEventAsyncWithHttpInfo($event_id, $account_id, $calendar_id = null, $notify_participants = 'all', string $contentType = self::contentTypes['deleteCalendarEvent'][0])
     {
         $returnType = '\Zernio\Model\DeleteEmailDraft200Response';
-        $request = $this->deleteCalendarEventRequest($event_id, $account_id, $calendar_id, $contentType);
+        $request = $this->deleteCalendarEventRequest($event_id, $account_id, $calendar_id, $notify_participants, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1335,12 +1339,13 @@ class CalendarApi
      * @param  string $event_id (required)
      * @param  string $account_id The connected Google, Microsoft or IMAP account. (required)
      * @param  string|null $calendar_id The calendar holding the event (an id from GET /v1/calendar/calendars). Defaults to the primary calendar. (optional)
+     * @param  string|null $notify_participants Who gets the cancellation email. Google only; &#x60;external&#x60; and &#x60;none&#x60; answer 400 on a Microsoft account. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCalendarEvent'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteCalendarEventRequest($event_id, $account_id, $calendar_id = null, string $contentType = self::contentTypes['deleteCalendarEvent'][0])
+    public function deleteCalendarEventRequest($event_id, $account_id, $calendar_id = null, $notify_participants = 'all', string $contentType = self::contentTypes['deleteCalendarEvent'][0])
     {
 
         // verify the required parameter 'event_id' is set
@@ -1356,6 +1361,7 @@ class CalendarApi
                 'Missing the required parameter $account_id when calling deleteCalendarEvent'
             );
         }
+
 
 
 
@@ -1379,6 +1385,15 @@ class CalendarApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $calendar_id,
             'calendarId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $notify_participants,
+            'notifyParticipants', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -1846,7 +1861,7 @@ class CalendarApi
      * @param  bool|null $show_cancelled show_cancelled (optional, default to false)
      * @param  bool|null $expand_recurring expand_recurring (optional, default to true)
      * @param  string|null $ical_uid ical_uid (optional)
-     * @param  string|null $sort_order sort_order (optional, default to 'asc')
+     * @param  string|null $sort_order Order by start time across the whole window. On Google, &#x60;desc&#x60; reads the window in full, so a window over 2,500 events answers 400; narrow &#x60;from&#x60; and &#x60;to&#x60;. (optional, default to 'asc')
      * @param  string|null $cursor cursor (optional)
      * @param  int|null $limit limit (optional, default to 50)
      * @param  string|null $timezone IANA zone the &#x60;start&#x60; and &#x60;end&#x60; offsets are rendered in. Default UTC. (optional)
@@ -1876,7 +1891,7 @@ class CalendarApi
      * @param  bool|null $show_cancelled (optional, default to false)
      * @param  bool|null $expand_recurring (optional, default to true)
      * @param  string|null $ical_uid (optional)
-     * @param  string|null $sort_order (optional, default to 'asc')
+     * @param  string|null $sort_order Order by start time across the whole window. On Google, &#x60;desc&#x60; reads the window in full, so a window over 2,500 events answers 400; narrow &#x60;from&#x60; and &#x60;to&#x60;. (optional, default to 'asc')
      * @param  string|null $cursor (optional)
      * @param  int|null $limit (optional, default to 50)
      * @param  string|null $timezone IANA zone the &#x60;start&#x60; and &#x60;end&#x60; offsets are rendered in. Default UTC. (optional)
@@ -2029,7 +2044,7 @@ class CalendarApi
      * @param  bool|null $show_cancelled (optional, default to false)
      * @param  bool|null $expand_recurring (optional, default to true)
      * @param  string|null $ical_uid (optional)
-     * @param  string|null $sort_order (optional, default to 'asc')
+     * @param  string|null $sort_order Order by start time across the whole window. On Google, &#x60;desc&#x60; reads the window in full, so a window over 2,500 events answers 400; narrow &#x60;from&#x60; and &#x60;to&#x60;. (optional, default to 'asc')
      * @param  string|null $cursor (optional)
      * @param  int|null $limit (optional, default to 50)
      * @param  string|null $timezone IANA zone the &#x60;start&#x60; and &#x60;end&#x60; offsets are rendered in. Default UTC. (optional)
@@ -2062,7 +2077,7 @@ class CalendarApi
      * @param  bool|null $show_cancelled (optional, default to false)
      * @param  bool|null $expand_recurring (optional, default to true)
      * @param  string|null $ical_uid (optional)
-     * @param  string|null $sort_order (optional, default to 'asc')
+     * @param  string|null $sort_order Order by start time across the whole window. On Google, &#x60;desc&#x60; reads the window in full, so a window over 2,500 events answers 400; narrow &#x60;from&#x60; and &#x60;to&#x60;. (optional, default to 'asc')
      * @param  string|null $cursor (optional)
      * @param  int|null $limit (optional, default to 50)
      * @param  string|null $timezone IANA zone the &#x60;start&#x60; and &#x60;end&#x60; offsets are rendered in. Default UTC. (optional)
@@ -2124,7 +2139,7 @@ class CalendarApi
      * @param  bool|null $show_cancelled (optional, default to false)
      * @param  bool|null $expand_recurring (optional, default to true)
      * @param  string|null $ical_uid (optional)
-     * @param  string|null $sort_order (optional, default to 'asc')
+     * @param  string|null $sort_order Order by start time across the whole window. On Google, &#x60;desc&#x60; reads the window in full, so a window over 2,500 events answers 400; narrow &#x60;from&#x60; and &#x60;to&#x60;. (optional, default to 'asc')
      * @param  string|null $cursor (optional)
      * @param  int|null $limit (optional, default to 50)
      * @param  string|null $timezone IANA zone the &#x60;start&#x60; and &#x60;end&#x60; offsets are rendered in. Default UTC. (optional)

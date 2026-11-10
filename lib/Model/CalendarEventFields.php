@@ -71,7 +71,8 @@ class CalendarEventFields implements ModelInterface, ArrayAccess, \JsonSerializa
         'conferencing' => 'string',
         'busy' => 'bool',
         'visibility' => 'string',
-        'metadata' => 'array<string,string>'
+        'metadata' => 'array<string,string>',
+        'notify_participants' => 'string'
     ];
 
     /**
@@ -95,7 +96,8 @@ class CalendarEventFields implements ModelInterface, ArrayAccess, \JsonSerializa
         'conferencing' => null,
         'busy' => null,
         'visibility' => null,
-        'metadata' => null
+        'metadata' => null,
+        'notify_participants' => null
     ];
 
     /**
@@ -117,7 +119,8 @@ class CalendarEventFields implements ModelInterface, ArrayAccess, \JsonSerializa
         'conferencing' => false,
         'busy' => false,
         'visibility' => false,
-        'metadata' => false
+        'metadata' => false,
+        'notify_participants' => false
     ];
 
     /**
@@ -219,7 +222,8 @@ class CalendarEventFields implements ModelInterface, ArrayAccess, \JsonSerializa
         'conferencing' => 'conferencing',
         'busy' => 'busy',
         'visibility' => 'visibility',
-        'metadata' => 'metadata'
+        'metadata' => 'metadata',
+        'notify_participants' => 'notifyParticipants'
     ];
 
     /**
@@ -241,7 +245,8 @@ class CalendarEventFields implements ModelInterface, ArrayAccess, \JsonSerializa
         'conferencing' => 'setConferencing',
         'busy' => 'setBusy',
         'visibility' => 'setVisibility',
-        'metadata' => 'setMetadata'
+        'metadata' => 'setMetadata',
+        'notify_participants' => 'setNotifyParticipants'
     ];
 
     /**
@@ -263,7 +268,8 @@ class CalendarEventFields implements ModelInterface, ArrayAccess, \JsonSerializa
         'conferencing' => 'getConferencing',
         'busy' => 'getBusy',
         'visibility' => 'getVisibility',
-        'metadata' => 'getMetadata'
+        'metadata' => 'getMetadata',
+        'notify_participants' => 'getNotifyParticipants'
     ];
 
     /**
@@ -312,6 +318,9 @@ class CalendarEventFields implements ModelInterface, ArrayAccess, \JsonSerializa
     public const VISIBILITY__DEFAULT = 'default';
     public const VISIBILITY__PUBLIC = 'public';
     public const VISIBILITY__PRIVATE = 'private';
+    public const NOTIFY_PARTICIPANTS_ALL = 'all';
+    public const NOTIFY_PARTICIPANTS_EXTERNAL = 'external';
+    public const NOTIFY_PARTICIPANTS_NONE = 'none';
 
     /**
      * Gets allowable values of the enum
@@ -337,6 +346,20 @@ class CalendarEventFields implements ModelInterface, ArrayAccess, \JsonSerializa
             self::VISIBILITY__DEFAULT,
             self::VISIBILITY__PUBLIC,
             self::VISIBILITY__PRIVATE,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getNotifyParticipantsAllowableValues()
+    {
+        return [
+            self::NOTIFY_PARTICIPANTS_ALL,
+            self::NOTIFY_PARTICIPANTS_EXTERNAL,
+            self::NOTIFY_PARTICIPANTS_NONE,
         ];
     }
 
@@ -369,6 +392,7 @@ class CalendarEventFields implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('busy', $data ?? [], null);
         $this->setIfExists('visibility', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
+        $this->setIfExists('notify_participants', $data ?? [], 'all');
     }
 
     /**
@@ -424,6 +448,15 @@ class CalendarEventFields implements ModelInterface, ArrayAccess, \JsonSerializa
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'visibility', must be one of '%s'",
                 $this->container['visibility'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getNotifyParticipantsAllowableValues();
+        if (!is_null($this->container['notify_participants']) && !in_array($this->container['notify_participants'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'notify_participants', must be one of '%s'",
+                $this->container['notify_participants'],
                 implode("', '", $allowedValues)
             );
         }
@@ -622,7 +655,7 @@ class CalendarEventFields implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets timezone
      *
-     * @param string|null $timezone IANA zone the event is scheduled in. Default UTC.
+     * @param string|null $timezone IANA zone the event is scheduled in. Defaults to the calendar's zone on Google and the mailbox's working-hours zone on Microsoft (UTC when Outlook has none, as on personal accounts). A PATCH that moves an event without a zone keeps the zone the event already has.
      *
      * @return self
      */
@@ -839,7 +872,7 @@ class CalendarEventFields implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets metadata
      *
-     * @param array<string,string>|null $metadata metadata
+     * @param array<string,string>|null $metadata String pairs stored on the event and returned on reads, on Google and Microsoft.
      *
      * @return self
      */
@@ -849,6 +882,43 @@ class CalendarEventFields implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable metadata cannot be null');
         }
         $this->container['metadata'] = $metadata;
+
+        return $this;
+    }
+
+    /**
+     * Gets notify_participants
+     *
+     * @return string|null
+     */
+    public function getNotifyParticipants()
+    {
+        return $this->container['notify_participants'];
+    }
+
+    /**
+     * Sets notify_participants
+     *
+     * @param string|null $notify_participants Who gets an invitation or update email for this write: everyone, only guests outside the organizer's domain, or nobody. Google only; Outlook always notifies, so `external` and `none` answer 400 `unsupported_for_provider` on a Microsoft account.
+     *
+     * @return self
+     */
+    public function setNotifyParticipants($notify_participants)
+    {
+        if (is_null($notify_participants)) {
+            throw new \InvalidArgumentException('non-nullable notify_participants cannot be null');
+        }
+        $allowedValues = $this->getNotifyParticipantsAllowableValues();
+        if (!in_array($notify_participants, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'notify_participants', must be one of '%s'",
+                    $notify_participants,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['notify_participants'] = $notify_participants;
 
         return $this;
     }

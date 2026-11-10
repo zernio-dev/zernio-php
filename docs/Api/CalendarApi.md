@@ -198,7 +198,7 @@ try {
 ## `deleteCalendarEvent()`
 
 ```php
-deleteCalendarEvent($event_id, $account_id, $calendar_id): \Zernio\Model\DeleteEmailDraft200Response
+deleteCalendarEvent($event_id, $account_id, $calendar_id, $notify_participants): \Zernio\Model\DeleteEmailDraft200Response
 ```
 
 Delete an event
@@ -223,9 +223,10 @@ $apiInstance = new Zernio\Api\CalendarApi(
 $event_id = 'event_id_example'; // string
 $account_id = 'account_id_example'; // string | The connected Google, Microsoft or IMAP account.
 $calendar_id = 'calendar_id_example'; // string | The calendar holding the event (an id from GET /v1/calendar/calendars). Defaults to the primary calendar.
+$notify_participants = 'all'; // string | Who gets the cancellation email. Google only; `external` and `none` answer 400 on a Microsoft account.
 
 try {
-    $result = $apiInstance->deleteCalendarEvent($event_id, $account_id, $calendar_id);
+    $result = $apiInstance->deleteCalendarEvent($event_id, $account_id, $calendar_id, $notify_participants);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CalendarApi->deleteCalendarEvent: ', $e->getMessage(), PHP_EOL;
@@ -239,6 +240,7 @@ try {
 | **event_id** | **string**|  | |
 | **account_id** | **string**| The connected Google, Microsoft or IMAP account. | |
 | **calendar_id** | **string**| The calendar holding the event (an id from GET /v1/calendar/calendars). Defaults to the primary calendar. | [optional] |
+| **notify_participants** | **string**| Who gets the cancellation email. Google only; &#x60;external&#x60; and &#x60;none&#x60; answer 400 on a Microsoft account. | [optional] [default to &#39;all&#39;] |
 
 ### Return type
 
@@ -329,7 +331,7 @@ listCalendarEvents($account_id, $from, $to, $calendar_id, $title, $location, $sh
 
 List events in a window
 
-Recurring series are expanded into their occurrences inside the window by default (`expandRecurring=false` lists the masters instead). `title` and `location` are substring matches applied to the fetched page.
+Recurring series are expanded into their occurrences inside the window by default (`expandRecurring=false` lists the masters instead, including series that started before `from` and still recur in the window). Events that overlap the window edges are included. `title` and `location` are substring matches applied to the fetched page.
 
 ### Example
 
@@ -357,7 +359,7 @@ $location = 'location_example'; // string
 $show_cancelled = false; // bool
 $expand_recurring = true; // bool
 $ical_uid = 'ical_uid_example'; // string
-$sort_order = 'asc'; // string
+$sort_order = 'asc'; // string | Order by start time across the whole window. On Google, `desc` reads the window in full, so a window over 2,500 events answers 400; narrow `from` and `to`.
 $cursor = 'cursor_example'; // string
 $limit = 50; // int
 $timezone = 'timezone_example'; // string | IANA zone the `start` and `end` offsets are rendered in. Default UTC.
@@ -383,7 +385,7 @@ try {
 | **show_cancelled** | **bool**|  | [optional] [default to false] |
 | **expand_recurring** | **bool**|  | [optional] [default to true] |
 | **ical_uid** | **string**|  | [optional] |
-| **sort_order** | **string**|  | [optional] [default to &#39;asc&#39;] |
+| **sort_order** | **string**| Order by start time across the whole window. On Google, &#x60;desc&#x60; reads the window in full, so a window over 2,500 events answers 400; narrow &#x60;from&#x60; and &#x60;to&#x60;. | [optional] [default to &#39;asc&#39;] |
 | **cursor** | **string**|  | [optional] |
 | **limit** | **int**|  | [optional] [default to 50] |
 | **timezone** | **string**| IANA zone the &#x60;start&#x60; and &#x60;end&#x60; offsets are rendered in. Default UTC. | [optional] |
@@ -473,7 +475,7 @@ rsvpCalendarEvent($event_id, $rsvp_calendar_event_request): \Zernio\Model\Create
 
 Respond to an invitation
 
-Accepts, declines or tentatively accepts on behalf of the mailbox and notifies the organizer.
+Accepts, declines or tentatively accepts on behalf of the mailbox and notifies the organizer, unless `sendResponse` is false.
 
 ### Example
 
