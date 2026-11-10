@@ -460,7 +460,7 @@ class UpdateAutoRechargeRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets monthly_limit_cents
      *
-     * @param int|null $monthly_limit_cents Most auto top-up may add per calendar month (UTC), before tax. Null for no limit.
+     * @param int|null $monthly_limit_cents Most auto top-up may add per calendar month (UTC), before tax. At least toCents while auto top-up is on. Null for no limit.
      *
      * @return self
      */
