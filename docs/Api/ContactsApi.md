@@ -6,6 +6,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**autocompleteContacts()**](ContactsApi.md#autocompleteContacts) | **GET** /v1/contacts/autocomplete | Search people |
 | [**bulkCreateContacts()**](ContactsApi.md#bulkCreateContacts) | **POST** /v1/contacts/bulk | Bulk create contacts |
 | [**createContact()**](ContactsApi.md#createContact) | **POST** /v1/contacts | Create contact |
 | [**deleteContact()**](ContactsApi.md#deleteContact) | **DELETE** /v1/contacts/{contactId} | Delete contact |
@@ -15,6 +16,70 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listContacts()**](ContactsApi.md#listContacts) | **GET** /v1/contacts | List contacts |
 | [**updateContact()**](ContactsApi.md#updateContact) | **PATCH** /v1/contacts/{contactId} | Update contact |
 
+
+## `autocompleteContacts()`
+
+```php
+autocompleteContacts($account_id, $q, $limit): \Zernio\Model\AutocompleteContacts200Response
+```
+
+Search people
+
+Finds people for an address field, read live from a Google or Microsoft account. Nothing is stored.  With the contacts area it searches the user's address book. With the directory area it also searches coworkers and the people the user mails: Microsoft ranks them by relevance, Google adds its Workspace directory and other contacts.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ContactsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | A Google or Microsoft account connected with the contacts or directory area.
+$q = 'q_example'; // string | What the user typed: a name or the start of an email address.
+$limit = 10; // int
+
+try {
+    $result = $apiInstance->autocompleteContacts($account_id, $q, $limit);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ContactsApi->autocompleteContacts: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| A Google or Microsoft account connected with the contacts or directory area. | |
+| **q** | **string**| What the user typed: a name or the start of an email address. | |
+| **limit** | **int**|  | [optional] [default to 10] |
+
+### Return type
+
+[**\Zernio\Model\AutocompleteContacts200Response**](../Model/AutocompleteContacts200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `bulkCreateContacts()`
 

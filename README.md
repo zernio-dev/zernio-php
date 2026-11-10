@@ -679,6 +679,7 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**voteRedditThing**](docs/Api/ConnectApi.md#voteredditthing) | **POST** /v1/accounts/{accountId}/reddit-vote | Vote on a Reddit post or comment
 *ConnectedAppsApi* | [**listConnectedApps**](docs/Api/ConnectedAppsApi.md#listconnectedapps) | **GET** /v1/me/connected-apps | List connected apps
 *ConnectedAppsApi* | [**revokeConnectedApp**](docs/Api/ConnectedAppsApi.md#revokeconnectedapp) | **DELETE** /v1/me/connected-apps/{clientId} | Revoke connected app
+*ContactsApi* | [**autocompleteContacts**](docs/Api/ContactsApi.md#autocompletecontacts) | **GET** /v1/contacts/autocomplete | Search people
 *ContactsApi* | [**bulkCreateContacts**](docs/Api/ContactsApi.md#bulkcreatecontacts) | **POST** /v1/contacts/bulk | Bulk create contacts
 *ContactsApi* | [**createContact**](docs/Api/ContactsApi.md#createcontact) | **POST** /v1/contacts | Create contact
 *ContactsApi* | [**deleteContact**](docs/Api/ContactsApi.md#deletecontact) | **DELETE** /v1/contacts/{contactId} | Delete contact
@@ -809,6 +810,7 @@ Class | Method | HTTP request | Description
 *DiscordApi* | [**unpinDiscordMessage**](docs/Api/DiscordApi.md#unpindiscordmessage) | **DELETE** /v1/discord/channels/{channelId}/pins/{messageId} | Unpin a Discord message
 *DiscordApi* | [**updateDiscordScheduledEvent**](docs/Api/DiscordApi.md#updatediscordscheduledevent) | **PATCH** /v1/discord/guilds/{guildId}/events/{eventId} | Update a Discord scheduled event
 *DiscordApi* | [**updateDiscordSettings**](docs/Api/DiscordApi.md#updatediscordsettings) | **PATCH** /v1/accounts/{accountId}/discord-settings | Update Discord settings
+*EmailApi* | [**addEmailSharedMailbox**](docs/Api/EmailApi.md#addemailsharedmailbox) | **POST** /v1/email/shared-mailboxes | Add a shared mailbox
 *EmailApi* | [**cancelScheduledEmail**](docs/Api/EmailApi.md#cancelscheduledemail) | **DELETE** /v1/email/messages/scheduled/{scheduleId} | Cancel a scheduled email
 *EmailApi* | [**createEmailDraft**](docs/Api/EmailApi.md#createemaildraft) | **POST** /v1/email/drafts | Create a draft
 *EmailApi* | [**createEmailLabel**](docs/Api/EmailApi.md#createemaillabel) | **POST** /v1/email/labels | Create a label
@@ -833,6 +835,7 @@ Class | Method | HTTP request | Description
 *EmailApi* | [**listEmailLabels**](docs/Api/EmailApi.md#listemaillabels) | **GET** /v1/email/labels | List labels
 *EmailApi* | [**listEmailMessages**](docs/Api/EmailApi.md#listemailmessages) | **GET** /v1/email/messages | List email messages
 *EmailApi* | [**listEmailSendAs**](docs/Api/EmailApi.md#listemailsendas) | **GET** /v1/email/send-as | List send-as addresses
+*EmailApi* | [**listEmailSharedMailboxes**](docs/Api/EmailApi.md#listemailsharedmailboxes) | **GET** /v1/email/shared-mailboxes | List shared mailboxes
 *EmailApi* | [**listEmailSignatures**](docs/Api/EmailApi.md#listemailsignatures) | **GET** /v1/email/signatures | List signatures
 *EmailApi* | [**listEmailThreads**](docs/Api/EmailApi.md#listemailthreads) | **GET** /v1/email/threads | List email threads
 *EmailApi* | [**listScheduledEmails**](docs/Api/EmailApi.md#listscheduledemails) | **GET** /v1/email/messages/scheduled | List scheduled emails
@@ -1439,6 +1442,8 @@ Class | Method | HTTP request | Description
 - [AddConversionAssociations200ResponseFailedInner](docs/Model/AddConversionAssociations200ResponseFailedInner.md)
 - [AddConversionAssociationsRequest](docs/Model/AddConversionAssociationsRequest.md)
 - [AddDiscordMemberRole200Response](docs/Model/AddDiscordMemberRole200Response.md)
+- [AddEmailSharedMailbox200Response](docs/Model/AddEmailSharedMailbox200Response.md)
+- [AddEmailSharedMailboxRequest](docs/Model/AddEmailSharedMailboxRequest.md)
 - [AddImessageGroupParticipant200Response](docs/Model/AddImessageGroupParticipant200Response.md)
 - [AddImessageGroupParticipantRequest](docs/Model/AddImessageGroupParticipantRequest.md)
 - [AddImessageSandboxContact201Response](docs/Model/AddImessageSandboxContact201Response.md)
@@ -1524,6 +1529,10 @@ Class | Method | HTTP request | Description
 - [AttachNumberToSipTrunk200Response](docs/Model/AttachNumberToSipTrunk200Response.md)
 - [AttachNumberToSipTrunkRequest](docs/Model/AttachNumberToSipTrunkRequest.md)
 - [AutoRecharge](docs/Model/AutoRecharge.md)
+- [AutocompleteContacts200Response](docs/Model/AutocompleteContacts200Response.md)
+- [AutocompleteContacts200ResponseDataInner](docs/Model/AutocompleteContacts200ResponseDataInner.md)
+- [AutocompleteContacts200ResponseMeta](docs/Model/AutocompleteContacts200ResponseMeta.md)
+- [AutocompleteContacts200ResponseMetaSourcesInner](docs/Model/AutocompleteContacts200ResponseMetaSourcesInner.md)
 - [Automation](docs/Model/Automation.md)
 - [AutomationAction](docs/Model/AutomationAction.md)
 - [AutomationActionAllOfAdAccount](docs/Model/AutomationActionAllOfAdAccount.md)
@@ -2436,6 +2445,7 @@ Class | Method | HTTP request | Description
 - [EmailMessagePatch](docs/Model/EmailMessagePatch.md)
 - [EmailSendAs](docs/Model/EmailSendAs.md)
 - [EmailSendAsSignature](docs/Model/EmailSendAsSignature.md)
+- [EmailSharedMailbox](docs/Model/EmailSharedMailbox.md)
 - [EmailSignature](docs/Model/EmailSignature.md)
 - [EmailThread](docs/Model/EmailThread.md)
 - [EnableSmsOnNumber200Response](docs/Model/EnableSmsOnNumber200Response.md)
@@ -3383,6 +3393,7 @@ Class | Method | HTTP request | Description
 - [ListEmailMessages200Response](docs/Model/ListEmailMessages200Response.md)
 - [ListEmailSendAs200Response](docs/Model/ListEmailSendAs200Response.md)
 - [ListEmailSendAs200ResponseMeta](docs/Model/ListEmailSendAs200ResponseMeta.md)
+- [ListEmailSharedMailboxes200Response](docs/Model/ListEmailSharedMailboxes200Response.md)
 - [ListEmailSignatures200Response](docs/Model/ListEmailSignatures200Response.md)
 - [ListEmailThreads200Response](docs/Model/ListEmailThreads200Response.md)
 - [ListEventDestinations200Response](docs/Model/ListEventDestinations200Response.md)
@@ -4952,6 +4963,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.563.0`
+- API version: `1.564.1`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

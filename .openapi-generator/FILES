@@ -223,6 +223,8 @@ docs/Model/AddConversionAssociations200Response.md
 docs/Model/AddConversionAssociations200ResponseFailedInner.md
 docs/Model/AddConversionAssociationsRequest.md
 docs/Model/AddDiscordMemberRole200Response.md
+docs/Model/AddEmailSharedMailbox200Response.md
+docs/Model/AddEmailSharedMailboxRequest.md
 docs/Model/AddImessageGroupParticipant200Response.md
 docs/Model/AddImessageGroupParticipantRequest.md
 docs/Model/AddImessageSandboxContact201Response.md
@@ -308,6 +310,10 @@ docs/Model/AttachCampaignAssetsRequest.md
 docs/Model/AttachNumberToSipTrunk200Response.md
 docs/Model/AttachNumberToSipTrunkRequest.md
 docs/Model/AutoRecharge.md
+docs/Model/AutocompleteContacts200Response.md
+docs/Model/AutocompleteContacts200ResponseDataInner.md
+docs/Model/AutocompleteContacts200ResponseMeta.md
+docs/Model/AutocompleteContacts200ResponseMetaSourcesInner.md
 docs/Model/Automation.md
 docs/Model/AutomationAction.md
 docs/Model/AutomationActionAllOfAdAccount.md
@@ -1220,6 +1226,7 @@ docs/Model/EmailMessage.md
 docs/Model/EmailMessagePatch.md
 docs/Model/EmailSendAs.md
 docs/Model/EmailSendAsSignature.md
+docs/Model/EmailSharedMailbox.md
 docs/Model/EmailSignature.md
 docs/Model/EmailThread.md
 docs/Model/EnableSmsOnNumber200Response.md
@@ -2167,6 +2174,7 @@ docs/Model/ListEmailLabels200Response.md
 docs/Model/ListEmailMessages200Response.md
 docs/Model/ListEmailSendAs200Response.md
 docs/Model/ListEmailSendAs200ResponseMeta.md
+docs/Model/ListEmailSharedMailboxes200Response.md
 docs/Model/ListEmailSignatures200Response.md
 docs/Model/ListEmailThreads200Response.md
 docs/Model/ListEventDestinations200Response.md
@@ -3929,6 +3937,8 @@ lib/Model/AddConversionAssociations200Response.php
 lib/Model/AddConversionAssociations200ResponseFailedInner.php
 lib/Model/AddConversionAssociationsRequest.php
 lib/Model/AddDiscordMemberRole200Response.php
+lib/Model/AddEmailSharedMailbox200Response.php
+lib/Model/AddEmailSharedMailboxRequest.php
 lib/Model/AddImessageGroupParticipant200Response.php
 lib/Model/AddImessageGroupParticipantRequest.php
 lib/Model/AddImessageSandboxContact201Response.php
@@ -4014,6 +4024,10 @@ lib/Model/AttachCampaignAssetsRequest.php
 lib/Model/AttachNumberToSipTrunk200Response.php
 lib/Model/AttachNumberToSipTrunkRequest.php
 lib/Model/AutoRecharge.php
+lib/Model/AutocompleteContacts200Response.php
+lib/Model/AutocompleteContacts200ResponseDataInner.php
+lib/Model/AutocompleteContacts200ResponseMeta.php
+lib/Model/AutocompleteContacts200ResponseMetaSourcesInner.php
 lib/Model/Automation.php
 lib/Model/AutomationAction.php
 lib/Model/AutomationActionAllOfAdAccount.php
@@ -4926,6 +4940,7 @@ lib/Model/EmailMessage.php
 lib/Model/EmailMessagePatch.php
 lib/Model/EmailSendAs.php
 lib/Model/EmailSendAsSignature.php
+lib/Model/EmailSharedMailbox.php
 lib/Model/EmailSignature.php
 lib/Model/EmailThread.php
 lib/Model/EnableSmsOnNumber200Response.php
@@ -5873,6 +5888,7 @@ lib/Model/ListEmailLabels200Response.php
 lib/Model/ListEmailMessages200Response.php
 lib/Model/ListEmailSendAs200Response.php
 lib/Model/ListEmailSendAs200ResponseMeta.php
+lib/Model/ListEmailSharedMailboxes200Response.php
 lib/Model/ListEmailSignatures200Response.php
 lib/Model/ListEmailThreads200Response.php
 lib/Model/ListEventDestinations200Response.php
@@ -7413,6 +7429,11 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ListContactGroups200ResponseDataInnerTest.php
-test/Model/ListContactGroups200ResponseMetaTest.php
-test/Model/ListContactGroups200ResponseTest.php
+test/Model/AddEmailSharedMailbox200ResponseTest.php
+test/Model/AddEmailSharedMailboxRequestTest.php
+test/Model/AutocompleteContacts200ResponseDataInnerTest.php
+test/Model/AutocompleteContacts200ResponseMetaSourcesInnerTest.php
+test/Model/AutocompleteContacts200ResponseMetaTest.php
+test/Model/AutocompleteContacts200ResponseTest.php
+test/Model/EmailSharedMailboxTest.php
+test/Model/ListEmailSharedMailboxes200ResponseTest.php

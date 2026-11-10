@@ -6,6 +6,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**addEmailSharedMailbox()**](EmailApi.md#addEmailSharedMailbox) | **POST** /v1/email/shared-mailboxes | Add a shared mailbox |
 | [**cancelScheduledEmail()**](EmailApi.md#cancelScheduledEmail) | **DELETE** /v1/email/messages/scheduled/{scheduleId} | Cancel a scheduled email |
 | [**createEmailDraft()**](EmailApi.md#createEmailDraft) | **POST** /v1/email/drafts | Create a draft |
 | [**createEmailLabel()**](EmailApi.md#createEmailLabel) | **POST** /v1/email/labels | Create a label |
@@ -30,6 +31,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listEmailLabels()**](EmailApi.md#listEmailLabels) | **GET** /v1/email/labels | List labels |
 | [**listEmailMessages()**](EmailApi.md#listEmailMessages) | **GET** /v1/email/messages | List email messages |
 | [**listEmailSendAs()**](EmailApi.md#listEmailSendAs) | **GET** /v1/email/send-as | List send-as addresses |
+| [**listEmailSharedMailboxes()**](EmailApi.md#listEmailSharedMailboxes) | **GET** /v1/email/shared-mailboxes | List shared mailboxes |
 | [**listEmailSignatures()**](EmailApi.md#listEmailSignatures) | **GET** /v1/email/signatures | List signatures |
 | [**listEmailThreads()**](EmailApi.md#listEmailThreads) | **GET** /v1/email/threads | List email threads |
 | [**listScheduledEmails()**](EmailApi.md#listScheduledEmails) | **GET** /v1/email/messages/scheduled | List scheduled emails |
@@ -42,6 +44,66 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**updateEmailSignature()**](EmailApi.md#updateEmailSignature) | **PATCH** /v1/email/signatures/{signatureId} | Update a signature |
 | [**updateEmailThread()**](EmailApi.md#updateEmailThread) | **PATCH** /v1/email/threads/{threadId} | Update every message in a thread |
 
+
+## `addEmailSharedMailbox()`
+
+```php
+addEmailSharedMailbox($add_email_shared_mailbox_request): \Zernio\Model\AddEmailSharedMailbox200Response
+```
+
+Add a shared mailbox
+
+Adds an Outlook shared mailbox the connected user can open (Full Access in Exchange) as an account of its own on the same profile. It counts as a connected account.  The Microsoft account needs the `shared_mailboxes` area: connect or reconnect it with `scopes=email,shared_mailboxes`. Without it the call answers 412.  Zernio opens the mailbox before saving it. 403 `shared_mailbox_access_denied` means the user cannot open that address. Adding an address again returns the existing account with 200.  New mail is read every minute, because Microsoft sends no change notifications for shared mailboxes opened this way. Sending needs Send As or Send on Behalf on the mailbox. Remove it with `DELETE /v1/accounts/{accountId}`. Disconnecting the Microsoft account removes its shared mailboxes too.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\EmailApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$add_email_shared_mailbox_request = new \Zernio\Model\AddEmailSharedMailboxRequest(); // \Zernio\Model\AddEmailSharedMailboxRequest
+
+try {
+    $result = $apiInstance->addEmailSharedMailbox($add_email_shared_mailbox_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EmailApi->addEmailSharedMailbox: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **add_email_shared_mailbox_request** | [**\Zernio\Model\AddEmailSharedMailboxRequest**](../Model/AddEmailSharedMailboxRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\AddEmailSharedMailbox200Response**](../Model/AddEmailSharedMailbox200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `cancelScheduledEmail()`
 
@@ -1527,6 +1589,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListEmailSendAs200Response**](../Model/ListEmailSendAs200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listEmailSharedMailboxes()`
+
+```php
+listEmailSharedMailboxes($account_id): \Zernio\Model\ListEmailSharedMailboxes200Response
+```
+
+List shared mailboxes
+
+The Outlook shared mailboxes added under this Microsoft account. Each one is an account: pass its `accountId` to any `/v1/email` endpoint.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\EmailApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The connected Google, Microsoft or IMAP account.
+
+try {
+    $result = $apiInstance->listEmailSharedMailboxes($account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EmailApi->listEmailSharedMailboxes: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The connected Google, Microsoft or IMAP account. | |
+
+### Return type
+
+[**\Zernio\Model\ListEmailSharedMailboxes200Response**](../Model/ListEmailSharedMailboxes200Response.md)
 
 ### Authorization
 
