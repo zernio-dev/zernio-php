@@ -7109,15 +7109,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Api/ContentRetentionApiTest.php
-test/Model/ContentRetentionResponseTest.php
-test/Model/UpdateContentRetentionRequestTest.php
-test/Model/WebhookPayloadCallRecordingReadyCallTest.php
-test/Model/WebhookPayloadCallRecordingReadyRecordingTest.php
-test/Model/WebhookPayloadCallRecordingReadyTest.php
-test/Model/WebhookPayloadCallTranscriptSegmentCallTest.php
-test/Model/WebhookPayloadCallTranscriptSegmentSegmentTest.php
-test/Model/WebhookPayloadCallTranscriptSegmentTest.php
-test/Model/WebhookPayloadMentionAccountTest.php
-test/Model/WebhookPayloadMentionMentionTest.php
-test/Model/WebhookPayloadMentionTest.php
