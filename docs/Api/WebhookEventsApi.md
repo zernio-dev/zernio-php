@@ -87,6 +87,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onContactUpdated()**](WebhookEventsApi.md#onContactUpdated) | **POST** /contact.updated | Contact updated |
 | [**onConversationControlChanged()**](WebhookEventsApi.md#onConversationControlChanged) | **POST** /conversation.control_changed | Conversation control changed event |
 | [**onConversationStarted()**](WebhookEventsApi.md#onConversationStarted) | **POST** /conversation.started | Conversation started event |
+| [**onConversionReceived()**](WebhookEventsApi.md#onConversionReceived) | **POST** /conversion.received | Conversion received event |
 | [**onCreatorCampaignBudgetExhausted()**](WebhookEventsApi.md#onCreatorCampaignBudgetExhausted) | **POST** /creator_campaign.budget_exhausted | Creator campaign budget exhausted event |
 | [**onCreatorCampaignClosed()**](WebhookEventsApi.md#onCreatorCampaignClosed) | **POST** /creator_campaign.closed | Creator campaign closed event |
 | [**onEmailBounced()**](WebhookEventsApi.md#onEmailBounced) | **POST** /email.bounced | Email bounced |
@@ -4925,6 +4926,65 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_conversation_started** | [**\Zernio\Model\WebhookPayloadConversationStarted**](../Model/WebhookPayloadConversationStarted.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onConversionReceived()`
+
+```php
+onConversionReceived($webhook_payload_conversion)
+```
+
+Conversion received event
+
+Zernio stored an event: one sent to `POST /v1/events` or `POST /v1/ads/conversions`, or one a connected source sent for you (a lead form lead, a Shopify or WooCommerce order, a HubSpot deal). It fires again when a newer version of the same event is stored, such as an order that changed.  `conversion` has the fields of `GET /v1/events/{eventId}`, plus `source`, `campaign` (the campaign the event counts for, or null) and `campaignMatch` (why there is none). Personal data is never sent: `hasEmail`, `hasPhone` and `hasExternalId` only say what the event carried.  ### Deduplication  The event `id` follows the stored event and its version, so a resend of the same version carries the same `id`. Deduplicate on it.  ### Not sent for  Test events (they are never stored), corrections made with `PATCH` or `DELETE /v1/events/{eventId}`, and the hourly re-match that ties an earlier event to its campaign.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_conversion = {"id":"00000000-0000-4000-8000-000000000000","event":"conversion.received","timestamp":"2026-01-15T10:00:00Z","conversion":{"eventId":"order_1042","eventName":"Purchase","eventTime":"2026-01-15T10:00:00.000Z","receivedAt":"2026-01-15T10:00:00.000Z","source":"api","actionSource":"web","value":129.99,"currency":"USD","sourceUrl":"https://shop.example.com/checkout?utm_campaign=fall_sale","utm":{"source":null,"medium":null,"campaign":"fall_sale","content":null},"zrn":null,"clickIds":{"gclid":"EAIaIQobChMI","fbc":null},"destinationsSent":1,"hasEmail":true,"hasPhone":false,"hasExternalId":false,"campaign":{"platform":"googleads","adAccountId":"1234567890","campaignId":"987654321"},"campaignMatch":"matched"},"profileId":"507f1f77bcf86cd799439012","profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadConversion
+
+try {
+    $apiInstance->onConversionReceived($webhook_payload_conversion);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onConversionReceived: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_conversion** | [**\Zernio\Model\WebhookPayloadConversion**](../Model/WebhookPayloadConversion.md)|  | |
 
 ### Return type
 
