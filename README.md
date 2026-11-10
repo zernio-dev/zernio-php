@@ -494,6 +494,7 @@ Class | Method | HTTP request | Description
 *CalendarApi* | [**createCalendarEvent**](docs/Api/CalendarApi.md#createcalendarevent) | **POST** /v1/calendar/events | Create an event
 *CalendarApi* | [**deleteCalendarEvent**](docs/Api/CalendarApi.md#deletecalendarevent) | **DELETE** /v1/calendar/events/{eventId} | Delete an event
 *CalendarApi* | [**getCalendarEvent**](docs/Api/CalendarApi.md#getcalendarevent) | **GET** /v1/calendar/events/{eventId} | Get an event
+*CalendarApi* | [**listCalendarEventInstances**](docs/Api/CalendarApi.md#listcalendareventinstances) | **GET** /v1/calendar/events/{eventId}/instances | List the occurrences of a recurring event
 *CalendarApi* | [**listCalendarEvents**](docs/Api/CalendarApi.md#listcalendarevents) | **GET** /v1/calendar/events | List events in a window
 *CalendarApi* | [**listCalendars**](docs/Api/CalendarApi.md#listcalendars) | **GET** /v1/calendar/calendars | List calendars
 *CalendarApi* | [**rsvpCalendarEvent**](docs/Api/CalendarApi.md#rsvpcalendarevent) | **POST** /v1/calendar/events/{eventId}/rsvp | Respond to an invitation
@@ -1731,13 +1732,17 @@ Class | Method | HTTP request | Description
 - [CalendarEvent](docs/Model/CalendarEvent.md)
 - [CalendarEventConferencing](docs/Model/CalendarEventConferencing.md)
 - [CalendarEventFields](docs/Model/CalendarEventFields.md)
+- [CalendarEventFieldsParticipantsInner](docs/Model/CalendarEventFieldsParticipantsInner.md)
 - [CalendarEventFieldsReminders](docs/Model/CalendarEventFieldsReminders.md)
 - [CalendarEventFieldsRemindersOverridesInner](docs/Model/CalendarEventFieldsRemindersOverridesInner.md)
 - [CalendarEventParticipantsInner](docs/Model/CalendarEventParticipantsInner.md)
 - [CalendarEventReminders](docs/Model/CalendarEventReminders.md)
 - [CalendarFreeBusy200Response](docs/Model/CalendarFreeBusy200Response.md)
 - [CalendarFreeBusy200ResponseDataInner](docs/Model/CalendarFreeBusy200ResponseDataInner.md)
+- [CalendarFreeBusy200ResponseDataInnerCalendarsInner](docs/Model/CalendarFreeBusy200ResponseDataInnerCalendarsInner.md)
+- [CalendarFreeBusy200ResponseDataInnerPeopleInner](docs/Model/CalendarFreeBusy200ResponseDataInnerPeopleInner.md)
 - [CalendarFreeBusyRequest](docs/Model/CalendarFreeBusyRequest.md)
+- [CalendarFreeBusyRequestAccountsInner](docs/Model/CalendarFreeBusyRequestAccountsInner.md)
 - [CallRecord](docs/Model/CallRecord.md)
 - [CallRecordBilling](docs/Model/CallRecordBilling.md)
 - [CallRecordCallErrorsInner](docs/Model/CallRecordCallErrorsInner.md)
@@ -2257,6 +2262,7 @@ Class | Method | HTTP request | Description
 - [CreatorCampaignAdResultsSubmissionsInnerCreator](docs/Model/CreatorCampaignAdResultsSubmissionsInnerCreator.md)
 - [CreatorCampaignAdResultsSubmissionsInnerLaunchesInner](docs/Model/CreatorCampaignAdResultsSubmissionsInnerLaunchesInner.md)
 - [CreatorCampaignAdResultsTotals](docs/Model/CreatorCampaignAdResultsTotals.md)
+- [CreatorCampaignAutoPayout](docs/Model/CreatorCampaignAutoPayout.md)
 - [CreatorCampaignBranding](docs/Model/CreatorCampaignBranding.md)
 - [CreatorCampaignCaps](docs/Model/CreatorCampaignCaps.md)
 - [CreatorCampaignCommissionTerms](docs/Model/CreatorCampaignCommissionTerms.md)
@@ -2497,6 +2503,7 @@ Class | Method | HTTP request | Description
 - [FoodMenuSection](docs/Model/FoodMenuSection.md)
 - [ForwardEmailRequest](docs/Model/ForwardEmailRequest.md)
 - [ForwardingRule](docs/Model/ForwardingRule.md)
+- [FreeBusyError](docs/Model/FreeBusyError.md)
 - [FromASharedTemplate](docs/Model/FromASharedTemplate.md)
 - [FromAZernioTemplate](docs/Model/FromAZernioTemplate.md)
 - [FromYourAutomations](docs/Model/FromYourAutomations.md)
@@ -3294,6 +3301,8 @@ Class | Method | HTTP request | Description
 - [ListBusinessAgentUiSkills200Response](docs/Model/ListBusinessAgentUiSkills200Response.md)
 - [ListBusinessAgentWebsites200Response](docs/Model/ListBusinessAgentWebsites200Response.md)
 - [ListBusinessPartners200Response](docs/Model/ListBusinessPartners200Response.md)
+- [ListCalendarEventInstances200Response](docs/Model/ListCalendarEventInstances200Response.md)
+- [ListCalendarEventInstances200ResponsePagination](docs/Model/ListCalendarEventInstances200ResponsePagination.md)
 - [ListCalendarEvents200Response](docs/Model/ListCalendarEvents200Response.md)
 - [ListCalendars200Response](docs/Model/ListCalendars200Response.md)
 - [ListCalls200Response](docs/Model/ListCalls200Response.md)
@@ -3379,7 +3388,6 @@ Class | Method | HTTP request | Description
 - [ListFacebookTaggedPosts200Response](docs/Model/ListFacebookTaggedPosts200Response.md)
 - [ListFacebookVisitorPosts200Response](docs/Model/ListFacebookVisitorPosts200Response.md)
 - [ListFiles200Response](docs/Model/ListFiles200Response.md)
-- [ListFiles200ResponsePagination](docs/Model/ListFiles200ResponsePagination.md)
 - [ListFormLeads200Response](docs/Model/ListFormLeads200Response.md)
 - [ListFormLeads200ResponseLeadsInner](docs/Model/ListFormLeads200ResponseLeadsInner.md)
 - [ListFormLeads200ResponseMeta](docs/Model/ListFormLeads200ResponseMeta.md)
@@ -4722,6 +4730,8 @@ Class | Method | HTTP request | Description
 - [WebhookPayloadEmailBounced](docs/Model/WebhookPayloadEmailBounced.md)
 - [WebhookPayloadEmailBouncedBounce](docs/Model/WebhookPayloadEmailBouncedBounce.md)
 - [WebhookPayloadEmailBouncedEmail](docs/Model/WebhookPayloadEmailBouncedEmail.md)
+- [WebhookPayloadEmailDeleted](docs/Model/WebhookPayloadEmailDeleted.md)
+- [WebhookPayloadEmailDeletedEmail](docs/Model/WebhookPayloadEmailDeletedEmail.md)
 - [WebhookPayloadEmailLinkClicked](docs/Model/WebhookPayloadEmailLinkClicked.md)
 - [WebhookPayloadEmailLinkClickedClick](docs/Model/WebhookPayloadEmailLinkClickedClick.md)
 - [WebhookPayloadEmailOpened](docs/Model/WebhookPayloadEmailOpened.md)
@@ -4733,8 +4743,12 @@ Class | Method | HTTP request | Description
 - [WebhookPayloadEmailThreadReplied](docs/Model/WebhookPayloadEmailThreadReplied.md)
 - [WebhookPayloadEmailThreadRepliedReply](docs/Model/WebhookPayloadEmailThreadRepliedReply.md)
 - [WebhookPayloadEmailThreadRepliedReplyClean](docs/Model/WebhookPayloadEmailThreadRepliedReplyClean.md)
+- [WebhookPayloadEmailUpdated](docs/Model/WebhookPayloadEmailUpdated.md)
+- [WebhookPayloadEmailUpdatedChanges](docs/Model/WebhookPayloadEmailUpdatedChanges.md)
+- [WebhookPayloadEmailUpdatedEmail](docs/Model/WebhookPayloadEmailUpdatedEmail.md)
 - [WebhookPayloadExternalPost](docs/Model/WebhookPayloadExternalPost.md)
 - [WebhookPayloadFile](docs/Model/WebhookPayloadFile.md)
+- [WebhookPayloadFileFile](docs/Model/WebhookPayloadFileFile.md)
 - [WebhookPayloadFilePicked](docs/Model/WebhookPayloadFilePicked.md)
 - [WebhookPayloadFilePickedPicker](docs/Model/WebhookPayloadFilePickedPicker.md)
 - [WebhookPayloadFilePickedPickerFilesInner](docs/Model/WebhookPayloadFilePickedPickerFilesInner.md)
@@ -4931,6 +4945,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.556.2`
+- API version: `1.560.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

@@ -11,6 +11,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**createCalendarEvent()**](CalendarApi.md#createCalendarEvent) | **POST** /v1/calendar/events | Create an event |
 | [**deleteCalendarEvent()**](CalendarApi.md#deleteCalendarEvent) | **DELETE** /v1/calendar/events/{eventId} | Delete an event |
 | [**getCalendarEvent()**](CalendarApi.md#getCalendarEvent) | **GET** /v1/calendar/events/{eventId} | Get an event |
+| [**listCalendarEventInstances()**](CalendarApi.md#listCalendarEventInstances) | **GET** /v1/calendar/events/{eventId}/instances | List the occurrences of a recurring event |
 | [**listCalendarEvents()**](CalendarApi.md#listCalendarEvents) | **GET** /v1/calendar/events | List events in a window |
 | [**listCalendars()**](CalendarApi.md#listCalendars) | **GET** /v1/calendar/calendars | List calendars |
 | [**rsvpCalendarEvent()**](CalendarApi.md#rsvpCalendarEvent) | **POST** /v1/calendar/events/{eventId}/rsvp | Respond to an invitation |
@@ -84,6 +85,8 @@ calendarFreeBusy($calendar_free_busy_request): \Zernio\Model\CalendarFreeBusy200
 ```
 
 Busy blocks for one or more accounts
+
+Reads busy time for up to 10 connected accounts, Google and Microsoft mixed, in parallel.  By default a Google account reads every calendar shown in Google Calendar, and a Microsoft account reads the mailbox's schedule. Name calendars with `accounts[].calendarIds`.  Check coworkers who never connected with `accounts[].emails`, read through that account (Google: up to 50 calendars and addresses per account; Microsoft: up to 19 coworkers, work accounts only).  An account that cannot be read gets `busy: null` and an `error`, and the others still answer. When no account can be read, the first error is returned as the response.
 
 ### Example
 
@@ -309,6 +312,80 @@ try {
 ### Return type
 
 [**\Zernio\Model\CreateCalendarEvent201Response**](../Model/CreateCalendarEvent201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listCalendarEventInstances()`
+
+```php
+listCalendarEventInstances($event_id, $account_id, $from, $to, $calendar_id, $timezone, $cursor, $limit): \Zernio\Model\ListCalendarEventInstances200Response
+```
+
+List the occurrences of a recurring event
+
+Lists the occurrences and exceptions of a series between `from` and `to`. Each one has its own `id` to read, update or delete just that occurrence, and `originalStart` for its place in the pattern.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CalendarApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$event_id = 'event_id_example'; // string | The series (master) event id.
+$account_id = 'account_id_example'; // string
+$from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$calendar_id = 'calendar_id_example'; // string | The calendar holding the event (an id from GET /v1/calendar/calendars). Defaults to the primary calendar.
+$timezone = 'timezone_example'; // string | IANA zone the `start` and `end` offsets are rendered in.
+$cursor = 'cursor_example'; // string
+$limit = 50; // int
+
+try {
+    $result = $apiInstance->listCalendarEventInstances($event_id, $account_id, $from, $to, $calendar_id, $timezone, $cursor, $limit);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CalendarApi->listCalendarEventInstances: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **event_id** | **string**| The series (master) event id. | |
+| **account_id** | **string**|  | |
+| **from** | **\DateTime**|  | |
+| **to** | **\DateTime**|  | |
+| **calendar_id** | **string**| The calendar holding the event (an id from GET /v1/calendar/calendars). Defaults to the primary calendar. | [optional] |
+| **timezone** | **string**| IANA zone the &#x60;start&#x60; and &#x60;end&#x60; offsets are rendered in. | [optional] |
+| **cursor** | **string**|  | [optional] |
+| **limit** | **int**|  | [optional] [default to 50] |
+
+### Return type
+
+[**\Zernio\Model\ListCalendarEventInstances200Response**](../Model/ListCalendarEventInstances200Response.md)
 
 ### Authorization
 

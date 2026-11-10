@@ -90,11 +90,13 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onCreatorCampaignBudgetExhausted()**](WebhookEventsApi.md#onCreatorCampaignBudgetExhausted) | **POST** /creator_campaign.budget_exhausted | Creator campaign budget exhausted event |
 | [**onCreatorCampaignClosed()**](WebhookEventsApi.md#onCreatorCampaignClosed) | **POST** /creator_campaign.closed | Creator campaign closed event |
 | [**onEmailBounced()**](WebhookEventsApi.md#onEmailBounced) | **POST** /email.bounced | Email bounced |
+| [**onEmailDeleted()**](WebhookEventsApi.md#onEmailDeleted) | **POST** /email.deleted | Email deleted |
 | [**onEmailLinkClicked()**](WebhookEventsApi.md#onEmailLinkClicked) | **POST** /email.link_clicked | Email link clicked |
 | [**onEmailOpened()**](WebhookEventsApi.md#onEmailOpened) | **POST** /email.opened | Email opened |
 | [**onEmailSendFailed()**](WebhookEventsApi.md#onEmailSendFailed) | **POST** /email.send_failed | Scheduled email failed |
 | [**onEmailSent()**](WebhookEventsApi.md#onEmailSent) | **POST** /email.sent | Email sent |
 | [**onEmailThreadReplied()**](WebhookEventsApi.md#onEmailThreadReplied) | **POST** /email.thread_replied | Email thread replied |
+| [**onEmailUpdated()**](WebhookEventsApi.md#onEmailUpdated) | **POST** /email.updated | Email updated |
 | [**onFileCreated()**](WebhookEventsApi.md#onFileCreated) | **POST** /file.created | File created |
 | [**onFileDeleted()**](WebhookEventsApi.md#onFileDeleted) | **POST** /file.deleted | File deleted |
 | [**onFilePicked()**](WebhookEventsApi.md#onFilePicked) | **POST** /file.picked | Files picked |
@@ -2136,7 +2138,7 @@ $apiInstance = new Zernio\Api\WebhookEventsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$webhook_payload_calendar_event = {"id":"00000000-0000-4000-8000-000000000000","event":"calendar.event.created","timestamp":"2026-01-15T10:00:00Z","account":{"accountId":"507f1f77bcf86cd799439011","profileId":"507f1f77bcf86cd799439012","platform":"google","username":"jane@example.com","displayName":"Jane Doe"},"calendarEvent":{"id":"7kq3v2m1n0abcdefghijklmnop","changeType":"created"},"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadCalendarEvent
+$webhook_payload_calendar_event = {"id":"00000000-0000-4000-8000-000000000000","event":"calendar.event.created","timestamp":"2026-01-15T10:00:00Z","account":{"accountId":"507f1f77bcf86cd799439011","profileId":"507f1f77bcf86cd799439012","platform":"google","username":"jane@example.com","displayName":"Jane Doe"},"calendarEvent":{"id":"7kq3v2m1n0abcdefghijklmnop","changeType":"created","calendarId":"primary","masterEventId":null},"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadCalendarEvent
 
 try {
     $apiInstance->onCalendarEventCreated($webhook_payload_calendar_event);
@@ -2195,7 +2197,7 @@ $apiInstance = new Zernio\Api\WebhookEventsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$webhook_payload_calendar_event = {"id":"00000000-0000-4000-8000-000000000000","event":"calendar.event.deleted","timestamp":"2026-01-15T10:00:00Z","account":{"accountId":"507f1f77bcf86cd799439011","profileId":"507f1f77bcf86cd799439012","platform":"google","username":"jane@example.com","displayName":"Jane Doe"},"calendarEvent":{"id":"7kq3v2m1n0abcdefghijklmnop","changeType":"deleted"},"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadCalendarEvent
+$webhook_payload_calendar_event = {"id":"00000000-0000-4000-8000-000000000000","event":"calendar.event.deleted","timestamp":"2026-01-15T10:00:00Z","account":{"accountId":"507f1f77bcf86cd799439011","profileId":"507f1f77bcf86cd799439012","platform":"google","username":"jane@example.com","displayName":"Jane Doe"},"calendarEvent":{"id":"7kq3v2m1n0abcdefghijklmnop","changeType":"deleted","calendarId":"primary","masterEventId":null},"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadCalendarEvent
 
 try {
     $apiInstance->onCalendarEventDeleted($webhook_payload_calendar_event);
@@ -2254,7 +2256,7 @@ $apiInstance = new Zernio\Api\WebhookEventsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$webhook_payload_calendar_event = {"id":"00000000-0000-4000-8000-000000000000","event":"calendar.event.updated","timestamp":"2026-01-15T10:00:00Z","account":{"accountId":"507f1f77bcf86cd799439011","profileId":"507f1f77bcf86cd799439012","platform":"google","username":"jane@example.com","displayName":"Jane Doe"},"calendarEvent":{"id":"7kq3v2m1n0abcdefghijklmnop","changeType":"updated"},"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadCalendarEvent
+$webhook_payload_calendar_event = {"id":"00000000-0000-4000-8000-000000000000","event":"calendar.event.updated","timestamp":"2026-01-15T10:00:00Z","account":{"accountId":"507f1f77bcf86cd799439011","profileId":"507f1f77bcf86cd799439012","platform":"google","username":"jane@example.com","displayName":"Jane Doe"},"calendarEvent":{"id":"7kq3v2m1n0abcdefghijklmnop","changeType":"updated","calendarId":"primary","masterEventId":null},"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadCalendarEvent
 
 try {
     $apiInstance->onCalendarEventUpdated($webhook_payload_calendar_event);
@@ -5118,6 +5120,65 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `onEmailDeleted()`
+
+```php
+onEmailDeleted($webhook_payload_email_deleted)
+```
+
+Email deleted
+
+A message was deleted from the mailbox for good. Moving it to Trash is `email.updated` with `folder: \"trash\"`. IMAP mailboxes do not send it.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_email_deleted = {"id":"00000000-0000-4000-8000-000000000000","event":"email.deleted","timestamp":"2026-01-15T10:00:00Z","account":{"accountId":"507f1f77bcf86cd799439011","profileId":"507f1f77bcf86cd799439012","platform":"google","username":"jane@example.com","displayName":"Jane Doe"},"email":{"messageId":"18c2f3a4b5d6e7f8","threadId":"18c2f3a4b5d6e7f0"},"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadEmailDeleted
+
+try {
+    $apiInstance->onEmailDeleted($webhook_payload_email_deleted);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onEmailDeleted: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_email_deleted** | [**\Zernio\Model\WebhookPayloadEmailDeleted**](../Model/WebhookPayloadEmailDeleted.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `onEmailLinkClicked()`
 
 ```php
@@ -5395,6 +5456,65 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_email_thread_replied** | [**\Zernio\Model\WebhookPayloadEmailThreadReplied**](../Model/WebhookPayloadEmailThreadReplied.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onEmailUpdated()`
+
+```php
+onEmailUpdated($webhook_payload_email_updated)
+```
+
+Email updated
+
+A message in the mailbox changed: it was read or marked unread, starred or flagged, labelled or categorized, archived, trashed or moved. Covers the Inbox, and Sent on Gmail. A change can arrive more than once; key on `email.messageId`.  Gmail reports exactly what changed in `changes`. Outlook reports the message as it is now, with `changes: null`. A message deleted for good fires `email.deleted` instead. IMAP mailboxes do not send it.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_email_updated = {"id":"00000000-0000-4000-8000-000000000000","event":"email.updated","timestamp":"2026-01-15T10:00:00Z","account":{"accountId":"507f1f77bcf86cd799439011","profileId":"507f1f77bcf86cd799439012","platform":"google","username":"jane@example.com","displayName":"Jane Doe"},"email":{"messageId":"18c2f3a4b5d6e7f8","threadId":"18c2f3a4b5d6e7f0","folder":"inbox","unread":false,"starred":true,"labels":["Label_7"]},"changes":{"unread":false,"starred":true,"labelsAdded":["Label_7"]},"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadEmailUpdated
+
+try {
+    $apiInstance->onEmailUpdated($webhook_payload_email_updated);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onEmailUpdated: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_email_updated** | [**\Zernio\Model\WebhookPayloadEmailUpdated**](../Model/WebhookPayloadEmailUpdated.md)|  | |
 
 ### Return type
 

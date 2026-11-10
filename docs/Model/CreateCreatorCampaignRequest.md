@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **branding** | [**\Zernio\Model\CreatorCampaignBranding**](CreatorCampaignBranding.md) |  | [optional]
 **landing_url** | **string** | The page creator tracking links open. Required unless &#x60;attribution&#x60; is &#x60;code&#x60;. | [optional]
 **code_discount_percent** | **int** | What each creator&#39;s discount code takes off an order. Required unless &#x60;attribution&#x60; is &#x60;link&#x60;. | [optional]
+**auto_payout** | [**\Zernio\Model\CreatorCampaignAutoPayout**](CreatorCampaignAutoPayout.md) |  | [optional]
 **join_approval** | **string** | manual holds creators who join through the open link as &#x60;pending&#x60; until you approve them. Personal invites are never held. | [optional] [default to 'auto']
 **require_draft_approval** | **bool** | Creators upload a draft for review before publishing, and each submitted post must name an approved draft. | [optional] [default to false]
 **store_account_id** | **string** | A connected Shopify or WooCommerce store account. On &#x60;commission&#x60; and smart &#x60;retainer&#x60; economics its orders pay commission: required there, and fixed once such a campaign leaves draft.  On any campaign creators can ask for free samples of its products (&#x60;sampleProductIds&#x60;). Changing it without &#x60;sampleProductIds&#x60; clears the sample products; null removes the store and the products. | [optional]

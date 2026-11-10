@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **test** | **bool** | Always true when present: only a sample sent by POST /v1/webhooks/test with an event carries it. Real deliveries never do. | [optional]
 **event** | **string** |  |
 **account** | [**\Zernio\Model\WebhookPayloadCalendarEventAccount**](WebhookPayloadCalendarEventAccount.md) |  |
-**file** | [**\Zernio\Model\WebhookPayloadCalendarEventCalendarEvent**](WebhookPayloadCalendarEventCalendarEvent.md) |  |
+**file** | [**\Zernio\Model\WebhookPayloadFileFile**](WebhookPayloadFileFile.md) |  |
 **timestamp** | **\DateTime** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

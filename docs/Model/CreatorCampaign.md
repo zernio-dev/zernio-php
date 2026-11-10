@@ -42,6 +42,7 @@ Name | Type | Description | Notes
 **payable_cents** | **int** | What the campaign&#39;s creators can be paid now, summed over every participant&#39;s payable balance. |
 **landing_url** | **string** | The page creator tracking links open. | [optional]
 **code_discount_percent** | **int** | What each creator discount code takes off. | [optional]
+**auto_payout** | [**\Zernio\Model\CreatorCampaignAutoPayout**](CreatorCampaignAutoPayout.md) |  | [optional]
 **pending_participant_count** | **int** | Creators who asked to join through the open link and wait for a decision. Not counted in &#x60;participantCount&#x60;. |
 **draft_counts** | [**\Zernio\Model\CampaignDraftCounts**](CampaignDraftCounts.md) |  |
 **sample_counts** | [**\Zernio\Model\CampaignSampleCounts**](CampaignSampleCounts.md) |  |

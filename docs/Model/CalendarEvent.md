@@ -25,6 +25,8 @@ Name | Type | Description | Notes
 **status** | **string** |  | [optional]
 **ical_uid** | **string** |  | [optional]
 **master_event_id** | **string** |  | [optional]
+**type** | **string** | &#x60;series&#x60; is a recurring master, &#x60;occurrence&#x60; one of its instances, and &#x60;exception&#x60; an instance changed on its own. Google flags an instance as an exception only when it was moved off its slot. | [optional]
+**original_start** | **string** | For an occurrence or exception, the start it has in the series pattern. | [optional]
 **html_link** | **string** |  | [optional]
 **read_only** | **bool** |  | [optional]
 **metadata** | **array<string,string>** |  | [optional]
