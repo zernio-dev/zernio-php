@@ -7081,15 +7081,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ListScheduledEmails200ResponseTest.php
-test/Model/ScheduledEmailTest.php
-test/Model/SendEmailMessage202ResponseTest.php
-test/Model/WebhookEmailTrackedMessageTest.php
-test/Model/WebhookPayloadEmailLinkClickedClickTest.php
-test/Model/WebhookPayloadEmailLinkClickedTest.php
-test/Model/WebhookPayloadEmailOpenedOpenTest.php
-test/Model/WebhookPayloadEmailOpenedTest.php
-test/Model/WebhookPayloadEmailSendFailedScheduledEmailTest.php
-test/Model/WebhookPayloadEmailSendFailedTest.php
-test/Model/WebhookPayloadEmailThreadRepliedReplyTest.php
-test/Model/WebhookPayloadEmailThreadRepliedTest.php
