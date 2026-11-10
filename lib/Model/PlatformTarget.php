@@ -681,7 +681,7 @@ class PlatformTarget implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param string|null $status Platform-specific status: pending, processing, uploading, published, failed, cancelled (removed from the platform via POST /v1/posts/{postId}/unpublish)
+     * @param string|null $status Platform-specific status: pending, processing, uploading, published, failed, cancelled (removed from the platform via POST /v1/posts/{postId}/unpublish). On TikTok, uploading means TikTok accepted the post and is still processing it: this can last up to 48 hours, the post stays publishing meanwhile, and the entry then becomes published or failed on its own.
      *
      * @return self
      */
