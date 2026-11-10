@@ -521,7 +521,7 @@ listInstagramStories($account_id, $include_expired, $limit): \Zernio\Model\ListI
 
 List active Instagram stories
 
-Returns the IG Business/Creator account's currently-active stories. Meta keeps stories live for 24h. Pass `includeExpired=true` to also get the stories Zernio archived before they expired: their media is copied into Zernio storage while the story is live, so `mediaUrl` and `thumbnailUrl` keep working after Meta deletes the story. Archiving needs the insights permission and covers stories posted since the account was connected (hourly readings, a final one at 23h, then Meta's end-of-story numbers when its webhook arrives).  Limitations propagated from Meta (these are NOT bugs): - 24h window only - Live videos excluded - Reshared stories not returned - `mediaUrl` may be null if Meta flagged the story for copyright - `caption`, `likeCount`, `commentsCount` do not apply to story media
+Returns the IG Business/Creator account's currently-active stories. Meta keeps stories live for 24h.  Pass `includeExpired=true` to also get the stories Zernio archived before they expired: their media is copied into Zernio storage while the story is live, so `mediaUrl` and `thumbnailUrl` keep working after Meta deletes the story.  Archiving needs the insights permission and covers stories posted since the account was connected (hourly readings, a final one at 23h, then Meta's end-of-story numbers when its webhook arrives).  Limitations propagated from Meta (these are NOT bugs): - 24h window only - Live videos excluded - Reshared stories not returned - `mediaUrl` may be null if Meta flagged the story for copyright - `caption`, `likeCount`, `commentsCount` do not apply to story media
 
 ### Example
 
