@@ -715,6 +715,9 @@ Class | Method | HTTP request | Description
 *ConversionsApi* | [**updateConversionDestination**](docs/Api/ConversionsApi.md#updateconversiondestination) | **PATCH** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Update a conversion destination
 *ConversionsApi* | [**updateCustomConversionGoal**](docs/Api/ConversionsApi.md#updatecustomconversiongoal) | **PATCH** /v1/ads/conversions/custom-goals/{goalId} | Update a custom conversion goal
 *CreatorCampaignsApi* | [**activateCreatorCampaign**](docs/Api/CreatorCampaignsApi.md#activatecreatorcampaign) | **POST** /v1/creator-campaigns/{campaignId}/activate | Activate creator campaign
+*CreatorCampaignsApi* | [**approveCampaignDraft**](docs/Api/CreatorCampaignsApi.md#approvecampaigndraft) | **POST** /v1/creator-campaigns/{campaignId}/drafts/{draftId}/approve | Approve campaign draft
+*CreatorCampaignsApi* | [**approveCampaignParticipant**](docs/Api/CreatorCampaignsApi.md#approvecampaignparticipant) | **POST** /v1/creator-campaigns/{campaignId}/participants/{participantId}/approve | Approve pending campaign participant
+*CreatorCampaignsApi* | [**approveCampaignSample**](docs/Api/CreatorCampaignsApi.md#approvecampaignsample) | **POST** /v1/creator-campaigns/{campaignId}/samples/{sampleId}/approve | Approve campaign sample request
 *CreatorCampaignsApi* | [**approveCampaignSubmission**](docs/Api/CreatorCampaignsApi.md#approvecampaignsubmission) | **POST** /v1/creator-campaigns/{campaignId}/submissions/{submissionId}/approve | Approve campaign submission
 *CreatorCampaignsApi* | [**closeCreatorCampaign**](docs/Api/CreatorCampaignsApi.md#closecreatorcampaign) | **POST** /v1/creator-campaigns/{campaignId}/close | Close creator campaign
 *CreatorCampaignsApi* | [**createCampaignAdjustment**](docs/Api/CreatorCampaignsApi.md#createcampaignadjustment) | **POST** /v1/creator-campaigns/{campaignId}/adjustments | Create campaign adjustment
@@ -722,14 +725,22 @@ Class | Method | HTTP request | Description
 *CreatorCampaignsApi* | [**createCampaignParticipant**](docs/Api/CreatorCampaignsApi.md#createcampaignparticipant) | **POST** /v1/creator-campaigns/{campaignId}/participants | Invite campaign participant
 *CreatorCampaignsApi* | [**createCampaignPayoutBatch**](docs/Api/CreatorCampaignsApi.md#createcampaignpayoutbatch) | **POST** /v1/creator-campaigns/{campaignId}/payout-batches | Pay creators with one card payment
 *CreatorCampaignsApi* | [**createCreatorCampaign**](docs/Api/CreatorCampaignsApi.md#createcreatorcampaign) | **POST** /v1/creator-campaigns | Create creator campaign
+*CreatorCampaignsApi* | [**declineCampaignSample**](docs/Api/CreatorCampaignsApi.md#declinecampaignsample) | **POST** /v1/creator-campaigns/{campaignId}/samples/{sampleId}/decline | Decline campaign sample request
+*CreatorCampaignsApi* | [**denyCampaignParticipant**](docs/Api/CreatorCampaignsApi.md#denycampaignparticipant) | **POST** /v1/creator-campaigns/{campaignId}/participants/{participantId}/deny | Deny pending campaign participant
+*CreatorCampaignsApi* | [**getCampaignAdResults**](docs/Api/CreatorCampaignsApi.md#getcampaignadresults) | **GET** /v1/creator-campaigns/{campaignId}/ad-results | Get campaign ad results
+*CreatorCampaignsApi* | [**getCampaignDraft**](docs/Api/CreatorCampaignsApi.md#getcampaigndraft) | **GET** /v1/creator-campaigns/{campaignId}/drafts/{draftId} | Get campaign draft
 *CreatorCampaignsApi* | [**getCampaignParticipant**](docs/Api/CreatorCampaignsApi.md#getcampaignparticipant) | **GET** /v1/creator-campaigns/{campaignId}/participants/{participantId} | Get campaign participant
 *CreatorCampaignsApi* | [**getCampaignReport**](docs/Api/CreatorCampaignsApi.md#getcampaignreport) | **GET** /v1/creator-campaigns/{campaignId}/report | Get campaign report
 *CreatorCampaignsApi* | [**getCampaignSubmission**](docs/Api/CreatorCampaignsApi.md#getcampaignsubmission) | **GET** /v1/creator-campaigns/{campaignId}/submissions/{submissionId} | Get campaign submission
 *CreatorCampaignsApi* | [**getCreatorCampaign**](docs/Api/CreatorCampaignsApi.md#getcreatorcampaign) | **GET** /v1/creator-campaigns/{campaignId} | Get creator campaign
+*CreatorCampaignsApi* | [**launchCampaignAds**](docs/Api/CreatorCampaignsApi.md#launchcampaignads) | **POST** /v1/creator-campaigns/{campaignId}/ads/launch | Launch campaign posts as ads
+*CreatorCampaignsApi* | [**listCampaignDrafts**](docs/Api/CreatorCampaignsApi.md#listcampaigndrafts) | **GET** /v1/creator-campaigns/{campaignId}/drafts | List campaign drafts
 *CreatorCampaignsApi* | [**listCampaignLedger**](docs/Api/CreatorCampaignsApi.md#listcampaignledger) | **GET** /v1/creator-campaigns/{campaignId}/ledger | List campaign ledger
+*CreatorCampaignsApi* | [**listCampaignOrders**](docs/Api/CreatorCampaignsApi.md#listcampaignorders) | **GET** /v1/creator-campaigns/{campaignId}/orders | List campaign orders
 *CreatorCampaignsApi* | [**listCampaignParticipants**](docs/Api/CreatorCampaignsApi.md#listcampaignparticipants) | **GET** /v1/creator-campaigns/{campaignId}/participants | List campaign participants
 *CreatorCampaignsApi* | [**listCampaignPayables**](docs/Api/CreatorCampaignsApi.md#listcampaignpayables) | **GET** /v1/creator-campaigns/{campaignId}/payables | List campaign payables
 *CreatorCampaignsApi* | [**listCampaignPayoutBatches**](docs/Api/CreatorCampaignsApi.md#listcampaignpayoutbatches) | **GET** /v1/creator-campaigns/{campaignId}/payout-batches | List payout batches
+*CreatorCampaignsApi* | [**listCampaignSamples**](docs/Api/CreatorCampaignsApi.md#listcampaignsamples) | **GET** /v1/creator-campaigns/{campaignId}/samples | List campaign sample requests
 *CreatorCampaignsApi* | [**listCampaignSubmissions**](docs/Api/CreatorCampaignsApi.md#listcampaignsubmissions) | **GET** /v1/creator-campaigns/{campaignId}/submissions | List campaign submissions
 *CreatorCampaignsApi* | [**listCreatorCampaigns**](docs/Api/CreatorCampaignsApi.md#listcreatorcampaigns) | **GET** /v1/creator-campaigns | List creator campaigns
 *CreatorCampaignsApi* | [**moveCampaignParticipant**](docs/Api/CreatorCampaignsApi.md#movecampaignparticipant) | **POST** /v1/creator-campaigns/{campaignId}/participants/{participantId}/move | Move participant to another campaign
@@ -737,11 +748,14 @@ Class | Method | HTTP request | Description
 *CreatorCampaignsApi* | [**previewCampaignPayoutBatch**](docs/Api/CreatorCampaignsApi.md#previewcampaignpayoutbatch) | **POST** /v1/creator-campaigns/{campaignId}/payout-batches/preview | Preview a payout batch
 *CreatorCampaignsApi* | [**raiseCreatorCampaignBudget**](docs/Api/CreatorCampaignsApi.md#raisecreatorcampaignbudget) | **POST** /v1/creator-campaigns/{campaignId}/budget | Raise creator campaign budget
 *CreatorCampaignsApi* | [**reinstateCampaignParticipant**](docs/Api/CreatorCampaignsApi.md#reinstatecampaignparticipant) | **POST** /v1/creator-campaigns/{campaignId}/participants/{participantId}/reinstate | Reinstate campaign participant
+*CreatorCampaignsApi* | [**rejectCampaignDraft**](docs/Api/CreatorCampaignsApi.md#rejectcampaigndraft) | **POST** /v1/creator-campaigns/{campaignId}/drafts/{draftId}/reject | Reject campaign draft
 *CreatorCampaignsApi* | [**rejectCampaignSubmission**](docs/Api/CreatorCampaignsApi.md#rejectcampaignsubmission) | **POST** /v1/creator-campaigns/{campaignId}/submissions/{submissionId}/reject | Reject campaign submission
 *CreatorCampaignsApi* | [**removeCampaignParticipant**](docs/Api/CreatorCampaignsApi.md#removecampaignparticipant) | **POST** /v1/creator-campaigns/{campaignId}/participants/{participantId}/remove | Remove campaign participant
 *CreatorCampaignsApi* | [**reopenCampaignSubmission**](docs/Api/CreatorCampaignsApi.md#reopencampaignsubmission) | **POST** /v1/creator-campaigns/{campaignId}/submissions/{submissionId}/reopen | Reopen campaign submission
+*CreatorCampaignsApi* | [**requestCampaignDraftRevision**](docs/Api/CreatorCampaignsApi.md#requestcampaigndraftrevision) | **POST** /v1/creator-campaigns/{campaignId}/drafts/{draftId}/request-revision | Request changes on a campaign draft
 *CreatorCampaignsApi* | [**resendCampaignParticipantInvite**](docs/Api/CreatorCampaignsApi.md#resendcampaignparticipantinvite) | **POST** /v1/creator-campaigns/{campaignId}/participants/{participantId}/resend-invite | Resend campaign participant invite
 *CreatorCampaignsApi* | [**settleCampaignParticipant**](docs/Api/CreatorCampaignsApi.md#settlecampaignparticipant) | **POST** /v1/creator-campaigns/{campaignId}/participants/{participantId}/settle | Settle campaign participant
+*CreatorCampaignsApi* | [**shipCampaignSample**](docs/Api/CreatorCampaignsApi.md#shipcampaignsample) | **POST** /v1/creator-campaigns/{campaignId}/samples/{sampleId}/ship | Mark campaign sample shipped
 *CreatorCampaignsApi* | [**suspendCampaignParticipant**](docs/Api/CreatorCampaignsApi.md#suspendcampaignparticipant) | **POST** /v1/creator-campaigns/{campaignId}/participants/{participantId}/suspend | Suspend campaign participant
 *CreatorCampaignsApi* | [**updateCreatorCampaign**](docs/Api/CreatorCampaignsApi.md#updatecreatorcampaign) | **PATCH** /v1/creator-campaigns/{campaignId} | Update creator campaign
 *CreatorPortalApi* | [**createCreatorPayoutLogin**](docs/Api/CreatorPortalApi.md#createcreatorpayoutlogin) | **POST** /public/creator-campaigns/{token}/payout-login | Open the creator&#39;s Stripe dashboard
@@ -749,10 +763,14 @@ Class | Method | HTTP request | Description
 *CreatorPortalApi* | [**getCreatorPayouts**](docs/Api/CreatorPortalApi.md#getcreatorpayouts) | **GET** /public/creator-campaigns/{token}/payouts | List a creator&#39;s earnings history
 *CreatorPortalApi* | [**getCreatorPortal**](docs/Api/CreatorPortalApi.md#getcreatorportal) | **GET** /public/creator-campaigns/{token} | Read a creator invite or participant page
 *CreatorPortalApi* | [**joinCreatorCampaign**](docs/Api/CreatorPortalApi.md#joincreatorcampaign) | **POST** /public/creator-campaigns/{token} | Join a campaign
+*CreatorPortalApi* | [**presignCreatorDraftUpload**](docs/Api/CreatorPortalApi.md#presigncreatordraftupload) | **POST** /public/creator-campaigns/{token}/drafts/upload | Get an upload URL for a draft
 *CreatorPortalApi* | [**recoverCreatorPortalLinks**](docs/Api/CreatorPortalApi.md#recovercreatorportallinks) | **POST** /public/creator-campaigns/recover-link | Email a creator their campaign links
 *CreatorPortalApi* | [**removeCreatorAccount**](docs/Api/CreatorPortalApi.md#removecreatoraccount) | **DELETE** /public/creator-campaigns/{token}/accounts/{accountId} | Remove a connected account
+*CreatorPortalApi* | [**requestCreatorSample**](docs/Api/CreatorPortalApi.md#requestcreatorsample) | **POST** /public/creator-campaigns/{token}/samples | Request a product sample
+*CreatorPortalApi* | [**setCreatorSparkCode**](docs/Api/CreatorPortalApi.md#setcreatorsparkcode) | **PUT** /public/creator-campaigns/{token}/submissions/{submissionId}/spark-code | Set a post&#39;s Spark code
 *CreatorPortalApi* | [**startCreatorConnect**](docs/Api/CreatorPortalApi.md#startcreatorconnect) | **POST** /public/creator-campaigns/{token}/connect | Start connecting a creator account
 *CreatorPortalApi* | [**startCreatorPayouts**](docs/Api/CreatorPortalApi.md#startcreatorpayouts) | **POST** /public/creator-campaigns/{token}/payouts | Start payout onboarding
+*CreatorPortalApi* | [**submitCreatorDraft**](docs/Api/CreatorPortalApi.md#submitcreatordraft) | **POST** /public/creator-campaigns/{token}/drafts | Submit a draft for review
 *CreatorPortalApi* | [**submitCreatorPost**](docs/Api/CreatorPortalApi.md#submitcreatorpost) | **POST** /public/creator-campaigns/{token}/submissions | Submit a post
 *CustomFieldsApi* | [**clearContactFieldValue**](docs/Api/CustomFieldsApi.md#clearcontactfieldvalue) | **DELETE** /v1/contacts/{contactId}/fields/{slug} | Clear custom field value
 *CustomFieldsApi* | [**createCustomField**](docs/Api/CustomFieldsApi.md#createcustomfield) | **POST** /v1/custom-fields | Create custom field
@@ -1472,6 +1490,8 @@ Class | Method | HTTP request | Description
 - [ApplyGoogleRecommendations200Response](docs/Model/ApplyGoogleRecommendations200Response.md)
 - [ApplyGoogleRecommendationsRequest](docs/Model/ApplyGoogleRecommendationsRequest.md)
 - [ApplyGoogleRecommendationsRequestRecommendationsInner](docs/Model/ApplyGoogleRecommendationsRequestRecommendationsInner.md)
+- [ApproveCampaignDraft200Response](docs/Model/ApproveCampaignDraft200Response.md)
+- [ApproveCampaignSample200Response](docs/Model/ApproveCampaignSample200Response.md)
 - [ApproveCampaignSubmission200Response](docs/Model/ApproveCampaignSubmission200Response.md)
 - [ApproveWhatsAppGroupJoinRequestsRequest](docs/Model/ApproveWhatsAppGroupJoinRequestsRequest.md)
 - [ArchiveLeadForm200Response](docs/Model/ArchiveLeadForm200Response.md)
@@ -1729,6 +1749,9 @@ Class | Method | HTTP request | Description
 - [CampaignBidding](docs/Model/CampaignBidding.md)
 - [CampaignBiddingBidSpec](docs/Model/CampaignBiddingBidSpec.md)
 - [CampaignBiddingPortfolio](docs/Model/CampaignBiddingPortfolio.md)
+- [CampaignDraft](docs/Model/CampaignDraft.md)
+- [CampaignDraftCommentsInner](docs/Model/CampaignDraftCommentsInner.md)
+- [CampaignDraftCounts](docs/Model/CampaignDraftCounts.md)
 - [CampaignLedgerEntry](docs/Model/CampaignLedgerEntry.md)
 - [CampaignParticipant](docs/Model/CampaignParticipant.md)
 - [CampaignParticipantAccountsInner](docs/Model/CampaignParticipantAccountsInner.md)
@@ -1743,6 +1766,9 @@ Class | Method | HTTP request | Description
 - [CampaignReportSpend](docs/Model/CampaignReportSpend.md)
 - [CampaignReportViews](docs/Model/CampaignReportViews.md)
 - [CampaignResultMetric](docs/Model/CampaignResultMetric.md)
+- [CampaignSample](docs/Model/CampaignSample.md)
+- [CampaignSampleCounts](docs/Model/CampaignSampleCounts.md)
+- [CampaignSampleShippingAddress](docs/Model/CampaignSampleShippingAddress.md)
 - [CampaignSettlement](docs/Model/CampaignSettlement.md)
 - [CampaignSubmission](docs/Model/CampaignSubmission.md)
 - [CampaignSubmissionAuthenticity](docs/Model/CampaignSubmissionAuthenticity.md)
@@ -2215,22 +2241,45 @@ Class | Method | HTTP request | Description
 - [CreatedGoogleAdAccount](docs/Model/CreatedGoogleAdAccount.md)
 - [CreatedMetaAdAccount](docs/Model/CreatedMetaAdAccount.md)
 - [CreatorCampaign](docs/Model/CreatorCampaign.md)
+- [CreatorCampaignAdResultFigures](docs/Model/CreatorCampaignAdResultFigures.md)
+- [CreatorCampaignAdResults](docs/Model/CreatorCampaignAdResults.md)
+- [CreatorCampaignAdResultsCapabilities](docs/Model/CreatorCampaignAdResultsCapabilities.md)
+- [CreatorCampaignAdResultsCreatorsInner](docs/Model/CreatorCampaignAdResultsCreatorsInner.md)
+- [CreatorCampaignAdResultsSubmissionsInner](docs/Model/CreatorCampaignAdResultsSubmissionsInner.md)
+- [CreatorCampaignAdResultsSubmissionsInnerAdsInner](docs/Model/CreatorCampaignAdResultsSubmissionsInnerAdsInner.md)
+- [CreatorCampaignAdResultsSubmissionsInnerCreator](docs/Model/CreatorCampaignAdResultsSubmissionsInnerCreator.md)
+- [CreatorCampaignAdResultsSubmissionsInnerLaunchesInner](docs/Model/CreatorCampaignAdResultsSubmissionsInnerLaunchesInner.md)
+- [CreatorCampaignAdResultsTotals](docs/Model/CreatorCampaignAdResultsTotals.md)
 - [CreatorCampaignBranding](docs/Model/CreatorCampaignBranding.md)
 - [CreatorCampaignCaps](docs/Model/CreatorCampaignCaps.md)
+- [CreatorCampaignCommissionTerms](docs/Model/CreatorCampaignCommissionTerms.md)
 - [CreatorCampaignEconomics](docs/Model/CreatorCampaignEconomics.md)
+- [CreatorCampaignEconomicsAdPerformance](docs/Model/CreatorCampaignEconomicsAdPerformance.md)
+- [CreatorCampaignEconomicsCommission](docs/Model/CreatorCampaignEconomicsCommission.md)
 - [CreatorCampaignEconomicsCpm](docs/Model/CreatorCampaignEconomicsCpm.md)
 - [CreatorCampaignEconomicsPerPost](docs/Model/CreatorCampaignEconomicsPerPost.md)
 - [CreatorCampaignEconomicsPool](docs/Model/CreatorCampaignEconomicsPool.md)
+- [CreatorCampaignEconomicsRetainer](docs/Model/CreatorCampaignEconomicsRetainer.md)
+- [CreatorCampaignSampleProduct](docs/Model/CreatorCampaignSampleProduct.md)
+- [CreatorCampaignSampleProductVariantsInner](docs/Model/CreatorCampaignSampleProductVariantsInner.md)
 - [CreatorPortalCampaign](docs/Model/CreatorPortalCampaign.md)
+- [CreatorPortalDraft](docs/Model/CreatorPortalDraft.md)
+- [CreatorPortalDraftCommentsInner](docs/Model/CreatorPortalDraftCommentsInner.md)
 - [CreatorPortalEconomics](docs/Model/CreatorPortalEconomics.md)
+- [CreatorPortalEconomicsOneOf](docs/Model/CreatorPortalEconomicsOneOf.md)
 - [CreatorPortalInvite](docs/Model/CreatorPortalInvite.md)
 - [CreatorPortalParticipant](docs/Model/CreatorPortalParticipant.md)
 - [CreatorPortalParticipantAccountsInner](docs/Model/CreatorPortalParticipantAccountsInner.md)
 - [CreatorPortalParticipantEarnings](docs/Model/CreatorPortalParticipantEarnings.md)
 - [CreatorPortalParticipantParticipant](docs/Model/CreatorPortalParticipantParticipant.md)
+- [CreatorPortalParticipantRetainer](docs/Model/CreatorPortalParticipantRetainer.md)
 - [CreatorPortalPayoutEntry](docs/Model/CreatorPortalPayoutEntry.md)
 - [CreatorPortalPayoutSetup](docs/Model/CreatorPortalPayoutSetup.md)
 - [CreatorPortalPayoutSetupTransfersInner](docs/Model/CreatorPortalPayoutSetupTransfersInner.md)
+- [CreatorPortalReferral](docs/Model/CreatorPortalReferral.md)
+- [CreatorPortalReferralOrdersInner](docs/Model/CreatorPortalReferralOrdersInner.md)
+- [CreatorPortalReferralTotals](docs/Model/CreatorPortalReferralTotals.md)
+- [CreatorPortalSample](docs/Model/CreatorPortalSample.md)
 - [CreatorPortalSubmission](docs/Model/CreatorPortalSubmission.md)
 - [CrosspostDiscordMessage200Response](docs/Model/CrosspostDiscordMessage200Response.md)
 - [CtwaAdRequestBody](docs/Model/CtwaAdRequestBody.md)
@@ -2254,6 +2303,7 @@ Class | Method | HTTP request | Description
 - [DeactivateSmsRegistration200Response](docs/Model/DeactivateSmsRegistration200Response.md)
 - [DeclareEmailSendAs200Response](docs/Model/DeclareEmailSendAs200Response.md)
 - [DeclareEmailSendAsRequest](docs/Model/DeclareEmailSendAsRequest.md)
+- [DeclineCampaignSampleRequest](docs/Model/DeclineCampaignSampleRequest.md)
 - [DeleteAccountGroup200Response](docs/Model/DeleteAccountGroup200Response.md)
 - [DeleteAdCampaign200Response](docs/Model/DeleteAdCampaign200Response.md)
 - [DeleteAdCampaignRequest](docs/Model/DeleteAdCampaignRequest.md)
@@ -2559,6 +2609,7 @@ Class | Method | HTTP request | Description
 - [GetCallsUsage200Response](docs/Model/GetCallsUsage200Response.md)
 - [GetCallsUsage200ResponseGroupsInner](docs/Model/GetCallsUsage200ResponseGroupsInner.md)
 - [GetCallsUsage200ResponseTotals](docs/Model/GetCallsUsage200ResponseTotals.md)
+- [GetCampaignAdResults200Response](docs/Model/GetCampaignAdResults200Response.md)
 - [GetCampaignAdSchedule200Response](docs/Model/GetCampaignAdSchedule200Response.md)
 - [GetCampaignAdSchedule200ResponsePerformance](docs/Model/GetCampaignAdSchedule200ResponsePerformance.md)
 - [GetCampaignAdSchedule200ResponsePerformanceByDayOfWeekInner](docs/Model/GetCampaignAdSchedule200ResponsePerformanceByDayOfWeekInner.md)
@@ -2566,6 +2617,7 @@ Class | Method | HTTP request | Description
 - [GetCampaignAnalytics202Response](docs/Model/GetCampaignAnalytics202Response.md)
 - [GetCampaignBidding200Response](docs/Model/GetCampaignBidding200Response.md)
 - [GetCampaignConversionGoals200Response](docs/Model/GetCampaignConversionGoals200Response.md)
+- [GetCampaignDraft200Response](docs/Model/GetCampaignDraft200Response.md)
 - [GetCampaignParticipant200Response](docs/Model/GetCampaignParticipant200Response.md)
 - [GetCampaignReport200Response](docs/Model/GetCampaignReport200Response.md)
 - [GetCampaignResultsTotals200Response](docs/Model/GetCampaignResultsTotals200Response.md)
@@ -3095,6 +3147,9 @@ Class | Method | HTTP request | Description
 - [JoinCreatorCampaignRequest](docs/Model/JoinCreatorCampaignRequest.md)
 - [KeywordEntry](docs/Model/KeywordEntry.md)
 - [KeywordEntryOneOf](docs/Model/KeywordEntryOneOf.md)
+- [LaunchCampaignAds200Response](docs/Model/LaunchCampaignAds200Response.md)
+- [LaunchCampaignAds200ResponseResultsInner](docs/Model/LaunchCampaignAds200ResponseResultsInner.md)
+- [LaunchCampaignAdsRequest](docs/Model/LaunchCampaignAdsRequest.md)
 - [LedgerAccountSide](docs/Model/LedgerAccountSide.md)
 - [LikeInboxComment200Response](docs/Model/LikeInboxComment200Response.md)
 - [LikeInboxCommentRequest](docs/Model/LikeInboxCommentRequest.md)
@@ -3238,16 +3293,21 @@ Class | Method | HTTP request | Description
 - [ListCampaignAssets200ResponseImagesInner](docs/Model/ListCampaignAssets200ResponseImagesInner.md)
 - [ListCampaignAssets200ResponseSitelinksInner](docs/Model/ListCampaignAssets200ResponseSitelinksInner.md)
 - [ListCampaignAssets200ResponseStructuredSnippetsInner](docs/Model/ListCampaignAssets200ResponseStructuredSnippetsInner.md)
+- [ListCampaignDrafts200Response](docs/Model/ListCampaignDrafts200Response.md)
 - [ListCampaignLedger200Response](docs/Model/ListCampaignLedger200Response.md)
 - [ListCampaignLedger200ResponsePagination](docs/Model/ListCampaignLedger200ResponsePagination.md)
 - [ListCampaignNegativeKeywords200Response](docs/Model/ListCampaignNegativeKeywords200Response.md)
 - [ListCampaignNegativeKeywords200ResponseKeywordsInner](docs/Model/ListCampaignNegativeKeywords200ResponseKeywordsInner.md)
+- [ListCampaignOrders200Response](docs/Model/ListCampaignOrders200Response.md)
+- [ListCampaignOrders200ResponseOrdersInner](docs/Model/ListCampaignOrders200ResponseOrdersInner.md)
+- [ListCampaignOrders200ResponseReferralsInner](docs/Model/ListCampaignOrders200ResponseReferralsInner.md)
 - [ListCampaignParticipants200Response](docs/Model/ListCampaignParticipants200Response.md)
 - [ListCampaignPayables200Response](docs/Model/ListCampaignPayables200Response.md)
 - [ListCampaignPayoutBatches200Response](docs/Model/ListCampaignPayoutBatches200Response.md)
 - [ListCampaignResultMetrics200Response](docs/Model/ListCampaignResultMetrics200Response.md)
 - [ListCampaignResults200Response](docs/Model/ListCampaignResults200Response.md)
 - [ListCampaignResults200ResponseCampaignsInner](docs/Model/ListCampaignResults200ResponseCampaignsInner.md)
+- [ListCampaignSamples200Response](docs/Model/ListCampaignSamples200Response.md)
 - [ListCampaignSubmissions200Response](docs/Model/ListCampaignSubmissions200Response.md)
 - [ListChangelog200Response](docs/Model/ListChangelog200Response.md)
 - [ListCommentAutomationLogs200Response](docs/Model/ListCommentAutomationLogs200Response.md)
@@ -3642,6 +3702,8 @@ Class | Method | HTTP request | Description
 - [PreflightSmsRegistrationRequest](docs/Model/PreflightSmsRegistrationRequest.md)
 - [PrepareMedia200Response](docs/Model/PrepareMedia200Response.md)
 - [PrepareMediaRequest](docs/Model/PrepareMediaRequest.md)
+- [PresignCreatorDraftUpload200Response](docs/Model/PresignCreatorDraftUpload200Response.md)
+- [PresignCreatorDraftUploadRequest](docs/Model/PresignCreatorDraftUploadRequest.md)
 - [PreviewCampaignPayoutBatch200Response](docs/Model/PreviewCampaignPayoutBatch200Response.md)
 - [PreviewCampaignPayoutBatchRequest](docs/Model/PreviewCampaignPayoutBatchRequest.md)
 - [PreviewTopup200Response](docs/Model/PreviewTopup200Response.md)
@@ -3725,6 +3787,7 @@ Class | Method | HTTP request | Description
 - [RegisterImessageSenderRequest](docs/Model/RegisterImessageSenderRequest.md)
 - [RegisterWhatsAppNumber200Response](docs/Model/RegisterWhatsAppNumber200Response.md)
 - [RegisterWhatsAppNumberRequest](docs/Model/RegisterWhatsAppNumberRequest.md)
+- [RejectCampaignDraftRequest](docs/Model/RejectCampaignDraftRequest.md)
 - [RejectCampaignSubmissionRequest](docs/Model/RejectCampaignSubmissionRequest.md)
 - [RejectWhatsAppGroupJoinRequestsRequest](docs/Model/RejectWhatsAppGroupJoinRequestsRequest.md)
 - [ReleasePhoneNumber200Response](docs/Model/ReleasePhoneNumber200Response.md)
@@ -3785,6 +3848,10 @@ Class | Method | HTTP request | Description
 - [ReplyToPhoneNumberReviewer200Response](docs/Model/ReplyToPhoneNumberReviewer200Response.md)
 - [ReplyToPhoneNumberReviewerRequest](docs/Model/ReplyToPhoneNumberReviewerRequest.md)
 - [ReplyToPhoneNumberReviewerRequestAttachmentsInner](docs/Model/ReplyToPhoneNumberReviewerRequestAttachmentsInner.md)
+- [RequestCampaignDraftRevisionRequest](docs/Model/RequestCampaignDraftRevisionRequest.md)
+- [RequestCampaignDraftRevisionRequestCommentsInner](docs/Model/RequestCampaignDraftRevisionRequestCommentsInner.md)
+- [RequestCreatorSample201Response](docs/Model/RequestCreatorSample201Response.md)
+- [RequestCreatorSampleRequest](docs/Model/RequestCreatorSampleRequest.md)
 - [RequestPhoneNumberWhatsAppCode200Response](docs/Model/RequestPhoneNumberWhatsAppCode200Response.md)
 - [RequestPhoneNumberWhatsAppCodeRequest](docs/Model/RequestPhoneNumberWhatsAppCodeRequest.md)
 - [RequestSmsSenderIdLimitIncrease200Response](docs/Model/RequestSmsSenderIdLimitIncrease200Response.md)
@@ -3805,6 +3872,7 @@ Class | Method | HTTP request | Description
 - [RestoreWorkflowVersion200Response](docs/Model/RestoreWorkflowVersion200Response.md)
 - [RestoreWorkflowVersion200ResponseWorkflow](docs/Model/RestoreWorkflowVersion200ResponseWorkflow.md)
 - [ResyncPageWebhookSubscription200Response](docs/Model/ResyncPageWebhookSubscription200Response.md)
+- [Retainer](docs/Model/Retainer.md)
 - [RetryPost207Response](docs/Model/RetryPost207Response.md)
 - [RetryPost402Response](docs/Model/RetryPost402Response.md)
 - [RetweetPost200Response](docs/Model/RetweetPost200Response.md)
@@ -4009,6 +4077,9 @@ Class | Method | HTTP request | Description
 - [SetConversationThreadControl200Response](docs/Model/SetConversationThreadControl200Response.md)
 - [SetConversationThreadControl200ResponseControl](docs/Model/SetConversationThreadControl200ResponseControl.md)
 - [SetConversationThreadControlRequest](docs/Model/SetConversationThreadControlRequest.md)
+- [SetCreatorSparkCode200Response](docs/Model/SetCreatorSparkCode200Response.md)
+- [SetCreatorSparkCode200ResponseSubmission](docs/Model/SetCreatorSparkCode200ResponseSubmission.md)
+- [SetCreatorSparkCodeRequest](docs/Model/SetCreatorSparkCodeRequest.md)
 - [SetImessageSubscription200Response](docs/Model/SetImessageSubscription200Response.md)
 - [SetImessageSubscriptionRequest](docs/Model/SetImessageSubscriptionRequest.md)
 - [SetInstagramIceBreakersRequest](docs/Model/SetInstagramIceBreakersRequest.md)
@@ -4036,6 +4107,7 @@ Class | Method | HTTP request | Description
 - [ShareBrandedCallingIdentityFormRequest](docs/Model/ShareBrandedCallingIdentityFormRequest.md)
 - [ShareSmsRegistrationRequest](docs/Model/ShareSmsRegistrationRequest.md)
 - [SharedAdAccount](docs/Model/SharedAdAccount.md)
+- [ShipCampaignSampleRequest](docs/Model/ShipCampaignSampleRequest.md)
 - [SlackPlatformData](docs/Model/SlackPlatformData.md)
 - [SmsRegistrationReviewRequest](docs/Model/SmsRegistrationReviewRequest.md)
 - [SmsRegistrationReviewRequestPointsInner](docs/Model/SmsRegistrationReviewRequestPointsInner.md)
@@ -4067,6 +4139,8 @@ Class | Method | HTTP request | Description
 - [StoredEventAd](docs/Model/StoredEventAd.md)
 - [StoredEventClickIds](docs/Model/StoredEventClickIds.md)
 - [StoredEventUtm](docs/Model/StoredEventUtm.md)
+- [SubmitCreatorDraft201Response](docs/Model/SubmitCreatorDraft201Response.md)
+- [SubmitCreatorDraftRequest](docs/Model/SubmitCreatorDraftRequest.md)
 - [SubmitCreatorPost201Response](docs/Model/SubmitCreatorPost201Response.md)
 - [SubmitCreatorPostRequest](docs/Model/SubmitCreatorPostRequest.md)
 - [SubmitFeedbackRequest](docs/Model/SubmitFeedbackRequest.md)
@@ -4591,6 +4665,8 @@ Class | Method | HTTP request | Description
 - [WebhookPayloadCampaignBudgetDepletedBudget](docs/Model/WebhookPayloadCampaignBudgetDepletedBudget.md)
 - [WebhookPayloadCampaignCreated](docs/Model/WebhookPayloadCampaignCreated.md)
 - [WebhookPayloadCampaignCreatedAdObject](docs/Model/WebhookPayloadCampaignCreatedAdObject.md)
+- [WebhookPayloadCampaignDraft](docs/Model/WebhookPayloadCampaignDraft.md)
+- [WebhookPayloadCampaignDraftDraft](docs/Model/WebhookPayloadCampaignDraftDraft.md)
 - [WebhookPayloadCampaignParticipant](docs/Model/WebhookPayloadCampaignParticipant.md)
 - [WebhookPayloadCampaignParticipantParticipant](docs/Model/WebhookPayloadCampaignParticipantParticipant.md)
 - [WebhookPayloadCampaignPayout](docs/Model/WebhookPayloadCampaignPayout.md)
@@ -4598,6 +4674,8 @@ Class | Method | HTTP request | Description
 - [WebhookPayloadCampaignPayoutPayout](docs/Model/WebhookPayloadCampaignPayoutPayout.md)
 - [WebhookPayloadCampaignPayoutPayoutFailure](docs/Model/WebhookPayloadCampaignPayoutPayoutFailure.md)
 - [WebhookPayloadCampaignPayoutPayoutSettlement](docs/Model/WebhookPayloadCampaignPayoutPayoutSettlement.md)
+- [WebhookPayloadCampaignSample](docs/Model/WebhookPayloadCampaignSample.md)
+- [WebhookPayloadCampaignSampleSample](docs/Model/WebhookPayloadCampaignSampleSample.md)
 - [WebhookPayloadCampaignSubmission](docs/Model/WebhookPayloadCampaignSubmission.md)
 - [WebhookPayloadCampaignSubmissionCreator](docs/Model/WebhookPayloadCampaignSubmissionCreator.md)
 - [WebhookPayloadCampaignSubmissionParticipant](docs/Model/WebhookPayloadCampaignSubmissionParticipant.md)
@@ -4839,6 +4917,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.552.0`
+- API version: `1.553.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

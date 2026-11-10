@@ -11,10 +11,14 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getCreatorPayouts()**](CreatorPortalApi.md#getCreatorPayouts) | **GET** /public/creator-campaigns/{token}/payouts | List a creator&#39;s earnings history |
 | [**getCreatorPortal()**](CreatorPortalApi.md#getCreatorPortal) | **GET** /public/creator-campaigns/{token} | Read a creator invite or participant page |
 | [**joinCreatorCampaign()**](CreatorPortalApi.md#joinCreatorCampaign) | **POST** /public/creator-campaigns/{token} | Join a campaign |
+| [**presignCreatorDraftUpload()**](CreatorPortalApi.md#presignCreatorDraftUpload) | **POST** /public/creator-campaigns/{token}/drafts/upload | Get an upload URL for a draft |
 | [**recoverCreatorPortalLinks()**](CreatorPortalApi.md#recoverCreatorPortalLinks) | **POST** /public/creator-campaigns/recover-link | Email a creator their campaign links |
 | [**removeCreatorAccount()**](CreatorPortalApi.md#removeCreatorAccount) | **DELETE** /public/creator-campaigns/{token}/accounts/{accountId} | Remove a connected account |
+| [**requestCreatorSample()**](CreatorPortalApi.md#requestCreatorSample) | **POST** /public/creator-campaigns/{token}/samples | Request a product sample |
+| [**setCreatorSparkCode()**](CreatorPortalApi.md#setCreatorSparkCode) | **PUT** /public/creator-campaigns/{token}/submissions/{submissionId}/spark-code | Set a post&#39;s Spark code |
 | [**startCreatorConnect()**](CreatorPortalApi.md#startCreatorConnect) | **POST** /public/creator-campaigns/{token}/connect | Start connecting a creator account |
 | [**startCreatorPayouts()**](CreatorPortalApi.md#startCreatorPayouts) | **POST** /public/creator-campaigns/{token}/payouts | Start payout onboarding |
+| [**submitCreatorDraft()**](CreatorPortalApi.md#submitCreatorDraft) | **POST** /public/creator-campaigns/{token}/drafts | Submit a draft for review |
 | [**submitCreatorPost()**](CreatorPortalApi.md#submitCreatorPost) | **POST** /public/creator-campaigns/{token}/submissions | Submit a post |
 
 
@@ -200,7 +204,7 @@ getCreatorPortal($token): \Zernio\Model\GetCreatorPortal200Response
 
 Read a creator invite or participant page
 
-What a creator sees behind a campaign link, with no API key. Never cached.  `token` is one of:  - An open invite token (from `POST /v1/creator-campaigns/{campaignId}/invite-link`): answers `kind: invite` with the campaign only. - A participant token (from an invite or a join): answers `kind: participant` with the creator's connected accounts, latest 100 submissions, earnings and payout setup.  Reading a participant page also re-checks the creator's connected accounts.
+What a creator sees behind a campaign link, with no API key. Never cached.  `token` is one of:  - An open invite token (from `POST /v1/creator-campaigns/{campaignId}/invite-link`): answers `kind: invite` with the campaign only. - A participant token (from an invite or a join): answers `kind: participant` with the creator's connected accounts, latest 100 submissions, draft versions, sample requests, earnings and payout setup. A creator held for approval reads it with `participant.status` `pending` (or `denied` once turned away).  Reading a participant page also re-checks the creator's connected accounts.
 
 ### Example
 
@@ -256,7 +260,7 @@ joinCreatorCampaign($token, $join_creator_campaign_request): \Zernio\Model\JoinC
 
 Join a campaign
 
-Accepts a participant invite, or joins through an open invite link.  - Participant token: the body is ignored and the invite is accepted. - Open invite token: a new participant is created from `displayName` (required) and `email` (optional), and a fresh participant token comes back. Keep it: it is the creator's only key to their page.  Open-link joins are limited to about 20 per IP address and 60 per link every 10 minutes.
+Accepts a participant invite, or joins through an open invite link.  - Participant token: the body is ignored and the invite is accepted. - Open invite token: a new participant is created from `displayName` (required) and `email` (optional), and a fresh participant token comes back. Keep it: it is the creator's only key to their page. - On a campaign with `joinApproval: manual`, an open-link joiner lands `pending` and `campaign_participant.pending` fires instead of `campaign_participant.joined`. A pending creator holds no place under `caps.maxParticipants` (the limit is checked when the operator approves them) and cannot submit posts, drafts or sample requests until approved. Personal invites always get straight in.  Open-link joins are limited to about 20 per IP address and 60 per link every 10 minutes.
 
 ### Example
 
@@ -292,6 +296,64 @@ try {
 ### Return type
 
 [**\Zernio\Model\JoinCreatorCampaign201Response**](../Model/JoinCreatorCampaign201Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `presignCreatorDraftUpload()`
+
+```php
+presignCreatorDraftUpload($token, $presign_creator_draft_upload_request): \Zernio\Model\PresignCreatorDraftUpload200Response
+```
+
+Get an upload URL for a draft
+
+Returns a presigned URL to upload one draft file to, on a campaign with `requireDraftApproval`. `PUT` the file to `uploadUrl` with the same `Content-Type`, then pass `publicUrl` as `mediaUrl` to `POST /public/creator-campaigns/{token}/drafts`. The URL expires after `expiresIn` seconds.  Accepted files: MP4, MOV or WebM video, JPG, PNG or WebP image, up to 500 MB. About 20 uploads per participant every 10 minutes.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Zernio\Api\CreatorPortalApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$token = 'token_example'; // string | A participant token or an open invite token. A malformed token answers 404 like an unknown one.
+$presign_creator_draft_upload_request = new \Zernio\Model\PresignCreatorDraftUploadRequest(); // \Zernio\Model\PresignCreatorDraftUploadRequest
+
+try {
+    $result = $apiInstance->presignCreatorDraftUpload($token, $presign_creator_draft_upload_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CreatorPortalApi->presignCreatorDraftUpload: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **token** | **string**| A participant token or an open invite token. A malformed token answers 404 like an unknown one. | |
+| **presign_creator_draft_upload_request** | [**\Zernio\Model\PresignCreatorDraftUploadRequest**](../Model/PresignCreatorDraftUploadRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\PresignCreatorDraftUpload200Response**](../Model/PresignCreatorDraftUpload200Response.md)
 
 ### Authorization
 
@@ -420,6 +482,124 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `requestCreatorSample()`
+
+```php
+requestCreatorSample($token, $request_creator_sample_request): \Zernio\Model\RequestCreatorSample201Response
+```
+
+Request a product sample
+
+Asks for a free sample of one of the campaign's `sampleProducts`, shipped to `shippingAddress`, and fires `campaign_sample.requested`. The request waits for the campaign team; on approval the creator gets a single-use discount code for the product.  - A product with `variants` needs `variantId`. - One open request per product: asking again while one is pending, approved or shipped answers 409. A declined product can be asked again.  About 10 requests per participant every 10 minutes.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Zernio\Api\CreatorPortalApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$token = 'token_example'; // string | A participant token or an open invite token. A malformed token answers 404 like an unknown one.
+$request_creator_sample_request = new \Zernio\Model\RequestCreatorSampleRequest(); // \Zernio\Model\RequestCreatorSampleRequest
+
+try {
+    $result = $apiInstance->requestCreatorSample($token, $request_creator_sample_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CreatorPortalApi->requestCreatorSample: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **token** | **string**| A participant token or an open invite token. A malformed token answers 404 like an unknown one. | |
+| **request_creator_sample_request** | [**\Zernio\Model\RequestCreatorSampleRequest**](../Model/RequestCreatorSampleRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\RequestCreatorSample201Response**](../Model/RequestCreatorSample201Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `setCreatorSparkCode()`
+
+```php
+setCreatorSparkCode($token, $submission_id, $set_creator_spark_code_request): \Zernio\Model\SetCreatorSparkCode200Response
+```
+
+Set a post's Spark code
+
+The creator pastes the Spark code of one of their TikTok posts (generated in the TikTok app under the post's ad settings), so the brand can run the post as a Spark Ad under the creator's handle.  Send `null` to clear it. The code is never returned: submissions only expose `hasSparkCode`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Zernio\Api\CreatorPortalApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$token = 'token_example'; // string | A participant token or an open invite token. A malformed token answers 404 like an unknown one.
+$submission_id = 'submission_id_example'; // string | The `id` of one of the participant's `submissions`.
+$set_creator_spark_code_request = new \Zernio\Model\SetCreatorSparkCodeRequest(); // \Zernio\Model\SetCreatorSparkCodeRequest
+
+try {
+    $result = $apiInstance->setCreatorSparkCode($token, $submission_id, $set_creator_spark_code_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CreatorPortalApi->setCreatorSparkCode: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **token** | **string**| A participant token or an open invite token. A malformed token answers 404 like an unknown one. | |
+| **submission_id** | **string**| The &#x60;id&#x60; of one of the participant&#39;s &#x60;submissions&#x60;. | |
+| **set_creator_spark_code_request** | [**\Zernio\Model\SetCreatorSparkCodeRequest**](../Model/SetCreatorSparkCodeRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\SetCreatorSparkCode200Response**](../Model/SetCreatorSparkCode200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `startCreatorConnect()`
 
 ```php
@@ -522,6 +702,64 @@ try {
 ### Return type
 
 [**\Zernio\Model\StartCreatorPayouts200Response**](../Model/StartCreatorPayouts200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `submitCreatorDraft()`
+
+```php
+submitCreatorDraft($token, $submit_creator_draft_request): \Zernio\Model\SubmitCreatorDraft201Response
+```
+
+Submit a draft for review
+
+Sends a draft for the campaign team to review before the creator publishes, on a campaign with `requireDraftApproval`, and fires `campaign_draft.submitted`. `mediaUrl` must be a `publicUrl` from `POST /public/creator-campaigns/{token}/drafts/upload`.  ### Revisions  - Without `revisionOf` the draft starts a new chain at version 1. - With `revisionOf` it is the next version of that chain. Only one of the creator's own versions marked `revision_requested` takes a new version, and only once.  About 20 drafts per participant every 10 minutes.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Zernio\Api\CreatorPortalApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$token = 'token_example'; // string | A participant token or an open invite token. A malformed token answers 404 like an unknown one.
+$submit_creator_draft_request = new \Zernio\Model\SubmitCreatorDraftRequest(); // \Zernio\Model\SubmitCreatorDraftRequest
+
+try {
+    $result = $apiInstance->submitCreatorDraft($token, $submit_creator_draft_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CreatorPortalApi->submitCreatorDraft: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **token** | **string**| A participant token or an open invite token. A malformed token answers 404 like an unknown one. | |
+| **submit_creator_draft_request** | [**\Zernio\Model\SubmitCreatorDraftRequest**](../Model/SubmitCreatorDraftRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\SubmitCreatorDraft201Response**](../Model/SubmitCreatorDraft201Response.md)
 
 ### Authorization
 

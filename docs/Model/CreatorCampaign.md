@@ -28,6 +28,11 @@ Name | Type | Description | Notes
 **budget_exhausted_at** | **\DateTime** |  |
 **closed_at** | **\DateTime** |  |
 **payable_scanned_at** | **\DateTime** | Internal watermark of the payable scan. |
+**join_approval** | **string** | auto: creators who join through the open link are active at once. manual: they land &#x60;pending&#x60; until you approve or deny them. Personal invites are never held. |
+**require_draft_approval** | **bool** | Creators upload a draft for review first, and submit the live post for an approved draft (&#x60;draftId&#x60;). |
+**store_account_id** | **string** | The connected store (Shopify or WooCommerce) whose orders pay commission and whose products creators can ask as samples. Null when the campaign has neither. |
+**sample_products** | [**\Zernio\Model\CreatorCampaignSampleProduct[]**](CreatorCampaignSampleProduct.md) | Products creators can ask a free sample of. |
+**sample_content_due_days** | **int** | Days after a sample is approved before a creator with no post since shows as owing content (&#x60;contentOwed&#x60;). |
 **created_at** | **\DateTime** |  |
 **updated_at** | **\DateTime** |  |
 **has_open_invite** | **bool** | True once an open invite link was created. The link itself is returned only when it is created. |
@@ -35,5 +40,10 @@ Name | Type | Description | Notes
 **participant_count** | **int** |  |
 **submission_counts** | [**\Zernio\Model\CampaignSubmissionCounts**](CampaignSubmissionCounts.md) |  |
 **payable_cents** | **int** | What the campaign&#39;s creators can be paid now, summed over every participant&#39;s payable balance. |
+**landing_url** | **string** | The page creator tracking links open. | [optional]
+**code_discount_percent** | **int** | What each creator discount code takes off. | [optional]
+**pending_participant_count** | **int** | Creators who asked to join through the open link and wait for a decision. Not counted in &#x60;participantCount&#x60;. |
+**draft_counts** | [**\Zernio\Model\CampaignDraftCounts**](CampaignDraftCounts.md) |  |
+**sample_counts** | [**\Zernio\Model\CampaignSampleCounts**](CampaignSampleCounts.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

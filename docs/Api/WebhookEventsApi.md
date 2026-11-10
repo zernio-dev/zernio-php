@@ -50,12 +50,23 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onCallTranscriptSegment()**](WebhookEventsApi.md#onCallTranscriptSegment) | **POST** /call.transcript_segment | Call transcript segment event |
 | [**onCampaignBudgetDepleted()**](WebhookEventsApi.md#onCampaignBudgetDepleted) | **POST** /campaign.budget.depleted | Campaign budget depleted event |
 | [**onCampaignCreated()**](WebhookEventsApi.md#onCampaignCreated) | **POST** /campaign.created | Campaign created event |
+| [**onCampaignDraftApproved()**](WebhookEventsApi.md#onCampaignDraftApproved) | **POST** /campaign_draft.approved | Campaign draft approved event |
+| [**onCampaignDraftRejected()**](WebhookEventsApi.md#onCampaignDraftRejected) | **POST** /campaign_draft.rejected | Campaign draft rejected event |
+| [**onCampaignDraftRevisionRequested()**](WebhookEventsApi.md#onCampaignDraftRevisionRequested) | **POST** /campaign_draft.revision_requested | Campaign draft revision requested event |
+| [**onCampaignDraftSubmitted()**](WebhookEventsApi.md#onCampaignDraftSubmitted) | **POST** /campaign_draft.submitted | Campaign draft submitted event |
+| [**onCampaignParticipantApproved()**](WebhookEventsApi.md#onCampaignParticipantApproved) | **POST** /campaign_participant.approved | Campaign participant approved event |
+| [**onCampaignParticipantDenied()**](WebhookEventsApi.md#onCampaignParticipantDenied) | **POST** /campaign_participant.denied | Campaign participant denied event |
 | [**onCampaignParticipantJoined()**](WebhookEventsApi.md#onCampaignParticipantJoined) | **POST** /campaign_participant.joined | Campaign participant joined event |
+| [**onCampaignParticipantPending()**](WebhookEventsApi.md#onCampaignParticipantPending) | **POST** /campaign_participant.pending | Campaign participant pending event |
 | [**onCampaignParticipantRemoved()**](WebhookEventsApi.md#onCampaignParticipantRemoved) | **POST** /campaign_participant.removed | Campaign participant removed event |
 | [**onCampaignParticipantSuspended()**](WebhookEventsApi.md#onCampaignParticipantSuspended) | **POST** /campaign_participant.suspended | Campaign participant suspended event |
 | [**onCampaignPayoutFailed()**](WebhookEventsApi.md#onCampaignPayoutFailed) | **POST** /campaign_payout.failed | Campaign payout failed event |
 | [**onCampaignPayoutPayable()**](WebhookEventsApi.md#onCampaignPayoutPayable) | **POST** /campaign_payout.payable | Campaign payout payable event |
 | [**onCampaignPayoutSettled()**](WebhookEventsApi.md#onCampaignPayoutSettled) | **POST** /campaign_payout.settled | Campaign payout settled event |
+| [**onCampaignSampleApproved()**](WebhookEventsApi.md#onCampaignSampleApproved) | **POST** /campaign_sample.approved | Campaign sample approved event |
+| [**onCampaignSampleDeclined()**](WebhookEventsApi.md#onCampaignSampleDeclined) | **POST** /campaign_sample.declined | Campaign sample declined event |
+| [**onCampaignSampleRequested()**](WebhookEventsApi.md#onCampaignSampleRequested) | **POST** /campaign_sample.requested | Campaign sample requested event |
+| [**onCampaignSampleShipped()**](WebhookEventsApi.md#onCampaignSampleShipped) | **POST** /campaign_sample.shipped | Campaign sample shipped event |
 | [**onCampaignSubmissionApproved()**](WebhookEventsApi.md#onCampaignSubmissionApproved) | **POST** /campaign_submission.approved | Campaign submission approved event |
 | [**onCampaignSubmissionFlagged()**](WebhookEventsApi.md#onCampaignSubmissionFlagged) | **POST** /campaign_submission.flagged | Campaign submission flagged event |
 | [**onCampaignSubmissionPendingReview()**](WebhookEventsApi.md#onCampaignSubmissionPendingReview) | **POST** /campaign_submission.pending_review | Campaign submission pending review event |
@@ -2747,6 +2758,360 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `onCampaignDraftApproved()`
+
+```php
+onCampaignDraftApproved($webhook_payload_campaign_draft)
+```
+
+Campaign draft approved event
+
+You approved a draft version.  ### Effect  The creator can now publish it and submit the post with its `draftId`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_campaign_draft = {"id":"00000000-0000-4000-8000-000000000000","event":"campaign_draft.approved","timestamp":"2026-01-15T10:00:00Z","campaign":{"id":"507f1f77bcf86cd799439029","name":"Launch clips"},"participant":{"id":"507f1f77bcf86cd79943902a"},"creator":{"id":"507f1f77bcf86cd79943902b","displayName":"Cleo"},"draft":{"id":"507f1f77bcf86cd799439032","chainId":"507f1f77bcf86cd799439032","version":1,"revisionOf":null,"status":"approved","mediaUrl":"https://media.zernio.com/creator-drafts/launch-clip.mp4","mediaType":"video","caption":"First cut of the launch clip","reviewNote":null,"comments":[]},"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadCampaignDraft
+
+try {
+    $apiInstance->onCampaignDraftApproved($webhook_payload_campaign_draft);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCampaignDraftApproved: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_campaign_draft** | [**\Zernio\Model\WebhookPayloadCampaignDraft**](../Model/WebhookPayloadCampaignDraft.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCampaignDraftRejected()`
+
+```php
+onCampaignDraftRejected($webhook_payload_campaign_draft)
+```
+
+Campaign draft rejected event
+
+You rejected a draft version.  ### Effect  It can never back a post, and it gets no new version.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_campaign_draft = {"id":"00000000-0000-4000-8000-000000000000","event":"campaign_draft.rejected","timestamp":"2026-01-15T10:00:00Z","campaign":{"id":"507f1f77bcf86cd799439029","name":"Launch clips"},"participant":{"id":"507f1f77bcf86cd79943902a"},"creator":{"id":"507f1f77bcf86cd79943902b","displayName":"Cleo"},"draft":{"id":"507f1f77bcf86cd799439032","chainId":"507f1f77bcf86cd799439032","version":1,"revisionOf":null,"status":"rejected","mediaUrl":"https://media.zernio.com/creator-drafts/launch-clip.mp4","mediaType":"video","caption":"First cut of the launch clip","reviewNote":"Off brief.","comments":[]},"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadCampaignDraft
+
+try {
+    $apiInstance->onCampaignDraftRejected($webhook_payload_campaign_draft);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCampaignDraftRejected: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_campaign_draft** | [**\Zernio\Model\WebhookPayloadCampaignDraft**](../Model/WebhookPayloadCampaignDraft.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCampaignDraftRevisionRequested()`
+
+```php
+onCampaignDraftRevisionRequested($webhook_payload_campaign_draft)
+```
+
+Campaign draft revision requested event
+
+You asked for changes to a draft version.  ### Comments  `draft.comments` lists your notes, each with `atMs` for the moment of the video it points at, or null for a general note. The creator can upload one new version of it.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_campaign_draft = {"id":"00000000-0000-4000-8000-000000000000","event":"campaign_draft.revision_requested","timestamp":"2026-01-15T10:00:00Z","campaign":{"id":"507f1f77bcf86cd799439029","name":"Launch clips"},"participant":{"id":"507f1f77bcf86cd79943902a"},"creator":{"id":"507f1f77bcf86cd79943902b","displayName":"Cleo"},"draft":{"id":"507f1f77bcf86cd799439032","chainId":"507f1f77bcf86cd799439032","version":1,"revisionOf":null,"status":"revision_requested","mediaUrl":"https://media.zernio.com/creator-drafts/launch-clip.mp4","mediaType":"video","caption":"First cut of the launch clip","reviewNote":"Close, a couple of changes.","comments":[{"atMs":4000,"body":"Hook too slow"}]},"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadCampaignDraft
+
+try {
+    $apiInstance->onCampaignDraftRevisionRequested($webhook_payload_campaign_draft);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCampaignDraftRevisionRequested: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_campaign_draft** | [**\Zernio\Model\WebhookPayloadCampaignDraft**](../Model/WebhookPayloadCampaignDraft.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCampaignDraftSubmitted()`
+
+```php
+onCampaignDraftSubmitted($webhook_payload_campaign_draft)
+```
+
+Campaign draft submitted event
+
+A creator uploaded a draft, or a new version of one, on a campaign with `requireDraftApproval`.  ### Versions  `draft.version` is 1 for a new draft, higher for a new version answering your requested changes, and `draft.revisionOf` names the version it answers.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_campaign_draft = {"id":"00000000-0000-4000-8000-000000000000","event":"campaign_draft.submitted","timestamp":"2026-01-15T10:00:00Z","campaign":{"id":"507f1f77bcf86cd799439029","name":"Launch clips"},"participant":{"id":"507f1f77bcf86cd79943902a"},"creator":{"id":"507f1f77bcf86cd79943902b","displayName":"Cleo"},"draft":{"id":"507f1f77bcf86cd799439032","chainId":"507f1f77bcf86cd799439032","version":1,"revisionOf":null,"status":"submitted","mediaUrl":"https://media.zernio.com/creator-drafts/launch-clip.mp4","mediaType":"video","caption":"First cut of the launch clip","reviewNote":null,"comments":[]},"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadCampaignDraft
+
+try {
+    $apiInstance->onCampaignDraftSubmitted($webhook_payload_campaign_draft);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCampaignDraftSubmitted: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_campaign_draft** | [**\Zernio\Model\WebhookPayloadCampaignDraft**](../Model/WebhookPayloadCampaignDraft.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCampaignParticipantApproved()`
+
+```php
+onCampaignParticipantApproved($webhook_payload_campaign_participant)
+```
+
+Campaign participant approved event
+
+You accepted a creator who asked to join.  ### Effect  They are now `active` and `participant.joinedAt` is set. This event replaces `campaign_participant.joined` for them, so it fires instead of it, never with it.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_campaign_participant = {"id":"00000000-0000-4000-8000-000000000000","event":"campaign_participant.approved","timestamp":"2026-01-15T10:00:00Z","campaign":{"id":"507f1f77bcf86cd799439029","name":"Launch clips"},"participant":{"id":"507f1f77bcf86cd79943902a","status":"active","joinedAt":"2026-01-15T10:00:00.000Z"},"creator":{"id":"507f1f77bcf86cd79943902b","displayName":"Cleo"},"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadCampaignParticipant
+
+try {
+    $apiInstance->onCampaignParticipantApproved($webhook_payload_campaign_participant);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCampaignParticipantApproved: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_campaign_participant** | [**\Zernio\Model\WebhookPayloadCampaignParticipant**](../Model/WebhookPayloadCampaignParticipant.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCampaignParticipantDenied()`
+
+```php
+onCampaignParticipantDenied($webhook_payload_campaign_participant)
+```
+
+Campaign participant denied event
+
+You turned down a creator who asked to join.  ### Effect  They cannot submit anything to this campaign.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_campaign_participant = {"id":"00000000-0000-4000-8000-000000000000","event":"campaign_participant.denied","timestamp":"2026-01-15T10:00:00Z","campaign":{"id":"507f1f77bcf86cd799439029","name":"Launch clips"},"participant":{"id":"507f1f77bcf86cd79943902a","status":"denied","joinedAt":null},"creator":{"id":"507f1f77bcf86cd79943902b","displayName":"Cleo"},"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadCampaignParticipant
+
+try {
+    $apiInstance->onCampaignParticipantDenied($webhook_payload_campaign_participant);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCampaignParticipantDenied: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_campaign_participant** | [**\Zernio\Model\WebhookPayloadCampaignParticipant**](../Model/WebhookPayloadCampaignParticipant.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `onCampaignParticipantJoined()`
 
 ```php
@@ -2780,6 +3145,65 @@ try {
     $apiInstance->onCampaignParticipantJoined($webhook_payload_campaign_participant);
 } catch (Exception $e) {
     echo 'Exception when calling WebhookEventsApi->onCampaignParticipantJoined: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_campaign_participant** | [**\Zernio\Model\WebhookPayloadCampaignParticipant**](../Model/WebhookPayloadCampaignParticipant.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCampaignParticipantPending()`
+
+```php
+onCampaignParticipantPending($webhook_payload_campaign_participant)
+```
+
+Campaign participant pending event
+
+A creator asked to join a campaign that reviews creators.  ### When it fires  A creator joined from the open link of a campaign whose `joinApproval` is `manual`. They wait as `pending` until you approve or deny them, and they do not take a place under `maxParticipants` while they wait.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_campaign_participant = {"id":"00000000-0000-4000-8000-000000000000","event":"campaign_participant.pending","timestamp":"2026-01-15T10:00:00Z","campaign":{"id":"507f1f77bcf86cd799439029","name":"Launch clips"},"participant":{"id":"507f1f77bcf86cd79943902a","status":"pending","joinedAt":null},"creator":{"id":"507f1f77bcf86cd79943902b","displayName":"Cleo"},"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadCampaignParticipant
+
+try {
+    $apiInstance->onCampaignParticipantPending($webhook_payload_campaign_participant);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCampaignParticipantPending: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -3083,6 +3507,242 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_campaign_payout** | [**\Zernio\Model\WebhookPayloadCampaignPayout**](../Model/WebhookPayloadCampaignPayout.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCampaignSampleApproved()`
+
+```php
+onCampaignSampleApproved($webhook_payload_campaign_sample)
+```
+
+Campaign sample approved event
+
+You approved a sample request.  ### Discount code  `sample.discountCode` is the single-use, 100% off code created in your store for that product.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_campaign_sample = {"id":"00000000-0000-4000-8000-000000000000","event":"campaign_sample.approved","timestamp":"2026-01-15T10:00:00Z","campaign":{"id":"507f1f77bcf86cd799439029","name":"Launch clips"},"participant":{"id":"507f1f77bcf86cd79943902a"},"creator":{"id":"507f1f77bcf86cd79943902b","displayName":"Cleo"},"sample":{"id":"507f1f77bcf86cd799439031","storeAccountId":"507f1f77bcf86cd799439011","productId":"8123456789012","variantId":"44123456789012","productTitle":"Trail runner","variantTitle":"Size 42","status":"approved","shippingAddress":{"name":"Cleo Park","line1":"12 Market St","city":"Austin","region":"TX","postalCode":"78701","country":"US"},"note":null,"discountCode":"SAMPLE-7KQ2M9XA","trackingUrl":null,"declineReason":null},"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadCampaignSample
+
+try {
+    $apiInstance->onCampaignSampleApproved($webhook_payload_campaign_sample);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCampaignSampleApproved: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_campaign_sample** | [**\Zernio\Model\WebhookPayloadCampaignSample**](../Model/WebhookPayloadCampaignSample.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCampaignSampleDeclined()`
+
+```php
+onCampaignSampleDeclined($webhook_payload_campaign_sample)
+```
+
+Campaign sample declined event
+
+You declined a sample request.  ### Effect  `sample.declineReason` says why. The creator can ask for the same product again.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_campaign_sample = {"id":"00000000-0000-4000-8000-000000000000","event":"campaign_sample.declined","timestamp":"2026-01-15T10:00:00Z","campaign":{"id":"507f1f77bcf86cd799439029","name":"Launch clips"},"participant":{"id":"507f1f77bcf86cd79943902a"},"creator":{"id":"507f1f77bcf86cd79943902b","displayName":"Cleo"},"sample":{"id":"507f1f77bcf86cd799439031","storeAccountId":"507f1f77bcf86cd799439011","productId":"8123456789012","variantId":"44123456789012","productTitle":"Trail runner","variantTitle":"Size 42","status":"declined","shippingAddress":{"name":"Cleo Park","line1":"12 Market St","city":"Austin","region":"TX","postalCode":"78701","country":"US"},"note":null,"discountCode":null,"trackingUrl":null,"declineReason":"Out of stock"},"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadCampaignSample
+
+try {
+    $apiInstance->onCampaignSampleDeclined($webhook_payload_campaign_sample);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCampaignSampleDeclined: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_campaign_sample** | [**\Zernio\Model\WebhookPayloadCampaignSample**](../Model/WebhookPayloadCampaignSample.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCampaignSampleRequested()`
+
+```php
+onCampaignSampleRequested($webhook_payload_campaign_sample)
+```
+
+Campaign sample requested event
+
+A creator asked for one of the campaign's `sampleProducts`, with a shipping address.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_campaign_sample = {"id":"00000000-0000-4000-8000-000000000000","event":"campaign_sample.requested","timestamp":"2026-01-15T10:00:00Z","campaign":{"id":"507f1f77bcf86cd799439029","name":"Launch clips"},"participant":{"id":"507f1f77bcf86cd79943902a"},"creator":{"id":"507f1f77bcf86cd79943902b","displayName":"Cleo"},"sample":{"id":"507f1f77bcf86cd799439031","storeAccountId":"507f1f77bcf86cd799439011","productId":"8123456789012","variantId":"44123456789012","productTitle":"Trail runner","variantTitle":"Size 42","status":"pending","shippingAddress":{"name":"Cleo Park","line1":"12 Market St","city":"Austin","region":"TX","postalCode":"78701","country":"US"},"note":null,"discountCode":null,"trackingUrl":null,"declineReason":null},"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadCampaignSample
+
+try {
+    $apiInstance->onCampaignSampleRequested($webhook_payload_campaign_sample);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCampaignSampleRequested: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_campaign_sample** | [**\Zernio\Model\WebhookPayloadCampaignSample**](../Model/WebhookPayloadCampaignSample.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCampaignSampleShipped()`
+
+```php
+onCampaignSampleShipped($webhook_payload_campaign_sample)
+```
+
+Campaign sample shipped event
+
+You marked an approved sample as shipped.  ### Tracking  `sample.trackingUrl` is set when you gave one.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_campaign_sample = {"id":"00000000-0000-4000-8000-000000000000","event":"campaign_sample.shipped","timestamp":"2026-01-15T10:00:00Z","campaign":{"id":"507f1f77bcf86cd799439029","name":"Launch clips"},"participant":{"id":"507f1f77bcf86cd79943902a"},"creator":{"id":"507f1f77bcf86cd79943902b","displayName":"Cleo"},"sample":{"id":"507f1f77bcf86cd799439031","storeAccountId":"507f1f77bcf86cd799439011","productId":"8123456789012","variantId":"44123456789012","productTitle":"Trail runner","variantTitle":"Size 42","status":"shipped","shippingAddress":{"name":"Cleo Park","line1":"12 Market St","city":"Austin","region":"TX","postalCode":"78701","country":"US"},"note":null,"discountCode":"SAMPLE-7KQ2M9XA","trackingUrl":"https://tracking.example.com/1Z999","declineReason":null},"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadCampaignSample
+
+try {
+    $apiInstance->onCampaignSampleShipped($webhook_payload_campaign_sample);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCampaignSampleShipped: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_campaign_sample** | [**\Zernio\Model\WebhookPayloadCampaignSample**](../Model/WebhookPayloadCampaignSample.md)|  | |
 
 ### Return type
 

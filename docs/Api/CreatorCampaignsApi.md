@@ -7,6 +7,9 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**activateCreatorCampaign()**](CreatorCampaignsApi.md#activateCreatorCampaign) | **POST** /v1/creator-campaigns/{campaignId}/activate | Activate creator campaign |
+| [**approveCampaignDraft()**](CreatorCampaignsApi.md#approveCampaignDraft) | **POST** /v1/creator-campaigns/{campaignId}/drafts/{draftId}/approve | Approve campaign draft |
+| [**approveCampaignParticipant()**](CreatorCampaignsApi.md#approveCampaignParticipant) | **POST** /v1/creator-campaigns/{campaignId}/participants/{participantId}/approve | Approve pending campaign participant |
+| [**approveCampaignSample()**](CreatorCampaignsApi.md#approveCampaignSample) | **POST** /v1/creator-campaigns/{campaignId}/samples/{sampleId}/approve | Approve campaign sample request |
 | [**approveCampaignSubmission()**](CreatorCampaignsApi.md#approveCampaignSubmission) | **POST** /v1/creator-campaigns/{campaignId}/submissions/{submissionId}/approve | Approve campaign submission |
 | [**closeCreatorCampaign()**](CreatorCampaignsApi.md#closeCreatorCampaign) | **POST** /v1/creator-campaigns/{campaignId}/close | Close creator campaign |
 | [**createCampaignAdjustment()**](CreatorCampaignsApi.md#createCampaignAdjustment) | **POST** /v1/creator-campaigns/{campaignId}/adjustments | Create campaign adjustment |
@@ -14,14 +17,22 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**createCampaignParticipant()**](CreatorCampaignsApi.md#createCampaignParticipant) | **POST** /v1/creator-campaigns/{campaignId}/participants | Invite campaign participant |
 | [**createCampaignPayoutBatch()**](CreatorCampaignsApi.md#createCampaignPayoutBatch) | **POST** /v1/creator-campaigns/{campaignId}/payout-batches | Pay creators with one card payment |
 | [**createCreatorCampaign()**](CreatorCampaignsApi.md#createCreatorCampaign) | **POST** /v1/creator-campaigns | Create creator campaign |
+| [**declineCampaignSample()**](CreatorCampaignsApi.md#declineCampaignSample) | **POST** /v1/creator-campaigns/{campaignId}/samples/{sampleId}/decline | Decline campaign sample request |
+| [**denyCampaignParticipant()**](CreatorCampaignsApi.md#denyCampaignParticipant) | **POST** /v1/creator-campaigns/{campaignId}/participants/{participantId}/deny | Deny pending campaign participant |
+| [**getCampaignAdResults()**](CreatorCampaignsApi.md#getCampaignAdResults) | **GET** /v1/creator-campaigns/{campaignId}/ad-results | Get campaign ad results |
+| [**getCampaignDraft()**](CreatorCampaignsApi.md#getCampaignDraft) | **GET** /v1/creator-campaigns/{campaignId}/drafts/{draftId} | Get campaign draft |
 | [**getCampaignParticipant()**](CreatorCampaignsApi.md#getCampaignParticipant) | **GET** /v1/creator-campaigns/{campaignId}/participants/{participantId} | Get campaign participant |
 | [**getCampaignReport()**](CreatorCampaignsApi.md#getCampaignReport) | **GET** /v1/creator-campaigns/{campaignId}/report | Get campaign report |
 | [**getCampaignSubmission()**](CreatorCampaignsApi.md#getCampaignSubmission) | **GET** /v1/creator-campaigns/{campaignId}/submissions/{submissionId} | Get campaign submission |
 | [**getCreatorCampaign()**](CreatorCampaignsApi.md#getCreatorCampaign) | **GET** /v1/creator-campaigns/{campaignId} | Get creator campaign |
+| [**launchCampaignAds()**](CreatorCampaignsApi.md#launchCampaignAds) | **POST** /v1/creator-campaigns/{campaignId}/ads/launch | Launch campaign posts as ads |
+| [**listCampaignDrafts()**](CreatorCampaignsApi.md#listCampaignDrafts) | **GET** /v1/creator-campaigns/{campaignId}/drafts | List campaign drafts |
 | [**listCampaignLedger()**](CreatorCampaignsApi.md#listCampaignLedger) | **GET** /v1/creator-campaigns/{campaignId}/ledger | List campaign ledger |
+| [**listCampaignOrders()**](CreatorCampaignsApi.md#listCampaignOrders) | **GET** /v1/creator-campaigns/{campaignId}/orders | List campaign orders |
 | [**listCampaignParticipants()**](CreatorCampaignsApi.md#listCampaignParticipants) | **GET** /v1/creator-campaigns/{campaignId}/participants | List campaign participants |
 | [**listCampaignPayables()**](CreatorCampaignsApi.md#listCampaignPayables) | **GET** /v1/creator-campaigns/{campaignId}/payables | List campaign payables |
 | [**listCampaignPayoutBatches()**](CreatorCampaignsApi.md#listCampaignPayoutBatches) | **GET** /v1/creator-campaigns/{campaignId}/payout-batches | List payout batches |
+| [**listCampaignSamples()**](CreatorCampaignsApi.md#listCampaignSamples) | **GET** /v1/creator-campaigns/{campaignId}/samples | List campaign sample requests |
 | [**listCampaignSubmissions()**](CreatorCampaignsApi.md#listCampaignSubmissions) | **GET** /v1/creator-campaigns/{campaignId}/submissions | List campaign submissions |
 | [**listCreatorCampaigns()**](CreatorCampaignsApi.md#listCreatorCampaigns) | **GET** /v1/creator-campaigns | List creator campaigns |
 | [**moveCampaignParticipant()**](CreatorCampaignsApi.md#moveCampaignParticipant) | **POST** /v1/creator-campaigns/{campaignId}/participants/{participantId}/move | Move participant to another campaign |
@@ -29,11 +40,14 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**previewCampaignPayoutBatch()**](CreatorCampaignsApi.md#previewCampaignPayoutBatch) | **POST** /v1/creator-campaigns/{campaignId}/payout-batches/preview | Preview a payout batch |
 | [**raiseCreatorCampaignBudget()**](CreatorCampaignsApi.md#raiseCreatorCampaignBudget) | **POST** /v1/creator-campaigns/{campaignId}/budget | Raise creator campaign budget |
 | [**reinstateCampaignParticipant()**](CreatorCampaignsApi.md#reinstateCampaignParticipant) | **POST** /v1/creator-campaigns/{campaignId}/participants/{participantId}/reinstate | Reinstate campaign participant |
+| [**rejectCampaignDraft()**](CreatorCampaignsApi.md#rejectCampaignDraft) | **POST** /v1/creator-campaigns/{campaignId}/drafts/{draftId}/reject | Reject campaign draft |
 | [**rejectCampaignSubmission()**](CreatorCampaignsApi.md#rejectCampaignSubmission) | **POST** /v1/creator-campaigns/{campaignId}/submissions/{submissionId}/reject | Reject campaign submission |
 | [**removeCampaignParticipant()**](CreatorCampaignsApi.md#removeCampaignParticipant) | **POST** /v1/creator-campaigns/{campaignId}/participants/{participantId}/remove | Remove campaign participant |
 | [**reopenCampaignSubmission()**](CreatorCampaignsApi.md#reopenCampaignSubmission) | **POST** /v1/creator-campaigns/{campaignId}/submissions/{submissionId}/reopen | Reopen campaign submission |
+| [**requestCampaignDraftRevision()**](CreatorCampaignsApi.md#requestCampaignDraftRevision) | **POST** /v1/creator-campaigns/{campaignId}/drafts/{draftId}/request-revision | Request changes on a campaign draft |
 | [**resendCampaignParticipantInvite()**](CreatorCampaignsApi.md#resendCampaignParticipantInvite) | **POST** /v1/creator-campaigns/{campaignId}/participants/{participantId}/resend-invite | Resend campaign participant invite |
 | [**settleCampaignParticipant()**](CreatorCampaignsApi.md#settleCampaignParticipant) | **POST** /v1/creator-campaigns/{campaignId}/participants/{participantId}/settle | Settle campaign participant |
+| [**shipCampaignSample()**](CreatorCampaignsApi.md#shipCampaignSample) | **POST** /v1/creator-campaigns/{campaignId}/samples/{sampleId}/ship | Mark campaign sample shipped |
 | [**suspendCampaignParticipant()**](CreatorCampaignsApi.md#suspendCampaignParticipant) | **POST** /v1/creator-campaigns/{campaignId}/participants/{participantId}/suspend | Suspend campaign participant |
 | [**updateCreatorCampaign()**](CreatorCampaignsApi.md#updateCreatorCampaign) | **PATCH** /v1/creator-campaigns/{campaignId} | Update creator campaign |
 
@@ -84,6 +98,198 @@ try {
 ### Return type
 
 [**\Zernio\Model\CreateCreatorCampaign201Response**](../Model/CreateCreatorCampaign201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `approveCampaignDraft()`
+
+```php
+approveCampaignDraft($campaign_id, $draft_id, $idempotency_key): \Zernio\Model\ApproveCampaignDraft200Response
+```
+
+Approve campaign draft
+
+Approves a `submitted` draft version, emails the creator and fires `campaign_draft.approved`. The creator can then publish it and submit the live post with this `draftId`; each approved draft backs one post only.  Each version is decided once: a version that is no longer `submitted` answers 409.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CreatorCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string | Campaign ID.
+$draft_id = 'draft_id_example'; // string | Draft version ID.
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago.
+
+try {
+    $result = $apiInstance->approveCampaignDraft($campaign_id, $draft_id, $idempotency_key);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CreatorCampaignsApi->approveCampaignDraft: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| Campaign ID. | |
+| **draft_id** | **string**| Draft version ID. | |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ApproveCampaignDraft200Response**](../Model/ApproveCampaignDraft200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `approveCampaignParticipant()`
+
+```php
+approveCampaignParticipant($campaign_id, $participant_id, $idempotency_key): \Zernio\Model\GetCampaignParticipant200Response
+```
+
+Approve pending campaign participant
+
+Lets a `pending` creator into the campaign: they become `active`, `joinedAt` is set, the creator is emailed and `campaign_participant.approved` fires (not `campaign_participant.joined`).  A creator is `pending` when they joined through the open link of a campaign with `joinApproval: manual`. Personal invites are never held.  ### Creator limit  Pending creators do not count toward `caps.maxParticipants`; the limit is checked here instead. A full campaign refuses the approval with 403 `feature_not_available` and the creator stays `pending`.  ### Errors  - 403 `feature_not_available`: the campaign reached `caps.maxParticipants`. - 409 `invalid_resource_state`: the participant is not `pending`, or the campaign is closed.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CreatorCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string | Campaign ID.
+$participant_id = 'participant_id_example'; // string | Participant ID.
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago.
+
+try {
+    $result = $apiInstance->approveCampaignParticipant($campaign_id, $participant_id, $idempotency_key);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CreatorCampaignsApi->approveCampaignParticipant: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| Campaign ID. | |
+| **participant_id** | **string**| Participant ID. | |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\GetCampaignParticipant200Response**](../Model/GetCampaignParticipant200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `approveCampaignSample()`
+
+```php
+approveCampaignSample($campaign_id, $sample_id, $idempotency_key): \Zernio\Model\ApproveCampaignSample200Response
+```
+
+Approve campaign sample request
+
+Approves a `pending` sample request. Zernio creates a 100%-off, single-use discount code (`SAMPLE-XXXXXXXX`) limited to the requested product in the campaign's store (Shopify or WooCommerce), returns it as `discountCode`, emails it to the creator and fires `campaign_sample.approved`. The creator redeems it at checkout.  The code is created before the request changes, so when the store refuses (missing discount permission, an unsupported store, a store error) its error is returned and the request stays `pending`. The approval also starts the `sampleContentDueDays` clock behind `contentDueAt` and `contentOwed`.  ### Errors  - 400 `platform_not_supported`: the store cannot create discounts. - 403: the store has not granted the permission discounts need. - 409 `invalid_resource_state`: the request is not `pending`. - 502 `platform_api_error`: the store is unavailable.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CreatorCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string | Campaign ID.
+$sample_id = 'sample_id_example'; // string | Sample request ID.
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago.
+
+try {
+    $result = $apiInstance->approveCampaignSample($campaign_id, $sample_id, $idempotency_key);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CreatorCampaignsApi->approveCampaignSample: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| Campaign ID. | |
+| **sample_id** | **string**| Sample request ID. | |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ApproveCampaignSample200Response**](../Model/ApproveCampaignSample200Response.md)
 
 ### Authorization
 
@@ -536,6 +742,264 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `declineCampaignSample()`
+
+```php
+declineCampaignSample($campaign_id, $sample_id, $decline_campaign_sample_request, $idempotency_key): \Zernio\Model\ApproveCampaignSample200Response
+```
+
+Decline campaign sample request
+
+Declines a `pending` sample request with a reason, emails the creator and fires `campaign_sample.declined`. The creator can ask for the same product again. Any other status answers 409.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CreatorCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string | Campaign ID.
+$sample_id = 'sample_id_example'; // string | Sample request ID.
+$decline_campaign_sample_request = new \Zernio\Model\DeclineCampaignSampleRequest(); // \Zernio\Model\DeclineCampaignSampleRequest
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago.
+
+try {
+    $result = $apiInstance->declineCampaignSample($campaign_id, $sample_id, $decline_campaign_sample_request, $idempotency_key);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CreatorCampaignsApi->declineCampaignSample: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| Campaign ID. | |
+| **sample_id** | **string**| Sample request ID. | |
+| **decline_campaign_sample_request** | [**\Zernio\Model\DeclineCampaignSampleRequest**](../Model/DeclineCampaignSampleRequest.md)|  | |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ApproveCampaignSample200Response**](../Model/ApproveCampaignSample200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `denyCampaignParticipant()`
+
+```php
+denyCampaignParticipant($campaign_id, $participant_id, $idempotency_key): \Zernio\Model\GetCampaignParticipant200Response
+```
+
+Deny pending campaign participant
+
+Turns a `pending` creator away: they become `denied`, the creator is emailed and `campaign_participant.denied` fires. A denied creator cannot submit posts, drafts or sample requests. Any status other than `pending` answers 409.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CreatorCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string | Campaign ID.
+$participant_id = 'participant_id_example'; // string | Participant ID.
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago.
+
+try {
+    $result = $apiInstance->denyCampaignParticipant($campaign_id, $participant_id, $idempotency_key);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CreatorCampaignsApi->denyCampaignParticipant: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| Campaign ID. | |
+| **participant_id** | **string**| Participant ID. | |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\GetCampaignParticipant200Response**](../Model/GetCampaignParticipant200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getCampaignAdResults()`
+
+```php
+getCampaignAdResults($campaign_id, $rank_by, $from, $to): \Zernio\Model\GetCampaignAdResults200Response
+```
+
+Get campaign ad results
+
+What the campaign's posts did as ads: totals, each post with its ads and launches, and the creators ranked by `rankBy`.  An ad counts for a post when it was launched from the post, or when it runs the post (a boosted post, the Instagram media it shows, or a TikTok Spark item).  Figures come from the ads' daily metrics; money is in the campaign currency, and ads billed in another currency are left out of money figures.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CreatorCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string | Campaign ID.
+$rank_by = 'spend'; // string | How `creators` is ranked.
+$from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | First day counted (YYYY-MM-DD, UTC). Omit to count from the first day of data.
+$to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Last day counted (YYYY-MM-DD, UTC). Omit to count through the latest day of data.
+
+try {
+    $result = $apiInstance->getCampaignAdResults($campaign_id, $rank_by, $from, $to);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CreatorCampaignsApi->getCampaignAdResults: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| Campaign ID. | |
+| **rank_by** | **string**| How &#x60;creators&#x60; is ranked. | [optional] [default to &#39;spend&#39;] |
+| **from** | **\DateTime**| First day counted (YYYY-MM-DD, UTC). Omit to count from the first day of data. | [optional] |
+| **to** | **\DateTime**| Last day counted (YYYY-MM-DD, UTC). Omit to count through the latest day of data. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\GetCampaignAdResults200Response**](../Model/GetCampaignAdResults200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getCampaignDraft()`
+
+```php
+getCampaignDraft($campaign_id, $draft_id): \Zernio\Model\GetCampaignDraft200Response
+```
+
+Get campaign draft
+
+Returns one draft version and every version of its chain (`versions`, newest first, including this one), each with its review comments.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CreatorCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string | Campaign ID.
+$draft_id = 'draft_id_example'; // string | Draft version ID.
+
+try {
+    $result = $apiInstance->getCampaignDraft($campaign_id, $draft_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CreatorCampaignsApi->getCampaignDraft: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| Campaign ID. | |
+| **draft_id** | **string**| Draft version ID. | |
+
+### Return type
+
+[**\Zernio\Model\GetCampaignDraft200Response**](../Model/GetCampaignDraft200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getCampaignParticipant()`
 
 ```php
@@ -780,6 +1244,138 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `launchCampaignAds()`
+
+```php
+launchCampaignAds($campaign_id, $launch_campaign_ads_request, $idempotency_key): \Zernio\Model\LaunchCampaignAds200Response
+```
+
+Launch campaign posts as ads
+
+Runs approved posts of an active campaign as ads, each post on its own: a post that cannot run is reported in `results` and never stops the rest.  A post already launched (or launching) into the same placement is reported as `already_launched` or `in_progress` and never gets a second ad, so a retry is safe.  ### What each post becomes  - **Meta, `identity: brand`**: a new ad from the post media in the existing ad set `adSetId`, under the brand's Page. - **Meta, `identity: creator`**: a Partnership Ad of the Instagram post under the creator's handle. Partnership Ads are a limited release while Meta reviews the permission they need (`capabilities.partnershipAds` in `GET /v1/creator-campaigns/{campaignId}/ad-results`); without it these posts fail with a message to launch them with brand identity. Facebook posts only run with brand identity. - **TikTok** (`identity: creator` only): a Spark Ad of the creator's post in its own ad group with `dailyBudget`, inside the existing campaign `existingCampaignId`. Needs the Spark code the creator pasted on their campaign page (`hasSparkCode` on the submission).  One launch runs on one network: posts from the other network fail with a message to launch them separately. Needs ads access (403 `ads_addon_required`) and room in the managed ads allowance (403 `ads_allowance_exceeded`).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CreatorCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string | Campaign ID.
+$launch_campaign_ads_request = new \Zernio\Model\LaunchCampaignAdsRequest(); // \Zernio\Model\LaunchCampaignAdsRequest
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago.
+
+try {
+    $result = $apiInstance->launchCampaignAds($campaign_id, $launch_campaign_ads_request, $idempotency_key);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CreatorCampaignsApi->launchCampaignAds: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| Campaign ID. | |
+| **launch_campaign_ads_request** | [**\Zernio\Model\LaunchCampaignAdsRequest**](../Model/LaunchCampaignAdsRequest.md)|  | |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\LaunchCampaignAds200Response**](../Model/LaunchCampaignAds200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listCampaignDrafts()`
+
+```php
+listCampaignDrafts($campaign_id, $status, $participant_id, $limit, $skip): \Zernio\Model\ListCampaignDrafts200Response
+```
+
+List campaign drafts
+
+Lists the drafts creators uploaded for review on a campaign with `requireDraftApproval`, newest first.  Each draft is a chain of versions: a revision is a new version in the same `chainId`. Only the latest version of each chain is listed, so `status` is the chain's current state and `total` counts chains. Earlier versions come with `GET /v1/creator-campaigns/{campaignId}/drafts/{draftId}`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CreatorCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string | Campaign ID.
+$status = 'status_example'; // string | Only drafts whose latest version is in this status. `submitted` is the review queue.
+$participant_id = 'participant_id_example'; // string | Only drafts of this participant.
+$limit = 50; // int
+$skip = 0; // int
+
+try {
+    $result = $apiInstance->listCampaignDrafts($campaign_id, $status, $participant_id, $limit, $skip);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CreatorCampaignsApi->listCampaignDrafts: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| Campaign ID. | |
+| **status** | **string**| Only drafts whose latest version is in this status. &#x60;submitted&#x60; is the review queue. | [optional] |
+| **participant_id** | **string**| Only drafts of this participant. | [optional] |
+| **limit** | **int**|  | [optional] [default to 50] |
+| **skip** | **int**|  | [optional] [default to 0] |
+
+### Return type
+
+[**\Zernio\Model\ListCampaignDrafts200Response**](../Model/ListCampaignDrafts200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listCampaignLedger()`
 
 ```php
@@ -834,6 +1430,74 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListCampaignLedger200Response**](../Model/ListCampaignLedger200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listCampaignOrders()`
+
+```php
+listCampaignOrders($campaign_id, $participant_id, $status, $limit, $skip): \Zernio\Model\ListCampaignOrders200Response
+```
+
+List campaign orders
+
+Lists the store orders a commission or smart retainer campaign credited to its creators, newest first, and every active creator's discount code and tracking link.  An order is `pending` while the store is still attributing it (Shopify does so for a few minutes after checkout), `matched` once it is credited to a creator and `unmatched` when it never was. Commission is approved `holdDays` after the order was placed.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CreatorCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string | Campaign ID.
+$participant_id = 'participant_id_example'; // string | Only this creator's orders.
+$status = 'status_example'; // string
+$limit = 50; // int
+$skip = 0; // int
+
+try {
+    $result = $apiInstance->listCampaignOrders($campaign_id, $participant_id, $status, $limit, $skip);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CreatorCampaignsApi->listCampaignOrders: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| Campaign ID. | |
+| **participant_id** | **string**| Only this creator&#39;s orders. | [optional] |
+| **status** | **string**|  | [optional] |
+| **limit** | **int**|  | [optional] [default to 50] |
+| **skip** | **int**|  | [optional] [default to 0] |
+
+### Return type
+
+[**\Zernio\Model\ListCampaignOrders200Response**](../Model/ListCampaignOrders200Response.md)
 
 ### Authorization
 
@@ -1024,6 +1688,74 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListCampaignPayoutBatches200Response**](../Model/ListCampaignPayoutBatches200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listCampaignSamples()`
+
+```php
+listCampaignSamples($campaign_id, $status, $participant_id, $limit, $skip): \Zernio\Model\ListCampaignSamples200Response
+```
+
+List campaign sample requests
+
+Lists the free product samples creators asked for, newest first. `contentOwed` marks an approved or shipped sample whose creator submitted no post in the `sampleContentDueDays` since the approval.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CreatorCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string | Campaign ID.
+$status = 'status_example'; // string | Only requests in this status. `pending` is the review queue.
+$participant_id = 'participant_id_example'; // string | Only requests of this participant.
+$limit = 50; // int
+$skip = 0; // int
+
+try {
+    $result = $apiInstance->listCampaignSamples($campaign_id, $status, $participant_id, $limit, $skip);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CreatorCampaignsApi->listCampaignSamples: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| Campaign ID. | |
+| **status** | **string**| Only requests in this status. &#x60;pending&#x60; is the review queue. | [optional] |
+| **participant_id** | **string**| Only requests of this participant. | [optional] |
+| **limit** | **int**|  | [optional] [default to 50] |
+| **skip** | **int**|  | [optional] [default to 0] |
+
+### Return type
+
+[**\Zernio\Model\ListCampaignSamples200Response**](../Model/ListCampaignSamples200Response.md)
 
 ### Authorization
 
@@ -1500,6 +2232,72 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `rejectCampaignDraft()`
+
+```php
+rejectCampaignDraft($campaign_id, $draft_id, $reject_campaign_draft_request, $idempotency_key): \Zernio\Model\ApproveCampaignDraft200Response
+```
+
+Reject campaign draft
+
+Rejects a `submitted` draft version for good, emails the creator and fires `campaign_draft.rejected`. The reason is stored as `reviewNote`. A rejected draft takes no new version and backs no post.  Each version is decided once: a version that is no longer `submitted` answers 409.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CreatorCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string | Campaign ID.
+$draft_id = 'draft_id_example'; // string | Draft version ID.
+$reject_campaign_draft_request = new \Zernio\Model\RejectCampaignDraftRequest(); // \Zernio\Model\RejectCampaignDraftRequest
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago.
+
+try {
+    $result = $apiInstance->rejectCampaignDraft($campaign_id, $draft_id, $reject_campaign_draft_request, $idempotency_key);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CreatorCampaignsApi->rejectCampaignDraft: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| Campaign ID. | |
+| **draft_id** | **string**| Draft version ID. | |
+| **reject_campaign_draft_request** | [**\Zernio\Model\RejectCampaignDraftRequest**](../Model/RejectCampaignDraftRequest.md)|  | |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ApproveCampaignDraft200Response**](../Model/ApproveCampaignDraft200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `rejectCampaignSubmission()`
 
 ```php
@@ -1692,6 +2490,72 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `requestCampaignDraftRevision()`
+
+```php
+requestCampaignDraftRevision($campaign_id, $draft_id, $request_campaign_draft_revision_request, $idempotency_key): \Zernio\Model\ApproveCampaignDraft200Response
+```
+
+Request changes on a campaign draft
+
+Marks a `submitted` draft version `revision_requested`, emails the creator and fires `campaign_draft.revision_requested`. The creator answers with one new version (`revisionOf` set to this version).  Send a `note`, at least one entry in `comments`, or both; neither answers 400 `missing_required_field`. A comment with `atMs` is pinned to that moment of the video.  Each version is decided once: a version that is no longer `submitted` answers 409.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CreatorCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string | Campaign ID.
+$draft_id = 'draft_id_example'; // string | Draft version ID.
+$request_campaign_draft_revision_request = new \Zernio\Model\RequestCampaignDraftRevisionRequest(); // \Zernio\Model\RequestCampaignDraftRevisionRequest
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago.
+
+try {
+    $result = $apiInstance->requestCampaignDraftRevision($campaign_id, $draft_id, $request_campaign_draft_revision_request, $idempotency_key);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CreatorCampaignsApi->requestCampaignDraftRevision: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| Campaign ID. | |
+| **draft_id** | **string**| Draft version ID. | |
+| **request_campaign_draft_revision_request** | [**\Zernio\Model\RequestCampaignDraftRevisionRequest**](../Model/RequestCampaignDraftRevisionRequest.md)|  | |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ApproveCampaignDraft200Response**](../Model/ApproveCampaignDraft200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `resendCampaignParticipantInvite()`
 
 ```php
@@ -1808,6 +2672,72 @@ try {
 ### Return type
 
 [**\Zernio\Model\SettleCampaignParticipant201Response**](../Model/SettleCampaignParticipant201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `shipCampaignSample()`
+
+```php
+shipCampaignSample($campaign_id, $sample_id, $idempotency_key, $ship_campaign_sample_request): \Zernio\Model\ApproveCampaignSample200Response
+```
+
+Mark campaign sample shipped
+
+Records that you sent an `approved` sample yourself, with an optional tracking link, emails the creator and fires `campaign_sample.shipped`. No store call or money is involved. Any other status answers 409.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CreatorCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string | Campaign ID.
+$sample_id = 'sample_id_example'; // string | Sample request ID.
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago.
+$ship_campaign_sample_request = new \Zernio\Model\ShipCampaignSampleRequest(); // \Zernio\Model\ShipCampaignSampleRequest | Optional: no body marks the sample shipped without a tracking link.
+
+try {
+    $result = $apiInstance->shipCampaignSample($campaign_id, $sample_id, $idempotency_key, $ship_campaign_sample_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CreatorCampaignsApi->shipCampaignSample: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| Campaign ID. | |
+| **sample_id** | **string**| Sample request ID. | |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago. | [optional] |
+| **ship_campaign_sample_request** | [**\Zernio\Model\ShipCampaignSampleRequest**](../Model/ShipCampaignSampleRequest.md)| Optional: no body marks the sample shipped without a tracking link. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ApproveCampaignSample200Response**](../Model/ApproveCampaignSample200Response.md)
 
 ### Authorization
 

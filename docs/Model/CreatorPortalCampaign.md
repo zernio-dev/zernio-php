@@ -21,5 +21,9 @@ Name | Type | Description | Notes
 **hold_days** | **int** | Days approved earnings stay owed before they become payable. |
 **tracking_days** | **int** | Days each submitted post is tracked for views. |
 **max_accounts_per_participant** | **int** | How many connected accounts can submit posts. Null means no limit. |
+**join_approval** | **string** | manual: a creator who joins through the open link waits &#x60;pending&#x60; until the campaign team accepts them. |
+**require_draft_approval** | **bool** | The creator uploads a draft for review first, and submits the live post for an approved draft. |
+**sample_products** | [**\Zernio\Model\CreatorCampaignSampleProduct[]**](CreatorCampaignSampleProduct.md) | Products the creator can ask a free sample of; empty when the campaign offers none. |
+**sample_content_due_days** | **int** | Days after a sample is approved by which a post is expected. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
