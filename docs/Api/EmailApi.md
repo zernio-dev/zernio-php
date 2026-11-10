@@ -1,6 +1,6 @@
 # Zernio\EmailApi
 
-Read, send and organize mail in connected Google Workspace and Microsoft 365 mailboxes. Connect with &#x60;scopes&#x3D;email&#x60;.
+Read, send and organize mail in connected Google, Microsoft and IMAP mailboxes. Connect Google or Microsoft with &#x60;scopes&#x3D;email&#x60;, or any mailbox with &#x60;GET /v1/connect/email&#x60;.
 
 All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 
@@ -71,7 +71,7 @@ $apiInstance = new Zernio\Api\EmailApi(
     $config
 );
 $schedule_id = 'schedule_id_example'; // string
-$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+$account_id = 'account_id_example'; // string | The connected Google, Microsoft or IMAP account.
 
 try {
     $result = $apiInstance->cancelScheduledEmail($schedule_id, $account_id);
@@ -86,7 +86,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **schedule_id** | **string**|  | |
-| **account_id** | **string**| The connected Google or Microsoft account. | |
+| **account_id** | **string**| The connected Google, Microsoft or IMAP account. | |
 
 ### Return type
 
@@ -113,7 +113,7 @@ createEmailDraft($create_email_draft_request, $idempotency_key): \Zernio\Model\C
 
 Create a draft
 
-Saves a draft in the user's mailbox, where they see it in Gmail or Outlook. Recipients and subject can come later. `inReplyTo` makes a reply draft in that thread and `forwardOf` a forward draft with the original's attachments; the `kind` is fixed for the life of the draft.  Send it with `POST /v1/email/drafts/{draftId}/send`. Edits the user makes in their mail client are what goes out. Store the draft `id`, and pass its `version` as `If-Match` so an update or send applies only to the version you saw.
+Saves a draft in the user's mailbox, where they see it in their mail app. Recipients and subject can come later. `inReplyTo` makes a reply draft in that thread and `forwardOf` a forward draft with the original's attachments; the `kind` is fixed for the life of the draft.  Send it with `POST /v1/email/drafts/{draftId}/send`. Edits the user makes in their mail client are what goes out. Store the draft `id`, and pass its `version` as `If-Match` so an update or send applies only to the version you saw.
 
 ### Example
 
@@ -433,7 +433,7 @@ $apiInstance = new Zernio\Api\EmailApi(
     $config
 );
 $draft_id = 'draft_id_example'; // string
-$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+$account_id = 'account_id_example'; // string | The connected Google, Microsoft or IMAP account.
 
 try {
     $result = $apiInstance->deleteEmailDraft($draft_id, $account_id);
@@ -448,7 +448,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **draft_id** | **string**|  | |
-| **account_id** | **string**| The connected Google or Microsoft account. | |
+| **account_id** | **string**| The connected Google, Microsoft or IMAP account. | |
 
 ### Return type
 
@@ -495,7 +495,7 @@ $apiInstance = new Zernio\Api\EmailApi(
     $config
 );
 $label_id = 'label_id_example'; // string
-$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+$account_id = 'account_id_example'; // string | The connected Google, Microsoft or IMAP account.
 
 try {
     $result = $apiInstance->deleteEmailLabel($label_id, $account_id);
@@ -510,7 +510,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **label_id** | **string**|  | |
-| **account_id** | **string**| The connected Google or Microsoft account. | |
+| **account_id** | **string**| The connected Google, Microsoft or IMAP account. | |
 
 ### Return type
 
@@ -557,7 +557,7 @@ $apiInstance = new Zernio\Api\EmailApi(
     $config
 );
 $email = 'email_example'; // string
-$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+$account_id = 'account_id_example'; // string | The connected Google, Microsoft or IMAP account.
 
 try {
     $result = $apiInstance->deleteEmailSendAs($email, $account_id);
@@ -572,7 +572,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **email** | **string**|  | |
-| **account_id** | **string**| The connected Google or Microsoft account. | |
+| **account_id** | **string**| The connected Google, Microsoft or IMAP account. | |
 
 ### Return type
 
@@ -737,7 +737,7 @@ $apiInstance = new Zernio\Api\EmailApi(
     $config
 );
 $attachment_id = 'attachment_id_example'; // string
-$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+$account_id = 'account_id_example'; // string | The connected Google, Microsoft or IMAP account.
 $message_id = 'message_id_example'; // string
 
 try {
@@ -753,7 +753,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **attachment_id** | **string**|  | |
-| **account_id** | **string**| The connected Google or Microsoft account. | |
+| **account_id** | **string**| The connected Google, Microsoft or IMAP account. | |
 | **message_id** | **string**|  | |
 
 ### Return type
@@ -865,7 +865,7 @@ $apiInstance = new Zernio\Api\EmailApi(
     $config
 );
 $draft_id = 'draft_id_example'; // string
-$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+$account_id = 'account_id_example'; // string | The connected Google, Microsoft or IMAP account.
 
 try {
     $result = $apiInstance->getEmailDraft($draft_id, $account_id);
@@ -880,7 +880,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **draft_id** | **string**|  | |
-| **account_id** | **string**| The connected Google or Microsoft account. | |
+| **account_id** | **string**| The connected Google, Microsoft or IMAP account. | |
 
 ### Return type
 
@@ -925,10 +925,10 @@ $apiInstance = new Zernio\Api\EmailApi(
     $config
 );
 $message_id = 'message_id_example'; // string
-$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+$account_id = 'account_id_example'; // string | The connected Google, Microsoft or IMAP account.
 $include_headers = false; // bool | Include the raw internet headers under `headers`.
 $raw = false; // bool | Include the MIME source under `raw`.
-$clean = false; // bool | Add `cleanText`: the new text only, without quoted replies, forwarded history, signature or tracking pixels. Ready to hand to an LLM.
+$clean = false; // bool | Add a `clean` object: the new text without quoted replies, footers or tracking pixels, the `signature` on its own (it also stays in `text`), and a parsed `forwarded` header. Ready to hand to an LLM.
 
 try {
     $result = $apiInstance->getEmailMessage($message_id, $account_id, $include_headers, $raw, $clean);
@@ -943,10 +943,10 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **message_id** | **string**|  | |
-| **account_id** | **string**| The connected Google or Microsoft account. | |
+| **account_id** | **string**| The connected Google, Microsoft or IMAP account. | |
 | **include_headers** | **bool**| Include the raw internet headers under &#x60;headers&#x60;. | [optional] [default to false] |
 | **raw** | **bool**| Include the MIME source under &#x60;raw&#x60;. | [optional] [default to false] |
-| **clean** | **bool**| Add &#x60;cleanText&#x60;: the new text only, without quoted replies, forwarded history, signature or tracking pixels. Ready to hand to an LLM. | [optional] [default to false] |
+| **clean** | **bool**| Add a &#x60;clean&#x60; object: the new text without quoted replies, footers or tracking pixels, the &#x60;signature&#x60; on its own (it also stays in &#x60;text&#x60;), and a parsed &#x60;forwarded&#x60; header. Ready to hand to an LLM. | [optional] [default to false] |
 
 ### Return type
 
@@ -1049,8 +1049,8 @@ $apiInstance = new Zernio\Api\EmailApi(
     $config
 );
 $thread_id = 'thread_id_example'; // string
-$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
-$clean = false; // bool | Add `cleanText` to every message: what each one added to the conversation, without the quoted history.
+$account_id = 'account_id_example'; // string | The connected Google, Microsoft or IMAP account.
+$clean = false; // bool | Add a `clean` object to every message: the text each one added, without quoted replies, footers or tracking pixels, plus its `signature` and a parsed `forwarded` header.
 
 try {
     $result = $apiInstance->getEmailThread($thread_id, $account_id, $clean);
@@ -1065,8 +1065,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **thread_id** | **string**|  | |
-| **account_id** | **string**| The connected Google or Microsoft account. | |
-| **clean** | **bool**| Add &#x60;cleanText&#x60; to every message: what each one added to the conversation, without the quoted history. | [optional] [default to false] |
+| **account_id** | **string**| The connected Google, Microsoft or IMAP account. | |
+| **clean** | **bool**| Add a &#x60;clean&#x60; object to every message: the text each one added, without quoted replies, footers or tracking pixels, plus its &#x60;signature&#x60; and a parsed &#x60;forwarded&#x60; header. | [optional] [default to false] |
 
 ### Return type
 
@@ -1111,7 +1111,7 @@ $apiInstance = new Zernio\Api\EmailApi(
     $config
 );
 $schedule_id = 'schedule_id_example'; // string
-$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+$account_id = 'account_id_example'; // string | The connected Google, Microsoft or IMAP account.
 
 try {
     $result = $apiInstance->getScheduledEmail($schedule_id, $account_id);
@@ -1126,7 +1126,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **schedule_id** | **string**|  | |
-| **account_id** | **string**| The connected Google or Microsoft account. | |
+| **account_id** | **string**| The connected Google, Microsoft or IMAP account. | |
 
 ### Return type
 
@@ -1172,7 +1172,7 @@ $apiInstance = new Zernio\Api\EmailApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+$account_id = 'account_id_example'; // string | The connected Google, Microsoft or IMAP account.
 
 try {
     $result = $apiInstance->importEmailSignatures($account_id);
@@ -1186,7 +1186,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| The connected Google or Microsoft account. | |
+| **account_id** | **string**| The connected Google, Microsoft or IMAP account. | |
 
 ### Return type
 
@@ -1213,7 +1213,7 @@ listEmailDrafts($account_id, $limit, $cursor): \Zernio\Model\ListEmailDrafts200R
 
 List drafts
 
-The mailbox's drafts, newest first, including drafts the user wrote in Gmail or Outlook. Drafts in the trash are left out. Rows carry no bodies on Google; get a draft to read them.
+The mailbox's drafts, newest first, including drafts the user wrote in their mail app. Drafts in the trash are left out. Rows carry no bodies on Google; get a draft to read them.
 
 ### Example
 
@@ -1232,7 +1232,7 @@ $apiInstance = new Zernio\Api\EmailApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+$account_id = 'account_id_example'; // string | The connected Google, Microsoft or IMAP account.
 $limit = 25; // int
 $cursor = 'cursor_example'; // string
 
@@ -1248,7 +1248,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| The connected Google or Microsoft account. | |
+| **account_id** | **string**| The connected Google, Microsoft or IMAP account. | |
 | **limit** | **int**|  | [optional] [default to 25] |
 | **cursor** | **string**|  | [optional] |
 
@@ -1296,7 +1296,7 @@ $apiInstance = new Zernio\Api\EmailApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+$account_id = 'account_id_example'; // string | The connected Google, Microsoft or IMAP account.
 
 try {
     $result = $apiInstance->listEmailFolders($account_id);
@@ -1310,7 +1310,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| The connected Google or Microsoft account. | |
+| **account_id** | **string**| The connected Google, Microsoft or IMAP account. | |
 
 ### Return type
 
@@ -1356,7 +1356,7 @@ $apiInstance = new Zernio\Api\EmailApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+$account_id = 'account_id_example'; // string | The connected Google, Microsoft or IMAP account.
 
 try {
     $result = $apiInstance->listEmailLabels($account_id);
@@ -1370,7 +1370,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| The connected Google or Microsoft account. | |
+| **account_id** | **string**| The connected Google, Microsoft or IMAP account. | |
 
 ### Return type
 
@@ -1416,7 +1416,7 @@ $apiInstance = new Zernio\Api\EmailApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+$account_id = 'account_id_example'; // string | The connected Google, Microsoft or IMAP account.
 $folder = 'folder_example'; // string
 $unread = True; // bool
 $starred = True; // bool
@@ -1446,7 +1446,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| The connected Google or Microsoft account. | |
+| **account_id** | **string**| The connected Google, Microsoft or IMAP account. | |
 | **folder** | **string**|  | [optional] |
 | **unread** | **bool**|  | [optional] |
 | **starred** | **bool**|  | [optional] |
@@ -1508,7 +1508,7 @@ $apiInstance = new Zernio\Api\EmailApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+$account_id = 'account_id_example'; // string | The connected Google, Microsoft or IMAP account.
 
 try {
     $result = $apiInstance->listEmailSendAs($account_id);
@@ -1522,7 +1522,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| The connected Google or Microsoft account. | |
+| **account_id** | **string**| The connected Google, Microsoft or IMAP account. | |
 
 ### Return type
 
@@ -1609,7 +1609,7 @@ listEmailThreads($account_id, $folder, $unread, $starred, $has_attachment, $subj
 
 List email threads
 
-Threads of a connected Google or Microsoft mailbox, newest first. Every filter that the provider cannot apply server-side is applied to the fetched page instead and named in `meta.filteredClientSide`, so a filtered page can hold fewer than `limit` items while `pagination.hasMore` stays true.  On Google, folders are Gmail labels: `folder` takes a well-known name or a label id, `archive` means mail carrying none of the inbox, trash or spam labels, and `sortOrder=asc` reverses the fetched page (Gmail lists newest first only).  The account must have been connected with `scopes=email` (412 `account_scope_missing` otherwise).
+Threads of a connected Google, Microsoft or IMAP mailbox, newest first. Every filter that the provider cannot apply server-side is applied to the fetched page instead and named in `meta.filteredClientSide`, so a filtered page can hold fewer than `limit` items while `pagination.hasMore` stays true.  On Google, folders are Gmail labels: `folder` takes a well-known name or a label id, `archive` means mail carrying none of the inbox, trash or spam labels, and `sortOrder=asc` reverses the fetched page (Gmail lists newest first only).  The account must have been connected with `scopes=email` (412 `account_scope_missing` otherwise).
 
 ### Example
 
@@ -1628,7 +1628,7 @@ $apiInstance = new Zernio\Api\EmailApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+$account_id = 'account_id_example'; // string | The connected Google, Microsoft or IMAP account.
 $folder = 'folder_example'; // string | Well-known folder (`inbox`, `sent`, `drafts`, `trash`, `spam`, `archive`) or a provider folder id from `GET /v1/email/folders`. Default inbox.
 $unread = True; // bool
 $starred = True; // bool
@@ -1658,7 +1658,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| The connected Google or Microsoft account. | |
+| **account_id** | **string**| The connected Google, Microsoft or IMAP account. | |
 | **folder** | **string**| Well-known folder (&#x60;inbox&#x60;, &#x60;sent&#x60;, &#x60;drafts&#x60;, &#x60;trash&#x60;, &#x60;spam&#x60;, &#x60;archive&#x60;) or a provider folder id from &#x60;GET /v1/email/folders&#x60;. Default inbox. | [optional] |
 | **unread** | **bool**|  | [optional] |
 | **starred** | **bool**|  | [optional] |
@@ -1720,7 +1720,7 @@ $apiInstance = new Zernio\Api\EmailApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+$account_id = 'account_id_example'; // string | The connected Google, Microsoft or IMAP account.
 $status = 'status_example'; // string
 $cursor = 'cursor_example'; // string | `pagination.nextCursor` of the previous page.
 $limit = 50; // int
@@ -1737,7 +1737,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| The connected Google or Microsoft account. | |
+| **account_id** | **string**| The connected Google, Microsoft or IMAP account. | |
 | **status** | **string**|  | [optional] |
 | **cursor** | **string**| &#x60;pagination.nextCursor&#x60; of the previous page. | [optional] |
 | **limit** | **int**|  | [optional] [default to 50] |
@@ -1831,7 +1831,7 @@ sendEmailDraft($draft_id, $send_email_draft_request, $if_match, $idempotency_key
 
 Send a draft
 
-Sends the draft as it stands in the mailbox now, edits made in Gmail or Outlook included, and returns the sent message with `draftId`. The draft needs at least one recipient. A draft the user deleted or already sent answers 404 `draft_not_found`.  With `If-Match` it goes out only if it is still the version the approver saw (412 `draft_conflict` otherwise). If the user removed the open pixel or rewrote links, tracking is put back before it is sent. Fires `email.sent` with `source: draft`.  Tracking set when the draft was created applies, and its `metadata` comes back on the sent message. Same protection, caps and headers as sending.
+Sends the draft as it stands in the mailbox now, edits made in their mail app included, and returns the sent message with `draftId`. The draft needs at least one recipient. A draft the user deleted or already sent answers 404 `draft_not_found`.  With `If-Match` it goes out only if it is still the version the approver saw (412 `draft_conflict` otherwise). If the user removed the open pixel or rewrote links, tracking is put back before it is sent. Fires `email.sent` with `source: draft`.  Tracking set when the draft was created applies, and its `metadata` comes back on the sent message. Same protection, caps and headers as sending.
 
 ### Example
 
@@ -1977,7 +1977,7 @@ $apiInstance = new Zernio\Api\EmailApi(
     $config
 );
 $message_id = 'message_id_example'; // string
-$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+$account_id = 'account_id_example'; // string | The connected Google, Microsoft or IMAP account.
 
 try {
     $result = $apiInstance->trashEmailMessage($message_id, $account_id);
@@ -1992,7 +1992,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **message_id** | **string**|  | |
-| **account_id** | **string**| The connected Google or Microsoft account. | |
+| **account_id** | **string**| The connected Google, Microsoft or IMAP account. | |
 
 ### Return type
 

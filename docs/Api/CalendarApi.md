@@ -221,7 +221,7 @@ $apiInstance = new Zernio\Api\CalendarApi(
     $config
 );
 $event_id = 'event_id_example'; // string
-$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+$account_id = 'account_id_example'; // string | The connected Google, Microsoft or IMAP account.
 $calendar_id = 'calendar_id_example'; // string | The calendar holding the event (an id from GET /v1/calendar/calendars). Defaults to the primary calendar.
 
 try {
@@ -237,7 +237,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **event_id** | **string**|  | |
-| **account_id** | **string**| The connected Google or Microsoft account. | |
+| **account_id** | **string**| The connected Google, Microsoft or IMAP account. | |
 | **calendar_id** | **string**| The calendar holding the event (an id from GET /v1/calendar/calendars). Defaults to the primary calendar. | [optional] |
 
 ### Return type
@@ -283,7 +283,7 @@ $apiInstance = new Zernio\Api\CalendarApi(
     $config
 );
 $event_id = 'event_id_example'; // string
-$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+$account_id = 'account_id_example'; // string | The connected Google, Microsoft or IMAP account.
 $calendar_id = 'calendar_id_example'; // string | The calendar holding the event (an id from GET /v1/calendar/calendars). Defaults to the primary calendar.
 $timezone = 'timezone_example'; // string
 
@@ -300,7 +300,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **event_id** | **string**|  | |
-| **account_id** | **string**| The connected Google or Microsoft account. | |
+| **account_id** | **string**| The connected Google, Microsoft or IMAP account. | |
 | **calendar_id** | **string**| The calendar holding the event (an id from GET /v1/calendar/calendars). Defaults to the primary calendar. | [optional] |
 | **timezone** | **string**|  | [optional] |
 
@@ -348,7 +348,7 @@ $apiInstance = new Zernio\Api\CalendarApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+$account_id = 'account_id_example'; // string | The connected Google, Microsoft or IMAP account.
 $from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $calendar_id = 'calendar_id_example'; // string | Defaults to the primary calendar.
@@ -374,7 +374,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| The connected Google or Microsoft account. | |
+| **account_id** | **string**| The connected Google, Microsoft or IMAP account. | |
 | **from** | **\DateTime**|  | |
 | **to** | **\DateTime**|  | |
 | **calendar_id** | **string**| Defaults to the primary calendar. | [optional] |
@@ -432,7 +432,7 @@ $apiInstance = new Zernio\Api\CalendarApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+$account_id = 'account_id_example'; // string | The connected Google, Microsoft or IMAP account.
 
 try {
     $result = $apiInstance->listCalendars($account_id);
@@ -446,7 +446,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| The connected Google or Microsoft account. | |
+| **account_id** | **string**| The connected Google, Microsoft or IMAP account. | |
 
 ### Return type
 

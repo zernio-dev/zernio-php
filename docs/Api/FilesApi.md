@@ -163,7 +163,7 @@ $apiInstance = new Zernio\Api\FilesApi(
     $config
 );
 $file_id = 'file_id_example'; // string
-$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+$account_id = 'account_id_example'; // string | The connected Google, Microsoft or IMAP account.
 
 try {
     $result = $apiInstance->downloadFile($file_id, $account_id);
@@ -178,7 +178,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **file_id** | **string**|  | |
-| **account_id** | **string**| The connected Google or Microsoft account. | |
+| **account_id** | **string**| The connected Google, Microsoft or IMAP account. | |
 
 ### Return type
 
@@ -225,7 +225,7 @@ $apiInstance = new Zernio\Api\FilesApi(
     $config
 );
 $file_id = 'file_id_example'; // string
-$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+$account_id = 'account_id_example'; // string | The connected Google, Microsoft or IMAP account.
 
 try {
     $result = $apiInstance->getFile($file_id, $account_id);
@@ -240,7 +240,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **file_id** | **string**|  | |
-| **account_id** | **string**| The connected Google or Microsoft account. | |
+| **account_id** | **string**| The connected Google, Microsoft or IMAP account. | |
 
 ### Return type
 
@@ -287,7 +287,7 @@ $apiInstance = new Zernio\Api\FilesApi(
     $config
 );
 $file_id = 'file_id_example'; // string
-$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+$account_id = 'account_id_example'; // string | The connected Google, Microsoft or IMAP account.
 
 try {
     $result = $apiInstance->getFileShareLink($file_id, $account_id);
@@ -302,7 +302,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **file_id** | **string**|  | |
-| **account_id** | **string**| The connected Google or Microsoft account. | |
+| **account_id** | **string**| The connected Google, Microsoft or IMAP account. | |
 
 ### Return type
 
@@ -348,7 +348,7 @@ $apiInstance = new Zernio\Api\FilesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+$account_id = 'account_id_example'; // string | The connected Google, Microsoft or IMAP account.
 $folder_id = 'folder_id_example'; // string | Provider folder id; omit for the root.
 $q = 'q_example'; // string | Name search.
 $cursor = 'cursor_example'; // string
@@ -366,7 +366,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| The connected Google or Microsoft account. | |
+| **account_id** | **string**| The connected Google, Microsoft or IMAP account. | |
 | **folder_id** | **string**| Provider folder id; omit for the root. | [optional] |
 | **q** | **string**| Name search. | [optional] |
 | **cursor** | **string**|  | [optional] |
@@ -417,7 +417,7 @@ $apiInstance = new Zernio\Api\FilesApi(
     $config
 );
 $file_id = 'file_id_example'; // string
-$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+$account_id = 'account_id_example'; // string | The connected Google, Microsoft or IMAP account.
 
 try {
     $result = $apiInstance->trashFile($file_id, $account_id);
@@ -432,7 +432,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **file_id** | **string**|  | |
-| **account_id** | **string**| The connected Google or Microsoft account. | |
+| **account_id** | **string**| The connected Google, Microsoft or IMAP account. | |
 
 ### Return type
 

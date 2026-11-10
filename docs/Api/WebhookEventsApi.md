@@ -6129,7 +6129,7 @@ onMessageReceived($webhook_payload_message)
 
 Message received event
 
-A new message arrived in the inbox; `message.text`, `message.attachments[]` and `message.sender` describe it.  ### Standby  While another app owns the conversation it carries `metadata.standby: true`. Zernio runs no workflow or keyword automation on it. A bot must skip standby messages, or on WhatsApp it takes the conversation from the agent.  ### Interactive replies  Button and list taps, flow responses and orders arrive under `metadata` (`interactiveType`, `interactiveId`, `flowResponseData`, `order`). Only a referral that arrives without a message becomes `referral.received`.  ### Platform notes  New email from Google and Microsoft mailboxes arrives as this event.
+A new message arrived in the inbox; `message.text`, `message.attachments[]` and `message.sender` describe it.  ### Standby  While another app owns the conversation it carries `metadata.standby: true`. Zernio runs no workflow or keyword automation on it. A bot must skip standby messages, or on WhatsApp it takes the conversation from the agent.  ### Interactive replies  Button and list taps, flow responses and orders arrive under `metadata` (`interactiveType`, `interactiveId`, `flowResponseData`, `order`). Only a referral that arrives without a message becomes `referral.received`.  ### Platform notes  New email from Google, Microsoft and IMAP mailboxes arrives as this event.
 
 ### Example
 
