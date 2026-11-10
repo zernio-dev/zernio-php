@@ -5641,7 +5641,7 @@ onPostFailed($webhook_payload_post)
 
 Post failed event
 
-A post failed on every target platform.  ### When it fires  Once per publishing job, after every platform target ends. Exactly one of `post.published`, `post.partial` or `post.failed` fires.  ### Payload notes  Each `platforms[]` entry carries `error`, `errorCategory` and `errorSource`, the same taxonomy as `platforms[]` on Get post. Branch on `errorCategory`, not on the message text.
+A post failed on every target platform.  ### When it fires  Once per publishing job, after every platform target ends. Exactly one of `post.published`, `post.partial` or `post.failed` fires.  A TikTok target TikTok is still processing (status `uploading`) holds it for up to 48 hours. Meanwhile `post.platform.published` and `post.platform.failed` report the other targets.  ### Payload notes  Each `platforms[]` entry carries `error`, `errorCategory` and `errorSource`, the same taxonomy as `platforms[]` on Get post. Branch on `errorCategory`, not on the message text.
 
 ### Example
 
@@ -5700,7 +5700,7 @@ onPostPartial($webhook_payload_post)
 
 Post partial event
 
-A post published on some platforms and failed on others.  ### When it fires  Once per publishing job, after every platform target ends. Exactly one of `post.published`, `post.partial` or `post.failed` fires.  ### Payload notes  Read `platforms[].status` to tell them apart. Failed entries carry `error`, `errorCategory` and `errorSource`.
+A post published on some platforms and failed on others.  ### When it fires  Once per publishing job, after every platform target ends. Exactly one of `post.published`, `post.partial` or `post.failed` fires.  A TikTok target TikTok is still processing (status `uploading`) holds it for up to 48 hours. Meanwhile `post.platform.published` and `post.platform.failed` report the other targets.  It can follow a `post.failed` for the same post when TikTok later reports a failed TikTok target as published.  ### Payload notes  Read `platforms[].status` to tell them apart. Failed entries carry `error`, `errorCategory` and `errorSource`.
 
 ### Example
 
@@ -5877,7 +5877,7 @@ onPostPlatformPublished($webhook_payload_post_platform)
 
 Post platform published event
 
-One platform target finished publishing, without waiting for the other targets.  ### When it fires  Once per platform target, as soon as it finishes. A cross-post to 2 accounts on the same platform produces 2 events. Use `post.published` for the post-level rollup.  ### Payload notes  `platform` carries the platform post id and URL. `account` identifies the connected account.  ### Later reconciliation  If a target later fails background reconciliation, `post.platform.failed` fires for the same target afterward.
+One platform target finished publishing, without waiting for the other targets.  ### When it fires  Once per platform target, as soon as it finishes. A cross-post to 2 accounts on the same platform produces 2 events. Use `post.published` for the post-level rollup.  ### Payload notes  `platform` carries the platform post id and URL. `account` identifies the connected account.  ### TikTok targets still processing  TikTok can keep processing a post for up to 48 hours (entry status `uploading`). That target fires when TikTok finishes. The other targets fire as they finish, and the post rollup waits for TikTok.  ### Later reconciliation  If a target later fails background reconciliation, `post.platform.failed` fires for the same target afterward.  A failed TikTok target that TikTok later reports as published fires `post.platform.published` afterward, and the rollup fires again.
 
 ### Example
 
@@ -5936,7 +5936,7 @@ onPostPublished($webhook_payload_post)
 
 Post published event
 
-Every platform target of a post published.  ### When it fires  Once per publishing job, after every platform target ends. Exactly one of `post.published`, `post.partial` or `post.failed` fires.  ### Payload notes  Each `platforms[]` entry carries the `platformPostId` and `publishedUrl`.
+Every platform target of a post published.  ### When it fires  Once per publishing job, after every platform target ends. Exactly one of `post.published`, `post.partial` or `post.failed` fires.  A TikTok target TikTok is still processing (status `uploading`) holds it for up to 48 hours. Meanwhile `post.platform.published` and `post.platform.failed` report the other targets.  It can follow a `post.partial` or `post.failed` for the same post when TikTok later reports a failed TikTok target as published.  ### Payload notes  Each `platforms[]` entry carries the `platformPostId` and `publishedUrl`.
 
 ### Example
 
