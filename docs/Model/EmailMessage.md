@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **provider** | **string** |  | [optional]
 **folders** | **string[]** |  | [optional]
 **from** | [**\Zernio\Model\EmailAddress**](EmailAddress.md) |  | [optional]
+**sender** | [**\Zernio\Model\EmailAddress**](EmailAddress.md) |  | [optional]
 **to** | [**\Zernio\Model\EmailAddress[]**](EmailAddress.md) |  | [optional]
 **cc** | [**\Zernio\Model\EmailAddress[]**](EmailAddress.md) |  | [optional]
 **bcc** | [**\Zernio\Model\EmailAddress[]**](EmailAddress.md) |  | [optional]

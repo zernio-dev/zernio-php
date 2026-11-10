@@ -9,19 +9,26 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**cancelScheduledEmail()**](EmailApi.md#cancelScheduledEmail) | **DELETE** /v1/email/messages/scheduled/{scheduleId} | Cancel a scheduled email |
 | [**createEmailDraft()**](EmailApi.md#createEmailDraft) | **POST** /v1/email/drafts | Create a draft |
 | [**createEmailLabel()**](EmailApi.md#createEmailLabel) | **POST** /v1/email/labels | Create a label |
+| [**createEmailSignature()**](EmailApi.md#createEmailSignature) | **POST** /v1/email/signatures | Create a signature |
+| [**declareEmailSendAs()**](EmailApi.md#declareEmailSendAs) | **POST** /v1/email/send-as | Declare a send-as address |
 | [**deleteEmailDraft()**](EmailApi.md#deleteEmailDraft) | **DELETE** /v1/email/drafts/{draftId} | Delete a draft |
 | [**deleteEmailLabel()**](EmailApi.md#deleteEmailLabel) | **DELETE** /v1/email/labels/{labelId} | Delete a label |
+| [**deleteEmailSendAs()**](EmailApi.md#deleteEmailSendAs) | **DELETE** /v1/email/send-as/{email} | Remove a declared send-as address |
+| [**deleteEmailSignature()**](EmailApi.md#deleteEmailSignature) | **DELETE** /v1/email/signatures/{signatureId} | Delete a signature |
 | [**downloadEmailAttachment()**](EmailApi.md#downloadEmailAttachment) | **GET** /v1/email/attachments/{attachmentId} | Download an attachment |
 | [**forwardEmailMessage()**](EmailApi.md#forwardEmailMessage) | **POST** /v1/email/messages/{messageId}/forward | Forward a message |
 | [**getEmailDraft()**](EmailApi.md#getEmailDraft) | **GET** /v1/email/drafts/{draftId} | Get a draft |
 | [**getEmailMessage()**](EmailApi.md#getEmailMessage) | **GET** /v1/email/messages/{messageId} | Get an email message |
+| [**getEmailSignature()**](EmailApi.md#getEmailSignature) | **GET** /v1/email/signatures/{signatureId} | Get a signature |
 | [**getEmailThread()**](EmailApi.md#getEmailThread) | **GET** /v1/email/threads/{threadId} | Get an email thread with its messages |
 | [**getScheduledEmail()**](EmailApi.md#getScheduledEmail) | **GET** /v1/email/messages/scheduled/{scheduleId} | Get a scheduled email |
+| [**importEmailSignatures()**](EmailApi.md#importEmailSignatures) | **POST** /v1/email/signatures/import | Import Gmail signatures |
 | [**listEmailDrafts()**](EmailApi.md#listEmailDrafts) | **GET** /v1/email/drafts | List drafts |
 | [**listEmailFolders()**](EmailApi.md#listEmailFolders) | **GET** /v1/email/folders | List mailbox folders |
 | [**listEmailLabels()**](EmailApi.md#listEmailLabels) | **GET** /v1/email/labels | List labels |
 | [**listEmailMessages()**](EmailApi.md#listEmailMessages) | **GET** /v1/email/messages | List email messages |
 | [**listEmailSendAs()**](EmailApi.md#listEmailSendAs) | **GET** /v1/email/send-as | List send-as addresses |
+| [**listEmailSignatures()**](EmailApi.md#listEmailSignatures) | **GET** /v1/email/signatures | List signatures |
 | [**listEmailThreads()**](EmailApi.md#listEmailThreads) | **GET** /v1/email/threads | List email threads |
 | [**listScheduledEmails()**](EmailApi.md#listScheduledEmails) | **GET** /v1/email/messages/scheduled | List scheduled emails |
 | [**replyEmailMessage()**](EmailApi.md#replyEmailMessage) | **POST** /v1/email/messages/{messageId}/reply | Reply to a message |
@@ -30,6 +37,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**trashEmailMessage()**](EmailApi.md#trashEmailMessage) | **DELETE** /v1/email/messages/{messageId} | Move a message to trash |
 | [**updateEmailDraft()**](EmailApi.md#updateEmailDraft) | **PATCH** /v1/email/drafts/{draftId} | Update a draft |
 | [**updateEmailMessage()**](EmailApi.md#updateEmailMessage) | **PATCH** /v1/email/messages/{messageId} | Mark read or starred, label, or move a message |
+| [**updateEmailSignature()**](EmailApi.md#updateEmailSignature) | **PATCH** /v1/email/signatures/{signatureId} | Update a signature |
 | [**updateEmailThread()**](EmailApi.md#updateEmailThread) | **PATCH** /v1/email/threads/{threadId} | Update every message in a thread |
 
 
@@ -217,6 +225,126 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `createEmailSignature()`
+
+```php
+createEmailSignature($create_email_signature_request): \Zernio\Model\CreateEmailSignature201Response
+```
+
+Create a signature
+
+Stores a signature Zernio appends on any provider. Without `accountId` it is workspace-wide. `defaultFor` makes it what `appendSignature` uses for those sending addresses. Up to 50 per workspace, 100 KB of html, no scripts.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\EmailApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_email_signature_request = new \Zernio\Model\CreateEmailSignatureRequest(); // \Zernio\Model\CreateEmailSignatureRequest
+
+try {
+    $result = $apiInstance->createEmailSignature($create_email_signature_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EmailApi->createEmailSignature: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_email_signature_request** | [**\Zernio\Model\CreateEmailSignatureRequest**](../Model/CreateEmailSignatureRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateEmailSignature201Response**](../Model/CreateEmailSignature201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `declareEmailSendAs()`
+
+```php
+declareEmailSendAs($declare_email_send_as_request): \Zernio\Model\DeclareEmailSendAs200Response
+```
+
+Declare a send-as address
+
+Adds an address the provider cannot list, such as an Outlook shared mailbox, so `from` accepts it. It starts `unverified` and becomes `accepted` after its first send. Gmail answers 400: add aliases in Gmail settings instead. An address already listed comes back with 200.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\EmailApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$declare_email_send_as_request = new \Zernio\Model\DeclareEmailSendAsRequest(); // \Zernio\Model\DeclareEmailSendAsRequest
+
+try {
+    $result = $apiInstance->declareEmailSendAs($declare_email_send_as_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EmailApi->declareEmailSendAs: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **declare_email_send_as_request** | [**\Zernio\Model\DeclareEmailSendAsRequest**](../Model/DeclareEmailSendAsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\DeclareEmailSendAs200Response**](../Model/DeclareEmailSendAs200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `deleteEmailDraft()`
 
 ```php
@@ -321,6 +449,126 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **label_id** | **string**|  | |
 | **account_id** | **string**| The connected Google or Microsoft account. | |
+
+### Return type
+
+[**\Zernio\Model\DeleteEmailDraft200Response**](../Model/DeleteEmailDraft200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteEmailSendAs()`
+
+```php
+deleteEmailSendAs($email, $account_id): \Zernio\Model\DeleteEmailSendAs200Response
+```
+
+Remove a declared send-as address
+
+Removes an address declared with `POST /v1/email/send-as`. Addresses the provider lists cannot be removed here. URL-encode the `@`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\EmailApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$email = 'email_example'; // string
+$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+
+try {
+    $result = $apiInstance->deleteEmailSendAs($email, $account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EmailApi->deleteEmailSendAs: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **email** | **string**|  | |
+| **account_id** | **string**| The connected Google or Microsoft account. | |
+
+### Return type
+
+[**\Zernio\Model\DeleteEmailSendAs200Response**](../Model/DeleteEmailSendAs200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteEmailSignature()`
+
+```php
+deleteEmailSignature($signature_id): \Zernio\Model\DeleteEmailDraft200Response
+```
+
+Delete a signature
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\EmailApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$signature_id = 'signature_id_example'; // string
+
+try {
+    $result = $apiInstance->deleteEmailSignature($signature_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EmailApi->deleteEmailSignature: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **signature_id** | **string**|  | |
 
 ### Return type
 
@@ -595,6 +843,64 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getEmailSignature()`
+
+```php
+getEmailSignature($signature_id): \Zernio\Model\CreateEmailSignature201Response
+```
+
+Get a signature
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\EmailApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$signature_id = 'signature_id_example'; // string
+
+try {
+    $result = $apiInstance->getEmailSignature($signature_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EmailApi->getEmailSignature: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **signature_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateEmailSignature201Response**](../Model/CreateEmailSignature201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getEmailThread()`
 
 ```php
@@ -703,6 +1009,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\SendEmailMessage202Response**](../Model/SendEmailMessage202Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `importEmailSignatures()`
+
+```php
+importEmailSignatures($account_id): \Zernio\Model\ListEmailSignatures200Response
+```
+
+Import Gmail signatures
+
+Copies each Gmail send-as signature into a Zernio signature on that account, the default for its address. Repeating it refreshes the copies. Outlook answers 400: Microsoft Graph does not expose signatures.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\EmailApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+
+try {
+    $result = $apiInstance->importEmailSignatures($account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EmailApi->importEmailSignatures: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The connected Google or Microsoft account. | |
+
+### Return type
+
+[**\Zernio\Model\ListEmailSignatures200Response**](../Model/ListEmailSignatures200Response.md)
 
 ### Authorization
 
@@ -1001,7 +1367,7 @@ listEmailSendAs($account_id): \Zernio\Model\ListEmailSendAs200Response
 
 List send-as addresses
 
-The addresses a mailbox can send from, for the `from` field of a send or reply. Gmail lists every send-as alias with its signature, and `from` must be one of them. Outlook lists the mailbox address and its aliases; Exchange checks any other `from` at send time.
+The addresses a mailbox can send from, for `from`, each with the signature `appendSignature` would add. Gmail lists every alias itself. Outlook lists the mailbox address and its aliases, plus any address declared with `POST /v1/email/send-as`.
 
 ### Example
 
@@ -1039,6 +1405,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListEmailSendAs200Response**](../Model/ListEmailSendAs200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listEmailSignatures()`
+
+```php
+listEmailSignatures($account_id): \Zernio\Model\ListEmailSignatures200Response
+```
+
+List signatures
+
+Zernio-stored signatures: workspace-wide ones plus those of the accounts you can see. With `accountId`, only workspace-wide ones and that account's.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\EmailApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+
+try {
+    $result = $apiInstance->listEmailSignatures($account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EmailApi->listEmailSignatures: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListEmailSignatures200Response**](../Model/ListEmailSignatures200Response.md)
 
 ### Authorization
 
@@ -1575,6 +2001,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\SendEmailMessage201Response**](../Model/SendEmailMessage201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateEmailSignature()`
+
+```php
+updateEmailSignature($signature_id, $update_email_signature_request): \Zernio\Model\CreateEmailSignature201Response
+```
+
+Update a signature
+
+Changes the name, html, text or `defaultFor`. Taking an address in `defaultFor` removes it from the other signatures of the same scope.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\EmailApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$signature_id = 'signature_id_example'; // string
+$update_email_signature_request = new \Zernio\Model\UpdateEmailSignatureRequest(); // \Zernio\Model\UpdateEmailSignatureRequest
+
+try {
+    $result = $apiInstance->updateEmailSignature($signature_id, $update_email_signature_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EmailApi->updateEmailSignature: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **signature_id** | **string**|  | |
+| **update_email_signature_request** | [**\Zernio\Model\UpdateEmailSignatureRequest**](../Model/UpdateEmailSignatureRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateEmailSignature201Response**](../Model/CreateEmailSignature201Response.md)
 
 ### Authorization
 
