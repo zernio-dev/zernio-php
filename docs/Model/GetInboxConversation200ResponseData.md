@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **platform** | **string** |  | [optional]
 **status** | **string** |  | [optional]
 **participant_name** | **string** |  | [optional]
+**content_not_retained** | **bool** | True when this team does not retain content, so the content fields of this row are null. Identifiers and metadata stay. | [optional]
 **participant_id** | **string** |  | [optional]
 **participant_verified_type** | **string** | X verified badge type. Only present for X conversations. | [optional]
 **business_scoped_user_id** | **string** | WhatsApp only. Meta business-scoped user ID (BSUID), the stable identity anchor; present when Meta has sent it for this participant. | [optional]

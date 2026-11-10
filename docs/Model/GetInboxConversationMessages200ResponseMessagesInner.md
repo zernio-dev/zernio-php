@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **account_id** | **string** |  | [optional]
 **platform** | **string** |  | [optional]
 **message** | **string** |  | [optional]
+**content_not_retained** | **bool** | True when this team does not retain content, so the content fields of this row are null. Identifiers and metadata stay. | [optional]
 **sender_id** | **string** |  | [optional]
 **sender_name** | **string** |  | [optional]
 **sender_verified_type** | **string** | X verified badge type. Only present for X messages. | [optional]

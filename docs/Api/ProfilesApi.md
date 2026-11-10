@@ -271,7 +271,7 @@ updateProfile($profile_id, $update_profile_request): \Zernio\Model\ProfileUpdate
 
 Update profile
 
-Updates a profile's name, description, color, default timezone, externalId, or default status.
+Updates a profile's name, description, color, default timezone, externalId, default status, or zero content retention.
 
 ### Example
 

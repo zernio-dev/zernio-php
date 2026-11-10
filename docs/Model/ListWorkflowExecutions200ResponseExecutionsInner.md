@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **status** | **string** |  | [optional]
 **current_node_id** | **string** |  | [optional]
 **waiting_for** | [**\Zernio\Model\ListWorkflowExecutions200ResponseExecutionsInnerWaitingFor**](ListWorkflowExecutions200ResponseExecutionsInnerWaitingFor.md) |  | [optional]
-**variables** | **array<string,mixed>** |  | [optional]
+**variables** | **array<string,mixed>** | Empty once the run finishes when the team does not retain content. | [optional]
 **platform_identifier** | **string** |  | [optional]
 **conversation_id** | **string** | Null only while a comment-triggered run has not sent its private reply yet. | [optional]
 **step_count** | **int** |  | [optional]

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **late_post_id** | **string** | Original Zernio post ID if scheduled via Zernio | [optional]
 **status** | **string** | Overall post status. \&quot;partial\&quot; when some platforms published and others failed.  While any platform is still pending or processing, the post&#39;s own status is returned instead (usually scheduled or publishing), even if another platform already published.  A post with no published or failed platform (for example every platform cancelled) returns its own status with syncStatus unavailable and no platformAnalytics. | [optional]
 **content** | **string** |  | [optional]
+**content_not_retained** | **bool** | True when this team does not retain content, so the content fields of this row are null. Identifiers and metadata stay. | [optional]
 **scheduled_for** | **\DateTime** |  | [optional]
 **published_at** | **\DateTime** |  | [optional]
 **analytics** | [**\Zernio\Model\PostAnalytics**](PostAnalytics.md) |  | [optional]

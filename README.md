@@ -684,6 +684,8 @@ Class | Method | HTTP request | Description
 *ContactsApi* | [**getContactChannels**](docs/Api/ContactsApi.md#getcontactchannels) | **GET** /v1/contacts/{contactId}/channels | List channels for a contact
 *ContactsApi* | [**listContacts**](docs/Api/ContactsApi.md#listcontacts) | **GET** /v1/contacts | List contacts
 *ContactsApi* | [**updateContact**](docs/Api/ContactsApi.md#updatecontact) | **PATCH** /v1/contacts/{contactId} | Update contact
+*ContentRetentionApi* | [**getContentRetention**](docs/Api/ContentRetentionApi.md#getcontentretention) | **GET** /v1/content-retention | Get content retention mode
+*ContentRetentionApi* | [**updateContentRetention**](docs/Api/ContentRetentionApi.md#updatecontentretention) | **PUT** /v1/content-retention | Turn zero content retention on or off
 *ConversionsApi* | [**addConversionAssociations**](docs/Api/ConversionsApi.md#addconversionassociations) | **POST** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | Associate campaigns
 *ConversionsApi* | [**adjustConversions**](docs/Api/ConversionsApi.md#adjustconversions) | **POST** /v1/ads/conversions/adjustments | Adjust uploaded conversions
 *ConversionsApi* | [**createConversionAction**](docs/Api/ConversionsApi.md#createconversionaction) | **POST** /v1/ads/conversions/actions | Create website conversion action
@@ -1860,6 +1862,7 @@ Class | Method | HTTP request | Description
 - [Connected](docs/Model/Connected.md)
 - [ConnectedAccount](docs/Model/ConnectedAccount.md)
 - [ConnectedApp](docs/Model/ConnectedApp.md)
+- [ContentRetentionResponse](docs/Model/ContentRetentionResponse.md)
 - [ConversationAdAttribution](docs/Model/ConversationAdAttribution.md)
 - [ConversionAction](docs/Model/ConversionAction.md)
 - [ConversionActionTagSnippetsInner](docs/Model/ConversionActionTagSnippetsInner.md)
@@ -2272,6 +2275,7 @@ Class | Method | HTTP request | Description
 - [DiscordPlatformDataEmbedsInnerAuthor](docs/Model/DiscordPlatformDataEmbedsInnerAuthor.md)
 - [DiscordPlatformDataEmbedsInnerFieldsInner](docs/Model/DiscordPlatformDataEmbedsInnerFieldsInner.md)
 - [DiscordPlatformDataEmbedsInnerFooter](docs/Model/DiscordPlatformDataEmbedsInnerFooter.md)
+- [DiscordPlatformDataEmbedsInnerImage](docs/Model/DiscordPlatformDataEmbedsInnerImage.md)
 - [DiscordPlatformDataPoll](docs/Model/DiscordPlatformDataPoll.md)
 - [DiscordPlatformDataPollAnswersInner](docs/Model/DiscordPlatformDataPollAnswersInner.md)
 - [DiscordPlatformDataPollAnswersInnerPollMedia](docs/Model/DiscordPlatformDataPollAnswersInnerPollMedia.md)
@@ -3697,6 +3701,7 @@ Class | Method | HTTP request | Description
 - [ReplyToInboxPost400ResponseDetails](docs/Model/ReplyToInboxPost400ResponseDetails.md)
 - [ReplyToInboxPostRequest](docs/Model/ReplyToInboxPostRequest.md)
 - [ReplyToInboxReview200Response](docs/Model/ReplyToInboxReview200Response.md)
+- [ReplyToInboxReview200ResponseReply](docs/Model/ReplyToInboxReview200ResponseReply.md)
 - [ReplyToInboxReviewRequest](docs/Model/ReplyToInboxReviewRequest.md)
 - [ReplyToMention200Response](docs/Model/ReplyToMention200Response.md)
 - [ReplyToMentionRequest](docs/Model/ReplyToMentionRequest.md)
@@ -4201,6 +4206,7 @@ Class | Method | HTTP request | Description
 - [UpdateContact200Response](docs/Model/UpdateContact200Response.md)
 - [UpdateContact200ResponseContact](docs/Model/UpdateContact200ResponseContact.md)
 - [UpdateContactRequest](docs/Model/UpdateContactRequest.md)
+- [UpdateContentRetentionRequest](docs/Model/UpdateContentRetentionRequest.md)
 - [UpdateConversionAction200Response](docs/Model/UpdateConversionAction200Response.md)
 - [UpdateConversionAction200ResponseAction](docs/Model/UpdateConversionAction200ResponseAction.md)
 - [UpdateConversionActionRequest](docs/Model/UpdateConversionActionRequest.md)
@@ -4494,6 +4500,12 @@ Class | Method | HTTP request | Description
 - [WebhookPayloadCallPermissionRequestPermission](docs/Model/WebhookPayloadCallPermissionRequestPermission.md)
 - [WebhookPayloadCallReceived](docs/Model/WebhookPayloadCallReceived.md)
 - [WebhookPayloadCallReceivedCall](docs/Model/WebhookPayloadCallReceivedCall.md)
+- [WebhookPayloadCallRecordingReady](docs/Model/WebhookPayloadCallRecordingReady.md)
+- [WebhookPayloadCallRecordingReadyCall](docs/Model/WebhookPayloadCallRecordingReadyCall.md)
+- [WebhookPayloadCallRecordingReadyRecording](docs/Model/WebhookPayloadCallRecordingReadyRecording.md)
+- [WebhookPayloadCallTranscriptSegment](docs/Model/WebhookPayloadCallTranscriptSegment.md)
+- [WebhookPayloadCallTranscriptSegmentCall](docs/Model/WebhookPayloadCallTranscriptSegmentCall.md)
+- [WebhookPayloadCallTranscriptSegmentSegment](docs/Model/WebhookPayloadCallTranscriptSegmentSegment.md)
 - [WebhookPayloadCampaignBudgetDepleted](docs/Model/WebhookPayloadCampaignBudgetDepleted.md)
 - [WebhookPayloadCampaignBudgetDepletedAdObject](docs/Model/WebhookPayloadCampaignBudgetDepletedAdObject.md)
 - [WebhookPayloadCampaignBudgetDepletedBudget](docs/Model/WebhookPayloadCampaignBudgetDepletedBudget.md)
@@ -4551,6 +4563,9 @@ Class | Method | HTTP request | Description
 - [WebhookPayloadLead](docs/Model/WebhookPayloadLead.md)
 - [WebhookPayloadLeadAccount](docs/Model/WebhookPayloadLeadAccount.md)
 - [WebhookPayloadLeadLead](docs/Model/WebhookPayloadLeadLead.md)
+- [WebhookPayloadMention](docs/Model/WebhookPayloadMention.md)
+- [WebhookPayloadMentionAccount](docs/Model/WebhookPayloadMentionAccount.md)
+- [WebhookPayloadMentionMention](docs/Model/WebhookPayloadMentionMention.md)
 - [WebhookPayloadMessage](docs/Model/WebhookPayloadMessage.md)
 - [WebhookPayloadMessageDeleted](docs/Model/WebhookPayloadMessageDeleted.md)
 - [WebhookPayloadMessageDeliveryStatus](docs/Model/WebhookPayloadMessageDeliveryStatus.md)
@@ -4738,6 +4753,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.545.2`
+- API version: `1.546.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

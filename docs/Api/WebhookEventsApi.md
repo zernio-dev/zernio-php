@@ -46,6 +46,8 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onCallFailed()**](WebhookEventsApi.md#onCallFailed) | **POST** /call.failed | Call failed event |
 | [**onCallPermissionRequest()**](WebhookEventsApi.md#onCallPermissionRequest) | **POST** /call.permission_request | Call permission request reply event |
 | [**onCallReceived()**](WebhookEventsApi.md#onCallReceived) | **POST** /call.received | Call received event |
+| [**onCallRecordingReady()**](WebhookEventsApi.md#onCallRecordingReady) | **POST** /call.recording_ready | Call recording ready event |
+| [**onCallTranscriptSegment()**](WebhookEventsApi.md#onCallTranscriptSegment) | **POST** /call.transcript_segment | Call transcript segment event |
 | [**onCampaignBudgetDepleted()**](WebhookEventsApi.md#onCampaignBudgetDepleted) | **POST** /campaign.budget.depleted | Campaign budget depleted event |
 | [**onCampaignCreated()**](WebhookEventsApi.md#onCampaignCreated) | **POST** /campaign.created | Campaign created event |
 | [**onCampaignParticipantJoined()**](WebhookEventsApi.md#onCampaignParticipantJoined) | **POST** /campaign_participant.joined | Campaign participant joined event |
@@ -85,6 +87,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onFilePicked()**](WebhookEventsApi.md#onFilePicked) | **POST** /file.picked | Files picked |
 | [**onFileUpdated()**](WebhookEventsApi.md#onFileUpdated) | **POST** /file.updated | File updated |
 | [**onLeadReceived()**](WebhookEventsApi.md#onLeadReceived) | **POST** /lead.received | Lead received event |
+| [**onMentionReceived()**](WebhookEventsApi.md#onMentionReceived) | **POST** /mention.received | Mention received event |
 | [**onMessageDeleted()**](WebhookEventsApi.md#onMessageDeleted) | **POST** /message.deleted | Message deleted event |
 | [**onMessageDelivered()**](WebhookEventsApi.md#onMessageDelivered) | **POST** /message.delivered | Message delivered event |
 | [**onMessageEdited()**](WebhookEventsApi.md#onMessageEdited) | **POST** /message.edited | Message edited event |
@@ -2506,6 +2509,124 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `onCallRecordingReady()`
+
+```php
+onCallRecordingReady($webhook_payload_call_recording_ready)
+```
+
+Call recording ready event
+
+A call recording is ready to download.  ### When it fires  Only for teams with zero content retention, on calls with recording on, and only while a webhook listens to it. Zernio keeps no recording for these teams, and the copy behind the link expires after about 3 days. Download the file before `recording.expiresAt`.  ### Payload notes  `call.isVoicemail` tells a voicemail from a recorded call. If the recording could not be copied, no event fires and `call.ended` lists it in `callErrors`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_call_recording_ready = {"id":"00000000-0000-4000-8000-000000000000","event":"call.recording_ready","timestamp":"2026-01-15T10:00:00Z","call":{"id":"507f1f77bcf86cd799439017","metaCallId":"wacid.SAMPLE1234567890","accountId":"507f1f77bcf86cd799439011","phoneNumberId":"100000000000001","direction":"inbound","from":"+15555550123","to":"+15555550100","contactId":"507f1f77bcf86cd799439016","conversationId":"507f1f77bcf86cd799439014","isVoicemail":false},"recording":{"url":"https://media.zernio.com/transient-media/recordings/sample.mp3","expiresAt":"2026-01-15T10:00:00.000Z"},"account":{"id":"507f1f77bcf86cd799439011","accountId":"507f1f77bcf86cd799439011","platform":"whatsapp","username":"+15555550100","displayName":"Sample Brand"},"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadCallRecordingReady
+
+try {
+    $apiInstance->onCallRecordingReady($webhook_payload_call_recording_ready);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCallRecordingReady: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_call_recording_ready** | [**\Zernio\Model\WebhookPayloadCallRecordingReady**](../Model/WebhookPayloadCallRecordingReady.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCallTranscriptSegment()`
+
+```php
+onCallTranscriptSegment($webhook_payload_call_transcript_segment)
+```
+
+Call transcript segment event
+
+One final segment of a live call transcript.  ### When it fires  Only for teams with zero content retention, on calls with transcription on: once per final segment, while the call is live. Zernio stores no transcript for these teams, so it cannot be fetched later. Store each segment when it arrives.  ### Payload notes  `segment.text` is the final text, `segment.confidence` the recognition confidence and `segment.at` when it was transcribed.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_call_transcript_segment = {"id":"00000000-0000-4000-8000-000000000000","event":"call.transcript_segment","timestamp":"2026-01-15T10:00:00Z","call":{"id":"507f1f77bcf86cd799439017","metaCallId":"wacid.SAMPLE1234567890","accountId":"507f1f77bcf86cd799439011","phoneNumberId":"100000000000001","direction":"inbound","from":"+15555550123","to":"+15555550100","contactId":"507f1f77bcf86cd799439016","conversationId":"507f1f77bcf86cd799439014"},"segment":{"text":"I would like to change my appointment.","confidence":0.97,"at":"2026-01-15T10:00:00.000Z"},"account":{"id":"507f1f77bcf86cd799439011","accountId":"507f1f77bcf86cd799439011","platform":"whatsapp","username":"+15555550100","displayName":"Sample Brand"},"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadCallTranscriptSegment
+
+try {
+    $apiInstance->onCallTranscriptSegment($webhook_payload_call_transcript_segment);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCallTranscriptSegment: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_call_transcript_segment** | [**\Zernio\Model\WebhookPayloadCallTranscriptSegment**](../Model/WebhookPayloadCallTranscriptSegment.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `onCampaignBudgetDepleted()`
 
 ```php
@@ -4789,6 +4910,65 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_lead** | [**\Zernio\Model\WebhookPayloadLead**](../Model/WebhookPayloadLead.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onMentionReceived()`
+
+```php
+onMentionReceived($webhook_payload_mention)
+```
+
+Mention received event
+
+A connected Instagram, Facebook or LinkedIn account was mentioned in a post, caption or comment.  ### When it fires  Once per mention, the first time Zernio sees it. Delivery is at most once: reconcile with `GET /v1/inbox/mentions`.  - Instagram and Facebook arrive in real time from the platform's webhook. - LinkedIn arrives from its webhook or from polling, so delivery can take minutes. A newly connected account can receive mentions from the last 48 hours once.  ### Payload notes  Carries the same fields as `GET /v1/inbox/mentions`. Fields a platform does not provide are null. A LinkedIn mention found by polling for a team that does not retain content has no author, and an Instagram mention has no content if the live read fails.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_mention = {"id":"00000000-0000-4000-8000-000000000000","event":"mention.received","timestamp":"2026-01-15T10:00:00Z","mention":{"id":"507f1f77bcf86cd799439013","platform":"facebook","type":"post","mediaId":null,"postId":"17900000000000001","commentId":null,"content":"Great service from @sample_brand!","permalink":null,"authorUrn":"17841400000000001","authorName":"Sample Customer","authorUsername":null,"authorPicture":null,"organizationalEntity":"17900000000000002","publishedAt":"2026-01-15T10:00:00.000Z"},"account":{"id":"507f1f77bcf86cd799439011","accountId":"507f1f77bcf86cd799439011","platform":"facebook","username":"sample_brand"},"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadMention
+
+try {
+    $apiInstance->onMentionReceived($webhook_payload_mention);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onMentionReceived: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_mention** | [**\Zernio\Model\WebhookPayloadMention**](../Model/WebhookPayloadMention.md)|  | |
 
 ### Return type
 

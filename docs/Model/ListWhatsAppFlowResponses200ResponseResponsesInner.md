@@ -12,5 +12,6 @@ Name | Type | Description | Notes
 **flow_token** | **string** |  | [optional]
 **data** | **object** | Submitted field values (flow_token removed) | [optional]
 **raw** | **string** | Raw response_json string | [optional]
+**content_not_retained** | **bool** | True when this team does not retain content, so the content fields of this row are null. Identifiers and metadata stay. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -31,6 +31,7 @@ docs/Api/CommerceApi.md
 docs/Api/ConnectApi.md
 docs/Api/ConnectedAppsApi.md
 docs/Api/ContactsApi.md
+docs/Api/ContentRetentionApi.md
 docs/Api/ConversionsApi.md
 docs/Api/CreatorCampaignsApi.md
 docs/Api/CreatorPortalApi.md
@@ -692,6 +693,7 @@ docs/Model/ConnectWordPressWithApplicationPasswordRequest.md
 docs/Model/Connected.md
 docs/Model/ConnectedAccount.md
 docs/Model/ConnectedApp.md
+docs/Model/ContentRetentionResponse.md
 docs/Model/ConversationAdAttribution.md
 docs/Model/ConversionAction.md
 docs/Model/ConversionActionTagSnippetsInner.md
@@ -1104,6 +1106,7 @@ docs/Model/DiscordPlatformDataEmbedsInner.md
 docs/Model/DiscordPlatformDataEmbedsInnerAuthor.md
 docs/Model/DiscordPlatformDataEmbedsInnerFieldsInner.md
 docs/Model/DiscordPlatformDataEmbedsInnerFooter.md
+docs/Model/DiscordPlatformDataEmbedsInnerImage.md
 docs/Model/DiscordPlatformDataPoll.md
 docs/Model/DiscordPlatformDataPollAnswersInner.md
 docs/Model/DiscordPlatformDataPollAnswersInnerPollMedia.md
@@ -2529,6 +2532,7 @@ docs/Model/ReplyToInboxPost400Response.md
 docs/Model/ReplyToInboxPost400ResponseDetails.md
 docs/Model/ReplyToInboxPostRequest.md
 docs/Model/ReplyToInboxReview200Response.md
+docs/Model/ReplyToInboxReview200ResponseReply.md
 docs/Model/ReplyToInboxReviewRequest.md
 docs/Model/ReplyToMention200Response.md
 docs/Model/ReplyToMentionRequest.md
@@ -3033,6 +3037,7 @@ docs/Model/UpdateConnectWelcomeScreenRequest.md
 docs/Model/UpdateContact200Response.md
 docs/Model/UpdateContact200ResponseContact.md
 docs/Model/UpdateContactRequest.md
+docs/Model/UpdateContentRetentionRequest.md
 docs/Model/UpdateConversionAction200Response.md
 docs/Model/UpdateConversionAction200ResponseAction.md
 docs/Model/UpdateConversionActionRequest.md
@@ -3326,6 +3331,12 @@ docs/Model/WebhookPayloadCallPermissionRequest.md
 docs/Model/WebhookPayloadCallPermissionRequestPermission.md
 docs/Model/WebhookPayloadCallReceived.md
 docs/Model/WebhookPayloadCallReceivedCall.md
+docs/Model/WebhookPayloadCallRecordingReady.md
+docs/Model/WebhookPayloadCallRecordingReadyCall.md
+docs/Model/WebhookPayloadCallRecordingReadyRecording.md
+docs/Model/WebhookPayloadCallTranscriptSegment.md
+docs/Model/WebhookPayloadCallTranscriptSegmentCall.md
+docs/Model/WebhookPayloadCallTranscriptSegmentSegment.md
 docs/Model/WebhookPayloadCampaignBudgetDepleted.md
 docs/Model/WebhookPayloadCampaignBudgetDepletedAdObject.md
 docs/Model/WebhookPayloadCampaignBudgetDepletedBudget.md
@@ -3383,6 +3394,9 @@ docs/Model/WebhookPayloadFilePickedPickerFilesInner.md
 docs/Model/WebhookPayloadLead.md
 docs/Model/WebhookPayloadLeadAccount.md
 docs/Model/WebhookPayloadLeadLead.md
+docs/Model/WebhookPayloadMention.md
+docs/Model/WebhookPayloadMentionAccount.md
+docs/Model/WebhookPayloadMentionMention.md
 docs/Model/WebhookPayloadMessage.md
 docs/Model/WebhookPayloadMessageDeleted.md
 docs/Model/WebhookPayloadMessageDeliveryStatus.md
@@ -3567,6 +3581,7 @@ lib/Api/CommerceApi.php
 lib/Api/ConnectApi.php
 lib/Api/ConnectedAppsApi.php
 lib/Api/ContactsApi.php
+lib/Api/ContentRetentionApi.php
 lib/Api/ConversionsApi.php
 lib/Api/CreatorCampaignsApi.php
 lib/Api/CreatorPortalApi.php
@@ -4232,6 +4247,7 @@ lib/Model/ConnectWordPressWithApplicationPasswordRequest.php
 lib/Model/Connected.php
 lib/Model/ConnectedAccount.php
 lib/Model/ConnectedApp.php
+lib/Model/ContentRetentionResponse.php
 lib/Model/ConversationAdAttribution.php
 lib/Model/ConversionAction.php
 lib/Model/ConversionActionTagSnippetsInner.php
@@ -4644,6 +4660,7 @@ lib/Model/DiscordPlatformDataEmbedsInner.php
 lib/Model/DiscordPlatformDataEmbedsInnerAuthor.php
 lib/Model/DiscordPlatformDataEmbedsInnerFieldsInner.php
 lib/Model/DiscordPlatformDataEmbedsInnerFooter.php
+lib/Model/DiscordPlatformDataEmbedsInnerImage.php
 lib/Model/DiscordPlatformDataPoll.php
 lib/Model/DiscordPlatformDataPollAnswersInner.php
 lib/Model/DiscordPlatformDataPollAnswersInnerPollMedia.php
@@ -6070,6 +6087,7 @@ lib/Model/ReplyToInboxPost400Response.php
 lib/Model/ReplyToInboxPost400ResponseDetails.php
 lib/Model/ReplyToInboxPostRequest.php
 lib/Model/ReplyToInboxReview200Response.php
+lib/Model/ReplyToInboxReview200ResponseReply.php
 lib/Model/ReplyToInboxReviewRequest.php
 lib/Model/ReplyToMention200Response.php
 lib/Model/ReplyToMentionRequest.php
@@ -6574,6 +6592,7 @@ lib/Model/UpdateConnectWelcomeScreenRequest.php
 lib/Model/UpdateContact200Response.php
 lib/Model/UpdateContact200ResponseContact.php
 lib/Model/UpdateContactRequest.php
+lib/Model/UpdateContentRetentionRequest.php
 lib/Model/UpdateConversionAction200Response.php
 lib/Model/UpdateConversionAction200ResponseAction.php
 lib/Model/UpdateConversionActionRequest.php
@@ -6867,6 +6886,12 @@ lib/Model/WebhookPayloadCallPermissionRequest.php
 lib/Model/WebhookPayloadCallPermissionRequestPermission.php
 lib/Model/WebhookPayloadCallReceived.php
 lib/Model/WebhookPayloadCallReceivedCall.php
+lib/Model/WebhookPayloadCallRecordingReady.php
+lib/Model/WebhookPayloadCallRecordingReadyCall.php
+lib/Model/WebhookPayloadCallRecordingReadyRecording.php
+lib/Model/WebhookPayloadCallTranscriptSegment.php
+lib/Model/WebhookPayloadCallTranscriptSegmentCall.php
+lib/Model/WebhookPayloadCallTranscriptSegmentSegment.php
 lib/Model/WebhookPayloadCampaignBudgetDepleted.php
 lib/Model/WebhookPayloadCampaignBudgetDepletedAdObject.php
 lib/Model/WebhookPayloadCampaignBudgetDepletedBudget.php
@@ -6924,6 +6949,9 @@ lib/Model/WebhookPayloadFilePickedPickerFilesInner.php
 lib/Model/WebhookPayloadLead.php
 lib/Model/WebhookPayloadLeadAccount.php
 lib/Model/WebhookPayloadLeadLead.php
+lib/Model/WebhookPayloadMention.php
+lib/Model/WebhookPayloadMentionAccount.php
+lib/Model/WebhookPayloadMentionMention.php
 lib/Model/WebhookPayloadMessage.php
 lib/Model/WebhookPayloadMessageDeleted.php
 lib/Model/WebhookPayloadMessageDeliveryStatus.php
@@ -7081,3 +7109,15 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Api/ContentRetentionApiTest.php
+test/Model/ContentRetentionResponseTest.php
+test/Model/UpdateContentRetentionRequestTest.php
+test/Model/WebhookPayloadCallRecordingReadyCallTest.php
+test/Model/WebhookPayloadCallRecordingReadyRecordingTest.php
+test/Model/WebhookPayloadCallRecordingReadyTest.php
+test/Model/WebhookPayloadCallTranscriptSegmentCallTest.php
+test/Model/WebhookPayloadCallTranscriptSegmentSegmentTest.php
+test/Model/WebhookPayloadCallTranscriptSegmentTest.php
+test/Model/WebhookPayloadMentionAccountTest.php
+test/Model/WebhookPayloadMentionMentionTest.php
+test/Model/WebhookPayloadMentionTest.php

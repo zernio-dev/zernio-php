@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **account_id** | **string** |  | [optional]
 **account_username** | **string** |  | [optional]
 **content** | **string** | Text that mentioned you: the post text on LinkedIn, the caption or comment text on Instagram, the post or comment text on Facebook. Empty until it has been read. | [optional]
+**content_not_retained** | **bool** | True when this team does not retain content, so the content fields of this row are null. Identifiers and metadata stay. | [optional]
 **permalink** | **string** | URL to the source post on LinkedIn. Null on Instagram and Facebook. | [optional]
 **author_urn** | **string** | LinkedIn URN of the person who mentioned you, the Instagram-scoped ID of the commenter on an Instagram comment mention, or the ID of the Facebook user or Page that mentioned your Page when Meta sends it. | [optional]
 **author_name** | **string** | Display name of the author, resolved from authorUrn on LinkedIn (null when LinkedIn does not allow resolving the profile) and taken from the webhook on Facebook. | [optional]
