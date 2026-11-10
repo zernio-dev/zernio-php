@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 **clean** | [**\Zernio\Model\EmailClean**](EmailClean.md) |  | [optional]
 **draft_id** | **string** | On a mail sent from a draft (&#x60;POST /v1/email/drafts/{draftId}/send&#x60;): the draft it was. The sent mail has a new id. | [optional]
 **forwarded_from** | **string** | On a forward: the message it forwarded. | [optional]
-**object** | **string** |  | [optional]
+**object** | [**\Zernio\Model\EmailDraftObject**](EmailDraftObject.md) |  | [optional]
 **kind** | **string** | Fixed when the draft is created. A draft the user wrote in their mail client is read from its headers. | [optional]
 **version** | **string** | Changes on every edit, the user&#39;s in their mail app included. Pass it as &#x60;If-Match&#x60; to update or send only that version. Also the &#x60;ETag&#x60; response header. | [optional]
 **message_id** | **string** | The provider message behind the draft. Volatile: Gmail replaces it on every save. | [optional]

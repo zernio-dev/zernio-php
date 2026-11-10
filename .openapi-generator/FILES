@@ -1206,6 +1206,7 @@ docs/Model/EmailClean.md
 docs/Model/EmailCleanForwarded.md
 docs/Model/EmailCleanRemoved.md
 docs/Model/EmailDraft.md
+docs/Model/EmailDraftObject.md
 docs/Model/EmailFolder.md
 docs/Model/EmailLabel.md
 docs/Model/EmailLabelColor.md
@@ -4892,6 +4893,7 @@ lib/Model/EmailClean.php
 lib/Model/EmailCleanForwarded.php
 lib/Model/EmailCleanRemoved.php
 lib/Model/EmailDraft.php
+lib/Model/EmailDraftObject.php
 lib/Model/EmailFolder.php
 lib/Model/EmailLabel.php
 lib/Model/EmailLabelColor.php
@@ -7373,3 +7375,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/EmailDraftObjectTest.php
