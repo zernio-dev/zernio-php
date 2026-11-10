@@ -608,7 +608,7 @@ startCreatorConnect($token, $start_creator_connect_request): \Zernio\Model\Start
 
 Start connecting a creator account
 
-Returns the authorization URL that connects one of the creator's own social accounts, read-only, so their posts can be verified. Send the creator's browser to `authUrl`; they come back to their participant page. Only the campaign's platforms are accepted.
+Returns the URL that connects one of the creator's own social accounts, read-only, so their posts can be verified. Only the campaign's platforms are accepted.  `authUrl` opens the welcome screen in the campaign's brand, then the platform's sign-in.  The creator comes back to their participant page, or to the connect window's result screen when `windowUrl` is sent.
 
 ### Example
 

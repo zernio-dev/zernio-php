@@ -7373,11 +7373,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreateForwardingRule201ResponseTest.php
-test/Model/CreateForwardingRuleRequestTest.php
-test/Model/EventCorrectionTest.php
-test/Model/ForwardingRuleTest.php
-test/Model/ListForwardingRules200ResponseTest.php
-test/Model/RestateEvent200ResponseTest.php
-test/Model/RestateEventRequestTest.php
-test/Model/RetractEvent200ResponseTest.php
