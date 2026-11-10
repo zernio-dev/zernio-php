@@ -4536,7 +4536,7 @@ onContactDeleted($webhook_payload_contact)
 
 Contact deleted
 
-A contact was deleted in Google Contacts or Outlook.  ### Effect  Zernio removes its email channel for that account; the contact stays when other channels remain. It arrives up to a day after the change, from the daily sync.
+A contact was deleted in Google Contacts or Outlook.  ### Effect  Zernio removes its email channels for that account; the contact stays when other channels remain. It arrives up to 15 minutes after the change, from the sync.
 
 ### Example
 
@@ -4772,7 +4772,7 @@ onContactUpdated($webhook_payload_contact)
 
 Contact updated
 
-A contact sync added or changed a contact; `contact.id` is the Zernio contact id.  ### When it fires  It fires from the daily sync of a Google Contacts or Outlook account, so up to a day after the change. It also fires when a WhatsApp coexistence address book adds or renames a contact.
+A contact sync added or changed a contact; `contact.id` is the Zernio contact id.  ### When it fires  It fires from the sync of a Google Contacts or Outlook account, which runs every 15 minutes, so up to 15 minutes after the change. It also fires when a WhatsApp coexistence address book adds or renames a contact.
 
 ### Example
 
