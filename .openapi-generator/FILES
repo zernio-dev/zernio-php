@@ -7121,11 +7121,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreateEmailLabel200ResponseTest.php
-test/Model/CreateEmailLabelRequestColorTest.php
-test/Model/CreateEmailLabelRequestTest.php
-test/Model/DeleteEmailLabel200ResponseDataTest.php
-test/Model/DeleteEmailLabel200ResponseTest.php
-test/Model/EmailLabelColorTest.php
-test/Model/EmailLabelTest.php
-test/Model/ListEmailLabels200ResponseTest.php
