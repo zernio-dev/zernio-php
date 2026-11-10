@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * WebhookPayloadMessageMetadata Class Doc Comment
  *
  * @category Class
- * @description Platform-specific message context (present when the message is a quick reply tap, postback button tap, inline keyboard callback, a quote-reply to an earlier message, an inbound another app is answering under Meta&#39;s handover protocol, or a TikTok DM that is not plain text)
+ * @description Platform-specific message context (present when the message is a quick reply tap, postback button tap, inline keyboard callback, a quote-reply to an earlier message, an inbound another app is answering under Meta&#39;s conversation routing, or a TikTok DM that is not plain text)
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -536,7 +536,7 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets standby
      *
-     * @param bool|null $standby true when this inbound arrived on Meta's standby path because another app owned the conversation: Meta Business Agent on WhatsApp, or another handover receiver (such as Page Inbox) on Facebook and Instagram. That app answers it; Zernio only observes and no automation runs. See conversation.control_changed.  To take control back:  - WhatsApp: sending a reply takes control back. - Facebook, and Instagram accounts connected through a Facebook Page: take control first with POST /v1/inbox/conversations/{conversationId}/thread-control. - Instagram Login connections: cannot take or request control; wait for the owner to pass it.
+     * @param bool|null $standby true when this inbound arrived on Meta's standby path because another app owned the conversation: Meta Business Agent on WhatsApp, or another handover receiver (such as Page Inbox) on Facebook and Instagram. That app answers it; Zernio only observes and no automation runs. See conversation.control_changed.  To take control back:  - WhatsApp: sending a reply takes control back. - Facebook, and Instagram accounts connected through a Facebook Page: a send tries take_thread_control once and resends. Meta allows the take only when the account has a default app set in conversation routing and has allowed Zernio to take control of conversations. - Instagram Login connections: cannot take or request control; wait for the owner to pass it.
      *
      * @return self
      */

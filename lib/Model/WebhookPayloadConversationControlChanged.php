@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * WebhookPayloadConversationControlChanged Class Doc Comment
  *
  * @category Class
- * @description Who answers a conversation changed under Meta&#39;s handover protocol. WhatsApp: Meta Business Agent took it over, handed it to you, or another partner app took it. Facebook and Instagram: another app passed the thread to you, or took or received it.
+ * @description Who answers a conversation changed. WhatsApp: Meta Business Agent took it over, handed it to you, or another partner app took it. Facebook and Instagram (Meta&#39;s conversation routing): another app passed the thread to you or took it from you.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
