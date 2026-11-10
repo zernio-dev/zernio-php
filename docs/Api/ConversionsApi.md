@@ -12,8 +12,10 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**createConversionDestination()**](ConversionsApi.md#createConversionDestination) | **POST** /v1/accounts/{accountId}/conversion-destinations | Create a conversion destination |
 | [**createCustomConversionGoal()**](ConversionsApi.md#createCustomConversionGoal) | **POST** /v1/ads/conversions/custom-goals | Create a custom conversion goal |
 | [**createEventDestination()**](ConversionsApi.md#createEventDestination) | **POST** /v1/events/destinations | Add an event destination |
+| [**createForwardingRule()**](ConversionsApi.md#createForwardingRule) | **POST** /v1/events/forwarding-rules | Add a forwarding rule |
 | [**deleteConversionDestination()**](ConversionsApi.md#deleteConversionDestination) | **DELETE** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Delete a conversion destination |
 | [**deleteEventDestination()**](ConversionsApi.md#deleteEventDestination) | **DELETE** /v1/events/destinations/{destinationId} | Remove an event destination |
+| [**deleteForwardingRule()**](ConversionsApi.md#deleteForwardingRule) | **DELETE** /v1/events/forwarding-rules/{ruleId} | Remove a forwarding rule |
 | [**getConversionDestination()**](ConversionsApi.md#getConversionDestination) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Get a conversion destination |
 | [**getConversionMetrics()**](ConversionsApi.md#getConversionMetrics) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/metrics | Get attribution metrics |
 | [**getConversionsQuality()**](ConversionsApi.md#getConversionsQuality) | **GET** /v1/ads/conversions/quality | Get Event Match Quality |
@@ -25,8 +27,11 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listCustomConversionGoals()**](ConversionsApi.md#listCustomConversionGoals) | **GET** /v1/ads/conversions/custom-goals | List custom conversion goals |
 | [**listEventDestinations()**](ConversionsApi.md#listEventDestinations) | **GET** /v1/events/destinations | List event destinations |
 | [**listEvents()**](ConversionsApi.md#listEvents) | **GET** /v1/events | List stored events |
+| [**listForwardingRules()**](ConversionsApi.md#listForwardingRules) | **GET** /v1/events/forwarding-rules | List forwarding rules |
 | [**removeConversionAssociations()**](ConversionsApi.md#removeConversionAssociations) | **DELETE** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | Remove associated campaigns |
 | [**removeCustomConversionGoal()**](ConversionsApi.md#removeCustomConversionGoal) | **DELETE** /v1/ads/conversions/custom-goals/{goalId} | Remove a custom conversion goal |
+| [**restateEvent()**](ConversionsApi.md#restateEvent) | **PATCH** /v1/events/{eventId} | Change a stored event&#39;s value |
+| [**retractEvent()**](ConversionsApi.md#retractEvent) | **DELETE** /v1/events/{eventId} | Retract a stored event |
 | [**sendConversions()**](ConversionsApi.md#sendConversions) | **POST** /v1/ads/conversions | Send conversion events |
 | [**sendEvents()**](ConversionsApi.md#sendEvents) | **POST** /v1/events | Send events to every destination |
 | [**updateAdConversionGoals()**](ConversionsApi.md#updateAdConversionGoals) | **PATCH** /v1/ads/conversions/goals | Update account conversion goals |
@@ -107,7 +112,7 @@ adjustConversions($adjust_conversions_request): \Zernio\Model\AdjustConversions2
 
 Adjust uploaded conversions
 
-Retracts, restates the value of, or enhances conversions you already sent to Google Ads, for refunds or late customer data.  It adjusts conversions previously uploaded via `POST /v1/ads/conversions`: retract them, restate their value, or enhance them with first-party data. Requires the Ads add-on.  ### Google Ads only  Google handles adjustments through the classic Google Ads API (`ConversionAdjustmentUploadService`). The Data Manager `ingestEvents` path used for sending conversions is ingest-only. Meta and LinkedIn have no equivalent, so this endpoint returns `405` for those platforms.  ### Adjustment types  - `RETRACTION`: remove the conversion entirely (refund, chargeback, cancelled order, churn). - `RESTATEMENT`: change the conversion's value (upgrade / downgrade / partial refund). Send the corrected **total** value in `restatementValue` (not a delta). - `ENHANCEMENT`: attach first-party identifiers (hashed email / phone) to an existing conversion (enhanced conversions applied after the fact).  ### Identifying the original conversion  Per adjustment, send one of:  - `orderId`: the transaction ID you sent as `eventId` on the original conversion. Recommended, and **required** for `ENHANCEMENT`. - `gclid` + `conversionTime`: the click ID and the original conversion's time (unix seconds). Not available for `ENHANCEMENT`.  ### Other fields  - `destinationId` is the conversion action resource name, e.g. `customers/1234567890/conversionActions/987654321` (same value you send to `POST /v1/ads/conversions`). - PII in `user` is hashed with SHA-256 server-side (Gmail-specific normalization included). Send plaintext. - Times are unix seconds; we convert to Google's required `yyyy-MM-dd HH:mm:ss+00:00` format.  ### Limits  Up to 2000 adjustments per request. Partial failure is supported (inspect `adjustmentsFailed` / `failures[]`).
+Retracts, restates the value of, or enhances conversions you already sent to Google Ads, for refunds or late customer data. To change Zernio's stored event too, and every platform at once, use `PATCH` or `DELETE /v1/events/{eventId}`.  It adjusts conversions previously uploaded via `POST /v1/ads/conversions`: retract them, restate their value, or enhance them with first-party data. Requires the Ads add-on.  ### Google Ads only  Google handles adjustments through the classic Google Ads API (`ConversionAdjustmentUploadService`). The Data Manager `ingestEvents` path used for sending conversions is ingest-only. Meta and LinkedIn have no equivalent, so this endpoint returns `405` for those platforms.  ### Adjustment types  - `RETRACTION`: remove the conversion entirely (refund, chargeback, cancelled order, churn). - `RESTATEMENT`: change the conversion's value (upgrade / downgrade / partial refund). Send the corrected **total** value in `restatementValue` (not a delta). - `ENHANCEMENT`: attach first-party identifiers (hashed email / phone) to an existing conversion (enhanced conversions applied after the fact).  ### Identifying the original conversion  Per adjustment, send one of:  - `orderId`: the transaction ID you sent as `eventId` on the original conversion. Recommended, and **required** for `ENHANCEMENT`. - `gclid` + `conversionTime`: the click ID and the original conversion's time (unix seconds). Not available for `ENHANCEMENT`.  ### Other fields  - `destinationId` is the conversion action resource name, e.g. `customers/1234567890/conversionActions/987654321` (same value you send to `POST /v1/ads/conversions`). - PII in `user` is hashed with SHA-256 server-side (Gmail-specific normalization included). Send plaintext. - Times are unix seconds; we convert to Google's required `yyyy-MM-dd HH:mm:ss+00:00` format.  ### Limits  Up to 2000 adjustments per request. Partial failure is supported (inspect `adjustmentsFailed` / `failures[]`).
 
 ### Example
 
@@ -349,7 +354,7 @@ createEventDestination($create_event_destination_request): \Zernio\Model\CreateE
 
 Add an event destination
 
-Saves an ad platform destination for a profile, so events sent to `POST /v1/events` for that profile are forwarded to it. Pick `destinationId` from `GET /v1/accounts/{accountId}/conversion-destinations`. Set `eventNames` to forward only those events (for example only `Purchase`); leave it out to forward every event.
+The first name of `POST /v1/events/forwarding-rules`, which saves the same rule. It keeps working and answers under `destination`.
 
 ### Example
 
@@ -387,6 +392,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\CreateEventDestination201Response**](../Model/CreateEventDestination201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createForwardingRule()`
+
+```php
+createForwardingRule($create_forwarding_rule_request): \Zernio\Model\CreateForwardingRule201Response
+```
+
+Add a forwarding rule
+
+Saves where a profile's events go: every event sent to `POST /v1/events` for that profile is then forwarded to this destination.  Pick `destinationId` from `GET /v1/accounts/{accountId}/conversion-destinations`. Set `eventNames` to forward only those events, such as only `Purchase`; leave it out to forward every event.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_forwarding_rule_request = new \Zernio\Model\CreateForwardingRuleRequest(); // \Zernio\Model\CreateForwardingRuleRequest
+
+try {
+    $result = $apiInstance->createForwardingRule($create_forwarding_rule_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->createForwardingRule: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_forwarding_rule_request** | [**\Zernio\Model\CreateForwardingRuleRequest**](../Model/CreateForwardingRuleRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateForwardingRule201Response**](../Model/CreateForwardingRule201Response.md)
 
 ### Authorization
 
@@ -472,7 +537,7 @@ deleteEventDestination($destination_id): \Zernio\Model\DeleteSmsSenderId200Respo
 
 Remove an event destination
 
-Stops forwarding events to this destination. `destinationId` is the event destination `id`, not the platform destination.
+The first name of `DELETE /v1/events/forwarding-rules/{ruleId}`. `destinationId` here is the rule `id`, not the platform destination.
 
 ### Example
 
@@ -506,6 +571,66 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **destination_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\DeleteSmsSenderId200Response**](../Model/DeleteSmsSenderId200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteForwardingRule()`
+
+```php
+deleteForwardingRule($rule_id): \Zernio\Model\DeleteSmsSenderId200Response
+```
+
+Remove a forwarding rule
+
+Stops forwarding events to this rule's destination. Events already sent are not affected.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$rule_id = 'rule_id_example'; // string | The rule `id`.
+
+try {
+    $result = $apiInstance->deleteForwardingRule($rule_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->deleteForwardingRule: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **rule_id** | **string**| The rule &#x60;id&#x60;. | |
 
 ### Return type
 
@@ -1108,7 +1233,7 @@ listEventDestinations($profile_id): \Zernio\Model\ListEventDestinations200Respon
 
 List event destinations
 
-Lists the ad platform destinations that receive events sent to `POST /v1/events`, for one profile or every profile you can access.
+The first name of `GET /v1/events/forwarding-rules`, which lists the same rules. It keeps working and answers under `destinations`.
 
 ### Example
 
@@ -1216,6 +1341,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListEvents200Response**](../Model/ListEvents200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listForwardingRules()`
+
+```php
+listForwardingRules($profile_id): \Zernio\Model\ListForwardingRules200Response
+```
+
+List forwarding rules
+
+Lists the forwarding rules of one profile, or of every profile you can access. A rule sends a profile's events to one ad platform destination.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$profile_id = 'profile_id_example'; // string
+
+try {
+    $result = $apiInstance->listForwardingRules($profile_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->listForwardingRules: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **profile_id** | **string**|  | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListForwardingRules200Response**](../Model/ListForwardingRules200Response.md)
 
 ### Authorization
 
@@ -1348,6 +1533,130 @@ try {
 ### Return type
 
 [**\Zernio\Model\RemoveCustomConversionGoal200Response**](../Model/RemoveCustomConversionGoal200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `restateEvent()`
+
+```php
+restateEvent($event_id, $restate_event_request): \Zernio\Model\RestateEvent200Response
+```
+
+Change a stored event's value
+
+Changes the value of an event you already sent, for a partial refund or an upgrade. Send the corrected total, not a difference.  Zernio stores a new version of the event, so campaign results count the new value at once. It then passes the change to each destination the event reached: Google Ads restates the conversion, and platforms without a correction API report `not_supported` and keep their count.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$event_id = 'event_id_example'; // string | The `eventId` the event was sent with.
+$restate_event_request = new \Zernio\Model\RestateEventRequest(); // \Zernio\Model\RestateEventRequest
+
+try {
+    $result = $apiInstance->restateEvent($event_id, $restate_event_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->restateEvent: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **event_id** | **string**| The &#x60;eventId&#x60; the event was sent with. | |
+| **restate_event_request** | [**\Zernio\Model\RestateEventRequest**](../Model/RestateEventRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\RestateEvent200Response**](../Model/RestateEvent200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `retractEvent()`
+
+```php
+retractEvent($event_id, $profile_id): \Zernio\Model\RetractEvent200Response
+```
+
+Retract a stored event
+
+Retracts an event you already sent, for a refund, a cancelled order or a lost deal. It stops counting in campaign results and ad rules.  Each destination the event reached is told where the platform allows it: Google Ads retracts the conversion, and the other platforms report `not_supported` and keep their count. Sending the same `eventId` again stores it anew.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$event_id = 'event_id_example'; // string | The `eventId` the event was sent with.
+$profile_id = 'profile_id_example'; // string | Profile the event belongs to.
+
+try {
+    $result = $apiInstance->retractEvent($event_id, $profile_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->retractEvent: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **event_id** | **string**| The &#x60;eventId&#x60; the event was sent with. | |
+| **profile_id** | **string**| Profile the event belongs to. | |
+
+### Return type
+
+[**\Zernio\Model\RetractEvent200Response**](../Model/RetractEvent200Response.md)
 
 ### Authorization
 

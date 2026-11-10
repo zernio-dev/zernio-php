@@ -857,6 +857,8 @@ docs/Model/CreateEventDestinationRequest.md
 docs/Model/CreateFilePickerSession201Response.md
 docs/Model/CreateFilePickerSessionRequest.md
 docs/Model/CreateFolderRequest.md
+docs/Model/CreateForwardingRule201Response.md
+docs/Model/CreateForwardingRuleRequest.md
 docs/Model/CreateGoogleAdAccountRequest.md
 docs/Model/CreateGoogleAssetGroup200Response.md
 docs/Model/CreateGoogleAssetGroup201Response.md
@@ -1238,6 +1240,7 @@ docs/Model/EstimateAdReachRequest.md
 docs/Model/EventAutomationCheck.md
 docs/Model/EventAutomationCheckSubject.md
 docs/Model/EventAutomationDefinition.md
+docs/Model/EventCorrection.md
 docs/Model/EventDestination.md
 docs/Model/Expired.md
 docs/Model/ExternalPostMediaItem.md
@@ -1278,6 +1281,7 @@ docs/Model/FoodMenuItemOptionsInner.md
 docs/Model/FoodMenuLabel.md
 docs/Model/FoodMenuSection.md
 docs/Model/ForwardEmailRequest.md
+docs/Model/ForwardingRule.md
 docs/Model/FromASharedTemplate.md
 docs/Model/FromAZernioTemplate.md
 docs/Model/FromYourAutomations.md
@@ -2164,6 +2168,7 @@ docs/Model/ListFiles200ResponsePagination.md
 docs/Model/ListFormLeads200Response.md
 docs/Model/ListFormLeads200ResponseLeadsInner.md
 docs/Model/ListFormLeads200ResponseMeta.md
+docs/Model/ListForwardingRules200Response.md
 docs/Model/ListGoogleAnalyticsProperties200Response.md
 docs/Model/ListGoogleAnalyticsProperties200ResponsePropertiesInner.md
 docs/Model/ListGoogleAssetGroups200Response.md
@@ -2660,10 +2665,13 @@ docs/Model/RespondToPhoneNumberReviewerRequestDocumentsInner.md
 docs/Model/RespondToSmsRegistrationReview200Response.md
 docs/Model/RespondToSmsRegistrationReviewRequest.md
 docs/Model/RespondToSmsRegistrationReviewRequestAnswersInner.md
+docs/Model/RestateEvent200Response.md
+docs/Model/RestateEventRequest.md
 docs/Model/RestoreWorkflowVersion200Response.md
 docs/Model/RestoreWorkflowVersion200ResponseWorkflow.md
 docs/Model/ResyncPageWebhookSubscription200Response.md
 docs/Model/Retainer.md
+docs/Model/RetractEvent200Response.md
 docs/Model/RetryPost207Response.md
 docs/Model/RetryPost402Response.md
 docs/Model/RetweetPost200Response.md
@@ -4535,6 +4543,8 @@ lib/Model/CreateEventDestinationRequest.php
 lib/Model/CreateFilePickerSession201Response.php
 lib/Model/CreateFilePickerSessionRequest.php
 lib/Model/CreateFolderRequest.php
+lib/Model/CreateForwardingRule201Response.php
+lib/Model/CreateForwardingRuleRequest.php
 lib/Model/CreateGoogleAdAccountRequest.php
 lib/Model/CreateGoogleAssetGroup200Response.php
 lib/Model/CreateGoogleAssetGroup201Response.php
@@ -4916,6 +4926,7 @@ lib/Model/EstimateAdReachRequest.php
 lib/Model/EventAutomationCheck.php
 lib/Model/EventAutomationCheckSubject.php
 lib/Model/EventAutomationDefinition.php
+lib/Model/EventCorrection.php
 lib/Model/EventDestination.php
 lib/Model/Expired.php
 lib/Model/ExternalPostMediaItem.php
@@ -4956,6 +4967,7 @@ lib/Model/FoodMenuItemOptionsInner.php
 lib/Model/FoodMenuLabel.php
 lib/Model/FoodMenuSection.php
 lib/Model/ForwardEmailRequest.php
+lib/Model/ForwardingRule.php
 lib/Model/FromASharedTemplate.php
 lib/Model/FromAZernioTemplate.php
 lib/Model/FromYourAutomations.php
@@ -5842,6 +5854,7 @@ lib/Model/ListFiles200ResponsePagination.php
 lib/Model/ListFormLeads200Response.php
 lib/Model/ListFormLeads200ResponseLeadsInner.php
 lib/Model/ListFormLeads200ResponseMeta.php
+lib/Model/ListForwardingRules200Response.php
 lib/Model/ListGoogleAnalyticsProperties200Response.php
 lib/Model/ListGoogleAnalyticsProperties200ResponsePropertiesInner.php
 lib/Model/ListGoogleAssetGroups200Response.php
@@ -6339,10 +6352,13 @@ lib/Model/RespondToPhoneNumberReviewerRequestDocumentsInner.php
 lib/Model/RespondToSmsRegistrationReview200Response.php
 lib/Model/RespondToSmsRegistrationReviewRequest.php
 lib/Model/RespondToSmsRegistrationReviewRequestAnswersInner.php
+lib/Model/RestateEvent200Response.php
+lib/Model/RestateEventRequest.php
 lib/Model/RestoreWorkflowVersion200Response.php
 lib/Model/RestoreWorkflowVersion200ResponseWorkflow.php
 lib/Model/ResyncPageWebhookSubscription200Response.php
 lib/Model/Retainer.php
+lib/Model/RetractEvent200Response.php
 lib/Model/RetryPost207Response.php
 lib/Model/RetryPost402Response.php
 lib/Model/RetweetPost200Response.php
@@ -7357,3 +7373,11 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/CreateForwardingRule201ResponseTest.php
+test/Model/CreateForwardingRuleRequestTest.php
+test/Model/EventCorrectionTest.php
+test/Model/ForwardingRuleTest.php
+test/Model/ListForwardingRules200ResponseTest.php
+test/Model/RestateEvent200ResponseTest.php
+test/Model/RestateEventRequestTest.php
+test/Model/RetractEvent200ResponseTest.php

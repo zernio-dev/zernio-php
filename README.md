@@ -693,8 +693,10 @@ Class | Method | HTTP request | Description
 *ConversionsApi* | [**createConversionDestination**](docs/Api/ConversionsApi.md#createconversiondestination) | **POST** /v1/accounts/{accountId}/conversion-destinations | Create a conversion destination
 *ConversionsApi* | [**createCustomConversionGoal**](docs/Api/ConversionsApi.md#createcustomconversiongoal) | **POST** /v1/ads/conversions/custom-goals | Create a custom conversion goal
 *ConversionsApi* | [**createEventDestination**](docs/Api/ConversionsApi.md#createeventdestination) | **POST** /v1/events/destinations | Add an event destination
+*ConversionsApi* | [**createForwardingRule**](docs/Api/ConversionsApi.md#createforwardingrule) | **POST** /v1/events/forwarding-rules | Add a forwarding rule
 *ConversionsApi* | [**deleteConversionDestination**](docs/Api/ConversionsApi.md#deleteconversiondestination) | **DELETE** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Delete a conversion destination
 *ConversionsApi* | [**deleteEventDestination**](docs/Api/ConversionsApi.md#deleteeventdestination) | **DELETE** /v1/events/destinations/{destinationId} | Remove an event destination
+*ConversionsApi* | [**deleteForwardingRule**](docs/Api/ConversionsApi.md#deleteforwardingrule) | **DELETE** /v1/events/forwarding-rules/{ruleId} | Remove a forwarding rule
 *ConversionsApi* | [**getConversionDestination**](docs/Api/ConversionsApi.md#getconversiondestination) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Get a conversion destination
 *ConversionsApi* | [**getConversionMetrics**](docs/Api/ConversionsApi.md#getconversionmetrics) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/metrics | Get attribution metrics
 *ConversionsApi* | [**getConversionsQuality**](docs/Api/ConversionsApi.md#getconversionsquality) | **GET** /v1/ads/conversions/quality | Get Event Match Quality
@@ -706,8 +708,11 @@ Class | Method | HTTP request | Description
 *ConversionsApi* | [**listCustomConversionGoals**](docs/Api/ConversionsApi.md#listcustomconversiongoals) | **GET** /v1/ads/conversions/custom-goals | List custom conversion goals
 *ConversionsApi* | [**listEventDestinations**](docs/Api/ConversionsApi.md#listeventdestinations) | **GET** /v1/events/destinations | List event destinations
 *ConversionsApi* | [**listEvents**](docs/Api/ConversionsApi.md#listevents) | **GET** /v1/events | List stored events
+*ConversionsApi* | [**listForwardingRules**](docs/Api/ConversionsApi.md#listforwardingrules) | **GET** /v1/events/forwarding-rules | List forwarding rules
 *ConversionsApi* | [**removeConversionAssociations**](docs/Api/ConversionsApi.md#removeconversionassociations) | **DELETE** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | Remove associated campaigns
 *ConversionsApi* | [**removeCustomConversionGoal**](docs/Api/ConversionsApi.md#removecustomconversiongoal) | **DELETE** /v1/ads/conversions/custom-goals/{goalId} | Remove a custom conversion goal
+*ConversionsApi* | [**restateEvent**](docs/Api/ConversionsApi.md#restateevent) | **PATCH** /v1/events/{eventId} | Change a stored event&#39;s value
+*ConversionsApi* | [**retractEvent**](docs/Api/ConversionsApi.md#retractevent) | **DELETE** /v1/events/{eventId} | Retract a stored event
 *ConversionsApi* | [**sendConversions**](docs/Api/ConversionsApi.md#sendconversions) | **POST** /v1/ads/conversions | Send conversion events
 *ConversionsApi* | [**sendEvents**](docs/Api/ConversionsApi.md#sendevents) | **POST** /v1/events | Send events to every destination
 *ConversionsApi* | [**updateAdConversionGoals**](docs/Api/ConversionsApi.md#updateadconversiongoals) | **PATCH** /v1/ads/conversions/goals | Update account conversion goals
@@ -2066,6 +2071,8 @@ Class | Method | HTTP request | Description
 - [CreateFilePickerSession201Response](docs/Model/CreateFilePickerSession201Response.md)
 - [CreateFilePickerSessionRequest](docs/Model/CreateFilePickerSessionRequest.md)
 - [CreateFolderRequest](docs/Model/CreateFolderRequest.md)
+- [CreateForwardingRule201Response](docs/Model/CreateForwardingRule201Response.md)
+- [CreateForwardingRuleRequest](docs/Model/CreateForwardingRuleRequest.md)
 - [CreateGoogleAdAccountRequest](docs/Model/CreateGoogleAdAccountRequest.md)
 - [CreateGoogleAssetGroup200Response](docs/Model/CreateGoogleAssetGroup200Response.md)
 - [CreateGoogleAssetGroup201Response](docs/Model/CreateGoogleAssetGroup201Response.md)
@@ -2447,6 +2454,7 @@ Class | Method | HTTP request | Description
 - [EventAutomationCheck](docs/Model/EventAutomationCheck.md)
 - [EventAutomationCheckSubject](docs/Model/EventAutomationCheckSubject.md)
 - [EventAutomationDefinition](docs/Model/EventAutomationDefinition.md)
+- [EventCorrection](docs/Model/EventCorrection.md)
 - [EventDestination](docs/Model/EventDestination.md)
 - [Expired](docs/Model/Expired.md)
 - [ExternalPostMediaItem](docs/Model/ExternalPostMediaItem.md)
@@ -2487,6 +2495,7 @@ Class | Method | HTTP request | Description
 - [FoodMenuLabel](docs/Model/FoodMenuLabel.md)
 - [FoodMenuSection](docs/Model/FoodMenuSection.md)
 - [ForwardEmailRequest](docs/Model/ForwardEmailRequest.md)
+- [ForwardingRule](docs/Model/ForwardingRule.md)
 - [FromASharedTemplate](docs/Model/FromASharedTemplate.md)
 - [FromAZernioTemplate](docs/Model/FromAZernioTemplate.md)
 - [FromYourAutomations](docs/Model/FromYourAutomations.md)
@@ -3373,6 +3382,7 @@ Class | Method | HTTP request | Description
 - [ListFormLeads200Response](docs/Model/ListFormLeads200Response.md)
 - [ListFormLeads200ResponseLeadsInner](docs/Model/ListFormLeads200ResponseLeadsInner.md)
 - [ListFormLeads200ResponseMeta](docs/Model/ListFormLeads200ResponseMeta.md)
+- [ListForwardingRules200Response](docs/Model/ListForwardingRules200Response.md)
 - [ListGoogleAnalyticsProperties200Response](docs/Model/ListGoogleAnalyticsProperties200Response.md)
 - [ListGoogleAnalyticsProperties200ResponsePropertiesInner](docs/Model/ListGoogleAnalyticsProperties200ResponsePropertiesInner.md)
 - [ListGoogleAssetGroups200Response](docs/Model/ListGoogleAssetGroups200Response.md)
@@ -3869,10 +3879,13 @@ Class | Method | HTTP request | Description
 - [RespondToSmsRegistrationReview200Response](docs/Model/RespondToSmsRegistrationReview200Response.md)
 - [RespondToSmsRegistrationReviewRequest](docs/Model/RespondToSmsRegistrationReviewRequest.md)
 - [RespondToSmsRegistrationReviewRequestAnswersInner](docs/Model/RespondToSmsRegistrationReviewRequestAnswersInner.md)
+- [RestateEvent200Response](docs/Model/RestateEvent200Response.md)
+- [RestateEventRequest](docs/Model/RestateEventRequest.md)
 - [RestoreWorkflowVersion200Response](docs/Model/RestoreWorkflowVersion200Response.md)
 - [RestoreWorkflowVersion200ResponseWorkflow](docs/Model/RestoreWorkflowVersion200ResponseWorkflow.md)
 - [ResyncPageWebhookSubscription200Response](docs/Model/ResyncPageWebhookSubscription200Response.md)
 - [Retainer](docs/Model/Retainer.md)
+- [RetractEvent200Response](docs/Model/RetractEvent200Response.md)
 - [RetryPost207Response](docs/Model/RetryPost207Response.md)
 - [RetryPost402Response](docs/Model/RetryPost402Response.md)
 - [RetweetPost200Response](docs/Model/RetweetPost200Response.md)
@@ -4917,6 +4930,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.554.0`
+- API version: `1.555.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`
