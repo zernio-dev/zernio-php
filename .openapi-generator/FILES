@@ -7201,13 +7201,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreateEmailSignature201ResponseTest.php
-test/Model/CreateEmailSignatureRequestTest.php
-test/Model/DeclareEmailSendAs200ResponseTest.php
-test/Model/DeclareEmailSendAsRequestTest.php
-test/Model/DeleteEmailSendAs200ResponseDataTest.php
-test/Model/DeleteEmailSendAs200ResponseTest.php
-test/Model/EmailSendAsSignatureTest.php
-test/Model/EmailSignatureTest.php
-test/Model/ListEmailSignatures200ResponseTest.php
-test/Model/UpdateEmailSignatureRequestTest.php
