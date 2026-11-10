@@ -784,18 +784,21 @@ Class | Method | HTTP request | Description
 *DiscordApi* | [**updateDiscordScheduledEvent**](docs/Api/DiscordApi.md#updatediscordscheduledevent) | **PATCH** /v1/discord/guilds/{guildId}/events/{eventId} | Update a Discord scheduled event
 *DiscordApi* | [**updateDiscordSettings**](docs/Api/DiscordApi.md#updatediscordsettings) | **PATCH** /v1/accounts/{accountId}/discord-settings | Update Discord settings
 *EmailApi* | [**cancelScheduledEmail**](docs/Api/EmailApi.md#cancelscheduledemail) | **DELETE** /v1/email/messages/scheduled/{scheduleId} | Cancel a scheduled email
+*EmailApi* | [**createEmailLabel**](docs/Api/EmailApi.md#createemaillabel) | **POST** /v1/email/labels | Create a label
+*EmailApi* | [**deleteEmailLabel**](docs/Api/EmailApi.md#deleteemaillabel) | **DELETE** /v1/email/labels/{labelId} | Delete a label
 *EmailApi* | [**downloadEmailAttachment**](docs/Api/EmailApi.md#downloademailattachment) | **GET** /v1/email/attachments/{attachmentId} | Download an attachment
 *EmailApi* | [**getEmailMessage**](docs/Api/EmailApi.md#getemailmessage) | **GET** /v1/email/messages/{messageId} | Get an email message
 *EmailApi* | [**getEmailThread**](docs/Api/EmailApi.md#getemailthread) | **GET** /v1/email/threads/{threadId} | Get an email thread with its messages
 *EmailApi* | [**getScheduledEmail**](docs/Api/EmailApi.md#getscheduledemail) | **GET** /v1/email/messages/scheduled/{scheduleId} | Get a scheduled email
 *EmailApi* | [**listEmailFolders**](docs/Api/EmailApi.md#listemailfolders) | **GET** /v1/email/folders | List mailbox folders
+*EmailApi* | [**listEmailLabels**](docs/Api/EmailApi.md#listemaillabels) | **GET** /v1/email/labels | List labels
 *EmailApi* | [**listEmailMessages**](docs/Api/EmailApi.md#listemailmessages) | **GET** /v1/email/messages | List email messages
 *EmailApi* | [**listEmailThreads**](docs/Api/EmailApi.md#listemailthreads) | **GET** /v1/email/threads | List email threads
 *EmailApi* | [**listScheduledEmails**](docs/Api/EmailApi.md#listscheduledemails) | **GET** /v1/email/messages/scheduled | List scheduled emails
 *EmailApi* | [**replyEmailMessage**](docs/Api/EmailApi.md#replyemailmessage) | **POST** /v1/email/messages/{messageId}/reply | Reply to a message
 *EmailApi* | [**sendEmailMessage**](docs/Api/EmailApi.md#sendemailmessage) | **POST** /v1/email/messages | Send an email
 *EmailApi* | [**trashEmailMessage**](docs/Api/EmailApi.md#trashemailmessage) | **DELETE** /v1/email/messages/{messageId} | Move a message to trash
-*EmailApi* | [**updateEmailMessage**](docs/Api/EmailApi.md#updateemailmessage) | **PATCH** /v1/email/messages/{messageId} | Mark read or starred, or move a message
+*EmailApi* | [**updateEmailMessage**](docs/Api/EmailApi.md#updateemailmessage) | **PATCH** /v1/email/messages/{messageId} | Mark read or starred, label, or move a message
 *EmailApi* | [**updateEmailThread**](docs/Api/EmailApi.md#updateemailthread) | **PATCH** /v1/email/threads/{threadId} | Update every message in a thread
 *FeedbackApi* | [**submitFeedback**](docs/Api/FeedbackApi.md#submitfeedback) | **POST** /v1/feedback | Submit feedback
 *FilesApi* | [**createFilePickerSession**](docs/Api/FilesApi.md#createfilepickersession) | **POST** /v1/files/picker-sessions | Create a hosted Google Picker session
@@ -2006,6 +2009,9 @@ Class | Method | HTTP request | Description
 - [CreateDiscordThread200Response](docs/Model/CreateDiscordThread200Response.md)
 - [CreateDiscordThread200ResponseData](docs/Model/CreateDiscordThread200ResponseData.md)
 - [CreateDiscordThreadRequest](docs/Model/CreateDiscordThreadRequest.md)
+- [CreateEmailLabel200Response](docs/Model/CreateEmailLabel200Response.md)
+- [CreateEmailLabelRequest](docs/Model/CreateEmailLabelRequest.md)
+- [CreateEmailLabelRequestColor](docs/Model/CreateEmailLabelRequestColor.md)
 - [CreateEventDestination201Response](docs/Model/CreateEventDestination201Response.md)
 - [CreateEventDestinationRequest](docs/Model/CreateEventDestinationRequest.md)
 - [CreateFilePickerSession201Response](docs/Model/CreateFilePickerSession201Response.md)
@@ -2231,8 +2237,6 @@ Class | Method | HTTP request | Description
 - [DeleteAdVideo200Response](docs/Model/DeleteAdVideo200Response.md)
 - [DeleteAutomationTemplate200Response](docs/Model/DeleteAutomationTemplate200Response.md)
 - [DeleteBrandedCallingEnterprise200Response](docs/Model/DeleteBrandedCallingEnterprise200Response.md)
-- [DeleteCalendarEvent200Response](docs/Model/DeleteCalendarEvent200Response.md)
-- [DeleteCalendarEvent200ResponseData](docs/Model/DeleteCalendarEvent200ResponseData.md)
 - [DeleteCommerceCatalogSync200Response](docs/Model/DeleteCommerceCatalogSync200Response.md)
 - [DeleteCommerceCollection200Response](docs/Model/DeleteCommerceCollection200Response.md)
 - [DeleteCommerceDiscount200Response](docs/Model/DeleteCommerceDiscount200Response.md)
@@ -2244,6 +2248,8 @@ Class | Method | HTTP request | Description
 - [DeleteCommerceProductMetafields200Response](docs/Model/DeleteCommerceProductMetafields200Response.md)
 - [DeleteCommerceRedirect200Response](docs/Model/DeleteCommerceRedirect200Response.md)
 - [DeleteDiscordScheduledEvent200Response](docs/Model/DeleteDiscordScheduledEvent200Response.md)
+- [DeleteEmailLabel200Response](docs/Model/DeleteEmailLabel200Response.md)
+- [DeleteEmailLabel200ResponseData](docs/Model/DeleteEmailLabel200ResponseData.md)
 - [DeleteGoogleBusinessMedia200Response](docs/Model/DeleteGoogleBusinessMedia200Response.md)
 - [DeleteGoogleBusinessPlaceAction200Response](docs/Model/DeleteGoogleBusinessPlaceAction200Response.md)
 - [DeleteGoogleBusinessReviewReply200Response](docs/Model/DeleteGoogleBusinessReviewReply200Response.md)
@@ -2311,6 +2317,8 @@ Class | Method | HTTP request | Description
 - [EmailAddress](docs/Model/EmailAddress.md)
 - [EmailAttachment](docs/Model/EmailAttachment.md)
 - [EmailFolder](docs/Model/EmailFolder.md)
+- [EmailLabel](docs/Model/EmailLabel.md)
+- [EmailLabelColor](docs/Model/EmailLabelColor.md)
 - [EmailListMeta](docs/Model/EmailListMeta.md)
 - [EmailMessage](docs/Model/EmailMessage.md)
 - [EmailMessagePatch](docs/Model/EmailMessagePatch.md)
@@ -3223,6 +3231,7 @@ Class | Method | HTTP request | Description
 - [ListDiscordPinnedMessages200ResponseDataInner](docs/Model/ListDiscordPinnedMessages200ResponseDataInner.md)
 - [ListDiscordScheduledEvents200Response](docs/Model/ListDiscordScheduledEvents200Response.md)
 - [ListEmailFolders200Response](docs/Model/ListEmailFolders200Response.md)
+- [ListEmailLabels200Response](docs/Model/ListEmailLabels200Response.md)
 - [ListEmailMessages200Response](docs/Model/ListEmailMessages200Response.md)
 - [ListEmailThreads200Response](docs/Model/ListEmailThreads200Response.md)
 - [ListEventDestinations200Response](docs/Model/ListEventDestinations200Response.md)
@@ -4753,6 +4762,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.547.1`
+- API version: `1.547.3`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

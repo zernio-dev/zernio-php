@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **date** | **\DateTime** |  | [optional]
 **unread** | **bool** |  | [optional]
 **starred** | **bool** |  | [optional]
+**labels** | **string[]** | Gmail: the ids of the user labels on the message (names come from &#x60;GET /v1/email/labels&#x60;). Outlook: its category names. | [optional]
 **metadata** | **array<string,string>** |  | [optional]
 **tracking_id** | **string** | Set on a send with &#x60;trackOpens&#x60;, &#x60;trackLinks&#x60; or &#x60;trackReplies&#x60;; the email.* webhooks carry it. | [optional]
 

@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **account_id** | **string** |  | [optional]
 **status** | **string** |  | [optional]
 **scheduled_for** | **\DateTime** |  | [optional]
+**hold_as_draft** | **bool** | True when the email waits as a draft in the mailbox and is sent as that draft stands at &#x60;scheduledFor&#x60;. | [optional]
+**draft_id** | **string** | The mailbox draft of a &#x60;holdAsDraft&#x60; send: the Gmail draft id, or the Outlook message id. &#x60;null&#x60; otherwise. | [optional]
 **to** | [**\Zernio\Model\EmailAddress[]**](EmailAddress.md) |  | [optional]
 **subject** | **string** | Empty on a reply that keeps the thread subject. &#x60;null&#x60; once the send finishes under zero content retention. | [optional]
 **content_not_retained** | **bool** | Present and &#x60;true&#x60; when the email content was dropped under [zero content retention](/security/zero-content-retention). | [optional]

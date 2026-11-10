@@ -837,6 +837,9 @@ docs/Model/CreateDiscordScheduledEventRequestEntityOneOf2.md
 docs/Model/CreateDiscordThread200Response.md
 docs/Model/CreateDiscordThread200ResponseData.md
 docs/Model/CreateDiscordThreadRequest.md
+docs/Model/CreateEmailLabel200Response.md
+docs/Model/CreateEmailLabelRequest.md
+docs/Model/CreateEmailLabelRequestColor.md
 docs/Model/CreateEventDestination201Response.md
 docs/Model/CreateEventDestinationRequest.md
 docs/Model/CreateFilePickerSession201Response.md
@@ -1062,8 +1065,6 @@ docs/Model/DeleteAdSet200Response.md
 docs/Model/DeleteAdVideo200Response.md
 docs/Model/DeleteAutomationTemplate200Response.md
 docs/Model/DeleteBrandedCallingEnterprise200Response.md
-docs/Model/DeleteCalendarEvent200Response.md
-docs/Model/DeleteCalendarEvent200ResponseData.md
 docs/Model/DeleteCommerceCatalogSync200Response.md
 docs/Model/DeleteCommerceCollection200Response.md
 docs/Model/DeleteCommerceDiscount200Response.md
@@ -1075,6 +1076,8 @@ docs/Model/DeleteCommercePriceListPrices200Response.md
 docs/Model/DeleteCommerceProductMetafields200Response.md
 docs/Model/DeleteCommerceRedirect200Response.md
 docs/Model/DeleteDiscordScheduledEvent200Response.md
+docs/Model/DeleteEmailLabel200Response.md
+docs/Model/DeleteEmailLabel200ResponseData.md
 docs/Model/DeleteGoogleBusinessMedia200Response.md
 docs/Model/DeleteGoogleBusinessPlaceAction200Response.md
 docs/Model/DeleteGoogleBusinessReviewReply200Response.md
@@ -1142,6 +1145,8 @@ docs/Model/EditPostRequest.md
 docs/Model/EmailAddress.md
 docs/Model/EmailAttachment.md
 docs/Model/EmailFolder.md
+docs/Model/EmailLabel.md
+docs/Model/EmailLabelColor.md
 docs/Model/EmailListMeta.md
 docs/Model/EmailMessage.md
 docs/Model/EmailMessagePatch.md
@@ -2054,6 +2059,7 @@ docs/Model/ListDiscordPinnedMessages200Response.md
 docs/Model/ListDiscordPinnedMessages200ResponseDataInner.md
 docs/Model/ListDiscordScheduledEvents200Response.md
 docs/Model/ListEmailFolders200Response.md
+docs/Model/ListEmailLabels200Response.md
 docs/Model/ListEmailMessages200Response.md
 docs/Model/ListEmailThreads200Response.md
 docs/Model/ListEventDestinations200Response.md
@@ -4391,6 +4397,9 @@ lib/Model/CreateDiscordScheduledEventRequestEntityOneOf2.php
 lib/Model/CreateDiscordThread200Response.php
 lib/Model/CreateDiscordThread200ResponseData.php
 lib/Model/CreateDiscordThreadRequest.php
+lib/Model/CreateEmailLabel200Response.php
+lib/Model/CreateEmailLabelRequest.php
+lib/Model/CreateEmailLabelRequestColor.php
 lib/Model/CreateEventDestination201Response.php
 lib/Model/CreateEventDestinationRequest.php
 lib/Model/CreateFilePickerSession201Response.php
@@ -4616,8 +4625,6 @@ lib/Model/DeleteAdSet200Response.php
 lib/Model/DeleteAdVideo200Response.php
 lib/Model/DeleteAutomationTemplate200Response.php
 lib/Model/DeleteBrandedCallingEnterprise200Response.php
-lib/Model/DeleteCalendarEvent200Response.php
-lib/Model/DeleteCalendarEvent200ResponseData.php
 lib/Model/DeleteCommerceCatalogSync200Response.php
 lib/Model/DeleteCommerceCollection200Response.php
 lib/Model/DeleteCommerceDiscount200Response.php
@@ -4629,6 +4636,8 @@ lib/Model/DeleteCommercePriceListPrices200Response.php
 lib/Model/DeleteCommerceProductMetafields200Response.php
 lib/Model/DeleteCommerceRedirect200Response.php
 lib/Model/DeleteDiscordScheduledEvent200Response.php
+lib/Model/DeleteEmailLabel200Response.php
+lib/Model/DeleteEmailLabel200ResponseData.php
 lib/Model/DeleteGoogleBusinessMedia200Response.php
 lib/Model/DeleteGoogleBusinessPlaceAction200Response.php
 lib/Model/DeleteGoogleBusinessReviewReply200Response.php
@@ -4696,6 +4705,8 @@ lib/Model/EditPostRequest.php
 lib/Model/EmailAddress.php
 lib/Model/EmailAttachment.php
 lib/Model/EmailFolder.php
+lib/Model/EmailLabel.php
+lib/Model/EmailLabelColor.php
 lib/Model/EmailListMeta.php
 lib/Model/EmailMessage.php
 lib/Model/EmailMessagePatch.php
@@ -5608,6 +5619,7 @@ lib/Model/ListDiscordPinnedMessages200Response.php
 lib/Model/ListDiscordPinnedMessages200ResponseDataInner.php
 lib/Model/ListDiscordScheduledEvents200Response.php
 lib/Model/ListEmailFolders200Response.php
+lib/Model/ListEmailLabels200Response.php
 lib/Model/ListEmailMessages200Response.php
 lib/Model/ListEmailThreads200Response.php
 lib/Model/ListEventDestinations200Response.php
@@ -7109,3 +7121,11 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/CreateEmailLabel200ResponseTest.php
+test/Model/CreateEmailLabelRequestColorTest.php
+test/Model/CreateEmailLabelRequestTest.php
+test/Model/DeleteEmailLabel200ResponseDataTest.php
+test/Model/DeleteEmailLabel200ResponseTest.php
+test/Model/EmailLabelColorTest.php
+test/Model/EmailLabelTest.php
+test/Model/ListEmailLabels200ResponseTest.php

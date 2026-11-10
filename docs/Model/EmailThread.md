@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **message_ids** | **string[]** |  | [optional]
 **draft_ids** | **string[]** |  | [optional]
 **folders** | **string[]** |  | [optional]
+**labels** | **string[]** | Every label (Gmail) or category (Outlook) on any message of the thread. | [optional]
 **has_attachments** | **bool** |  | [optional]
 **has_drafts** | **bool** |  | [optional]
 **unread** | **bool** |  | [optional]
