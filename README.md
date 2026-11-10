@@ -600,6 +600,7 @@ Class | Method | HTTP request | Description
 *CommerceApi* | [**updateCommerceProductPrices**](docs/Api/CommerceApi.md#updatecommerceproductprices) | **POST** /v1/commerce/products/{productId}/price | Update variant prices
 *CommerceApi* | [**updateCommerceRedirect**](docs/Api/CommerceApi.md#updatecommerceredirect) | **PATCH** /v1/commerce/redirects/{redirectId} | Update a URL redirect
 *CommerceApi* | [**upsertCommerceMarketingActivity**](docs/Api/CommerceApi.md#upsertcommercemarketingactivity) | **PUT** /v1/commerce/marketing-activities | Record a marketing activity
+*ConnectApi* | [**addOrgConnectionMailbox**](docs/Api/ConnectApi.md#addorgconnectionmailbox) | **POST** /v1/org-connections/{orgConnectionId}/mailboxes | Add a mailbox from an organization connection
 *ConnectApi* | [**assignGoogleBusinessLocation**](docs/Api/ConnectApi.md#assigngooglebusinesslocation) | **POST** /v1/accounts/{accountId}/gmb-locations/assign | Assign Google Business Profile location to another profile
 *ConnectApi* | [**completeMetaAdsBusinessLogin**](docs/Api/ConnectApi.md#completemetaadsbusinesslogin) | **GET** /v1/connect/meta-ads/callback | Complete Meta business login
 *ConnectApi* | [**completeTelegramConnect**](docs/Api/ConnectApi.md#completetelegramconnect) | **PATCH** /v1/connect/telegram | Check Telegram status
@@ -616,11 +617,14 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**connectWhatsAppEmbeddedSignup**](docs/Api/ConnectApi.md#connectwhatsappembeddedsignup) | **POST** /v1/connect/whatsapp/embedded-signup | Connect WhatsApp from Embedded Signup
 *ConnectApi* | [**connectWhopAdsCredentials**](docs/Api/ConnectApi.md#connectwhopadscredentials) | **POST** /v1/connect/whop-ads/credentials | Connect a Whop account
 *ConnectApi* | [**connectWordPressWithApplicationPassword**](docs/Api/ConnectApi.md#connectwordpresswithapplicationpassword) | **POST** /v1/connect/wordpress/token | Connect self-hosted WordPress with an application password
+*ConnectApi* | [**createGoogleOrgConnection**](docs/Api/ConnectApi.md#creategoogleorgconnection) | **POST** /v1/connect/google/org | Start a Google Workspace organization connection
+*ConnectApi* | [**createMicrosoftOrgConnection**](docs/Api/ConnectApi.md#createmicrosoftorgconnection) | **POST** /v1/connect/microsoft/org | Start a Microsoft 365 organization connection
 *ConnectApi* | [**createOAuthApp**](docs/Api/ConnectApi.md#createoauthapp) | **POST** /v1/connect/oauth-apps | Add an OAuth app
 *ConnectApi* | [**createPinterestBoard**](docs/Api/ConnectApi.md#createpinterestboard) | **POST** /v1/accounts/{accountId}/pinterest-boards | Create Pinterest board
 *ConnectApi* | [**createPlatformInvite**](docs/Api/ConnectApi.md#createplatforminvite) | **POST** /v1/platform-invites | Create a connect link
 *ConnectApi* | [**createYoutubePlaylist**](docs/Api/ConnectApi.md#createyoutubeplaylist) | **POST** /v1/accounts/{accountId}/youtube-playlists | Create YouTube playlist
 *ConnectApi* | [**deleteOAuthApp**](docs/Api/ConnectApi.md#deleteoauthapp) | **DELETE** /v1/connect/oauth-apps/{appId} | Remove an OAuth app
+*ConnectApi* | [**deleteOrgConnection**](docs/Api/ConnectApi.md#deleteorgconnection) | **DELETE** /v1/org-connections/{orgConnectionId} | Delete an organization connection
 *ConnectApi* | [**getConnectHandoff**](docs/Api/ConnectApi.md#getconnecthandoff) | **GET** /v1/connect/handoffs/{handoffId} | Get a phone handoff
 *ConnectApi* | [**getConnectUrl**](docs/Api/ConnectApi.md#getconnecturl) | **GET** /v1/connect/{platform} | Get OAuth connect URL
 *ConnectApi* | [**getConnectWelcomeScreen**](docs/Api/ConnectApi.md#getconnectwelcomescreen) | **GET** /v1/connect/welcome-screen | Get the saved welcome screen
@@ -631,6 +635,7 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**getHubSpotConnectUrl**](docs/Api/ConnectApi.md#gethubspotconnecturl) | **GET** /v1/connect/hubspot | Get HubSpot OAuth connect URL
 *ConnectApi* | [**getLinkedInOrganizations**](docs/Api/ConnectApi.md#getlinkedinorganizations) | **GET** /v1/accounts/{accountId}/linkedin-organizations | List LinkedIn orgs
 *ConnectApi* | [**getOAuthApp**](docs/Api/ConnectApi.md#getoauthapp) | **GET** /v1/connect/oauth-apps/{appId} | Get an OAuth app
+*ConnectApi* | [**getOrgConnection**](docs/Api/ConnectApi.md#getorgconnection) | **GET** /v1/org-connections/{orgConnectionId} | Get an organization connection
 *ConnectApi* | [**getPageWebhookSubscription**](docs/Api/ConnectApi.md#getpagewebhooksubscription) | **GET** /v1/accounts/{accountId}/webhook-subscription | Read an account&#39;s webhook subscription
 *ConnectApi* | [**getPendingOAuthData**](docs/Api/ConnectApi.md#getpendingoauthdata) | **GET** /v1/connect/pending-data | Get pending OAuth data
 *ConnectApi* | [**getPinterestBoards**](docs/Api/ConnectApi.md#getpinterestboards) | **GET** /v1/accounts/{accountId}/pinterest-boards | List Pinterest boards
@@ -653,6 +658,8 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**listInstagramPages**](docs/Api/ConnectApi.md#listinstagrampages) | **GET** /v1/connect/instagram/select-account | List Pages with a linked Instagram account
 *ConnectApi* | [**listLinkedInOrganizations**](docs/Api/ConnectApi.md#listlinkedinorganizations) | **GET** /v1/connect/linkedin/organizations | List LinkedIn orgs
 *ConnectApi* | [**listOAuthApps**](docs/Api/ConnectApi.md#listoauthapps) | **GET** /v1/connect/oauth-apps | List your OAuth apps
+*ConnectApi* | [**listOrgConnectionUsers**](docs/Api/ConnectApi.md#listorgconnectionusers) | **GET** /v1/org-connections/{orgConnectionId}/users | List an organization&#39;s users
+*ConnectApi* | [**listOrgConnections**](docs/Api/ConnectApi.md#listorgconnections) | **GET** /v1/org-connections | List organization connections
 *ConnectApi* | [**listPinterestBoardsForSelection**](docs/Api/ConnectApi.md#listpinterestboardsforselection) | **GET** /v1/connect/pinterest/select-board | List Pinterest boards
 *ConnectApi* | [**listSlackChannels**](docs/Api/ConnectApi.md#listslackchannels) | **GET** /v1/connect/slack | List Slack channels for the channel picker
 *ConnectApi* | [**listSnapchatProfiles**](docs/Api/ConnectApi.md#listsnapchatprofiles) | **GET** /v1/connect/snapchat/select-profile | List Snapchat profiles
@@ -673,9 +680,11 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**updateGmbLocation**](docs/Api/ConnectApi.md#updategmblocation) | **PUT** /v1/accounts/{accountId}/gmb-locations | Update Google Business Profile location
 *ConnectApi* | [**updateLinkedInOrganization**](docs/Api/ConnectApi.md#updatelinkedinorganization) | **PUT** /v1/accounts/{accountId}/linkedin-organization | Switch LinkedIn account type
 *ConnectApi* | [**updateOAuthApp**](docs/Api/ConnectApi.md#updateoauthapp) | **PATCH** /v1/connect/oauth-apps/{appId} | Update an OAuth app
+*ConnectApi* | [**updateOrgConnection**](docs/Api/ConnectApi.md#updateorgconnection) | **PATCH** /v1/org-connections/{orgConnectionId} | Update an organization connection
 *ConnectApi* | [**updatePinterestBoards**](docs/Api/ConnectApi.md#updatepinterestboards) | **PUT** /v1/accounts/{accountId}/pinterest-boards | Set default Pinterest board
 *ConnectApi* | [**updateRedditSubreddits**](docs/Api/ConnectApi.md#updateredditsubreddits) | **PUT** /v1/accounts/{accountId}/reddit-subreddits | Set default subreddit
 *ConnectApi* | [**updateYoutubeDefaultPlaylist**](docs/Api/ConnectApi.md#updateyoutubedefaultplaylist) | **PUT** /v1/accounts/{accountId}/youtube-playlists | Set default YouTube playlist
+*ConnectApi* | [**verifyOrgConnection**](docs/Api/ConnectApi.md#verifyorgconnection) | **POST** /v1/org-connections/{orgConnectionId}/verify | Verify an organization connection
 *ConnectApi* | [**voteRedditThing**](docs/Api/ConnectApi.md#voteredditthing) | **POST** /v1/accounts/{accountId}/reddit-vote | Vote on a Reddit post or comment
 *ConnectedAppsApi* | [**listConnectedApps**](docs/Api/ConnectedAppsApi.md#listconnectedapps) | **GET** /v1/me/connected-apps | List connected apps
 *ConnectedAppsApi* | [**revokeConnectedApp**](docs/Api/ConnectedAppsApi.md#revokeconnectedapp) | **DELETE** /v1/me/connected-apps/{clientId} | Revoke connected app
@@ -1450,6 +1459,7 @@ Class | Method | HTTP request | Description
 - [AddImessageSandboxContactRequest](docs/Model/AddImessageSandboxContactRequest.md)
 - [AddMessageReaction200Response](docs/Model/AddMessageReaction200Response.md)
 - [AddMessageReactionRequest](docs/Model/AddMessageReactionRequest.md)
+- [AddOrgConnectionMailboxRequest](docs/Model/AddOrgConnectionMailboxRequest.md)
 - [AddRcsTestDevice201Response](docs/Model/AddRcsTestDevice201Response.md)
 - [AddRcsTestDeviceRequest](docs/Model/AddRcsTestDeviceRequest.md)
 - [AddTrackingTagSharedAccount201Response](docs/Model/AddTrackingTagSharedAccount201Response.md)
@@ -2097,6 +2107,8 @@ Class | Method | HTTP request | Description
 - [CreateGoogleBusinessMediaRequest](docs/Model/CreateGoogleBusinessMediaRequest.md)
 - [CreateGoogleBusinessPlaceAction200Response](docs/Model/CreateGoogleBusinessPlaceAction200Response.md)
 - [CreateGoogleBusinessPlaceActionRequest](docs/Model/CreateGoogleBusinessPlaceActionRequest.md)
+- [CreateGoogleOrgConnection201Response](docs/Model/CreateGoogleOrgConnection201Response.md)
+- [CreateGoogleOrgConnectionRequest](docs/Model/CreateGoogleOrgConnectionRequest.md)
 - [CreateHighDemandPeriod201Response](docs/Model/CreateHighDemandPeriod201Response.md)
 - [CreateHighDemandPeriodRequest](docs/Model/CreateHighDemandPeriodRequest.md)
 - [CreateImapAccountRequest](docs/Model/CreateImapAccountRequest.md)
@@ -2139,6 +2151,7 @@ Class | Method | HTTP request | Description
 - [CreateMessagingAd201Response](docs/Model/CreateMessagingAd201Response.md)
 - [CreateMessagingAdRequest](docs/Model/CreateMessagingAdRequest.md)
 - [CreateMetaAdAccountRequest](docs/Model/CreateMetaAdAccountRequest.md)
+- [CreateMicrosoftOrgConnectionRequest](docs/Model/CreateMicrosoftOrgConnectionRequest.md)
 - [CreateOAuthApp201Response](docs/Model/CreateOAuthApp201Response.md)
 - [CreateOAuthAppRequest](docs/Model/CreateOAuthAppRequest.md)
 - [CreatePayeeOnboardingLink200Response](docs/Model/CreatePayeeOnboardingLink200Response.md)
@@ -2363,6 +2376,8 @@ Class | Method | HTTP request | Description
 - [DeleteInboxReviewReply200Response](docs/Model/DeleteInboxReviewReply200Response.md)
 - [DeleteInboxReviewReplyRequest](docs/Model/DeleteInboxReviewReplyRequest.md)
 - [DeleteOAuthApp200Response](docs/Model/DeleteOAuthApp200Response.md)
+- [DeleteOrgConnection200Response](docs/Model/DeleteOrgConnection200Response.md)
+- [DeleteOrgConnection200ResponseData](docs/Model/DeleteOrgConnection200ResponseData.md)
 - [DeleteSmsSenderId200Response](docs/Model/DeleteSmsSenderId200Response.md)
 - [DeleteTestLead200Response](docs/Model/DeleteTestLead200Response.md)
 - [DeleteTrackingTagEvent200Response](docs/Model/DeleteTrackingTagEvent200Response.md)
@@ -3131,11 +3146,13 @@ Class | Method | HTTP request | Description
 - [InitiateWhatsAppCallRequest](docs/Model/InitiateWhatsAppCallRequest.md)
 - [InlineObject](docs/Model/InlineObject.md)
 - [InlineObject1](docs/Model/InlineObject1.md)
+- [InlineObject1Data](docs/Model/InlineObject1Data.md)
 - [InlineObject2](docs/Model/InlineObject2.md)
 - [InlineObject3](docs/Model/InlineObject3.md)
-- [InlineObject3Details](docs/Model/InlineObject3Details.md)
 - [InlineObject4](docs/Model/InlineObject4.md)
 - [InlineObject4Details](docs/Model/InlineObject4Details.md)
+- [InlineObject5](docs/Model/InlineObject5.md)
+- [InlineObject5Details](docs/Model/InlineObject5Details.md)
 - [InstagramAccountInsightsResponse](docs/Model/InstagramAccountInsightsResponse.md)
 - [InstagramAccountInsightsResponseDateRange](docs/Model/InstagramAccountInsightsResponseDateRange.md)
 - [InstagramAccountInsightsResponseMetricsValue](docs/Model/InstagramAccountInsightsResponseMetricsValue.md)
@@ -3481,6 +3498,9 @@ Class | Method | HTTP request | Description
 - [ListMetaBusinesses200Response](docs/Model/ListMetaBusinesses200Response.md)
 - [ListOAuthApps200Response](docs/Model/ListOAuthApps200Response.md)
 - [ListOAuthApps200ResponsePagination](docs/Model/ListOAuthApps200ResponsePagination.md)
+- [ListOrgConnectionUsers200Response](docs/Model/ListOrgConnectionUsers200Response.md)
+- [ListOrgConnectionUsers200ResponseDataInner](docs/Model/ListOrgConnectionUsers200ResponseDataInner.md)
+- [ListOrgConnections200Response](docs/Model/ListOrgConnections200Response.md)
 - [ListPageUsers200Response](docs/Model/ListPageUsers200Response.md)
 - [ListPartnershipAdContent200Response](docs/Model/ListPartnershipAdContent200Response.md)
 - [ListPartnershipAdContent200ResponseMediaInner](docs/Model/ListPartnershipAdContent200ResponseMediaInner.md)
@@ -3687,6 +3707,9 @@ Class | Method | HTTP request | Description
 - [OrderImessageSender202Response](docs/Model/OrderImessageSender202Response.md)
 - [OrderImessageSenderRequest](docs/Model/OrderImessageSenderRequest.md)
 - [OrderImessageSenderRequestContact](docs/Model/OrderImessageSenderRequestContact.md)
+- [OrgConnection](docs/Model/OrgConnection.md)
+- [OrgConnectionSetup](docs/Model/OrgConnectionSetup.md)
+- [OrgConnectionSetupDnsRecord](docs/Model/OrgConnectionSetupDnsRecord.md)
 - [OwnedPhoneNumber](docs/Model/OwnedPhoneNumber.md)
 - [OwnedPhoneNumberFeatures](docs/Model/OwnedPhoneNumberFeatures.md)
 - [OwnedPhoneNumberProfileId](docs/Model/OwnedPhoneNumberProfileId.md)
@@ -4473,6 +4496,7 @@ Class | Method | HTTP request | Description
 - [UpdateLinkedInOrganization200Response](docs/Model/UpdateLinkedInOrganization200Response.md)
 - [UpdateLinkedInOrganizationRequest](docs/Model/UpdateLinkedInOrganizationRequest.md)
 - [UpdateOAuthAppRequest](docs/Model/UpdateOAuthAppRequest.md)
+- [UpdateOrgConnectionRequest](docs/Model/UpdateOrgConnectionRequest.md)
 - [UpdatePinterestBoardsRequest](docs/Model/UpdatePinterestBoardsRequest.md)
 - [UpdatePostMetadata200Response](docs/Model/UpdatePostMetadata200Response.md)
 - [UpdatePostMetadataRequest](docs/Model/UpdatePostMetadataRequest.md)
@@ -4601,6 +4625,7 @@ Class | Method | HTTP request | Description
 - [ValueRuleSet](docs/Model/ValueRuleSet.md)
 - [Verification](docs/Model/Verification.md)
 - [VerifyCredential200Response](docs/Model/VerifyCredential200Response.md)
+- [VerifyOrgConnectionRequest](docs/Model/VerifyOrgConnectionRequest.md)
 - [VerifySmsRegistrationOtp200Response](docs/Model/VerifySmsRegistrationOtp200Response.md)
 - [VerifySmsRegistrationOtpRequest](docs/Model/VerifySmsRegistrationOtpRequest.md)
 - [VerifyWhatsAppCallerIdRequest](docs/Model/VerifyWhatsAppCallerIdRequest.md)
@@ -4963,6 +4988,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.564.1`
+- API version: `1.565.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

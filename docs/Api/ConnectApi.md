@@ -6,6 +6,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**addOrgConnectionMailbox()**](ConnectApi.md#addOrgConnectionMailbox) | **POST** /v1/org-connections/{orgConnectionId}/mailboxes | Add a mailbox from an organization connection |
 | [**assignGoogleBusinessLocation()**](ConnectApi.md#assignGoogleBusinessLocation) | **POST** /v1/accounts/{accountId}/gmb-locations/assign | Assign Google Business Profile location to another profile |
 | [**completeMetaAdsBusinessLogin()**](ConnectApi.md#completeMetaAdsBusinessLogin) | **GET** /v1/connect/meta-ads/callback | Complete Meta business login |
 | [**completeTelegramConnect()**](ConnectApi.md#completeTelegramConnect) | **PATCH** /v1/connect/telegram | Check Telegram status |
@@ -22,11 +23,14 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**connectWhatsAppEmbeddedSignup()**](ConnectApi.md#connectWhatsAppEmbeddedSignup) | **POST** /v1/connect/whatsapp/embedded-signup | Connect WhatsApp from Embedded Signup |
 | [**connectWhopAdsCredentials()**](ConnectApi.md#connectWhopAdsCredentials) | **POST** /v1/connect/whop-ads/credentials | Connect a Whop account |
 | [**connectWordPressWithApplicationPassword()**](ConnectApi.md#connectWordPressWithApplicationPassword) | **POST** /v1/connect/wordpress/token | Connect self-hosted WordPress with an application password |
+| [**createGoogleOrgConnection()**](ConnectApi.md#createGoogleOrgConnection) | **POST** /v1/connect/google/org | Start a Google Workspace organization connection |
+| [**createMicrosoftOrgConnection()**](ConnectApi.md#createMicrosoftOrgConnection) | **POST** /v1/connect/microsoft/org | Start a Microsoft 365 organization connection |
 | [**createOAuthApp()**](ConnectApi.md#createOAuthApp) | **POST** /v1/connect/oauth-apps | Add an OAuth app |
 | [**createPinterestBoard()**](ConnectApi.md#createPinterestBoard) | **POST** /v1/accounts/{accountId}/pinterest-boards | Create Pinterest board |
 | [**createPlatformInvite()**](ConnectApi.md#createPlatformInvite) | **POST** /v1/platform-invites | Create a connect link |
 | [**createYoutubePlaylist()**](ConnectApi.md#createYoutubePlaylist) | **POST** /v1/accounts/{accountId}/youtube-playlists | Create YouTube playlist |
 | [**deleteOAuthApp()**](ConnectApi.md#deleteOAuthApp) | **DELETE** /v1/connect/oauth-apps/{appId} | Remove an OAuth app |
+| [**deleteOrgConnection()**](ConnectApi.md#deleteOrgConnection) | **DELETE** /v1/org-connections/{orgConnectionId} | Delete an organization connection |
 | [**getConnectHandoff()**](ConnectApi.md#getConnectHandoff) | **GET** /v1/connect/handoffs/{handoffId} | Get a phone handoff |
 | [**getConnectUrl()**](ConnectApi.md#getConnectUrl) | **GET** /v1/connect/{platform} | Get OAuth connect URL |
 | [**getConnectWelcomeScreen()**](ConnectApi.md#getConnectWelcomeScreen) | **GET** /v1/connect/welcome-screen | Get the saved welcome screen |
@@ -37,6 +41,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getHubSpotConnectUrl()**](ConnectApi.md#getHubSpotConnectUrl) | **GET** /v1/connect/hubspot | Get HubSpot OAuth connect URL |
 | [**getLinkedInOrganizations()**](ConnectApi.md#getLinkedInOrganizations) | **GET** /v1/accounts/{accountId}/linkedin-organizations | List LinkedIn orgs |
 | [**getOAuthApp()**](ConnectApi.md#getOAuthApp) | **GET** /v1/connect/oauth-apps/{appId} | Get an OAuth app |
+| [**getOrgConnection()**](ConnectApi.md#getOrgConnection) | **GET** /v1/org-connections/{orgConnectionId} | Get an organization connection |
 | [**getPageWebhookSubscription()**](ConnectApi.md#getPageWebhookSubscription) | **GET** /v1/accounts/{accountId}/webhook-subscription | Read an account&#39;s webhook subscription |
 | [**getPendingOAuthData()**](ConnectApi.md#getPendingOAuthData) | **GET** /v1/connect/pending-data | Get pending OAuth data |
 | [**getPinterestBoards()**](ConnectApi.md#getPinterestBoards) | **GET** /v1/accounts/{accountId}/pinterest-boards | List Pinterest boards |
@@ -59,6 +64,8 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listInstagramPages()**](ConnectApi.md#listInstagramPages) | **GET** /v1/connect/instagram/select-account | List Pages with a linked Instagram account |
 | [**listLinkedInOrganizations()**](ConnectApi.md#listLinkedInOrganizations) | **GET** /v1/connect/linkedin/organizations | List LinkedIn orgs |
 | [**listOAuthApps()**](ConnectApi.md#listOAuthApps) | **GET** /v1/connect/oauth-apps | List your OAuth apps |
+| [**listOrgConnectionUsers()**](ConnectApi.md#listOrgConnectionUsers) | **GET** /v1/org-connections/{orgConnectionId}/users | List an organization&#39;s users |
+| [**listOrgConnections()**](ConnectApi.md#listOrgConnections) | **GET** /v1/org-connections | List organization connections |
 | [**listPinterestBoardsForSelection()**](ConnectApi.md#listPinterestBoardsForSelection) | **GET** /v1/connect/pinterest/select-board | List Pinterest boards |
 | [**listSlackChannels()**](ConnectApi.md#listSlackChannels) | **GET** /v1/connect/slack | List Slack channels for the channel picker |
 | [**listSnapchatProfiles()**](ConnectApi.md#listSnapchatProfiles) | **GET** /v1/connect/snapchat/select-profile | List Snapchat profiles |
@@ -79,11 +86,75 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**updateGmbLocation()**](ConnectApi.md#updateGmbLocation) | **PUT** /v1/accounts/{accountId}/gmb-locations | Update Google Business Profile location |
 | [**updateLinkedInOrganization()**](ConnectApi.md#updateLinkedInOrganization) | **PUT** /v1/accounts/{accountId}/linkedin-organization | Switch LinkedIn account type |
 | [**updateOAuthApp()**](ConnectApi.md#updateOAuthApp) | **PATCH** /v1/connect/oauth-apps/{appId} | Update an OAuth app |
+| [**updateOrgConnection()**](ConnectApi.md#updateOrgConnection) | **PATCH** /v1/org-connections/{orgConnectionId} | Update an organization connection |
 | [**updatePinterestBoards()**](ConnectApi.md#updatePinterestBoards) | **PUT** /v1/accounts/{accountId}/pinterest-boards | Set default Pinterest board |
 | [**updateRedditSubreddits()**](ConnectApi.md#updateRedditSubreddits) | **PUT** /v1/accounts/{accountId}/reddit-subreddits | Set default subreddit |
 | [**updateYoutubeDefaultPlaylist()**](ConnectApi.md#updateYoutubeDefaultPlaylist) | **PUT** /v1/accounts/{accountId}/youtube-playlists | Set default YouTube playlist |
+| [**verifyOrgConnection()**](ConnectApi.md#verifyOrgConnection) | **POST** /v1/org-connections/{orgConnectionId}/verify | Verify an organization connection |
 | [**voteRedditThing()**](ConnectApi.md#voteRedditThing) | **POST** /v1/accounts/{accountId}/reddit-vote | Vote on a Reddit post or comment |
 
+
+## `addOrgConnectionMailbox()`
+
+```php
+addOrgConnectionMailbox($org_connection_id, $add_org_connection_mailbox_request): \Zernio\Model\InlineObject1
+```
+
+Add a mailbox from an organization connection
+
+Adds one mailbox from an active organization connection, with no sign-in from its user. It becomes a `google` or `microsoft` account on the connection's profile and works with every email, calendar, files and contacts endpoint.  `201` for a new account, `200` when the address was already on the profile and now runs on the organization grant. `account.connected` fires.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$org_connection_id = 'org_connection_id_example'; // string
+$add_org_connection_mailbox_request = new \Zernio\Model\AddOrgConnectionMailboxRequest(); // \Zernio\Model\AddOrgConnectionMailboxRequest
+
+try {
+    $result = $apiInstance->addOrgConnectionMailbox($org_connection_id, $add_org_connection_mailbox_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->addOrgConnectionMailbox: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **org_connection_id** | **string**|  | |
+| **add_org_connection_mailbox_request** | [**\Zernio\Model\AddOrgConnectionMailboxRequest**](../Model/AddOrgConnectionMailboxRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\InlineObject1**](../Model/InlineObject1.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `assignGoogleBusinessLocation()`
 
@@ -1090,6 +1161,126 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `createGoogleOrgConnection()`
+
+```php
+createGoogleOrgConnection($create_google_org_connection_request): \Zernio\Model\CreateGoogleOrgConnection201Response
+```
+
+Start a Google Workspace organization connection
+
+Creates an organization connection for a Google Workspace domain. A super admin then delegates Zernio's client ID with the returned scopes, and you add mailboxes without each user signing in.  ### Flow  1. Add `setup.dnsRecord` (a TXT record) to the domain. It proves the domain's owner set up this connection. 2. A super admin adds `setup.clientId` with `setup.scopes` under domain-wide delegation in the Admin console. 3. Call `POST /v1/org-connections/{orgConnectionId}/verify` with any mailbox in the domain. 4. Add mailboxes with `POST /v1/org-connections/{orgConnectionId}/mailboxes`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_google_org_connection_request = new \Zernio\Model\CreateGoogleOrgConnectionRequest(); // \Zernio\Model\CreateGoogleOrgConnectionRequest
+
+try {
+    $result = $apiInstance->createGoogleOrgConnection($create_google_org_connection_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->createGoogleOrgConnection: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_google_org_connection_request** | [**\Zernio\Model\CreateGoogleOrgConnectionRequest**](../Model/CreateGoogleOrgConnectionRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateGoogleOrgConnection201Response**](../Model/CreateGoogleOrgConnection201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createMicrosoftOrgConnection()`
+
+```php
+createMicrosoftOrgConnection($create_microsoft_org_connection_request): \Zernio\Model\CreateGoogleOrgConnection201Response
+```
+
+Start a Microsoft 365 organization connection
+
+Creates an organization connection for a Microsoft 365 tenant. An administrator opens `setup.adminConsentUrl` and approves Zernio's application permissions once, then you add mailboxes without each user signing in.  After consent Microsoft sends the administrator to `redirectUrl` with `orgConnectionId`, `status` (`active`, `pending` or `denied`) and `tenant`.  Application permissions reach every mailbox in the tenant. Administrators can scope them with an Exchange Online application access policy or RBAC for Applications.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_microsoft_org_connection_request = new \Zernio\Model\CreateMicrosoftOrgConnectionRequest(); // \Zernio\Model\CreateMicrosoftOrgConnectionRequest
+
+try {
+    $result = $apiInstance->createMicrosoftOrgConnection($create_microsoft_org_connection_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->createMicrosoftOrgConnection: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_microsoft_org_connection_request** | [**\Zernio\Model\CreateMicrosoftOrgConnectionRequest**](../Model/CreateMicrosoftOrgConnectionRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateGoogleOrgConnection201Response**](../Model/CreateGoogleOrgConnection201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `createOAuthApp()`
 
 ```php
@@ -1382,6 +1573,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\DeleteOAuthApp200Response**](../Model/DeleteOAuthApp200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteOrgConnection()`
+
+```php
+deleteOrgConnection($org_connection_id): \Zernio\Model\DeleteOrgConnection200Response
+```
+
+Delete an organization connection
+
+Deletes the connection. Mailboxes added from it stay on the profile and answer `401` `reconnect_required` until you disconnect them or connect them another way.  `mailboxAccountIds` lists them.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$org_connection_id = 'org_connection_id_example'; // string
+
+try {
+    $result = $apiInstance->deleteOrgConnection($org_connection_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->deleteOrgConnection: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **org_connection_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\DeleteOrgConnection200Response**](../Model/DeleteOrgConnection200Response.md)
 
 ### Authorization
 
@@ -2049,6 +2300,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\CreateOAuthApp201Response**](../Model/CreateOAuthApp201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getOrgConnection()`
+
+```php
+getOrgConnection($org_connection_id): \Zernio\Model\CreateGoogleOrgConnection201Response
+```
+
+Get an organization connection
+
+One organization connection with its status and setup instructions.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$org_connection_id = 'org_connection_id_example'; // string
+
+try {
+    $result = $apiInstance->getOrgConnection($org_connection_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->getOrgConnection: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **org_connection_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateGoogleOrgConnection201Response**](../Model/CreateGoogleOrgConnection201Response.md)
 
 ### Authorization
 
@@ -3467,6 +3778,128 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listOrgConnectionUsers()`
+
+```php
+listOrgConnectionUsers($org_connection_id, $cursor): \Zernio\Model\ListOrgConnectionUsers200Response
+```
+
+List an organization's users
+
+The organization's users, 100 per page, with whether each is allowed and the `accountId` of those already added.  Google needs `adminEmail` on the connection and the directory scope delegated.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$org_connection_id = 'org_connection_id_example'; // string
+$cursor = 'cursor_example'; // string
+
+try {
+    $result = $apiInstance->listOrgConnectionUsers($org_connection_id, $cursor);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->listOrgConnectionUsers: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **org_connection_id** | **string**|  | |
+| **cursor** | **string**|  | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListOrgConnectionUsers200Response**](../Model/ListOrgConnectionUsers200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listOrgConnections()`
+
+```php
+listOrgConnections($profile_id): \Zernio\Model\ListOrgConnections200Response
+```
+
+List organization connections
+
+The Google Workspace and Microsoft 365 organization connections on a profile, newest first.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$profile_id = 'profile_id_example'; // string
+
+try {
+    $result = $apiInstance->listOrgConnections($profile_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->listOrgConnections: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **profile_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\ListOrgConnections200Response**](../Model/ListOrgConnections200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listPinterestBoardsForSelection()`
 
 ```php
@@ -4721,6 +5154,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `updateOrgConnection()`
+
+```php
+updateOrgConnection($org_connection_id, $update_org_connection_request): \Zernio\Model\CreateGoogleOrgConnection201Response
+```
+
+Update an organization connection
+
+Changes the allowlist or the Google directory admin.  Mailboxes already added that a narrowed allowlist excludes answer `401` `reconnect_required` until it includes them again.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$org_connection_id = 'org_connection_id_example'; // string
+$update_org_connection_request = new \Zernio\Model\UpdateOrgConnectionRequest(); // \Zernio\Model\UpdateOrgConnectionRequest
+
+try {
+    $result = $apiInstance->updateOrgConnection($org_connection_id, $update_org_connection_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->updateOrgConnection: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **org_connection_id** | **string**|  | |
+| **update_org_connection_request** | [**\Zernio\Model\UpdateOrgConnectionRequest**](../Model/UpdateOrgConnectionRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateGoogleOrgConnection201Response**](../Model/CreateGoogleOrgConnection201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `updatePinterestBoards()`
 
 ```php
@@ -4893,6 +5388,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `verifyOrgConnection()`
+
+```php
+verifyOrgConnection($org_connection_id, $verify_org_connection_request): \Zernio\Model\CreateGoogleOrgConnection201Response
+```
+
+Verify an organization connection
+
+Checks the administrator's grant and activates the connection.  Google: the domain's TXT record and a token for `email` with every delegated scope. Microsoft: a tenant token carrying every application permission the areas need.  `409` `org_grant_incomplete` says what is still missing.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$org_connection_id = 'org_connection_id_example'; // string
+$verify_org_connection_request = new \Zernio\Model\VerifyOrgConnectionRequest(); // \Zernio\Model\VerifyOrgConnectionRequest
+
+try {
+    $result = $apiInstance->verifyOrgConnection($org_connection_id, $verify_org_connection_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->verifyOrgConnection: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **org_connection_id** | **string**|  | |
+| **verify_org_connection_request** | [**\Zernio\Model\VerifyOrgConnectionRequest**](../Model/VerifyOrgConnectionRequest.md)|  | [optional] |
+
+### Return type
+
+[**\Zernio\Model\CreateGoogleOrgConnection201Response**](../Model/CreateGoogleOrgConnection201Response.md)
 
 ### Authorization
 
