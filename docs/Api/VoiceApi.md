@@ -156,7 +156,7 @@ createVoiceCall($create_voice_call_request, $idempotency_key): \Zernio\Model\Cre
 
 Place an outbound phone call
 
-Dials `to` FROM one of your voice-enabled numbers and, on answer, bridges the callee to the number's stored forward destination, or to the per-call `forwardTo` override.  Destinations can be your own AI voice agent (Vapi/Retell), a phone, or a SIP endpoint. An optional `greeting` is spoken to the callee before the bridge.  ### Response and limits  The 200 response means the call is dialing. The lifecycle continues asynchronously: track it via `GET /v1/voice/calls/{id}` or the `call.*` webhooks.  Outbound calls are capped per rolling hour (429 when hit).  ### Idempotency  Send an `Idempotency-Key` header to make retries safe. Same key + same body replays the original response instead of dialing (and billing) a second call.
+Dials `to` FROM one of your voice-enabled numbers and, on answer, bridges the callee to the number's stored forward destination, or to the per-call `forwardTo` override.  Destinations can be your own AI voice agent (Vapi/Retell), a phone, or a SIP endpoint. An optional `greeting` is spoken to the callee before the bridge.  ### Response and limits  The 200 response means the call is dialing. The lifecycle continues asynchronously: track it via `GET /v1/voice/calls/{id}` or the `call.*` webhooks.  Outbound calls are capped per rolling hour (429 when hit).  ### Balance time limit  On balance billing a call runs only as long as the balance, plus what auto top-up can still add this month, funds at its per-minute price, minus calls already in progress. Then it ends with `hangup_cause: time_limit`. Under one minute is refused with 402.  ### Idempotency  Send an `Idempotency-Key` header to make retries safe. Same key + same body replays the original response instead of dialing (and billing) a second call.
 
 ### Example
 
@@ -395,7 +395,7 @@ dialVoiceWebCall($dial_voice_web_call_request): \Zernio\Model\DialVoiceWebCall20
 
 Dial from the browser softphone
 
-Step 2 of the browser softphone handshake: rings the browser registered with the credential from `POST /v1/voice/calls/web` first, and dials the target only once the browser answers.  The callee's pickup then connects immediately, with no ringing after they answer.  - The call is logged as outbound (from = your number, to = target) and recorded per the number's settings. - `ringTimeoutSeconds` applies to the target's phone, not to the browser.
+Step 2 of the browser softphone handshake: rings the browser registered with the credential from `POST /v1/voice/calls/web` first, and dials the target only once the browser answers.  The callee's pickup then connects immediately, with no ringing after they answer.  - The call is logged as outbound (from = your number, to = target) and recorded per the number's settings. - `ringTimeoutSeconds` applies to the target's phone, not to the browser. - On balance billing the call gets the same time limit as `POST /v1/voice/calls`.
 
 ### Example
 
