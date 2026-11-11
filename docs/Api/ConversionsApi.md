@@ -6,21 +6,30 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**addAdConversionAssociations()**](ConversionsApi.md#addAdConversionAssociations) | **POST** /v1/ads/conversions/destinations/{destinationId}/associations | Associate campaigns |
 | [**addConversionAssociations()**](ConversionsApi.md#addConversionAssociations) | **POST** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | Associate campaigns |
 | [**adjustConversions()**](ConversionsApi.md#adjustConversions) | **POST** /v1/ads/conversions/adjustments | Adjust uploaded conversions |
-| [**createConversionAction()**](ConversionsApi.md#createConversionAction) | **POST** /v1/ads/conversions/actions | Create website conversion action |
+| [**createAdConversionDestination()**](ConversionsApi.md#createAdConversionDestination) | **POST** /v1/ads/conversions/destinations | Create a conversion destination |
+| [**createAdCustomConversion()**](ConversionsApi.md#createAdCustomConversion) | **POST** /v1/ads/conversions/custom-conversions | Create custom conversion |
+| [**createConversionAction()**](ConversionsApi.md#createConversionAction) | **POST** /v1/ads/conversions/actions | Create conversion action |
 | [**createConversionDestination()**](ConversionsApi.md#createConversionDestination) | **POST** /v1/accounts/{accountId}/conversion-destinations | Create a conversion destination |
 | [**createCustomConversionGoal()**](ConversionsApi.md#createCustomConversionGoal) | **POST** /v1/ads/conversions/custom-goals | Create a custom conversion goal |
 | [**createEventDestination()**](ConversionsApi.md#createEventDestination) | **POST** /v1/events/destinations | Add an event destination |
 | [**createForwardingRule()**](ConversionsApi.md#createForwardingRule) | **POST** /v1/events/forwarding-rules | Add a forwarding rule |
+| [**deleteAdConversionDestination()**](ConversionsApi.md#deleteAdConversionDestination) | **DELETE** /v1/ads/conversions/destinations/{destinationId} | Delete a conversion destination |
 | [**deleteConversionDestination()**](ConversionsApi.md#deleteConversionDestination) | **DELETE** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Delete a conversion destination |
 | [**deleteEventDestination()**](ConversionsApi.md#deleteEventDestination) | **DELETE** /v1/events/destinations/{destinationId} | Remove an event destination |
 | [**deleteForwardingRule()**](ConversionsApi.md#deleteForwardingRule) | **DELETE** /v1/events/forwarding-rules/{ruleId} | Remove a forwarding rule |
+| [**getAdConversionDestination()**](ConversionsApi.md#getAdConversionDestination) | **GET** /v1/ads/conversions/destinations/{destinationId} | Get a conversion destination |
+| [**getAdConversionMetrics()**](ConversionsApi.md#getAdConversionMetrics) | **GET** /v1/ads/conversions/destinations/{destinationId}/metrics | Get attribution metrics |
 | [**getConversionDestination()**](ConversionsApi.md#getConversionDestination) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Get a conversion destination |
 | [**getConversionMetrics()**](ConversionsApi.md#getConversionMetrics) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/metrics | Get attribution metrics |
 | [**getConversionsQuality()**](ConversionsApi.md#getConversionsQuality) | **GET** /v1/ads/conversions/quality | Get Event Match Quality |
 | [**getEvent()**](ConversionsApi.md#getEvent) | **GET** /v1/events/{eventId} | Get one stored event and its deliveries |
+| [**listAdConversionAssociations()**](ConversionsApi.md#listAdConversionAssociations) | **GET** /v1/ads/conversions/destinations/{destinationId}/associations | List associated campaigns |
+| [**listAdConversionDestinations()**](ConversionsApi.md#listAdConversionDestinations) | **GET** /v1/ads/conversions/destinations | List conversion destinations |
 | [**listAdConversionGoals()**](ConversionsApi.md#listAdConversionGoals) | **GET** /v1/ads/conversions/goals | List account conversion goals |
+| [**listAdCustomConversions()**](ConversionsApi.md#listAdCustomConversions) | **GET** /v1/ads/conversions/custom-conversions | List custom conversions |
 | [**listConversionActions()**](ConversionsApi.md#listConversionActions) | **GET** /v1/ads/conversions/actions | List conversion actions |
 | [**listConversionAssociations()**](ConversionsApi.md#listConversionAssociations) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | List associated campaigns |
 | [**listConversionDestinations()**](ConversionsApi.md#listConversionDestinations) | **GET** /v1/accounts/{accountId}/conversion-destinations | List conversion destinations |
@@ -28,27 +37,91 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listEventDestinations()**](ConversionsApi.md#listEventDestinations) | **GET** /v1/events/destinations | List event destinations |
 | [**listEvents()**](ConversionsApi.md#listEvents) | **GET** /v1/events | List stored events |
 | [**listForwardingRules()**](ConversionsApi.md#listForwardingRules) | **GET** /v1/events/forwarding-rules | List forwarding rules |
+| [**removeAdConversionAssociations()**](ConversionsApi.md#removeAdConversionAssociations) | **DELETE** /v1/ads/conversions/destinations/{destinationId}/associations | Remove associated campaigns |
 | [**removeConversionAssociations()**](ConversionsApi.md#removeConversionAssociations) | **DELETE** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | Remove associated campaigns |
 | [**removeCustomConversionGoal()**](ConversionsApi.md#removeCustomConversionGoal) | **DELETE** /v1/ads/conversions/custom-goals/{goalId} | Remove a custom conversion goal |
 | [**restateEvent()**](ConversionsApi.md#restateEvent) | **PATCH** /v1/events/{eventId} | Change a stored event&#39;s value |
 | [**retractEvent()**](ConversionsApi.md#retractEvent) | **DELETE** /v1/events/{eventId} | Retract a stored event |
 | [**sendConversions()**](ConversionsApi.md#sendConversions) | **POST** /v1/ads/conversions | Send conversion events |
 | [**sendEvents()**](ConversionsApi.md#sendEvents) | **POST** /v1/events | Send events to every destination |
+| [**updateAdConversionDestination()**](ConversionsApi.md#updateAdConversionDestination) | **PATCH** /v1/ads/conversions/destinations/{destinationId} | Update a conversion destination |
 | [**updateAdConversionGoals()**](ConversionsApi.md#updateAdConversionGoals) | **PATCH** /v1/ads/conversions/goals | Update account conversion goals |
 | [**updateConversionAction()**](ConversionsApi.md#updateConversionAction) | **PATCH** /v1/ads/conversions/actions/{actionId} | Update a conversion action&#39;s settings |
 | [**updateConversionDestination()**](ConversionsApi.md#updateConversionDestination) | **PATCH** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Update a conversion destination |
 | [**updateCustomConversionGoal()**](ConversionsApi.md#updateCustomConversionGoal) | **PATCH** /v1/ads/conversions/custom-goals/{goalId} | Update a custom conversion goal |
 
 
-## `addConversionAssociations()`
+## `addAdConversionAssociations()`
 
 ```php
-addConversionAssociations($account_id, $destination_id, $add_conversion_associations_request): \Zernio\Model\AddConversionAssociations200Response
+addAdConversionAssociations($destination_id, $add_ad_conversion_associations_request): \Zernio\Model\AddAdConversionAssociations200Response
 ```
 
 Associate campaigns
 
 Links campaigns to a LinkedIn conversion rule so they track it, reporting which links succeeded or failed.  Returns a per-campaign success/failure result so callers can retry only the rows that failed (e.g. wrong campaign type for the rule's objective).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$destination_id = 'destination_id_example'; // string
+$add_ad_conversion_associations_request = new \Zernio\Model\AddAdConversionAssociationsRequest(); // \Zernio\Model\AddAdConversionAssociationsRequest
+
+try {
+    $result = $apiInstance->addAdConversionAssociations($destination_id, $add_ad_conversion_associations_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->addAdConversionAssociations: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **destination_id** | **string**|  | |
+| **add_ad_conversion_associations_request** | [**\Zernio\Model\AddAdConversionAssociationsRequest**](../Model/AddAdConversionAssociationsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\AddAdConversionAssociations200Response**](../Model/AddAdConversionAssociations200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `addConversionAssociations()`
+
+```php
+addConversionAssociations($account_id, $destination_id, $add_conversion_associations_request): \Zernio\Model\AddAdConversionAssociations200Response
+```
+
+Associate campaigns
+
+The first path of `POST /v1/ads/conversions/destinations/{destinationId}/associations` (`addAdConversionAssociations`), which does the same with `accountId` as a parameter. It keeps working.
 
 ### Example
 
@@ -89,7 +162,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\AddConversionAssociations200Response**](../Model/AddConversionAssociations200Response.md)
+[**\Zernio\Model\AddAdConversionAssociations200Response**](../Model/AddAdConversionAssociations200Response.md)
 
 ### Authorization
 
@@ -164,15 +237,135 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `createAdConversionDestination()`
+
+```php
+createAdConversionDestination($create_ad_conversion_destination_request): \Zernio\Model\CreateAdConversionDestination201Response
+```
+
+Create a conversion destination
+
+Creates a new place to send conversion events: a Google Ads conversion action or a LinkedIn conversion rule.  Supported for LinkedIn (conversion rule) and Google Ads (conversion action). It returns 405 for:  - Meta and OpenAI Ads: their pixels are created via their own tracking-tags flow instead (`POST /v1/accounts/{accountId}/tracking-tags`) - Reddit: create Reddit pixels in Reddit Ads Manager  ### LinkedIn  Creation is NOT idempotent. A retry creates a second destination. Deduplicate before retrying.  The rule is created with `conversionMethod=CONVERSIONS_API` and (by default) auto-associated with all of the ad account's campaigns via `autoAssociationType=ALL_CAMPAIGNS`. Pass `autoAssociationType: NONE` to opt out and manage associations explicitly via the associations endpoints below.  365-day attribution windows are only valid for these rule types; the API rejects other combinations locally:  - `SUBMIT_APPLICATION` - `PURCHASE` - `ADD_TO_CART` - `QUALIFIED_LEAD` - `LEAD`  ### Google Ads  Calling with a name that already exists reuses the existing conversion action transparently (the response is identical to a fresh create).  Calling with the same name but a different category, or a name already used by a website (`WEBPAGE`) action, returns a typed `IDEMPOTENCY_CONFLICT` (409) rather than silently returning the mismatched action.  The conversion action is created with `type=UPLOAD_CLICKS` (required for API-uploaded offline conversions, immutable after creation).  The `type` field carries the Google `ConversionActionCategory` enum value, e.g. `PURCHASE`, `SUBSCRIBE_PAID`, `SIGNUP`, `IMPORTED_LEAD`, `BOOK_APPOINTMENT`. Unified standard event names (e.g. `Purchase`, `Subscribe`, `CompleteRegistration`, `Lead`, `Schedule`) are resolved to their Google category equivalents automatically.  The action defaults to secondary (non-primary) to avoid immediately steering Smart Bidding; pass `primaryForGoal: true` to opt in.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_ad_conversion_destination_request = new \Zernio\Model\CreateAdConversionDestinationRequest(); // \Zernio\Model\CreateAdConversionDestinationRequest
+
+try {
+    $result = $apiInstance->createAdConversionDestination($create_ad_conversion_destination_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->createAdConversionDestination: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_ad_conversion_destination_request** | [**\Zernio\Model\CreateAdConversionDestinationRequest**](../Model/CreateAdConversionDestinationRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateAdConversionDestination201Response**](../Model/CreateAdConversionDestination201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createAdCustomConversion()`
+
+```php
+createAdCustomConversion($create_ad_custom_conversion_request): \Zernio\Model\CustomConversionResult
+```
+
+Create custom conversion
+
+Creates a Meta custom conversion for ads to optimise toward, reusing an existing one with the same name and pixel.  It provisions the Meta custom conversion an ads flow optimises toward, and hands back the `customConversionId` for `promotedObject.customConversionId` on POST /v1/ads/create. This removes the manual \"create it in Ads Manager first\" step.  ### Reuse is ours, not Meta's  Meta's create is not idempotent, so a retried request would otherwise mint a duplicate carrying none of the original's optimisation history.  A non-archived conversion with the same `name` on the same `pixelId` is returned instead of created, with `reused: true` and a 200 rather than a 201.  ### Rule  `rule` is forwarded verbatim in Meta's own grammar (e.g. `{\"url\": {\"i_contains\": \"thank-you\"}}`). Meta validates it and rejects a malformed one with \"A conversion rule is required at creation time\".
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_ad_custom_conversion_request = new \Zernio\Model\CreateAdCustomConversionRequest(); // \Zernio\Model\CreateAdCustomConversionRequest
+
+try {
+    $result = $apiInstance->createAdCustomConversion($create_ad_custom_conversion_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->createAdCustomConversion: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_ad_custom_conversion_request** | [**\Zernio\Model\CreateAdCustomConversionRequest**](../Model/CreateAdCustomConversionRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CustomConversionResult**](../Model/CustomConversionResult.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `createConversionAction()`
 
 ```php
 createConversionAction($create_conversion_action_request): \Zernio\Model\CreateConversionAction201Response
 ```
 
-Create website conversion action
+Create conversion action
 
-Creates a Google Ads website conversion action and returns the tag snippets to install on your site.  Creates a `WEBPAGE` conversion action (category `DEFAULT`) and returns it with its tag snippets, read back after creation since Google never returns them on the create response itself. Invalidates the cached list `GET` on this resource would otherwise keep serving. Google-only; other platforms return `501`. Requires the Ads add-on.
+Creates a Google Ads conversion action: a website one counted by a tag on your site, or one counted from the conversions you send to Zernio.  - `type: WEBPAGE` creates a website action and returns it with the tag snippets to install, read back after creation since Google never returns them on the create response itself. - `type: UPLOAD_CLICKS` creates an action for the conversions sent with `POST /v1/events`, the same action `POST /v1/ads/conversions/destinations` creates. It is secondary unless `primaryForGoal: true`.  The category defaults to `DEFAULT`. A name already used by another action returns Google's error.  Clears the cached list that `GET` on this resource would otherwise keep serving. Google-only; other platforms return `501`. Requires the Ads add-on.
 
 ### Example
 
@@ -227,12 +420,12 @@ try {
 ## `createConversionDestination()`
 
 ```php
-createConversionDestination($account_id, $create_conversion_destination_request): \Zernio\Model\CreateConversionDestination201Response
+createConversionDestination($account_id, $create_conversion_destination_request): \Zernio\Model\CreateAdConversionDestination201Response
 ```
 
 Create a conversion destination
 
-Creates a new place to send conversion events: a Google Ads conversion action or a LinkedIn conversion rule.  Supported for LinkedIn (conversion rule) and Google Ads (conversion action). It returns 405 for:  - Meta and OpenAI Ads: their pixels are created via their own tracking-tags flow instead (`POST /v1/accounts/{accountId}/tracking-tags`) - Reddit: create Reddit pixels in Reddit Ads Manager  ### LinkedIn  Creation is NOT idempotent. A retry creates a second destination. Deduplicate before retrying.  The rule is created with `conversionMethod=CONVERSIONS_API` and (by default) auto-associated with all of the ad account's campaigns via `autoAssociationType=ALL_CAMPAIGNS`. Pass `autoAssociationType: NONE` to opt out and manage associations explicitly via the associations endpoints below.  365-day attribution windows are only valid for these rule types; the API rejects other combinations locally:  - `SUBMIT_APPLICATION` - `PURCHASE` - `ADD_TO_CART` - `QUALIFIED_LEAD` - `LEAD`  ### Google Ads  Calling with a name that already exists reuses the existing conversion action transparently (the response is identical to a fresh create). Calling with the same name but a different category returns a typed `IDEMPOTENCY_CONFLICT` (409) rather than silently returning the mismatched action.  The conversion action is created with `type=UPLOAD_CLICKS` (required for API-uploaded offline conversions, immutable after creation).  The `type` field carries the Google `ConversionActionCategory` enum value, e.g. `PURCHASE`, `SUBSCRIBE_PAID`, `SIGNUP`, `IMPORTED_LEAD`, `BOOK_APPOINTMENT`. Unified standard event names (e.g. `Purchase`, `Subscribe`, `CompleteRegistration`, `Lead`, `Schedule`) are resolved to their Google category equivalents automatically.  The action defaults to secondary (non-primary) to avoid immediately steering Smart Bidding; pass `primaryForGoal: true` to opt in.
+The first path of `POST /v1/ads/conversions/destinations` (`createAdConversionDestination`), which does the same with `accountId` as a parameter. It keeps working.
 
 ### Example
 
@@ -271,7 +464,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\CreateConversionDestination201Response**](../Model/CreateConversionDestination201Response.md)
+[**\Zernio\Model\CreateAdConversionDestination201Response**](../Model/CreateAdConversionDestination201Response.md)
 
 ### Authorization
 
@@ -414,7 +607,7 @@ createForwardingRule($create_forwarding_rule_request): \Zernio\Model\CreateForwa
 
 Add a forwarding rule
 
-Saves where a profile's events go: every event sent to `POST /v1/events` for that profile is then forwarded to this destination.  Pick `destinationId` from `GET /v1/accounts/{accountId}/conversion-destinations`. Set `eventNames` to forward only those events, such as only `Purchase`; leave it out to forward every event.
+Saves where a profile's events go: every event sent to `POST /v1/events` for that profile is then forwarded to this destination.  Pick `destinationId` from `GET /v1/ads/conversions/destinations`. Set `eventNames` to forward only those events, such as only `Purchase`; leave it out to forward every event.
 
 ### Example
 
@@ -466,6 +659,69 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `deleteAdConversionDestination()`
+
+```php
+deleteAdConversionDestination($account_id, $destination_id, $ad_account_id)
+```
+
+Delete a conversion destination
+
+Disables a LinkedIn conversion rule, which is how LinkedIn deletes it; the rule can still be read afterwards.  LinkedIn-only today. LinkedIn does not expose hard-delete on conversion rules; what their UI calls \"delete\" is the same `enabled: false` flip we apply here. The rule remains fetchable via GET with `status: 'inactive'`; the unified discovery endpoint hides it by default.  `adAccountId` may be passed as a query parameter (recommended) or as a JSON body field for clients that can send DELETE bodies.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The connected ads account (SocialAccount ID).
+$destination_id = 'destination_id_example'; // string
+$ad_account_id = 'ad_account_id_example'; // string | Required as query OR in JSON body.
+
+try {
+    $apiInstance->deleteAdConversionDestination($account_id, $destination_id, $ad_account_id);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->deleteAdConversionDestination: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The connected ads account (SocialAccount ID). | |
+| **destination_id** | **string**|  | |
+| **ad_account_id** | **string**| Required as query OR in JSON body. | [optional] |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `deleteConversionDestination()`
 
 ```php
@@ -474,7 +730,7 @@ deleteConversionDestination($account_id, $destination_id, $ad_account_id)
 
 Delete a conversion destination
 
-Disables a LinkedIn conversion rule, which is how LinkedIn deletes it; the rule can still be read afterwards.  LinkedIn-only today. LinkedIn does not expose hard-delete on conversion rules; what their UI calls \"delete\" is the same `enabled: false` flip we apply here. The rule remains fetchable via GET with `status: 'inactive'`; the unified discovery endpoint hides it by default.  `adAccountId` may be passed as a query parameter (recommended) or as a JSON body field for clients that can send DELETE bodies.
+The first path of `DELETE /v1/ads/conversions/destinations/{destinationId}` (`deleteAdConversionDestination`), which does the same with `accountId` as a parameter. It keeps working.
 
 ### Example
 
@@ -649,15 +905,149 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getConversionDestination()`
+## `getAdConversionDestination()`
 
 ```php
-getConversionDestination($account_id, $destination_id, $ad_account_id): \Zernio\Model\GetConversionDestination200Response
+getAdConversionDestination($account_id, $destination_id, $ad_account_id): \Zernio\Model\GetAdConversionDestination200Response
 ```
 
 Get a conversion destination
 
 Shows one LinkedIn conversion rule with its full settings.  LinkedIn-only today. Returns the full destination record for one conversion rule. The `adAccountId` query parameter is required because LinkedIn rules are scoped to a sponsored ad account.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The connected ads account (SocialAccount ID).
+$destination_id = 'destination_id_example'; // string
+$ad_account_id = 'ad_account_id_example'; // string | Numeric ID or full `urn:li:sponsoredAccount:{id}` URN.
+
+try {
+    $result = $apiInstance->getAdConversionDestination($account_id, $destination_id, $ad_account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->getAdConversionDestination: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The connected ads account (SocialAccount ID). | |
+| **destination_id** | **string**|  | |
+| **ad_account_id** | **string**| Numeric ID or full &#x60;urn:li:sponsoredAccount:{id}&#x60; URN. | |
+
+### Return type
+
+[**\Zernio\Model\GetAdConversionDestination200Response**](../Model/GetAdConversionDestination200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getAdConversionMetrics()`
+
+```php
+getAdConversionMetrics($account_id, $destination_id, $ad_account_id, $start_date, $end_date, $granularity): \Zernio\Model\GetAdConversionMetrics200Response
+```
+
+Get attribution metrics
+
+Shows a LinkedIn conversion rule's attributed conversions, value, leads and cost over time.  LinkedIn-only today. Returns conversion-attribution metrics (`externalWebsiteConversions`, `externalWebsitePostClickConversions`, `externalWebsitePostViewConversions`, `conversionValueInLocalCurrency`, `qualifiedLeads`, `costInLocalCurrency`) bucketed by date.  Date-range constraints (passed through from LinkedIn): - `granularity=DAILY` is retained for ~6 months only - `granularity=ALL` with a range > 6 months auto-rounds to month boundaries - `granularity=MONTHLY`/`YEARLY` retains 24 months  Throttle: LinkedIn caps adAnalytics at 45M metric values per 5-minute window across the calling token. Single-rule queries are well within that limit; surfaces as 429 if hit.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The connected ads account (SocialAccount ID).
+$destination_id = 'destination_id_example'; // string
+$ad_account_id = 'ad_account_id_example'; // string
+$start_date = 'start_date_example'; // string
+$end_date = 'end_date_example'; // string
+$granularity = 'DAILY'; // string
+
+try {
+    $result = $apiInstance->getAdConversionMetrics($account_id, $destination_id, $ad_account_id, $start_date, $end_date, $granularity);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->getAdConversionMetrics: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The connected ads account (SocialAccount ID). | |
+| **destination_id** | **string**|  | |
+| **ad_account_id** | **string**|  | |
+| **start_date** | **string**|  | |
+| **end_date** | **string**|  | [optional] |
+| **granularity** | **string**|  | [optional] [default to &#39;DAILY&#39;] |
+
+### Return type
+
+[**\Zernio\Model\GetAdConversionMetrics200Response**](../Model/GetAdConversionMetrics200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getConversionDestination()`
+
+```php
+getConversionDestination($account_id, $destination_id, $ad_account_id): \Zernio\Model\GetAdConversionDestination200Response
+```
+
+Get a conversion destination
+
+The first path of `GET /v1/ads/conversions/destinations/{destinationId}` (`getAdConversionDestination`), which does the same with `accountId` as a parameter. It keeps working.
 
 ### Example
 
@@ -698,7 +1088,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\GetConversionDestination200Response**](../Model/GetConversionDestination200Response.md)
+[**\Zernio\Model\GetAdConversionDestination200Response**](../Model/GetAdConversionDestination200Response.md)
 
 ### Authorization
 
@@ -716,12 +1106,12 @@ try {
 ## `getConversionMetrics()`
 
 ```php
-getConversionMetrics($account_id, $destination_id, $ad_account_id, $start_date, $end_date, $granularity): \Zernio\Model\GetConversionMetrics200Response
+getConversionMetrics($account_id, $destination_id, $ad_account_id, $start_date, $end_date, $granularity): \Zernio\Model\GetAdConversionMetrics200Response
 ```
 
 Get attribution metrics
 
-Shows a LinkedIn conversion rule's attributed conversions, value, leads and cost over time.  LinkedIn-only today. Returns conversion-attribution metrics (`externalWebsiteConversions`, `externalWebsitePostClickConversions`, `externalWebsitePostViewConversions`, `conversionValueInLocalCurrency`, `qualifiedLeads`, `costInLocalCurrency`) bucketed by date.  Date-range constraints (passed through from LinkedIn): - `granularity=DAILY` is retained for ~6 months only - `granularity=ALL` with a range > 6 months auto-rounds to month boundaries - `granularity=MONTHLY`/`YEARLY` retains 24 months  Throttle: LinkedIn caps adAnalytics at 45M metric values per 5-minute window across the calling token. Single-rule queries are well within that limit; surfaces as 429 if hit.
+The first path of `GET /v1/ads/conversions/destinations/{destinationId}/metrics` (`getAdConversionMetrics`), which does the same with `accountId` as a parameter. It keeps working.
 
 ### Example
 
@@ -768,7 +1158,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\GetConversionMetrics200Response**](../Model/GetConversionMetrics200Response.md)
+[**\Zernio\Model\GetAdConversionMetrics200Response**](../Model/GetAdConversionMetrics200Response.md)
 
 ### Authorization
 
@@ -907,6 +1297,130 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listAdConversionAssociations()`
+
+```php
+listAdConversionAssociations($account_id, $destination_id, $ad_account_id): \Zernio\Model\ListAdConversionAssociations200Response
+```
+
+List associated campaigns
+
+Lists the LinkedIn campaigns that track a conversion rule, so you can spot newer campaigns that still need linking.  LinkedIn-only today. Returns the campaigns currently associated with this conversion rule. Auto-association on rule creation runs once at create time; campaigns created after the rule still need explicit association.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The connected ads account (SocialAccount ID).
+$destination_id = 'destination_id_example'; // string
+$ad_account_id = 'ad_account_id_example'; // string
+
+try {
+    $result = $apiInstance->listAdConversionAssociations($account_id, $destination_id, $ad_account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->listAdConversionAssociations: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The connected ads account (SocialAccount ID). | |
+| **destination_id** | **string**|  | |
+| **ad_account_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\ListAdConversionAssociations200Response**](../Model/ListAdConversionAssociations200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listAdConversionDestinations()`
+
+```php
+listAdConversionDestinations($account_id): \Zernio\Model\ListAdConversionDestinations200Response
+```
+
+List conversion destinations
+
+Lists where an ad account can receive conversion events (pixels, conversion actions or rules), so you know where to send them.  Returns the list of pixels (Meta), conversion actions (Google), conversion rules (LinkedIn), pixels (OpenAI Ads, Reddit) or ad accounts (Pinterest) accessible to the connected ads account. Use the returned `id` as `destinationId` when posting to `POST /v1/ads/conversions`.  For Google and LinkedIn, each destination's `type` reflects the conversion type (PURCHASE, LEAD, SIGN_UP, etc.), and the event type is locked to the destination. For Meta, OpenAI Ads and Reddit, `type` is absent: pixels accept any event name per request.  For Reddit, the pixels of every ad account the connection reaches (only the scoped ones when the connection has an ad-account scope), each with the `adAccountId` that owns it. Reddit pixels are created in Reddit Ads Manager, not through Zernio.  For LinkedIn, destinations are returned across every sponsored ad account the connected token can access; the `adAccountId` field on each destination identifies the parent ad account and is required for subsequent CRUD calls (update, delete, associations, metrics).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | SocialAccount ID (metaads, googleads, linkedinads, tiktokads, openaiads, pinterestads, or redditads).
+
+try {
+    $result = $apiInstance->listAdConversionDestinations($account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->listAdConversionDestinations: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| SocialAccount ID (metaads, googleads, linkedinads, tiktokads, openaiads, pinterestads, or redditads). | |
+
+### Return type
+
+[**\Zernio\Model\ListAdConversionDestinations200Response**](../Model/ListAdConversionDestinations200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listAdConversionGoals()`
 
 ```php
@@ -957,6 +1471,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListAdConversionGoals200Response**](../Model/ListAdConversionGoals200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listAdCustomConversions()`
+
+```php
+listAdCustomConversions($account_id, $ad_account_id): \Zernio\Model\ListAdCustomConversions200Response
+```
+
+List custom conversions
+
+Lists a Meta ad account's custom conversions, including archived ones.  The ad account's Meta custom conversions, including archived ones (`isArchived`).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Meta ads SocialAccount id.
+$ad_account_id = 'ad_account_id_example'; // string | Meta ad account id (act_<n>).
+
+try {
+    $result = $apiInstance->listAdCustomConversions($account_id, $ad_account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->listAdCustomConversions: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Meta ads SocialAccount id. | |
+| **ad_account_id** | **string**| Meta ad account id (act_&lt;n&gt;). | |
+
+### Return type
+
+[**\Zernio\Model\ListAdCustomConversions200Response**](../Model/ListAdCustomConversions200Response.md)
 
 ### Authorization
 
@@ -1040,12 +1616,12 @@ try {
 ## `listConversionAssociations()`
 
 ```php
-listConversionAssociations($account_id, $destination_id, $ad_account_id): \Zernio\Model\ListConversionAssociations200Response
+listConversionAssociations($account_id, $destination_id, $ad_account_id): \Zernio\Model\ListAdConversionAssociations200Response
 ```
 
 List associated campaigns
 
-Lists the LinkedIn campaigns that track a conversion rule, so you can spot newer campaigns that still need linking.  LinkedIn-only today. Returns the campaigns currently associated with this conversion rule. Auto-association on rule creation runs once at create time; campaigns created after the rule still need explicit association.
+The first path of `GET /v1/ads/conversions/destinations/{destinationId}/associations` (`listAdConversionAssociations`), which does the same with `accountId` as a parameter. It keeps working.
 
 ### Example
 
@@ -1086,7 +1662,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\ListConversionAssociations200Response**](../Model/ListConversionAssociations200Response.md)
+[**\Zernio\Model\ListAdConversionAssociations200Response**](../Model/ListAdConversionAssociations200Response.md)
 
 ### Authorization
 
@@ -1104,12 +1680,12 @@ try {
 ## `listConversionDestinations()`
 
 ```php
-listConversionDestinations($account_id): \Zernio\Model\ListConversionDestinations200Response
+listConversionDestinations($account_id): \Zernio\Model\ListAdConversionDestinations200Response
 ```
 
 List conversion destinations
 
-Lists where an ad account can receive conversion events (pixels, conversion actions or rules), so you know where to send them.  Returns the list of pixels (Meta), conversion actions (Google), conversion rules (LinkedIn), pixels (OpenAI Ads, Reddit) or ad accounts (Pinterest) accessible to the connected ads account. Use the returned `id` as `destinationId` when posting to `POST /v1/ads/conversions`.  For Google and LinkedIn, each destination's `type` reflects the conversion type (PURCHASE, LEAD, SIGN_UP, etc.), and the event type is locked to the destination. For Meta, OpenAI Ads and Reddit, `type` is absent: pixels accept any event name per request.  For Reddit, the pixels of every ad account the connection reaches (only the scoped ones when the connection has an ad-account scope), each with the `adAccountId` that owns it. Reddit pixels are created in Reddit Ads Manager, not through Zernio.  For LinkedIn, destinations are returned across every sponsored ad account the connected token can access; the `adAccountId` field on each destination identifies the parent ad account and is required for subsequent CRUD calls (update, delete, associations, metrics).
+The first path of `GET /v1/ads/conversions/destinations` (`listAdConversionDestinations`), which does the same with `accountId` as a parameter. It keeps working.
 
 ### Example
 
@@ -1146,7 +1722,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\ListConversionDestinations200Response**](../Model/ListConversionDestinations200Response.md)
+[**\Zernio\Model\ListAdConversionDestinations200Response**](../Model/ListAdConversionDestinations200Response.md)
 
 ### Authorization
 
@@ -1415,15 +1991,81 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `removeConversionAssociations()`
+## `removeAdConversionAssociations()`
 
 ```php
-removeConversionAssociations($account_id, $destination_id, $ad_account_id, $campaign_ids): \Zernio\Model\RemoveConversionAssociations200Response
+removeAdConversionAssociations($account_id, $destination_id, $ad_account_id, $campaign_ids): \Zernio\Model\RemoveAdConversionAssociations200Response
 ```
 
 Remove associated campaigns
 
 Unlinks campaigns from a LinkedIn conversion rule so they stop tracking it.  Pass `adAccountId` and `campaignIds` as query parameters (`campaignIds` is comma-separated).  The route also accepts a JSON body with the same fields, for clients that prefer DELETE-with-body. The documented surface is query-only because some SDK code generators (e.g. Python) collapse query + body parameters with the same name into a single kwarg.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The connected ads account (SocialAccount ID).
+$destination_id = 'destination_id_example'; // string
+$ad_account_id = 'ad_account_id_example'; // string
+$campaign_ids = 'campaign_ids_example'; // string | Comma-separated list of campaign IDs.
+
+try {
+    $result = $apiInstance->removeAdConversionAssociations($account_id, $destination_id, $ad_account_id, $campaign_ids);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->removeAdConversionAssociations: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The connected ads account (SocialAccount ID). | |
+| **destination_id** | **string**|  | |
+| **ad_account_id** | **string**|  | |
+| **campaign_ids** | **string**| Comma-separated list of campaign IDs. | |
+
+### Return type
+
+[**\Zernio\Model\RemoveAdConversionAssociations200Response**](../Model/RemoveAdConversionAssociations200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `removeConversionAssociations()`
+
+```php
+removeConversionAssociations($account_id, $destination_id, $ad_account_id, $campaign_ids): \Zernio\Model\RemoveAdConversionAssociations200Response
+```
+
+Remove associated campaigns
+
+The first path of `DELETE /v1/ads/conversions/destinations/{destinationId}/associations` (`removeAdConversionAssociations`), which does the same with `accountId` as a parameter. It keeps working.
 
 ### Example
 
@@ -1466,7 +2108,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\RemoveConversionAssociations200Response**](../Model/RemoveConversionAssociations200Response.md)
+[**\Zernio\Model\RemoveAdConversionAssociations200Response**](../Model/RemoveAdConversionAssociations200Response.md)
 
 ### Authorization
 
@@ -1679,7 +2321,7 @@ sendConversions($send_conversions_request): \Zernio\Model\SendConversions200Resp
 
 Send conversion events
 
-Sends conversion events, such as purchases or leads, from your server to an ad platform so it can attribute and optimize ads.  Relays one or more events to the target ad platform's native Conversions API. The platform is inferred from the provided `accountId`. Requires the Ads add-on.  ### Supported platforms  - Meta (`metaads`) via Graph API - Google Ads (`googleads`) via Data Manager API `ingestEvents` - LinkedIn (`linkedinads`) via `/rest/conversionEvents` - TikTok (`tiktokads`) via the Offline Events API `/offline/batch/` (OFFLINE conversions only) - OpenAI Ads (`openaiads`) via its Conversions API (a separate host, `bzr.openai.com`) - Pinterest (`pinterestads`) via `POST /v5/ad_accounts/{id}/events` - Reddit (`redditads`) via the Reddit Conversions API (`POST /api/v3/pixels/{pixelId}/conversion_events`)  ### `destinationId` per platform  - Meta: pixel (dataset) ID, e.g. `123456789012345` - Google: conversion action resource name, e.g. `customers/1234567890/conversionActions/987654321` - LinkedIn: conversion rule ID or URN, e.g. `104012` or `urn:lla:llaPartnerConversion:104012` - TikTok: Offline Event Set ID, e.g. `7057103914977558530` - OpenAI Ads: pixel wire id (numeric `pixel_id`, distinct from the internal pixel id), as returned by `GET /v1/accounts/{accountId}/conversion-destinations` - Pinterest: numeric ad account id, e.g. `549755885175` (Pinterest attributes to the ad account, not to a tag) - Reddit: pixel id, e.g. `a2_abc123`, as returned by `GET /v1/accounts/{accountId}/conversion-destinations` (any other shape returns 400)  Callers can list valid destinations via `GET /v1/accounts/{accountId}/conversion-destinations`.  ### Pinterest notes  - Each event needs an `email`, or `ipAddress` plus `userAgent`. Others are listed in `failures` with code `INVALID_EVENT` and the rest are still sent. - `clickIds.epik` (the `_epik` cookie) is sent as `click_id`. - `actionSource` `web` stays `web`, offline sources become `offline`, and app events need `platformData.action_source` `app_android` or `app_ios`. - Pinterest answers per event, so one bad event does not fail its chunk (failures carry code `PINTEREST_EVENT_FAILED`). - `consent.adUserData: DENIED` sets `opt_out`. - The connected user needs a Business Access role on the ad account (403 otherwise).  ### Reddit notes  - Each event needs a match key: `clickIds.rdt_cid`, `clickIds.rdt_uuid`, `email`, `phone`, `externalId`, or `ipAddress` plus `userAgent`. - Reddit accepts events up to 7 days old. `eventTime` is unix SECONDS (a value more than an hour in the future is refused as milliseconds). - Events failing these checks are listed in `failures` with code `INVALID_EVENT` and the rest are still sent. - Email (lowercased, dots and `+tags` stripped from the local part), phone (E.164 with the leading `+`) and `externalId` are SHA-256 hashed. IP and user agent go plaintext. - `consent.adUserData: DENIED` sends no user fields. - `actionSource` maps to WEBSITE (`web`), APP (`app`) or OTHER, overridable with `platformData.action_source`. `platformData.order_id` is forwarded. - `testCode` is sent as Reddit's `test_id`.  Reddit errors:  - 403 `reconnect_required`: the connection was authorized without the `adsconversions` permission (reconnect via GET /v1/connect/redditads/ads). - 403 `insufficient_permissions`: the Reddit user has no role on the ad account that owns the pixel. - `REDDIT_REJECTED`: Reddit throttling and other rejections, reported per chunk in `failures`.  ### TikTok notes  This path sends OFFLINE conversions (in-store / CRM / call-center), not web-pixel events. Each event must carry an email or phone (TikTok requires at least one).  The connected TikTok ads account must have granted the Offline Events permission; older grants must reconnect.  ### OpenAI Ads notes  Requires a tracking tag (pixel) to already exist on the account. Returns 422 with code `TRACKING_TAG_REQUIRED` if `POST /v1/accounts/{accountId}/tracking-tags` hasn't been called yet.  ### Hashing  All PII (email, phone, names, external IDs) is hashed with SHA-256 server-side per each platform's normalization spec, including Google's Gmail-specific dot/plus-suffix stripping. Send plaintext.  LinkedIn `externalIds` are passed through as plaintext per LinkedIn's spec; only emails and phones are hashed.  For LinkedIn, the connected account must have been authorized after the Conversions API rollout (the OAuth grant must include `rw_conversions`). Older accounts must reconnect.  ### Batching  Batching is handled automatically. Per-platform caps:  - Meta: 1000 events per request; rejects the entire batch if any event is malformed. - Google: 2000. - LinkedIn: 5000, all-or-nothing per chunk. - OpenAI Ads: 1000 per request. Larger submissions are split into 1000-event chunks, each all-or-nothing (a malformed event fails every event in that chunk, not the whole request). - Reddit: works the same way as OpenAI Ads, in chunks of 1000.  ### Dedup  Pass a stable `eventId` on every event:  - Meta and LinkedIn use it to dedupe against browser-side pixel/Insight Tag events. - Google maps it to `transactionId`. - Reddit receives it as `conversion_id`, its dedup key against Reddit Pixel events.  ### `eventName` per platform  - Meta: free-form. Standard names (Purchase, Lead, ...) match Meta's built-in events; custom strings are accepted. - Google: ignored. The conversion action's category determines the event type. Send the standard name closest to your action for documentation, but the platform will not branch on it. - LinkedIn: ignored. The conversion rule's `type` (LEAD, PURCHASE, etc.) is locked to the destination at rule-creation time. Send the standard name for documentation; LinkedIn does not branch on it. - OpenAI Ads: a fixed subset of standard names maps 1:1 onto OpenAI's own event-type enum: Purchase, Lead, AddToCart, ViewContent, InitiateCheckout, CompleteRegistration, Subscribe, StartTrial, Schedule. Any other standard name or custom string is sent as `type: custom` with the name preserved. - Pinterest: standard names map onto Pinterest's (see below). Any other string is sent as is, so it matches an advertiser defined event of that name.  Pinterest name mapping:  - Purchase = `checkout` - AddToCart = `add_to_cart` - InitiateCheckout = `initiate_checkout` - AddPaymentInfo = `add_payment_info` - Lead = `lead` - CompleteRegistration = `signup` - Subscribe = `subscribe` - ViewContent = `view_content` - Search = `search` - PageView = `page_visit`
+Sends conversion events, such as purchases or leads, from your server to an ad platform so it can attribute and optimize ads.  Relays one or more events to the target ad platform's native Conversions API. The platform is inferred from the provided `accountId`. Requires the Ads add-on.  ### Supported platforms  - Meta (`metaads`) via Graph API - Google Ads (`googleads`) via Data Manager API `ingestEvents` - LinkedIn (`linkedinads`) via `/rest/conversionEvents` - TikTok (`tiktokads`) via the Offline Events API `/offline/batch/` (OFFLINE conversions only) - OpenAI Ads (`openaiads`) via its Conversions API (a separate host, `bzr.openai.com`) - Pinterest (`pinterestads`) via `POST /v5/ad_accounts/{id}/events` - Reddit (`redditads`) via the Reddit Conversions API (`POST /api/v3/pixels/{pixelId}/conversion_events`)  ### `destinationId` per platform  - Meta: pixel (dataset) ID, e.g. `123456789012345` - Google: conversion action resource name, e.g. `customers/1234567890/conversionActions/987654321` - LinkedIn: conversion rule ID or URN, e.g. `104012` or `urn:lla:llaPartnerConversion:104012` - TikTok: Offline Event Set ID, e.g. `7057103914977558530` - OpenAI Ads: pixel wire id (numeric `pixel_id`, distinct from the internal pixel id), as returned by `GET /v1/ads/conversions/destinations` - Pinterest: numeric ad account id, e.g. `549755885175` (Pinterest attributes to the ad account, not to a tag) - Reddit: pixel id, e.g. `a2_abc123`, as returned by `GET /v1/ads/conversions/destinations` (any other shape returns 400)  Callers can list valid destinations via `GET /v1/ads/conversions/destinations`.  ### Pinterest notes  - Each event needs an `email`, or `ipAddress` plus `userAgent`. Others are listed in `failures` with code `INVALID_EVENT` and the rest are still sent. - `clickIds.epik` (the `_epik` cookie) is sent as `click_id`. - `actionSource` `web` stays `web`, offline sources become `offline`, and app events need `platformData.action_source` `app_android` or `app_ios`. - Pinterest answers per event, so one bad event does not fail its chunk (failures carry code `PINTEREST_EVENT_FAILED`). - `consent.adUserData: DENIED` sets `opt_out`. - The connected user needs a Business Access role on the ad account (403 otherwise).  ### Reddit notes  - Each event needs a match key: `clickIds.rdt_cid`, `clickIds.rdt_uuid`, `email`, `phone`, `externalId`, or `ipAddress` plus `userAgent`. - Reddit accepts events up to 7 days old. `eventTime` is unix SECONDS (a value more than an hour in the future is refused as milliseconds). - Events failing these checks are listed in `failures` with code `INVALID_EVENT` and the rest are still sent. - Email (lowercased, dots and `+tags` stripped from the local part), phone (E.164 with the leading `+`) and `externalId` are SHA-256 hashed. IP and user agent go plaintext. - `consent.adUserData: DENIED` sends no user fields. - `actionSource` maps to WEBSITE (`web`), APP (`app`) or OTHER, overridable with `platformData.action_source`. `platformData.order_id` is forwarded. - `testCode` is sent as Reddit's `test_id`.  Reddit errors:  - 403 `reconnect_required`: the connection was authorized without the `adsconversions` permission (reconnect via GET /v1/connect/redditads/ads). - 403 `insufficient_permissions`: the Reddit user has no role on the ad account that owns the pixel. - `REDDIT_REJECTED`: Reddit throttling and other rejections, reported per chunk in `failures`.  ### TikTok notes  This path sends OFFLINE conversions (in-store / CRM / call-center), not web-pixel events. Each event must carry an email or phone (TikTok requires at least one).  The connected TikTok ads account must have granted the Offline Events permission; older grants must reconnect.  ### OpenAI Ads notes  Requires a tracking tag (pixel) to already exist on the account. Returns 422 with code `TRACKING_TAG_REQUIRED` if `POST /v1/accounts/{accountId}/tracking-tags` hasn't been called yet.  ### Hashing  All PII (email, phone, names, external IDs) is hashed with SHA-256 server-side per each platform's normalization spec, including Google's Gmail-specific dot/plus-suffix stripping. Send plaintext.  LinkedIn `externalIds` are passed through as plaintext per LinkedIn's spec; only emails and phones are hashed.  For LinkedIn, the connected account must have been authorized after the Conversions API rollout (the OAuth grant must include `rw_conversions`). Older accounts must reconnect.  ### Batching  Batching is handled automatically. Per-platform caps:  - Meta: 1000 events per request; rejects the entire batch if any event is malformed. - Google: 2000. - LinkedIn: 5000, all-or-nothing per chunk. - OpenAI Ads: 1000 per request. Larger submissions are split into 1000-event chunks, each all-or-nothing (a malformed event fails every event in that chunk, not the whole request). - Reddit: works the same way as OpenAI Ads, in chunks of 1000.  ### Dedup  Pass a stable `eventId` on every event:  - Meta and LinkedIn use it to dedupe against browser-side pixel/Insight Tag events. - Google maps it to `transactionId`. - Reddit receives it as `conversion_id`, its dedup key against Reddit Pixel events.  ### `eventName` per platform  - Meta: free-form. Standard names (Purchase, Lead, ...) match Meta's built-in events; custom strings are accepted. - Google: ignored. The conversion action's category determines the event type. Send the standard name closest to your action for documentation, but the platform will not branch on it. - LinkedIn: ignored. The conversion rule's `type` (LEAD, PURCHASE, etc.) is locked to the destination at rule-creation time. Send the standard name for documentation; LinkedIn does not branch on it. - OpenAI Ads: a fixed subset of standard names maps 1:1 onto OpenAI's own event-type enum: Purchase, Lead, AddToCart, ViewContent, InitiateCheckout, CompleteRegistration, Subscribe, StartTrial, Schedule. Any other standard name or custom string is sent as `type: custom` with the name preserved. - Pinterest: standard names map onto Pinterest's (see below). Any other string is sent as is, so it matches an advertiser defined event of that name.  Pinterest name mapping:  - Purchase = `checkout` - AddToCart = `add_to_cart` - InitiateCheckout = `initiate_checkout` - AddPaymentInfo = `add_payment_info` - Lead = `lead` - CompleteRegistration = `signup` - Subscribe = `subscribe` - ViewContent = `view_content` - Search = `search` - PageView = `page_visit`
 
 ### Example
 
@@ -1779,6 +2421,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\SendEvents200Response**](../Model/SendEvents200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateAdConversionDestination()`
+
+```php
+updateAdConversionDestination($destination_id, $update_ad_conversion_destination_request): \Zernio\Model\GetAdConversionDestination200Response
+```
+
+Update a conversion destination
+
+Changes a LinkedIn conversion rule's name, value, attribution windows, or turns it on or off.  Partial-update a conversion rule. LinkedIn-only today. Whitelisted fields: `name`, `enabled`, attribution windows, `valueType`, `value`, `attributionType`. The rule's `type` and parent ad account are intentionally not exposed for update. Recreate the rule if those need to change.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$destination_id = 'destination_id_example'; // string
+$update_ad_conversion_destination_request = new \Zernio\Model\UpdateAdConversionDestinationRequest(); // \Zernio\Model\UpdateAdConversionDestinationRequest
+
+try {
+    $result = $apiInstance->updateAdConversionDestination($destination_id, $update_ad_conversion_destination_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->updateAdConversionDestination: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **destination_id** | **string**|  | |
+| **update_ad_conversion_destination_request** | [**\Zernio\Model\UpdateAdConversionDestinationRequest**](../Model/UpdateAdConversionDestinationRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\GetAdConversionDestination200Response**](../Model/GetAdConversionDestination200Response.md)
 
 ### Authorization
 
@@ -1918,12 +2622,12 @@ try {
 ## `updateConversionDestination()`
 
 ```php
-updateConversionDestination($account_id, $destination_id, $update_conversion_destination_request): \Zernio\Model\GetConversionDestination200Response
+updateConversionDestination($account_id, $destination_id, $update_conversion_destination_request): \Zernio\Model\GetAdConversionDestination200Response
 ```
 
 Update a conversion destination
 
-Changes a LinkedIn conversion rule's name, value, attribution windows, or turns it on or off.  Partial-update a conversion rule. LinkedIn-only today. Whitelisted fields: `name`, `enabled`, attribution windows, `valueType`, `value`, `attributionType`. The rule's `type` and parent ad account are intentionally not exposed for update. Recreate the rule if those need to change.
+The first path of `PATCH /v1/ads/conversions/destinations/{destinationId}` (`updateAdConversionDestination`), which does the same with `accountId` as a parameter. It keeps working.
 
 ### Example
 
@@ -1964,7 +2668,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\GetConversionDestination200Response**](../Model/GetConversionDestination200Response.md)
+[**\Zernio\Model\GetAdConversionDestination200Response**](../Model/GetAdConversionDestination200Response.md)
 
 ### Authorization
 

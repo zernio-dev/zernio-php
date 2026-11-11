@@ -629,7 +629,7 @@ createCustomConversion($account_id, $create_custom_conversion_request): \Zernio\
 
 Create custom conversion
 
-Creates a Meta custom conversion for ads to optimise toward, reusing an existing one with the same name and pixel.  It provisions the Meta custom conversion an ads flow optimises toward, and hands back the `customConversionId` for `promotedObject.customConversionId` on POST /v1/ads/create. This removes the manual \"create it in Ads Manager first\" step.  ### Reuse is ours, not Meta's  Meta's create is not idempotent, so a retried request would otherwise mint a duplicate carrying none of the original's optimisation history.  A non-archived conversion with the same `name` on the same `pixelId` is returned instead of created, with `reused: true` and a 200 rather than a 201.  ### Rule  `rule` is forwarded verbatim in Meta's own grammar (e.g. `{\"url\": {\"i_contains\": \"thank-you\"}}`). Meta validates it and rejects a malformed one with \"A conversion rule is required at creation time\".
+The first path of `POST /v1/ads/conversions/custom-conversions` (`createAdCustomConversion`), which does the same with `accountId` as a parameter. It keeps working.
 
 ### Example
 
@@ -2946,12 +2946,12 @@ try {
 ## `listCustomConversions()`
 
 ```php
-listCustomConversions($account_id, $ad_account_id): \Zernio\Model\ListCustomConversions200Response
+listCustomConversions($account_id, $ad_account_id): \Zernio\Model\ListAdCustomConversions200Response
 ```
 
 List custom conversions
 
-Lists a Meta ad account's custom conversions, including archived ones.  The ad account's Meta custom conversions, including archived ones (`isArchived`).
+The first path of `GET /v1/ads/conversions/custom-conversions` (`listAdCustomConversions`), which does the same with `accountId` as a parameter. It keeps working.
 
 ### Example
 
@@ -2990,7 +2990,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\ListCustomConversions200Response**](../Model/ListCustomConversions200Response.md)
+[**\Zernio\Model\ListAdCustomConversions200Response**](../Model/ListAdCustomConversions200Response.md)
 
 ### Authorization
 
