@@ -926,7 +926,7 @@ shareBrandedCallingIdentityForm($share_branded_calling_identity_form_request): \
 
 Create a caller identity share link
 
-Creates a single-use link (valid 7 days) where the end business fills in the caller identity itself, with no Zernio login. It covers display name, logo, call reasons, the authorizer and the three references.  What it submits lands under your team as `requested`, the same review as an API submission, and `branded_calling.identity.status_updated` fires.  ### Scoping the link  - `identityId`: complete an identity that is `requested` or `changes_requested`. - `enterpriseId`: a new identity for a registered business. - Neither: the business registers itself and its first identity.  The person opening the link can forward a fresh one to someone else, which retires theirs.
+Creates a single-use link (valid 7 days) where the end business fills in the caller identity itself, with no Zernio login. It covers display name, logo, call reasons, the authorizer and the three references.  What it submits lands under your team as `requested`, the same review as an API submission, and `branded_calling.identity.status_updated` fires.  ### Scoping the link  - `identityId`: complete an identity that is `requested` or `changes_requested`. - `enterpriseId`: a new identity for a registered business. - Neither: the business registers itself and its first identity.  On balance billing, a link that creates an identity needs its first month in the balance first (402 otherwise).  The person opening the link can forward a fresh one to someone else, which retires theirs.
 
 ### Example
 
