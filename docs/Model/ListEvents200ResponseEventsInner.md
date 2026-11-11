@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **event_id** | **string** |  | [optional]
+**source** | **string** | Where the event came from: &#x60;api&#x60;, &#x60;relay&#x60;, &#x60;web&#x60;, &#x60;shopify&#x60;, &#x60;woocommerce&#x60;, &#x60;hubspot&#x60;, &#x60;meta_leads&#x60;, &#x60;google_leads&#x60;, &#x60;linkedin_leads&#x60; or &#x60;tiktok_leads&#x60;. | [optional]
 **event_name** | **string** |  | [optional]
 **event_time** | **\DateTime** |  | [optional]
 **received_at** | **\DateTime** |  | [optional]
@@ -12,13 +13,14 @@ Name | Type | Description | Notes
 **value** | **float** |  | [optional]
 **currency** | **string** |  | [optional]
 **source_url** | **string** | Origin, path and attribution parameters only. | [optional]
-**utm** | [**\Zernio\Model\ListEvents200ResponseEventsInnerUtm**](ListEvents200ResponseEventsInnerUtm.md) |  | [optional]
+**utm** | [**\Zernio\Model\StoredEventUtm**](StoredEventUtm.md) |  | [optional]
 **zrn** | **string** | Ad ID from the &#x60;zrn&#x60; parameter Zernio adds to links of ads it creates. | [optional]
-**click_ids** | [**\Zernio\Model\ListEvents200ResponseEventsInnerClickIds**](ListEvents200ResponseEventsInnerClickIds.md) |  | [optional]
+**click_ids** | [**\Zernio\Model\StoredEventClickIds**](StoredEventClickIds.md) |  | [optional]
 **destinations_sent** | **int** | Destinations the event was forwarded to. | [optional]
 **has_email** | **bool** |  | [optional]
 **has_phone** | **bool** |  | [optional]
 **has_external_id** | **bool** |  | [optional]
-**ad** | [**\Zernio\Model\ListEvents200ResponseEventsInnerAd**](ListEvents200ResponseEventsInnerAd.md) |  | [optional]
+**ad** | [**\Zernio\Model\StoredEventAd**](StoredEventAd.md) |  | [optional]
+**deliveries** | [**\Zernio\Model\ListEvents200ResponseEventsInnerAllOfDeliveriesInner[]**](ListEvents200ResponseEventsInnerAllOfDeliveriesInner.md) | Each destination the event was forwarded to, with its latest send status. The full detail is on GET /v1/events/{eventId}. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

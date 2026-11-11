@@ -1493,6 +1493,12 @@ docs/Model/GetEmailThread200Response.md
 docs/Model/GetEmailThread200ResponseData.md
 docs/Model/GetEvent200Response.md
 docs/Model/GetEvent200ResponseDeliveriesInner.md
+docs/Model/GetEventsOverview200Response.md
+docs/Model/GetEventsOverview200ResponsePlatformsInner.md
+docs/Model/GetEventsOverview200ResponseSourcesInner.md
+docs/Model/GetEventsOverview200ResponseToday.md
+docs/Model/GetEventsOverview200ResponseWebsite.md
+docs/Model/GetEventsOverview200ResponseWebsiteStepsInner.md
 docs/Model/GetFacebookDemographics200Response.md
 docs/Model/GetFacebookDemographics200ResponseDemographics.md
 docs/Model/GetFacebookDemographics200ResponseDemographicsCountryInner.md
@@ -2200,6 +2206,8 @@ docs/Model/ListEmailSignatures200Response.md
 docs/Model/ListEmailThreads200Response.md
 docs/Model/ListEventDestinations200Response.md
 docs/Model/ListEvents200Response.md
+docs/Model/ListEvents200ResponseEventsInner.md
+docs/Model/ListEvents200ResponseEventsInnerAllOfDeliveriesInner.md
 docs/Model/ListFacebookPages200Response.md
 docs/Model/ListFacebookPages200ResponsePagesInner.md
 docs/Model/ListFacebookTaggedPosts200Response.md
@@ -5240,6 +5248,12 @@ lib/Model/GetEmailThread200Response.php
 lib/Model/GetEmailThread200ResponseData.php
 lib/Model/GetEvent200Response.php
 lib/Model/GetEvent200ResponseDeliveriesInner.php
+lib/Model/GetEventsOverview200Response.php
+lib/Model/GetEventsOverview200ResponsePlatformsInner.php
+lib/Model/GetEventsOverview200ResponseSourcesInner.php
+lib/Model/GetEventsOverview200ResponseToday.php
+lib/Model/GetEventsOverview200ResponseWebsite.php
+lib/Model/GetEventsOverview200ResponseWebsiteStepsInner.php
 lib/Model/GetFacebookDemographics200Response.php
 lib/Model/GetFacebookDemographics200ResponseDemographics.php
 lib/Model/GetFacebookDemographics200ResponseDemographicsCountryInner.php
@@ -5947,6 +5961,8 @@ lib/Model/ListEmailSignatures200Response.php
 lib/Model/ListEmailThreads200Response.php
 lib/Model/ListEventDestinations200Response.php
 lib/Model/ListEvents200Response.php
+lib/Model/ListEvents200ResponseEventsInner.php
+lib/Model/ListEvents200ResponseEventsInnerAllOfDeliveriesInner.php
 lib/Model/ListFacebookPages200Response.php
 lib/Model/ListFacebookPages200ResponsePagesInner.php
 lib/Model/ListFacebookTaggedPosts200Response.php
@@ -7495,3 +7511,10 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetEventsOverview200ResponsePlatformsInnerTest.php
+test/Model/GetEventsOverview200ResponseSourcesInnerTest.php
+test/Model/GetEventsOverview200ResponseTest.php
+test/Model/GetEventsOverview200ResponseTodayTest.php
+test/Model/GetEventsOverview200ResponseWebsiteStepsInnerTest.php
+test/Model/GetEventsOverview200ResponseWebsiteTest.php
+test/Model/ListEvents200ResponseEventsInnerAllOfDeliveriesInnerTest.php
