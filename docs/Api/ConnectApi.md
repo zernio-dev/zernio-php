@@ -15,10 +15,12 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**connectAds()**](ConnectApi.md#connectAds) | **GET** /v1/connect/{platform}/ads | Connect ads for a platform |
 | [**connectBlueskyCredentials()**](ConnectApi.md#connectBlueskyCredentials) | **POST** /v1/connect/bluesky/credentials | Connect Bluesky account |
 | [**connectDiscordChannel()**](ConnectApi.md#connectDiscordChannel) | **POST** /v1/connect/discord | Connect a Discord channel |
+| [**connectLineCredentials()**](ConnectApi.md#connectLineCredentials) | **POST** /v1/connect/line/credentials | Connect LINE Official Account |
 | [**connectOpenAIAdsCredentials()**](ConnectApi.md#connectOpenAIAdsCredentials) | **POST** /v1/connect/openai-ads/credentials | Connect an OpenAI Ads account |
 | [**connectShopifyWithToken()**](ConnectApi.md#connectShopifyWithToken) | **POST** /v1/connect/shopify/token | Connect a Shopify store with a custom-app Admin token |
 | [**connectSlackChannel()**](ConnectApi.md#connectSlackChannel) | **POST** /v1/connect/slack | Connect a Slack channel |
 | [**connectWebflowWithSiteToken()**](ConnectApi.md#connectWebflowWithSiteToken) | **POST** /v1/connect/webflow/token | Connect Webflow with a site API token |
+| [**connectWechatCredentials()**](ConnectApi.md#connectWechatCredentials) | **POST** /v1/connect/wechat/credentials | Connect WeChat Official Account |
 | [**connectWhatsAppCredentials()**](ConnectApi.md#connectWhatsAppCredentials) | **POST** /v1/connect/whatsapp/credentials | Connect WhatsApp via credentials |
 | [**connectWhatsAppEmbeddedSignup()**](ConnectApi.md#connectWhatsAppEmbeddedSignup) | **POST** /v1/connect/whatsapp/embedded-signup | Connect WhatsApp from Embedded Signup |
 | [**connectWhopAdsCredentials()**](ConnectApi.md#connectWhopAdsCredentials) | **POST** /v1/connect/whop-ads/credentials | Connect a Whop account |
@@ -52,6 +54,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getSubredditRules()**](ConnectApi.md#getSubredditRules) | **GET** /v1/accounts/{accountId}/reddit-subreddits/{subreddit}/rules | Get subreddit rules |
 | [**getTelegramConnectStatus()**](ConnectApi.md#getTelegramConnectStatus) | **GET** /v1/connect/telegram | Generate Telegram code |
 | [**getWebflowConnectUrl()**](ConnectApi.md#getWebflowConnectUrl) | **GET** /v1/connect/webflow | Get Webflow OAuth URL |
+| [**getWechatIpWhitelist()**](ConnectApi.md#getWechatIpWhitelist) | **GET** /v1/connect/wechat/ip-whitelist | Get WeChat IP whitelist |
 | [**getWhatsAppSdkConfig()**](ConnectApi.md#getWhatsAppSdkConfig) | **GET** /v1/connect/whatsapp/sdk-config | Get Embedded Signup SDK config |
 | [**getWixConnectUrl()**](ConnectApi.md#getWixConnectUrl) | **GET** /v1/connect/wix | Get Wix site install URL |
 | [**getWordPressAuthUrl()**](ConnectApi.md#getWordPressAuthUrl) | **GET** /v1/connect/wordpress | Get WordPress.com OAuth connect URL |
@@ -671,6 +674,66 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `connectLineCredentials()`
+
+```php
+connectLineCredentials($connect_line_credentials_request): \Zernio\Model\ConnectLineCredentials200Response
+```
+
+Connect LINE Official Account
+
+Connect a LINE Official Account with the Channel ID and Channel secret of its Messaging API channel (LINE Official Account Manager > Settings > Messaging API, also shown in the LINE Developers Console under the channel's Basic settings).  Zernio issues a channel access token, reads the bot's profile and sets the channel's webhook URL for you. A channel has one webhook URL, so if it already pointed somewhere else, that integration stops receiving events; the response names it in `webhook.previousUrl`.  Two settings stay on the customer's side, in LINE Official Account Manager > Settings > Response settings. `nextSteps` in the response lists them:  - Turn on Webhooks. Until it is on, LINE delivers nothing to Zernio. - Turn off auto-response and greeting messages.  Reconnecting the same channel on the same profile updates the existing account. To get your userId for the state parameter, call GET /v1/users which includes a currentUserId field.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$connect_line_credentials_request = {"channelId":"2001234567","channelSecret":"0123456789abcdef0123456789abcdef","state":"6507a1b2c3d4e5f6a7b8c9d0-6507a1b2c3d4e5f6a7b8c9d1","redirect_url":"https://yourapp.com/connected"}; // \Zernio\Model\ConnectLineCredentialsRequest
+
+try {
+    $result = $apiInstance->connectLineCredentials($connect_line_credentials_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->connectLineCredentials: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **connect_line_credentials_request** | [**\Zernio\Model\ConnectLineCredentialsRequest**](../Model/ConnectLineCredentialsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\ConnectLineCredentials200Response**](../Model/ConnectLineCredentials200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `connectOpenAIAdsCredentials()`
 
 ```php
@@ -905,6 +968,66 @@ try {
 ### Authorization
 
 [connectToken](../../README.md#connectToken), [bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `connectWechatCredentials()`
+
+```php
+connectWechatCredentials($connect_wechat_credentials_request): \Zernio\Model\ConnectWechatCredentials200Response
+```
+
+Connect WeChat Official Account
+
+Connect a verified WeChat Official Account (Service Account) with its AppID and AppSecret (Weixin Official Accounts Platform > Settings and Development > Basic Configuration).  Before calling this, add every IP from GET /v1/connect/wechat/ip-whitelist to the account's API IP whitelist on the same page. WeChat refuses calls from any other IP, and this endpoint then returns 400 with code `wechat_ip_not_whitelisted`.  The response carries a Server URL, a Token and an EncodingAESKey. Paste them into Server Configuration on the same page, choose Safe mode for message encryption, and enable the configuration. Until then WeChat delivers nothing to Zernio.  Enabling Server Configuration turns off the auto-replies and menus set in the WeChat dashboard.  Reconnecting the same AppID on the same profile keeps the existing Token and EncodingAESKey, so nothing has to be pasted again. To get your userId for the state parameter, call GET /v1/users which includes a currentUserId field.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$connect_wechat_credentials_request = {"appId":"wx1234567890abcdef","appSecret":"0123456789abcdef0123456789abcdef","state":"6507a1b2c3d4e5f6a7b8c9d0-6507a1b2c3d4e5f6a7b8c9d1","displayName":"Acme China"}; // \Zernio\Model\ConnectWechatCredentialsRequest
+
+try {
+    $result = $apiInstance->connectWechatCredentials($connect_wechat_credentials_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->connectWechatCredentials: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **connect_wechat_credentials_request** | [**\Zernio\Model\ConnectWechatCredentialsRequest**](../Model/ConnectWechatCredentialsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\ConnectWechatCredentials200Response**](../Model/ConnectWechatCredentials200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -2989,6 +3112,63 @@ try {
 ### Authorization
 
 [connectToken](../../README.md#connectToken), [bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getWechatIpWhitelist()`
+
+```php
+getWechatIpWhitelist(): \Zernio\Model\GetWechatIpWhitelist200Response
+```
+
+Get WeChat IP whitelist
+
+The IPs Zernio calls WeChat from. Add all of them to the Official Account's API IP whitelist before calling POST /v1/connect/wechat/credentials.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getWechatIpWhitelist();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->getWechatIpWhitelist: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\Zernio\Model\GetWechatIpWhitelist200Response**](../Model/GetWechatIpWhitelist200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
 
 ### HTTP request headers
 

@@ -611,10 +611,12 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**connectAds**](docs/Api/ConnectApi.md#connectads) | **GET** /v1/connect/{platform}/ads | Connect ads for a platform
 *ConnectApi* | [**connectBlueskyCredentials**](docs/Api/ConnectApi.md#connectblueskycredentials) | **POST** /v1/connect/bluesky/credentials | Connect Bluesky account
 *ConnectApi* | [**connectDiscordChannel**](docs/Api/ConnectApi.md#connectdiscordchannel) | **POST** /v1/connect/discord | Connect a Discord channel
+*ConnectApi* | [**connectLineCredentials**](docs/Api/ConnectApi.md#connectlinecredentials) | **POST** /v1/connect/line/credentials | Connect LINE Official Account
 *ConnectApi* | [**connectOpenAIAdsCredentials**](docs/Api/ConnectApi.md#connectopenaiadscredentials) | **POST** /v1/connect/openai-ads/credentials | Connect an OpenAI Ads account
 *ConnectApi* | [**connectShopifyWithToken**](docs/Api/ConnectApi.md#connectshopifywithtoken) | **POST** /v1/connect/shopify/token | Connect a Shopify store with a custom-app Admin token
 *ConnectApi* | [**connectSlackChannel**](docs/Api/ConnectApi.md#connectslackchannel) | **POST** /v1/connect/slack | Connect a Slack channel
 *ConnectApi* | [**connectWebflowWithSiteToken**](docs/Api/ConnectApi.md#connectwebflowwithsitetoken) | **POST** /v1/connect/webflow/token | Connect Webflow with a site API token
+*ConnectApi* | [**connectWechatCredentials**](docs/Api/ConnectApi.md#connectwechatcredentials) | **POST** /v1/connect/wechat/credentials | Connect WeChat Official Account
 *ConnectApi* | [**connectWhatsAppCredentials**](docs/Api/ConnectApi.md#connectwhatsappcredentials) | **POST** /v1/connect/whatsapp/credentials | Connect WhatsApp via credentials
 *ConnectApi* | [**connectWhatsAppEmbeddedSignup**](docs/Api/ConnectApi.md#connectwhatsappembeddedsignup) | **POST** /v1/connect/whatsapp/embedded-signup | Connect WhatsApp from Embedded Signup
 *ConnectApi* | [**connectWhopAdsCredentials**](docs/Api/ConnectApi.md#connectwhopadscredentials) | **POST** /v1/connect/whop-ads/credentials | Connect a Whop account
@@ -648,6 +650,7 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**getSubredditRules**](docs/Api/ConnectApi.md#getsubredditrules) | **GET** /v1/accounts/{accountId}/reddit-subreddits/{subreddit}/rules | Get subreddit rules
 *ConnectApi* | [**getTelegramConnectStatus**](docs/Api/ConnectApi.md#gettelegramconnectstatus) | **GET** /v1/connect/telegram | Generate Telegram code
 *ConnectApi* | [**getWebflowConnectUrl**](docs/Api/ConnectApi.md#getwebflowconnecturl) | **GET** /v1/connect/webflow | Get Webflow OAuth URL
+*ConnectApi* | [**getWechatIpWhitelist**](docs/Api/ConnectApi.md#getwechatipwhitelist) | **GET** /v1/connect/wechat/ip-whitelist | Get WeChat IP whitelist
 *ConnectApi* | [**getWhatsAppSdkConfig**](docs/Api/ConnectApi.md#getwhatsappsdkconfig) | **GET** /v1/connect/whatsapp/sdk-config | Get Embedded Signup SDK config
 *ConnectApi* | [**getWixConnectUrl**](docs/Api/ConnectApi.md#getwixconnecturl) | **GET** /v1/connect/wix | Get Wix site install URL
 *ConnectApi* | [**getWordPressAuthUrl**](docs/Api/ConnectApi.md#getwordpressauthurl) | **GET** /v1/connect/wordpress | Get WordPress.com OAuth connect URL
@@ -1931,6 +1934,9 @@ Class | Method | HTTP request | Description
 - [ConnectHandoffAccountsInner](docs/Model/ConnectHandoffAccountsInner.md)
 - [ConnectHandoffError](docs/Model/ConnectHandoffError.md)
 - [ConnectHandoffLink](docs/Model/ConnectHandoffLink.md)
+- [ConnectLineCredentials200Response](docs/Model/ConnectLineCredentials200Response.md)
+- [ConnectLineCredentials200ResponseWebhook](docs/Model/ConnectLineCredentials200ResponseWebhook.md)
+- [ConnectLineCredentialsRequest](docs/Model/ConnectLineCredentialsRequest.md)
 - [ConnectOpenAIAdsCredentials200Response](docs/Model/ConnectOpenAIAdsCredentials200Response.md)
 - [ConnectOpenAIAdsCredentialsRequest](docs/Model/ConnectOpenAIAdsCredentialsRequest.md)
 - [ConnectShopifyWithToken200Response](docs/Model/ConnectShopifyWithToken200Response.md)
@@ -1940,6 +1946,9 @@ Class | Method | HTTP request | Description
 - [ConnectWebflowWithSiteToken200Response](docs/Model/ConnectWebflowWithSiteToken200Response.md)
 - [ConnectWebflowWithSiteToken200ResponseAccount](docs/Model/ConnectWebflowWithSiteToken200ResponseAccount.md)
 - [ConnectWebflowWithSiteTokenRequest](docs/Model/ConnectWebflowWithSiteTokenRequest.md)
+- [ConnectWechatCredentials200Response](docs/Model/ConnectWechatCredentials200Response.md)
+- [ConnectWechatCredentials200ResponseServer](docs/Model/ConnectWechatCredentials200ResponseServer.md)
+- [ConnectWechatCredentialsRequest](docs/Model/ConnectWechatCredentialsRequest.md)
 - [ConnectWelcomeScreen](docs/Model/ConnectWelcomeScreen.md)
 - [ConnectWhatsAppCredentials200Response](docs/Model/ConnectWhatsAppCredentials200Response.md)
 - [ConnectWhatsAppCredentials200ResponseAccount](docs/Model/ConnectWhatsAppCredentials200ResponseAccount.md)
@@ -1955,6 +1964,7 @@ Class | Method | HTTP request | Description
 - [Connected](docs/Model/Connected.md)
 - [ConnectedAccount](docs/Model/ConnectedAccount.md)
 - [ConnectedApp](docs/Model/ConnectedApp.md)
+- [ConnectedMessagingAccount](docs/Model/ConnectedMessagingAccount.md)
 - [ContentRetentionResponse](docs/Model/ContentRetentionResponse.md)
 - [ConversationAdAttribution](docs/Model/ConversationAdAttribution.md)
 - [ConversionAction](docs/Model/ConversionAction.md)
@@ -2979,6 +2989,7 @@ Class | Method | HTTP request | Description
 - [GetWebhookLogs200Response](docs/Model/GetWebhookLogs200Response.md)
 - [GetWebhookLogs200ResponsePagination](docs/Model/GetWebhookLogs200ResponsePagination.md)
 - [GetWebhookSettings200Response](docs/Model/GetWebhookSettings200Response.md)
+- [GetWechatIpWhitelist200Response](docs/Model/GetWechatIpWhitelist200Response.md)
 - [GetWhatsAppBlockStatus200Response](docs/Model/GetWhatsAppBlockStatus200Response.md)
 - [GetWhatsAppBlockedUsers200Response](docs/Model/GetWhatsAppBlockedUsers200Response.md)
 - [GetWhatsAppBlockedUsers200ResponseBlockedUsersInner](docs/Model/GetWhatsAppBlockedUsers200ResponseBlockedUsersInner.md)
@@ -5011,6 +5022,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.569.0`
+- API version: `1.570.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

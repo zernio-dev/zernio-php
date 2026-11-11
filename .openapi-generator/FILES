@@ -689,6 +689,9 @@ docs/Model/ConnectHandoff.md
 docs/Model/ConnectHandoffAccountsInner.md
 docs/Model/ConnectHandoffError.md
 docs/Model/ConnectHandoffLink.md
+docs/Model/ConnectLineCredentials200Response.md
+docs/Model/ConnectLineCredentials200ResponseWebhook.md
+docs/Model/ConnectLineCredentialsRequest.md
 docs/Model/ConnectOpenAIAdsCredentials200Response.md
 docs/Model/ConnectOpenAIAdsCredentialsRequest.md
 docs/Model/ConnectShopifyWithToken200Response.md
@@ -698,6 +701,9 @@ docs/Model/ConnectSlackChannelRequest.md
 docs/Model/ConnectWebflowWithSiteToken200Response.md
 docs/Model/ConnectWebflowWithSiteToken200ResponseAccount.md
 docs/Model/ConnectWebflowWithSiteTokenRequest.md
+docs/Model/ConnectWechatCredentials200Response.md
+docs/Model/ConnectWechatCredentials200ResponseServer.md
+docs/Model/ConnectWechatCredentialsRequest.md
 docs/Model/ConnectWelcomeScreen.md
 docs/Model/ConnectWhatsAppCredentials200Response.md
 docs/Model/ConnectWhatsAppCredentials200ResponseAccount.md
@@ -713,6 +719,7 @@ docs/Model/ConnectWordPressWithApplicationPasswordRequest.md
 docs/Model/Connected.md
 docs/Model/ConnectedAccount.md
 docs/Model/ConnectedApp.md
+docs/Model/ConnectedMessagingAccount.md
 docs/Model/ContentRetentionResponse.md
 docs/Model/ConversationAdAttribution.md
 docs/Model/ConversionAction.md
@@ -1737,6 +1744,7 @@ docs/Model/GetWebflowConnectUrl200Response.md
 docs/Model/GetWebhookLogs200Response.md
 docs/Model/GetWebhookLogs200ResponsePagination.md
 docs/Model/GetWebhookSettings200Response.md
+docs/Model/GetWechatIpWhitelist200Response.md
 docs/Model/GetWhatsAppBlockStatus200Response.md
 docs/Model/GetWhatsAppBlockedUsers200Response.md
 docs/Model/GetWhatsAppBlockedUsers200ResponseBlockedUsersInner.md
@@ -4428,6 +4436,9 @@ lib/Model/ConnectHandoff.php
 lib/Model/ConnectHandoffAccountsInner.php
 lib/Model/ConnectHandoffError.php
 lib/Model/ConnectHandoffLink.php
+lib/Model/ConnectLineCredentials200Response.php
+lib/Model/ConnectLineCredentials200ResponseWebhook.php
+lib/Model/ConnectLineCredentialsRequest.php
 lib/Model/ConnectOpenAIAdsCredentials200Response.php
 lib/Model/ConnectOpenAIAdsCredentialsRequest.php
 lib/Model/ConnectShopifyWithToken200Response.php
@@ -4437,6 +4448,9 @@ lib/Model/ConnectSlackChannelRequest.php
 lib/Model/ConnectWebflowWithSiteToken200Response.php
 lib/Model/ConnectWebflowWithSiteToken200ResponseAccount.php
 lib/Model/ConnectWebflowWithSiteTokenRequest.php
+lib/Model/ConnectWechatCredentials200Response.php
+lib/Model/ConnectWechatCredentials200ResponseServer.php
+lib/Model/ConnectWechatCredentialsRequest.php
 lib/Model/ConnectWelcomeScreen.php
 lib/Model/ConnectWhatsAppCredentials200Response.php
 lib/Model/ConnectWhatsAppCredentials200ResponseAccount.php
@@ -4452,6 +4466,7 @@ lib/Model/ConnectWordPressWithApplicationPasswordRequest.php
 lib/Model/Connected.php
 lib/Model/ConnectedAccount.php
 lib/Model/ConnectedApp.php
+lib/Model/ConnectedMessagingAccount.php
 lib/Model/ContentRetentionResponse.php
 lib/Model/ConversationAdAttribution.php
 lib/Model/ConversionAction.php
@@ -5476,6 +5491,7 @@ lib/Model/GetWebflowConnectUrl200Response.php
 lib/Model/GetWebhookLogs200Response.php
 lib/Model/GetWebhookLogs200ResponsePagination.php
 lib/Model/GetWebhookSettings200Response.php
+lib/Model/GetWechatIpWhitelist200Response.php
 lib/Model/GetWhatsAppBlockStatus200Response.php
 lib/Model/GetWhatsAppBlockedUsers200Response.php
 lib/Model/GetWhatsAppBlockedUsers200ResponseBlockedUsersInner.php
@@ -7479,3 +7495,11 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ConnectLineCredentials200ResponseTest.php
+test/Model/ConnectLineCredentials200ResponseWebhookTest.php
+test/Model/ConnectLineCredentialsRequestTest.php
+test/Model/ConnectWechatCredentials200ResponseServerTest.php
+test/Model/ConnectWechatCredentials200ResponseTest.php
+test/Model/ConnectWechatCredentialsRequestTest.php
+test/Model/ConnectedMessagingAccountTest.php
+test/Model/GetWechatIpWhitelist200ResponseTest.php
