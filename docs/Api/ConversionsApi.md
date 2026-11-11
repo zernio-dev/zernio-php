@@ -1864,7 +1864,7 @@ try {
 ## `listEvents()`
 
 ```php
-listEvents($profile_id, $limit, $from, $to, $event_name, $cursor): \Zernio\Model\ListEvents200Response
+listEvents($profile_id, $limit, $from, $to, $event_name, $source, $cursor): \Zernio\Model\ListEvents200Response
 ```
 
 List stored events
@@ -1893,10 +1893,11 @@ $limit = 50; // int
 $from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Only events at or after this time (ISO 8601, on the event time).
 $to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Only events before this time (ISO 8601, on the event time).
 $event_name = 'event_name_example'; // string | Only events with this name, such as `Purchase`.
+$source = 'source_example'; // string | Only events from this source, such as `stripe` for the payments of a connected Stripe account.
 $cursor = 'cursor_example'; // string | `nextCursor` from the previous page.
 
 try {
-    $result = $apiInstance->listEvents($profile_id, $limit, $from, $to, $event_name, $cursor);
+    $result = $apiInstance->listEvents($profile_id, $limit, $from, $to, $event_name, $source, $cursor);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConversionsApi->listEvents: ', $e->getMessage(), PHP_EOL;
@@ -1912,6 +1913,7 @@ try {
 | **from** | **\DateTime**| Only events at or after this time (ISO 8601, on the event time). | [optional] |
 | **to** | **\DateTime**| Only events before this time (ISO 8601, on the event time). | [optional] |
 | **event_name** | **string**| Only events with this name, such as &#x60;Purchase&#x60;. | [optional] |
+| **source** | **string**| Only events from this source, such as &#x60;stripe&#x60; for the payments of a connected Stripe account. | [optional] |
 | **cursor** | **string**| &#x60;nextCursor&#x60; from the previous page. | [optional] |
 
 ### Return type

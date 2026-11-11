@@ -1691,6 +1691,7 @@ docs/Model/GetSmsRegistration200ResponseCampaignContent.md
 docs/Model/GetSmsUsage200Response.md
 docs/Model/GetSmsUsage200ResponseGroupsInner.md
 docs/Model/GetSmsUsage200ResponseTotals.md
+docs/Model/GetStripeConnectUrl200Response.md
 docs/Model/GetSubredditRules200Response.md
 docs/Model/GetSubredditRules200ResponseRulesInner.md
 docs/Model/GetTelegramCommands200Response.md
@@ -5425,6 +5426,7 @@ lib/Model/GetSmsRegistration200ResponseCampaignContent.php
 lib/Model/GetSmsUsage200Response.php
 lib/Model/GetSmsUsage200ResponseGroupsInner.php
 lib/Model/GetSmsUsage200ResponseTotals.php
+lib/Model/GetStripeConnectUrl200Response.php
 lib/Model/GetSubredditRules200Response.php
 lib/Model/GetSubredditRules200ResponseRulesInner.php
 lib/Model/GetTelegramCommands200Response.php
@@ -7469,3 +7471,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetStripeConnectUrl200ResponseTest.php
