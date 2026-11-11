@@ -1692,6 +1692,7 @@ docs/Model/GetSmsUsage200Response.md
 docs/Model/GetSmsUsage200ResponseGroupsInner.md
 docs/Model/GetSmsUsage200ResponseTotals.md
 docs/Model/GetStripeConnectUrl200Response.md
+docs/Model/GetStripeSettings200Response.md
 docs/Model/GetSubredditRules200Response.md
 docs/Model/GetSubredditRules200ResponseRulesInner.md
 docs/Model/GetTelegramCommands200Response.md
@@ -2975,6 +2976,7 @@ docs/Model/StoredEvent.md
 docs/Model/StoredEventAd.md
 docs/Model/StoredEventClickIds.md
 docs/Model/StoredEventUtm.md
+docs/Model/StripeSettings.md
 docs/Model/SubmitCreatorDraft201Response.md
 docs/Model/SubmitCreatorDraftRequest.md
 docs/Model/SubmitCreatorPost201Response.md
@@ -3294,6 +3296,8 @@ docs/Model/UpdateSequenceRequest.md
 docs/Model/UpdateSequenceRequestStepsInner.md
 docs/Model/UpdateSequenceRequestStepsInnerTemplate.md
 docs/Model/UpdateSlackSettingsRequest.md
+docs/Model/UpdateStripeSettings200Response.md
+docs/Model/UpdateStripeSettingsRequest.md
 docs/Model/UpdateTrackingTagRequest.md
 docs/Model/UpdateValueRuleSet200Response.md
 docs/Model/UpdateValueRuleSetRequest.md
@@ -5427,6 +5431,7 @@ lib/Model/GetSmsUsage200Response.php
 lib/Model/GetSmsUsage200ResponseGroupsInner.php
 lib/Model/GetSmsUsage200ResponseTotals.php
 lib/Model/GetStripeConnectUrl200Response.php
+lib/Model/GetStripeSettings200Response.php
 lib/Model/GetSubredditRules200Response.php
 lib/Model/GetSubredditRules200ResponseRulesInner.php
 lib/Model/GetTelegramCommands200Response.php
@@ -6711,6 +6716,7 @@ lib/Model/StoredEvent.php
 lib/Model/StoredEventAd.php
 lib/Model/StoredEventClickIds.php
 lib/Model/StoredEventUtm.php
+lib/Model/StripeSettings.php
 lib/Model/SubmitCreatorDraft201Response.php
 lib/Model/SubmitCreatorDraftRequest.php
 lib/Model/SubmitCreatorPost201Response.php
@@ -7030,6 +7036,8 @@ lib/Model/UpdateSequenceRequest.php
 lib/Model/UpdateSequenceRequestStepsInner.php
 lib/Model/UpdateSequenceRequestStepsInnerTemplate.php
 lib/Model/UpdateSlackSettingsRequest.php
+lib/Model/UpdateStripeSettings200Response.php
+lib/Model/UpdateStripeSettingsRequest.php
 lib/Model/UpdateTrackingTagRequest.php
 lib/Model/UpdateValueRuleSet200Response.php
 lib/Model/UpdateValueRuleSetRequest.php
@@ -7471,4 +7479,7 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetStripeConnectUrl200ResponseTest.php
+test/Model/GetStripeSettings200ResponseTest.php
+test/Model/StripeSettingsTest.php
+test/Model/UpdateStripeSettings200ResponseTest.php
+test/Model/UpdateStripeSettingsRequestTest.php
