@@ -72,7 +72,8 @@ class BalanceRequiredError implements ModelInterface, ArrayAccess, \JsonSerializ
         'request_id' => 'string',
         'docs_url' => 'string',
         'details' => '\Zernio\Model\ErrorResponseDetails',
-        'funding_url' => 'string'
+        'funding_url' => 'string',
+        'required_cents' => 'int'
     ];
 
     /**
@@ -96,7 +97,8 @@ class BalanceRequiredError implements ModelInterface, ArrayAccess, \JsonSerializ
         'request_id' => null,
         'docs_url' => null,
         'details' => null,
-        'funding_url' => 'uri'
+        'funding_url' => 'uri',
+        'required_cents' => null
     ];
 
     /**
@@ -118,7 +120,8 @@ class BalanceRequiredError implements ModelInterface, ArrayAccess, \JsonSerializ
         'request_id' => false,
         'docs_url' => false,
         'details' => false,
-        'funding_url' => false
+        'funding_url' => false,
+        'required_cents' => false
     ];
 
     /**
@@ -220,7 +223,8 @@ class BalanceRequiredError implements ModelInterface, ArrayAccess, \JsonSerializ
         'request_id' => 'requestId',
         'docs_url' => 'docsUrl',
         'details' => 'details',
-        'funding_url' => 'funding_url'
+        'funding_url' => 'funding_url',
+        'required_cents' => 'required_cents'
     ];
 
     /**
@@ -242,7 +246,8 @@ class BalanceRequiredError implements ModelInterface, ArrayAccess, \JsonSerializ
         'request_id' => 'setRequestId',
         'docs_url' => 'setDocsUrl',
         'details' => 'setDetails',
-        'funding_url' => 'setFundingUrl'
+        'funding_url' => 'setFundingUrl',
+        'required_cents' => 'setRequiredCents'
     ];
 
     /**
@@ -264,7 +269,8 @@ class BalanceRequiredError implements ModelInterface, ArrayAccess, \JsonSerializ
         'request_id' => 'getRequestId',
         'docs_url' => 'getDocsUrl',
         'details' => 'getDetails',
-        'funding_url' => 'getFundingUrl'
+        'funding_url' => 'getFundingUrl',
+        'required_cents' => 'getRequiredCents'
     ];
 
     /**
@@ -363,6 +369,7 @@ class BalanceRequiredError implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->setIfExists('docs_url', $data ?? [], null);
         $this->setIfExists('details', $data ?? [], null);
         $this->setIfExists('funding_url', $data ?? [], null);
+        $this->setIfExists('required_cents', $data ?? [], null);
     }
 
     /**
@@ -803,6 +810,33 @@ class BalanceRequiredError implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable funding_url cannot be null');
         }
         $this->container['funding_url'] = $funding_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets required_cents
+     *
+     * @return int|null
+     */
+    public function getRequiredCents()
+    {
+        return $this->container['required_cents'];
+    }
+
+    /**
+     * Sets required_cents
+     *
+     * @param int|null $required_cents Only when an item debited later (a phone number's first month, all numbers of the order) is refused: what the balance must hold, in cents.
+     *
+     * @return self
+     */
+    public function setRequiredCents($required_cents)
+    {
+        if (is_null($required_cents)) {
+            throw new \InvalidArgumentException('non-nullable required_cents cannot be null');
+        }
+        $this->container['required_cents'] = $required_cents;
 
         return $this;
     }

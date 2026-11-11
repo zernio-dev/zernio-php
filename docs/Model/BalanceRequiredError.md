@@ -18,5 +18,6 @@ Name | Type | Description | Notes
 **docs_url** | **string** | Email API: where this &#x60;code&#x60; is documented. | [optional]
 **details** | [**\Zernio\Model\ErrorResponseDetails**](ErrorResponseDetails.md) |  | [optional]
 **funding_url** | **string** | Dashboard link to Billing that opens the Add funds drawer (the add-card drawer first when there is no card). Send the user there, then retry. |
+**required_cents** | **int** | Only when an item debited later (a phone number&#39;s first month, all numbers of the order) is refused: what the balance must hold, in cents. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
