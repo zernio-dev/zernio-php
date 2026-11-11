@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **balance_billing** | **bool** | True when the account pays pay-per-use from this prepaid balance (new signups). Absent otherwise: that pay-per-use is on the monthly invoice. | [optional]
 **spendable_cents** | **int** | Balance billing only (absent otherwise). What pay-per-use can still spend: availableCents plus promoCents, minus usage not yet posted. At 0 or below, new pay-per-use answers 402 &#x60;insufficient_balance&#x60;. | [optional]
 **promo_cents** | **int** | Balance billing only (absent otherwise). Promotional and support credit Zernio added to your balance. Pay-per-use spends it before availableCents. It is never paid out to payees and is not part of availableCents. | [optional]
+**held** | [**\Zernio\Model\GetBalance200ResponseHeld**](GetBalance200ResponseHeld.md) |  | [optional]
 **payout_locked_cents** | **int** | Always 0. The balance no longer pays creators, so none of it is locked from them. | [optional]
 **payout_locks** | [**\Zernio\Model\GetBalance200ResponsePayoutLocksInner[]**](GetBalance200ResponsePayoutLocksInner.md) | Always empty. The balance no longer pays creators. | [optional]
 **pending_cents** | **int** | Card top-ups paid before 2026-10-29 that were held and are moving to availableCents (within the hour). Always 0 after that. | [optional]
