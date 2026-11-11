@@ -112,6 +112,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onMessageRead()**](WebhookEventsApi.md#onMessageRead) | **POST** /message.read | Message read event |
 | [**onMessageReceived()**](WebhookEventsApi.md#onMessageReceived) | **POST** /message.received | Message received event |
 | [**onMessageSent()**](WebhookEventsApi.md#onMessageSent) | **POST** /message.sent | Message sent event |
+| [**onNotificationSent()**](WebhookEventsApi.md#onNotificationSent) | **POST** /notification.sent | Notification sent event |
 | [**onPhoneNumberStockAvailable()**](WebhookEventsApi.md#onPhoneNumberStockAvailable) | **POST** /phone_number.stock_available | Phone-number stock available event |
 | [**onPostAuthenticityChanged()**](WebhookEventsApi.md#onPostAuthenticityChanged) | **POST** /post.authenticity_changed | Post authenticity changed event |
 | [**onPostCancelled()**](WebhookEventsApi.md#onPostCancelled) | **POST** /post.cancelled | Post cancelled event |
@@ -6401,6 +6402,65 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_message_sent** | [**\Zernio\Model\WebhookPayloadMessageSent**](../Model/WebhookPayloadMessageSent.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onNotificationSent()`
+
+```php
+onNotificationSent($webhook_payload_notification_sent)
+```
+
+Notification sent event
+
+A notification we would email the account owner: a scheduled post failed to publish (`type: post_failed`), or a connected account was disconnected (`type: account_disconnected`). Built for agents: it carries the email's `subject` and `text`, references to the post or account, and the `actions` that act on it.  ### When it fires  Once for each such notification, in near real time, regardless of the user's email toggles, and even when the owner has no email address or the email is held back by the sender's limits. It fires alongside `post.failed` and `account.disconnected`, which stay as they are.  The user's notification channel (Slack or Telegram) follows the email toggles, so it only receives the alerts whose toggle is on.  - `post_failed`: once the failure is final (a permanent error, or a temporary one on its last retry), once per publish attempt that failed, for scheduled posts only (not \"post now\"). `refs.platforms` lists every platform that failed in that attempt. - `account_disconnected`: every time an account is disconnected, never for creator-profile accounts. `reason` says why.  ### Payload notes  `text` is the email body without the greeting. When your content retention is set to keep no content, the post text is replaced by `Content not retained` and each platform error by a generic description of its category.  ### How to act  Each entry of `actions` is a public API call with the ids already in the path: `retry_post` (`retryPost`, `POST /v1/posts/{postId}/retry`), `reconnect_account` (`getConnectUrl`, `GET /v1/connect/{platform}`) and `check_account` (`getAccountHealth`, `GET /v1/accounts/{accountId}/health`).  ### Who receives it  Endpoints subscribed to `notification.sent`. Scoped endpoints receive it for their profiles and accounts. Restricted keys need the `publishing` resource group.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_notification_sent = {"id":"00000000-0000-4000-8000-000000000000","event":"notification.sent","timestamp":"2026-01-15T10:00:00Z","profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}],"notification":{"category":"postFailures","type":"post_failed","subject":"Your scheduled post failed to publish","text":"Your scheduled post failed to publish to twitter.\n\nPost ID: 507f1f77bcf86cd799439013\nProfile: Main profile\nContent: \"Launch day is here\"\n\nError details:\n• Twitter (@zernio): Tweet text is too long\n\nWhat you can do:\n- The post content or account configuration needs a change (see error details above)\n- Get full error details via GET /posts/507f1f77bcf86cd799439013\n- Edit the post and retry from your dashboard or via the API","url":"https://zernio.com/dashboard","refs":{"post":{"id":"507f1f77bcf86cd799439013"},"platforms":[{"platform":"twitter","accountId":"507f1f77bcf86cd799439011"}]},"actions":[{"type":"retry_post","operationId":"retryPost","method":"POST","path":"/v1/posts/507f1f77bcf86cd799439013/retry"}]}}; // \Zernio\Model\WebhookPayloadNotificationSent
+
+try {
+    $apiInstance->onNotificationSent($webhook_payload_notification_sent);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onNotificationSent: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_notification_sent** | [**\Zernio\Model\WebhookPayloadNotificationSent**](../Model/WebhookPayloadNotificationSent.md)|  | |
 
 ### Return type
 
