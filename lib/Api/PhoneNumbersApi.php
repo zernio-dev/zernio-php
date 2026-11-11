@@ -1128,7 +1128,7 @@ class PhoneNumbersApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreatePhoneNumberKycLink200Response|\Zernio\Model\ErrorResponse
+     * @return \Zernio\Model\CreatePhoneNumberKycLink200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\BalanceRequiredError
      */
     public function createPhoneNumberKycLink($create_phone_number_kyc_link_request, string $contentType = self::contentTypes['createPhoneNumberKycLink'][0])
     {
@@ -1146,7 +1146,7 @@ class PhoneNumbersApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreatePhoneNumberKycLink200Response|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreatePhoneNumberKycLink200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\BalanceRequiredError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createPhoneNumberKycLinkWithHttpInfo($create_phone_number_kyc_link_request, string $contentType = self::contentTypes['createPhoneNumberKycLink'][0])
     {
@@ -1188,6 +1188,12 @@ class PhoneNumbersApi
                         $request,
                         $response,
                     );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\BalanceRequiredError',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -1224,6 +1230,14 @@ class PhoneNumbersApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\BalanceRequiredError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
