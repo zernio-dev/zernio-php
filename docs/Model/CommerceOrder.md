@@ -36,7 +36,7 @@ Name | Type | Description | Notes
 **shipping_lines** | [**\Zernio\Model\CommerceOrderChargeLine[]**](CommerceOrderChargeLine.md) |  | [optional]
 **fee_lines** | [**\Zernio\Model\CommerceOrderChargeLine[]**](CommerceOrderChargeLine.md) | WooCommerce fees. Always empty on Shopify. | [optional]
 **tax_lines** | [**\Zernio\Model\CommerceTaxLine[]**](CommerceTaxLine.md) | Order tax by rate, line items and shipping together. | [optional]
-**refunds** | [**\Zernio\Model\CommerceOrderRefundsInner[]**](CommerceOrderRefundsInner.md) |  | [optional]
+**refunds** | [**\Zernio\Model\CommerceOrderRefund[]**](CommerceOrderRefund.md) |  | [optional]
 **fulfillments** | [**\Zernio\Model\CommerceOrderFulfillmentsInner[]**](CommerceOrderFulfillmentsInner.md) |  | [optional]
 **platform_data** | **array<string,mixed>** | Platform-only fields. Null when the platform has none. | [optional]
 

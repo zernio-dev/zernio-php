@@ -9,6 +9,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**addCommerceDiscountCodes()**](CommerceApi.md#addCommerceDiscountCodes) | **POST** /v1/commerce/discounts/{discountId}/codes | Add codes to a discount |
 | [**addCommerceMarketingEngagement()**](CommerceApi.md#addCommerceMarketingEngagement) | **POST** /v1/commerce/marketing-activities/{remoteId}/engagements | Report daily engagement |
 | [**addCommerceProductImages()**](CommerceApi.md#addCommerceProductImages) | **POST** /v1/commerce/products/{productId}/images | Add images |
+| [**cancelCommerceOrder()**](CommerceApi.md#cancelCommerceOrder) | **POST** /v1/commerce/orders/{orderId}/cancel | Cancel an order |
 | [**changeCommerceCollectionChannels()**](CommerceApi.md#changeCommerceCollectionChannels) | **POST** /v1/commerce/collections/{collectionId}/channels | Publish or unpublish a collection |
 | [**changeCommerceCollectionProducts()**](CommerceApi.md#changeCommerceCollectionProducts) | **POST** /v1/commerce/collections/{collectionId}/products | Add or remove products in a collection |
 | [**changeCommerceInventory()**](CommerceApi.md#changeCommerceInventory) | **POST** /v1/commerce/products/{productId}/inventory | Set or adjust stock |
@@ -25,6 +26,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**createCommerceProductOptions()**](CommerceApi.md#createCommerceProductOptions) | **POST** /v1/commerce/products/{productId}/options | Add options |
 | [**createCommerceProductVariants()**](CommerceApi.md#createCommerceProductVariants) | **POST** /v1/commerce/products/{productId}/variants | Add variants |
 | [**createCommerceRedirect()**](CommerceApi.md#createCommerceRedirect) | **POST** /v1/commerce/redirects | Create a URL redirect |
+| [**createCommerceRefund()**](CommerceApi.md#createCommerceRefund) | **POST** /v1/commerce/orders/{orderId}/refunds | Refund an order |
 | [**deleteCommerceCatalogSync()**](CommerceApi.md#deleteCommerceCatalogSync) | **DELETE** /v1/commerce/catalog-syncs/{syncId} | Stop a catalog sync |
 | [**deleteCommerceCollection()**](CommerceApi.md#deleteCommerceCollection) | **DELETE** /v1/commerce/collections/{collectionId} | Delete a collection |
 | [**deleteCommerceCollectionMetafields()**](CommerceApi.md#deleteCommerceCollectionMetafields) | **DELETE** /v1/commerce/collections/{collectionId}/metafields | Delete collection metafields |
@@ -41,6 +43,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**duplicateCommerceProduct()**](CommerceApi.md#duplicateCommerceProduct) | **POST** /v1/commerce/products/{productId}/duplicate | Duplicate a product |
 | [**getCommerceCatalogSync()**](CommerceApi.md#getCommerceCatalogSync) | **GET** /v1/commerce/catalog-syncs/{syncId} | Get a catalog sync |
 | [**getCommerceCollection()**](CommerceApi.md#getCommerceCollection) | **GET** /v1/commerce/collections/{collectionId} | Get a collection |
+| [**getCommerceCustomer()**](CommerceApi.md#getCommerceCustomer) | **GET** /v1/commerce/customers/{customerId} | Get a customer |
 | [**getCommerceDiscount()**](CommerceApi.md#getCommerceDiscount) | **GET** /v1/commerce/discounts/{discountId} | Get a discount |
 | [**getCommerceMenu()**](CommerceApi.md#getCommerceMenu) | **GET** /v1/commerce/menus/{menuId} | Get a navigation menu |
 | [**getCommerceMetaobject()**](CommerceApi.md#getCommerceMetaobject) | **GET** /v1/commerce/metaobjects/{metaobjectId} | Get a metaobject |
@@ -52,6 +55,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listCommerceChannels()**](CommerceApi.md#listCommerceChannels) | **GET** /v1/commerce/channels | List sales channels |
 | [**listCommerceCollectionMetafields()**](CommerceApi.md#listCommerceCollectionMetafields) | **GET** /v1/commerce/collections/{collectionId}/metafields | List collection metafields |
 | [**listCommerceCollections()**](CommerceApi.md#listCommerceCollections) | **GET** /v1/commerce/collections | List collections |
+| [**listCommerceCustomers()**](CommerceApi.md#listCommerceCustomers) | **GET** /v1/commerce/customers | List customers |
 | [**listCommerceDiscounts()**](CommerceApi.md#listCommerceDiscounts) | **GET** /v1/commerce/discounts | List discounts |
 | [**listCommerceInventory()**](CommerceApi.md#listCommerceInventory) | **GET** /v1/commerce/inventory | Get a product&#39;s stock |
 | [**listCommerceLocations()**](CommerceApi.md#listCommerceLocations) | **GET** /v1/commerce/locations | List locations |
@@ -256,6 +260,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\CreateCommerceProduct201Response**](../Model/CreateCommerceProduct201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `cancelCommerceOrder()`
+
+```php
+cancelCommerceOrder($order_id, $cancel_commerce_order_request): \Zernio\Model\CancelCommerceOrder200Response
+```
+
+Cancel an order
+
+Cancels an order, by default refunding it to the original payment methods and restocking it. Needs orders.cancel.  The platform cancels in the background. The call waits a few seconds: `200` with `cancelled: true` when it finished, `202` with `cancelled: false` when it is still running (the `commerce.order.updated` webhook reports the outcome).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CommerceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$order_id = 'order_id_example'; // string | Platform-native order id.
+$cancel_commerce_order_request = new \Zernio\Model\CancelCommerceOrderRequest(); // \Zernio\Model\CancelCommerceOrderRequest
+
+try {
+    $result = $apiInstance->cancelCommerceOrder($order_id, $cancel_commerce_order_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CommerceApi->cancelCommerceOrder: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **order_id** | **string**| Platform-native order id. | |
+| **cancel_commerce_order_request** | [**\Zernio\Model\CancelCommerceOrderRequest**](../Model/CancelCommerceOrderRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CancelCommerceOrder200Response**](../Model/CancelCommerceOrder200Response.md)
 
 ### Authorization
 
@@ -1228,6 +1294,70 @@ try {
 ### Return type
 
 [**\Zernio\Model\CreateCommerceRedirect201Response**](../Model/CreateCommerceRedirect201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createCommerceRefund()`
+
+```php
+createCommerceRefund($order_id, $create_commerce_refund_request, $idempotency_key): \Zernio\Model\CreateCommerceRefund200Response
+```
+
+Refund an order
+
+Refunds line items, shipping or an amount of money to the buyer's original payment methods. Needs orders.refund.  - Preview first with `validateOnly: true`: it returns what the buyer gets back and to which payments, without refunding anything. - A real refund needs an `Idempotency-Key` header (a UUID per refund): a retry with the same key never refunds twice. - Every amount, sent or returned, is in the currency the buyer paid in, the one refunds are made in. Send `currency` to have a mismatch refused instead of guessed.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CommerceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$order_id = 'order_id_example'; // string | Platform-native order id.
+$create_commerce_refund_request = new \Zernio\Model\CreateCommerceRefundRequest(); // \Zernio\Model\CreateCommerceRefundRequest
+$idempotency_key = 'idempotency_key_example'; // string | Required unless validateOnly is true. A retry with the same key returns the first response and never refunds twice.
+
+try {
+    $result = $apiInstance->createCommerceRefund($order_id, $create_commerce_refund_request, $idempotency_key);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CommerceApi->createCommerceRefund: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **order_id** | **string**| Platform-native order id. | |
+| **create_commerce_refund_request** | [**\Zernio\Model\CreateCommerceRefundRequest**](../Model/CreateCommerceRefundRequest.md)|  | |
+| **idempotency_key** | **string**| Required unless validateOnly is true. A retry with the same key returns the first response and never refunds twice. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\CreateCommerceRefund200Response**](../Model/CreateCommerceRefund200Response.md)
 
 ### Authorization
 
@@ -2240,6 +2370,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getCommerceCustomer()`
+
+```php
+getCommerceCustomer($customer_id, $account_id): \Zernio\Model\GetCommerceCustomer200Response
+```
+
+Get a customer
+
+One customer with their order count, total spent and default address. Needs customers.read.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CommerceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$customer_id = 'customer_id_example'; // string | Platform-native customer id.
+$account_id = 'account_id_example'; // string | Connected store SocialAccount id.
+
+try {
+    $result = $apiInstance->getCommerceCustomer($customer_id, $account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CommerceApi->getCommerceCustomer: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **customer_id** | **string**| Platform-native customer id. | |
+| **account_id** | **string**| Connected store SocialAccount id. | |
+
+### Return type
+
+[**\Zernio\Model\GetCommerceCustomer200Response**](../Model/GetCommerceCustomer200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getCommerceDiscount()`
 
 ```php
@@ -2920,6 +3112,76 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listCommerceCustomers()`
+
+```php
+listCommerceCustomers($account_id, $limit, $cursor, $email, $phone, $search): \Zernio\Model\ListCommerceCustomers200Response
+```
+
+List customers
+
+The store's customers, most recently updated first. Needs customers.read.  Find the customer behind a support ticket with `email`, `phone` or `search`, then read their orders with `GET /v1/commerce/orders?customerId=`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CommerceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Connected store SocialAccount id.
+$limit = 20; // int
+$cursor = 'cursor_example'; // string
+$email = 'email_example'; // string
+$phone = 'phone_example'; // string
+$search = 'search_example'; // string | Free text matched against name, email and phone.
+
+try {
+    $result = $apiInstance->listCommerceCustomers($account_id, $limit, $cursor, $email, $phone, $search);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CommerceApi->listCommerceCustomers: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Connected store SocialAccount id. | |
+| **limit** | **int**|  | [optional] [default to 20] |
+| **cursor** | **string**|  | [optional] |
+| **email** | **string**|  | [optional] |
+| **phone** | **string**|  | [optional] |
+| **search** | **string**| Free text matched against name, email and phone. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListCommerceCustomers200Response**](../Model/ListCommerceCustomers200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listCommerceDiscounts()`
 
 ```php
@@ -3357,7 +3619,7 @@ try {
 ## `listCommerceOrders()`
 
 ```php
-listCommerceOrders($account_id, $limit, $cursor, $created_after, $created_before, $updated_after): \Zernio\Model\ListCommerceOrders200Response
+listCommerceOrders($account_id, $limit, $cursor, $created_after, $created_before, $updated_after, $customer_id, $email): \Zernio\Model\ListCommerceOrders200Response
 ```
 
 List orders
@@ -3387,9 +3649,11 @@ $cursor = 'cursor_example'; // string
 $created_after = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $created_before = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $updated_after = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Only orders changed after this time, oldest change first.
+$customer_id = 'customer_id_example'; // string | Only this customer's orders (`customer.id` on an order, or `id` from the customers endpoints).
+$email = 'email_example'; // string | Only orders placed with this email. Shopify only; WooCommerce answers 400 platform_not_supported.
 
 try {
-    $result = $apiInstance->listCommerceOrders($account_id, $limit, $cursor, $created_after, $created_before, $updated_after);
+    $result = $apiInstance->listCommerceOrders($account_id, $limit, $cursor, $created_after, $created_before, $updated_after, $customer_id, $email);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CommerceApi->listCommerceOrders: ', $e->getMessage(), PHP_EOL;
@@ -3406,6 +3670,8 @@ try {
 | **created_after** | **\DateTime**|  | [optional] |
 | **created_before** | **\DateTime**|  | [optional] |
 | **updated_after** | **\DateTime**| Only orders changed after this time, oldest change first. | [optional] |
+| **customer_id** | **string**| Only this customer&#39;s orders (&#x60;customer.id&#x60; on an order, or &#x60;id&#x60; from the customers endpoints). | [optional] |
+| **email** | **string**| Only orders placed with this email. Shopify only; WooCommerce answers 400 platform_not_supported. | [optional] |
 
 ### Return type
 
