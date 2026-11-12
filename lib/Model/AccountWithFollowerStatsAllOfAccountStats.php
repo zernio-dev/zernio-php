@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * AccountWithFollowerStatsAllOfAccountStats Class Doc Comment
  *
  * @category Class
- * @description Platform-specific account stats from the latest daily snapshot. Fields vary by platform. Only present if metadata has been captured.
+ * @description Platform-specific account counters from the latest daily snapshot. Each platform reports its own subset of the keys below, and no other key is returned. Absent when the platform reports none of them.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -60,6 +60,7 @@ class AccountWithFollowerStatsAllOfAccountStats implements ModelInterface, Array
       */
     protected static $openAPITypes = [
         'following_count' => 'float',
+        'follows_count' => 'float',
         'media_count' => 'float',
         'video_count' => 'float',
         'tweet_count' => 'float',
@@ -81,6 +82,7 @@ class AccountWithFollowerStatsAllOfAccountStats implements ModelInterface, Array
       */
     protected static $openAPIFormats = [
         'following_count' => null,
+        'follows_count' => null,
         'media_count' => null,
         'video_count' => null,
         'tweet_count' => null,
@@ -100,6 +102,7 @@ class AccountWithFollowerStatsAllOfAccountStats implements ModelInterface, Array
       */
     protected static array $openAPINullables = [
         'following_count' => false,
+        'follows_count' => false,
         'media_count' => false,
         'video_count' => false,
         'tweet_count' => false,
@@ -107,7 +110,7 @@ class AccountWithFollowerStatsAllOfAccountStats implements ModelInterface, Array
         'pin_count' => false,
         'total_views' => false,
         'likes_count' => false,
-        'monthly_views' => false,
+        'monthly_views' => true,
         'listed_count' => false,
         'board_count' => false
     ];
@@ -199,6 +202,7 @@ class AccountWithFollowerStatsAllOfAccountStats implements ModelInterface, Array
      */
     protected static $attributeMap = [
         'following_count' => 'followingCount',
+        'follows_count' => 'followsCount',
         'media_count' => 'mediaCount',
         'video_count' => 'videoCount',
         'tweet_count' => 'tweetCount',
@@ -218,6 +222,7 @@ class AccountWithFollowerStatsAllOfAccountStats implements ModelInterface, Array
      */
     protected static $setters = [
         'following_count' => 'setFollowingCount',
+        'follows_count' => 'setFollowsCount',
         'media_count' => 'setMediaCount',
         'video_count' => 'setVideoCount',
         'tweet_count' => 'setTweetCount',
@@ -237,6 +242,7 @@ class AccountWithFollowerStatsAllOfAccountStats implements ModelInterface, Array
      */
     protected static $getters = [
         'following_count' => 'getFollowingCount',
+        'follows_count' => 'getFollowsCount',
         'media_count' => 'getMediaCount',
         'video_count' => 'getVideoCount',
         'tweet_count' => 'getTweetCount',
@@ -307,6 +313,7 @@ class AccountWithFollowerStatsAllOfAccountStats implements ModelInterface, Array
     public function __construct(?array $data = null)
     {
         $this->setIfExists('following_count', $data ?? [], null);
+        $this->setIfExists('follows_count', $data ?? [], null);
         $this->setIfExists('media_count', $data ?? [], null);
         $this->setIfExists('video_count', $data ?? [], null);
         $this->setIfExists('tweet_count', $data ?? [], null);
@@ -374,7 +381,7 @@ class AccountWithFollowerStatsAllOfAccountStats implements ModelInterface, Array
     /**
      * Sets following_count
      *
-     * @param float|null $following_count Number of accounts being followed
+     * @param float|null $following_count Number of accounts being followed (TikTok, X, Pinterest, Bluesky)
      *
      * @return self
      */
@@ -384,6 +391,33 @@ class AccountWithFollowerStatsAllOfAccountStats implements ModelInterface, Array
             throw new \InvalidArgumentException('non-nullable following_count cannot be null');
         }
         $this->container['following_count'] = $following_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets follows_count
+     *
+     * @return float|null
+     */
+    public function getFollowsCount()
+    {
+        return $this->container['follows_count'];
+    }
+
+    /**
+     * Sets follows_count
+     *
+     * @param float|null $follows_count Number of accounts being followed (Instagram)
+     *
+     * @return self
+     */
+    public function setFollowsCount($follows_count)
+    {
+        if (is_null($follows_count)) {
+            throw new \InvalidArgumentException('non-nullable follows_count cannot be null');
+        }
+        $this->container['follows_count'] = $follows_count;
 
         return $this;
     }
@@ -590,14 +624,21 @@ class AccountWithFollowerStatsAllOfAccountStats implements ModelInterface, Array
     /**
      * Sets monthly_views
      *
-     * @param float|null $monthly_views Monthly profile views (Pinterest)
+     * @param float|null $monthly_views Monthly profile views (Pinterest). null when Pinterest reports no window
      *
      * @return self
      */
     public function setMonthlyViews($monthly_views)
     {
         if (is_null($monthly_views)) {
-            throw new \InvalidArgumentException('non-nullable monthly_views cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'monthly_views');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('monthly_views', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['monthly_views'] = $monthly_views;
 

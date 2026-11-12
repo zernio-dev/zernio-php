@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**following_count** | **float** | Number of accounts being followed | [optional]
+**following_count** | **float** | Number of accounts being followed (TikTok, X, Pinterest, Bluesky) | [optional]
+**follows_count** | **float** | Number of accounts being followed (Instagram) | [optional]
 **media_count** | **float** | Total media posts (Instagram) | [optional]
 **video_count** | **float** | Total videos (YouTube, TikTok) | [optional]
 **tweet_count** | **float** | Total tweets (X) | [optional]
@@ -12,7 +13,7 @@ Name | Type | Description | Notes
 **pin_count** | **float** | Total pins (Pinterest) | [optional]
 **total_views** | **float** | Total channel views (YouTube) | [optional]
 **likes_count** | **float** | Total likes received (TikTok) | [optional]
-**monthly_views** | **float** | Monthly profile views (Pinterest) | [optional]
+**monthly_views** | **float** | Monthly profile views (Pinterest). null when Pinterest reports no window | [optional]
 **listed_count** | **float** | Lists the user appears on (X) | [optional]
 **board_count** | **float** | Total boards (Pinterest) | [optional]
 
