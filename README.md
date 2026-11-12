@@ -629,6 +629,7 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**connectWhatsAppEmbeddedSignup**](docs/Api/ConnectApi.md#connectwhatsappembeddedsignup) | **POST** /v1/connect/whatsapp/embedded-signup | Connect WhatsApp from Embedded Signup
 *ConnectApi* | [**connectWhopAdsCredentials**](docs/Api/ConnectApi.md#connectwhopadscredentials) | **POST** /v1/connect/whop-ads/credentials | Connect a Whop account
 *ConnectApi* | [**connectWordPressWithApplicationPassword**](docs/Api/ConnectApi.md#connectwordpresswithapplicationpassword) | **POST** /v1/connect/wordpress/token | Connect self-hosted WordPress with an application password
+*ConnectApi* | [**createGoogleBusinessLocation**](docs/Api/ConnectApi.md#creategooglebusinesslocation) | **POST** /v1/accounts/{accountId}/gmb-locations | Create Google Business Profile location
 *ConnectApi* | [**createGoogleOrgConnection**](docs/Api/ConnectApi.md#creategoogleorgconnection) | **POST** /v1/connect/google/org | Start a Google Workspace organization connection
 *ConnectApi* | [**createMicrosoftOrgConnection**](docs/Api/ConnectApi.md#createmicrosoftorgconnection) | **POST** /v1/connect/microsoft/org | Start a Microsoft 365 organization connection
 *ConnectApi* | [**createOAuthApp**](docs/Api/ConnectApi.md#createoauthapp) | **POST** /v1/connect/oauth-apps | Add an OAuth app
@@ -668,6 +669,7 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**initiateTelegramConnect**](docs/Api/ConnectApi.md#initiatetelegramconnect) | **POST** /v1/connect/telegram | Connect Telegram directly
 *ConnectApi* | [**listFacebookPages**](docs/Api/ConnectApi.md#listfacebookpages) | **GET** /v1/connect/facebook/select-page | List Facebook pages
 *ConnectApi* | [**listGoogleAnalyticsProperties**](docs/Api/ConnectApi.md#listgoogleanalyticsproperties) | **GET** /v1/connect/googleanalytics/properties | List Google Analytics properties for a pending connect
+*ConnectApi* | [**listGoogleBusinessCategories**](docs/Api/ConnectApi.md#listgooglebusinesscategories) | **GET** /v1/accounts/{accountId}/gmb-categories | List Google Business Profile categories
 *ConnectApi* | [**listGoogleBusinessLocations**](docs/Api/ConnectApi.md#listgooglebusinesslocations) | **GET** /v1/connect/googlebusiness/locations | List Google Business Profile locations
 *ConnectApi* | [**listInstagramPages**](docs/Api/ConnectApi.md#listinstagrampages) | **GET** /v1/connect/instagram/select-account | List Pages with a linked Instagram account
 *ConnectApi* | [**listLinkedInOrganizations**](docs/Api/ConnectApi.md#listlinkedinorganizations) | **GET** /v1/connect/linkedin/organizations | List LinkedIn orgs
@@ -679,6 +681,7 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**listSnapchatProfiles**](docs/Api/ConnectApi.md#listsnapchatprofiles) | **GET** /v1/connect/snapchat/select-profile | List Snapchat profiles
 *ConnectApi* | [**listWhatsAppPhoneNumbers**](docs/Api/ConnectApi.md#listwhatsappphonenumbers) | **GET** /v1/connect/whatsapp/select-phone-number | List numbers for selection
 *ConnectApi* | [**resyncPageWebhookSubscription**](docs/Api/ConnectApi.md#resyncpagewebhooksubscription) | **POST** /v1/accounts/{accountId}/webhook-subscription | Re-subscribe an account to Zernio&#39;s webhooks
+*ConnectApi* | [**searchGoogleBusinessLocations**](docs/Api/ConnectApi.md#searchgooglebusinesslocations) | **POST** /v1/accounts/{accountId}/gmb-locations/search | Search existing Google listings
 *ConnectApi* | [**selectFacebookPage**](docs/Api/ConnectApi.md#selectfacebookpage) | **POST** /v1/connect/facebook/select-page | Select Facebook page
 *ConnectApi* | [**selectGoogleAnalyticsProperty**](docs/Api/ConnectApi.md#selectgoogleanalyticsproperty) | **POST** /v1/connect/googleanalytics/select-property | Connect the chosen Google Analytics property
 *ConnectApi* | [**selectGoogleBusinessLocation**](docs/Api/ConnectApi.md#selectgooglebusinesslocation) | **POST** /v1/connect/googlebusiness/select-location | Select Google Business Profile location
@@ -2172,6 +2175,12 @@ Class | Method | HTTP request | Description
 - [CreateGoogleAssetGroup201Response](docs/Model/CreateGoogleAssetGroup201Response.md)
 - [CreateGoogleAssetGroup201ResponseAssetGroup](docs/Model/CreateGoogleAssetGroup201ResponseAssetGroup.md)
 - [CreateGoogleAssetGroupRequest](docs/Model/CreateGoogleAssetGroupRequest.md)
+- [CreateGoogleBusinessLocation200Response](docs/Model/CreateGoogleBusinessLocation200Response.md)
+- [CreateGoogleBusinessLocationRequest](docs/Model/CreateGoogleBusinessLocationRequest.md)
+- [CreateGoogleBusinessLocationRequestServiceArea](docs/Model/CreateGoogleBusinessLocationRequestServiceArea.md)
+- [CreateGoogleBusinessLocationRequestServiceAreaPlaces](docs/Model/CreateGoogleBusinessLocationRequestServiceAreaPlaces.md)
+- [CreateGoogleBusinessLocationRequestServiceAreaPlacesPlaceInfosInner](docs/Model/CreateGoogleBusinessLocationRequestServiceAreaPlacesPlaceInfosInner.md)
+- [CreateGoogleBusinessLocationRequestStorefrontAddress](docs/Model/CreateGoogleBusinessLocationRequestStorefrontAddress.md)
 - [CreateGoogleBusinessMedia200Response](docs/Model/CreateGoogleBusinessMedia200Response.md)
 - [CreateGoogleBusinessMediaRequest](docs/Model/CreateGoogleBusinessMediaRequest.md)
 - [CreateGoogleBusinessPlaceAction200Response](docs/Model/CreateGoogleBusinessPlaceAction200Response.md)
@@ -3511,6 +3520,8 @@ Class | Method | HTTP request | Description
 - [ListGoogleAnalyticsProperties200Response](docs/Model/ListGoogleAnalyticsProperties200Response.md)
 - [ListGoogleAnalyticsProperties200ResponsePropertiesInner](docs/Model/ListGoogleAnalyticsProperties200ResponsePropertiesInner.md)
 - [ListGoogleAssetGroups200Response](docs/Model/ListGoogleAssetGroups200Response.md)
+- [ListGoogleBusinessCategories200Response](docs/Model/ListGoogleBusinessCategories200Response.md)
+- [ListGoogleBusinessCategories200ResponseCategoriesInner](docs/Model/ListGoogleBusinessCategories200ResponseCategoriesInner.md)
 - [ListGoogleBusinessLocations200Response](docs/Model/ListGoogleBusinessLocations200Response.md)
 - [ListGoogleBusinessLocations200ResponseLocationsInner](docs/Model/ListGoogleBusinessLocations200ResponseLocationsInner.md)
 - [ListGoogleBusinessMedia200Response](docs/Model/ListGoogleBusinessMedia200Response.md)
@@ -4062,6 +4073,10 @@ Class | Method | HTTP request | Description
 - [SearchAvailableWhatsAppNumbers200Response](docs/Model/SearchAvailableWhatsAppNumbers200Response.md)
 - [SearchAvailableWhatsAppNumbers200ResponseNumbersInner](docs/Model/SearchAvailableWhatsAppNumbers200ResponseNumbersInner.md)
 - [SearchDiscordGuildMembers200Response](docs/Model/SearchDiscordGuildMembers200Response.md)
+- [SearchGoogleBusinessLocations200Response](docs/Model/SearchGoogleBusinessLocations200Response.md)
+- [SearchGoogleBusinessLocations200ResponseGoogleLocationsInner](docs/Model/SearchGoogleBusinessLocations200ResponseGoogleLocationsInner.md)
+- [SearchGoogleBusinessLocationsRequest](docs/Model/SearchGoogleBusinessLocationsRequest.md)
+- [SearchGoogleBusinessLocationsRequestLocation](docs/Model/SearchGoogleBusinessLocationsRequestLocation.md)
 - [SearchInboxConversations200Response](docs/Model/SearchInboxConversations200Response.md)
 - [SearchInboxConversations200ResponseDataInner](docs/Model/SearchInboxConversations200ResponseDataInner.md)
 - [SearchInboxConversations200ResponseDataInnerConversation](docs/Model/SearchInboxConversations200ResponseDataInnerConversation.md)
@@ -5085,6 +5100,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.590.2`
+- API version: `1.593.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`
