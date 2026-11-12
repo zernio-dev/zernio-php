@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **id** | **string** |  |
 **automation_id** | **string** |  |
 **checked_at** | **\DateTime** |  |
-**outcome** | **string** |  |
+**outcome** | **string** | &#x60;paused&#x60;: the team used its free automation runs with no payment method on file, so the check did not run. &#x60;error&#x60; says why. |
 **evaluated** | **int** |  |
 **event** | **string** |  |
 **event_id** | **string** |  |
