@@ -1794,6 +1794,8 @@ docs/Model/GetWebhookLogs200Response.md
 docs/Model/GetWebhookLogs200ResponsePagination.md
 docs/Model/GetWebhookSettings200Response.md
 docs/Model/GetWechatIpWhitelist200Response.md
+docs/Model/GetWechatServerConfig200Response.md
+docs/Model/GetWechatServerConfig200ResponseServer.md
 docs/Model/GetWhatsAppBlockStatus200Response.md
 docs/Model/GetWhatsAppBlockedUsers200Response.md
 docs/Model/GetWhatsAppBlockedUsers200ResponseBlockedUsersInner.md
@@ -5613,6 +5615,8 @@ lib/Model/GetWebhookLogs200Response.php
 lib/Model/GetWebhookLogs200ResponsePagination.php
 lib/Model/GetWebhookSettings200Response.php
 lib/Model/GetWechatIpWhitelist200Response.php
+lib/Model/GetWechatServerConfig200Response.php
+lib/Model/GetWechatServerConfig200ResponseServer.php
 lib/Model/GetWhatsAppBlockStatus200Response.php
 lib/Model/GetWhatsAppBlockedUsers200Response.php
 lib/Model/GetWhatsAppBlockedUsers200ResponseBlockedUsersInner.php
@@ -7639,3 +7643,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetWechatServerConfig200ResponseServerTest.php
+test/Model/GetWechatServerConfig200ResponseTest.php

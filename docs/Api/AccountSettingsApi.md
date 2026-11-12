@@ -19,6 +19,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getMessengerIceBreakers()**](AccountSettingsApi.md#getMessengerIceBreakers) | **GET** /v1/accounts/{accountId}/messenger-ice-breakers | Get FB ice breakers |
 | [**getMessengerMenu()**](AccountSettingsApi.md#getMessengerMenu) | **GET** /v1/accounts/{accountId}/messenger-menu | Get persistent menu |
 | [**getTelegramCommands()**](AccountSettingsApi.md#getTelegramCommands) | **GET** /v1/accounts/{accountId}/telegram-commands | Get TG bot commands |
+| [**getWechatServerConfig()**](AccountSettingsApi.md#getWechatServerConfig) | **GET** /v1/accounts/{accountId}/wechat-server-config | Get WeChat server config |
 | [**setInstagramIceBreakers()**](AccountSettingsApi.md#setInstagramIceBreakers) | **PUT** /v1/accounts/{accountId}/instagram-ice-breakers | Set IG ice breakers |
 | [**setMessengerGetStarted()**](AccountSettingsApi.md#setMessengerGetStarted) | **PUT** /v1/accounts/{accountId}/messenger-get-started | Set FB Get Started button |
 | [**setMessengerGreeting()**](AccountSettingsApi.md#setMessengerGreeting) | **PUT** /v1/accounts/{accountId}/messenger-greeting | Set FB greeting text |
@@ -791,6 +792,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetTelegramCommands200Response**](../Model/GetTelegramCommands200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getWechatServerConfig()`
+
+```php
+getWechatServerConfig($account_id): \Zernio\Model\GetWechatServerConfig200Response
+```
+
+Get WeChat server config
+
+Returns the Server URL, Token and EncodingAESKey of a connected WeChat Official Account: the same values the connect response carries, for pasting into Server Configuration in the Official Accounts Platform (Safe mode). The AppSecret is never returned.  Needs write access from a session or an API key: read-only team members, read-only API keys and OAuth access tokens get 403.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AccountSettingsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+
+try {
+    $result = $apiInstance->getWechatServerConfig($account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountSettingsApi->getWechatServerConfig: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\GetWechatServerConfig200Response**](../Model/GetWechatServerConfig200Response.md)
 
 ### Authorization
 
