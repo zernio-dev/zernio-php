@@ -1689,7 +1689,7 @@ try {
 ## `getAdTree()`
 
 ```php
-getAdTree($page, $limit, $source, $platform, $status, $ad_account_id, $page_id, $account_id, $profile_id, $campaign_id, $updated_since, $search, $from_date, $to_date, $has_delivery, $min_spend, $sort, $time_increment, $daily_level, $compare, $results): \Zernio\Model\AdTreeResponse
+getAdTree($page, $limit, $source, $platform, $status, $ad_account_id, $page_id, $account_id, $profile_id, $campaign_id, $updated_since, $search, $from_date, $to_date, $has_delivery, $min_spend, $sort, $time_increment, $daily_level, $compare, $results, $depth): \Zernio\Model\AdTreeResponse
 ```
 
 Get campaign tree
@@ -1734,9 +1734,10 @@ $time_increment = 56; // int | Set to `1` to also return a daily breakdown (mirr
 $daily_level = 'campaign'; // string | Which tree levels get the `daily[]` series when `timeIncrement=1`. Ignored when `timeIncrement` is unset.  - `campaign` (default): on campaign nodes only. The common per-campaign-trend case, and the smallest payload. - `adset`: on ad sets too. - `ad`: on every ad in `ads[]` as well. Heaviest (a long range × up to 100 ads per ad set); scope with `campaignId` to keep responses small.
 $compare = 'compare_example'; // string | Set to `previous` to also read the period of the same length that ends the day before `fromDate`. Every campaign, ad set and ad gains `previousMetrics` (same fields as `metrics`) and the response gains `previousRange`, so a table can show the change against the previous period in one call.
 $results = True; // bool | Set to `true` to add your own results (see [Campaign results](/guides/campaign-results)): every campaign gains `results`, the values you sent for the range plus each formula they allow, and the response gains `resultMetrics` to label them.
+$depth = 'ad'; // string | How deep the tree goes. Metrics always roll up over every ad, whatever the depth.  - `ad` (default): campaigns, their ad sets and each ad set's ads. - `adset`: campaigns and ad sets; every `ads[]` is empty and `adCount` still counts the ads. - `campaign`: campaigns only; every `adSets[]` is empty and `adSetCount` / `adCount` still count them.
 
 try {
-    $result = $apiInstance->getAdTree($page, $limit, $source, $platform, $status, $ad_account_id, $page_id, $account_id, $profile_id, $campaign_id, $updated_since, $search, $from_date, $to_date, $has_delivery, $min_spend, $sort, $time_increment, $daily_level, $compare, $results);
+    $result = $apiInstance->getAdTree($page, $limit, $source, $platform, $status, $ad_account_id, $page_id, $account_id, $profile_id, $campaign_id, $updated_since, $search, $from_date, $to_date, $has_delivery, $min_spend, $sort, $time_increment, $daily_level, $compare, $results, $depth);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdCampaignsApi->getAdTree: ', $e->getMessage(), PHP_EOL;
@@ -1768,6 +1769,7 @@ try {
 | **daily_level** | **string**| Which tree levels get the &#x60;daily[]&#x60; series when &#x60;timeIncrement&#x3D;1&#x60;. Ignored when &#x60;timeIncrement&#x60; is unset.  - &#x60;campaign&#x60; (default): on campaign nodes only. The common per-campaign-trend case, and the smallest payload. - &#x60;adset&#x60;: on ad sets too. - &#x60;ad&#x60;: on every ad in &#x60;ads[]&#x60; as well. Heaviest (a long range × up to 100 ads per ad set); scope with &#x60;campaignId&#x60; to keep responses small. | [optional] [default to &#39;campaign&#39;] |
 | **compare** | **string**| Set to &#x60;previous&#x60; to also read the period of the same length that ends the day before &#x60;fromDate&#x60;. Every campaign, ad set and ad gains &#x60;previousMetrics&#x60; (same fields as &#x60;metrics&#x60;) and the response gains &#x60;previousRange&#x60;, so a table can show the change against the previous period in one call. | [optional] |
 | **results** | **bool**| Set to &#x60;true&#x60; to add your own results (see [Campaign results](/guides/campaign-results)): every campaign gains &#x60;results&#x60;, the values you sent for the range plus each formula they allow, and the response gains &#x60;resultMetrics&#x60; to label them. | [optional] |
+| **depth** | **string**| How deep the tree goes. Metrics always roll up over every ad, whatever the depth.  - &#x60;ad&#x60; (default): campaigns, their ad sets and each ad set&#39;s ads. - &#x60;adset&#x60;: campaigns and ad sets; every &#x60;ads[]&#x60; is empty and &#x60;adCount&#x60; still counts the ads. - &#x60;campaign&#x60;: campaigns only; every &#x60;adSets[]&#x60; is empty and &#x60;adSetCount&#x60; / &#x60;adCount&#x60; still count them. | [optional] [default to &#39;ad&#39;] |
 
 ### Return type
 
@@ -2477,7 +2479,7 @@ try {
 ## `listAdSets()`
 
 ```php
-listAdSets($account_id, $ad_account_id, $campaign_id, $ad_set_id, $platform, $status, $page, $limit, $live): \Zernio\Model\ListAdSets200Response
+listAdSets($account_id, $ad_account_id, $campaign_id, $ad_set_id, $platform, $status, $page, $limit, $live, $view): \Zernio\Model\ListAdSets200Response
 ```
 
 List ad sets
@@ -2510,9 +2512,10 @@ $status = new \Zernio\Model\\Zernio\Model\AdStatus(); // \Zernio\Model\AdStatus 
 $page = 1; // int
 $limit = 500; // int
 $live = false; // bool | Read the on/off switches live from the platform instead of returning synced values. See \"Status freshness\" in the operation description.  - The fresh values are stored (later reads return them too), and the response carries `statusReadAt`, the time of the read. - At most 20 platform objects are read per request. - Where a read fails (credentials, platform error, no reader on that platform), stored values come back with `statusReadAt: null`.  **On GET /v1/ads/{adId} for a TikTok ad** the creative is read live too: ad text, call to action, landing page, video, format and identity, returned over the stored creative and never stored. See \"Status freshness\" in GET /v1/ads/{adId}.  **On X** the budget is read live too:  - GET /v1/ads/{adId}: `budget`, `adSetBudget`, `campaignBudget` and `budgetLevel` are the line item and campaign budgets X holds now (stored like the switches). - Ad set and campaign listings: `budget` is what that line item or campaign holds now (returned, not stored). A row whose budget the other level holds keeps its synced `budget`.
+$view = 'full'; // string | `full` returns every field. `summary` leaves `targeting` out of each ad set, which is most of a row's size; read one ad set's targeting with `adSetId` and `view=full`.
 
 try {
-    $result = $apiInstance->listAdSets($account_id, $ad_account_id, $campaign_id, $ad_set_id, $platform, $status, $page, $limit, $live);
+    $result = $apiInstance->listAdSets($account_id, $ad_account_id, $campaign_id, $ad_set_id, $platform, $status, $page, $limit, $live, $view);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdCampaignsApi->listAdSets: ', $e->getMessage(), PHP_EOL;
@@ -2532,6 +2535,7 @@ try {
 | **page** | **int**|  | [optional] [default to 1] |
 | **limit** | **int**|  | [optional] [default to 500] |
 | **live** | **bool**| Read the on/off switches live from the platform instead of returning synced values. See \&quot;Status freshness\&quot; in the operation description.  - The fresh values are stored (later reads return them too), and the response carries &#x60;statusReadAt&#x60;, the time of the read. - At most 20 platform objects are read per request. - Where a read fails (credentials, platform error, no reader on that platform), stored values come back with &#x60;statusReadAt: null&#x60;.  **On GET /v1/ads/{adId} for a TikTok ad** the creative is read live too: ad text, call to action, landing page, video, format and identity, returned over the stored creative and never stored. See \&quot;Status freshness\&quot; in GET /v1/ads/{adId}.  **On X** the budget is read live too:  - GET /v1/ads/{adId}: &#x60;budget&#x60;, &#x60;adSetBudget&#x60;, &#x60;campaignBudget&#x60; and &#x60;budgetLevel&#x60; are the line item and campaign budgets X holds now (stored like the switches). - Ad set and campaign listings: &#x60;budget&#x60; is what that line item or campaign holds now (returned, not stored). A row whose budget the other level holds keeps its synced &#x60;budget&#x60;. | [optional] [default to false] |
+| **view** | **string**| &#x60;full&#x60; returns every field. &#x60;summary&#x60; leaves &#x60;targeting&#x60; out of each ad set, which is most of a row&#39;s size; read one ad set&#39;s targeting with &#x60;adSetId&#x60; and &#x60;view&#x3D;full&#x60;. | [optional] [default to &#39;full&#39;] |
 
 ### Return type
 
@@ -2553,7 +2557,7 @@ try {
 ## `listAds()`
 
 ```php
-listAds($page, $limit, $source, $status, $platform, $account_id, $ad_account_id, $page_id, $profile_id, $campaign_id, $ad_set_id, $platform_ad_id, $effective_object_story_id, $effective_instagram_media_id, $from_date, $to_date): \Zernio\Model\AdsListResponse
+listAds($page, $limit, $source, $status, $platform, $account_id, $ad_account_id, $page_id, $profile_id, $campaign_id, $ad_set_id, $platform_ad_id, $effective_object_story_id, $effective_instagram_media_id, $from_date, $to_date, $view): \Zernio\Model\AdsListResponse
 ```
 
 List ads
@@ -2593,9 +2597,10 @@ $effective_object_story_id = 'effective_object_story_id_example'; // string | Fa
 $effective_instagram_media_id = 'effective_instagram_media_id_example'; // string | Instagram media ID of the boosted post (Meta `effective_instagram_media_id`). Use to map a Business-Manager-visible IG post back to the Zernio ad.
 $from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago.
 $to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range.
+$view = 'full'; // string | `full` (default) returns every field. `summary` is about 80% smaller per ad and keeps only:  - `_id`, `name`, `platform`, `status`, `platformStatus`, `servingStatuses` (left out when empty), `configuredStatus`, `reviewStatus`, `rejectionReason`, `goal`. - The platform ids, `accountId`, `profileId`, `campaignName`, `adSetName`, `budget`, `currency`, `isExternal`, `creativeType`, `platformCreatedAt`, `createdAt`. - `postId` as the post id, not the expanded post. - `creative` with only `headline`, `body` (cut to 200 characters), `linkUrl`, `callToAction` and `effectiveObjectStoryId`. - `metrics` without `costPerAction` and without any metric that is 0: an absent metric means 0.  Read one ad with `platformAdId` and `view=full` for the rest.
 
 try {
-    $result = $apiInstance->listAds($page, $limit, $source, $status, $platform, $account_id, $ad_account_id, $page_id, $profile_id, $campaign_id, $ad_set_id, $platform_ad_id, $effective_object_story_id, $effective_instagram_media_id, $from_date, $to_date);
+    $result = $apiInstance->listAds($page, $limit, $source, $status, $platform, $account_id, $ad_account_id, $page_id, $profile_id, $campaign_id, $ad_set_id, $platform_ad_id, $effective_object_story_id, $effective_instagram_media_id, $from_date, $to_date, $view);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdCampaignsApi->listAds: ', $e->getMessage(), PHP_EOL;
@@ -2622,6 +2627,7 @@ try {
 | **effective_instagram_media_id** | **string**| Instagram media ID of the boosted post (Meta &#x60;effective_instagram_media_id&#x60;). Use to map a Business-Manager-visible IG post back to the Zernio ad. | [optional] |
 | **from_date** | **\DateTime**| Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. | [optional] |
 | **to_date** | **\DateTime**| End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. | [optional] |
+| **view** | **string**| &#x60;full&#x60; (default) returns every field. &#x60;summary&#x60; is about 80% smaller per ad and keeps only:  - &#x60;_id&#x60;, &#x60;name&#x60;, &#x60;platform&#x60;, &#x60;status&#x60;, &#x60;platformStatus&#x60;, &#x60;servingStatuses&#x60; (left out when empty), &#x60;configuredStatus&#x60;, &#x60;reviewStatus&#x60;, &#x60;rejectionReason&#x60;, &#x60;goal&#x60;. - The platform ids, &#x60;accountId&#x60;, &#x60;profileId&#x60;, &#x60;campaignName&#x60;, &#x60;adSetName&#x60;, &#x60;budget&#x60;, &#x60;currency&#x60;, &#x60;isExternal&#x60;, &#x60;creativeType&#x60;, &#x60;platformCreatedAt&#x60;, &#x60;createdAt&#x60;. - &#x60;postId&#x60; as the post id, not the expanded post. - &#x60;creative&#x60; with only &#x60;headline&#x60;, &#x60;body&#x60; (cut to 200 characters), &#x60;linkUrl&#x60;, &#x60;callToAction&#x60; and &#x60;effectiveObjectStoryId&#x60;. - &#x60;metrics&#x60; without &#x60;costPerAction&#x60; and without any metric that is 0: an absent metric means 0.  Read one ad with &#x60;platformAdId&#x60; and &#x60;view&#x3D;full&#x60; for the rest. | [optional] [default to &#39;full&#39;] |
 
 ### Return type
 

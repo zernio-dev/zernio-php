@@ -9200,15 +9200,16 @@ class AdCampaignsApi
      * @param  string|null $daily_level Which tree levels get the &#x60;daily[]&#x60; series when &#x60;timeIncrement&#x3D;1&#x60;. Ignored when &#x60;timeIncrement&#x60; is unset.  - &#x60;campaign&#x60; (default): on campaign nodes only. The common per-campaign-trend case, and the smallest payload. - &#x60;adset&#x60;: on ad sets too. - &#x60;ad&#x60;: on every ad in &#x60;ads[]&#x60; as well. Heaviest (a long range × up to 100 ads per ad set); scope with &#x60;campaignId&#x60; to keep responses small. (optional, default to 'campaign')
      * @param  string|null $compare Set to &#x60;previous&#x60; to also read the period of the same length that ends the day before &#x60;fromDate&#x60;. Every campaign, ad set and ad gains &#x60;previousMetrics&#x60; (same fields as &#x60;metrics&#x60;) and the response gains &#x60;previousRange&#x60;, so a table can show the change against the previous period in one call. (optional)
      * @param  bool|null $results Set to &#x60;true&#x60; to add your own results (see [Campaign results](/guides/campaign-results)): every campaign gains &#x60;results&#x60;, the values you sent for the range plus each formula they allow, and the response gains &#x60;resultMetrics&#x60; to label them. (optional)
+     * @param  string|null $depth How deep the tree goes. Metrics always roll up over every ad, whatever the depth.  - &#x60;ad&#x60; (default): campaigns, their ad sets and each ad set&#39;s ads. - &#x60;adset&#x60;: campaigns and ad sets; every &#x60;ads[]&#x60; is empty and &#x60;adCount&#x60; still counts the ads. - &#x60;campaign&#x60;: campaigns only; every &#x60;adSets[]&#x60; is empty and &#x60;adSetCount&#x60; / &#x60;adCount&#x60; still count them. (optional, default to 'ad')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\AdTreeResponse|\Zernio\Model\GetAdTree202Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject4
      */
-    public function getAdTree($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $page_id = null, $account_id = null, $profile_id = null, $campaign_id = null, $updated_since = null, $search = null, $from_date = null, $to_date = null, $has_delivery = null, $min_spend = null, $sort = 'newest', $time_increment = null, $daily_level = 'campaign', $compare = null, $results = null, string $contentType = self::contentTypes['getAdTree'][0])
+    public function getAdTree($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $page_id = null, $account_id = null, $profile_id = null, $campaign_id = null, $updated_since = null, $search = null, $from_date = null, $to_date = null, $has_delivery = null, $min_spend = null, $sort = 'newest', $time_increment = null, $daily_level = 'campaign', $compare = null, $results = null, $depth = 'ad', string $contentType = self::contentTypes['getAdTree'][0])
     {
-        list($response) = $this->getAdTreeWithHttpInfo($page, $limit, $source, $platform, $status, $ad_account_id, $page_id, $account_id, $profile_id, $campaign_id, $updated_since, $search, $from_date, $to_date, $has_delivery, $min_spend, $sort, $time_increment, $daily_level, $compare, $results, $contentType);
+        list($response) = $this->getAdTreeWithHttpInfo($page, $limit, $source, $platform, $status, $ad_account_id, $page_id, $account_id, $profile_id, $campaign_id, $updated_since, $search, $from_date, $to_date, $has_delivery, $min_spend, $sort, $time_increment, $daily_level, $compare, $results, $depth, $contentType);
         return $response;
     }
 
@@ -9238,15 +9239,16 @@ class AdCampaignsApi
      * @param  string|null $daily_level Which tree levels get the &#x60;daily[]&#x60; series when &#x60;timeIncrement&#x3D;1&#x60;. Ignored when &#x60;timeIncrement&#x60; is unset.  - &#x60;campaign&#x60; (default): on campaign nodes only. The common per-campaign-trend case, and the smallest payload. - &#x60;adset&#x60;: on ad sets too. - &#x60;ad&#x60;: on every ad in &#x60;ads[]&#x60; as well. Heaviest (a long range × up to 100 ads per ad set); scope with &#x60;campaignId&#x60; to keep responses small. (optional, default to 'campaign')
      * @param  string|null $compare Set to &#x60;previous&#x60; to also read the period of the same length that ends the day before &#x60;fromDate&#x60;. Every campaign, ad set and ad gains &#x60;previousMetrics&#x60; (same fields as &#x60;metrics&#x60;) and the response gains &#x60;previousRange&#x60;, so a table can show the change against the previous period in one call. (optional)
      * @param  bool|null $results Set to &#x60;true&#x60; to add your own results (see [Campaign results](/guides/campaign-results)): every campaign gains &#x60;results&#x60;, the values you sent for the range plus each formula they allow, and the response gains &#x60;resultMetrics&#x60; to label them. (optional)
+     * @param  string|null $depth How deep the tree goes. Metrics always roll up over every ad, whatever the depth.  - &#x60;ad&#x60; (default): campaigns, their ad sets and each ad set&#39;s ads. - &#x60;adset&#x60;: campaigns and ad sets; every &#x60;ads[]&#x60; is empty and &#x60;adCount&#x60; still counts the ads. - &#x60;campaign&#x60;: campaigns only; every &#x60;adSets[]&#x60; is empty and &#x60;adSetCount&#x60; / &#x60;adCount&#x60; still count them. (optional, default to 'ad')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\AdTreeResponse|\Zernio\Model\GetAdTree202Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject4, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAdTreeWithHttpInfo($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $page_id = null, $account_id = null, $profile_id = null, $campaign_id = null, $updated_since = null, $search = null, $from_date = null, $to_date = null, $has_delivery = null, $min_spend = null, $sort = 'newest', $time_increment = null, $daily_level = 'campaign', $compare = null, $results = null, string $contentType = self::contentTypes['getAdTree'][0])
+    public function getAdTreeWithHttpInfo($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $page_id = null, $account_id = null, $profile_id = null, $campaign_id = null, $updated_since = null, $search = null, $from_date = null, $to_date = null, $has_delivery = null, $min_spend = null, $sort = 'newest', $time_increment = null, $daily_level = 'campaign', $compare = null, $results = null, $depth = 'ad', string $contentType = self::contentTypes['getAdTree'][0])
     {
-        $request = $this->getAdTreeRequest($page, $limit, $source, $platform, $status, $ad_account_id, $page_id, $account_id, $profile_id, $campaign_id, $updated_since, $search, $from_date, $to_date, $has_delivery, $min_spend, $sort, $time_increment, $daily_level, $compare, $results, $contentType);
+        $request = $this->getAdTreeRequest($page, $limit, $source, $platform, $status, $ad_account_id, $page_id, $account_id, $profile_id, $campaign_id, $updated_since, $search, $from_date, $to_date, $has_delivery, $min_spend, $sort, $time_increment, $daily_level, $compare, $results, $depth, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9385,14 +9387,15 @@ class AdCampaignsApi
      * @param  string|null $daily_level Which tree levels get the &#x60;daily[]&#x60; series when &#x60;timeIncrement&#x3D;1&#x60;. Ignored when &#x60;timeIncrement&#x60; is unset.  - &#x60;campaign&#x60; (default): on campaign nodes only. The common per-campaign-trend case, and the smallest payload. - &#x60;adset&#x60;: on ad sets too. - &#x60;ad&#x60;: on every ad in &#x60;ads[]&#x60; as well. Heaviest (a long range × up to 100 ads per ad set); scope with &#x60;campaignId&#x60; to keep responses small. (optional, default to 'campaign')
      * @param  string|null $compare Set to &#x60;previous&#x60; to also read the period of the same length that ends the day before &#x60;fromDate&#x60;. Every campaign, ad set and ad gains &#x60;previousMetrics&#x60; (same fields as &#x60;metrics&#x60;) and the response gains &#x60;previousRange&#x60;, so a table can show the change against the previous period in one call. (optional)
      * @param  bool|null $results Set to &#x60;true&#x60; to add your own results (see [Campaign results](/guides/campaign-results)): every campaign gains &#x60;results&#x60;, the values you sent for the range plus each formula they allow, and the response gains &#x60;resultMetrics&#x60; to label them. (optional)
+     * @param  string|null $depth How deep the tree goes. Metrics always roll up over every ad, whatever the depth.  - &#x60;ad&#x60; (default): campaigns, their ad sets and each ad set&#39;s ads. - &#x60;adset&#x60;: campaigns and ad sets; every &#x60;ads[]&#x60; is empty and &#x60;adCount&#x60; still counts the ads. - &#x60;campaign&#x60;: campaigns only; every &#x60;adSets[]&#x60; is empty and &#x60;adSetCount&#x60; / &#x60;adCount&#x60; still count them. (optional, default to 'ad')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAdTreeAsync($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $page_id = null, $account_id = null, $profile_id = null, $campaign_id = null, $updated_since = null, $search = null, $from_date = null, $to_date = null, $has_delivery = null, $min_spend = null, $sort = 'newest', $time_increment = null, $daily_level = 'campaign', $compare = null, $results = null, string $contentType = self::contentTypes['getAdTree'][0])
+    public function getAdTreeAsync($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $page_id = null, $account_id = null, $profile_id = null, $campaign_id = null, $updated_since = null, $search = null, $from_date = null, $to_date = null, $has_delivery = null, $min_spend = null, $sort = 'newest', $time_increment = null, $daily_level = 'campaign', $compare = null, $results = null, $depth = 'ad', string $contentType = self::contentTypes['getAdTree'][0])
     {
-        return $this->getAdTreeAsyncWithHttpInfo($page, $limit, $source, $platform, $status, $ad_account_id, $page_id, $account_id, $profile_id, $campaign_id, $updated_since, $search, $from_date, $to_date, $has_delivery, $min_spend, $sort, $time_increment, $daily_level, $compare, $results, $contentType)
+        return $this->getAdTreeAsyncWithHttpInfo($page, $limit, $source, $platform, $status, $ad_account_id, $page_id, $account_id, $profile_id, $campaign_id, $updated_since, $search, $from_date, $to_date, $has_delivery, $min_spend, $sort, $time_increment, $daily_level, $compare, $results, $depth, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9426,15 +9429,16 @@ class AdCampaignsApi
      * @param  string|null $daily_level Which tree levels get the &#x60;daily[]&#x60; series when &#x60;timeIncrement&#x3D;1&#x60;. Ignored when &#x60;timeIncrement&#x60; is unset.  - &#x60;campaign&#x60; (default): on campaign nodes only. The common per-campaign-trend case, and the smallest payload. - &#x60;adset&#x60;: on ad sets too. - &#x60;ad&#x60;: on every ad in &#x60;ads[]&#x60; as well. Heaviest (a long range × up to 100 ads per ad set); scope with &#x60;campaignId&#x60; to keep responses small. (optional, default to 'campaign')
      * @param  string|null $compare Set to &#x60;previous&#x60; to also read the period of the same length that ends the day before &#x60;fromDate&#x60;. Every campaign, ad set and ad gains &#x60;previousMetrics&#x60; (same fields as &#x60;metrics&#x60;) and the response gains &#x60;previousRange&#x60;, so a table can show the change against the previous period in one call. (optional)
      * @param  bool|null $results Set to &#x60;true&#x60; to add your own results (see [Campaign results](/guides/campaign-results)): every campaign gains &#x60;results&#x60;, the values you sent for the range plus each formula they allow, and the response gains &#x60;resultMetrics&#x60; to label them. (optional)
+     * @param  string|null $depth How deep the tree goes. Metrics always roll up over every ad, whatever the depth.  - &#x60;ad&#x60; (default): campaigns, their ad sets and each ad set&#39;s ads. - &#x60;adset&#x60;: campaigns and ad sets; every &#x60;ads[]&#x60; is empty and &#x60;adCount&#x60; still counts the ads. - &#x60;campaign&#x60;: campaigns only; every &#x60;adSets[]&#x60; is empty and &#x60;adSetCount&#x60; / &#x60;adCount&#x60; still count them. (optional, default to 'ad')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAdTreeAsyncWithHttpInfo($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $page_id = null, $account_id = null, $profile_id = null, $campaign_id = null, $updated_since = null, $search = null, $from_date = null, $to_date = null, $has_delivery = null, $min_spend = null, $sort = 'newest', $time_increment = null, $daily_level = 'campaign', $compare = null, $results = null, string $contentType = self::contentTypes['getAdTree'][0])
+    public function getAdTreeAsyncWithHttpInfo($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $page_id = null, $account_id = null, $profile_id = null, $campaign_id = null, $updated_since = null, $search = null, $from_date = null, $to_date = null, $has_delivery = null, $min_spend = null, $sort = 'newest', $time_increment = null, $daily_level = 'campaign', $compare = null, $results = null, $depth = 'ad', string $contentType = self::contentTypes['getAdTree'][0])
     {
         $returnType = '\Zernio\Model\AdTreeResponse';
-        $request = $this->getAdTreeRequest($page, $limit, $source, $platform, $status, $ad_account_id, $page_id, $account_id, $profile_id, $campaign_id, $updated_since, $search, $from_date, $to_date, $has_delivery, $min_spend, $sort, $time_increment, $daily_level, $compare, $results, $contentType);
+        $request = $this->getAdTreeRequest($page, $limit, $source, $platform, $status, $ad_account_id, $page_id, $account_id, $profile_id, $campaign_id, $updated_since, $search, $from_date, $to_date, $has_delivery, $min_spend, $sort, $time_increment, $daily_level, $compare, $results, $depth, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9496,12 +9500,13 @@ class AdCampaignsApi
      * @param  string|null $daily_level Which tree levels get the &#x60;daily[]&#x60; series when &#x60;timeIncrement&#x3D;1&#x60;. Ignored when &#x60;timeIncrement&#x60; is unset.  - &#x60;campaign&#x60; (default): on campaign nodes only. The common per-campaign-trend case, and the smallest payload. - &#x60;adset&#x60;: on ad sets too. - &#x60;ad&#x60;: on every ad in &#x60;ads[]&#x60; as well. Heaviest (a long range × up to 100 ads per ad set); scope with &#x60;campaignId&#x60; to keep responses small. (optional, default to 'campaign')
      * @param  string|null $compare Set to &#x60;previous&#x60; to also read the period of the same length that ends the day before &#x60;fromDate&#x60;. Every campaign, ad set and ad gains &#x60;previousMetrics&#x60; (same fields as &#x60;metrics&#x60;) and the response gains &#x60;previousRange&#x60;, so a table can show the change against the previous period in one call. (optional)
      * @param  bool|null $results Set to &#x60;true&#x60; to add your own results (see [Campaign results](/guides/campaign-results)): every campaign gains &#x60;results&#x60;, the values you sent for the range plus each formula they allow, and the response gains &#x60;resultMetrics&#x60; to label them. (optional)
+     * @param  string|null $depth How deep the tree goes. Metrics always roll up over every ad, whatever the depth.  - &#x60;ad&#x60; (default): campaigns, their ad sets and each ad set&#39;s ads. - &#x60;adset&#x60;: campaigns and ad sets; every &#x60;ads[]&#x60; is empty and &#x60;adCount&#x60; still counts the ads. - &#x60;campaign&#x60;: campaigns only; every &#x60;adSets[]&#x60; is empty and &#x60;adSetCount&#x60; / &#x60;adCount&#x60; still count them. (optional, default to 'ad')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAdTreeRequest($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $page_id = null, $account_id = null, $profile_id = null, $campaign_id = null, $updated_since = null, $search = null, $from_date = null, $to_date = null, $has_delivery = null, $min_spend = null, $sort = 'newest', $time_increment = null, $daily_level = 'campaign', $compare = null, $results = null, string $contentType = self::contentTypes['getAdTree'][0])
+    public function getAdTreeRequest($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $page_id = null, $account_id = null, $profile_id = null, $campaign_id = null, $updated_since = null, $search = null, $from_date = null, $to_date = null, $has_delivery = null, $min_spend = null, $sort = 'newest', $time_increment = null, $daily_level = 'campaign', $compare = null, $results = null, $depth = 'ad', string $contentType = self::contentTypes['getAdTree'][0])
     {
 
         if ($page !== null && $page < 1) {
@@ -9535,6 +9540,7 @@ class AdCampaignsApi
             throw new \InvalidArgumentException('invalid value for "$min_spend" when calling AdCampaignsApi.getAdTree, must be bigger than or equal to 0.');
         }
         
+
 
 
 
@@ -9733,6 +9739,15 @@ class AdCampaignsApi
             $results,
             'results', // param base name
             'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $depth,
+            'depth', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -13747,15 +13762,16 @@ class AdCampaignsApi
      * @param  int|null $page page (optional, default to 1)
      * @param  int|null $limit limit (optional, default to 500)
      * @param  bool|null $live Read the on/off switches live from the platform instead of returning synced values. See \&quot;Status freshness\&quot; in the operation description.  - The fresh values are stored (later reads return them too), and the response carries &#x60;statusReadAt&#x60;, the time of the read. - At most 20 platform objects are read per request. - Where a read fails (credentials, platform error, no reader on that platform), stored values come back with &#x60;statusReadAt: null&#x60;.  **On GET /v1/ads/{adId} for a TikTok ad** the creative is read live too: ad text, call to action, landing page, video, format and identity, returned over the stored creative and never stored. See \&quot;Status freshness\&quot; in GET /v1/ads/{adId}.  **On X** the budget is read live too:  - GET /v1/ads/{adId}: &#x60;budget&#x60;, &#x60;adSetBudget&#x60;, &#x60;campaignBudget&#x60; and &#x60;budgetLevel&#x60; are the line item and campaign budgets X holds now (stored like the switches). - Ad set and campaign listings: &#x60;budget&#x60; is what that line item or campaign holds now (returned, not stored). A row whose budget the other level holds keeps its synced &#x60;budget&#x60;. (optional, default to false)
+     * @param  string|null $view &#x60;full&#x60; returns every field. &#x60;summary&#x60; leaves &#x60;targeting&#x60; out of each ad set, which is most of a row&#39;s size; read one ad set&#39;s targeting with &#x60;adSetId&#x60; and &#x60;view&#x3D;full&#x60;. (optional, default to 'full')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdSets'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\ListAdSets200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
      */
-    public function listAdSets($account_id = null, $ad_account_id = null, $campaign_id = null, $ad_set_id = null, $platform = null, $status = null, $page = 1, $limit = 500, $live = false, string $contentType = self::contentTypes['listAdSets'][0])
+    public function listAdSets($account_id = null, $ad_account_id = null, $campaign_id = null, $ad_set_id = null, $platform = null, $status = null, $page = 1, $limit = 500, $live = false, $view = 'full', string $contentType = self::contentTypes['listAdSets'][0])
     {
-        list($response) = $this->listAdSetsWithHttpInfo($account_id, $ad_account_id, $campaign_id, $ad_set_id, $platform, $status, $page, $limit, $live, $contentType);
+        list($response) = $this->listAdSetsWithHttpInfo($account_id, $ad_account_id, $campaign_id, $ad_set_id, $platform, $status, $page, $limit, $live, $view, $contentType);
         return $response;
     }
 
@@ -13773,15 +13789,16 @@ class AdCampaignsApi
      * @param  int|null $page (optional, default to 1)
      * @param  int|null $limit (optional, default to 500)
      * @param  bool|null $live Read the on/off switches live from the platform instead of returning synced values. See \&quot;Status freshness\&quot; in the operation description.  - The fresh values are stored (later reads return them too), and the response carries &#x60;statusReadAt&#x60;, the time of the read. - At most 20 platform objects are read per request. - Where a read fails (credentials, platform error, no reader on that platform), stored values come back with &#x60;statusReadAt: null&#x60;.  **On GET /v1/ads/{adId} for a TikTok ad** the creative is read live too: ad text, call to action, landing page, video, format and identity, returned over the stored creative and never stored. See \&quot;Status freshness\&quot; in GET /v1/ads/{adId}.  **On X** the budget is read live too:  - GET /v1/ads/{adId}: &#x60;budget&#x60;, &#x60;adSetBudget&#x60;, &#x60;campaignBudget&#x60; and &#x60;budgetLevel&#x60; are the line item and campaign budgets X holds now (stored like the switches). - Ad set and campaign listings: &#x60;budget&#x60; is what that line item or campaign holds now (returned, not stored). A row whose budget the other level holds keeps its synced &#x60;budget&#x60;. (optional, default to false)
+     * @param  string|null $view &#x60;full&#x60; returns every field. &#x60;summary&#x60; leaves &#x60;targeting&#x60; out of each ad set, which is most of a row&#39;s size; read one ad set&#39;s targeting with &#x60;adSetId&#x60; and &#x60;view&#x3D;full&#x60;. (optional, default to 'full')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdSets'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\ListAdSets200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listAdSetsWithHttpInfo($account_id = null, $ad_account_id = null, $campaign_id = null, $ad_set_id = null, $platform = null, $status = null, $page = 1, $limit = 500, $live = false, string $contentType = self::contentTypes['listAdSets'][0])
+    public function listAdSetsWithHttpInfo($account_id = null, $ad_account_id = null, $campaign_id = null, $ad_set_id = null, $platform = null, $status = null, $page = 1, $limit = 500, $live = false, $view = 'full', string $contentType = self::contentTypes['listAdSets'][0])
     {
-        $request = $this->listAdSetsRequest($account_id, $ad_account_id, $campaign_id, $ad_set_id, $platform, $status, $page, $limit, $live, $contentType);
+        $request = $this->listAdSetsRequest($account_id, $ad_account_id, $campaign_id, $ad_set_id, $platform, $status, $page, $limit, $live, $view, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -13894,14 +13911,15 @@ class AdCampaignsApi
      * @param  int|null $page (optional, default to 1)
      * @param  int|null $limit (optional, default to 500)
      * @param  bool|null $live Read the on/off switches live from the platform instead of returning synced values. See \&quot;Status freshness\&quot; in the operation description.  - The fresh values are stored (later reads return them too), and the response carries &#x60;statusReadAt&#x60;, the time of the read. - At most 20 platform objects are read per request. - Where a read fails (credentials, platform error, no reader on that platform), stored values come back with &#x60;statusReadAt: null&#x60;.  **On GET /v1/ads/{adId} for a TikTok ad** the creative is read live too: ad text, call to action, landing page, video, format and identity, returned over the stored creative and never stored. See \&quot;Status freshness\&quot; in GET /v1/ads/{adId}.  **On X** the budget is read live too:  - GET /v1/ads/{adId}: &#x60;budget&#x60;, &#x60;adSetBudget&#x60;, &#x60;campaignBudget&#x60; and &#x60;budgetLevel&#x60; are the line item and campaign budgets X holds now (stored like the switches). - Ad set and campaign listings: &#x60;budget&#x60; is what that line item or campaign holds now (returned, not stored). A row whose budget the other level holds keeps its synced &#x60;budget&#x60;. (optional, default to false)
+     * @param  string|null $view &#x60;full&#x60; returns every field. &#x60;summary&#x60; leaves &#x60;targeting&#x60; out of each ad set, which is most of a row&#39;s size; read one ad set&#39;s targeting with &#x60;adSetId&#x60; and &#x60;view&#x3D;full&#x60;. (optional, default to 'full')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdSets'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAdSetsAsync($account_id = null, $ad_account_id = null, $campaign_id = null, $ad_set_id = null, $platform = null, $status = null, $page = 1, $limit = 500, $live = false, string $contentType = self::contentTypes['listAdSets'][0])
+    public function listAdSetsAsync($account_id = null, $ad_account_id = null, $campaign_id = null, $ad_set_id = null, $platform = null, $status = null, $page = 1, $limit = 500, $live = false, $view = 'full', string $contentType = self::contentTypes['listAdSets'][0])
     {
-        return $this->listAdSetsAsyncWithHttpInfo($account_id, $ad_account_id, $campaign_id, $ad_set_id, $platform, $status, $page, $limit, $live, $contentType)
+        return $this->listAdSetsAsyncWithHttpInfo($account_id, $ad_account_id, $campaign_id, $ad_set_id, $platform, $status, $page, $limit, $live, $view, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -13923,15 +13941,16 @@ class AdCampaignsApi
      * @param  int|null $page (optional, default to 1)
      * @param  int|null $limit (optional, default to 500)
      * @param  bool|null $live Read the on/off switches live from the platform instead of returning synced values. See \&quot;Status freshness\&quot; in the operation description.  - The fresh values are stored (later reads return them too), and the response carries &#x60;statusReadAt&#x60;, the time of the read. - At most 20 platform objects are read per request. - Where a read fails (credentials, platform error, no reader on that platform), stored values come back with &#x60;statusReadAt: null&#x60;.  **On GET /v1/ads/{adId} for a TikTok ad** the creative is read live too: ad text, call to action, landing page, video, format and identity, returned over the stored creative and never stored. See \&quot;Status freshness\&quot; in GET /v1/ads/{adId}.  **On X** the budget is read live too:  - GET /v1/ads/{adId}: &#x60;budget&#x60;, &#x60;adSetBudget&#x60;, &#x60;campaignBudget&#x60; and &#x60;budgetLevel&#x60; are the line item and campaign budgets X holds now (stored like the switches). - Ad set and campaign listings: &#x60;budget&#x60; is what that line item or campaign holds now (returned, not stored). A row whose budget the other level holds keeps its synced &#x60;budget&#x60;. (optional, default to false)
+     * @param  string|null $view &#x60;full&#x60; returns every field. &#x60;summary&#x60; leaves &#x60;targeting&#x60; out of each ad set, which is most of a row&#39;s size; read one ad set&#39;s targeting with &#x60;adSetId&#x60; and &#x60;view&#x3D;full&#x60;. (optional, default to 'full')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdSets'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAdSetsAsyncWithHttpInfo($account_id = null, $ad_account_id = null, $campaign_id = null, $ad_set_id = null, $platform = null, $status = null, $page = 1, $limit = 500, $live = false, string $contentType = self::contentTypes['listAdSets'][0])
+    public function listAdSetsAsyncWithHttpInfo($account_id = null, $ad_account_id = null, $campaign_id = null, $ad_set_id = null, $platform = null, $status = null, $page = 1, $limit = 500, $live = false, $view = 'full', string $contentType = self::contentTypes['listAdSets'][0])
     {
         $returnType = '\Zernio\Model\ListAdSets200Response';
-        $request = $this->listAdSetsRequest($account_id, $ad_account_id, $campaign_id, $ad_set_id, $platform, $status, $page, $limit, $live, $contentType);
+        $request = $this->listAdSetsRequest($account_id, $ad_account_id, $campaign_id, $ad_set_id, $platform, $status, $page, $limit, $live, $view, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -13981,12 +14000,13 @@ class AdCampaignsApi
      * @param  int|null $page (optional, default to 1)
      * @param  int|null $limit (optional, default to 500)
      * @param  bool|null $live Read the on/off switches live from the platform instead of returning synced values. See \&quot;Status freshness\&quot; in the operation description.  - The fresh values are stored (later reads return them too), and the response carries &#x60;statusReadAt&#x60;, the time of the read. - At most 20 platform objects are read per request. - Where a read fails (credentials, platform error, no reader on that platform), stored values come back with &#x60;statusReadAt: null&#x60;.  **On GET /v1/ads/{adId} for a TikTok ad** the creative is read live too: ad text, call to action, landing page, video, format and identity, returned over the stored creative and never stored. See \&quot;Status freshness\&quot; in GET /v1/ads/{adId}.  **On X** the budget is read live too:  - GET /v1/ads/{adId}: &#x60;budget&#x60;, &#x60;adSetBudget&#x60;, &#x60;campaignBudget&#x60; and &#x60;budgetLevel&#x60; are the line item and campaign budgets X holds now (stored like the switches). - Ad set and campaign listings: &#x60;budget&#x60; is what that line item or campaign holds now (returned, not stored). A row whose budget the other level holds keeps its synced &#x60;budget&#x60;. (optional, default to false)
+     * @param  string|null $view &#x60;full&#x60; returns every field. &#x60;summary&#x60; leaves &#x60;targeting&#x60; out of each ad set, which is most of a row&#39;s size; read one ad set&#39;s targeting with &#x60;adSetId&#x60; and &#x60;view&#x3D;full&#x60;. (optional, default to 'full')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdSets'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listAdSetsRequest($account_id = null, $ad_account_id = null, $campaign_id = null, $ad_set_id = null, $platform = null, $status = null, $page = 1, $limit = 500, $live = false, string $contentType = self::contentTypes['listAdSets'][0])
+    public function listAdSetsRequest($account_id = null, $ad_account_id = null, $campaign_id = null, $ad_set_id = null, $platform = null, $status = null, $page = 1, $limit = 500, $live = false, $view = 'full', string $contentType = self::contentTypes['listAdSets'][0])
     {
 
 
@@ -14006,6 +14026,7 @@ class AdCampaignsApi
             throw new \InvalidArgumentException('invalid value for "$limit" when calling AdCampaignsApi.listAdSets, must be bigger than or equal to 1.');
         }
         
+
 
 
         $resourcePath = '/v1/ads/ad-sets';
@@ -14096,6 +14117,15 @@ class AdCampaignsApi
             true, // explode
             false // required
         ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $view,
+            'view', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
 
@@ -14178,15 +14208,16 @@ class AdCampaignsApi
      * @param  string|null $effective_instagram_media_id Instagram media ID of the boosted post (Meta &#x60;effective_instagram_media_id&#x60;). Use to map a Business-Manager-visible IG post back to the Zernio ad. (optional)
      * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
+     * @param  string|null $view &#x60;full&#x60; (default) returns every field. &#x60;summary&#x60; is about 80% smaller per ad and keeps only:  - &#x60;_id&#x60;, &#x60;name&#x60;, &#x60;platform&#x60;, &#x60;status&#x60;, &#x60;platformStatus&#x60;, &#x60;servingStatuses&#x60; (left out when empty), &#x60;configuredStatus&#x60;, &#x60;reviewStatus&#x60;, &#x60;rejectionReason&#x60;, &#x60;goal&#x60;. - The platform ids, &#x60;accountId&#x60;, &#x60;profileId&#x60;, &#x60;campaignName&#x60;, &#x60;adSetName&#x60;, &#x60;budget&#x60;, &#x60;currency&#x60;, &#x60;isExternal&#x60;, &#x60;creativeType&#x60;, &#x60;platformCreatedAt&#x60;, &#x60;createdAt&#x60;. - &#x60;postId&#x60; as the post id, not the expanded post. - &#x60;creative&#x60; with only &#x60;headline&#x60;, &#x60;body&#x60; (cut to 200 characters), &#x60;linkUrl&#x60;, &#x60;callToAction&#x60; and &#x60;effectiveObjectStoryId&#x60;. - &#x60;metrics&#x60; without &#x60;costPerAction&#x60; and without any metric that is 0: an absent metric means 0.  Read one ad with &#x60;platformAdId&#x60; and &#x60;view&#x3D;full&#x60; for the rest. (optional, default to 'full')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAds'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\AdsListResponse|\Zernio\Model\ListAds202Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject4
      */
-    public function listAds($page = 1, $limit = 50, $source = 'all', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $page_id = null, $profile_id = null, $campaign_id = null, $ad_set_id = null, $platform_ad_id = null, $effective_object_story_id = null, $effective_instagram_media_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
+    public function listAds($page = 1, $limit = 50, $source = 'all', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $page_id = null, $profile_id = null, $campaign_id = null, $ad_set_id = null, $platform_ad_id = null, $effective_object_story_id = null, $effective_instagram_media_id = null, $from_date = null, $to_date = null, $view = 'full', string $contentType = self::contentTypes['listAds'][0])
     {
-        list($response) = $this->listAdsWithHttpInfo($page, $limit, $source, $status, $platform, $account_id, $ad_account_id, $page_id, $profile_id, $campaign_id, $ad_set_id, $platform_ad_id, $effective_object_story_id, $effective_instagram_media_id, $from_date, $to_date, $contentType);
+        list($response) = $this->listAdsWithHttpInfo($page, $limit, $source, $status, $platform, $account_id, $ad_account_id, $page_id, $profile_id, $campaign_id, $ad_set_id, $platform_ad_id, $effective_object_story_id, $effective_instagram_media_id, $from_date, $to_date, $view, $contentType);
         return $response;
     }
 
@@ -14211,15 +14242,16 @@ class AdCampaignsApi
      * @param  string|null $effective_instagram_media_id Instagram media ID of the boosted post (Meta &#x60;effective_instagram_media_id&#x60;). Use to map a Business-Manager-visible IG post back to the Zernio ad. (optional)
      * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
+     * @param  string|null $view &#x60;full&#x60; (default) returns every field. &#x60;summary&#x60; is about 80% smaller per ad and keeps only:  - &#x60;_id&#x60;, &#x60;name&#x60;, &#x60;platform&#x60;, &#x60;status&#x60;, &#x60;platformStatus&#x60;, &#x60;servingStatuses&#x60; (left out when empty), &#x60;configuredStatus&#x60;, &#x60;reviewStatus&#x60;, &#x60;rejectionReason&#x60;, &#x60;goal&#x60;. - The platform ids, &#x60;accountId&#x60;, &#x60;profileId&#x60;, &#x60;campaignName&#x60;, &#x60;adSetName&#x60;, &#x60;budget&#x60;, &#x60;currency&#x60;, &#x60;isExternal&#x60;, &#x60;creativeType&#x60;, &#x60;platformCreatedAt&#x60;, &#x60;createdAt&#x60;. - &#x60;postId&#x60; as the post id, not the expanded post. - &#x60;creative&#x60; with only &#x60;headline&#x60;, &#x60;body&#x60; (cut to 200 characters), &#x60;linkUrl&#x60;, &#x60;callToAction&#x60; and &#x60;effectiveObjectStoryId&#x60;. - &#x60;metrics&#x60; without &#x60;costPerAction&#x60; and without any metric that is 0: an absent metric means 0.  Read one ad with &#x60;platformAdId&#x60; and &#x60;view&#x3D;full&#x60; for the rest. (optional, default to 'full')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAds'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\AdsListResponse|\Zernio\Model\ListAds202Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject4, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listAdsWithHttpInfo($page = 1, $limit = 50, $source = 'all', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $page_id = null, $profile_id = null, $campaign_id = null, $ad_set_id = null, $platform_ad_id = null, $effective_object_story_id = null, $effective_instagram_media_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
+    public function listAdsWithHttpInfo($page = 1, $limit = 50, $source = 'all', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $page_id = null, $profile_id = null, $campaign_id = null, $ad_set_id = null, $platform_ad_id = null, $effective_object_story_id = null, $effective_instagram_media_id = null, $from_date = null, $to_date = null, $view = 'full', string $contentType = self::contentTypes['listAds'][0])
     {
-        $request = $this->listAdsRequest($page, $limit, $source, $status, $platform, $account_id, $ad_account_id, $page_id, $profile_id, $campaign_id, $ad_set_id, $platform_ad_id, $effective_object_story_id, $effective_instagram_media_id, $from_date, $to_date, $contentType);
+        $request = $this->listAdsRequest($page, $limit, $source, $status, $platform, $account_id, $ad_account_id, $page_id, $profile_id, $campaign_id, $ad_set_id, $platform_ad_id, $effective_object_story_id, $effective_instagram_media_id, $from_date, $to_date, $view, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -14367,14 +14399,15 @@ class AdCampaignsApi
      * @param  string|null $effective_instagram_media_id Instagram media ID of the boosted post (Meta &#x60;effective_instagram_media_id&#x60;). Use to map a Business-Manager-visible IG post back to the Zernio ad. (optional)
      * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
+     * @param  string|null $view &#x60;full&#x60; (default) returns every field. &#x60;summary&#x60; is about 80% smaller per ad and keeps only:  - &#x60;_id&#x60;, &#x60;name&#x60;, &#x60;platform&#x60;, &#x60;status&#x60;, &#x60;platformStatus&#x60;, &#x60;servingStatuses&#x60; (left out when empty), &#x60;configuredStatus&#x60;, &#x60;reviewStatus&#x60;, &#x60;rejectionReason&#x60;, &#x60;goal&#x60;. - The platform ids, &#x60;accountId&#x60;, &#x60;profileId&#x60;, &#x60;campaignName&#x60;, &#x60;adSetName&#x60;, &#x60;budget&#x60;, &#x60;currency&#x60;, &#x60;isExternal&#x60;, &#x60;creativeType&#x60;, &#x60;platformCreatedAt&#x60;, &#x60;createdAt&#x60;. - &#x60;postId&#x60; as the post id, not the expanded post. - &#x60;creative&#x60; with only &#x60;headline&#x60;, &#x60;body&#x60; (cut to 200 characters), &#x60;linkUrl&#x60;, &#x60;callToAction&#x60; and &#x60;effectiveObjectStoryId&#x60;. - &#x60;metrics&#x60; without &#x60;costPerAction&#x60; and without any metric that is 0: an absent metric means 0.  Read one ad with &#x60;platformAdId&#x60; and &#x60;view&#x3D;full&#x60; for the rest. (optional, default to 'full')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAds'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAdsAsync($page = 1, $limit = 50, $source = 'all', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $page_id = null, $profile_id = null, $campaign_id = null, $ad_set_id = null, $platform_ad_id = null, $effective_object_story_id = null, $effective_instagram_media_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
+    public function listAdsAsync($page = 1, $limit = 50, $source = 'all', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $page_id = null, $profile_id = null, $campaign_id = null, $ad_set_id = null, $platform_ad_id = null, $effective_object_story_id = null, $effective_instagram_media_id = null, $from_date = null, $to_date = null, $view = 'full', string $contentType = self::contentTypes['listAds'][0])
     {
-        return $this->listAdsAsyncWithHttpInfo($page, $limit, $source, $status, $platform, $account_id, $ad_account_id, $page_id, $profile_id, $campaign_id, $ad_set_id, $platform_ad_id, $effective_object_story_id, $effective_instagram_media_id, $from_date, $to_date, $contentType)
+        return $this->listAdsAsyncWithHttpInfo($page, $limit, $source, $status, $platform, $account_id, $ad_account_id, $page_id, $profile_id, $campaign_id, $ad_set_id, $platform_ad_id, $effective_object_story_id, $effective_instagram_media_id, $from_date, $to_date, $view, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -14403,15 +14436,16 @@ class AdCampaignsApi
      * @param  string|null $effective_instagram_media_id Instagram media ID of the boosted post (Meta &#x60;effective_instagram_media_id&#x60;). Use to map a Business-Manager-visible IG post back to the Zernio ad. (optional)
      * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
+     * @param  string|null $view &#x60;full&#x60; (default) returns every field. &#x60;summary&#x60; is about 80% smaller per ad and keeps only:  - &#x60;_id&#x60;, &#x60;name&#x60;, &#x60;platform&#x60;, &#x60;status&#x60;, &#x60;platformStatus&#x60;, &#x60;servingStatuses&#x60; (left out when empty), &#x60;configuredStatus&#x60;, &#x60;reviewStatus&#x60;, &#x60;rejectionReason&#x60;, &#x60;goal&#x60;. - The platform ids, &#x60;accountId&#x60;, &#x60;profileId&#x60;, &#x60;campaignName&#x60;, &#x60;adSetName&#x60;, &#x60;budget&#x60;, &#x60;currency&#x60;, &#x60;isExternal&#x60;, &#x60;creativeType&#x60;, &#x60;platformCreatedAt&#x60;, &#x60;createdAt&#x60;. - &#x60;postId&#x60; as the post id, not the expanded post. - &#x60;creative&#x60; with only &#x60;headline&#x60;, &#x60;body&#x60; (cut to 200 characters), &#x60;linkUrl&#x60;, &#x60;callToAction&#x60; and &#x60;effectiveObjectStoryId&#x60;. - &#x60;metrics&#x60; without &#x60;costPerAction&#x60; and without any metric that is 0: an absent metric means 0.  Read one ad with &#x60;platformAdId&#x60; and &#x60;view&#x3D;full&#x60; for the rest. (optional, default to 'full')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAds'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAdsAsyncWithHttpInfo($page = 1, $limit = 50, $source = 'all', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $page_id = null, $profile_id = null, $campaign_id = null, $ad_set_id = null, $platform_ad_id = null, $effective_object_story_id = null, $effective_instagram_media_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
+    public function listAdsAsyncWithHttpInfo($page = 1, $limit = 50, $source = 'all', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $page_id = null, $profile_id = null, $campaign_id = null, $ad_set_id = null, $platform_ad_id = null, $effective_object_story_id = null, $effective_instagram_media_id = null, $from_date = null, $to_date = null, $view = 'full', string $contentType = self::contentTypes['listAds'][0])
     {
         $returnType = '\Zernio\Model\AdsListResponse';
-        $request = $this->listAdsRequest($page, $limit, $source, $status, $platform, $account_id, $ad_account_id, $page_id, $profile_id, $campaign_id, $ad_set_id, $platform_ad_id, $effective_object_story_id, $effective_instagram_media_id, $from_date, $to_date, $contentType);
+        $request = $this->listAdsRequest($page, $limit, $source, $status, $platform, $account_id, $ad_account_id, $page_id, $profile_id, $campaign_id, $ad_set_id, $platform_ad_id, $effective_object_story_id, $effective_instagram_media_id, $from_date, $to_date, $view, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -14468,12 +14502,13 @@ class AdCampaignsApi
      * @param  string|null $effective_instagram_media_id Instagram media ID of the boosted post (Meta &#x60;effective_instagram_media_id&#x60;). Use to map a Business-Manager-visible IG post back to the Zernio ad. (optional)
      * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
+     * @param  string|null $view &#x60;full&#x60; (default) returns every field. &#x60;summary&#x60; is about 80% smaller per ad and keeps only:  - &#x60;_id&#x60;, &#x60;name&#x60;, &#x60;platform&#x60;, &#x60;status&#x60;, &#x60;platformStatus&#x60;, &#x60;servingStatuses&#x60; (left out when empty), &#x60;configuredStatus&#x60;, &#x60;reviewStatus&#x60;, &#x60;rejectionReason&#x60;, &#x60;goal&#x60;. - The platform ids, &#x60;accountId&#x60;, &#x60;profileId&#x60;, &#x60;campaignName&#x60;, &#x60;adSetName&#x60;, &#x60;budget&#x60;, &#x60;currency&#x60;, &#x60;isExternal&#x60;, &#x60;creativeType&#x60;, &#x60;platformCreatedAt&#x60;, &#x60;createdAt&#x60;. - &#x60;postId&#x60; as the post id, not the expanded post. - &#x60;creative&#x60; with only &#x60;headline&#x60;, &#x60;body&#x60; (cut to 200 characters), &#x60;linkUrl&#x60;, &#x60;callToAction&#x60; and &#x60;effectiveObjectStoryId&#x60;. - &#x60;metrics&#x60; without &#x60;costPerAction&#x60; and without any metric that is 0: an absent metric means 0.  Read one ad with &#x60;platformAdId&#x60; and &#x60;view&#x3D;full&#x60; for the rest. (optional, default to 'full')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAds'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listAdsRequest($page = 1, $limit = 50, $source = 'all', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $page_id = null, $profile_id = null, $campaign_id = null, $ad_set_id = null, $platform_ad_id = null, $effective_object_story_id = null, $effective_instagram_media_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
+    public function listAdsRequest($page = 1, $limit = 50, $source = 'all', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $page_id = null, $profile_id = null, $campaign_id = null, $ad_set_id = null, $platform_ad_id = null, $effective_object_story_id = null, $effective_instagram_media_id = null, $from_date = null, $to_date = null, $view = 'full', string $contentType = self::contentTypes['listAds'][0])
     {
 
         if ($page !== null && $page < 1) {
@@ -14487,6 +14522,7 @@ class AdCampaignsApi
             throw new \InvalidArgumentException('invalid value for "$limit" when calling AdCampaignsApi.listAds, must be bigger than or equal to 1.');
         }
         
+
 
 
 
@@ -14648,6 +14684,15 @@ class AdCampaignsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $to_date,
             'toDate', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $view,
+            'view', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
