@@ -3586,6 +3586,10 @@ docs/Model/WebhookPayloadCampaignPayoutPayoutFailure.md
 docs/Model/WebhookPayloadCampaignPayoutPayoutSettlement.md
 docs/Model/WebhookPayloadCampaignSample.md
 docs/Model/WebhookPayloadCampaignSampleSample.md
+docs/Model/WebhookPayloadCampaignStatusChanged.md
+docs/Model/WebhookPayloadCampaignStatusChangedCampaign.md
+docs/Model/WebhookPayloadCampaignStatusChangedReasons.md
+docs/Model/WebhookPayloadCampaignStatusChangedStatus.md
 docs/Model/WebhookPayloadCampaignSubmission.md
 docs/Model/WebhookPayloadCampaignSubmissionCreator.md
 docs/Model/WebhookPayloadCampaignSubmissionParticipant.md
@@ -7400,6 +7404,10 @@ lib/Model/WebhookPayloadCampaignPayoutPayoutFailure.php
 lib/Model/WebhookPayloadCampaignPayoutPayoutSettlement.php
 lib/Model/WebhookPayloadCampaignSample.php
 lib/Model/WebhookPayloadCampaignSampleSample.php
+lib/Model/WebhookPayloadCampaignStatusChanged.php
+lib/Model/WebhookPayloadCampaignStatusChangedCampaign.php
+lib/Model/WebhookPayloadCampaignStatusChangedReasons.php
+lib/Model/WebhookPayloadCampaignStatusChangedStatus.php
 lib/Model/WebhookPayloadCampaignSubmission.php
 lib/Model/WebhookPayloadCampaignSubmissionCreator.php
 lib/Model/WebhookPayloadCampaignSubmissionParticipant.php
@@ -7627,3 +7635,7 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/WebhookPayloadCampaignStatusChangedCampaignTest.php
+test/Model/WebhookPayloadCampaignStatusChangedReasonsTest.php
+test/Model/WebhookPayloadCampaignStatusChangedStatusTest.php
+test/Model/WebhookPayloadCampaignStatusChangedTest.php

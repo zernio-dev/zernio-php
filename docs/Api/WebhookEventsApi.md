@@ -67,6 +67,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onCampaignSampleDeclined()**](WebhookEventsApi.md#onCampaignSampleDeclined) | **POST** /campaign_sample.declined | Campaign sample declined event |
 | [**onCampaignSampleRequested()**](WebhookEventsApi.md#onCampaignSampleRequested) | **POST** /campaign_sample.requested | Campaign sample requested event |
 | [**onCampaignSampleShipped()**](WebhookEventsApi.md#onCampaignSampleShipped) | **POST** /campaign_sample.shipped | Campaign sample shipped event |
+| [**onCampaignStatusChanged()**](WebhookEventsApi.md#onCampaignStatusChanged) | **POST** /campaign.status_changed | Campaign status changed event |
 | [**onCampaignSubmissionApproved()**](WebhookEventsApi.md#onCampaignSubmissionApproved) | **POST** /campaign_submission.approved | Campaign submission approved event |
 | [**onCampaignSubmissionFlagged()**](WebhookEventsApi.md#onCampaignSubmissionFlagged) | **POST** /campaign_submission.flagged | Campaign submission flagged event |
 | [**onCampaignSubmissionPendingReview()**](WebhookEventsApi.md#onCampaignSubmissionPendingReview) | **POST** /campaign_submission.pending_review | Campaign submission pending review event |
@@ -3747,6 +3748,65 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_campaign_sample** | [**\Zernio\Model\WebhookPayloadCampaignSample**](../Model/WebhookPayloadCampaignSample.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCampaignStatusChanged()`
+
+```php
+onCampaignStatusChanged($webhook_payload_campaign_status_changed)
+```
+
+Campaign status changed event
+
+A campaign Zernio already tracked changed its platform status or, on Google, the reasons behind it.  ### When it fires  Fires when the ads sync reads a tracked campaign with a different status than it stored, up to one sync interval late. Covers every ad network.  ### Status values  On Google, `status` is the campaign's `primary_status` (`ELIGIBLE`, `LIMITED`, `NOT_ELIGIBLE`, `PAUSED`, ...) and `reasons` its sorted `primary_status_reasons`, so a campaign turning budget limited fires. Elsewhere `status` is the campaign's own platform status (Meta `effective_status`) and `reasons` is empty.  ### When it does not fire  A campaign seen for the first time, or the same change from the same previous status again within an hour (a retried sync). A change made through Zernio, such as a pause, fires on the next sync, once the sync reads it from the platform.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_campaign_status_changed = {"id":"00000000-0000-4000-8000-000000000000","event":"campaign.status_changed","timestamp":"2026-01-15T10:00:00Z","account":{"accountId":"507f1f77bcf86cd799439011","profileId":"507f1f77bcf86cd799439012","platform":"googleads","username":"sample_brand","displayName":"Sample Brand"},"campaign":{"platformCampaignId":"21000000001","name":"Search, brand terms"},"platform":"google","adAccountId":"1234567890","status":{"previous":"ELIGIBLE","current":"LIMITED"},"reasons":{"previous":[],"current":["BUDGET_CONSTRAINED"]},"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadCampaignStatusChanged
+
+try {
+    $apiInstance->onCampaignStatusChanged($webhook_payload_campaign_status_changed);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCampaignStatusChanged: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_campaign_status_changed** | [**\Zernio\Model\WebhookPayloadCampaignStatusChanged**](../Model/WebhookPayloadCampaignStatusChanged.md)|  | |
 
 ### Return type
 
