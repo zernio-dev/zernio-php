@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **status** | **string** |  | [optional]
 **can_post** | **bool** |  | [optional]
 **can_fetch_analytics** | **bool** |  | [optional]
+**analytics_supported** | **bool** | Whether analytics is in scope for this account at all (the platform offers analytics and it was requested at connect). False means canFetchAnalytics is not a problem to fix; true with canFetchAnalytics false means analytics needs a reconnect. | [optional]
 **scope_areas** | **array<string,string>** | Present when the account connected with &#x60;scopes&#x60; or through your own OAuth app: each permission area the platform splits, as granted, missing or not_requested. An area never requested does not make the account unhealthy. | [optional]
 **token_valid** | **bool** |  | [optional]
 **token_expires_at** | **\DateTime** |  | [optional]

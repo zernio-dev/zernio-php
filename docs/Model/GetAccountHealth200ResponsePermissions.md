@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **optional** | [**\Zernio\Model\GetAccountHealth200ResponsePermissionsPostingInner[]**](GetAccountHealth200ResponsePermissionsPostingInner.md) |  | [optional]
 **can_post** | **bool** | Whether the granted OAuth scopes allow posting. Scopes only: for WhatsApp, whether Meta lets the number send is &#x60;platformConnection.phoneStatus&#x60; and the overall &#x60;status&#x60;. | [optional]
 **can_fetch_analytics** | **bool** |  | [optional]
+**analytics_supported** | **bool** | Whether analytics is in scope for this account at all (the platform offers analytics and it was requested at connect). False means canFetchAnalytics is not a problem to fix; true with canFetchAnalytics false means analytics needs a reconnect. | [optional]
 **missing_required** | **string[]** |  | [optional]
 **scope_areas** | **array<string,string>** | Present when the account connected with &#x60;scopes&#x60; or through your own OAuth app: each permission area the platform splits, as granted, missing or not_requested. An area never requested does not make the account unhealthy. | [optional]
 
