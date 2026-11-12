@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **timezone** | **string** |  |
 **timezone_assumed** | **bool** | True when the ad account timezone is unknown and UTC was used. |
 **currency** | **string** |  |
+**hourly_through** | **\DateTime** | Where the hourly windows (&#x60;last_complete_hour&#x60;, &#x60;last_3h&#x60;, &#x60;today_so_far&#x60;) ended: the end of the latest hour a sync has settled. Null when the rule has none or they could not be read. | [optional]
 **evaluated** | **int** |  |
 **matched** | **int** |  |
 **truncated** | **bool** | True when more subjects were judged than &#x60;limit&#x60; lists. |

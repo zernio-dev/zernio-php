@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **timezone** | **string** | IANA timezone of the ad account. |
 **timezone_assumed** | **bool** | True when the ad account has no known timezone and UTC was assumed. |
 **currency** | **string** |  |
+**hourly_through** | **\DateTime** | Where the hourly windows (&#x60;last_complete_hour&#x60;, &#x60;last_3h&#x60;, &#x60;today_so_far&#x60;) ended: the end of the latest hour a sync has settled. Null when the rule has none or they could not be read. | [optional]
 **matched** | **int** | How many objects meet every condition. |
 **objects** | [**\Zernio\Model\AdRuleObjectEvaluation[]**](AdRuleObjectEvaluation.md) | Every delivering campaign or ad set in scope (for an &#x60;activate&#x60; rule, the rule-paused ones it may reactivate). |
 **groups** | [**\Zernio\Model\AdRuleEvaluationGroupsInner[]**](AdRuleEvaluationGroupsInner.md) | Each group&#39;s totals, for a rule with groups. Null otherwise. | [optional]
