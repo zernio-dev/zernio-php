@@ -452,6 +452,7 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
     public const EVENTS_CAMPAIGN_SAMPLE_APPROVED = 'campaign_sample.approved';
     public const EVENTS_CAMPAIGN_SAMPLE_SHIPPED = 'campaign_sample.shipped';
     public const EVENTS_CAMPAIGN_SAMPLE_DECLINED = 'campaign_sample.declined';
+    public const EVENTS_NOTIFICATION_SENT = 'notification.sent';
     public const DISABLED_RESOURCE_GROUPS_PUBLISHING = 'publishing';
     public const DISABLED_RESOURCE_GROUPS_ENGAGEMENT = 'engagement';
     public const DISABLED_RESOURCE_GROUPS_MESSAGES = 'messages';
@@ -632,6 +633,7 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
             self::EVENTS_CAMPAIGN_SAMPLE_APPROVED,
             self::EVENTS_CAMPAIGN_SAMPLE_SHIPPED,
             self::EVENTS_CAMPAIGN_SAMPLE_DECLINED,
+            self::EVENTS_NOTIFICATION_SENT,
         ];
     }
 

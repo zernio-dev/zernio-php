@@ -390,6 +390,7 @@ class TestWebhookRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public const EVENT_BALANCE_LOW = 'balance.low';
     public const EVENT_BALANCE_EMPTY = 'balance.empty';
     public const EVENT_BALANCE_CHARGED = 'balance.charged';
+    public const EVENT_NOTIFICATION_SENT = 'notification.sent';
     public const EVENT_API_CHANGELOG_PUBLISHED = 'api.changelog.published';
 
     /**
@@ -555,6 +556,7 @@ class TestWebhookRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             self::EVENT_BALANCE_LOW,
             self::EVENT_BALANCE_EMPTY,
             self::EVENT_BALANCE_CHARGED,
+            self::EVENT_NOTIFICATION_SENT,
             self::EVENT_API_CHANGELOG_PUBLISHED,
         ];
     }
