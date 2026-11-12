@@ -19,8 +19,10 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**createCommerceCatalogSync()**](CommerceApi.md#createCommerceCatalogSync) | **POST** /v1/commerce/catalog-syncs | Sync a store into a Meta catalog |
 | [**createCommerceCollection()**](CommerceApi.md#createCommerceCollection) | **POST** /v1/commerce/collections | Create a collection |
 | [**createCommerceDiscount()**](CommerceApi.md#createCommerceDiscount) | **POST** /v1/commerce/discounts | Create a discount |
+| [**createCommerceDraftOrder()**](CommerceApi.md#createCommerceDraftOrder) | **POST** /v1/commerce/draft-orders | Create a draft order |
 | [**createCommerceMenu()**](CommerceApi.md#createCommerceMenu) | **POST** /v1/commerce/menus | Create a navigation menu |
 | [**createCommerceMetaobject()**](CommerceApi.md#createCommerceMetaobject) | **POST** /v1/commerce/metaobjects | Create a metaobject |
+| [**createCommerceOrderEdit()**](CommerceApi.md#createCommerceOrderEdit) | **POST** /v1/commerce/orders/{orderId}/edits | Edit an order |
 | [**createCommercePage()**](CommerceApi.md#createCommercePage) | **POST** /v1/commerce/pages | Create a page |
 | [**createCommerceProduct()**](CommerceApi.md#createCommerceProduct) | **POST** /v1/commerce/products | Create a product |
 | [**createCommerceProductOptions()**](CommerceApi.md#createCommerceProductOptions) | **POST** /v1/commerce/products/{productId}/options | Add options |
@@ -45,6 +47,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getCommerceCollection()**](CommerceApi.md#getCommerceCollection) | **GET** /v1/commerce/collections/{collectionId} | Get a collection |
 | [**getCommerceCustomer()**](CommerceApi.md#getCommerceCustomer) | **GET** /v1/commerce/customers/{customerId} | Get a customer |
 | [**getCommerceDiscount()**](CommerceApi.md#getCommerceDiscount) | **GET** /v1/commerce/discounts/{discountId} | Get a discount |
+| [**getCommerceDraftOrder()**](CommerceApi.md#getCommerceDraftOrder) | **GET** /v1/commerce/draft-orders/{draftOrderId} | Get a draft order |
 | [**getCommerceMenu()**](CommerceApi.md#getCommerceMenu) | **GET** /v1/commerce/menus/{menuId} | Get a navigation menu |
 | [**getCommerceMetaobject()**](CommerceApi.md#getCommerceMetaobject) | **GET** /v1/commerce/metaobjects/{metaobjectId} | Get a metaobject |
 | [**getCommerceOrder()**](CommerceApi.md#getCommerceOrder) | **GET** /v1/commerce/orders/{orderId} | Get an order |
@@ -73,6 +76,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**reorderCommerceCollectionProducts()**](CommerceApi.md#reorderCommerceCollectionProducts) | **POST** /v1/commerce/collections/{collectionId}/reorder | Reorder products in a collection |
 | [**reorderCommerceProductImages()**](CommerceApi.md#reorderCommerceProductImages) | **POST** /v1/commerce/products/{productId}/images/reorder | Reorder images |
 | [**runCommerceCatalogSync()**](CommerceApi.md#runCommerceCatalogSync) | **POST** /v1/commerce/catalog-syncs/{syncId}/run | Run a catalog sync now |
+| [**sendCommerceDraftOrderInvoice()**](CommerceApi.md#sendCommerceDraftOrderInvoice) | **POST** /v1/commerce/draft-orders/{draftOrderId}/invoice | Send a draft order invoice |
 | [**setCommerceCollectionMetafields()**](CommerceApi.md#setCommerceCollectionMetafields) | **PUT** /v1/commerce/collections/{collectionId}/metafields | Set collection metafields |
 | [**setCommerceDiscountActive()**](CommerceApi.md#setCommerceDiscountActive) | **POST** /v1/commerce/discounts/{discountId}/state | Activate or deactivate a discount |
 | [**setCommercePriceListPrices()**](CommerceApi.md#setCommercePriceListPrices) | **PUT** /v1/commerce/price-lists/{priceListId}/prices | Set fixed prices |
@@ -884,6 +888,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `createCommerceDraftOrder()`
+
+```php
+createCommerceDraftOrder($create_commerce_draft_order_request, $idempotency_key): \Zernio\Model\CreateCommerceDraftOrder201Response
+```
+
+Create a draft order
+
+Creates a draft order for a customer, for a replacement, a phone order or a custom quote. Needs draft_orders.write.  Send the buyer its checkout link with the invoice endpoint; the draft becomes an order once they pay. Amounts in the response are in the currency the buyer pays in; custom prices you send are in the store currency.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CommerceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_commerce_draft_order_request = new \Zernio\Model\CreateCommerceDraftOrderRequest(); // \Zernio\Model\CreateCommerceDraftOrderRequest
+$idempotency_key = 'idempotency_key_example'; // string | A retry with the same key returns the first draft instead of creating another.
+
+try {
+    $result = $apiInstance->createCommerceDraftOrder($create_commerce_draft_order_request, $idempotency_key);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CommerceApi->createCommerceDraftOrder: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_commerce_draft_order_request** | [**\Zernio\Model\CreateCommerceDraftOrderRequest**](../Model/CreateCommerceDraftOrderRequest.md)|  | |
+| **idempotency_key** | **string**| A retry with the same key returns the first draft instead of creating another. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\CreateCommerceDraftOrder201Response**](../Model/CreateCommerceDraftOrder201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `createCommerceMenu()`
 
 ```php
@@ -990,6 +1056,70 @@ try {
 ### Return type
 
 [**\Zernio\Model\CreateCommerceMetaobject201Response**](../Model/CreateCommerceMetaobject201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createCommerceOrderEdit()`
+
+```php
+createCommerceOrderEdit($order_id, $create_commerce_order_edit_request, $idempotency_key): \Zernio\Model\CreateCommerceOrderEdit200Response
+```
+
+Edit an order
+
+Adds products to an order and changes or removes its lines. Needs orders.edit.  - Preview first with `validateOnly: true`: it returns the new totals and what the buyer would owe, and changes nothing. - A real edit needs an `Idempotency-Key` header (a UUID per edit): a retry with the same key never applies it twice. - When the edit raises the total, the buyer owes `outstanding`; `notifyCustomer` emails them the change. When it lowers it, refund the difference with the refunds endpoint.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CommerceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$order_id = 'order_id_example'; // string | Platform-native order id.
+$create_commerce_order_edit_request = new \Zernio\Model\CreateCommerceOrderEditRequest(); // \Zernio\Model\CreateCommerceOrderEditRequest
+$idempotency_key = 'idempotency_key_example'; // string | Required unless validateOnly is true.
+
+try {
+    $result = $apiInstance->createCommerceOrderEdit($order_id, $create_commerce_order_edit_request, $idempotency_key);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CommerceApi->createCommerceOrderEdit: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **order_id** | **string**| Platform-native order id. | |
+| **create_commerce_order_edit_request** | [**\Zernio\Model\CreateCommerceOrderEditRequest**](../Model/CreateCommerceOrderEditRequest.md)|  | |
+| **idempotency_key** | **string**| Required unless validateOnly is true. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\CreateCommerceOrderEdit200Response**](../Model/CreateCommerceOrderEdit200Response.md)
 
 ### Authorization
 
@@ -2480,6 +2610,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\CreateCommerceDiscount201Response**](../Model/CreateCommerceDiscount201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getCommerceDraftOrder()`
+
+```php
+getCommerceDraftOrder($draft_order_id, $account_id): \Zernio\Model\CreateCommerceDraftOrder201Response
+```
+
+Get a draft order
+
+One draft order with its status, checkout link and, once paid, the order it became. Needs draft_orders.read.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CommerceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$draft_order_id = 'draft_order_id_example'; // string | Platform-native draft order id.
+$account_id = 'account_id_example'; // string | Connected store SocialAccount id.
+
+try {
+    $result = $apiInstance->getCommerceDraftOrder($draft_order_id, $account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CommerceApi->getCommerceDraftOrder: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **draft_order_id** | **string**| Platform-native draft order id. | |
+| **account_id** | **string**| Connected store SocialAccount id. | |
+
+### Return type
+
+[**\Zernio\Model\CreateCommerceDraftOrder201Response**](../Model/CreateCommerceDraftOrder201Response.md)
 
 ### Authorization
 
@@ -4256,6 +4448,68 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `sendCommerceDraftOrderInvoice()`
+
+```php
+sendCommerceDraftOrderInvoice($draft_order_id, $send_commerce_draft_order_invoice_request): \Zernio\Model\CreateCommerceDraftOrder201Response
+```
+
+Send a draft order invoice
+
+Emails the buyer the draft's checkout link. The draft becomes an order when they pay. Needs draft_orders.write.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CommerceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$draft_order_id = 'draft_order_id_example'; // string | Platform-native draft order id.
+$send_commerce_draft_order_invoice_request = new \Zernio\Model\SendCommerceDraftOrderInvoiceRequest(); // \Zernio\Model\SendCommerceDraftOrderInvoiceRequest
+
+try {
+    $result = $apiInstance->sendCommerceDraftOrderInvoice($draft_order_id, $send_commerce_draft_order_invoice_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CommerceApi->sendCommerceDraftOrderInvoice: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **draft_order_id** | **string**| Platform-native draft order id. | |
+| **send_commerce_draft_order_invoice_request** | [**\Zernio\Model\SendCommerceDraftOrderInvoiceRequest**](../Model/SendCommerceDraftOrderInvoiceRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateCommerceDraftOrder201Response**](../Model/CreateCommerceDraftOrder201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

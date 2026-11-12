@@ -539,8 +539,10 @@ Class | Method | HTTP request | Description
 *CommerceApi* | [**createCommerceCatalogSync**](docs/Api/CommerceApi.md#createcommercecatalogsync) | **POST** /v1/commerce/catalog-syncs | Sync a store into a Meta catalog
 *CommerceApi* | [**createCommerceCollection**](docs/Api/CommerceApi.md#createcommercecollection) | **POST** /v1/commerce/collections | Create a collection
 *CommerceApi* | [**createCommerceDiscount**](docs/Api/CommerceApi.md#createcommercediscount) | **POST** /v1/commerce/discounts | Create a discount
+*CommerceApi* | [**createCommerceDraftOrder**](docs/Api/CommerceApi.md#createcommercedraftorder) | **POST** /v1/commerce/draft-orders | Create a draft order
 *CommerceApi* | [**createCommerceMenu**](docs/Api/CommerceApi.md#createcommercemenu) | **POST** /v1/commerce/menus | Create a navigation menu
 *CommerceApi* | [**createCommerceMetaobject**](docs/Api/CommerceApi.md#createcommercemetaobject) | **POST** /v1/commerce/metaobjects | Create a metaobject
+*CommerceApi* | [**createCommerceOrderEdit**](docs/Api/CommerceApi.md#createcommerceorderedit) | **POST** /v1/commerce/orders/{orderId}/edits | Edit an order
 *CommerceApi* | [**createCommercePage**](docs/Api/CommerceApi.md#createcommercepage) | **POST** /v1/commerce/pages | Create a page
 *CommerceApi* | [**createCommerceProduct**](docs/Api/CommerceApi.md#createcommerceproduct) | **POST** /v1/commerce/products | Create a product
 *CommerceApi* | [**createCommerceProductOptions**](docs/Api/CommerceApi.md#createcommerceproductoptions) | **POST** /v1/commerce/products/{productId}/options | Add options
@@ -565,6 +567,7 @@ Class | Method | HTTP request | Description
 *CommerceApi* | [**getCommerceCollection**](docs/Api/CommerceApi.md#getcommercecollection) | **GET** /v1/commerce/collections/{collectionId} | Get a collection
 *CommerceApi* | [**getCommerceCustomer**](docs/Api/CommerceApi.md#getcommercecustomer) | **GET** /v1/commerce/customers/{customerId} | Get a customer
 *CommerceApi* | [**getCommerceDiscount**](docs/Api/CommerceApi.md#getcommercediscount) | **GET** /v1/commerce/discounts/{discountId} | Get a discount
+*CommerceApi* | [**getCommerceDraftOrder**](docs/Api/CommerceApi.md#getcommercedraftorder) | **GET** /v1/commerce/draft-orders/{draftOrderId} | Get a draft order
 *CommerceApi* | [**getCommerceMenu**](docs/Api/CommerceApi.md#getcommercemenu) | **GET** /v1/commerce/menus/{menuId} | Get a navigation menu
 *CommerceApi* | [**getCommerceMetaobject**](docs/Api/CommerceApi.md#getcommercemetaobject) | **GET** /v1/commerce/metaobjects/{metaobjectId} | Get a metaobject
 *CommerceApi* | [**getCommerceOrder**](docs/Api/CommerceApi.md#getcommerceorder) | **GET** /v1/commerce/orders/{orderId} | Get an order
@@ -593,6 +596,7 @@ Class | Method | HTTP request | Description
 *CommerceApi* | [**reorderCommerceCollectionProducts**](docs/Api/CommerceApi.md#reordercommercecollectionproducts) | **POST** /v1/commerce/collections/{collectionId}/reorder | Reorder products in a collection
 *CommerceApi* | [**reorderCommerceProductImages**](docs/Api/CommerceApi.md#reordercommerceproductimages) | **POST** /v1/commerce/products/{productId}/images/reorder | Reorder images
 *CommerceApi* | [**runCommerceCatalogSync**](docs/Api/CommerceApi.md#runcommercecatalogsync) | **POST** /v1/commerce/catalog-syncs/{syncId}/run | Run a catalog sync now
+*CommerceApi* | [**sendCommerceDraftOrderInvoice**](docs/Api/CommerceApi.md#sendcommercedraftorderinvoice) | **POST** /v1/commerce/draft-orders/{draftOrderId}/invoice | Send a draft order invoice
 *CommerceApi* | [**setCommerceCollectionMetafields**](docs/Api/CommerceApi.md#setcommercecollectionmetafields) | **PUT** /v1/commerce/collections/{collectionId}/metafields | Set collection metafields
 *CommerceApi* | [**setCommerceDiscountActive**](docs/Api/CommerceApi.md#setcommercediscountactive) | **POST** /v1/commerce/discounts/{discountId}/state | Activate or deactivate a discount
 *CommerceApi* | [**setCommercePriceListPrices**](docs/Api/CommerceApi.md#setcommercepricelistprices) | **PUT** /v1/commerce/price-lists/{priceListId}/prices | Set fixed prices
@@ -1893,6 +1897,8 @@ Class | Method | HTTP request | Description
 - [CommerceDiscountValue](docs/Model/CommerceDiscountValue.md)
 - [CommerceDiscountValueOneOf](docs/Model/CommerceDiscountValueOneOf.md)
 - [CommerceDiscountValueOneOf1](docs/Model/CommerceDiscountValueOneOf1.md)
+- [CommerceDraftOrder](docs/Model/CommerceDraftOrder.md)
+- [CommerceDraftOrderLineItemsInner](docs/Model/CommerceDraftOrderLineItemsInner.md)
 - [CommerceImage](docs/Model/CommerceImage.md)
 - [CommerceInventoryItem](docs/Model/CommerceInventoryItem.md)
 - [CommerceInventoryItemLevelsInner](docs/Model/CommerceInventoryItemLevelsInner.md)
@@ -1912,6 +1918,8 @@ Class | Method | HTTP request | Description
 - [CommerceOrderAttribution](docs/Model/CommerceOrderAttribution.md)
 - [CommerceOrderChargeLine](docs/Model/CommerceOrderChargeLine.md)
 - [CommerceOrderCustomer](docs/Model/CommerceOrderCustomer.md)
+- [CommerceOrderEditPreview](docs/Model/CommerceOrderEditPreview.md)
+- [CommerceOrderEditPreviewLineItemsInner](docs/Model/CommerceOrderEditPreviewLineItemsInner.md)
 - [CommerceOrderFulfillmentsInner](docs/Model/CommerceOrderFulfillmentsInner.md)
 - [CommerceOrderLineItemsInner](docs/Model/CommerceOrderLineItemsInner.md)
 - [CommerceOrderRefund](docs/Model/CommerceOrderRefund.md)
@@ -2085,10 +2093,20 @@ Class | Method | HTTP request | Description
 - [CreateCommerceCollectionRequest](docs/Model/CreateCommerceCollectionRequest.md)
 - [CreateCommerceDiscount201Response](docs/Model/CreateCommerceDiscount201Response.md)
 - [CreateCommerceDiscountRequest](docs/Model/CreateCommerceDiscountRequest.md)
+- [CreateCommerceDraftOrder201Response](docs/Model/CreateCommerceDraftOrder201Response.md)
+- [CreateCommerceDraftOrderRequest](docs/Model/CreateCommerceDraftOrderRequest.md)
+- [CreateCommerceDraftOrderRequestDiscount](docs/Model/CreateCommerceDraftOrderRequestDiscount.md)
+- [CreateCommerceDraftOrderRequestLineItemsInner](docs/Model/CreateCommerceDraftOrderRequestLineItemsInner.md)
+- [CreateCommerceDraftOrderRequestShipping](docs/Model/CreateCommerceDraftOrderRequestShipping.md)
+- [CreateCommerceDraftOrderRequestShippingAddress](docs/Model/CreateCommerceDraftOrderRequestShippingAddress.md)
 - [CreateCommerceMenu201Response](docs/Model/CreateCommerceMenu201Response.md)
 - [CreateCommerceMenuRequest](docs/Model/CreateCommerceMenuRequest.md)
 - [CreateCommerceMetaobject201Response](docs/Model/CreateCommerceMetaobject201Response.md)
 - [CreateCommerceMetaobjectRequest](docs/Model/CreateCommerceMetaobjectRequest.md)
+- [CreateCommerceOrderEdit200Response](docs/Model/CreateCommerceOrderEdit200Response.md)
+- [CreateCommerceOrderEditRequest](docs/Model/CreateCommerceOrderEditRequest.md)
+- [CreateCommerceOrderEditRequestAddInner](docs/Model/CreateCommerceOrderEditRequestAddInner.md)
+- [CreateCommerceOrderEditRequestQuantitiesInner](docs/Model/CreateCommerceOrderEditRequestQuantitiesInner.md)
 - [CreateCommercePage201Response](docs/Model/CreateCommercePage201Response.md)
 - [CreateCommercePageRequest](docs/Model/CreateCommercePageRequest.md)
 - [CreateCommerceProduct201Response](docs/Model/CreateCommerceProduct201Response.md)
@@ -4094,6 +4112,7 @@ Class | Method | HTTP request | Description
 - [SendBusinessAgentEvent202Response](docs/Model/SendBusinessAgentEvent202Response.md)
 - [SendBusinessAgentEventRequest](docs/Model/SendBusinessAgentEventRequest.md)
 - [SendBusinessAgentTestMessageRequest](docs/Model/SendBusinessAgentTestMessageRequest.md)
+- [SendCommerceDraftOrderInvoiceRequest](docs/Model/SendCommerceDraftOrderInvoiceRequest.md)
 - [SendConversions200Response](docs/Model/SendConversions200Response.md)
 - [SendConversions200ResponseFailuresInner](docs/Model/SendConversions200ResponseFailuresInner.md)
 - [SendConversions200ResponseFailuresInnerCode](docs/Model/SendConversions200ResponseFailuresInnerCode.md)
@@ -5057,6 +5076,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.584.0`
+- API version: `1.585.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`
