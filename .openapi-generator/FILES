@@ -3255,6 +3255,7 @@ docs/Model/UpdateFacebookPage200ResponseSelectedPage.md
 docs/Model/UpdateFacebookPageInfoRequest.md
 docs/Model/UpdateFacebookPageRequest.md
 docs/Model/UpdateFileRequest.md
+docs/Model/UpdateForwardingRuleRequest.md
 docs/Model/UpdateGmbLocation200Response.md
 docs/Model/UpdateGmbLocationRequest.md
 docs/Model/UpdateGoogleAssetGroup200Response.md
@@ -7029,6 +7030,7 @@ lib/Model/UpdateFacebookPage200ResponseSelectedPage.php
 lib/Model/UpdateFacebookPageInfoRequest.php
 lib/Model/UpdateFacebookPageRequest.php
 lib/Model/UpdateFileRequest.php
+lib/Model/UpdateForwardingRuleRequest.php
 lib/Model/UpdateGmbLocation200Response.php
 lib/Model/UpdateGmbLocationRequest.php
 lib/Model/UpdateGoogleAssetGroup200Response.php
@@ -7547,3 +7549,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/UpdateForwardingRuleRequestTest.php

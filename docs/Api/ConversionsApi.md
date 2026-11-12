@@ -50,6 +50,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**updateConversionAction()**](ConversionsApi.md#updateConversionAction) | **PATCH** /v1/ads/conversions/actions/{actionId} | Update a conversion action&#39;s settings |
 | [**updateConversionDestination()**](ConversionsApi.md#updateConversionDestination) | **PATCH** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Update a conversion destination |
 | [**updateCustomConversionGoal()**](ConversionsApi.md#updateCustomConversionGoal) | **PATCH** /v1/ads/conversions/custom-goals/{goalId} | Update a custom conversion goal |
+| [**updateForwardingRule()**](ConversionsApi.md#updateForwardingRule) | **PATCH** /v1/events/forwarding-rules/{ruleId} | Change a forwarding rule&#39;s API secret |
 
 
 ## `addAdConversionAssociations()`
@@ -2794,6 +2795,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\UpdateCustomConversionGoal200Response**](../Model/UpdateCustomConversionGoal200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateForwardingRule()`
+
+```php
+updateForwardingRule($rule_id, $update_forwarding_rule_request): \Zernio\Model\CreateForwardingRule201Response
+```
+
+Change a forwarding rule's API secret
+
+Replaces the `apiSecret` of a rule whose destination needs one, such as a Google Analytics data stream's Measurement Protocol API secret. Before saving, Zernio sends one hit to Google's validation server; Google does not confirm the secret itself, so check GA4 Realtime after the next events.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$rule_id = 'rule_id_example'; // string | The rule `id`.
+$update_forwarding_rule_request = new \Zernio\Model\UpdateForwardingRuleRequest(); // \Zernio\Model\UpdateForwardingRuleRequest
+
+try {
+    $result = $apiInstance->updateForwardingRule($rule_id, $update_forwarding_rule_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->updateForwardingRule: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **rule_id** | **string**| The rule &#x60;id&#x60;. | |
+| **update_forwarding_rule_request** | [**\Zernio\Model\UpdateForwardingRuleRequest**](../Model/UpdateForwardingRuleRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateForwardingRule201Response**](../Model/CreateForwardingRule201Response.md)
 
 ### Authorization
 
