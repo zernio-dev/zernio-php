@@ -602,7 +602,7 @@ class CreateAdRuleRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets filters
      *
-     * @param \Zernio\Model\AdRuleFiltersInner[]|null $filters Narrows the objects the rule checks. Every filter must hold. A campaign rule reads `name`, `campaign_id`, `goal`, `days_live` and `budget_level`; an ad set rule also `campaign_name` and `adset_id`; an ad rule also `adset_name` and `ad_id`.
+     * @param \Zernio\Model\AdRuleFiltersInner[]|null $filters Narrows the objects the rule checks. Every filter must hold. A campaign rule reads `name`, `campaign_id`, `goal`, `days_live`, `days_since_change` and `budget_level`; an ad set rule all but `days_since_change`, plus `campaign_name` and `adset_id`; an ad rule also `adset_name` and `ad_id`.
      *
      * @return self
      */

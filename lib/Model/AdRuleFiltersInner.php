@@ -61,7 +61,8 @@ class AdRuleFiltersInner implements ModelInterface, ArrayAccess, \JsonSerializab
         'field' => 'string',
         'op' => 'string',
         'value' => 'int',
-        'values' => 'string[]'
+        'values' => 'string[]',
+        'change' => 'string'
     ];
 
     /**
@@ -75,7 +76,8 @@ class AdRuleFiltersInner implements ModelInterface, ArrayAccess, \JsonSerializab
         'field' => null,
         'op' => null,
         'value' => null,
-        'values' => null
+        'values' => null,
+        'change' => null
     ];
 
     /**
@@ -87,7 +89,8 @@ class AdRuleFiltersInner implements ModelInterface, ArrayAccess, \JsonSerializab
         'field' => false,
         'op' => false,
         'value' => false,
-        'values' => false
+        'values' => false,
+        'change' => false
     ];
 
     /**
@@ -179,7 +182,8 @@ class AdRuleFiltersInner implements ModelInterface, ArrayAccess, \JsonSerializab
         'field' => 'field',
         'op' => 'op',
         'value' => 'value',
-        'values' => 'values'
+        'values' => 'values',
+        'change' => 'change'
     ];
 
     /**
@@ -191,7 +195,8 @@ class AdRuleFiltersInner implements ModelInterface, ArrayAccess, \JsonSerializab
         'field' => 'setField',
         'op' => 'setOp',
         'value' => 'setValue',
-        'values' => 'setValues'
+        'values' => 'setValues',
+        'change' => 'setChange'
     ];
 
     /**
@@ -203,7 +208,8 @@ class AdRuleFiltersInner implements ModelInterface, ArrayAccess, \JsonSerializab
         'field' => 'getField',
         'op' => 'getOp',
         'value' => 'getValue',
-        'values' => 'getValues'
+        'values' => 'getValues',
+        'change' => 'getChange'
     ];
 
     /**
@@ -247,9 +253,13 @@ class AdRuleFiltersInner implements ModelInterface, ArrayAccess, \JsonSerializab
         return self::$openAPIModelName;
     }
 
-    public const FIELD_DAYS_LIVE = 'days_live';
+    public const FIELD_DAYS_SINCE_CHANGE = 'days_since_change';
     public const OP_GREATER_THAN_OR_EQUAL_TO = '>=';
     public const OP_LESS_THAN = '<';
+    public const CHANGE_BUDGET = 'budget';
+    public const CHANGE_BIDDING = 'bidding';
+    public const CHANGE_STATUS = 'status';
+    public const CHANGE_GOAL = 'goal';
 
     /**
      * Gets allowable values of the enum
@@ -259,7 +269,7 @@ class AdRuleFiltersInner implements ModelInterface, ArrayAccess, \JsonSerializab
     public function getFieldAllowableValues()
     {
         return [
-            self::FIELD_DAYS_LIVE,
+            self::FIELD_DAYS_SINCE_CHANGE,
         ];
     }
 
@@ -273,6 +283,21 @@ class AdRuleFiltersInner implements ModelInterface, ArrayAccess, \JsonSerializab
         return [
             self::OP_GREATER_THAN_OR_EQUAL_TO,
             self::OP_LESS_THAN,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getChangeAllowableValues()
+    {
+        return [
+            self::CHANGE_BUDGET,
+            self::CHANGE_BIDDING,
+            self::CHANGE_STATUS,
+            self::CHANGE_GOAL,
         ];
     }
 
@@ -295,6 +320,7 @@ class AdRuleFiltersInner implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('op', $data ?? [], null);
         $this->setIfExists('value', $data ?? [], null);
         $this->setIfExists('values', $data ?? [], null);
+        $this->setIfExists('change', $data ?? [], null);
     }
 
     /**
@@ -351,12 +377,12 @@ class AdRuleFiltersInner implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['value'] === null) {
             $invalidProperties[] = "'value' can't be null";
         }
-        if (($this->container['value'] > 3650)) {
-            $invalidProperties[] = "invalid value for 'value', must be smaller than or equal to 3650.";
+        if (($this->container['value'] > 28)) {
+            $invalidProperties[] = "invalid value for 'value', must be smaller than or equal to 28.";
         }
 
-        if (($this->container['value'] < 0)) {
-            $invalidProperties[] = "invalid value for 'value', must be bigger than or equal to 0.";
+        if (($this->container['value'] < 1)) {
+            $invalidProperties[] = "invalid value for 'value', must be bigger than or equal to 1.";
         }
 
         if ($this->container['values'] === null) {
@@ -368,6 +394,18 @@ class AdRuleFiltersInner implements ModelInterface, ArrayAccess, \JsonSerializab
 
         if ((count($this->container['values']) < 1)) {
             $invalidProperties[] = "invalid value for 'values', number of items must be greater than or equal to 1.";
+        }
+
+        if ($this->container['change'] === null) {
+            $invalidProperties[] = "'change' can't be null";
+        }
+        $allowedValues = $this->getChangeAllowableValues();
+        if (!is_null($this->container['change']) && !in_array($this->container['change'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'change', must be one of '%s'",
+                $this->container['change'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -482,11 +520,11 @@ class AdRuleFiltersInner implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable value cannot be null');
         }
 
-        if (($value > 3650)) {
-            throw new \InvalidArgumentException('invalid value for $value when calling AdRuleFiltersInner., must be smaller than or equal to 3650.');
+        if (($value > 28)) {
+            throw new \InvalidArgumentException('invalid value for $value when calling AdRuleFiltersInner., must be smaller than or equal to 28.');
         }
-        if (($value < 0)) {
-            throw new \InvalidArgumentException('invalid value for $value when calling AdRuleFiltersInner., must be bigger than or equal to 0.');
+        if (($value < 1)) {
+            throw new \InvalidArgumentException('invalid value for $value when calling AdRuleFiltersInner., must be bigger than or equal to 1.');
         }
 
         $this->container['value'] = $value;
@@ -524,6 +562,43 @@ class AdRuleFiltersInner implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('invalid length for $values when calling AdRuleFiltersInner., number of items must be greater than or equal to 1.');
         }
         $this->container['values'] = $values;
+
+        return $this;
+    }
+
+    /**
+     * Gets change
+     *
+     * @return string
+     */
+    public function getChange()
+    {
+        return $this->container['change'];
+    }
+
+    /**
+     * Sets change
+     *
+     * @param string $change change
+     *
+     * @return self
+     */
+    public function setChange($change)
+    {
+        if (is_null($change)) {
+            throw new \InvalidArgumentException('non-nullable change cannot be null');
+        }
+        $allowedValues = $this->getChangeAllowableValues();
+        if (!in_array($change, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'change', must be one of '%s'",
+                    $change,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['change'] = $change;
 
         return $this;
     }

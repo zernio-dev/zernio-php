@@ -62,7 +62,8 @@ class AutomationAdFilter implements ModelInterface, ArrayAccess, \JsonSerializab
         'field' => 'string',
         'op' => 'string',
         'value' => 'string',
-        'values' => 'string[]'
+        'values' => 'string[]',
+        'change' => 'string'
     ];
 
     /**
@@ -76,7 +77,8 @@ class AutomationAdFilter implements ModelInterface, ArrayAccess, \JsonSerializab
         'field' => null,
         'op' => null,
         'value' => null,
-        'values' => null
+        'values' => null,
+        'change' => null
     ];
 
     /**
@@ -88,7 +90,8 @@ class AutomationAdFilter implements ModelInterface, ArrayAccess, \JsonSerializab
         'field' => false,
         'op' => false,
         'value' => false,
-        'values' => false
+        'values' => false,
+        'change' => false
     ];
 
     /**
@@ -180,7 +183,8 @@ class AutomationAdFilter implements ModelInterface, ArrayAccess, \JsonSerializab
         'field' => 'field',
         'op' => 'op',
         'value' => 'value',
-        'values' => 'values'
+        'values' => 'values',
+        'change' => 'change'
     ];
 
     /**
@@ -192,7 +196,8 @@ class AutomationAdFilter implements ModelInterface, ArrayAccess, \JsonSerializab
         'field' => 'setField',
         'op' => 'setOp',
         'value' => 'setValue',
-        'values' => 'setValues'
+        'values' => 'setValues',
+        'change' => 'setChange'
     ];
 
     /**
@@ -204,7 +209,8 @@ class AutomationAdFilter implements ModelInterface, ArrayAccess, \JsonSerializab
         'field' => 'getField',
         'op' => 'getOp',
         'value' => 'getValue',
-        'values' => 'getValues'
+        'values' => 'getValues',
+        'change' => 'getChange'
     ];
 
     /**
@@ -252,6 +258,10 @@ class AutomationAdFilter implements ModelInterface, ArrayAccess, \JsonSerializab
     public const OP_EQUALS = 'equals';
     public const VALUE_CAMPAIGN = 'campaign';
     public const VALUE_ADSET = 'adset';
+    public const CHANGE_BUDGET = 'budget';
+    public const CHANGE_BIDDING = 'bidding';
+    public const CHANGE_STATUS = 'status';
+    public const CHANGE_GOAL = 'goal';
 
     /**
      * Gets allowable values of the enum
@@ -291,6 +301,21 @@ class AutomationAdFilter implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getChangeAllowableValues()
+    {
+        return [
+            self::CHANGE_BUDGET,
+            self::CHANGE_BIDDING,
+            self::CHANGE_STATUS,
+            self::CHANGE_GOAL,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -309,6 +334,7 @@ class AutomationAdFilter implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('op', $data ?? [], null);
         $this->setIfExists('value', $data ?? [], null);
         $this->setIfExists('values', $data ?? [], null);
+        $this->setIfExists('change', $data ?? [], null);
     }
 
     /**
@@ -383,6 +409,18 @@ class AutomationAdFilter implements ModelInterface, ArrayAccess, \JsonSerializab
 
         if ((count($this->container['values']) < 1)) {
             $invalidProperties[] = "invalid value for 'values', number of items must be greater than or equal to 1.";
+        }
+
+        if ($this->container['change'] === null) {
+            $invalidProperties[] = "'change' can't be null";
+        }
+        $allowedValues = $this->getChangeAllowableValues();
+        if (!is_null($this->container['change']) && !in_array($this->container['change'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'change', must be one of '%s'",
+                $this->container['change'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -541,6 +579,43 @@ class AutomationAdFilter implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('invalid length for $values when calling AutomationAdFilter., number of items must be greater than or equal to 1.');
         }
         $this->container['values'] = $values;
+
+        return $this;
+    }
+
+    /**
+     * Gets change
+     *
+     * @return string
+     */
+    public function getChange()
+    {
+        return $this->container['change'];
+    }
+
+    /**
+     * Sets change
+     *
+     * @param string $change change
+     *
+     * @return self
+     */
+    public function setChange($change)
+    {
+        if (is_null($change)) {
+            throw new \InvalidArgumentException('non-nullable change cannot be null');
+        }
+        $allowedValues = $this->getChangeAllowableValues();
+        if (!in_array($change, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'change', must be one of '%s'",
+                    $change,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['change'] = $change;
 
         return $this;
     }

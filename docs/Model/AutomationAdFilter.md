@@ -8,5 +8,6 @@ Name | Type | Description | Notes
 **op** | **string** |  |
 **value** | **string** |  |
 **values** | **string[]** |  |
+**change** | **string** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

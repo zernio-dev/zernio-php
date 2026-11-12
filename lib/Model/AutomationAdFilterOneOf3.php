@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * AutomationAdFilterOneOf3 Class Doc Comment
  *
  * @category Class
- * @description Where the budget sits: on the campaign (Meta CBO, every Google campaign) or on each ad set.
+ * @description Days since the campaign&#39;s budget, bidding, status or goal last changed, from the platform&#39;s change history. Campaign rules on Meta and Google only.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -60,8 +60,9 @@ class AutomationAdFilterOneOf3 implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static $openAPITypes = [
         'field' => 'string',
+        'change' => 'string',
         'op' => 'string',
-        'value' => 'string'
+        'value' => 'int'
     ];
 
     /**
@@ -73,6 +74,7 @@ class AutomationAdFilterOneOf3 implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static $openAPIFormats = [
         'field' => null,
+        'change' => null,
         'op' => null,
         'value' => null
     ];
@@ -84,6 +86,7 @@ class AutomationAdFilterOneOf3 implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static array $openAPINullables = [
         'field' => false,
+        'change' => false,
         'op' => false,
         'value' => false
     ];
@@ -175,6 +178,7 @@ class AutomationAdFilterOneOf3 implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $attributeMap = [
         'field' => 'field',
+        'change' => 'change',
         'op' => 'op',
         'value' => 'value'
     ];
@@ -186,6 +190,7 @@ class AutomationAdFilterOneOf3 implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $setters = [
         'field' => 'setField',
+        'change' => 'setChange',
         'op' => 'setOp',
         'value' => 'setValue'
     ];
@@ -197,6 +202,7 @@ class AutomationAdFilterOneOf3 implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $getters = [
         'field' => 'getField',
+        'change' => 'getChange',
         'op' => 'getOp',
         'value' => 'getValue'
     ];
@@ -242,10 +248,13 @@ class AutomationAdFilterOneOf3 implements ModelInterface, ArrayAccess, \JsonSeri
         return self::$openAPIModelName;
     }
 
-    public const FIELD_BUDGET_LEVEL = 'budget_level';
-    public const OP_EQUALS = 'equals';
-    public const VALUE_CAMPAIGN = 'campaign';
-    public const VALUE_ADSET = 'adset';
+    public const FIELD_DAYS_SINCE_CHANGE = 'days_since_change';
+    public const CHANGE_BUDGET = 'budget';
+    public const CHANGE_BIDDING = 'bidding';
+    public const CHANGE_STATUS = 'status';
+    public const CHANGE_GOAL = 'goal';
+    public const OP_GREATER_THAN_OR_EQUAL_TO = '>=';
+    public const OP_LESS_THAN = '<';
 
     /**
      * Gets allowable values of the enum
@@ -255,7 +264,22 @@ class AutomationAdFilterOneOf3 implements ModelInterface, ArrayAccess, \JsonSeri
     public function getFieldAllowableValues()
     {
         return [
-            self::FIELD_BUDGET_LEVEL,
+            self::FIELD_DAYS_SINCE_CHANGE,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getChangeAllowableValues()
+    {
+        return [
+            self::CHANGE_BUDGET,
+            self::CHANGE_BIDDING,
+            self::CHANGE_STATUS,
+            self::CHANGE_GOAL,
         ];
     }
 
@@ -267,20 +291,8 @@ class AutomationAdFilterOneOf3 implements ModelInterface, ArrayAccess, \JsonSeri
     public function getOpAllowableValues()
     {
         return [
-            self::OP_EQUALS,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getValueAllowableValues()
-    {
-        return [
-            self::VALUE_CAMPAIGN,
-            self::VALUE_ADSET,
+            self::OP_GREATER_THAN_OR_EQUAL_TO,
+            self::OP_LESS_THAN,
         ];
     }
 
@@ -300,6 +312,7 @@ class AutomationAdFilterOneOf3 implements ModelInterface, ArrayAccess, \JsonSeri
     public function __construct(?array $data = null)
     {
         $this->setIfExists('field', $data ?? [], null);
+        $this->setIfExists('change', $data ?? [], null);
         $this->setIfExists('op', $data ?? [], null);
         $this->setIfExists('value', $data ?? [], null);
     }
@@ -343,6 +356,18 @@ class AutomationAdFilterOneOf3 implements ModelInterface, ArrayAccess, \JsonSeri
             );
         }
 
+        if ($this->container['change'] === null) {
+            $invalidProperties[] = "'change' can't be null";
+        }
+        $allowedValues = $this->getChangeAllowableValues();
+        if (!is_null($this->container['change']) && !in_array($this->container['change'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'change', must be one of '%s'",
+                $this->container['change'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['op'] === null) {
             $invalidProperties[] = "'op' can't be null";
         }
@@ -358,13 +383,12 @@ class AutomationAdFilterOneOf3 implements ModelInterface, ArrayAccess, \JsonSeri
         if ($this->container['value'] === null) {
             $invalidProperties[] = "'value' can't be null";
         }
-        $allowedValues = $this->getValueAllowableValues();
-        if (!is_null($this->container['value']) && !in_array($this->container['value'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'value', must be one of '%s'",
-                $this->container['value'],
-                implode("', '", $allowedValues)
-            );
+        if (($this->container['value'] > 28)) {
+            $invalidProperties[] = "invalid value for 'value', must be smaller than or equal to 28.";
+        }
+
+        if (($this->container['value'] < 1)) {
+            $invalidProperties[] = "invalid value for 'value', must be bigger than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -420,6 +444,43 @@ class AutomationAdFilterOneOf3 implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
+     * Gets change
+     *
+     * @return string
+     */
+    public function getChange()
+    {
+        return $this->container['change'];
+    }
+
+    /**
+     * Sets change
+     *
+     * @param string $change change
+     *
+     * @return self
+     */
+    public function setChange($change)
+    {
+        if (is_null($change)) {
+            throw new \InvalidArgumentException('non-nullable change cannot be null');
+        }
+        $allowedValues = $this->getChangeAllowableValues();
+        if (!in_array($change, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'change', must be one of '%s'",
+                    $change,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['change'] = $change;
+
+        return $this;
+    }
+
+    /**
      * Gets op
      *
      * @return string
@@ -459,7 +520,7 @@ class AutomationAdFilterOneOf3 implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets value
      *
-     * @return string
+     * @return int
      */
     public function getValue()
     {
@@ -469,7 +530,7 @@ class AutomationAdFilterOneOf3 implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets value
      *
-     * @param string $value value
+     * @param int $value value
      *
      * @return self
      */
@@ -478,16 +539,14 @@ class AutomationAdFilterOneOf3 implements ModelInterface, ArrayAccess, \JsonSeri
         if (is_null($value)) {
             throw new \InvalidArgumentException('non-nullable value cannot be null');
         }
-        $allowedValues = $this->getValueAllowableValues();
-        if (!in_array($value, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'value', must be one of '%s'",
-                    $value,
-                    implode("', '", $allowedValues)
-                )
-            );
+
+        if (($value > 28)) {
+            throw new \InvalidArgumentException('invalid value for $value when calling AutomationAdFilterOneOf3., must be smaller than or equal to 28.');
         }
+        if (($value < 1)) {
+            throw new \InvalidArgumentException('invalid value for $value when calling AutomationAdFilterOneOf3., must be bigger than or equal to 1.');
+        }
+
         $this->container['value'] = $value;
 
         return $this;

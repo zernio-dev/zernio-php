@@ -327,6 +327,7 @@ docs/Model/AutomationAdFilterOneOf.md
 docs/Model/AutomationAdFilterOneOf1.md
 docs/Model/AutomationAdFilterOneOf2.md
 docs/Model/AutomationAdFilterOneOf3.md
+docs/Model/AutomationAdFilterOneOf4.md
 docs/Model/AutomationAlert.md
 docs/Model/AutomationApproval.md
 docs/Model/AutomationApprovalChange.md
@@ -1133,6 +1134,7 @@ docs/Model/CursorPagination.md
 docs/Model/CustomConversion.md
 docs/Model/CustomConversionResult.md
 docs/Model/DaysLive.md
+docs/Model/DaysSinceChange.md
 docs/Model/DeactivateSmsRegistration200Response.md
 docs/Model/DeclareEmailSendAs200Response.md
 docs/Model/DeclareEmailSendAsRequest.md
@@ -4101,6 +4103,7 @@ lib/Model/AutomationAdFilterOneOf.php
 lib/Model/AutomationAdFilterOneOf1.php
 lib/Model/AutomationAdFilterOneOf2.php
 lib/Model/AutomationAdFilterOneOf3.php
+lib/Model/AutomationAdFilterOneOf4.php
 lib/Model/AutomationAlert.php
 lib/Model/AutomationApproval.php
 lib/Model/AutomationApprovalChange.php
@@ -4907,6 +4910,7 @@ lib/Model/CursorPagination.php
 lib/Model/CustomConversion.php
 lib/Model/CustomConversionResult.php
 lib/Model/DaysLive.php
+lib/Model/DaysSinceChange.php
 lib/Model/DeactivateSmsRegistration200Response.php
 lib/Model/DeclareEmailSendAs200Response.php
 lib/Model/DeclareEmailSendAsRequest.php
@@ -7549,4 +7553,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/UpdateForwardingRuleRequestTest.php
+test/Model/AutomationAdFilterOneOf4Test.php
+test/Model/DaysSinceChangeTest.php
