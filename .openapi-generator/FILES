@@ -7635,7 +7635,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/WebhookPayloadCampaignStatusChangedCampaignTest.php
-test/Model/WebhookPayloadCampaignStatusChangedReasonsTest.php
-test/Model/WebhookPayloadCampaignStatusChangedStatusTest.php
-test/Model/WebhookPayloadCampaignStatusChangedTest.php

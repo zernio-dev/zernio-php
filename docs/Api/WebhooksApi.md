@@ -145,7 +145,7 @@ getWebhookLogs($limit, $skip, $status, $event, $webhook_id, $event_id): \Zernio\
 
 List webhook delivery logs
 
-Retrieve recorded webhook delivery attempts for the authenticated user, most recent first.  Logs are retained for 30 days. Supports filtering by status, event type, webhook ID, and event ID, plus offset-based pagination.  ### Restricted keys  For a restricted (zrk_) API key:  - Rows for events outside the key's resource groups are omitted (`pagination.total` may over-count). - An `event` filter naming such an event is rejected with 403.  ### Denylisted events  Events blocked by a subscription's own `disabledResourceGroups` are dropped before delivery, so they produce no log rows for anyone.  The exception is the five-minute tail after a denylist change, where an already-queued event can still be delivered and logged.
+Retrieve recorded webhook delivery attempts for the authenticated user, most recent first.  A profile-scoped API key, or a team member limited to specific profiles, gets 403.  Logs are retained for 30 days. Supports filtering by status, event type, webhook ID, and event ID, plus offset-based pagination.  ### Restricted keys  For a restricted (zrk_) API key:  - Rows for events outside the key's resource groups are omitted (`pagination.total` may over-count). - An `event` filter naming such an event is rejected with 403.  ### Denylisted events  Events blocked by a subscription's own `disabledResourceGroups` are dropped before delivery, so they produce no log rows for anyone.  The exception is the five-minute tail after a denylist change, where an already-queued event can still be delivered and logged.
 
 ### Example
 
@@ -215,7 +215,7 @@ getWebhookSettings(): \Zernio\Model\GetWebhookSettings200Response
 
 List webhooks
 
-Retrieve all configured webhooks for the authenticated user. Supports up to 50 webhooks per user.
+Retrieve all configured webhooks for the authenticated user. Supports up to 50 webhooks per user. A profile-scoped API key, or a team member limited to specific profiles, gets 403.
 
 ### Example
 
@@ -272,7 +272,7 @@ redeliverWebhookEvent($redeliver_webhook_event_request): \Zernio\Model\Unpublish
 
 Redeliver a webhook event
 
-Replay a past delivery: the original payload is re-sent, byte for byte, to the subscription's current URL. The original event ID is preserved so your endpoint can dedupe, and the replay is recorded as a fresh attempt, so it shows up in `GET /v1/webhooks/logs` next to the delivery it replays.  Both `webhookId` and `eventId` come from a row of `GET /v1/webhooks/logs`. Because the stored payload is replayed as-is, a redelivery reflects the event as it was emitted, not the current state of the resource.  Only deliveries inside the 30-day log retention window can be replayed; past that the payload is gone and the request fails with a 422. Replays run the same resource-group checks as live delivery, against both the key's groups and the subscription's `disabledResourceGroups`.
+Replay a past delivery: the original payload is re-sent, byte for byte, to the subscription's current URL. The original event ID is preserved so your endpoint can dedupe, and the replay is recorded as a fresh attempt, so it shows up in `GET /v1/webhooks/logs` next to the delivery it replays.  Both `webhookId` and `eventId` come from a row of `GET /v1/webhooks/logs`. Because the stored payload is replayed as-is, a redelivery reflects the event as it was emitted, not the current state of the resource.  Only deliveries inside the 30-day log retention window can be replayed; past that the payload is gone and the request fails with a 422. Replays run the same resource-group checks as live delivery, against both the key's groups and the subscription's `disabledResourceGroups`.  A profile-scoped API key, or a team member limited to specific profiles, gets 403.
 
 ### Example
 
@@ -332,7 +332,7 @@ testWebhook($test_webhook_request): \Zernio\Model\UnpublishPost200Response
 
 Send test webhook
 
-Send a test webhook to verify your endpoint is configured correctly. The test payload includes event: \"webhook.test\" to distinguish it from real events.  ### Sample payload for a specific event  Pass `event` to receive a sample payload of that event instead. This exercises the handler for an event that only fires on a real outage or lifecycle change (e.g. `account.ads.sync_failed`).  - The sample has the exact shape documented for the event under Webhook Events. - It is delivered like a real one, with the same `X-Zernio-Event`, `X-Zernio-Event-Id` and `X-Zernio-Signature` headers. - It carries a top-level `test: true` and placeholder ids, never your data. - The delivery shows up in the webhook logs with `test: true`.  The webhook does not have to be subscribed to the event. But a webhook that lists the event's resource group in its `disabledResourceGroups` answers 403, as does an API key with that group disabled.  ### Resource group checks  `webhook.test` belongs to the `webhooks` resource group. A test fire is rejected with 403 (not a reported delivery failure) when:  - the key has that group disabled; - the subscription lists `webhooks` in its own `disabledResourceGroups`.  Replays of real events (redelivery, dead-letter requeue) run the same checks as live delivery, against both the key's groups and the subscription's.
+Send a test webhook to verify your endpoint is configured correctly. The test payload includes event: \"webhook.test\" to distinguish it from real events.  A profile-scoped API key, or a team member limited to specific profiles, gets 403.  ### Sample payload for a specific event  Pass `event` to receive a sample payload of that event instead. This exercises the handler for an event that only fires on a real outage or lifecycle change (e.g. `account.ads.sync_failed`).  - The sample has the exact shape documented for the event under Webhook Events. - It is delivered like a real one, with the same `X-Zernio-Event`, `X-Zernio-Event-Id` and `X-Zernio-Signature` headers. - It carries a top-level `test: true` and placeholder ids, never your data. - The delivery shows up in the webhook logs with `test: true`.  The webhook does not have to be subscribed to the event. But a webhook that lists the event's resource group in its `disabledResourceGroups` answers 403, as does an API key with that group disabled.  ### Resource group checks  `webhook.test` belongs to the `webhooks` resource group. A test fire is rejected with 403 (not a reported delivery failure) when:  - the key has that group disabled; - the subscription lists `webhooks` in its own `disabledResourceGroups`.  Replays of real events (redelivery, dead-letter requeue) run the same checks as live delivery, against both the key's groups and the subscription's.
 
 ### Example
 
