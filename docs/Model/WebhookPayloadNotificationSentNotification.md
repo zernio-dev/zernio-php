@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**category** | **string** | The email notification preference this notification belongs to. |
+**category** | **string** | The email notification preference this notification belongs to. securityAlerts has no preference: it is always sent. |
 **type** | **string** |  |
 **subject** | **string** | The email subject. |
 **text** | **string** | The email body as plain text, without the greeting. |

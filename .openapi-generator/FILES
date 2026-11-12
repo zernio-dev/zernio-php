@@ -3684,6 +3684,7 @@ docs/Model/WebhookPayloadNotificationSentNotification.md
 docs/Model/WebhookPayloadNotificationSentNotificationActionsInner.md
 docs/Model/WebhookPayloadNotificationSentNotificationRefs.md
 docs/Model/WebhookPayloadNotificationSentNotificationRefsAccount.md
+docs/Model/WebhookPayloadNotificationSentNotificationRefsApiKey.md
 docs/Model/WebhookPayloadNotificationSentNotificationRefsPlatformsInner.md
 docs/Model/WebhookPayloadNotificationSentNotificationRefsPost.md
 docs/Model/WebhookPayloadPhoneNumberStockAvailable.md
@@ -7502,6 +7503,7 @@ lib/Model/WebhookPayloadNotificationSentNotification.php
 lib/Model/WebhookPayloadNotificationSentNotificationActionsInner.php
 lib/Model/WebhookPayloadNotificationSentNotificationRefs.php
 lib/Model/WebhookPayloadNotificationSentNotificationRefsAccount.php
+lib/Model/WebhookPayloadNotificationSentNotificationRefsApiKey.php
 lib/Model/WebhookPayloadNotificationSentNotificationRefsPlatformsInner.php
 lib/Model/WebhookPayloadNotificationSentNotificationRefsPost.php
 lib/Model/WebhookPayloadPhoneNumberStockAvailable.php
@@ -7635,3 +7637,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/WebhookPayloadNotificationSentNotificationRefsApiKeyTest.php
