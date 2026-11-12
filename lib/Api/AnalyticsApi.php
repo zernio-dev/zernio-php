@@ -600,15 +600,16 @@ class AnalyticsApi
      * @param  string|null $sort_by Sort by date, engagement, or a specific metric. Platform-specific metrics (follows, reposts, reels_skip_rate, ig_reels_*, completion_rate, profile_views, website_clicks) sort a null value as 0. (optional, default to 'date')
      * @param  string|null $order Sort order (optional, default to 'desc')
      * @param  string|null $tags Comma-separated tags (at most 20). Lists only posts created through Zernio that carry every listed tag, matched exactly and case-sensitively. Up to 200 published posts can match within the date range; more returns 400 asking to narrow fromDate and toDate. Ignored when postId is set. (optional)
+     * @param  string|null $view full returns the listing as before. summary leaves out the accounts list, each platform entry&#39;s copy of analytics, the impressionSources, audienceTypes, audienceCountries and retentionCurve maps, and mediaItems (thumbnailUrl stays). Ignored when postId is set. (optional, default to 'full')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAnalytics'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\GetAnalytics200Response|\Zernio\Model\AnalyticsSinglePostResponse|\Zernio\Model\GetAnalytics400Response|\Zernio\Model\ErrorResponse|\Zernio\Model\GetAnalytics402Response|\Zernio\Model\InlineObject2|\Zernio\Model\AnalyticsSinglePostResponse|\Zernio\Model\InlineObject4|\Zernio\Model\ErrorResponse
      */
-    public function getAnalytics($post_id = null, $platform = null, $profile_id = null, $account_id = null, $source = 'all', $from_date = null, $to_date = null, $limit = 50, $page = 1, $sort_by = 'date', $order = 'desc', $tags = null, string $contentType = self::contentTypes['getAnalytics'][0])
+    public function getAnalytics($post_id = null, $platform = null, $profile_id = null, $account_id = null, $source = 'all', $from_date = null, $to_date = null, $limit = 50, $page = 1, $sort_by = 'date', $order = 'desc', $tags = null, $view = 'full', string $contentType = self::contentTypes['getAnalytics'][0])
     {
-        list($response) = $this->getAnalyticsWithHttpInfo($post_id, $platform, $profile_id, $account_id, $source, $from_date, $to_date, $limit, $page, $sort_by, $order, $tags, $contentType);
+        list($response) = $this->getAnalyticsWithHttpInfo($post_id, $platform, $profile_id, $account_id, $source, $from_date, $to_date, $limit, $page, $sort_by, $order, $tags, $view, $contentType);
         return $response;
     }
 
@@ -629,15 +630,16 @@ class AnalyticsApi
      * @param  string|null $sort_by Sort by date, engagement, or a specific metric. Platform-specific metrics (follows, reposts, reels_skip_rate, ig_reels_*, completion_rate, profile_views, website_clicks) sort a null value as 0. (optional, default to 'date')
      * @param  string|null $order Sort order (optional, default to 'desc')
      * @param  string|null $tags Comma-separated tags (at most 20). Lists only posts created through Zernio that carry every listed tag, matched exactly and case-sensitively. Up to 200 published posts can match within the date range; more returns 400 asking to narrow fromDate and toDate. Ignored when postId is set. (optional)
+     * @param  string|null $view full returns the listing as before. summary leaves out the accounts list, each platform entry&#39;s copy of analytics, the impressionSources, audienceTypes, audienceCountries and retentionCurve maps, and mediaItems (thumbnailUrl stays). Ignored when postId is set. (optional, default to 'full')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAnalytics'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\GetAnalytics200Response|\Zernio\Model\AnalyticsSinglePostResponse|\Zernio\Model\GetAnalytics400Response|\Zernio\Model\ErrorResponse|\Zernio\Model\GetAnalytics402Response|\Zernio\Model\InlineObject2|\Zernio\Model\AnalyticsSinglePostResponse|\Zernio\Model\InlineObject4|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAnalyticsWithHttpInfo($post_id = null, $platform = null, $profile_id = null, $account_id = null, $source = 'all', $from_date = null, $to_date = null, $limit = 50, $page = 1, $sort_by = 'date', $order = 'desc', $tags = null, string $contentType = self::contentTypes['getAnalytics'][0])
+    public function getAnalyticsWithHttpInfo($post_id = null, $platform = null, $profile_id = null, $account_id = null, $source = 'all', $from_date = null, $to_date = null, $limit = 50, $page = 1, $sort_by = 'date', $order = 'desc', $tags = null, $view = 'full', string $contentType = self::contentTypes['getAnalytics'][0])
     {
-        $request = $this->getAnalyticsRequest($post_id, $platform, $profile_id, $account_id, $source, $from_date, $to_date, $limit, $page, $sort_by, $order, $tags, $contentType);
+        $request = $this->getAnalyticsRequest($post_id, $platform, $profile_id, $account_id, $source, $from_date, $to_date, $limit, $page, $sort_by, $order, $tags, $view, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -837,14 +839,15 @@ class AnalyticsApi
      * @param  string|null $sort_by Sort by date, engagement, or a specific metric. Platform-specific metrics (follows, reposts, reels_skip_rate, ig_reels_*, completion_rate, profile_views, website_clicks) sort a null value as 0. (optional, default to 'date')
      * @param  string|null $order Sort order (optional, default to 'desc')
      * @param  string|null $tags Comma-separated tags (at most 20). Lists only posts created through Zernio that carry every listed tag, matched exactly and case-sensitively. Up to 200 published posts can match within the date range; more returns 400 asking to narrow fromDate and toDate. Ignored when postId is set. (optional)
+     * @param  string|null $view full returns the listing as before. summary leaves out the accounts list, each platform entry&#39;s copy of analytics, the impressionSources, audienceTypes, audienceCountries and retentionCurve maps, and mediaItems (thumbnailUrl stays). Ignored when postId is set. (optional, default to 'full')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAnalytics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAnalyticsAsync($post_id = null, $platform = null, $profile_id = null, $account_id = null, $source = 'all', $from_date = null, $to_date = null, $limit = 50, $page = 1, $sort_by = 'date', $order = 'desc', $tags = null, string $contentType = self::contentTypes['getAnalytics'][0])
+    public function getAnalyticsAsync($post_id = null, $platform = null, $profile_id = null, $account_id = null, $source = 'all', $from_date = null, $to_date = null, $limit = 50, $page = 1, $sort_by = 'date', $order = 'desc', $tags = null, $view = 'full', string $contentType = self::contentTypes['getAnalytics'][0])
     {
-        return $this->getAnalyticsAsyncWithHttpInfo($post_id, $platform, $profile_id, $account_id, $source, $from_date, $to_date, $limit, $page, $sort_by, $order, $tags, $contentType)
+        return $this->getAnalyticsAsyncWithHttpInfo($post_id, $platform, $profile_id, $account_id, $source, $from_date, $to_date, $limit, $page, $sort_by, $order, $tags, $view, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -869,15 +872,16 @@ class AnalyticsApi
      * @param  string|null $sort_by Sort by date, engagement, or a specific metric. Platform-specific metrics (follows, reposts, reels_skip_rate, ig_reels_*, completion_rate, profile_views, website_clicks) sort a null value as 0. (optional, default to 'date')
      * @param  string|null $order Sort order (optional, default to 'desc')
      * @param  string|null $tags Comma-separated tags (at most 20). Lists only posts created through Zernio that carry every listed tag, matched exactly and case-sensitively. Up to 200 published posts can match within the date range; more returns 400 asking to narrow fromDate and toDate. Ignored when postId is set. (optional)
+     * @param  string|null $view full returns the listing as before. summary leaves out the accounts list, each platform entry&#39;s copy of analytics, the impressionSources, audienceTypes, audienceCountries and retentionCurve maps, and mediaItems (thumbnailUrl stays). Ignored when postId is set. (optional, default to 'full')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAnalytics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAnalyticsAsyncWithHttpInfo($post_id = null, $platform = null, $profile_id = null, $account_id = null, $source = 'all', $from_date = null, $to_date = null, $limit = 50, $page = 1, $sort_by = 'date', $order = 'desc', $tags = null, string $contentType = self::contentTypes['getAnalytics'][0])
+    public function getAnalyticsAsyncWithHttpInfo($post_id = null, $platform = null, $profile_id = null, $account_id = null, $source = 'all', $from_date = null, $to_date = null, $limit = 50, $page = 1, $sort_by = 'date', $order = 'desc', $tags = null, $view = 'full', string $contentType = self::contentTypes['getAnalytics'][0])
     {
         $returnType = '\Zernio\Model\GetAnalytics200Response';
-        $request = $this->getAnalyticsRequest($post_id, $platform, $profile_id, $account_id, $source, $from_date, $to_date, $limit, $page, $sort_by, $order, $tags, $contentType);
+        $request = $this->getAnalyticsRequest($post_id, $platform, $profile_id, $account_id, $source, $from_date, $to_date, $limit, $page, $sort_by, $order, $tags, $view, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -930,12 +934,13 @@ class AnalyticsApi
      * @param  string|null $sort_by Sort by date, engagement, or a specific metric. Platform-specific metrics (follows, reposts, reels_skip_rate, ig_reels_*, completion_rate, profile_views, website_clicks) sort a null value as 0. (optional, default to 'date')
      * @param  string|null $order Sort order (optional, default to 'desc')
      * @param  string|null $tags Comma-separated tags (at most 20). Lists only posts created through Zernio that carry every listed tag, matched exactly and case-sensitively. Up to 200 published posts can match within the date range; more returns 400 asking to narrow fromDate and toDate. Ignored when postId is set. (optional)
+     * @param  string|null $view full returns the listing as before. summary leaves out the accounts list, each platform entry&#39;s copy of analytics, the impressionSources, audienceTypes, audienceCountries and retentionCurve maps, and mediaItems (thumbnailUrl stays). Ignored when postId is set. (optional, default to 'full')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAnalytics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAnalyticsRequest($post_id = null, $platform = null, $profile_id = null, $account_id = null, $source = 'all', $from_date = null, $to_date = null, $limit = 50, $page = 1, $sort_by = 'date', $order = 'desc', $tags = null, string $contentType = self::contentTypes['getAnalytics'][0])
+    public function getAnalyticsRequest($post_id = null, $platform = null, $profile_id = null, $account_id = null, $source = 'all', $from_date = null, $to_date = null, $limit = 50, $page = 1, $sort_by = 'date', $order = 'desc', $tags = null, $view = 'full', string $contentType = self::contentTypes['getAnalytics'][0])
     {
 
 
@@ -956,6 +961,7 @@ class AnalyticsApi
             throw new \InvalidArgumentException('invalid value for "$page" when calling AnalyticsApi.getAnalytics, must be bigger than or equal to 1.');
         }
         
+
 
 
 
@@ -1070,6 +1076,15 @@ class AnalyticsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $tags,
             'tags', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $view,
+            'view', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
