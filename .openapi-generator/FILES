@@ -1536,6 +1536,7 @@ docs/Model/GetEvent200Response.md
 docs/Model/GetEvent200ResponseDeliveriesInner.md
 docs/Model/GetEventsOverview200Response.md
 docs/Model/GetEventsOverview200ResponsePlatformsInner.md
+docs/Model/GetEventsOverview200ResponseSitesInner.md
 docs/Model/GetEventsOverview200ResponseSourcesInner.md
 docs/Model/GetEventsOverview200ResponseToday.md
 docs/Model/GetEventsOverview200ResponseWebsite.md
@@ -5348,6 +5349,7 @@ lib/Model/GetEvent200Response.php
 lib/Model/GetEvent200ResponseDeliveriesInner.php
 lib/Model/GetEventsOverview200Response.php
 lib/Model/GetEventsOverview200ResponsePlatformsInner.php
+lib/Model/GetEventsOverview200ResponseSitesInner.php
 lib/Model/GetEventsOverview200ResponseSourcesInner.php
 lib/Model/GetEventsOverview200ResponseToday.php
 lib/Model/GetEventsOverview200ResponseWebsite.php
@@ -7625,3 +7627,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetEventsOverview200ResponseSitesInnerTest.php
