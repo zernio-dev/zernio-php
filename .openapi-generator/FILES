@@ -883,6 +883,7 @@ docs/Model/CreateConversionActionRequest.md
 docs/Model/CreateConversionDestinationRequest.md
 docs/Model/CreateCreatorCampaign201Response.md
 docs/Model/CreateCreatorCampaignRequest.md
+docs/Model/CreateCreatorPayoutLogin200Response.md
 docs/Model/CreateCustomConversionGoalRequest.md
 docs/Model/CreateCustomConversionRequest.md
 docs/Model/CreateCustomField200Response.md
@@ -4701,6 +4702,7 @@ lib/Model/CreateConversionActionRequest.php
 lib/Model/CreateConversionDestinationRequest.php
 lib/Model/CreateCreatorCampaign201Response.php
 lib/Model/CreateCreatorCampaignRequest.php
+lib/Model/CreateCreatorPayoutLogin200Response.php
 lib/Model/CreateCustomConversionGoalRequest.php
 lib/Model/CreateCustomConversionRequest.php
 lib/Model/CreateCustomField200Response.php
@@ -7637,3 +7639,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/CreateCreatorPayoutLogin200ResponseTest.php

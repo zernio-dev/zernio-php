@@ -25,7 +25,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `createCreatorPayoutLogin()`
 
 ```php
-createCreatorPayoutLogin($token): \Zernio\Model\StartCreatorPayouts200Response
+createCreatorPayoutLogin($token): \Zernio\Model\CreateCreatorPayoutLogin200Response
 ```
 
 Open the creator's Stripe dashboard
@@ -63,7 +63,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\StartCreatorPayouts200Response**](../Model/StartCreatorPayouts200Response.md)
+[**\Zernio\Model\CreateCreatorPayoutLogin200Response**](../Model/CreateCreatorPayoutLogin200Response.md)
 
 ### Authorization
 
