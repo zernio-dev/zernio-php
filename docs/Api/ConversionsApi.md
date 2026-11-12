@@ -1926,7 +1926,7 @@ try {
 ## `listEvents()`
 
 ```php
-listEvents($profile_id, $limit, $from, $to, $event_name, $source, $cursor): \Zernio\Model\ListEvents200Response
+listEvents($profile_id, $limit, $from, $to, $event_name, $source, $platform, $delivery_status, $cursor): \Zernio\Model\ListEvents200Response
 ```
 
 List stored events
@@ -1956,10 +1956,12 @@ $from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Only events a
 $to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Only events before this time (ISO 8601, on the event time).
 $event_name = 'event_name_example'; // string | Only events with this name, such as `Purchase`.
 $source = 'source_example'; // string | Only events from this source, such as `stripe` for the payments of a connected Stripe account.
+$platform = 'platform_example'; // string | Only events sent to this ad platform, such as `metaads` or `googleads`.
+$delivery_status = 'delivery_status_example'; // string | Only events whose latest send to a destination (of `platform`, when given) was accepted (`sent`) or was not (`failed`: failed or still retrying).
 $cursor = 'cursor_example'; // string | `nextCursor` from the previous page.
 
 try {
-    $result = $apiInstance->listEvents($profile_id, $limit, $from, $to, $event_name, $source, $cursor);
+    $result = $apiInstance->listEvents($profile_id, $limit, $from, $to, $event_name, $source, $platform, $delivery_status, $cursor);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConversionsApi->listEvents: ', $e->getMessage(), PHP_EOL;
@@ -1976,6 +1978,8 @@ try {
 | **to** | **\DateTime**| Only events before this time (ISO 8601, on the event time). | [optional] |
 | **event_name** | **string**| Only events with this name, such as &#x60;Purchase&#x60;. | [optional] |
 | **source** | **string**| Only events from this source, such as &#x60;stripe&#x60; for the payments of a connected Stripe account. | [optional] |
+| **platform** | **string**| Only events sent to this ad platform, such as &#x60;metaads&#x60; or &#x60;googleads&#x60;. | [optional] |
+| **delivery_status** | **string**| Only events whose latest send to a destination (of &#x60;platform&#x60;, when given) was accepted (&#x60;sent&#x60;) or was not (&#x60;failed&#x60;: failed or still retrying). | [optional] |
 | **cursor** | **string**| &#x60;nextCursor&#x60; from the previous page. | [optional] |
 
 ### Return type
