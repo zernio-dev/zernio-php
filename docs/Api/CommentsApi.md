@@ -154,7 +154,7 @@ try {
 ## `getInboxPostComments()`
 
 ```php
-getInboxPostComments($post_id, $account_id, $subreddit, $limit, $cursor, $comment_id): \Zernio\Model\GetInboxPostComments200Response
+getInboxPostComments($post_id, $account_id, $subreddit, $limit, $cursor, $comment_id, $view): \Zernio\Model\GetInboxPostComments200Response
 ```
 
 Get post comments
@@ -184,9 +184,10 @@ $subreddit = 'subreddit_example'; // string | (Reddit only) Subreddit name
 $limit = 25; // int | Maximum number of comments to return
 $cursor = 'cursor_example'; // string | Pagination cursor, returned by a previous call as `pagination.cursor`. This is the platform's own opaque paging value passed through verbatim: never construct, decode or validate it client-side.
 $comment_id = 'comment_id_example'; // string | (Facebook, Instagram, Reddit and TikTok) Get replies to a specific comment. On Facebook and Instagram, the requested comment is returned in the top-level `comment` field and comments[] holds its replies.
+$view = 'full'; // string | `full` returns every comment as before. `summary` is a lighter page for agents and large polls:  - Each comment leaves out `from.picture`, `url`, `platform` and every flag that is false. - At most 3 nested replies per comment. A comment with more replies than it carries has `repliesHasMore: true`: fetch the rest with `commentId` (Facebook, Instagram, Reddit, TikTok) or with view=full. - `post` leaves out `thumbnailUrl` and `mediaUrl`.
 
 try {
-    $result = $apiInstance->getInboxPostComments($post_id, $account_id, $subreddit, $limit, $cursor, $comment_id);
+    $result = $apiInstance->getInboxPostComments($post_id, $account_id, $subreddit, $limit, $cursor, $comment_id, $view);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CommentsApi->getInboxPostComments: ', $e->getMessage(), PHP_EOL;
@@ -203,6 +204,7 @@ try {
 | **limit** | **int**| Maximum number of comments to return | [optional] [default to 25] |
 | **cursor** | **string**| Pagination cursor, returned by a previous call as &#x60;pagination.cursor&#x60;. This is the platform&#39;s own opaque paging value passed through verbatim: never construct, decode or validate it client-side. | [optional] |
 | **comment_id** | **string**| (Facebook, Instagram, Reddit and TikTok) Get replies to a specific comment. On Facebook and Instagram, the requested comment is returned in the top-level &#x60;comment&#x60; field and comments[] holds its replies. | [optional] |
+| **view** | **string**| &#x60;full&#x60; returns every comment as before. &#x60;summary&#x60; is a lighter page for agents and large polls:  - Each comment leaves out &#x60;from.picture&#x60;, &#x60;url&#x60;, &#x60;platform&#x60; and every flag that is false. - At most 3 nested replies per comment. A comment with more replies than it carries has &#x60;repliesHasMore: true&#x60;: fetch the rest with &#x60;commentId&#x60; (Facebook, Instagram, Reddit, TikTok) or with view&#x3D;full. - &#x60;post&#x60; leaves out &#x60;thumbnailUrl&#x60; and &#x60;mediaUrl&#x60;. | [optional] [default to &#39;full&#39;] |
 
 ### Return type
 
@@ -414,7 +416,7 @@ try {
 ## `listInboxComments()`
 
 ```php
-listInboxComments($profile_id, $platform, $min_comments, $since, $sort_by, $sort_order, $limit, $cursor, $account_id): \Zernio\Model\ListInboxComments200Response
+listInboxComments($profile_id, $platform, $min_comments, $since, $sort_by, $sort_order, $limit, $view, $cursor, $account_id): \Zernio\Model\ListInboxComments200Response
 ```
 
 List commented posts
@@ -445,11 +447,12 @@ $since = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Posts create
 $sort_by = 'date'; // string | Sort field
 $sort_order = 'desc'; // string | Sort order
 $limit = 50; // int
+$view = 'full'; // string | full returns every post as before. summary leaves out `picture` and cuts `content` to 280 characters, marking a cut caption with `contentTruncated: true`.
 $cursor = 'cursor_example'; // string
 $account_id = 'account_id_example'; // string | Filter by specific account ID.  With `platform=metaads` it takes the Meta Ads account ID, or the Facebook or Instagram account ID the Meta Ads connection belongs to, which returns that connection's ad rows.  A Facebook or Instagram account with no Meta Ads connection returns no rows. An account on any other platform returns 400.
 
 try {
-    $result = $apiInstance->listInboxComments($profile_id, $platform, $min_comments, $since, $sort_by, $sort_order, $limit, $cursor, $account_id);
+    $result = $apiInstance->listInboxComments($profile_id, $platform, $min_comments, $since, $sort_by, $sort_order, $limit, $view, $cursor, $account_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CommentsApi->listInboxComments: ', $e->getMessage(), PHP_EOL;
@@ -467,6 +470,7 @@ try {
 | **sort_by** | **string**| Sort field | [optional] [default to &#39;date&#39;] |
 | **sort_order** | **string**| Sort order | [optional] [default to &#39;desc&#39;] |
 | **limit** | **int**|  | [optional] [default to 50] |
+| **view** | **string**| full returns every post as before. summary leaves out &#x60;picture&#x60; and cuts &#x60;content&#x60; to 280 characters, marking a cut caption with &#x60;contentTruncated: true&#x60;. | [optional] [default to &#39;full&#39;] |
 | **cursor** | **string**|  | [optional] |
 | **account_id** | **string**| Filter by specific account ID.  With &#x60;platform&#x3D;metaads&#x60; it takes the Meta Ads account ID, or the Facebook or Instagram account ID the Meta Ads connection belongs to, which returns that connection&#39;s ad rows.  A Facebook or Instagram account with no Meta Ads connection returns no rows. An account on any other platform returns 400. | [optional] |
 

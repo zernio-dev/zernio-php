@@ -328,6 +328,7 @@ docs/Model/AutomationAdFilterOneOf1.md
 docs/Model/AutomationAdFilterOneOf2.md
 docs/Model/AutomationAdFilterOneOf3.md
 docs/Model/AutomationAdFilterOneOf4.md
+docs/Model/AutomationAdFilterOneOf5.md
 docs/Model/AutomationAlert.md
 docs/Model/AutomationApproval.md
 docs/Model/AutomationApprovalChange.md
@@ -603,6 +604,7 @@ docs/Model/ChangeCommerceProductTagsRequest.md
 docs/Model/ChannelPicker.md
 docs/Model/ChannelPickerChannelsInner.md
 docs/Model/ChannelPickerTeam.md
+docs/Model/ChannelType.md
 docs/Model/CheckPhoneNumberAvailability200Response.md
 docs/Model/CheckPhoneNumberAvailability200ResponseAreaAvailability.md
 docs/Model/CheckPhoneNumberAvailability200ResponseAreaAvailabilityInStockInner.md
@@ -4126,6 +4128,7 @@ lib/Model/AutomationAdFilterOneOf1.php
 lib/Model/AutomationAdFilterOneOf2.php
 lib/Model/AutomationAdFilterOneOf3.php
 lib/Model/AutomationAdFilterOneOf4.php
+lib/Model/AutomationAdFilterOneOf5.php
 lib/Model/AutomationAlert.php
 lib/Model/AutomationApproval.php
 lib/Model/AutomationApprovalChange.php
@@ -4401,6 +4404,7 @@ lib/Model/ChangeCommerceProductTagsRequest.php
 lib/Model/ChannelPicker.php
 lib/Model/ChannelPickerChannelsInner.php
 lib/Model/ChannelPickerTeam.php
+lib/Model/ChannelType.php
 lib/Model/CheckPhoneNumberAvailability200Response.php
 lib/Model/CheckPhoneNumberAvailability200ResponseAreaAvailability.php
 lib/Model/CheckPhoneNumberAvailability200ResponseAreaAvailabilityInStockInner.php
@@ -7597,3 +7601,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/AutomationAdFilterOneOf5Test.php
+test/Model/ChannelTypeTest.php
