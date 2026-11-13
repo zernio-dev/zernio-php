@@ -9,6 +9,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**createAdRule()**](AdRulesApi.md#createAdRule) | **POST** /v1/ads/rules | Create an ad rule |
 | [**deleteAdRule()**](AdRulesApi.md#deleteAdRule) | **DELETE** /v1/ads/rules/{ruleId} | Delete an ad rule |
 | [**getAdRule()**](AdRulesApi.md#getAdRule) | **GET** /v1/ads/rules/{ruleId} | Get an ad rule |
+| [**getAdRuleHourlyWindows()**](AdRulesApi.md#getAdRuleHourlyWindows) | **GET** /v1/ads/rules/hourly-windows | Check whether an ad account has hourly windows |
 | [**listAdRuleActivity()**](AdRulesApi.md#listAdRuleActivity) | **GET** /v1/ads/rules/activity | List every change ad rules made |
 | [**listAdRuleAlerts()**](AdRulesApi.md#listAdRuleAlerts) | **GET** /v1/ads/rules/{ruleId}/alerts | List a rule&#39;s alerts |
 | [**listAdRuleRuns()**](AdRulesApi.md#listAdRuleRuns) | **GET** /v1/ads/rules/{ruleId}/runs | List an ad rule&#39;s runs |
@@ -185,6 +186,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\CreateAdRule201Response**](../Model/CreateAdRule201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getAdRuleHourlyWindows()`
+
+```php
+getAdRuleHourlyWindows($account_id, $ad_account_id): \Zernio\Model\GetAdRuleHourlyWindows200Response
+```
+
+Check whether an ad account has hourly windows
+
+Hourly windows (`last_complete_hour`, `last_3h`, `today_so_far`) read campaign totals hour by hour, which Zernio syncs only for some Meta and Google ad accounts.  On an ad account without them, an hourly condition always reads as unknown and never matches. `hourlyWindows` says which case applies.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdRulesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The ads connection.
+$ad_account_id = 'ad_account_id_example'; // string | The ad account on that connection.
+
+try {
+    $result = $apiInstance->getAdRuleHourlyWindows($account_id, $ad_account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdRulesApi->getAdRuleHourlyWindows: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The ads connection. | |
+| **ad_account_id** | **string**| The ad account on that connection. | |
+
+### Return type
+
+[**\Zernio\Model\GetAdRuleHourlyWindows200Response**](../Model/GetAdRuleHourlyWindows200Response.md)
 
 ### Authorization
 
