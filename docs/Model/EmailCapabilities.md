@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **sync** | [**\Zernio\Model\EmailCapabilitiesSync**](EmailCapabilitiesSync.md) |  | [optional]
+**sent_items** | [**\Zernio\Model\EmailCapabilitiesSentItems**](EmailCapabilitiesSentItems.md) |  | [optional]
 **drafts** | [**\Zernio\Model\EmailCapabilitiesDrafts**](EmailCapabilitiesDrafts.md) |  | [optional]
 **forward** | [**\Zernio\Model\EmailCapabilitiesForward**](EmailCapabilitiesForward.md) |  | [optional]
 **send_as** | [**\Zernio\Model\EmailCapabilitiesSendAs**](EmailCapabilitiesSendAs.md) |  | [optional]

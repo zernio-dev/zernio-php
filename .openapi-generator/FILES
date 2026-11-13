@@ -1267,6 +1267,7 @@ docs/Model/EmailCapabilitiesForward.md
 docs/Model/EmailCapabilitiesLabels.md
 docs/Model/EmailCapabilitiesScheduledSend.md
 docs/Model/EmailCapabilitiesSendAs.md
+docs/Model/EmailCapabilitiesSentItems.md
 docs/Model/EmailCapabilitiesSignatures.md
 docs/Model/EmailCapabilitiesSync.md
 docs/Model/EmailClean.md
@@ -5088,6 +5089,7 @@ lib/Model/EmailCapabilitiesForward.php
 lib/Model/EmailCapabilitiesLabels.php
 lib/Model/EmailCapabilitiesScheduledSend.php
 lib/Model/EmailCapabilitiesSendAs.php
+lib/Model/EmailCapabilitiesSentItems.php
 lib/Model/EmailCapabilitiesSignatures.php
 lib/Model/EmailCapabilitiesSync.php
 lib/Model/EmailClean.php
@@ -7643,3 +7645,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/EmailCapabilitiesSentItemsTest.php
