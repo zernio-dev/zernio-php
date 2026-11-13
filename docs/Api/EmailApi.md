@@ -1339,7 +1339,7 @@ listEmailFolders($account_id): \Zernio\Model\ListEmailFolders200Response
 
 List mailbox folders
 
-On Google, folders are Gmail labels (system labels carry `wellKnown`; `unreadCount` and `totalCount` are present only where Gmail reports them). There is no archive folder on Google; archived mail is listed with `folder=archive`.
+On Google, folders are Gmail labels (system labels carry `wellKnown`; `unreadCount` and `totalCount` are present only where Gmail reports them). There is no archive folder on Google; archived mail is listed with `folder=archive`.  When the provider does not answer, the last list read for the same account within the past 24 hours is returned with `stale: true`, `asOf` and an `X-Zernio-Stale-As-Of` header instead of a 502.
 
 ### Example
 
