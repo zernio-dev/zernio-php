@@ -532,6 +532,7 @@ docs/Model/CalendarEventFieldsReminders.md
 docs/Model/CalendarEventFieldsRemindersOverridesInner.md
 docs/Model/CalendarEventParticipantsInner.md
 docs/Model/CalendarEventReminders.md
+docs/Model/CalendarEventRemindersOverridesInner.md
 docs/Model/CalendarFreeBusy200Response.md
 docs/Model/CalendarFreeBusy200ResponseDataInner.md
 docs/Model/CalendarFreeBusy200ResponseDataInnerCalendarsInner.md
@@ -4354,6 +4355,7 @@ lib/Model/CalendarEventFieldsReminders.php
 lib/Model/CalendarEventFieldsRemindersOverridesInner.php
 lib/Model/CalendarEventParticipantsInner.php
 lib/Model/CalendarEventReminders.php
+lib/Model/CalendarEventRemindersOverridesInner.php
 lib/Model/CalendarFreeBusy200Response.php
 lib/Model/CalendarFreeBusy200ResponseDataInner.php
 lib/Model/CalendarFreeBusy200ResponseDataInnerCalendarsInner.php
@@ -7645,4 +7647,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/EmailCapabilitiesSentItemsTest.php
+test/Model/CalendarEventRemindersOverridesInnerTest.php

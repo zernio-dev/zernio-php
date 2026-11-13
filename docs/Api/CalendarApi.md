@@ -146,7 +146,7 @@ createCalendarEvent($create_calendar_event_request): \Zernio\Model\CreateCalenda
 
 Create an event
 
-Creates a calendar event. Conferencing and recurrence behave differently on Microsoft and Google accounts.  ### Microsoft accounts  - `conferencing: teams` adds a Teams meeting. The created event comes back with `conferencing: null` when the tenant has no Teams (the EEA Business Basic SKUs ship without it). - `google_meet` is rejected with 400 (`param: conferencing`).  ### Google accounts  - `conferencing: google_meet` adds a Meet link. - `teams` is rejected with 400. - `recurrence` accepts any RRULE Google Calendar supports.  ### Recurrence  `recurrence` takes one RRULE line with FREQ, INTERVAL, COUNT, UNTIL, BYDAY and BYSETPOS. Other parts are rejected with 400 (`param: recurrence`).
+Creates a calendar event. Conferencing and recurrence behave differently on Microsoft and Google accounts.  ### Microsoft accounts  - `conferencing: teams` adds a Teams meeting. The created event comes back with `conferencing: null` when the tenant has no Teams (the EEA Business Basic SKUs ship without it). - `google_meet` is rejected with 400 (`param: conferencing`).  ### Google accounts  - `conferencing: google_meet` adds a Meet link. - `teams` is rejected with 400. - `recurrence` accepts any RRULE Google Calendar supports.  ### Recurrence  `recurrence` takes one RRULE line with FREQ, INTERVAL, COUNT, UNTIL, BYDAY and BYSETPOS. Other parts are rejected with 400 (`param: recurrence`).  ### Reminders  Each `reminders.overrides` entry is `{ method, minutes }`, with `method` `popup` (default) or `email`.  - Google takes up to 5 overrides of either method. - Outlook keeps one popup reminder, the first override. An `email` override answers 400 `reminder_method_unsupported`.
 
 ### Example
 
@@ -165,7 +165,7 @@ $apiInstance = new Zernio\Api\CalendarApi(
     new GuzzleHttp\Client(),
     $config
 );
-$create_calendar_event_request = new \Zernio\Model\CreateCalendarEventRequest(); // \Zernio\Model\CreateCalendarEventRequest
+$create_calendar_event_request = {"accountId":"66b2e19d8c3f5a7e9d0b1c2d","title":"Contract review","start":"2026-11-18T16:00:00+01:00","end":"2026-11-18T17:00:00+01:00","reminders":{"useDefault":false,"overrides":[{"method":"email","minutes":1440},{"method":"popup","minutes":10}]}}; // \Zernio\Model\CreateCalendarEventRequest
 
 try {
     $result = $apiInstance->createCalendarEvent($create_calendar_event_request);
