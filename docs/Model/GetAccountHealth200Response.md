@@ -25,5 +25,6 @@ Name | Type | Description | Notes
 **inbound_activity** | [**\Zernio\Model\InboundActivity**](InboundActivity.md) |  | [optional]
 **messaging_restriction** | [**\Zernio\Model\GetAccountHealth200ResponseMessagingRestriction**](GetAccountHealth200ResponseMessagingRestriction.md) |  | [optional]
 **platform_connection** | [**\Zernio\Model\GetAccountHealth200ResponsePlatformConnection**](GetAccountHealth200ResponsePlatformConnection.md) |  | [optional]
+**line_webhook** | [**\Zernio\Model\GetAccountHealth200ResponseLineWebhook**](GetAccountHealth200ResponseLineWebhook.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
