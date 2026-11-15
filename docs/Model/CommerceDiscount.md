@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **minimum** | [**\Zernio\Model\CommerceDiscountMinimum**](CommerceDiscountMinimum.md) |  | [optional]
 **usage_limit** | **int** |  | [optional]
 **once_per_customer** | **bool** |  | [optional]
+**limited_to_customers** | **bool** | True when only the customers chosen at creation (customerIds) can use the code. | [optional]
 **usage_count** | **int** |  | [optional]
 **starts_at** | **\DateTime** |  | [optional]
 **ends_at** | **\DateTime** |  | [optional]

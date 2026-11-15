@@ -85,6 +85,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**updateCommerceDiscount()**](CommerceApi.md#updateCommerceDiscount) | **PATCH** /v1/commerce/discounts/{discountId} | Update a discount |
 | [**updateCommerceMenu()**](CommerceApi.md#updateCommerceMenu) | **PUT** /v1/commerce/menus/{menuId} | Replace a navigation menu |
 | [**updateCommerceMetaobject()**](CommerceApi.md#updateCommerceMetaobject) | **PATCH** /v1/commerce/metaobjects/{metaobjectId} | Update a metaobject |
+| [**updateCommerceOrder()**](CommerceApi.md#updateCommerceOrder) | **PATCH** /v1/commerce/orders/{orderId} | Update an order&#39;s shipping address |
 | [**updateCommercePage()**](CommerceApi.md#updateCommercePage) | **PATCH** /v1/commerce/pages/{pageId} | Update a page |
 | [**updateCommerceProduct()**](CommerceApi.md#updateCommerceProduct) | **PATCH** /v1/commerce/products/{productId} | Update a product |
 | [**updateCommerceProductPrices()**](CommerceApi.md#updateCommerceProductPrices) | **POST** /v1/commerce/products/{productId}/price | Update variant prices |
@@ -836,7 +837,7 @@ createCommerceDiscount($create_commerce_discount_request): \Zernio\Model\CreateC
 
 Create a discount
 
-Creates a code discount (buyers enter a code) or an automatic one (applied at checkout), as a percentage, a fixed amount or free shipping. It applies to every product unless productIds or collectionIds narrow it, and to every buyer.
+Creates a code discount (buyers enter a code) or an automatic one (applied at checkout), as a percentage, a fixed amount or free shipping. It applies to every product unless productIds or collectionIds narrow it.  It applies to every buyer unless customerIds limits a code discount to chosen customers, for example a goodwill code only one shopper can use.
 
 ### Example
 
@@ -3811,7 +3812,7 @@ try {
 ## `listCommerceOrders()`
 
 ```php
-listCommerceOrders($account_id, $limit, $cursor, $created_after, $created_before, $updated_after, $customer_id, $email): \Zernio\Model\ListCommerceOrders200Response
+listCommerceOrders($account_id, $limit, $cursor, $created_after, $created_before, $updated_after, $customer_id, $email, $number): \Zernio\Model\ListCommerceOrders200Response
 ```
 
 List orders
@@ -3843,9 +3844,10 @@ $created_before = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $updated_after = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Only orders changed after this time, oldest change first.
 $customer_id = 'customer_id_example'; // string | Only this customer's orders (`customer.id` on an order, or `id` from the customers endpoints).
 $email = 'email_example'; // string | Only orders placed with this email. Shopify only; WooCommerce answers 400 platform_not_supported.
+$number = 1234; // string | The order number a buyer quotes, with or without the \"#\" (`number` on an order). Shopify only; on WooCommerce the number is the order id, so read GET /v1/commerce/orders/{orderId} (this filter answers 400 platform_not_supported).
 
 try {
-    $result = $apiInstance->listCommerceOrders($account_id, $limit, $cursor, $created_after, $created_before, $updated_after, $customer_id, $email);
+    $result = $apiInstance->listCommerceOrders($account_id, $limit, $cursor, $created_after, $created_before, $updated_after, $customer_id, $email, $number);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CommerceApi->listCommerceOrders: ', $e->getMessage(), PHP_EOL;
@@ -3864,6 +3866,7 @@ try {
 | **updated_after** | **\DateTime**| Only orders changed after this time, oldest change first. | [optional] |
 | **customer_id** | **string**| Only this customer&#39;s orders (&#x60;customer.id&#x60; on an order, or &#x60;id&#x60; from the customers endpoints). | [optional] |
 | **email** | **string**| Only orders placed with this email. Shopify only; WooCommerce answers 400 platform_not_supported. | [optional] |
+| **number** | **string**| The order number a buyer quotes, with or without the \&quot;#\&quot; (&#x60;number&#x60; on an order). Shopify only; on WooCommerce the number is the order id, so read GET /v1/commerce/orders/{orderId} (this filter answers 400 platform_not_supported). | [optional] |
 
 ### Return type
 
@@ -4998,6 +5001,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\CreateCommerceMetaobject201Response**](../Model/CreateCommerceMetaobject201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateCommerceOrder()`
+
+```php
+updateCommerceOrder($order_id, $update_commerce_order_request): \Zernio\Model\GetCommerceOrder200Response
+```
+
+Update an order's shipping address
+
+Replaces the order's shipping address, for a buyer who asks to fix it before the order ships. Needs orders.update. Items and quantities change through POST /v1/commerce/orders/{orderId}/edits.  The whole address is replaced: send every line, not only the one that changes. Fulfillments already shipped keep the address they were sent to.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CommerceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$order_id = 'order_id_example'; // string | Platform-native order id.
+$update_commerce_order_request = {"accountId":"6a1f0c2b9d4e8a7f3c2b1a09","shippingAddress":{"firstName":"Ana","lastName":"Ruiz","line1":"742 Evergreen Terrace","city":"Springfield","region":"OR","postalCode":"97403","countryCode":"US"}}; // \Zernio\Model\UpdateCommerceOrderRequest
+
+try {
+    $result = $apiInstance->updateCommerceOrder($order_id, $update_commerce_order_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CommerceApi->updateCommerceOrder: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **order_id** | **string**| Platform-native order id. | |
+| **update_commerce_order_request** | [**\Zernio\Model\UpdateCommerceOrderRequest**](../Model/UpdateCommerceOrderRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\GetCommerceOrder200Response**](../Model/GetCommerceOrder200Response.md)
 
 ### Authorization
 

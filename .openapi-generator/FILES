@@ -3261,6 +3261,8 @@ docs/Model/UpdateCommerceCollectionRequest.md
 docs/Model/UpdateCommerceDiscountRequest.md
 docs/Model/UpdateCommerceMenuRequest.md
 docs/Model/UpdateCommerceMetaobjectRequest.md
+docs/Model/UpdateCommerceOrderRequest.md
+docs/Model/UpdateCommerceOrderRequestShippingAddress.md
 docs/Model/UpdateCommercePageRequest.md
 docs/Model/UpdateCommerceProductPricesRequest.md
 docs/Model/UpdateCommerceProductPricesRequestVariantsInner.md
@@ -7087,6 +7089,8 @@ lib/Model/UpdateCommerceCollectionRequest.php
 lib/Model/UpdateCommerceDiscountRequest.php
 lib/Model/UpdateCommerceMenuRequest.php
 lib/Model/UpdateCommerceMetaobjectRequest.php
+lib/Model/UpdateCommerceOrderRequest.php
+lib/Model/UpdateCommerceOrderRequestShippingAddress.php
 lib/Model/UpdateCommercePageRequest.php
 lib/Model/UpdateCommerceProductPricesRequest.php
 lib/Model/UpdateCommerceProductPricesRequestVariantsInner.php
@@ -7651,3 +7655,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/UpdateCommerceOrderRequestShippingAddressTest.php
+test/Model/UpdateCommerceOrderRequestTest.php

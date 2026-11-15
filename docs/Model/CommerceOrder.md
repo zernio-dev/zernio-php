@@ -37,7 +37,7 @@ Name | Type | Description | Notes
 **fee_lines** | [**\Zernio\Model\CommerceOrderChargeLine[]**](CommerceOrderChargeLine.md) | WooCommerce fees. Always empty on Shopify. | [optional]
 **tax_lines** | [**\Zernio\Model\CommerceTaxLine[]**](CommerceTaxLine.md) | Order tax by rate, line items and shipping together. | [optional]
 **refunds** | [**\Zernio\Model\CommerceOrderRefund[]**](CommerceOrderRefund.md) |  | [optional]
-**fulfillments** | [**\Zernio\Model\CommerceOrderFulfillmentsInner[]**](CommerceOrderFulfillmentsInner.md) |  | [optional]
+**fulfillments** | [**\Zernio\Model\CommerceOrderFulfillmentsInner[]**](CommerceOrderFulfillmentsInner.md) | One entry per tracking number. A shipment without tracking still has one entry, with the tracking fields null. Always empty on WooCommerce. | [optional]
 **platform_data** | **array<string,mixed>** | Platform-only fields. Null when the platform has none. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
