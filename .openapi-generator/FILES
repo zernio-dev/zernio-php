@@ -1072,6 +1072,7 @@ docs/Model/CreateValueRuleSetRequest.md
 docs/Model/CreateVerificationRequest.md
 docs/Model/CreateVoiceCall200Response.md
 docs/Model/CreateVoiceCallRequest.md
+docs/Model/CreateVoiceWebInboundSession200Response.md
 docs/Model/CreateVoiceWebSession200Response.md
 docs/Model/CreateWebhookSettingsRequest.md
 docs/Model/CreateWhatsAppDataset200Response.md
@@ -4902,6 +4903,7 @@ lib/Model/CreateValueRuleSetRequest.php
 lib/Model/CreateVerificationRequest.php
 lib/Model/CreateVoiceCall200Response.php
 lib/Model/CreateVoiceCallRequest.php
+lib/Model/CreateVoiceWebInboundSession200Response.php
 lib/Model/CreateVoiceWebSession200Response.php
 lib/Model/CreateWebhookSettingsRequest.php
 lib/Model/CreateWhatsAppDataset200Response.php
@@ -7661,6 +7663,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreateSmsOptOut200ResponseTest.php
-test/Model/DeleteSmsOptOut200ResponseTest.php
-test/Model/SmsOptOutRequestTest.php
+test/Model/CreateVoiceWebInboundSession200ResponseTest.php

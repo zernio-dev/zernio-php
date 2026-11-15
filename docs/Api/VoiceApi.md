@@ -9,6 +9,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**attachNumberToSipTrunk()**](VoiceApi.md#attachNumberToSipTrunk) | **POST** /v1/phone-numbers/{id}/sip-trunk | Attach a number to a SIP trunk |
 | [**createSipTrunk()**](VoiceApi.md#createSipTrunk) | **POST** /v1/phone-numbers/sip-trunks | Create a SIP trunk |
 | [**createVoiceCall()**](VoiceApi.md#createVoiceCall) | **POST** /v1/voice/calls | Place an outbound phone call |
+| [**createVoiceWebInboundSession()**](VoiceApi.md#createVoiceWebInboundSession) | **POST** /v1/voice/calls/web/inbound | Register a browser to receive calls |
 | [**createVoiceWebSession()**](VoiceApi.md#createVoiceWebSession) | **POST** /v1/voice/calls/web | Mint a browser softphone session |
 | [**deleteSipTrunk()**](VoiceApi.md#deleteSipTrunk) | **DELETE** /v1/phone-numbers/sip-trunks/{id} | Delete a SIP trunk |
 | [**detachNumberFromSipTrunk()**](VoiceApi.md#detachNumberFromSipTrunk) | **DELETE** /v1/phone-numbers/{id}/sip-trunk | Detach a number from its SIP trunk |
@@ -204,6 +205,63 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createVoiceWebInboundSession()`
+
+```php
+createVoiceWebInboundSession(): \Zernio\Model\CreateVoiceWebInboundSession200Response
+```
+
+Register a browser to receive calls
+
+Mints a login token for the `@telnyx/webrtc` SDK so a browser can receive inbound calls to numbers with `ringInBrowser` on.  The token belongs to one long-lived credential per number owner, so every registered tab (including teammates' with calls access) rings together. Tokens last about 24 hours; request a new one to re-register.  Dashboard sessions only: API keys and connector tokens get `403`. Returns `{ enabled: false }` when none of the owner's numbers ring in the browser.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\VoiceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->createVoiceWebInboundSession();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling VoiceApi->createVoiceWebInboundSession: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\Zernio\Model\CreateVoiceWebInboundSession200Response**](../Model/CreateVoiceWebInboundSession200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **enabled** | **bool** |  | [optional]
 **phone_number** | **string** |  | [optional]
 **pstn_forward_to** | **string** |  | [optional]
+**ring_in_browser** | **bool** |  | [optional]
 **recording_enabled** | **bool** |  | [optional]
 **transcription_enabled** | **bool** |  | [optional]
 **transcription_language** | **string** |  | [optional]
