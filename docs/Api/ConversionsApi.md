@@ -1307,7 +1307,7 @@ getEventsOverview($profile_id): \Zernio\Model\GetEventsOverview200Response
 
 Get today's tracking overview
 
-How a profile's conversion tracking is doing today (UTC day): events stored, how many reached the ad platforms, each forwarding rule's destination, each event source and, when the profile has a tracking site, the site's funnel. Requires the Ads add-on.
+How a profile's conversion tracking is doing today (UTC day): events stored, how many reached the ad platforms, each forwarding rule's destination, each event source and, when the profile has a tracking site, the site's funnel.  Without `profileId` it covers every profile you can access, summed across them. Requires the Ads add-on.
 
 ### Example
 
@@ -1326,7 +1326,7 @@ $apiInstance = new Zernio\Api\ConversionsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$profile_id = 'profile_id_example'; // string
+$profile_id = 'profile_id_example'; // string | The profile to read. Omit to cover every profile you can access, summed across them.
 
 try {
     $result = $apiInstance->getEventsOverview($profile_id);
@@ -1340,7 +1340,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **profile_id** | **string**|  | |
+| **profile_id** | **string**| The profile to read. Omit to cover every profile you can access, summed across them. | [optional] |
 
 ### Return type
 
@@ -1931,7 +1931,7 @@ listEvents($profile_id, $limit, $from, $to, $event_name, $source, $platform, $de
 
 List stored events
 
-Lists the conversion events stored for a profile by `POST /v1/events`, newest first. Personal data is never returned: `hasEmail`, `hasPhone` and `hasExternalId` only say whether the event carried that identifier. Events sent with `testCode` are not stored, so they never appear here.  Paginate with `cursor`: pass the `nextCursor` of the previous page until it comes back `null`.
+Lists the conversion events stored by `POST /v1/events`, newest first: for one profile, or for every profile you can access when `profileId` is omitted.  Personal data is never returned: `hasEmail`, `hasPhone` and `hasExternalId` only say whether the event carried that identifier. Events sent with `testCode` are not stored, so they never appear here.  Paginate with `cursor`: pass the `nextCursor` of the previous page until it comes back `null`.
 
 ### Example
 
@@ -1950,7 +1950,7 @@ $apiInstance = new Zernio\Api\ConversionsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$profile_id = 'profile_id_example'; // string
+$profile_id = 'profile_id_example'; // string | The profile to list. Omit to cover every profile you can access.
 $limit = 50; // int
 $from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Only events at or after this time (ISO 8601, on the event time).
 $to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Only events before this time (ISO 8601, on the event time).
@@ -1972,7 +1972,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **profile_id** | **string**|  | |
+| **profile_id** | **string**| The profile to list. Omit to cover every profile you can access. | [optional] |
 | **limit** | **int**|  | [optional] [default to 50] |
 | **from** | **\DateTime**| Only events at or after this time (ISO 8601, on the event time). | [optional] |
 | **to** | **\DateTime**| Only events before this time (ISO 8601, on the event time). | [optional] |
