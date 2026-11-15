@@ -1023,6 +1023,7 @@ docs/Model/CreateSharedBudgetRequest.md
 docs/Model/CreateSipTrunk201Response.md
 docs/Model/CreateSipTrunk201ResponseTermination.md
 docs/Model/CreateSipTrunkRequest.md
+docs/Model/CreateSmsOptOut200Response.md
 docs/Model/CreateSmsSenderId200Response.md
 docs/Model/CreateSmsSenderIdRequest.md
 docs/Model/CreateStandaloneAd200Response.md
@@ -1201,6 +1202,7 @@ docs/Model/DeleteInboxReviewReplyRequest.md
 docs/Model/DeleteOAuthApp200Response.md
 docs/Model/DeleteOrgConnection200Response.md
 docs/Model/DeleteOrgConnection200ResponseData.md
+docs/Model/DeleteSmsOptOut200Response.md
 docs/Model/DeleteSmsSenderId200Response.md
 docs/Model/DeleteTestLead200Response.md
 docs/Model/DeleteTrackingTagEvent200Response.md
@@ -3019,6 +3021,7 @@ docs/Model/ShareSmsRegistrationRequest.md
 docs/Model/SharedAdAccount.md
 docs/Model/ShipCampaignSampleRequest.md
 docs/Model/SlackPlatformData.md
+docs/Model/SmsOptOutRequest.md
 docs/Model/SmsRegistrationReviewRequest.md
 docs/Model/SmsRegistrationReviewRequestPointsInner.md
 docs/Model/SnapchatPlatformData.md
@@ -4850,6 +4853,7 @@ lib/Model/CreateSharedBudgetRequest.php
 lib/Model/CreateSipTrunk201Response.php
 lib/Model/CreateSipTrunk201ResponseTermination.php
 lib/Model/CreateSipTrunkRequest.php
+lib/Model/CreateSmsOptOut200Response.php
 lib/Model/CreateSmsSenderId200Response.php
 lib/Model/CreateSmsSenderIdRequest.php
 lib/Model/CreateStandaloneAd200Response.php
@@ -5028,6 +5032,7 @@ lib/Model/DeleteInboxReviewReplyRequest.php
 lib/Model/DeleteOAuthApp200Response.php
 lib/Model/DeleteOrgConnection200Response.php
 lib/Model/DeleteOrgConnection200ResponseData.php
+lib/Model/DeleteSmsOptOut200Response.php
 lib/Model/DeleteSmsSenderId200Response.php
 lib/Model/DeleteTestLead200Response.php
 lib/Model/DeleteTrackingTagEvent200Response.php
@@ -6847,6 +6852,7 @@ lib/Model/ShareSmsRegistrationRequest.php
 lib/Model/SharedAdAccount.php
 lib/Model/ShipCampaignSampleRequest.php
 lib/Model/SlackPlatformData.php
+lib/Model/SmsOptOutRequest.php
 lib/Model/SmsRegistrationReviewRequest.php
 lib/Model/SmsRegistrationReviewRequestPointsInner.php
 lib/Model/SnapchatPlatformData.php
@@ -7655,3 +7661,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/CreateSmsOptOut200ResponseTest.php
+test/Model/DeleteSmsOptOut200ResponseTest.php
+test/Model/SmsOptOutRequestTest.php

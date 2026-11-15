@@ -7,8 +7,10 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**appealSmsRegistration()**](SMSApi.md#appealSmsRegistration) | **POST** /v1/sms/registrations/{id}/appeal | Appeal a rejected campaign |
+| [**createSmsOptOut()**](SMSApi.md#createSmsOptOut) | **POST** /v1/sms/opt-outs | Record an SMS opt-out |
 | [**createSmsSenderId()**](SMSApi.md#createSmsSenderId) | **POST** /v1/sms/sender-ids | Create an alphanumeric sender ID |
 | [**deactivateSmsRegistration()**](SMSApi.md#deactivateSmsRegistration) | **DELETE** /v1/sms/registrations/{id} | Deactivate a brand/campaign registration |
+| [**deleteSmsOptOut()**](SMSApi.md#deleteSmsOptOut) | **DELETE** /v1/sms/opt-outs | Remove an SMS opt-out |
 | [**deleteSmsSenderId()**](SMSApi.md#deleteSmsSenderId) | **DELETE** /v1/sms/sender-ids/{id} | Delete an alphanumeric sender ID |
 | [**disableSmsOnNumber()**](SMSApi.md#disableSmsOnNumber) | **DELETE** /v1/phone-numbers/{id}/sms | Disable SMS on a number |
 | [**enableSmsOnNumber()**](SMSApi.md#enableSmsOnNumber) | **POST** /v1/phone-numbers/{id}/sms | Enable SMS on a number |
@@ -78,6 +80,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\AppealSmsRegistration200Response**](../Model/AppealSmsRegistration200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createSmsOptOut()`
+
+```php
+createSmsOptOut($sms_opt_out_request): \Zernio\Model\CreateSmsOptOut200Response
+```
+
+Record an SMS opt-out
+
+Marks a recipient as opted out on one of your SMS numbers. Use it for opt-outs you collect yourself (for example keywords like UNSUB or REVOKE, which the carrier does not recognize). Sends from that number to the recipient are then refused with `409 recipient_opted_out`.  Idempotent. If the recipient is already opted out, the call succeeds and `source` keeps the original value (`inbound_stop` when they texted STOP).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\SMSApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$sms_opt_out_request = new \Zernio\Model\SmsOptOutRequest(); // \Zernio\Model\SmsOptOutRequest
+
+try {
+    $result = $apiInstance->createSmsOptOut($sms_opt_out_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SMSApi->createSmsOptOut: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **sms_opt_out_request** | [**\Zernio\Model\SmsOptOutRequest**](../Model/SmsOptOutRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateSmsOptOut200Response**](../Model/CreateSmsOptOut200Response.md)
 
 ### Authorization
 
@@ -206,6 +268,66 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteSmsOptOut()`
+
+```php
+deleteSmsOptOut($sms_opt_out_request): \Zernio\Model\DeleteSmsOptOut200Response
+```
+
+Remove an SMS opt-out
+
+Re-subscribes a recipient you opted out with `POST /v1/sms/opt-outs`. Succeeds as a no-op when the recipient is not opted out.  An opt-out the recipient made themselves (texting STOP) cannot be removed here: the carrier keeps blocking the number until they text START, so this returns `409 recipient_opted_out`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\SMSApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$sms_opt_out_request = new \Zernio\Model\SmsOptOutRequest(); // \Zernio\Model\SmsOptOutRequest
+
+try {
+    $result = $apiInstance->deleteSmsOptOut($sms_opt_out_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SMSApi->deleteSmsOptOut: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **sms_opt_out_request** | [**\Zernio\Model\SmsOptOutRequest**](../Model/SmsOptOutRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\DeleteSmsOptOut200Response**](../Model/DeleteSmsOptOut200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -460,7 +582,7 @@ listSmsOptOuts($format, $limit): \Zernio\Model\ListSmsOptOuts200Response
 
 List SMS opt-outs
 
-The recipients who opted out of SMS (replied STOP) across your numbers, most recent first. Compliance surface: you must be able to see and export your opt-out list. Read-only: a recipient is re-subscribed only by replying START. Pass `format=csv` to download a CSV instead of JSON.
+The recipients who opted out of SMS across your numbers, most recent first: those who replied STOP and those you recorded with `POST /v1/sms/opt-outs`. `source` says which. Compliance surface: you must be able to see and export your opt-out list. Pass `format=csv` to download a CSV instead of JSON.
 
 ### Example
 
