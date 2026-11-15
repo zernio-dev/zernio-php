@@ -4239,7 +4239,7 @@ listOrgConnections($profile_id): \Zernio\Model\ListOrgConnections200Response
 
 List organization connections
 
-The Google Workspace and Microsoft 365 organization connections on a profile, newest first.
+The Google Workspace and Microsoft 365 organization connections, newest first. Pass `profileId` to list one profile; omit it to list every profile the API key can access (a profile-restricted key or team member only sees its own profiles).
 
 ### Example
 
@@ -4258,7 +4258,7 @@ $apiInstance = new Zernio\Api\ConnectApi(
     new GuzzleHttp\Client(),
     $config
 );
-$profile_id = 'profile_id_example'; // string
+$profile_id = 'profile_id_example'; // string | Limit the list to one profile. Omit to list across every accessible profile.
 
 try {
     $result = $apiInstance->listOrgConnections($profile_id);
@@ -4272,7 +4272,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **profile_id** | **string**|  | |
+| **profile_id** | **string**| Limit the list to one profile. Omit to list across every accessible profile. | [optional] |
 
 ### Return type
 
