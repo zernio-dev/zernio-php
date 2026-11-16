@@ -172,6 +172,7 @@ docs/Model/AdRuleLevel.md
 docs/Model/AdRuleLifecycle.md
 docs/Model/AdRuleObjectEvaluation.md
 docs/Model/AdRuleObjectEvaluationConditionsInner.md
+docs/Model/AdRuleObjectEvaluationReadingsInner.md
 docs/Model/AdRuleRun.md
 docs/Model/AdRuleRunEvaluation.md
 docs/Model/AdRuleRunEvaluationActionsInner.md
@@ -4031,6 +4032,7 @@ lib/Model/AdRuleLevel.php
 lib/Model/AdRuleLifecycle.php
 lib/Model/AdRuleObjectEvaluation.php
 lib/Model/AdRuleObjectEvaluationConditionsInner.php
+lib/Model/AdRuleObjectEvaluationReadingsInner.php
 lib/Model/AdRuleRun.php
 lib/Model/AdRuleRunEvaluation.php
 lib/Model/AdRuleRunEvaluationActionsInner.php
@@ -7719,3 +7721,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/AdRuleObjectEvaluationReadingsInnerTest.php
