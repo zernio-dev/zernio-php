@@ -742,6 +742,7 @@ Class | Method | HTTP request | Description
 *ConversionsApi* | [**getConversionsQuality**](docs/Api/ConversionsApi.md#getconversionsquality) | **GET** /v1/ads/conversions/quality | Get Event Match Quality
 *ConversionsApi* | [**getEvent**](docs/Api/ConversionsApi.md#getevent) | **GET** /v1/events/{eventId} | Get one stored event and its deliveries
 *ConversionsApi* | [**getEventsOverview**](docs/Api/ConversionsApi.md#geteventsoverview) | **GET** /v1/events/overview | Get today&#39;s tracking overview
+*ConversionsApi* | [**getEventsOverviewDaily**](docs/Api/ConversionsApi.md#geteventsoverviewdaily) | **GET** /v1/events/overview/daily | Get daily tracking figures
 *ConversionsApi* | [**getTrackingSite**](docs/Api/ConversionsApi.md#gettrackingsite) | **GET** /v1/tracking-sites/{siteId} | Get a tracking site
 *ConversionsApi* | [**listAdConversionAssociations**](docs/Api/ConversionsApi.md#listadconversionassociations) | **GET** /v1/ads/conversions/destinations/{destinationId}/associations | List associated campaigns
 *ConversionsApi* | [**listAdConversionDestinations**](docs/Api/ConversionsApi.md#listadconversiondestinations) | **GET** /v1/ads/conversions/destinations | List conversion destinations
@@ -752,6 +753,7 @@ Class | Method | HTTP request | Description
 *ConversionsApi* | [**listConversionDestinations**](docs/Api/ConversionsApi.md#listconversiondestinations) | **GET** /v1/accounts/{accountId}/conversion-destinations | List conversion destinations
 *ConversionsApi* | [**listCustomConversionGoals**](docs/Api/ConversionsApi.md#listcustomconversiongoals) | **GET** /v1/ads/conversions/custom-goals | List custom conversion goals
 *ConversionsApi* | [**listEventDestinations**](docs/Api/ConversionsApi.md#listeventdestinations) | **GET** /v1/events/destinations | List event destinations
+*ConversionsApi* | [**listEventNames**](docs/Api/ConversionsApi.md#listeventnames) | **GET** /v1/events/names | List stored event names
 *ConversionsApi* | [**listEvents**](docs/Api/ConversionsApi.md#listevents) | **GET** /v1/events | List stored events
 *ConversionsApi* | [**listForwardingRules**](docs/Api/ConversionsApi.md#listforwardingrules) | **GET** /v1/events/forwarding-rules | List forwarding rules
 *ConversionsApi* | [**listTrackingSites**](docs/Api/ConversionsApi.md#listtrackingsites) | **GET** /v1/tracking-sites | List tracking sites
@@ -2820,10 +2822,14 @@ Class | Method | HTTP request | Description
 - [GetEventsOverview200Response](docs/Model/GetEventsOverview200Response.md)
 - [GetEventsOverview200ResponsePlatformsInner](docs/Model/GetEventsOverview200ResponsePlatformsInner.md)
 - [GetEventsOverview200ResponseSitesInner](docs/Model/GetEventsOverview200ResponseSitesInner.md)
+- [GetEventsOverview200ResponseSitesInnerTotals](docs/Model/GetEventsOverview200ResponseSitesInnerTotals.md)
 - [GetEventsOverview200ResponseSourcesInner](docs/Model/GetEventsOverview200ResponseSourcesInner.md)
 - [GetEventsOverview200ResponseToday](docs/Model/GetEventsOverview200ResponseToday.md)
 - [GetEventsOverview200ResponseWebsite](docs/Model/GetEventsOverview200ResponseWebsite.md)
 - [GetEventsOverview200ResponseWebsiteStepsInner](docs/Model/GetEventsOverview200ResponseWebsiteStepsInner.md)
+- [GetEventsOverviewDaily200Response](docs/Model/GetEventsOverviewDaily200Response.md)
+- [GetEventsOverviewDaily200ResponseDaysInner](docs/Model/GetEventsOverviewDaily200ResponseDaysInner.md)
+- [GetEventsOverviewDaily200ResponseTotals](docs/Model/GetEventsOverviewDaily200ResponseTotals.md)
 - [GetFacebookDemographics200Response](docs/Model/GetFacebookDemographics200Response.md)
 - [GetFacebookDemographics200ResponseDemographics](docs/Model/GetFacebookDemographics200ResponseDemographics.md)
 - [GetFacebookDemographics200ResponseDemographicsCountryInner](docs/Model/GetFacebookDemographics200ResponseDemographicsCountryInner.md)
@@ -3533,6 +3539,8 @@ Class | Method | HTTP request | Description
 - [ListEmailSignatures200Response](docs/Model/ListEmailSignatures200Response.md)
 - [ListEmailThreads200Response](docs/Model/ListEmailThreads200Response.md)
 - [ListEventDestinations200Response](docs/Model/ListEventDestinations200Response.md)
+- [ListEventNames200Response](docs/Model/ListEventNames200Response.md)
+- [ListEventNames200ResponseNamesInner](docs/Model/ListEventNames200ResponseNamesInner.md)
 - [ListEvents200Response](docs/Model/ListEvents200Response.md)
 - [ListEvents200ResponseEventsInner](docs/Model/ListEvents200ResponseEventsInner.md)
 - [ListEvents200ResponseEventsInnerAllOfDeliveriesInner](docs/Model/ListEvents200ResponseEventsInnerAllOfDeliveriesInner.md)
@@ -4379,6 +4387,7 @@ Class | Method | HTTP request | Description
 - [TrackingSiteCustomHostname](docs/Model/TrackingSiteCustomHostname.md)
 - [TrackingSiteCustomHostnameDnsRecord](docs/Model/TrackingSiteCustomHostnameDnsRecord.md)
 - [TrackingSiteInstall](docs/Model/TrackingSiteInstall.md)
+- [TrackingSitePeriodTotals](docs/Model/TrackingSitePeriodTotals.md)
 - [TrackingSiteSetup](docs/Model/TrackingSiteSetup.md)
 - [TrackingTag](docs/Model/TrackingTag.md)
 - [TrackingTagDiagnostic](docs/Model/TrackingTagDiagnostic.md)
@@ -5147,6 +5156,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.619.0`
+- API version: `1.620.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

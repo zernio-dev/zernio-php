@@ -1550,10 +1550,14 @@ docs/Model/GetEvent200ResponseDeliveriesInner.md
 docs/Model/GetEventsOverview200Response.md
 docs/Model/GetEventsOverview200ResponsePlatformsInner.md
 docs/Model/GetEventsOverview200ResponseSitesInner.md
+docs/Model/GetEventsOverview200ResponseSitesInnerTotals.md
 docs/Model/GetEventsOverview200ResponseSourcesInner.md
 docs/Model/GetEventsOverview200ResponseToday.md
 docs/Model/GetEventsOverview200ResponseWebsite.md
 docs/Model/GetEventsOverview200ResponseWebsiteStepsInner.md
+docs/Model/GetEventsOverviewDaily200Response.md
+docs/Model/GetEventsOverviewDaily200ResponseDaysInner.md
+docs/Model/GetEventsOverviewDaily200ResponseTotals.md
 docs/Model/GetFacebookDemographics200Response.md
 docs/Model/GetFacebookDemographics200ResponseDemographics.md
 docs/Model/GetFacebookDemographics200ResponseDemographicsCountryInner.md
@@ -2263,6 +2267,8 @@ docs/Model/ListEmailSharedMailboxes200Response.md
 docs/Model/ListEmailSignatures200Response.md
 docs/Model/ListEmailThreads200Response.md
 docs/Model/ListEventDestinations200Response.md
+docs/Model/ListEventNames200Response.md
+docs/Model/ListEventNames200ResponseNamesInner.md
 docs/Model/ListEvents200Response.md
 docs/Model/ListEvents200ResponseEventsInner.md
 docs/Model/ListEvents200ResponseEventsInnerAllOfDeliveriesInner.md
@@ -3109,6 +3115,7 @@ docs/Model/TrackingSiteConsentMode.md
 docs/Model/TrackingSiteCustomHostname.md
 docs/Model/TrackingSiteCustomHostnameDnsRecord.md
 docs/Model/TrackingSiteInstall.md
+docs/Model/TrackingSitePeriodTotals.md
 docs/Model/TrackingSiteSetup.md
 docs/Model/TrackingTag.md
 docs/Model/TrackingTagDiagnostic.md
@@ -5397,10 +5404,14 @@ lib/Model/GetEvent200ResponseDeliveriesInner.php
 lib/Model/GetEventsOverview200Response.php
 lib/Model/GetEventsOverview200ResponsePlatformsInner.php
 lib/Model/GetEventsOverview200ResponseSitesInner.php
+lib/Model/GetEventsOverview200ResponseSitesInnerTotals.php
 lib/Model/GetEventsOverview200ResponseSourcesInner.php
 lib/Model/GetEventsOverview200ResponseToday.php
 lib/Model/GetEventsOverview200ResponseWebsite.php
 lib/Model/GetEventsOverview200ResponseWebsiteStepsInner.php
+lib/Model/GetEventsOverviewDaily200Response.php
+lib/Model/GetEventsOverviewDaily200ResponseDaysInner.php
+lib/Model/GetEventsOverviewDaily200ResponseTotals.php
 lib/Model/GetFacebookDemographics200Response.php
 lib/Model/GetFacebookDemographics200ResponseDemographics.php
 lib/Model/GetFacebookDemographics200ResponseDemographicsCountryInner.php
@@ -6110,6 +6121,8 @@ lib/Model/ListEmailSharedMailboxes200Response.php
 lib/Model/ListEmailSignatures200Response.php
 lib/Model/ListEmailThreads200Response.php
 lib/Model/ListEventDestinations200Response.php
+lib/Model/ListEventNames200Response.php
+lib/Model/ListEventNames200ResponseNamesInner.php
 lib/Model/ListEvents200Response.php
 lib/Model/ListEvents200ResponseEventsInner.php
 lib/Model/ListEvents200ResponseEventsInnerAllOfDeliveriesInner.php
@@ -6957,6 +6970,7 @@ lib/Model/TrackingSiteConsentMode.php
 lib/Model/TrackingSiteCustomHostname.php
 lib/Model/TrackingSiteCustomHostnameDnsRecord.php
 lib/Model/TrackingSiteInstall.php
+lib/Model/TrackingSitePeriodTotals.php
 lib/Model/TrackingSiteSetup.php
 lib/Model/TrackingTag.php
 lib/Model/TrackingTagDiagnostic.php
@@ -7695,3 +7709,10 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetEventsOverview200ResponseSitesInnerTotalsTest.php
+test/Model/GetEventsOverviewDaily200ResponseDaysInnerTest.php
+test/Model/GetEventsOverviewDaily200ResponseTest.php
+test/Model/GetEventsOverviewDaily200ResponseTotalsTest.php
+test/Model/ListEventNames200ResponseNamesInnerTest.php
+test/Model/ListEventNames200ResponseTest.php
+test/Model/TrackingSitePeriodTotalsTest.php

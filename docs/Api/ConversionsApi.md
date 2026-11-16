@@ -29,6 +29,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getConversionsQuality()**](ConversionsApi.md#getConversionsQuality) | **GET** /v1/ads/conversions/quality | Get Event Match Quality |
 | [**getEvent()**](ConversionsApi.md#getEvent) | **GET** /v1/events/{eventId} | Get one stored event and its deliveries |
 | [**getEventsOverview()**](ConversionsApi.md#getEventsOverview) | **GET** /v1/events/overview | Get today&#39;s tracking overview |
+| [**getEventsOverviewDaily()**](ConversionsApi.md#getEventsOverviewDaily) | **GET** /v1/events/overview/daily | Get daily tracking figures |
 | [**getTrackingSite()**](ConversionsApi.md#getTrackingSite) | **GET** /v1/tracking-sites/{siteId} | Get a tracking site |
 | [**listAdConversionAssociations()**](ConversionsApi.md#listAdConversionAssociations) | **GET** /v1/ads/conversions/destinations/{destinationId}/associations | List associated campaigns |
 | [**listAdConversionDestinations()**](ConversionsApi.md#listAdConversionDestinations) | **GET** /v1/ads/conversions/destinations | List conversion destinations |
@@ -39,6 +40,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listConversionDestinations()**](ConversionsApi.md#listConversionDestinations) | **GET** /v1/accounts/{accountId}/conversion-destinations | List conversion destinations |
 | [**listCustomConversionGoals()**](ConversionsApi.md#listCustomConversionGoals) | **GET** /v1/ads/conversions/custom-goals | List custom conversion goals |
 | [**listEventDestinations()**](ConversionsApi.md#listEventDestinations) | **GET** /v1/events/destinations | List event destinations |
+| [**listEventNames()**](ConversionsApi.md#listEventNames) | **GET** /v1/events/names | List stored event names |
 | [**listEvents()**](ConversionsApi.md#listEvents) | **GET** /v1/events | List stored events |
 | [**listForwardingRules()**](ConversionsApi.md#listForwardingRules) | **GET** /v1/events/forwarding-rules | List forwarding rules |
 | [**listTrackingSites()**](ConversionsApi.md#listTrackingSites) | **GET** /v1/tracking-sites | List tracking sites |
@@ -1486,6 +1488,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getEventsOverviewDaily()`
+
+```php
+getEventsOverviewDaily($profile_id, $period): \Zernio\Model\GetEventsOverviewDaily200Response
+```
+
+Get daily tracking figures
+
+The tracking figures of a period, day by day (UTC): events stored, events sent to the ad platforms and how many they accepted, plus the period's totals in the same shape as the overview's `today`.  An event sent to a destination counts once, on the day of its first send, by its latest outcome. Without `profileId` it covers every profile you can access. Requires the Ads add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$profile_id = 'profile_id_example'; // string | The profile to read. Omit to cover every profile you can access, summed across them.
+$period = '7d'; // string | The days to cover, each ending today (UTC): `today`, the last 7 days or the last 30 days.
+
+try {
+    $result = $apiInstance->getEventsOverviewDaily($profile_id, $period);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->getEventsOverviewDaily: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **profile_id** | **string**| The profile to read. Omit to cover every profile you can access, summed across them. | [optional] |
+| **period** | **string**| The days to cover, each ending today (UTC): &#x60;today&#x60;, the last 7 days or the last 30 days. | [optional] [default to &#39;7d&#39;] |
+
+### Return type
+
+[**\Zernio\Model\GetEventsOverviewDaily200Response**](../Model/GetEventsOverviewDaily200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getTrackingSite()`
 
 ```php
@@ -2096,6 +2160,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListEventDestinations200Response**](../Model/ListEventDestinations200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listEventNames()`
+
+```php
+listEventNames($profile_id): \Zernio\Model\ListEventNames200Response
+```
+
+List stored event names
+
+The event names stored for a profile in the last 30 days, with how many events carry each, most used first. It includes custom names, such as a site's own events, so you can filter `GET /v1/events` by `eventName`.  Without `profileId` it covers every profile you can access. Retracted events are left out. Requires the Ads add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$profile_id = 'profile_id_example'; // string | The profile to read. Omit to cover every profile you can access.
+
+try {
+    $result = $apiInstance->listEventNames($profile_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->listEventNames: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **profile_id** | **string**| The profile to read. Omit to cover every profile you can access. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListEventNames200Response**](../Model/ListEventNames200Response.md)
 
 ### Authorization
 
