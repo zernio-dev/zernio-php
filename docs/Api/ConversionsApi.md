@@ -16,10 +16,12 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**createCustomConversionGoal()**](ConversionsApi.md#createCustomConversionGoal) | **POST** /v1/ads/conversions/custom-goals | Create a custom conversion goal |
 | [**createEventDestination()**](ConversionsApi.md#createEventDestination) | **POST** /v1/events/destinations | Add an event destination |
 | [**createForwardingRule()**](ConversionsApi.md#createForwardingRule) | **POST** /v1/events/forwarding-rules | Add a forwarding rule |
+| [**createTrackingSite()**](ConversionsApi.md#createTrackingSite) | **POST** /v1/tracking-sites | Turn on server-side tracking for a website |
 | [**deleteAdConversionDestination()**](ConversionsApi.md#deleteAdConversionDestination) | **DELETE** /v1/ads/conversions/destinations/{destinationId} | Delete a conversion destination |
 | [**deleteConversionDestination()**](ConversionsApi.md#deleteConversionDestination) | **DELETE** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Delete a conversion destination |
 | [**deleteEventDestination()**](ConversionsApi.md#deleteEventDestination) | **DELETE** /v1/events/destinations/{destinationId} | Remove an event destination |
 | [**deleteForwardingRule()**](ConversionsApi.md#deleteForwardingRule) | **DELETE** /v1/events/forwarding-rules/{ruleId} | Remove a forwarding rule |
+| [**deleteTrackingSite()**](ConversionsApi.md#deleteTrackingSite) | **DELETE** /v1/tracking-sites/{siteId} | Delete a tracking site |
 | [**getAdConversionDestination()**](ConversionsApi.md#getAdConversionDestination) | **GET** /v1/ads/conversions/destinations/{destinationId} | Get a conversion destination |
 | [**getAdConversionMetrics()**](ConversionsApi.md#getAdConversionMetrics) | **GET** /v1/ads/conversions/destinations/{destinationId}/metrics | Get attribution metrics |
 | [**getConversionDestination()**](ConversionsApi.md#getConversionDestination) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Get a conversion destination |
@@ -27,6 +29,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getConversionsQuality()**](ConversionsApi.md#getConversionsQuality) | **GET** /v1/ads/conversions/quality | Get Event Match Quality |
 | [**getEvent()**](ConversionsApi.md#getEvent) | **GET** /v1/events/{eventId} | Get one stored event and its deliveries |
 | [**getEventsOverview()**](ConversionsApi.md#getEventsOverview) | **GET** /v1/events/overview | Get today&#39;s tracking overview |
+| [**getTrackingSite()**](ConversionsApi.md#getTrackingSite) | **GET** /v1/tracking-sites/{siteId} | Get a tracking site |
 | [**listAdConversionAssociations()**](ConversionsApi.md#listAdConversionAssociations) | **GET** /v1/ads/conversions/destinations/{destinationId}/associations | List associated campaigns |
 | [**listAdConversionDestinations()**](ConversionsApi.md#listAdConversionDestinations) | **GET** /v1/ads/conversions/destinations | List conversion destinations |
 | [**listAdConversionGoals()**](ConversionsApi.md#listAdConversionGoals) | **GET** /v1/ads/conversions/goals | List account conversion goals |
@@ -38,11 +41,13 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listEventDestinations()**](ConversionsApi.md#listEventDestinations) | **GET** /v1/events/destinations | List event destinations |
 | [**listEvents()**](ConversionsApi.md#listEvents) | **GET** /v1/events | List stored events |
 | [**listForwardingRules()**](ConversionsApi.md#listForwardingRules) | **GET** /v1/events/forwarding-rules | List forwarding rules |
+| [**listTrackingSites()**](ConversionsApi.md#listTrackingSites) | **GET** /v1/tracking-sites | List tracking sites |
 | [**removeAdConversionAssociations()**](ConversionsApi.md#removeAdConversionAssociations) | **DELETE** /v1/ads/conversions/destinations/{destinationId}/associations | Remove associated campaigns |
 | [**removeConversionAssociations()**](ConversionsApi.md#removeConversionAssociations) | **DELETE** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | Remove associated campaigns |
 | [**removeCustomConversionGoal()**](ConversionsApi.md#removeCustomConversionGoal) | **DELETE** /v1/ads/conversions/custom-goals/{goalId} | Remove a custom conversion goal |
 | [**restateEvent()**](ConversionsApi.md#restateEvent) | **PATCH** /v1/events/{eventId} | Change a stored event&#39;s value |
 | [**retractEvent()**](ConversionsApi.md#retractEvent) | **DELETE** /v1/events/{eventId} | Retract a stored event |
+| [**rotateTrackingSiteKey()**](ConversionsApi.md#rotateTrackingSiteKey) | **POST** /v1/tracking-sites/{siteId}/rotate-key | Rotate a tracking site&#39;s key |
 | [**sendConversions()**](ConversionsApi.md#sendConversions) | **POST** /v1/ads/conversions | Send conversion events |
 | [**sendEvents()**](ConversionsApi.md#sendEvents) | **POST** /v1/events | Send events to every destination |
 | [**updateAdConversionDestination()**](ConversionsApi.md#updateAdConversionDestination) | **PATCH** /v1/ads/conversions/destinations/{destinationId} | Update a conversion destination |
@@ -51,6 +56,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**updateConversionDestination()**](ConversionsApi.md#updateConversionDestination) | **PATCH** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Update a conversion destination |
 | [**updateCustomConversionGoal()**](ConversionsApi.md#updateCustomConversionGoal) | **PATCH** /v1/ads/conversions/custom-goals/{goalId} | Update a custom conversion goal |
 | [**updateForwardingRule()**](ConversionsApi.md#updateForwardingRule) | **PATCH** /v1/events/forwarding-rules/{ruleId} | Change a forwarding rule&#39;s API secret |
+| [**updateTrackingSite()**](ConversionsApi.md#updateTrackingSite) | **PATCH** /v1/tracking-sites/{siteId} | Update a tracking site |
 
 
 ## `addAdConversionAssociations()`
@@ -661,6 +667,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `createTrackingSite()`
+
+```php
+createTrackingSite($idempotency_key, $create_tracking_site_request): \Zernio\Model\CreateTrackingSite201Response
+```
+
+Turn on server-side tracking for a website
+
+Creates a tracking site. With `storeAccountId`, Zernio installs its tag on the connected Shopify, WordPress (WooCommerce), Wix or Webflow store. With only `url`, paste the returned `install.snippet` into the site.  The ad accounts you picked for each connection get a forwarding rule, so website conversions reach them at once. `checks` shows each step; `setup.status` turns `ready` when all have passed.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$idempotency_key = 'idempotency_key_example'; // string | A unique key per site you create, such as a UUID. A retry with the same key and body returns the same site.
+$create_tracking_site_request = new \Zernio\Model\CreateTrackingSiteRequest(); // \Zernio\Model\CreateTrackingSiteRequest
+
+try {
+    $result = $apiInstance->createTrackingSite($idempotency_key, $create_tracking_site_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->createTrackingSite: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **idempotency_key** | **string**| A unique key per site you create, such as a UUID. A retry with the same key and body returns the same site. | |
+| **create_tracking_site_request** | [**\Zernio\Model\CreateTrackingSiteRequest**](../Model/CreateTrackingSiteRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateTrackingSite201Response**](../Model/CreateTrackingSite201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `deleteAdConversionDestination()`
 
 ```php
@@ -893,6 +961,65 @@ try {
 ### Return type
 
 [**\Zernio\Model\DeleteSmsSenderId200Response**](../Model/DeleteSmsSenderId200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteTrackingSite()`
+
+```php
+deleteTrackingSite($site_id)
+```
+
+Delete a tracking site
+
+Stops collecting at once, removes the tag from the connected store and releases the custom subdomain. Events already stored are kept.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$site_id = 'site_id_example'; // string
+
+try {
+    $apiInstance->deleteTrackingSite($site_id);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->deleteTrackingSite: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **site_id** | **string**|  | |
+
+### Return type
+
+void (empty response body)
 
 ### Authorization
 
@@ -1345,6 +1472,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetEventsOverview200Response**](../Model/GetEventsOverview200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getTrackingSite()`
+
+```php
+getTrackingSite($site_id): \Zernio\Model\CreateTrackingSite201Response
+```
+
+Get a tracking site
+
+One site, with its snippet, its custom subdomain and the latest result of each setup check.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$site_id = 'site_id_example'; // string
+
+try {
+    $result = $apiInstance->getTrackingSite($site_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->getTrackingSite: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **site_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateTrackingSite201Response**](../Model/CreateTrackingSite201Response.md)
 
 ### Authorization
 
@@ -2059,6 +2246,70 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listTrackingSites()`
+
+```php
+listTrackingSites($profile_id, $limit, $cursor): \Zernio\Model\ListTrackingSites200Response
+```
+
+List tracking sites
+
+The websites whose visits and conversions Zernio collects, newest first. Pass `profileId` to list one profile's sites.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$profile_id = 'profile_id_example'; // string
+$limit = 50; // int
+$cursor = 'cursor_example'; // string | `pagination.nextCursor` from the previous page.
+
+try {
+    $result = $apiInstance->listTrackingSites($profile_id, $limit, $cursor);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->listTrackingSites: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **profile_id** | **string**|  | [optional] |
+| **limit** | **int**|  | [optional] [default to 50] |
+| **cursor** | **string**| &#x60;pagination.nextCursor&#x60; from the previous page. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListTrackingSites200Response**](../Model/ListTrackingSites200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `removeAdConversionAssociations()`
 
 ```php
@@ -2367,6 +2618,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\RetractEvent200Response**](../Model/RetractEvent200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `rotateTrackingSiteKey()`
+
+```php
+rotateTrackingSiteKey($site_id, $idempotency_key): \Zernio\Model\CreateTrackingSite201Response
+```
+
+Rotate a tracking site's key
+
+Issues a new `siteKey`. The old key keeps working for 7 days, so update the snippet on your site within that time.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$site_id = 'site_id_example'; // string
+$idempotency_key = 'idempotency_key_example'; // string | A unique key per rotation, such as a UUID.
+
+try {
+    $result = $apiInstance->rotateTrackingSiteKey($site_id, $idempotency_key);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->rotateTrackingSiteKey: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **site_id** | **string**|  | |
+| **idempotency_key** | **string**| A unique key per rotation, such as a UUID. | |
+
+### Return type
+
+[**\Zernio\Model\CreateTrackingSite201Response**](../Model/CreateTrackingSite201Response.md)
 
 ### Authorization
 
@@ -2861,6 +3174,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\CreateForwardingRule201Response**](../Model/CreateForwardingRule201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateTrackingSite()`
+
+```php
+updateTrackingSite($site_id, $update_tracking_site_request): \Zernio\Model\CreateTrackingSite201Response
+```
+
+Update a tracking site
+
+Changes the site's name, domains, consent mode or custom subdomain. Send at least one field.  `customHostname` sets a subdomain of the site, such as `t.brand.com`; create the CNAME in `customHostname.dnsRecord`. The snippet switches to it once its status is `active`. `null` removes it.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$site_id = 'site_id_example'; // string
+$update_tracking_site_request = new \Zernio\Model\UpdateTrackingSiteRequest(); // \Zernio\Model\UpdateTrackingSiteRequest
+
+try {
+    $result = $apiInstance->updateTrackingSite($site_id, $update_tracking_site_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->updateTrackingSite: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **site_id** | **string**|  | |
+| **update_tracking_site_request** | [**\Zernio\Model\UpdateTrackingSiteRequest**](../Model/UpdateTrackingSiteRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateTrackingSite201Response**](../Model/CreateTrackingSite201Response.md)
 
 ### Authorization
 
