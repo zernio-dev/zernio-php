@@ -995,12 +995,12 @@ This endpoint does not need any parameter.
 ## `listVoiceCalls()`
 
 ```php
-listVoiceCalls($status, $direction, $number, $before, $limit): \Zernio\Model\ListVoiceCalls200Response
+listVoiceCalls($status, $direction, $number, $before, $limit, $profile_id, $external_id): \Zernio\Model\ListVoiceCalls200Response
 ```
 
 List phone calls
 
-Your PSTN voice calls (inbound + outbound), newest first. Cursor pagination: pass the returned `nextCursor` as `before` for the next page. For a history that also includes WhatsApp calls, use `GET /v1/calls`.
+Your PSTN voice calls (inbound + outbound), newest first. Cursor pagination: pass the returned `nextCursor` as `before` for the next page. For a history that also includes WhatsApp calls, use `GET /v1/calls`.  `profileId` or `externalId` lists one profile's calls: a call belongs to the profile of the account (number) it was placed on.  A profile-scoped API key or member only ever lists its own profiles' calls, with or without a filter (since 1.630.0). Full-access keys and sessions list the whole team's.
 
 ### Example
 
@@ -1024,9 +1024,11 @@ $direction = 'direction_example'; // string
 $number = 'number_example'; // string | Exact filter: calls involving this number (typically one of your DIDs). E.164, leading + optional.
 $before = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $limit = 50; // int
+$profile_id = 'profile_id_example'; // string | Only calls of this profile. Mutually exclusive with `externalId`. 404 when the profile is not in your team or outside a scoped key's profiles.
+$external_id = 'external_id_example'; // string | Same as `profileId`, naming the profile by the `externalId` you set on it. 404 when none of your visible profiles carries it; 400 when two of them do.
 
 try {
-    $result = $apiInstance->listVoiceCalls($status, $direction, $number, $before, $limit);
+    $result = $apiInstance->listVoiceCalls($status, $direction, $number, $before, $limit, $profile_id, $external_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VoiceApi->listVoiceCalls: ', $e->getMessage(), PHP_EOL;
@@ -1042,6 +1044,8 @@ try {
 | **number** | **string**| Exact filter: calls involving this number (typically one of your DIDs). E.164, leading + optional. | [optional] |
 | **before** | **\DateTime**|  | [optional] |
 | **limit** | **int**|  | [optional] [default to 50] |
+| **profile_id** | **string**| Only calls of this profile. Mutually exclusive with &#x60;externalId&#x60;. 404 when the profile is not in your team or outside a scoped key&#39;s profiles. | [optional] |
+| **external_id** | **string**| Same as &#x60;profileId&#x60;, naming the profile by the &#x60;externalId&#x60; you set on it. 404 when none of your visible profiles carries it; 400 when two of them do. | [optional] |
 
 ### Return type
 

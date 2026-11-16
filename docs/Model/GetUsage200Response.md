@@ -15,6 +15,8 @@ Name | Type | Description | Notes
 **auto_upgrade_enabled** | **bool** | Stripe-only. Always false for accounts on usage-based billing. | [optional]
 **limits** | [**\Zernio\Model\UsageStatsLimits**](UsageStatsLimits.md) |  | [optional]
 **usage** | [**\Zernio\Model\UsageStatsUsage**](UsageStatsUsage.md) |  | [optional]
+**profiles** | [**\Zernio\Model\UsageStatsProfilesInner[]**](UsageStatsProfilesInner.md) | Profile-scoped API keys and members only, without a filter: one block per profile the caller can see, shaped like &#x60;profile&#x60;. | [optional]
+**profile** | [**\Zernio\Model\UsageStatsProfile**](UsageStatsProfile.md) |  | [optional]
 **spend** | [**\Zernio\Model\UsageStatsSpend**](UsageStatsSpend.md) |  | [optional]
 **supported** | **bool** | False for legacy Stripe accounts (no usage-based invoice to split); &#x60;days&#x60; and &#x60;totals&#x60; are then empty/zero. | [optional]
 **granularity** | **string** |  | [optional]
