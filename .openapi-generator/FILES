@@ -2634,6 +2634,10 @@ docs/Model/ProductOptionsInner.md
 docs/Model/ProductSeo.md
 docs/Model/ProductVariant.md
 docs/Model/Profile.md
+docs/Model/ProfileCallLimit.md
+docs/Model/ProfileCallLimitsResponse.md
+docs/Model/ProfileCallLimitsResponseProfile.md
+docs/Model/ProfileCallLimitsResponseTeam.md
 docs/Model/ProfileCreateResponse.md
 docs/Model/ProfileDeleteResponse.md
 docs/Model/ProfileGetResponse.md
@@ -6495,6 +6499,10 @@ lib/Model/ProductOptionsInner.php
 lib/Model/ProductSeo.php
 lib/Model/ProductVariant.php
 lib/Model/Profile.php
+lib/Model/ProfileCallLimit.php
+lib/Model/ProfileCallLimitsResponse.php
+lib/Model/ProfileCallLimitsResponseProfile.php
+lib/Model/ProfileCallLimitsResponseTeam.php
 lib/Model/ProfileCreateResponse.php
 lib/Model/ProfileDeleteResponse.php
 lib/Model/ProfileGetResponse.php
@@ -7721,3 +7729,7 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ProfileCallLimitTest.php
+test/Model/ProfileCallLimitsResponseProfileTest.php
+test/Model/ProfileCallLimitsResponseTeamTest.php
+test/Model/ProfileCallLimitsResponseTest.php

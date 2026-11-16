@@ -9,6 +9,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**createProfile()**](ProfilesApi.md#createProfile) | **POST** /v1/profiles | Create profile |
 | [**deleteProfile()**](ProfilesApi.md#deleteProfile) | **DELETE** /v1/profiles/{profileId} | Delete profile |
 | [**getProfile()**](ProfilesApi.md#getProfile) | **GET** /v1/profiles/{profileId} | Get profile |
+| [**getProfileLimits()**](ProfilesApi.md#getProfileLimits) | **GET** /v1/profiles/{profileId}/limits | Get profile call limits |
 | [**listProfiles()**](ProfilesApi.md#listProfiles) | **GET** /v1/profiles | List profiles |
 | [**updateProfile()**](ProfilesApi.md#updateProfile) | **PUT** /v1/profiles/{profileId} | Update profile |
 
@@ -195,6 +196,66 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getProfileLimits()`
+
+```php
+getProfileLimits($profile_id): \Zernio\Model\ProfileCallLimitsResponse
+```
+
+Get profile call limits
+
+Returns every voice call limit that applies to calls on this profile's numbers: the profile's own limits (set with `maxOutboundCallsPerHour`, `maxDailyCallSpendUsd` and `maxForwardedMinutesPerDay` on the profile) and the team limits they sit inside.  Each entry has the limit, what is used in its window and what remains. Spend entries are in billed USD, the unit `maxDailyCallSpendUsd` uses.  A null `limit` (and `remaining`) means the profile sets no limit there; only the team limits apply. Past any limit an outbound call returns 429 `call_limit_reached` and a forward to a phone goes to voicemail. A profile-scoped API key can read its own profile.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ProfilesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$profile_id = 'profile_id_example'; // string
+
+try {
+    $result = $apiInstance->getProfileLimits($profile_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ProfilesApi->getProfileLimits: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **profile_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\ProfileCallLimitsResponse**](../Model/ProfileCallLimitsResponse.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listProfiles()`
 
 ```php
@@ -271,7 +332,7 @@ updateProfile($profile_id, $update_profile_request): \Zernio\Model\ProfileUpdate
 
 Update profile
 
-Updates a profile's name, description, color, default timezone, externalId, default status, or zero content retention.
+Updates a profile's name, description, color, default timezone, externalId, default status, zero content retention, or call limits.
 
 ### Example
 
