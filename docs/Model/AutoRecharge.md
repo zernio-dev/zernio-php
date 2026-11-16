@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **enabled** | **bool** | Whether auto top-up is on. Charges happen only when this is true and disabledReason is null. |
-**below_cents** | **int** | Auto top-up charges the card when the balance drops below this, in cents. |
-**to_cents** | **int** | Top back up to this, in cents. The charge is toCents minus the balance, plus tax. |
+**below_cents** | **int** | The below amount, in cents: when the balance drops below this, auto top-up brings it back to toCents. |
+**to_cents** | **int** | The back-to amount, in cents. The charge is toCents minus the balance, plus tax. |
 **monthly_limit_cents** | **int** | Most auto top-up may add per calendar month (UTC), before tax; null for no limit. |
 **alert_below_cents** | **int** | Low-balance email threshold, sent once per drop below it; null for none. |
 **disabled_reason** | **string** | &#x60;payment_failed&#x60; after four failed charges in a row. Updating the card clears it. |
