@@ -3536,6 +3536,10 @@ docs/Model/WebhookPayloadAccountDisconnected.md
 docs/Model/WebhookPayloadAccountDisconnectedAccount.md
 docs/Model/WebhookPayloadAccountPermissionsChanged.md
 docs/Model/WebhookPayloadAccountPermissionsChangedAccount.md
+docs/Model/WebhookPayloadAccountPrivacyRequest.md
+docs/Model/WebhookPayloadAccountPrivacyRequestAccount.md
+docs/Model/WebhookPayloadAccountPrivacyRequestPrivacyRequest.md
+docs/Model/WebhookPayloadAccountPrivacyRequestPrivacyRequestCustomer.md
 docs/Model/WebhookPayloadAccountRateLimited.md
 docs/Model/WebhookPayloadAccountRateLimitedAccount.md
 docs/Model/WebhookPayloadAdAccountStatusChanged.md
@@ -7391,6 +7395,10 @@ lib/Model/WebhookPayloadAccountDisconnected.php
 lib/Model/WebhookPayloadAccountDisconnectedAccount.php
 lib/Model/WebhookPayloadAccountPermissionsChanged.php
 lib/Model/WebhookPayloadAccountPermissionsChangedAccount.php
+lib/Model/WebhookPayloadAccountPrivacyRequest.php
+lib/Model/WebhookPayloadAccountPrivacyRequestAccount.php
+lib/Model/WebhookPayloadAccountPrivacyRequestPrivacyRequest.php
+lib/Model/WebhookPayloadAccountPrivacyRequestPrivacyRequestCustomer.php
 lib/Model/WebhookPayloadAccountRateLimited.php
 lib/Model/WebhookPayloadAccountRateLimitedAccount.php
 lib/Model/WebhookPayloadAdAccountStatusChanged.php
@@ -7709,3 +7717,7 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/WebhookPayloadAccountPrivacyRequestAccountTest.php
+test/Model/WebhookPayloadAccountPrivacyRequestPrivacyRequestCustomerTest.php
+test/Model/WebhookPayloadAccountPrivacyRequestPrivacyRequestTest.php
+test/Model/WebhookPayloadAccountPrivacyRequestTest.php

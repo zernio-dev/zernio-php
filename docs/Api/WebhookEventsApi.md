@@ -12,6 +12,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onAccountConnected()**](WebhookEventsApi.md#onAccountConnected) | **POST** /account.connected | Account connected event |
 | [**onAccountDisconnected()**](WebhookEventsApi.md#onAccountDisconnected) | **POST** /account.disconnected | Account disconnected event |
 | [**onAccountPermissionsChanged()**](WebhookEventsApi.md#onAccountPermissionsChanged) | **POST** /account.permissions_changed | Account permissions changed event |
+| [**onAccountPrivacyRequest()**](WebhookEventsApi.md#onAccountPrivacyRequest) | **POST** /account.privacy_request | Store privacy request |
 | [**onAccountRateLimited()**](WebhookEventsApi.md#onAccountRateLimited) | **POST** /account.rate_limited | Mailbox sending cooldown started |
 | [**onAdAccountStatusChanged()**](WebhookEventsApi.md#onAdAccountStatusChanged) | **POST** /ad_account.status_changed | Ad account status changed event |
 | [**onAdCreated()**](WebhookEventsApi.md#onAdCreated) | **POST** /ad.created | Ad created event |
@@ -503,6 +504,65 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_account_permissions_changed** | [**\Zernio\Model\WebhookPayloadAccountPermissionsChanged**](../Model/WebhookPayloadAccountPermissionsChanged.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onAccountPrivacyRequest()`
+
+```php
+onAccountPrivacyRequest($webhook_payload_account_privacy_request)
+```
+
+Store privacy request
+
+A Shopify merchant asked to export or erase customer data, or the shop's data after uninstalling the app. Shopify sends these to the installed app, which is Zernio's, so we pass them on to you.  ### What to do  `privacyRequest.type` says which request it is. Export or erase your own copy of the data. Zernio handles its own copy.  ### Who receives it  A customer request goes to every account connected to the shop when it arrives. `shop_redact` arrives 48 hours after the uninstall, when the account is already disconnected, and goes to the accounts that were connected to the shop.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_account_privacy_request = {"id":"00000000-0000-4000-8000-000000000000","event":"account.privacy_request","timestamp":"2026-01-15T10:00:00Z","account":{"accountId":"507f1f77bcf86cd799439011","profileId":"507f1f77bcf86cd799439012","platform":"shopify","username":"sample-brand.myshopify.com","displayName":"Sample Brand"},"privacyRequest":{"type":"customer_redact","shopDomain":"sample-brand.myshopify.com","shopId":"954889","customer":{"id":"191167","email":"jane@example.com","phone":"+15555550123"},"orderIds":["299938","280263"],"dataRequestId":null},"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadAccountPrivacyRequest
+
+try {
+    $apiInstance->onAccountPrivacyRequest($webhook_payload_account_privacy_request);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onAccountPrivacyRequest: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_account_privacy_request** | [**\Zernio\Model\WebhookPayloadAccountPrivacyRequest**](../Model/WebhookPayloadAccountPrivacyRequest.md)|  | |
 
 ### Return type
 
