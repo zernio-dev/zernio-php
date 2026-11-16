@@ -1541,7 +1541,7 @@ getAdsActivityLog($account_id, $ad_account_id, $since, $until, $object_id, $limi
 
 Ad account change / audit log
 
-Shows who changed what in an ad account and when, as an audit log of edits to campaigns, ad sets and ads.  ### Google  Reads the customer's `change_event` history, newest first. `adAccountId` is the numeric customer id.  Google keeps 30 days of it, so `since` defaults to 29 days ago and an older `since` returns 400. `until` defaults to today.  Each change is mapped onto the Meta row shape:  - `event_type` = resource_change_operation (CREATE, UPDATE, REMOVE) - `event_time` = change_date_time - `actor_name` = user_email - `object_type` = change_resource_type - `object_id` = the last numeric id of `object_resource_name` - `application_name` = client_type - `changed_fields` (array) - `extra_data` = a JSON string `{ old, new }` with Google's old and new resource  #### Pagination  Pass `paging.after` back as `after` for the next page; it is null when nothing older is left.  A page never splits a change batch (the changes of one request share an `event_time`). So a page can hold fewer rows than `limit` while more follow, or more when one batch is larger than `limit`.  ### Meta  Account-level audit log from Meta's `/act_X/activities`: who changed what and when (creates, edits, status flips, budget changes...). Includes Meta's translated event names and the structured before/after in `extra_data`. Rows are returned verbatim.  Meta has no server-side per-object filter on this edge, so `objectId` filters the returned page client-side. Combine it with paging to walk history for one campaign/ad set/ad.
+Shows who changed what in an ad account and when, as an audit log of edits to campaigns, ad sets and ads.  ### Google  Reads the customer's `change_event` history, newest first. `adAccountId` is the numeric customer id.  Google keeps 30 days of it, counted to the hour, so `since` defaults to 28 days ago on the account's clock, the oldest whole day always inside them, and an older `since` returns 400. `until` defaults to today.  Each change is mapped onto the Meta row shape:  - `event_type` = resource_change_operation (CREATE, UPDATE, REMOVE) - `event_time` = change_date_time - `actor_name` = user_email - `object_type` = change_resource_type - `object_id` = the last numeric id of `object_resource_name` - `application_name` = client_type - `changed_fields` (array) - `extra_data` = a JSON string `{ old, new }` with Google's old and new resource  #### Pagination  Pass `paging.after` back as `after` for the next page; it is null when nothing older is left.  A page never splits a change batch (the changes of one request share an `event_time`). So a page can hold fewer rows than `limit` while more follow, or more when one batch is larger than `limit`.  ### Meta  Account-level audit log from Meta's `/act_X/activities`: who changed what and when (creates, edits, status flips, budget changes...). Includes Meta's translated event names and the structured before/after in `extra_data`. Rows are returned verbatim.  Meta has no server-side per-object filter on this edge, so `objectId` filters the returned page client-side. Combine it with paging to walk history for one campaign/ad set/ad.
 
 ### Example
 
@@ -1562,7 +1562,7 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
 );
 $account_id = 'account_id_example'; // string | Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token.
 $ad_account_id = 'ad_account_id_example'; // string | Meta ad account id (act_<n>), or the Google customer id (digits only).
-$since = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start of range (YYYY-MM-DD). Google: at most 29 days ago, the default.
+$since = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start of range (YYYY-MM-DD). Google: at most 28 days ago, the default.
 $until = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End of range (YYYY-MM-DD).
 $object_id = 'object_id_example'; // string | Client-side filter to one object id (campaign, ad set / ad group or ad).
 $limit = 50; // int | Rows per page
@@ -1582,7 +1582,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. | |
 | **ad_account_id** | **string**| Meta ad account id (act_&lt;n&gt;), or the Google customer id (digits only). | |
-| **since** | **\DateTime**| Start of range (YYYY-MM-DD). Google: at most 29 days ago, the default. | [optional] |
+| **since** | **\DateTime**| Start of range (YYYY-MM-DD). Google: at most 28 days ago, the default. | [optional] |
 | **until** | **\DateTime**| End of range (YYYY-MM-DD). | [optional] |
 | **object_id** | **string**| Client-side filter to one object id (campaign, ad set / ad group or ad). | [optional] |
 | **limit** | **int**| Rows per page | [optional] [default to 50] |

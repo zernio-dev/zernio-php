@@ -208,7 +208,7 @@ getAdRuleHourlyWindows($account_id, $ad_account_id): \Zernio\Model\GetAdRuleHour
 
 Check whether an ad account has hourly windows
 
-Hourly windows (`last_complete_hour`, `last_3h`, `today_so_far`) read campaign totals hour by hour, which Zernio syncs only for some Meta and Google ad accounts.  On an ad account without them, an hourly condition always reads as unknown and never matches. `hourlyWindows` says which case applies.
+Hourly windows (`last_complete_hour`, `last_3h`, `today_so_far`) read campaign totals hour by hour, which Zernio syncs only for some Meta and Google ad accounts.  A rule with an hourly condition is saved only on an ad account that has them: on any other, creating or editing it returns 400. `hourlyWindows` says which case applies.
 
 ### Example
 
