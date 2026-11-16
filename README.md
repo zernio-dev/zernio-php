@@ -268,7 +268,7 @@ Class | Method | HTTP request | Description
 *AdCampaignsApi* | [**updateAdCampaign**](docs/Api/AdCampaignsApi.md#updateadcampaign) | **PUT** /v1/ads/campaigns/{campaignId} | Update a campaign
 *AdCampaignsApi* | [**updateAdCampaignStatus**](docs/Api/AdCampaignsApi.md#updateadcampaignstatus) | **PUT** /v1/ads/campaigns/{campaignId}/status | Pause or resume a campaign
 *AdCampaignsApi* | [**updateAdGroupAssets**](docs/Api/AdCampaignsApi.md#updateadgroupassets) | **PUT** /v1/ads/ad-sets/{adSetId}/assets | Update ad-group assets
-*AdCampaignsApi* | [**updateAdKeyword**](docs/Api/AdCampaignsApi.md#updateadkeyword) | **PATCH** /v1/ads/keywords/{keywordId} | Pause or enable a Search keyword
+*AdCampaignsApi* | [**updateAdKeyword**](docs/Api/AdCampaignsApi.md#updateadkeyword) | **PATCH** /v1/ads/keywords/{keywordId} | Update a Search keyword
 *AdCampaignsApi* | [**updateAdSet**](docs/Api/AdCampaignsApi.md#updateadset) | **PUT** /v1/ads/ad-sets/{adSetId} | Update an ad set
 *AdCampaignsApi* | [**updateAdSetStatus**](docs/Api/AdCampaignsApi.md#updateadsetstatus) | **PUT** /v1/ads/ad-sets/{adSetId}/status | Pause or resume a single ad set
 *AdCampaignsApi* | [**updateAdStatus**](docs/Api/AdCampaignsApi.md#updateadstatus) | **PUT** /v1/ads/{adId}/status | Pause or resume a single ad
@@ -4487,6 +4487,7 @@ Class | Method | HTTP request | Description
 - [UpdateAdSetRequestSmartTargeting](docs/Model/UpdateAdSetRequestSmartTargeting.md)
 - [UpdateAdSetStatus200Response](docs/Model/UpdateAdSetStatus200Response.md)
 - [UpdateAdStatus200Response](docs/Model/UpdateAdStatus200Response.md)
+- [UpdateAdStatusRequest](docs/Model/UpdateAdStatusRequest.md)
 - [UpdateAdTrackingTags200Response](docs/Model/UpdateAdTrackingTags200Response.md)
 - [UpdateAdTrackingTagsRequest](docs/Model/UpdateAdTrackingTagsRequest.md)
 - [UpdateAdTrackingTagsRequestCreative](docs/Model/UpdateAdTrackingTagsRequestCreative.md)

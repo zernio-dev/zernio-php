@@ -3217,6 +3217,7 @@ docs/Model/UpdateAdSetRequestRegionalRegulationIdentitiesValue.md
 docs/Model/UpdateAdSetRequestSmartTargeting.md
 docs/Model/UpdateAdSetStatus200Response.md
 docs/Model/UpdateAdStatus200Response.md
+docs/Model/UpdateAdStatusRequest.md
 docs/Model/UpdateAdTrackingTags200Response.md
 docs/Model/UpdateAdTrackingTagsRequest.md
 docs/Model/UpdateAdTrackingTagsRequestCreative.md
@@ -7063,6 +7064,7 @@ lib/Model/UpdateAdSetRequestRegionalRegulationIdentitiesValue.php
 lib/Model/UpdateAdSetRequestSmartTargeting.php
 lib/Model/UpdateAdSetStatus200Response.php
 lib/Model/UpdateAdStatus200Response.php
+lib/Model/UpdateAdStatusRequest.php
 lib/Model/UpdateAdTrackingTags200Response.php
 lib/Model/UpdateAdTrackingTagsRequest.php
 lib/Model/UpdateAdTrackingTagsRequestCreative.php
@@ -7691,17 +7693,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/AnyWebsiteTest.php
-test/Model/ConnectedStoreTest.php
-test/Model/CreateTrackingSite201ResponseTest.php
-test/Model/CreateTrackingSiteRequestTest.php
-test/Model/ListTrackingSites200ResponsePaginationTest.php
-test/Model/ListTrackingSites200ResponseTest.php
-test/Model/TrackingSiteChecksInnerTest.php
-test/Model/TrackingSiteConsentModeTest.php
-test/Model/TrackingSiteCustomHostnameDnsRecordTest.php
-test/Model/TrackingSiteCustomHostnameTest.php
-test/Model/TrackingSiteInstallTest.php
-test/Model/TrackingSiteSetupTest.php
-test/Model/TrackingSiteTest.php
-test/Model/UpdateTrackingSiteRequestTest.php

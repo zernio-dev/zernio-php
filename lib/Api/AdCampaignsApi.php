@@ -22423,7 +22423,7 @@ class AdCampaignsApi
     /**
      * Operation updateAdKeyword
      *
-     * Pause or enable a Search keyword
+     * Update a Search keyword
      *
      * @param  string $keyword_id Zernio keyword ID (&#x60;id&#x60;), or Google&#39;s native &#x60;{adSetId}~{platformCriterionId}&#x60; (the tail of &#x60;resourceName&#x60;, e.g. 1234567890~987654321). A bare criterion id is rejected because it is only unique within its ad group. (required)
      * @param  \Zernio\Model\UpdateAdKeywordRequest $update_ad_keyword_request update_ad_keyword_request (required)
@@ -22442,7 +22442,7 @@ class AdCampaignsApi
     /**
      * Operation updateAdKeywordWithHttpInfo
      *
-     * Pause or enable a Search keyword
+     * Update a Search keyword
      *
      * @param  string $keyword_id Zernio keyword ID (&#x60;id&#x60;), or Google&#39;s native &#x60;{adSetId}~{platformCriterionId}&#x60; (the tail of &#x60;resourceName&#x60;, e.g. 1234567890~987654321). A bare criterion id is rejected because it is only unique within its ad group. (required)
      * @param  \Zernio\Model\UpdateAdKeywordRequest $update_ad_keyword_request (required)
@@ -22598,7 +22598,7 @@ class AdCampaignsApi
     /**
      * Operation updateAdKeywordAsync
      *
-     * Pause or enable a Search keyword
+     * Update a Search keyword
      *
      * @param  string $keyword_id Zernio keyword ID (&#x60;id&#x60;), or Google&#39;s native &#x60;{adSetId}~{platformCriterionId}&#x60; (the tail of &#x60;resourceName&#x60;, e.g. 1234567890~987654321). A bare criterion id is rejected because it is only unique within its ad group. (required)
      * @param  \Zernio\Model\UpdateAdKeywordRequest $update_ad_keyword_request (required)
@@ -22620,7 +22620,7 @@ class AdCampaignsApi
     /**
      * Operation updateAdKeywordAsyncWithHttpInfo
      *
-     * Pause or enable a Search keyword
+     * Update a Search keyword
      *
      * @param  string $keyword_id Zernio keyword ID (&#x60;id&#x60;), or Google&#39;s native &#x60;{adSetId}~{platformCriterionId}&#x60; (the tail of &#x60;resourceName&#x60;, e.g. 1234567890~987654321). A bare criterion id is rejected because it is only unique within its ad group. (required)
      * @param  \Zernio\Model\UpdateAdKeywordRequest $update_ad_keyword_request (required)
@@ -23397,16 +23397,16 @@ class AdCampaignsApi
      * Pause or resume a single ad
      *
      * @param  string $ad_id Zernio &#x60;_id&#x60; (hex), Meta &#x60;platformAdId&#x60; (numeric), or one of the creative&#39;s effective story/media IDs. (required)
-     * @param  \Zernio\Model\UpdateAdKeywordRequest $update_ad_keyword_request update_ad_keyword_request (required)
+     * @param  \Zernio\Model\UpdateAdStatusRequest $update_ad_status_request update_ad_status_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdStatus'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\UpdateAdStatus200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
      */
-    public function updateAdStatus($ad_id, $update_ad_keyword_request, string $contentType = self::contentTypes['updateAdStatus'][0])
+    public function updateAdStatus($ad_id, $update_ad_status_request, string $contentType = self::contentTypes['updateAdStatus'][0])
     {
-        list($response) = $this->updateAdStatusWithHttpInfo($ad_id, $update_ad_keyword_request, $contentType);
+        list($response) = $this->updateAdStatusWithHttpInfo($ad_id, $update_ad_status_request, $contentType);
         return $response;
     }
 
@@ -23416,16 +23416,16 @@ class AdCampaignsApi
      * Pause or resume a single ad
      *
      * @param  string $ad_id Zernio &#x60;_id&#x60; (hex), Meta &#x60;platformAdId&#x60; (numeric), or one of the creative&#39;s effective story/media IDs. (required)
-     * @param  \Zernio\Model\UpdateAdKeywordRequest $update_ad_keyword_request (required)
+     * @param  \Zernio\Model\UpdateAdStatusRequest $update_ad_status_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdStatus'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\UpdateAdStatus200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateAdStatusWithHttpInfo($ad_id, $update_ad_keyword_request, string $contentType = self::contentTypes['updateAdStatus'][0])
+    public function updateAdStatusWithHttpInfo($ad_id, $update_ad_status_request, string $contentType = self::contentTypes['updateAdStatus'][0])
     {
-        $request = $this->updateAdStatusRequest($ad_id, $update_ad_keyword_request, $contentType);
+        $request = $this->updateAdStatusRequest($ad_id, $update_ad_status_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -23530,15 +23530,15 @@ class AdCampaignsApi
      * Pause or resume a single ad
      *
      * @param  string $ad_id Zernio &#x60;_id&#x60; (hex), Meta &#x60;platformAdId&#x60; (numeric), or one of the creative&#39;s effective story/media IDs. (required)
-     * @param  \Zernio\Model\UpdateAdKeywordRequest $update_ad_keyword_request (required)
+     * @param  \Zernio\Model\UpdateAdStatusRequest $update_ad_status_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAdStatusAsync($ad_id, $update_ad_keyword_request, string $contentType = self::contentTypes['updateAdStatus'][0])
+    public function updateAdStatusAsync($ad_id, $update_ad_status_request, string $contentType = self::contentTypes['updateAdStatus'][0])
     {
-        return $this->updateAdStatusAsyncWithHttpInfo($ad_id, $update_ad_keyword_request, $contentType)
+        return $this->updateAdStatusAsyncWithHttpInfo($ad_id, $update_ad_status_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -23552,16 +23552,16 @@ class AdCampaignsApi
      * Pause or resume a single ad
      *
      * @param  string $ad_id Zernio &#x60;_id&#x60; (hex), Meta &#x60;platformAdId&#x60; (numeric), or one of the creative&#39;s effective story/media IDs. (required)
-     * @param  \Zernio\Model\UpdateAdKeywordRequest $update_ad_keyword_request (required)
+     * @param  \Zernio\Model\UpdateAdStatusRequest $update_ad_status_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAdStatusAsyncWithHttpInfo($ad_id, $update_ad_keyword_request, string $contentType = self::contentTypes['updateAdStatus'][0])
+    public function updateAdStatusAsyncWithHttpInfo($ad_id, $update_ad_status_request, string $contentType = self::contentTypes['updateAdStatus'][0])
     {
         $returnType = '\Zernio\Model\UpdateAdStatus200Response';
-        $request = $this->updateAdStatusRequest($ad_id, $update_ad_keyword_request, $contentType);
+        $request = $this->updateAdStatusRequest($ad_id, $update_ad_status_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -23603,13 +23603,13 @@ class AdCampaignsApi
      * Create request for operation 'updateAdStatus'
      *
      * @param  string $ad_id Zernio &#x60;_id&#x60; (hex), Meta &#x60;platformAdId&#x60; (numeric), or one of the creative&#39;s effective story/media IDs. (required)
-     * @param  \Zernio\Model\UpdateAdKeywordRequest $update_ad_keyword_request (required)
+     * @param  \Zernio\Model\UpdateAdStatusRequest $update_ad_status_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateAdStatusRequest($ad_id, $update_ad_keyword_request, string $contentType = self::contentTypes['updateAdStatus'][0])
+    public function updateAdStatusRequest($ad_id, $update_ad_status_request, string $contentType = self::contentTypes['updateAdStatus'][0])
     {
 
         // verify the required parameter 'ad_id' is set
@@ -23619,10 +23619,10 @@ class AdCampaignsApi
             );
         }
 
-        // verify the required parameter 'update_ad_keyword_request' is set
-        if ($update_ad_keyword_request === null || (is_array($update_ad_keyword_request) && count($update_ad_keyword_request) === 0)) {
+        // verify the required parameter 'update_ad_status_request' is set
+        if ($update_ad_status_request === null || (is_array($update_ad_status_request) && count($update_ad_status_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $update_ad_keyword_request when calling updateAdStatus'
+                'Missing the required parameter $update_ad_status_request when calling updateAdStatus'
             );
         }
 
@@ -23653,12 +23653,12 @@ class AdCampaignsApi
         );
 
         // for model (json/xml)
-        if (isset($update_ad_keyword_request)) {
+        if (isset($update_ad_status_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_ad_keyword_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_ad_status_request));
             } else {
-                $httpBody = $update_ad_keyword_request;
+                $httpBody = $update_ad_status_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

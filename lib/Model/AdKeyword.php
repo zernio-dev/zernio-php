@@ -75,6 +75,7 @@ class AdKeyword implements ModelInterface, ArrayAccess, \JsonSerializable
         'match_type' => 'string',
         'status' => 'string',
         'negative' => 'bool',
+        'cpc_bid' => 'float',
         'quality_score' => 'int',
         'quality' => '\Zernio\Model\AdKeywordQuality',
         'synced_at' => '\DateTime',
@@ -106,6 +107,7 @@ class AdKeyword implements ModelInterface, ArrayAccess, \JsonSerializable
         'match_type' => null,
         'status' => null,
         'negative' => null,
+        'cpc_bid' => null,
         'quality_score' => null,
         'quality' => null,
         'synced_at' => 'date-time',
@@ -135,6 +137,7 @@ class AdKeyword implements ModelInterface, ArrayAccess, \JsonSerializable
         'match_type' => false,
         'status' => false,
         'negative' => false,
+        'cpc_bid' => true,
         'quality_score' => true,
         'quality' => false,
         'synced_at' => true,
@@ -244,6 +247,7 @@ class AdKeyword implements ModelInterface, ArrayAccess, \JsonSerializable
         'match_type' => 'matchType',
         'status' => 'status',
         'negative' => 'negative',
+        'cpc_bid' => 'cpcBid',
         'quality_score' => 'qualityScore',
         'quality' => 'quality',
         'synced_at' => 'syncedAt',
@@ -273,6 +277,7 @@ class AdKeyword implements ModelInterface, ArrayAccess, \JsonSerializable
         'match_type' => 'setMatchType',
         'status' => 'setStatus',
         'negative' => 'setNegative',
+        'cpc_bid' => 'setCpcBid',
         'quality_score' => 'setQualityScore',
         'quality' => 'setQuality',
         'synced_at' => 'setSyncedAt',
@@ -302,6 +307,7 @@ class AdKeyword implements ModelInterface, ArrayAccess, \JsonSerializable
         'match_type' => 'getMatchType',
         'status' => 'getStatus',
         'negative' => 'getNegative',
+        'cpc_bid' => 'getCpcBid',
         'quality_score' => 'getQualityScore',
         'quality' => 'getQuality',
         'synced_at' => 'getSyncedAt',
@@ -429,6 +435,7 @@ class AdKeyword implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('match_type', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('negative', $data ?? [], null);
+        $this->setIfExists('cpc_bid', $data ?? [], null);
         $this->setIfExists('quality_score', $data ?? [], null);
         $this->setIfExists('quality', $data ?? [], null);
         $this->setIfExists('synced_at', $data ?? [], null);
@@ -1017,6 +1024,40 @@ class AdKeyword implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable negative cannot be null');
         }
         $this->container['negative'] = $negative;
+
+        return $this;
+    }
+
+    /**
+     * Gets cpc_bid
+     *
+     * @return float|null
+     */
+    public function getCpcBid()
+    {
+        return $this->container['cpc_bid'];
+    }
+
+    /**
+     * Sets cpc_bid
+     *
+     * @param float|null $cpc_bid Max CPC bid set on this keyword, in the ad account currency. Null when the keyword uses its ad group bid. Takes effect only under Manual CPC bidding.
+     *
+     * @return self
+     */
+    public function setCpcBid($cpc_bid)
+    {
+        if (is_null($cpc_bid)) {
+            array_push($this->openAPINullablesSetToNull, 'cpc_bid');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cpc_bid', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['cpc_bid'] = $cpc_bid;
 
         return $this;
     }

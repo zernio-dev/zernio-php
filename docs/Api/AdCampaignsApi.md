@@ -66,7 +66,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**updateAdCampaign()**](AdCampaignsApi.md#updateAdCampaign) | **PUT** /v1/ads/campaigns/{campaignId} | Update a campaign |
 | [**updateAdCampaignStatus()**](AdCampaignsApi.md#updateAdCampaignStatus) | **PUT** /v1/ads/campaigns/{campaignId}/status | Pause or resume a campaign |
 | [**updateAdGroupAssets()**](AdCampaignsApi.md#updateAdGroupAssets) | **PUT** /v1/ads/ad-sets/{adSetId}/assets | Update ad-group assets |
-| [**updateAdKeyword()**](AdCampaignsApi.md#updateAdKeyword) | **PATCH** /v1/ads/keywords/{keywordId} | Pause or enable a Search keyword |
+| [**updateAdKeyword()**](AdCampaignsApi.md#updateAdKeyword) | **PATCH** /v1/ads/keywords/{keywordId} | Update a Search keyword |
 | [**updateAdSet()**](AdCampaignsApi.md#updateAdSet) | **PUT** /v1/ads/ad-sets/{adSetId} | Update an ad set |
 | [**updateAdSetStatus()**](AdCampaignsApi.md#updateAdSetStatus) | **PUT** /v1/ads/ad-sets/{adSetId}/status | Pause or resume a single ad set |
 | [**updateAdStatus()**](AdCampaignsApi.md#updateAdStatus) | **PUT** /v1/ads/{adId}/status | Pause or resume a single ad |
@@ -4006,9 +4006,9 @@ try {
 updateAdKeyword($keyword_id, $update_ad_keyword_request): \Zernio\Model\UpdateAdKeyword200Response
 ```
 
-Pause or enable a Search keyword
+Update a Search keyword
 
-Pauses or re-enables a single Google Search keyword.  Changes `ad_group_criterion.status` for one keyword criterion (M.140). Negative keywords have no status on Google and cannot be paused or enabled.
+Pauses, re-enables or sets the bid of a single Google Search keyword. Send `status`, `cpcBid` or both.  Changes `ad_group_criterion.status` (M.140) and `ad_group_criterion.cpc_bid_micros` for one keyword criterion.  `cpcBid` is in the ad account currency and takes effect only under Manual CPC bidding. A keyword with no bid of its own reads back `cpcBid: null` and uses its ad group bid.  Negative keywords have no status or bid on Google and cannot be paused, enabled or given a bid.
 
 ### Example
 
@@ -4189,7 +4189,7 @@ try {
 ## `updateAdStatus()`
 
 ```php
-updateAdStatus($ad_id, $update_ad_keyword_request): \Zernio\Model\UpdateAdStatus200Response
+updateAdStatus($ad_id, $update_ad_status_request): \Zernio\Model\UpdateAdStatus200Response
 ```
 
 Pause or resume a single ad
@@ -4214,10 +4214,10 @@ $apiInstance = new Zernio\Api\AdCampaignsApi(
     $config
 );
 $ad_id = 'ad_id_example'; // string | Zernio `_id` (hex), Meta `platformAdId` (numeric), or one of the creative's effective story/media IDs.
-$update_ad_keyword_request = new \Zernio\Model\UpdateAdKeywordRequest(); // \Zernio\Model\UpdateAdKeywordRequest
+$update_ad_status_request = new \Zernio\Model\UpdateAdStatusRequest(); // \Zernio\Model\UpdateAdStatusRequest
 
 try {
-    $result = $apiInstance->updateAdStatus($ad_id, $update_ad_keyword_request);
+    $result = $apiInstance->updateAdStatus($ad_id, $update_ad_status_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdCampaignsApi->updateAdStatus: ', $e->getMessage(), PHP_EOL;
@@ -4229,7 +4229,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_id** | **string**| Zernio &#x60;_id&#x60; (hex), Meta &#x60;platformAdId&#x60; (numeric), or one of the creative&#39;s effective story/media IDs. | |
-| **update_ad_keyword_request** | [**\Zernio\Model\UpdateAdKeywordRequest**](../Model/UpdateAdKeywordRequest.md)|  | |
+| **update_ad_status_request** | [**\Zernio\Model\UpdateAdStatusRequest**](../Model/UpdateAdStatusRequest.md)|  | |
 
 ### Return type
 

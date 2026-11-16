@@ -58,7 +58,8 @@ class UpdateAdKeywordRequest implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => 'string'
+        'status' => 'string',
+        'cpc_bid' => 'float'
     ];
 
     /**
@@ -69,7 +70,8 @@ class UpdateAdKeywordRequest implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'status' => null
+        'status' => null,
+        'cpc_bid' => null
     ];
 
     /**
@@ -78,7 +80,8 @@ class UpdateAdKeywordRequest implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'status' => false
+        'status' => false,
+        'cpc_bid' => false
     ];
 
     /**
@@ -167,7 +170,8 @@ class UpdateAdKeywordRequest implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status'
+        'status' => 'status',
+        'cpc_bid' => 'cpcBid'
     ];
 
     /**
@@ -176,7 +180,8 @@ class UpdateAdKeywordRequest implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus'
+        'status' => 'setStatus',
+        'cpc_bid' => 'setCpcBid'
     ];
 
     /**
@@ -185,7 +190,8 @@ class UpdateAdKeywordRequest implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus'
+        'status' => 'getStatus',
+        'cpc_bid' => 'getCpcBid'
     ];
 
     /**
@@ -261,6 +267,7 @@ class UpdateAdKeywordRequest implements ModelInterface, ArrayAccess, \JsonSerial
     public function __construct(?array $data = null)
     {
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('cpc_bid', $data ?? [], null);
     }
 
     /**
@@ -290,9 +297,6 @@ class UpdateAdKeywordRequest implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $invalidProperties = [];
 
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
-        }
         $allowedValues = $this->getStatusAllowableValues();
         if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -320,7 +324,7 @@ class UpdateAdKeywordRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets status
      *
-     * @return string
+     * @return string|null
      */
     public function getStatus()
     {
@@ -330,7 +334,7 @@ class UpdateAdKeywordRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets status
      *
-     * @param string $status status
+     * @param string|null $status status
      *
      * @return self
      */
@@ -350,6 +354,33 @@ class UpdateAdKeywordRequest implements ModelInterface, ArrayAccess, \JsonSerial
             );
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets cpc_bid
+     *
+     * @return float|null
+     */
+    public function getCpcBid()
+    {
+        return $this->container['cpc_bid'];
+    }
+
+    /**
+     * Sets cpc_bid
+     *
+     * @param float|null $cpc_bid Max CPC bid for this keyword, in the ad account currency. Takes effect only under Manual CPC bidding.
+     *
+     * @return self
+     */
+    public function setCpcBid($cpc_bid)
+    {
+        if (is_null($cpc_bid)) {
+            throw new \InvalidArgumentException('non-nullable cpc_bid cannot be null');
+        }
+        $this->container['cpc_bid'] = $cpc_bid;
 
         return $this;
     }
