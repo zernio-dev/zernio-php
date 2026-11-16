@@ -7737,8 +7737,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/UsageProfileRefTest.php
-test/Model/UsageStatsProfileAllOfUsageTest.php
-test/Model/UsageStatsProfileTest.php
-test/Model/UsageStatsProfilesInnerAllOfUsageTest.php
-test/Model/UsageStatsProfilesInnerTest.php
