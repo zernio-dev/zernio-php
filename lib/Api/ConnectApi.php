@@ -20269,17 +20269,18 @@ class ConnectApi
      *
      * List LinkedIn orgs
      *
-     * @param  string $temp_token The temporary LinkedIn access token from the OAuth redirect (required)
      * @param  string $org_ids Comma-separated list of organization IDs to fetch details for (max 100) (required)
+     * @param  string|null $temp_token The temporary LinkedIn access token from the OAuth redirect. Required unless sent in the X-Temp-Token header. (optional)
+     * @param  string|null $x_temp_token The OAuth user token, in place of the tempToken query parameter. Prefer it: a query string is written to request logs along the way. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLinkedInOrganizations'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\ListLinkedInOrganizations200Response|\Zernio\Model\GetYouTubeDailyViews400Response
      */
-    public function listLinkedInOrganizations($temp_token, $org_ids, string $contentType = self::contentTypes['listLinkedInOrganizations'][0])
+    public function listLinkedInOrganizations($org_ids, $temp_token = null, $x_temp_token = null, string $contentType = self::contentTypes['listLinkedInOrganizations'][0])
     {
-        list($response) = $this->listLinkedInOrganizationsWithHttpInfo($temp_token, $org_ids, $contentType);
+        list($response) = $this->listLinkedInOrganizationsWithHttpInfo($org_ids, $temp_token, $x_temp_token, $contentType);
         return $response;
     }
 
@@ -20288,17 +20289,18 @@ class ConnectApi
      *
      * List LinkedIn orgs
      *
-     * @param  string $temp_token The temporary LinkedIn access token from the OAuth redirect (required)
      * @param  string $org_ids Comma-separated list of organization IDs to fetch details for (max 100) (required)
+     * @param  string|null $temp_token The temporary LinkedIn access token from the OAuth redirect. Required unless sent in the X-Temp-Token header. (optional)
+     * @param  string|null $x_temp_token The OAuth user token, in place of the tempToken query parameter. Prefer it: a query string is written to request logs along the way. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLinkedInOrganizations'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\ListLinkedInOrganizations200Response|\Zernio\Model\GetYouTubeDailyViews400Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listLinkedInOrganizationsWithHttpInfo($temp_token, $org_ids, string $contentType = self::contentTypes['listLinkedInOrganizations'][0])
+    public function listLinkedInOrganizationsWithHttpInfo($org_ids, $temp_token = null, $x_temp_token = null, string $contentType = self::contentTypes['listLinkedInOrganizations'][0])
     {
-        $request = $this->listLinkedInOrganizationsRequest($temp_token, $org_ids, $contentType);
+        $request = $this->listLinkedInOrganizationsRequest($org_ids, $temp_token, $x_temp_token, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -20388,16 +20390,17 @@ class ConnectApi
      *
      * List LinkedIn orgs
      *
-     * @param  string $temp_token The temporary LinkedIn access token from the OAuth redirect (required)
      * @param  string $org_ids Comma-separated list of organization IDs to fetch details for (max 100) (required)
+     * @param  string|null $temp_token The temporary LinkedIn access token from the OAuth redirect. Required unless sent in the X-Temp-Token header. (optional)
+     * @param  string|null $x_temp_token The OAuth user token, in place of the tempToken query parameter. Prefer it: a query string is written to request logs along the way. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLinkedInOrganizations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listLinkedInOrganizationsAsync($temp_token, $org_ids, string $contentType = self::contentTypes['listLinkedInOrganizations'][0])
+    public function listLinkedInOrganizationsAsync($org_ids, $temp_token = null, $x_temp_token = null, string $contentType = self::contentTypes['listLinkedInOrganizations'][0])
     {
-        return $this->listLinkedInOrganizationsAsyncWithHttpInfo($temp_token, $org_ids, $contentType)
+        return $this->listLinkedInOrganizationsAsyncWithHttpInfo($org_ids, $temp_token, $x_temp_token, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -20410,17 +20413,18 @@ class ConnectApi
      *
      * List LinkedIn orgs
      *
-     * @param  string $temp_token The temporary LinkedIn access token from the OAuth redirect (required)
      * @param  string $org_ids Comma-separated list of organization IDs to fetch details for (max 100) (required)
+     * @param  string|null $temp_token The temporary LinkedIn access token from the OAuth redirect. Required unless sent in the X-Temp-Token header. (optional)
+     * @param  string|null $x_temp_token The OAuth user token, in place of the tempToken query parameter. Prefer it: a query string is written to request logs along the way. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLinkedInOrganizations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listLinkedInOrganizationsAsyncWithHttpInfo($temp_token, $org_ids, string $contentType = self::contentTypes['listLinkedInOrganizations'][0])
+    public function listLinkedInOrganizationsAsyncWithHttpInfo($org_ids, $temp_token = null, $x_temp_token = null, string $contentType = self::contentTypes['listLinkedInOrganizations'][0])
     {
         $returnType = '\Zernio\Model\ListLinkedInOrganizations200Response';
-        $request = $this->listLinkedInOrganizationsRequest($temp_token, $org_ids, $contentType);
+        $request = $this->listLinkedInOrganizationsRequest($org_ids, $temp_token, $x_temp_token, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -20461,22 +20465,16 @@ class ConnectApi
     /**
      * Create request for operation 'listLinkedInOrganizations'
      *
-     * @param  string $temp_token The temporary LinkedIn access token from the OAuth redirect (required)
      * @param  string $org_ids Comma-separated list of organization IDs to fetch details for (max 100) (required)
+     * @param  string|null $temp_token The temporary LinkedIn access token from the OAuth redirect. Required unless sent in the X-Temp-Token header. (optional)
+     * @param  string|null $x_temp_token The OAuth user token, in place of the tempToken query parameter. Prefer it: a query string is written to request logs along the way. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLinkedInOrganizations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listLinkedInOrganizationsRequest($temp_token, $org_ids, string $contentType = self::contentTypes['listLinkedInOrganizations'][0])
+    public function listLinkedInOrganizationsRequest($org_ids, $temp_token = null, $x_temp_token = null, string $contentType = self::contentTypes['listLinkedInOrganizations'][0])
     {
-
-        // verify the required parameter 'temp_token' is set
-        if ($temp_token === null || (is_array($temp_token) && count($temp_token) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $temp_token when calling listLinkedInOrganizations'
-            );
-        }
 
         // verify the required parameter 'org_ids' is set
         if ($org_ids === null || (is_array($org_ids) && count($org_ids) === 0)) {
@@ -20484,6 +20482,8 @@ class ConnectApi
                 'Missing the required parameter $org_ids when calling listLinkedInOrganizations'
             );
         }
+
+
 
 
         $resourcePath = '/v1/connect/linkedin/organizations';
@@ -20500,7 +20500,7 @@ class ConnectApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -20512,6 +20512,10 @@ class ConnectApi
             true // required
         ) ?? []);
 
+        // header params
+        if ($x_temp_token !== null) {
+            $headerParams['X-Temp-Token'] = ObjectSerializer::toHeaderValue($x_temp_token);
+        }
 
 
 

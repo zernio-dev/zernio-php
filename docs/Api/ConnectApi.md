@@ -4048,7 +4048,7 @@ try {
 ## `listLinkedInOrganizations()`
 
 ```php
-listLinkedInOrganizations($temp_token, $org_ids): \Zernio\Model\ListLinkedInOrganizations200Response
+listLinkedInOrganizations($org_ids, $temp_token, $x_temp_token): \Zernio\Model\ListLinkedInOrganizations200Response
 ```
 
 List LinkedIn orgs
@@ -4072,11 +4072,12 @@ $apiInstance = new Zernio\Api\ConnectApi(
     new GuzzleHttp\Client(),
     $config
 );
-$temp_token = 'temp_token_example'; // string | The temporary LinkedIn access token from the OAuth redirect
 $org_ids = 12345678,87654321,11111111; // string | Comma-separated list of organization IDs to fetch details for (max 100)
+$temp_token = 'temp_token_example'; // string | The temporary LinkedIn access token from the OAuth redirect. Required unless sent in the X-Temp-Token header.
+$x_temp_token = 'x_temp_token_example'; // string | The OAuth user token, in place of the tempToken query parameter. Prefer it: a query string is written to request logs along the way.
 
 try {
-    $result = $apiInstance->listLinkedInOrganizations($temp_token, $org_ids);
+    $result = $apiInstance->listLinkedInOrganizations($org_ids, $temp_token, $x_temp_token);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConnectApi->listLinkedInOrganizations: ', $e->getMessage(), PHP_EOL;
@@ -4087,8 +4088,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **temp_token** | **string**| The temporary LinkedIn access token from the OAuth redirect | |
 | **org_ids** | **string**| Comma-separated list of organization IDs to fetch details for (max 100) | |
+| **temp_token** | **string**| The temporary LinkedIn access token from the OAuth redirect. Required unless sent in the X-Temp-Token header. | [optional] |
+| **x_temp_token** | **string**| The OAuth user token, in place of the tempToken query parameter. Prefer it: a query string is written to request logs along the way. | [optional] |
 
 ### Return type
 
