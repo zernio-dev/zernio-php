@@ -14,6 +14,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getFollowerStats()**](AccountsApi.md#getFollowerStats) | **GET** /v1/accounts/follower-stats | Get follower stats |
 | [**getHubSpotSettings()**](AccountsApi.md#getHubSpotSettings) | **GET** /v1/accounts/{accountId}/hubspot-settings | Get HubSpot account settings |
 | [**getInstagramFollowStatus()**](AccountsApi.md#getInstagramFollowStatus) | **GET** /v1/accounts/{accountId}/follow-status/{userId} | Check whether an Instagram user follows the account |
+| [**getSalesforceSettings()**](AccountsApi.md#getSalesforceSettings) | **GET** /v1/accounts/{accountId}/salesforce-settings | Get Salesforce account settings |
 | [**getSlackSettings()**](AccountsApi.md#getSlackSettings) | **GET** /v1/accounts/{accountId}/slack-settings | Get Slack account settings |
 | [**getStripeSettings()**](AccountsApi.md#getStripeSettings) | **GET** /v1/accounts/{accountId}/stripe-settings | Get Stripe account settings |
 | [**getTikTokCreatorInfo()**](AccountsApi.md#getTikTokCreatorInfo) | **GET** /v1/accounts/{accountId}/tiktok/creator-info | Get TikTok creator info |
@@ -27,6 +28,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**updateAccount()**](AccountsApi.md#updateAccount) | **PUT** /v1/accounts/{accountId} | Update account |
 | [**updateBlueskySettings()**](AccountsApi.md#updateBlueskySettings) | **PATCH** /v1/accounts/{accountId}/bluesky-settings | Update Bluesky account settings |
 | [**updateHubSpotSettings()**](AccountsApi.md#updateHubSpotSettings) | **PATCH** /v1/accounts/{accountId}/hubspot-settings | Update HubSpot account settings |
+| [**updateSalesforceSettings()**](AccountsApi.md#updateSalesforceSettings) | **PATCH** /v1/accounts/{accountId}/salesforce-settings | Update Salesforce account settings |
 | [**updateSlackSettings()**](AccountsApi.md#updateSlackSettings) | **PATCH** /v1/accounts/{accountId}/slack-settings | Update Slack account settings |
 | [**updateStripeSettings()**](AccountsApi.md#updateStripeSettings) | **PATCH** /v1/accounts/{accountId}/stripe-settings | Update Stripe account settings |
 
@@ -531,6 +533,66 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getSalesforceSettings()`
+
+```php
+getSalesforceSettings($account_id): \Zernio\Model\GetSalesforceSettings200Response
+```
+
+Get Salesforce account settings
+
+Read a connected Salesforce org and what Zernio syncs to it.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+
+try {
+    $result = $apiInstance->getSalesforceSettings($account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountsApi->getSalesforceSettings: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\GetSalesforceSettings200Response**](../Model/GetSalesforceSettings200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getSlackSettings()`
 
 ```php
@@ -806,7 +868,7 @@ $profile_id = 'profile_id_example'; // string | Filter accounts by profile ID. M
 $platform = 'platform_example'; // string | Filter accounts by platform (e.g. \"instagram\", \"twitter\").
 $status = 'status_example'; // string | Filter accounts by connection status. `connected` returns healthy accounts; `disconnected` returns accounts that need reconnection (per the same reconnection check surfaced in the dashboard). Omit to return accounts in any status. When combined with page/limit, pagination totals reflect the filtered result set.
 $search = 'search_example'; // string | Case-insensitive match on the account username, display name or platform user id. A 24-character hexadecimal value is read as an account id and matches only that exact account. Combine with page/limit to paginate the matches.
-$category = 'category_example'; // string | Only accounts of this kind. ads = ad accounts (Meta, Google, LinkedIn, Pinterest, TikTok, X, OpenAI, Reddit, Microsoft), communication = WhatsApp, Telegram, Discord, Slack, iMessage, LINE and WeChat, blogs = Shopify and WordPress, crm = HubSpot, analytics = Google Analytics, social = every other platform.
+$category = 'category_example'; // string | Only accounts of this kind. ads = ad accounts (Meta, Google, LinkedIn, Pinterest, TikTok, X, OpenAI, Reddit, Microsoft), communication = WhatsApp, Telegram, Discord, Slack, iMessage, LINE and WeChat, blogs = Shopify and WordPress, crm = HubSpot and Salesforce, analytics = Google Analytics, social = every other platform.
 $sort = 'sort_example'; // string | Sort an offset-paginated listing (page and limit) by account name, platform, profile name, status (accounts needing a reconnect first when ascending) or connection date. Ties keep the default order: platform, then newest first.
 $order = 'asc'; // string | Direction for `sort`.
 $include_over_limit = false; // bool | When true, includes accounts from over-limit profiles.
@@ -838,7 +900,7 @@ try {
 | **platform** | **string**| Filter accounts by platform (e.g. \&quot;instagram\&quot;, \&quot;twitter\&quot;). | [optional] |
 | **status** | **string**| Filter accounts by connection status. &#x60;connected&#x60; returns healthy accounts; &#x60;disconnected&#x60; returns accounts that need reconnection (per the same reconnection check surfaced in the dashboard). Omit to return accounts in any status. When combined with page/limit, pagination totals reflect the filtered result set. | [optional] |
 | **search** | **string**| Case-insensitive match on the account username, display name or platform user id. A 24-character hexadecimal value is read as an account id and matches only that exact account. Combine with page/limit to paginate the matches. | [optional] |
-| **category** | **string**| Only accounts of this kind. ads &#x3D; ad accounts (Meta, Google, LinkedIn, Pinterest, TikTok, X, OpenAI, Reddit, Microsoft), communication &#x3D; WhatsApp, Telegram, Discord, Slack, iMessage, LINE and WeChat, blogs &#x3D; Shopify and WordPress, crm &#x3D; HubSpot, analytics &#x3D; Google Analytics, social &#x3D; every other platform. | [optional] |
+| **category** | **string**| Only accounts of this kind. ads &#x3D; ad accounts (Meta, Google, LinkedIn, Pinterest, TikTok, X, OpenAI, Reddit, Microsoft), communication &#x3D; WhatsApp, Telegram, Discord, Slack, iMessage, LINE and WeChat, blogs &#x3D; Shopify and WordPress, crm &#x3D; HubSpot and Salesforce, analytics &#x3D; Google Analytics, social &#x3D; every other platform. | [optional] |
 | **sort** | **string**| Sort an offset-paginated listing (page and limit) by account name, platform, profile name, status (accounts needing a reconnect first when ascending) or connection date. Ties keep the default order: platform, then newest first. | [optional] |
 | **order** | **string**| Direction for &#x60;sort&#x60;. | [optional] [default to &#39;asc&#39;] |
 | **include_over_limit** | **bool**| When true, includes accounts from over-limit profiles. | [optional] [default to false] |
@@ -1350,6 +1412,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\UpdateHubSpotSettings200Response**](../Model/UpdateHubSpotSettings200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateSalesforceSettings()`
+
+```php
+updateSalesforceSettings($account_id, $update_salesforce_settings_request): \Zernio\Model\UpdateSalesforceSettings200Response
+```
+
+Update Salesforce account settings
+
+Turn person creation, conversation logging or delivery marks on or off for a connected Salesforce org, or choose whether new people become Leads or Contacts. Send at least one field; omitted fields keep their value. Settings survive reconnecting the same org.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+$update_salesforce_settings_request = new \Zernio\Model\UpdateSalesforceSettingsRequest(); // \Zernio\Model\UpdateSalesforceSettingsRequest
+
+try {
+    $result = $apiInstance->updateSalesforceSettings($account_id, $update_salesforce_settings_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountsApi->updateSalesforceSettings: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+| **update_salesforce_settings_request** | [**\Zernio\Model\UpdateSalesforceSettingsRequest**](../Model/UpdateSalesforceSettingsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\UpdateSalesforceSettings200Response**](../Model/UpdateSalesforceSettings200Response.md)
 
 ### Authorization
 

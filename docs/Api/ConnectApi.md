@@ -50,6 +50,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getPinterestBoards()**](ConnectApi.md#getPinterestBoards) | **GET** /v1/accounts/{accountId}/pinterest-boards | List Pinterest boards |
 | [**getRedditFlairs()**](ConnectApi.md#getRedditFlairs) | **GET** /v1/accounts/{accountId}/reddit-flairs | List subreddit flairs |
 | [**getRedditSubreddits()**](ConnectApi.md#getRedditSubreddits) | **GET** /v1/accounts/{accountId}/reddit-subreddits | List Reddit subreddits |
+| [**getSalesforceConnectUrl()**](ConnectApi.md#getSalesforceConnectUrl) | **GET** /v1/connect/salesforce | Get Salesforce OAuth connect URL |
 | [**getShopifyConnectUrl()**](ConnectApi.md#getShopifyConnectUrl) | **GET** /v1/connect/shopify | Get Shopify OAuth connect URL |
 | [**getStripeConnectUrl()**](ConnectApi.md#getStripeConnectUrl) | **GET** /v1/connect/stripe | Get Stripe connect URL |
 | [**getSubredditRules()**](ConnectApi.md#getSubredditRules) | **GET** /v1/accounts/{accountId}/reddit-subreddits/{subreddit}/rules | Get subreddit rules |
@@ -2863,6 +2864,75 @@ try {
 ### Authorization
 
 [bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getSalesforceConnectUrl()`
+
+```php
+getSalesforceConnectUrl($profile_id, $environment, $redirect_url): \Zernio\Model\GetSalesforceConnectUrl200Response
+```
+
+Get Salesforce OAuth connect URL
+
+Initiates OAuth (authorization code with PKCE) for a Salesforce org. Salesforce is a connect-only CRM platform: inbox contacts are matched to Contacts and Leads, and each day of conversation is logged as a Task.  The org must have the Zernio Salesforce package installed first: it carries the app Salesforce authorizes. Production orgs install it from `https://login.salesforce.com/packaging/installPackage.apexp?p0=04tfj000000llzZAAQ`, sandboxes from the same path on `test.salesforce.com`. Without it the redirect carries `error=salesforce_package_not_installed`.  One Salesforce org can be connected per profile. Connecting a different org to a profile that already has one redirects with `error=salesforce_profile_has_org`.  ### Flow  1. Redirect the user to `authUrl`. 2. After authorization, Salesforce returns the browser to Zernio's internal callback. 3. Zernio redirects to `redirect_url` (or the dashboard when omitted).  On success the redirect carries `connected=salesforce`, `profileId`, `accountId` and `username`. On failure it carries `error`, `platform=salesforce` and `error_message`.  Reconnecting the same org and profile updates the stored connection in place and keeps its settings.  Requested scopes: `api`, `refresh_token`, `id`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: connectToken
+$config = Zernio\Configuration::getDefaultConfiguration()->setApiKey('X-Connect-Token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Zernio\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Connect-Token', 'Bearer');
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$profile_id = 'profile_id_example'; // string | Your Zernio profile ID (get from /v1/profiles).
+$environment = 'production'; // string | Sign in at login.salesforce.com (`production`, also Developer Edition orgs) or test.salesforce.com (`sandbox`).
+$redirect_url = 'redirect_url_example'; // string | Custom redirect after connection. Must be an absolute http(s) URL or custom app scheme such as `myapp://callback`; relative and unsafe URLs return 400.
+
+try {
+    $result = $apiInstance->getSalesforceConnectUrl($profile_id, $environment, $redirect_url);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->getSalesforceConnectUrl: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **profile_id** | **string**| Your Zernio profile ID (get from /v1/profiles). | |
+| **environment** | **string**| Sign in at login.salesforce.com (&#x60;production&#x60;, also Developer Edition orgs) or test.salesforce.com (&#x60;sandbox&#x60;). | [optional] [default to &#39;production&#39;] |
+| **redirect_url** | **string**| Custom redirect after connection. Must be an absolute http(s) URL or custom app scheme such as &#x60;myapp://callback&#x60;; relative and unsafe URLs return 400. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\GetSalesforceConnectUrl200Response**](../Model/GetSalesforceConnectUrl200Response.md)
+
+### Authorization
+
+[connectToken](../../README.md#connectToken), [bearerAuth](../../README.md#bearerAuth)
 
 ### HTTP request headers
 

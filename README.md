@@ -108,6 +108,7 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**getFollowerStats**](docs/Api/AccountsApi.md#getfollowerstats) | **GET** /v1/accounts/follower-stats | Get follower stats
 *AccountsApi* | [**getHubSpotSettings**](docs/Api/AccountsApi.md#gethubspotsettings) | **GET** /v1/accounts/{accountId}/hubspot-settings | Get HubSpot account settings
 *AccountsApi* | [**getInstagramFollowStatus**](docs/Api/AccountsApi.md#getinstagramfollowstatus) | **GET** /v1/accounts/{accountId}/follow-status/{userId} | Check whether an Instagram user follows the account
+*AccountsApi* | [**getSalesforceSettings**](docs/Api/AccountsApi.md#getsalesforcesettings) | **GET** /v1/accounts/{accountId}/salesforce-settings | Get Salesforce account settings
 *AccountsApi* | [**getSlackSettings**](docs/Api/AccountsApi.md#getslacksettings) | **GET** /v1/accounts/{accountId}/slack-settings | Get Slack account settings
 *AccountsApi* | [**getStripeSettings**](docs/Api/AccountsApi.md#getstripesettings) | **GET** /v1/accounts/{accountId}/stripe-settings | Get Stripe account settings
 *AccountsApi* | [**getTikTokCreatorInfo**](docs/Api/AccountsApi.md#gettiktokcreatorinfo) | **GET** /v1/accounts/{accountId}/tiktok/creator-info | Get TikTok creator info
@@ -121,6 +122,7 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**updateAccount**](docs/Api/AccountsApi.md#updateaccount) | **PUT** /v1/accounts/{accountId} | Update account
 *AccountsApi* | [**updateBlueskySettings**](docs/Api/AccountsApi.md#updateblueskysettings) | **PATCH** /v1/accounts/{accountId}/bluesky-settings | Update Bluesky account settings
 *AccountsApi* | [**updateHubSpotSettings**](docs/Api/AccountsApi.md#updatehubspotsettings) | **PATCH** /v1/accounts/{accountId}/hubspot-settings | Update HubSpot account settings
+*AccountsApi* | [**updateSalesforceSettings**](docs/Api/AccountsApi.md#updatesalesforcesettings) | **PATCH** /v1/accounts/{accountId}/salesforce-settings | Update Salesforce account settings
 *AccountsApi* | [**updateSlackSettings**](docs/Api/AccountsApi.md#updateslacksettings) | **PATCH** /v1/accounts/{accountId}/slack-settings | Update Slack account settings
 *AccountsApi* | [**updateStripeSettings**](docs/Api/AccountsApi.md#updatestripesettings) | **PATCH** /v1/accounts/{accountId}/stripe-settings | Update Stripe account settings
 *AdAccountsApi* | [**addAccountCallouts**](docs/Api/AdAccountsApi.md#addaccountcallouts) | **POST** /v1/ads/accounts/callouts | Add account callouts
@@ -658,6 +660,7 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**getPinterestBoards**](docs/Api/ConnectApi.md#getpinterestboards) | **GET** /v1/accounts/{accountId}/pinterest-boards | List Pinterest boards
 *ConnectApi* | [**getRedditFlairs**](docs/Api/ConnectApi.md#getredditflairs) | **GET** /v1/accounts/{accountId}/reddit-flairs | List subreddit flairs
 *ConnectApi* | [**getRedditSubreddits**](docs/Api/ConnectApi.md#getredditsubreddits) | **GET** /v1/accounts/{accountId}/reddit-subreddits | List Reddit subreddits
+*ConnectApi* | [**getSalesforceConnectUrl**](docs/Api/ConnectApi.md#getsalesforceconnecturl) | **GET** /v1/connect/salesforce | Get Salesforce OAuth connect URL
 *ConnectApi* | [**getShopifyConnectUrl**](docs/Api/ConnectApi.md#getshopifyconnecturl) | **GET** /v1/connect/shopify | Get Shopify OAuth connect URL
 *ConnectApi* | [**getStripeConnectUrl**](docs/Api/ConnectApi.md#getstripeconnecturl) | **GET** /v1/connect/stripe | Get Stripe connect URL
 *ConnectApi* | [**getSubredditRules**](docs/Api/ConnectApi.md#getsubredditrules) | **GET** /v1/accounts/{accountId}/reddit-subreddits/{subreddit}/rules | Get subreddit rules
@@ -3029,6 +3032,8 @@ Class | Method | HTTP request | Description
 - [GetRedditPostComments200Response](docs/Model/GetRedditPostComments200Response.md)
 - [GetRedditSubreddits200Response](docs/Model/GetRedditSubreddits200Response.md)
 - [GetRedditSubreddits200ResponseSubredditsInner](docs/Model/GetRedditSubreddits200ResponseSubredditsInner.md)
+- [GetSalesforceConnectUrl200Response](docs/Model/GetSalesforceConnectUrl200Response.md)
+- [GetSalesforceSettings200Response](docs/Model/GetSalesforceSettings200Response.md)
 - [GetSequence200Response](docs/Model/GetSequence200Response.md)
 - [GetSequence200ResponseSequence](docs/Model/GetSequence200ResponseSequence.md)
 - [GetSequence200ResponseSequenceStepsInner](docs/Model/GetSequence200ResponseSequenceStepsInner.md)
@@ -4105,6 +4110,8 @@ Class | Method | HTTP request | Description
 - [RunGoogleAnalyticsRealtimeReportRequestAllOfMinuteRangesInner](docs/Model/RunGoogleAnalyticsRealtimeReportRequestAllOfMinuteRangesInner.md)
 - [RunGoogleAnalyticsReportRequest](docs/Model/RunGoogleAnalyticsReportRequest.md)
 - [RunGoogleAnalyticsReportRequestAllOfDateRangesInner](docs/Model/RunGoogleAnalyticsReportRequestAllOfDateRangesInner.md)
+- [SalesforceSettings](docs/Model/SalesforceSettings.md)
+- [SalesforceSettingsSyncIssue](docs/Model/SalesforceSettingsSyncIssue.md)
 - [SavedTargetingAudience](docs/Model/SavedTargetingAudience.md)
 - [ScheduleBroadcast200Response](docs/Model/ScheduleBroadcast200Response.md)
 - [ScheduleBroadcast200ResponseBroadcast](docs/Model/ScheduleBroadcast200ResponseBroadcast.md)
@@ -4681,6 +4688,8 @@ Class | Method | HTTP request | Description
 - [UpdateQueueSlotRequest](docs/Model/UpdateQueueSlotRequest.md)
 - [UpdateRcsAgentRequest](docs/Model/UpdateRcsAgentRequest.md)
 - [UpdateRedditSubredditsRequest](docs/Model/UpdateRedditSubredditsRequest.md)
+- [UpdateSalesforceSettings200Response](docs/Model/UpdateSalesforceSettings200Response.md)
+- [UpdateSalesforceSettingsRequest](docs/Model/UpdateSalesforceSettingsRequest.md)
 - [UpdateSequence200Response](docs/Model/UpdateSequence200Response.md)
 - [UpdateSequence200ResponseSequence](docs/Model/UpdateSequence200ResponseSequence.md)
 - [UpdateSequenceRequest](docs/Model/UpdateSequenceRequest.md)
@@ -5181,6 +5190,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.644.0`
+- API version: `1.645.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

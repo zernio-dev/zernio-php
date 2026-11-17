@@ -1755,6 +1755,8 @@ docs/Model/GetRedditFlairs200ResponseFlairsInner.md
 docs/Model/GetRedditPostComments200Response.md
 docs/Model/GetRedditSubreddits200Response.md
 docs/Model/GetRedditSubreddits200ResponseSubredditsInner.md
+docs/Model/GetSalesforceConnectUrl200Response.md
+docs/Model/GetSalesforceSettings200Response.md
 docs/Model/GetSequence200Response.md
 docs/Model/GetSequence200ResponseSequence.md
 docs/Model/GetSequence200ResponseSequenceStepsInner.md
@@ -2831,6 +2833,8 @@ docs/Model/RunGoogleAnalyticsRealtimeReportRequest.md
 docs/Model/RunGoogleAnalyticsRealtimeReportRequestAllOfMinuteRangesInner.md
 docs/Model/RunGoogleAnalyticsReportRequest.md
 docs/Model/RunGoogleAnalyticsReportRequestAllOfDateRangesInner.md
+docs/Model/SalesforceSettings.md
+docs/Model/SalesforceSettingsSyncIssue.md
 docs/Model/SavedTargetingAudience.md
 docs/Model/ScheduleBroadcast200Response.md
 docs/Model/ScheduleBroadcast200ResponseBroadcast.md
@@ -3407,6 +3411,8 @@ docs/Model/UpdateProfileRequest.md
 docs/Model/UpdateQueueSlotRequest.md
 docs/Model/UpdateRcsAgentRequest.md
 docs/Model/UpdateRedditSubredditsRequest.md
+docs/Model/UpdateSalesforceSettings200Response.md
+docs/Model/UpdateSalesforceSettingsRequest.md
 docs/Model/UpdateSequence200Response.md
 docs/Model/UpdateSequence200ResponseSequence.md
 docs/Model/UpdateSequenceRequest.md
@@ -5632,6 +5638,8 @@ lib/Model/GetRedditFlairs200ResponseFlairsInner.php
 lib/Model/GetRedditPostComments200Response.php
 lib/Model/GetRedditSubreddits200Response.php
 lib/Model/GetRedditSubreddits200ResponseSubredditsInner.php
+lib/Model/GetSalesforceConnectUrl200Response.php
+lib/Model/GetSalesforceSettings200Response.php
 lib/Model/GetSequence200Response.php
 lib/Model/GetSequence200ResponseSequence.php
 lib/Model/GetSequence200ResponseSequenceStepsInner.php
@@ -6709,6 +6717,8 @@ lib/Model/RunGoogleAnalyticsRealtimeReportRequest.php
 lib/Model/RunGoogleAnalyticsRealtimeReportRequestAllOfMinuteRangesInner.php
 lib/Model/RunGoogleAnalyticsReportRequest.php
 lib/Model/RunGoogleAnalyticsReportRequestAllOfDateRangesInner.php
+lib/Model/SalesforceSettings.php
+lib/Model/SalesforceSettingsSyncIssue.php
 lib/Model/SavedTargetingAudience.php
 lib/Model/ScheduleBroadcast200Response.php
 lib/Model/ScheduleBroadcast200ResponseBroadcast.php
@@ -7285,6 +7295,8 @@ lib/Model/UpdateProfileRequest.php
 lib/Model/UpdateQueueSlotRequest.php
 lib/Model/UpdateRcsAgentRequest.php
 lib/Model/UpdateRedditSubredditsRequest.php
+lib/Model/UpdateSalesforceSettings200Response.php
+lib/Model/UpdateSalesforceSettingsRequest.php
 lib/Model/UpdateSequence200Response.php
 lib/Model/UpdateSequence200ResponseSequence.php
 lib/Model/UpdateSequenceRequest.php
@@ -7755,3 +7767,9 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetSalesforceConnectUrl200ResponseTest.php
+test/Model/GetSalesforceSettings200ResponseTest.php
+test/Model/SalesforceSettingsSyncIssueTest.php
+test/Model/SalesforceSettingsTest.php
+test/Model/UpdateSalesforceSettings200ResponseTest.php
+test/Model/UpdateSalesforceSettingsRequestTest.php
