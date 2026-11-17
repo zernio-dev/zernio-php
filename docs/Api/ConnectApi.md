@@ -347,7 +347,7 @@ try {
 ## `completeWhatsAppPhoneSelection()`
 
 ```php
-completeWhatsAppPhoneSelection($complete_whats_app_phone_selection_request, $x_connect_token): \Zernio\Model\CompleteWhatsAppPhoneSelection200Response
+completeWhatsAppPhoneSelection($complete_whats_app_phone_selection_request, $x_connect_token, $x_temp_token): \Zernio\Model\CompleteWhatsAppPhoneSelection200Response
 ```
 
 Complete number selection
@@ -373,9 +373,10 @@ $apiInstance = new Zernio\Api\ConnectApi(
 );
 $complete_whats_app_phone_selection_request = {"profileId":"6507a1b2c3d4e5f6a7b8c9d0","phoneNumberId":"1875844705851813","wabaId":"317766992490131","tempToken":"EAABsbCS...short-lived-token"}; // \Zernio\Model\CompleteWhatsAppPhoneSelectionRequest
 $x_connect_token = 'x_connect_token_example'; // string | Alternative auth for API users' end customers
+$x_temp_token = 'x_temp_token_example'; // string | The OAuth user token, in place of the tempToken query parameter. Prefer it: a query string is written to request logs along the way.
 
 try {
-    $result = $apiInstance->completeWhatsAppPhoneSelection($complete_whats_app_phone_selection_request, $x_connect_token);
+    $result = $apiInstance->completeWhatsAppPhoneSelection($complete_whats_app_phone_selection_request, $x_connect_token, $x_temp_token);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConnectApi->completeWhatsAppPhoneSelection: ', $e->getMessage(), PHP_EOL;
@@ -388,6 +389,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **complete_whats_app_phone_selection_request** | [**\Zernio\Model\CompleteWhatsAppPhoneSelectionRequest**](../Model/CompleteWhatsAppPhoneSelectionRequest.md)|  | |
 | **x_connect_token** | **string**| Alternative auth for API users&#39; end customers | [optional] |
+| **x_temp_token** | **string**| The OAuth user token, in place of the tempToken query parameter. Prefer it: a query string is written to request logs along the way. | [optional] |
 
 ### Return type
 
@@ -4494,7 +4496,7 @@ try {
 ## `listWhatsAppPhoneNumbers()`
 
 ```php
-listWhatsAppPhoneNumbers($profile_id, $temp_token, $x_connect_token): \Zernio\Model\ListWhatsAppPhoneNumbers200Response
+listWhatsAppPhoneNumbers($profile_id, $temp_token, $x_temp_token, $connect_flow, $x_connect_token): \Zernio\Model\ListWhatsAppPhoneNumbers200Response
 ```
 
 List numbers for selection
@@ -4519,11 +4521,13 @@ $apiInstance = new Zernio\Api\ConnectApi(
     $config
 );
 $profile_id = 'profile_id_example'; // string | The Zernio profile ID from the headless redirect
-$temp_token = 'temp_token_example'; // string | The temporary access token from the headless redirect
+$temp_token = 'temp_token_example'; // string | The temporary access token from the headless redirect. Required unless sent in the X-Temp-Token header.
+$x_temp_token = 'x_temp_token_example'; // string | The OAuth user token, in place of the tempToken query parameter. Prefer it: a query string is written to request logs along the way.
+$connect_flow = 'connect_flow_example'; // string | Set by the Zernio-hosted picker, whose user token stays in an httpOnly cookie. Integrators send tempToken instead.
 $x_connect_token = 'x_connect_token_example'; // string | Alternative auth for API users' end customers (used when the bearer token is scoped to a different user)
 
 try {
-    $result = $apiInstance->listWhatsAppPhoneNumbers($profile_id, $temp_token, $x_connect_token);
+    $result = $apiInstance->listWhatsAppPhoneNumbers($profile_id, $temp_token, $x_temp_token, $connect_flow, $x_connect_token);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConnectApi->listWhatsAppPhoneNumbers: ', $e->getMessage(), PHP_EOL;
@@ -4535,7 +4539,9 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **profile_id** | **string**| The Zernio profile ID from the headless redirect | |
-| **temp_token** | **string**| The temporary access token from the headless redirect | |
+| **temp_token** | **string**| The temporary access token from the headless redirect. Required unless sent in the X-Temp-Token header. | [optional] |
+| **x_temp_token** | **string**| The OAuth user token, in place of the tempToken query parameter. Prefer it: a query string is written to request logs along the way. | [optional] |
+| **connect_flow** | **string**| Set by the Zernio-hosted picker, whose user token stays in an httpOnly cookie. Integrators send tempToken instead. | [optional] |
 | **x_connect_token** | **string**| Alternative auth for API users&#39; end customers (used when the bearer token is scoped to a different user) | [optional] |
 
 ### Return type
