@@ -16,5 +16,7 @@ Name | Type | Description | Notes
 **create_as** | **string** | What a person new to Salesforce is created as. |
 **log_delivery_status** | **bool** | Whether sent messages in the transcript are marked delivered, read or failed. |
 **sync_issue** | [**\Zernio\Model\SalesforceSettingsSyncIssue**](SalesforceSettingsSyncIssue.md) |  |
+**use_opportunities_in_results** | **bool** | Whether closed-won Opportunities count as sales (Amount, in the Opportunity&#39;s or the org&#39;s currency) on the ad campaign named by their Primary Campaign Source, in campaign results and ad rules. Lost or reopened Opportunities stop counting. |
+**report_opportunities_to_ads** | **bool** | Whether Zernio sends newly closed-won Opportunities as Purchase events (source &#x60;salesforce&#x60;) to the profile&#39;s event destinations. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
