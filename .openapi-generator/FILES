@@ -1970,6 +1970,7 @@ docs/Model/HideAdCommentRequest.md
 docs/Model/HideInboxComment200Response.md
 docs/Model/HideInboxCommentRequest.md
 docs/Model/HubSpotSettings.md
+docs/Model/HubSpotSettingsSyncIssue.md
 docs/Model/Ids.md
 docs/Model/ImapConnectResult.md
 docs/Model/ImapConnectResultAccount.md
@@ -5853,6 +5854,7 @@ lib/Model/HideAdCommentRequest.php
 lib/Model/HideInboxComment200Response.php
 lib/Model/HideInboxCommentRequest.php
 lib/Model/HubSpotSettings.php
+lib/Model/HubSpotSettingsSyncIssue.php
 lib/Model/Ids.php
 lib/Model/ImapConnectResult.php
 lib/Model/ImapConnectResultAccount.php
@@ -7767,9 +7769,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetSalesforceConnectUrl200ResponseTest.php
-test/Model/GetSalesforceSettings200ResponseTest.php
-test/Model/SalesforceSettingsSyncIssueTest.php
-test/Model/SalesforceSettingsTest.php
-test/Model/UpdateSalesforceSettings200ResponseTest.php
-test/Model/UpdateSalesforceSettingsRequestTest.php
+test/Model/HubSpotSettingsSyncIssueTest.php
