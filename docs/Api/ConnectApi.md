@@ -2090,7 +2090,7 @@ $profile_id = 'profile_id_example'; // string
 $redirect_url = 'redirect_url_example'; // string | Where the page sends the user afterwards, with status, accountId, platform and email (or status=error and error).
 $email = 'email_example'; // string | Prefills the address and skips the first screen.
 $name = 'name_example'; // string | Display name for sent mail; the page asks for it when absent.
-$reconnect_account_id = 'reconnect_account_id_example'; // string | Opens the reconnect variant for an IMAP account: only the new password is asked for, and the accountId stays the same.
+$reconnect_account_id = 'reconnect_account_id_example'; // string | An IMAP, Google or Microsoft account on this profile to reconnect; its accountId stays the same. IMAP asks only for the new password. Google and Microsoft open that provider's sign-in with the address as the hint and the held areas asked again. Other platforms answer 400, unknown ids 404.
 
 try {
     $result = $apiInstance->getEmailConnectUrl($profile_id, $redirect_url, $email, $name, $reconnect_account_id);
@@ -2108,7 +2108,7 @@ try {
 | **redirect_url** | **string**| Where the page sends the user afterwards, with status, accountId, platform and email (or status&#x3D;error and error). | [optional] |
 | **email** | **string**| Prefills the address and skips the first screen. | [optional] |
 | **name** | **string**| Display name for sent mail; the page asks for it when absent. | [optional] |
-| **reconnect_account_id** | **string**| Opens the reconnect variant for an IMAP account: only the new password is asked for, and the accountId stays the same. | [optional] |
+| **reconnect_account_id** | **string**| An IMAP, Google or Microsoft account on this profile to reconnect; its accountId stays the same. IMAP asks only for the new password. Google and Microsoft open that provider&#39;s sign-in with the address as the hint and the held areas asked again. Other platforms answer 400, unknown ids 404. | [optional] |
 
 ### Return type
 
