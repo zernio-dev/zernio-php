@@ -708,6 +708,8 @@ docs/Model/ConfirmBrandedCallingAuthorizerEmailRequest.md
 docs/Model/ConnectAds200Response.md
 docs/Model/ConnectAds200ResponseOneOf.md
 docs/Model/ConnectAds200ResponseOneOf1.md
+docs/Model/ConnectAppLovinAdsCredentials200Response.md
+docs/Model/ConnectAppLovinAdsCredentialsRequest.md
 docs/Model/ConnectBlueskyCredentials200Response.md
 docs/Model/ConnectBlueskyCredentialsRequest.md
 docs/Model/ConnectDiscordChannelRequest.md
@@ -4592,6 +4594,8 @@ lib/Model/ConfirmBrandedCallingAuthorizerEmailRequest.php
 lib/Model/ConnectAds200Response.php
 lib/Model/ConnectAds200ResponseOneOf.php
 lib/Model/ConnectAds200ResponseOneOf1.php
+lib/Model/ConnectAppLovinAdsCredentials200Response.php
+lib/Model/ConnectAppLovinAdsCredentialsRequest.php
 lib/Model/ConnectBlueskyCredentials200Response.php
 lib/Model/ConnectBlueskyCredentialsRequest.php
 lib/Model/ConnectDiscordChannelRequest.php
@@ -7769,3 +7773,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ConnectAppLovinAdsCredentials200ResponseTest.php
+test/Model/ConnectAppLovinAdsCredentialsRequestTest.php

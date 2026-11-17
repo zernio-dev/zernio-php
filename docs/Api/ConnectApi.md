@@ -13,6 +13,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**completeWhatsAppPhoneSelection()**](ConnectApi.md#completeWhatsAppPhoneSelection) | **POST** /v1/connect/whatsapp/select-phone-number | Complete number selection |
 | [**configureTikTokAdsBrandIdentity()**](ConnectApi.md#configureTikTokAdsBrandIdentity) | **PATCH** /v1/connect/tiktok-ads | Set TikTok brand identity |
 | [**connectAds()**](ConnectApi.md#connectAds) | **GET** /v1/connect/{platform}/ads | Connect ads for a platform |
+| [**connectAppLovinAdsCredentials()**](ConnectApi.md#connectAppLovinAdsCredentials) | **POST** /v1/connect/applovin-ads/credentials | Connect an AppLovin Axon account |
 | [**connectBlueskyCredentials()**](ConnectApi.md#connectBlueskyCredentials) | **POST** /v1/connect/bluesky/credentials | Connect Bluesky account |
 | [**connectDiscordChannel()**](ConnectApi.md#connectDiscordChannel) | **POST** /v1/connect/discord | Connect a Discord channel |
 | [**connectLineCredentials()**](ConnectApi.md#connectLineCredentials) | **POST** /v1/connect/line/credentials | Connect LINE Official Account |
@@ -555,6 +556,66 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `connectAppLovinAdsCredentials()`
+
+```php
+connectAppLovinAdsCredentials($connect_app_lovin_ads_credentials_request): \Zernio\Model\ConnectAppLovinAdsCredentials200Response
+```
+
+Connect an AppLovin Axon account
+
+Connect AppLovin Axon with the Conversion API key and Event Key from the Keys page of Axon Ads Manager.  Zernio checks both keys with Axon before saving them. The account then receives the conversion events you forward to it (`POST /v1/events`, forwarding rules), and its Event Key works as a site tag on tracking sites.  Requires the Ads add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$connect_app_lovin_ads_credentials_request = {"apiKey":"axon-conversion-api-key","eventKey":"abc123def456","profileId":"6507a1b2c3d4e5f6a7b8c9d0"}; // \Zernio\Model\ConnectAppLovinAdsCredentialsRequest
+
+try {
+    $result = $apiInstance->connectAppLovinAdsCredentials($connect_app_lovin_ads_credentials_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->connectAppLovinAdsCredentials: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **connect_app_lovin_ads_credentials_request** | [**\Zernio\Model\ConnectAppLovinAdsCredentialsRequest**](../Model/ConnectAppLovinAdsCredentialsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\ConnectAppLovinAdsCredentials200Response**](../Model/ConnectAppLovinAdsCredentials200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
