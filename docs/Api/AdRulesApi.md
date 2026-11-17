@@ -10,6 +10,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**deleteAdRule()**](AdRulesApi.md#deleteAdRule) | **DELETE** /v1/ads/rules/{ruleId} | Delete an ad rule |
 | [**getAdRule()**](AdRulesApi.md#getAdRule) | **GET** /v1/ads/rules/{ruleId} | Get an ad rule |
 | [**getAdRuleHourlyWindows()**](AdRulesApi.md#getAdRuleHourlyWindows) | **GET** /v1/ads/rules/hourly-windows | Check whether an ad account has hourly windows |
+| [**listAdAccountRuleAlerts()**](AdRulesApi.md#listAdAccountRuleAlerts) | **GET** /v1/ads/rules/alerts | List an ad account&#39;s open alerts |
 | [**listAdRuleActivity()**](AdRulesApi.md#listAdRuleActivity) | **GET** /v1/ads/rules/activity | List every change ad rules made |
 | [**listAdRuleAlerts()**](AdRulesApi.md#listAdRuleAlerts) | **GET** /v1/ads/rules/{ruleId}/alerts | List a rule&#39;s alerts |
 | [**listAdRuleRuns()**](AdRulesApi.md#listAdRuleRuns) | **GET** /v1/ads/rules/{ruleId}/runs | List an ad rule&#39;s runs |
@@ -28,7 +29,7 @@ createAdRule($create_ad_rule_request): \Zernio\Model\CreateAdRule201Response
 
 Create an ad rule
 
-Creates a rule that checks the campaigns, ad sets, ads, keywords or search terms of one ad account on a schedule and acts on each one that meets every condition.  Rules support Meta, Google, TikTok, LinkedIn, Pinterest, X and Reddit ads connections. Keyword and search term rules are Google only. Use `POST /v1/ads/rules/{ruleId}/preview` to see what a rule would match before enabling it.  ### Evaluation  Each object is evaluated on its own, over the ad account's calendar days. Campaigns, ad sets and ads read the metrics Zernio syncs; keywords and search terms are summed from the daily history Zernio keeps of them.  ### Actions  A rule can notify (the `ad_rule.triggered` webhook), and take at most one of:  - `pause` - `activate` - `adjust_budget`  A keyword rule can notify and pause; a search term rule only notifies.  ### Cooldown  After acting on an object, the rule leaves that object alone for `cooldownMinutes`. A rule that pauses, activates or adjusts budgets needs a cooldown at least as long as its schedule.  ### How `activate` works  `activate` only reactivates objects a rule paused, never ones you paused yourself, and only once the cooldown has passed since that pause.  If you reactivate and pause such an object yourself between two runs of a rule, Zernio cannot tell your pause from the rule's, and an `activate` rule may reactivate it.
+Creates a rule that checks the campaigns, ad sets, ads, keywords or search terms of one ad account on a schedule and acts on each one that meets every condition.  Rules support Meta, Google, TikTok, LinkedIn, Pinterest, X and Reddit ads connections. Keyword and search term rules are Google only. Use `POST /v1/ads/rules/{ruleId}/preview` to see what a rule would match before enabling it.  ### Evaluation  Each object is evaluated on its own, over the ad account's calendar days. Campaigns, ad sets and ads read the metrics Zernio syncs; keywords and search terms are summed from the daily history Zernio keeps of them.  ### Actions  A rule can notify (the `ad_rule.triggered` webhook), and take at most one of:  - `pause` - `activate` - `adjust_budget` - `adjust_bid` - `adjust_target` - `reallocate_budget` - `duplicate` - `edit_name`  A keyword rule can notify and pause; a search term rule only notifies.  ### Cooldown  After acting on an object, the rule leaves that object alone for `cooldownMinutes`. A rule that changes ads (any action but `notify`) needs a cooldown at least as long as its schedule.  ### How `activate` works  `activate` only reactivates objects a rule paused, never ones you paused yourself (unless `includeManuallyPaused` is true), and only once the cooldown has passed since that pause.  A rule on set times (`schedule.times`) does not wait for the cooldown: it restarts only what a rule on set times paused, such as a morning restart after a night pause.  If you reactivate and pause such an object yourself between two runs of a rule, Zernio cannot tell your pause from the rule's, and an `activate` rule may reactivate it.
 
 ### Example
 
@@ -262,6 +263,72 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listAdAccountRuleAlerts()`
+
+```php
+listAdAccountRuleAlerts($account_id, $ad_account_id, $limit, $cursor): \Zernio\Model\ListAdAccountRuleAlerts200Response
+```
+
+List an ad account's open alerts
+
+The open alerts of every rule of one ad account, newest first, in one call: each alert names its rule in `ruleId`. Only `open` alerts are listed. For one rule's pending and resolved alerts, use `GET /v1/ads/rules/{ruleId}/alerts`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdRulesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The connected ads account the rules run on.
+$ad_account_id = 'ad_account_id_example'; // string | The platform ad account ID.
+$limit = 50; // int
+$cursor = 'cursor_example'; // string | `nextCursor` from the previous page.
+
+try {
+    $result = $apiInstance->listAdAccountRuleAlerts($account_id, $ad_account_id, $limit, $cursor);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdRulesApi->listAdAccountRuleAlerts: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The connected ads account the rules run on. | |
+| **ad_account_id** | **string**| The platform ad account ID. | |
+| **limit** | **int**|  | [optional] [default to 50] |
+| **cursor** | **string**| &#x60;nextCursor&#x60; from the previous page. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListAdAccountRuleAlerts200Response**](../Model/ListAdAccountRuleAlerts200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listAdRuleActivity()`
 
 ```php
@@ -270,7 +337,7 @@ listAdRuleActivity($rule_id, $account_id, $type, $from, $to, $limit, $cursor): \
 
 List every change ad rules made
 
-The permanent record of what your rules did: one entry per pause, reactivation or budget change (including skipped and failed attempts), newest first, across all rules of the profiles the key can reach. Entries stay after a rule is renamed or deleted; `ruleName` is the rule's name when it acted.
+What your rules did over the last 31 days, newest first, across all rules of the profiles the key can reach.  There is one entry per change a rule made or tried: pause, reactivation, budget, bid or target change, copy or name tag. Skipped and failed attempts are included.  Entries stay for those 31 days after a rule is renamed or deleted; `ruleName` is the rule's name when it acted.
 
 ### Example
 
@@ -408,7 +475,7 @@ listAdRuleRuns($rule_id, $limit, $skip): \Zernio\Model\ListAdRuleRuns200Response
 
 List an ad rule's runs
 
-Lists a rule's scheduled runs, newest first: what each run evaluated, matched and did. Runs that changed something (or tried to) are kept permanently, also after the rule is deleted; runs that changed nothing are dropped after about 31 days. For every change across all rules, use `GET /v1/ads/rules/activity`.
+Lists a rule's scheduled runs, newest first: what each run evaluated, matched and did. A run that matched nothing or did not happen (`no_match`, `paused`) is kept 7 days, any other run 31 days. For every change across all rules, use `GET /v1/ads/rules/activity`.
 
 ### Example
 

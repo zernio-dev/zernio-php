@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **account_id** | **string** | The ads connection the rule runs on. |
 **ad_account_id** | **string** |  |
 **level** | **string** |  |
-**object_id** | **string** | Platform ID of the campaign or ad set. |
+**object_id** | **string** | Platform ID of the campaign, ad set or ad. A keyword is &#x60;{adGroupId}~{criterionId}&#x60;. |
 **object_name** | **string** | Its name when the rule acted. |
 **type** | **string** |  |
 **status** | **string** |  |

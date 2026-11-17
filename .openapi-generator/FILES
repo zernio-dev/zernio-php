@@ -2101,6 +2101,8 @@ docs/Model/ListAccountSitelinks200Response.md
 docs/Model/ListAccountSitelinks200ResponseSitelinksInner.md
 docs/Model/ListAccountStructuredSnippets200Response.md
 docs/Model/ListAccountStructuredSnippets200ResponseStructuredSnippetsInner.md
+docs/Model/ListAdAccountRuleAlerts200Response.md
+docs/Model/ListAdAccountRuleAlerts200ResponseAlertsInner.md
 docs/Model/ListAdAccountUserInvitationApprovals200Response.md
 docs/Model/ListAdAccountUserInvitations200Response.md
 docs/Model/ListAdAccountUsers200Response.md
@@ -5976,6 +5978,8 @@ lib/Model/ListAccountSitelinks200Response.php
 lib/Model/ListAccountSitelinks200ResponseSitelinksInner.php
 lib/Model/ListAccountStructuredSnippets200Response.php
 lib/Model/ListAccountStructuredSnippets200ResponseStructuredSnippetsInner.php
+lib/Model/ListAdAccountRuleAlerts200Response.php
+lib/Model/ListAdAccountRuleAlerts200ResponseAlertsInner.php
 lib/Model/ListAdAccountUserInvitationApprovals200Response.php
 lib/Model/ListAdAccountUserInvitations200Response.php
 lib/Model/ListAdAccountUsers200Response.php
@@ -7751,3 +7755,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ListAdAccountRuleAlerts200ResponseAlertsInnerTest.php
+test/Model/ListAdAccountRuleAlerts200ResponseTest.php
