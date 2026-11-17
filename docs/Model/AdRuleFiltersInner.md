@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **field** | **string** |  |
 **op** | **string** |  |
-**value** | **int** |  |
+**value** | **bool** |  |
 **values** | **string[]** |  |
 **change** | **string** |  |
 

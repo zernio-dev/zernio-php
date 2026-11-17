@@ -66,6 +66,7 @@ class AdRuleRunEvaluation implements ModelInterface, ArrayAccess, \JsonSerializa
         'currency' => 'string',
         'hourly_through' => '\DateTime',
         'matched' => '\Zernio\Model\AdRuleObjectEvaluation[]',
+        'matched_total' => 'int',
         'actions' => '\Zernio\Model\AdRuleRunEvaluationActionsInner[]',
         'notification' => '\Zernio\Model\AdRuleRunEvaluationNotification'
     ];
@@ -85,6 +86,7 @@ class AdRuleRunEvaluation implements ModelInterface, ArrayAccess, \JsonSerializa
         'currency' => null,
         'hourly_through' => 'date-time',
         'matched' => null,
+        'matched_total' => null,
         'actions' => null,
         'notification' => null
     ];
@@ -102,6 +104,7 @@ class AdRuleRunEvaluation implements ModelInterface, ArrayAccess, \JsonSerializa
         'currency' => true,
         'hourly_through' => true,
         'matched' => false,
+        'matched_total' => false,
         'actions' => false,
         'notification' => false
     ];
@@ -199,6 +202,7 @@ class AdRuleRunEvaluation implements ModelInterface, ArrayAccess, \JsonSerializa
         'currency' => 'currency',
         'hourly_through' => 'hourlyThrough',
         'matched' => 'matched',
+        'matched_total' => 'matchedTotal',
         'actions' => 'actions',
         'notification' => 'notification'
     ];
@@ -216,6 +220,7 @@ class AdRuleRunEvaluation implements ModelInterface, ArrayAccess, \JsonSerializa
         'currency' => 'setCurrency',
         'hourly_through' => 'setHourlyThrough',
         'matched' => 'setMatched',
+        'matched_total' => 'setMatchedTotal',
         'actions' => 'setActions',
         'notification' => 'setNotification'
     ];
@@ -233,6 +238,7 @@ class AdRuleRunEvaluation implements ModelInterface, ArrayAccess, \JsonSerializa
         'currency' => 'getCurrency',
         'hourly_through' => 'getHourlyThrough',
         'matched' => 'getMatched',
+        'matched_total' => 'getMatchedTotal',
         'actions' => 'getActions',
         'notification' => 'getNotification'
     ];
@@ -301,6 +307,7 @@ class AdRuleRunEvaluation implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('hourly_through', $data ?? [], null);
         $this->setIfExists('matched', $data ?? [], null);
+        $this->setIfExists('matched_total', $data ?? [], null);
         $this->setIfExists('actions', $data ?? [], null);
         $this->setIfExists('notification', $data ?? [], null);
     }
@@ -536,7 +543,7 @@ class AdRuleRunEvaluation implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets matched
      *
-     * @param \Zernio\Model\AdRuleObjectEvaluation[]|null $matched matched
+     * @param \Zernio\Model\AdRuleObjectEvaluation[]|null $matched The matched objects, at most 200. `matchedTotal` has the full count.
      *
      * @return self
      */
@@ -546,6 +553,33 @@ class AdRuleRunEvaluation implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable matched cannot be null');
         }
         $this->container['matched'] = $matched;
+
+        return $this;
+    }
+
+    /**
+     * Gets matched_total
+     *
+     * @return int|null
+     */
+    public function getMatchedTotal()
+    {
+        return $this->container['matched_total'];
+    }
+
+    /**
+     * Sets matched_total
+     *
+     * @param int|null $matched_total How many objects matched, including those past the 200 recorded. Absent on runs recorded before November 2026.
+     *
+     * @return self
+     */
+    public function setMatchedTotal($matched_total)
+    {
+        if (is_null($matched_total)) {
+            throw new \InvalidArgumentException('non-nullable matched_total cannot be null');
+        }
+        $this->container['matched_total'] = $matched_total;
 
         return $this;
     }

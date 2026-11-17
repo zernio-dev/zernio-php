@@ -34,7 +34,7 @@ use \Zernio\ObjectSerializer;
  * AdRuleLevel Class Doc Comment
  *
  * @category Class
- * @description Whether the rule checks campaigns, ad sets or single ads. Each one is evaluated on its own.
+ * @description Whether the rule checks campaigns, ad sets, single ads, Google keywords or Google search terms. Each one is evaluated on its own.  &#x60;keyword&#x60; and &#x60;search_term&#x60; read Google Search, on Google Ads accounts only. A keyword&#39;s id is &#x60;&lt;adGroupId&gt;~&lt;criterionId&gt;&#x60;, as &#x60;PATCH /v1/ads/keywords/{keywordId}&#x60; takes it. A search term is one per ad group, its id &#x60;&lt;adGroupId&gt;~&lt;term&gt;&#x60;.  - They read a daily history Zernio fetches from Google. A day keeps its 50,000 rows that spent most. - Every daily window works, &#x60;today&#x60; included: today is refreshed at most once an hour. - A new rule&#39;s first runs load its days a few at a time, and fail until all are in. - Paused keywords are not judged. - Google lists only what showed at least once, so &#x60;impressions&#x60; takes &#x60;&gt;&#x60; or &#x60;&gt;&#x3D;&#x60;, never &#x60;&lt;&#x60; or &#x60;&lt;&#x3D;&#x60;.  They take &#x60;spend&#x60;, &#x60;impressions&#x60;, &#x60;clicks&#x60;, &#x60;conversions&#x60;, &#x60;ctr&#x60;, &#x60;cpc&#x60;, &#x60;cpm&#x60;, &#x60;cpa&#x60; and &#x60;roas&#x60; over whole days, no &#x60;usual&#x60;, &#x60;of&#x60;, &#x60;top&#x60; or &#x60;bottom&#x60;, and &#x60;compareTo&#x60; only as &#x60;campaign&#x60;. A keyword rule can &#x60;notify&#x60; or &#x60;pause&#x60;; a search term rule only notifies.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -50,6 +50,10 @@ class AdRuleLevel
 
     public const AD = 'ad';
 
+    public const KEYWORD = 'keyword';
+
+    public const SEARCH_TERM = 'search_term';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -59,7 +63,9 @@ class AdRuleLevel
         return [
             self::CAMPAIGN,
             self::ADSET,
-            self::AD
+            self::AD,
+            self::KEYWORD,
+            self::SEARCH_TERM
         ];
     }
 }

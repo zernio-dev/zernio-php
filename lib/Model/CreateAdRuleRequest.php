@@ -568,7 +568,7 @@ class CreateAdRuleRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets campaign_ids
      *
-     * @param string[]|null $campaign_ids Only check these platform campaign IDs (or their ad sets). Leave out to check the whole ad account.
+     * @param string[]|null $campaign_ids Only check these platform campaign IDs (or what sits in them). Leave out to check the whole ad account.
      *
      * @return self
      */
@@ -602,7 +602,7 @@ class CreateAdRuleRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets filters
      *
-     * @param \Zernio\Model\AdRuleFiltersInner[]|null $filters Narrows the objects the rule checks. Every filter must hold. A campaign rule reads `name`, `campaign_id`, `goal`, `days_live`, `days_since_change`, `budget_level` and `channel_type`; an ad set rule all but `days_since_change`, plus `campaign_name` and `adset_id`; an ad rule also `adset_name` and `ad_id`.
+     * @param \Zernio\Model\AdRuleFiltersInner[]|null $filters Narrows the objects the rule checks. Every filter must hold. A campaign rule reads `name`, `campaign_id`, `goal`, `days_live`, `days_since_change`, `budget_level` and `channel_type`; an ad set rule all but `days_since_change`, plus `campaign_name` and `adset_id`; an ad rule also `adset_name` and `ad_id`.  A keyword rule reads `name` (the keyword text), `campaign_name`, `adset_name`, `campaign_id`, `adset_id` and `match_type`. A search term rule reads those (`name` is the term) plus `search_term_status` and `blocked_by_negative`.
      *
      * @return self
      */

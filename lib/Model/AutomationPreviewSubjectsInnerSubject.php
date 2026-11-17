@@ -250,6 +250,8 @@ class AutomationPreviewSubjectsInnerSubject implements ModelInterface, ArrayAcce
     public const KIND_CAMPAIGN = 'campaign';
     public const KIND_ADSET = 'adset';
     public const KIND_AD = 'ad';
+    public const KIND_KEYWORD = 'keyword';
+    public const KIND_SEARCH_TERM = 'search_term';
 
     /**
      * Gets allowable values of the enum
@@ -262,6 +264,8 @@ class AutomationPreviewSubjectsInnerSubject implements ModelInterface, ArrayAcce
             self::KIND_CAMPAIGN,
             self::KIND_ADSET,
             self::KIND_AD,
+            self::KIND_KEYWORD,
+            self::KIND_SEARCH_TERM,
         ];
     }
 

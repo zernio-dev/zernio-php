@@ -250,6 +250,8 @@ class GetAutomationCatalog200ResponseSubjectsInner implements ModelInterface, Ar
     public const EACH_CAMPAIGN = 'campaign';
     public const EACH_ADSET = 'adset';
     public const EACH_AD = 'ad';
+    public const EACH_KEYWORD = 'keyword';
+    public const EACH_SEARCH_TERM = 'search_term';
 
     /**
      * Gets allowable values of the enum
@@ -262,6 +264,8 @@ class GetAutomationCatalog200ResponseSubjectsInner implements ModelInterface, Ar
             self::EACH_CAMPAIGN,
             self::EACH_ADSET,
             self::EACH_AD,
+            self::EACH_KEYWORD,
+            self::EACH_SEARCH_TERM,
         ];
     }
 

@@ -331,6 +331,9 @@ docs/Model/AutomationAdFilterOneOf2.md
 docs/Model/AutomationAdFilterOneOf3.md
 docs/Model/AutomationAdFilterOneOf4.md
 docs/Model/AutomationAdFilterOneOf5.md
+docs/Model/AutomationAdFilterOneOf6.md
+docs/Model/AutomationAdFilterOneOf7.md
+docs/Model/AutomationAdFilterOneOf8.md
 docs/Model/AutomationAlert.md
 docs/Model/AutomationApproval.md
 docs/Model/AutomationApprovalChange.md
@@ -435,6 +438,7 @@ docs/Model/BlockWhatsAppUsers200Response.md
 docs/Model/BlockWhatsAppUsers200ResponseBlockedInner.md
 docs/Model/BlockWhatsAppUsers200ResponseFailedInner.md
 docs/Model/BlockWhatsAppUsersRequest.md
+docs/Model/BlockedByANegative.md
 docs/Model/Blog.md
 docs/Model/BlogArticle.md
 docs/Model/BlogArticleImage.md
@@ -2478,6 +2482,7 @@ docs/Model/ListWorkflows200ResponseWorkflowsInner.md
 docs/Model/ListedAccount.md
 docs/Model/LookupSmsNumber200Response.md
 docs/Model/MarkConversationRead200Response.md
+docs/Model/MatchType.md
 docs/Model/MediaContentType.md
 docs/Model/MediaItem.md
 docs/Model/MediaSubtitle.md
@@ -2857,6 +2862,7 @@ docs/Model/SearchInboxConversations200ResponseMeta.md
 docs/Model/SearchInboxConversations200ResponseMetaFailedAccountsInner.md
 docs/Model/SearchInstagramAudio200Response.md
 docs/Model/SearchReddit200Response.md
+docs/Model/SearchTermStatus.md
 docs/Model/SearchTikTokLocations200Response.md
 docs/Model/SearchTikTokLocations200ResponseLocationsInner.md
 docs/Model/SearchTweets200Response.md
@@ -4199,6 +4205,9 @@ lib/Model/AutomationAdFilterOneOf2.php
 lib/Model/AutomationAdFilterOneOf3.php
 lib/Model/AutomationAdFilterOneOf4.php
 lib/Model/AutomationAdFilterOneOf5.php
+lib/Model/AutomationAdFilterOneOf6.php
+lib/Model/AutomationAdFilterOneOf7.php
+lib/Model/AutomationAdFilterOneOf8.php
 lib/Model/AutomationAlert.php
 lib/Model/AutomationApproval.php
 lib/Model/AutomationApprovalChange.php
@@ -4303,6 +4312,7 @@ lib/Model/BlockWhatsAppUsers200Response.php
 lib/Model/BlockWhatsAppUsers200ResponseBlockedInner.php
 lib/Model/BlockWhatsAppUsers200ResponseFailedInner.php
 lib/Model/BlockWhatsAppUsersRequest.php
+lib/Model/BlockedByANegative.php
 lib/Model/Blog.php
 lib/Model/BlogArticle.php
 lib/Model/BlogArticleImage.php
@@ -6346,6 +6356,7 @@ lib/Model/ListWorkflows200ResponseWorkflowsInner.php
 lib/Model/ListedAccount.php
 lib/Model/LookupSmsNumber200Response.php
 lib/Model/MarkConversationRead200Response.php
+lib/Model/MatchType.php
 lib/Model/MediaContentType.php
 lib/Model/MediaItem.php
 lib/Model/MediaSubtitle.php
@@ -6726,6 +6737,7 @@ lib/Model/SearchInboxConversations200ResponseMeta.php
 lib/Model/SearchInboxConversations200ResponseMetaFailedAccountsInner.php
 lib/Model/SearchInstagramAudio200Response.php
 lib/Model/SearchReddit200Response.php
+lib/Model/SearchTermStatus.php
 lib/Model/SearchTikTokLocations200Response.php
 lib/Model/SearchTikTokLocations200ResponseLocationsInner.php
 lib/Model/SearchTweets200Response.php
@@ -7737,3 +7749,9 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/AutomationAdFilterOneOf6Test.php
+test/Model/AutomationAdFilterOneOf7Test.php
+test/Model/AutomationAdFilterOneOf8Test.php
+test/Model/BlockedByANegativeTest.php
+test/Model/MatchTypeTest.php
+test/Model/SearchTermStatusTest.php

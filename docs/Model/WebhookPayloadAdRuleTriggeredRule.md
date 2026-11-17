@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | Zernio ad rule ID. |
 **name** | **string** |  |
-**level** | **string** | Whether the rule evaluates campaigns, ad sets or ads. |
+**level** | **string** | Whether the rule evaluates campaigns, ad sets, ads, Google keywords or Google search terms. |
 **platform_ad_account_id** | **string** | Platform-native ad account ID the rule watches. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

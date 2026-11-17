@@ -61,6 +61,7 @@ class AdRuleObjectEvaluation implements ModelInterface, ArrayAccess, \JsonSerial
         'id' => 'string',
         'name' => 'string',
         'campaign_id' => 'string',
+        'campaign_name' => 'string',
         'matched' => 'bool',
         'group' => 'string',
         'conditions' => '\Zernio\Model\AdRuleObjectEvaluationConditionsInner[]',
@@ -78,6 +79,7 @@ class AdRuleObjectEvaluation implements ModelInterface, ArrayAccess, \JsonSerial
         'id' => null,
         'name' => null,
         'campaign_id' => null,
+        'campaign_name' => null,
         'matched' => null,
         'group' => null,
         'conditions' => null,
@@ -93,6 +95,7 @@ class AdRuleObjectEvaluation implements ModelInterface, ArrayAccess, \JsonSerial
         'id' => false,
         'name' => false,
         'campaign_id' => true,
+        'campaign_name' => true,
         'matched' => false,
         'group' => false,
         'conditions' => false,
@@ -188,6 +191,7 @@ class AdRuleObjectEvaluation implements ModelInterface, ArrayAccess, \JsonSerial
         'id' => 'id',
         'name' => 'name',
         'campaign_id' => 'campaignId',
+        'campaign_name' => 'campaignName',
         'matched' => 'matched',
         'group' => 'group',
         'conditions' => 'conditions',
@@ -203,6 +207,7 @@ class AdRuleObjectEvaluation implements ModelInterface, ArrayAccess, \JsonSerial
         'id' => 'setId',
         'name' => 'setName',
         'campaign_id' => 'setCampaignId',
+        'campaign_name' => 'setCampaignName',
         'matched' => 'setMatched',
         'group' => 'setGroup',
         'conditions' => 'setConditions',
@@ -218,6 +223,7 @@ class AdRuleObjectEvaluation implements ModelInterface, ArrayAccess, \JsonSerial
         'id' => 'getId',
         'name' => 'getName',
         'campaign_id' => 'getCampaignId',
+        'campaign_name' => 'getCampaignName',
         'matched' => 'getMatched',
         'group' => 'getGroup',
         'conditions' => 'getConditions',
@@ -284,6 +290,7 @@ class AdRuleObjectEvaluation implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('campaign_id', $data ?? [], null);
+        $this->setIfExists('campaign_name', $data ?? [], null);
         $this->setIfExists('matched', $data ?? [], null);
         $this->setIfExists('group', $data ?? [], null);
         $this->setIfExists('conditions', $data ?? [], null);
@@ -360,7 +367,7 @@ class AdRuleObjectEvaluation implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets id
      *
-     * @param string $id Platform ID of the campaign or ad set.
+     * @param string $id Platform ID of the campaign, ad set or ad. A keyword is `{adGroupId}~{criterionId}`, a search term `{adGroupId}~{term}`.
      *
      * @return self
      */
@@ -387,7 +394,7 @@ class AdRuleObjectEvaluation implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets name
      *
-     * @param string $name name
+     * @param string $name The object's name: the keyword text or the search term.
      *
      * @return self
      */
@@ -431,6 +438,40 @@ class AdRuleObjectEvaluation implements ModelInterface, ArrayAccess, \JsonSerial
             }
         }
         $this->container['campaign_id'] = $campaign_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaign_name
+     *
+     * @return string|null
+     */
+    public function getCampaignName()
+    {
+        return $this->container['campaign_name'];
+    }
+
+    /**
+     * Sets campaign_name
+     *
+     * @param string|null $campaign_name Absent on runs recorded before November 2026.
+     *
+     * @return self
+     */
+    public function setCampaignName($campaign_name)
+    {
+        if (is_null($campaign_name)) {
+            array_push($this->openAPINullablesSetToNull, 'campaign_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('campaign_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['campaign_name'] = $campaign_name;
 
         return $this;
     }

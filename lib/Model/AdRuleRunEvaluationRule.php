@@ -262,6 +262,9 @@ class AdRuleRunEvaluationRule implements ModelInterface, ArrayAccess, \JsonSeria
 
     public const LEVEL_CAMPAIGN = 'campaign';
     public const LEVEL_ADSET = 'adset';
+    public const LEVEL_AD = 'ad';
+    public const LEVEL_KEYWORD = 'keyword';
+    public const LEVEL_SEARCH_TERM = 'search_term';
 
     /**
      * Gets allowable values of the enum
@@ -273,6 +276,9 @@ class AdRuleRunEvaluationRule implements ModelInterface, ArrayAccess, \JsonSeria
         return [
             self::LEVEL_CAMPAIGN,
             self::LEVEL_ADSET,
+            self::LEVEL_AD,
+            self::LEVEL_KEYWORD,
+            self::LEVEL_SEARCH_TERM,
         ];
     }
 
