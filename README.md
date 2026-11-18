@@ -496,6 +496,15 @@ Class | Method | HTTP request | Description
 *BusinessAgentApi* | [**updateBusinessAgentUiSkill**](docs/Api/BusinessAgentApi.md#updatebusinessagentuiskill) | **PUT** /v1/accounts/{accountId}/business-agent/ui-skills/{uiSkillId} | Update a UI skill
 *BusinessAgentApi* | [**updateBusinessAgentWebsite**](docs/Api/BusinessAgentApi.md#updatebusinessagentwebsite) | **PUT** /v1/accounts/{accountId}/business-agent/websites/{websiteId} | Update a crawled website
 *BusinessAgentApi* | [**uploadBusinessAgentFile**](docs/Api/BusinessAgentApi.md#uploadbusinessagentfile) | **POST** /v1/accounts/{accountId}/business-agent/files | Upload a knowledge file
+*CRMApi* | [**createCrmActivity**](docs/Api/CRMApi.md#createcrmactivity) | **POST** /v1/crm/{accountId}/contacts/{contactId}/activities | Log a CRM activity
+*CRMApi* | [**createCrmContact**](docs/Api/CRMApi.md#createcrmcontact) | **POST** /v1/crm/{accountId}/contacts | Create a CRM contact
+*CRMApi* | [**getCrmContact**](docs/Api/CRMApi.md#getcrmcontact) | **GET** /v1/crm/{accountId}/contacts/{contactId} | Get a CRM contact
+*CRMApi* | [**getCrmDeal**](docs/Api/CRMApi.md#getcrmdeal) | **GET** /v1/crm/{accountId}/deals/{dealId} | Get a CRM deal
+*CRMApi* | [**listCrmDeals**](docs/Api/CRMApi.md#listcrmdeals) | **GET** /v1/crm/{accountId}/deals | List CRM deals
+*CRMApi* | [**listCrmOwners**](docs/Api/CRMApi.md#listcrmowners) | **GET** /v1/crm/{accountId}/owners | List CRM owners
+*CRMApi* | [**searchCrmContacts**](docs/Api/CRMApi.md#searchcrmcontacts) | **GET** /v1/crm/{accountId}/contacts/search | Search CRM contacts
+*CRMApi* | [**updateCrmContact**](docs/Api/CRMApi.md#updatecrmcontact) | **PATCH** /v1/crm/{accountId}/contacts/{contactId} | Update a CRM contact
+*CRMApi* | [**updateCrmDeal**](docs/Api/CRMApi.md#updatecrmdeal) | **PATCH** /v1/crm/{accountId}/deals/{dealId} | Update a CRM deal
 *CalendarApi* | [**calendarAvailability**](docs/Api/CalendarApi.md#calendaravailability) | **POST** /v1/calendar/availability | Find meeting slots across accounts
 *CalendarApi* | [**calendarFreeBusy**](docs/Api/CalendarApi.md#calendarfreebusy) | **POST** /v1/calendar/free-busy | Busy blocks for one or more accounts
 *CalendarApi* | [**createCalendarEvent**](docs/Api/CalendarApi.md#createcalendarevent) | **POST** /v1/calendar/events | Create an event
@@ -2172,6 +2181,10 @@ Class | Method | HTTP request | Description
 - [CreateCreatorCampaign201Response](docs/Model/CreateCreatorCampaign201Response.md)
 - [CreateCreatorCampaignRequest](docs/Model/CreateCreatorCampaignRequest.md)
 - [CreateCreatorPayoutLogin200Response](docs/Model/CreateCreatorPayoutLogin200Response.md)
+- [CreateCrmActivity201Response](docs/Model/CreateCrmActivity201Response.md)
+- [CreateCrmActivityRequest](docs/Model/CreateCrmActivityRequest.md)
+- [CreateCrmContact201Response](docs/Model/CreateCrmContact201Response.md)
+- [CreateCrmContactRequest](docs/Model/CreateCrmContactRequest.md)
 - [CreateCustomConversionGoalRequest](docs/Model/CreateCustomConversionGoalRequest.md)
 - [CreateCustomConversionRequest](docs/Model/CreateCustomConversionRequest.md)
 - [CreateCustomField200Response](docs/Model/CreateCustomField200Response.md)
@@ -2431,6 +2444,12 @@ Class | Method | HTTP request | Description
 - [CreatorPortalReferralTotals](docs/Model/CreatorPortalReferralTotals.md)
 - [CreatorPortalSample](docs/Model/CreatorPortalSample.md)
 - [CreatorPortalSubmission](docs/Model/CreatorPortalSubmission.md)
+- [CrmActivity](docs/Model/CrmActivity.md)
+- [CrmContact](docs/Model/CrmContact.md)
+- [CrmContactInput](docs/Model/CrmContactInput.md)
+- [CrmDeal](docs/Model/CrmDeal.md)
+- [CrmNativePropertiesValue](docs/Model/CrmNativePropertiesValue.md)
+- [CrmOwner](docs/Model/CrmOwner.md)
 - [CrosspostDiscordMessage200Response](docs/Model/CrosspostDiscordMessage200Response.md)
 - [CtwaAdRequestBody](docs/Model/CtwaAdRequestBody.md)
 - [CtwaAdRequestBodyCitiesInner](docs/Model/CtwaAdRequestBodyCitiesInner.md)
@@ -2815,6 +2834,7 @@ Class | Method | HTTP request | Description
 - [GetConversionsQuality200ResponseRowsInnerMatchKeysInner](docs/Model/GetConversionsQuality200ResponseRowsInnerMatchKeysInner.md)
 - [GetCreatorPayouts200Response](docs/Model/GetCreatorPayouts200Response.md)
 - [GetCreatorPortal200Response](docs/Model/GetCreatorPortal200Response.md)
+- [GetCrmDeal200Response](docs/Model/GetCrmDeal200Response.md)
 - [GetDailyMetrics200Response](docs/Model/GetDailyMetrics200Response.md)
 - [GetDailyMetrics200ResponseDailyDataInner](docs/Model/GetDailyMetrics200ResponseDailyDataInner.md)
 - [GetDailyMetrics200ResponseDailyDataInnerMetrics](docs/Model/GetDailyMetrics200ResponseDailyDataInnerMetrics.md)
@@ -3538,6 +3558,8 @@ Class | Method | HTTP request | Description
 - [ListContacts200ResponsePagination](docs/Model/ListContacts200ResponsePagination.md)
 - [ListConversionActions200Response](docs/Model/ListConversionActions200Response.md)
 - [ListCreatorCampaigns200Response](docs/Model/ListCreatorCampaigns200Response.md)
+- [ListCrmDeals200Response](docs/Model/ListCrmDeals200Response.md)
+- [ListCrmOwners200Response](docs/Model/ListCrmOwners200Response.md)
 - [ListCustomConversionGoals200Response](docs/Model/ListCustomConversionGoals200Response.md)
 - [ListCustomFields200Response](docs/Model/ListCustomFields200Response.md)
 - [ListCustomFields200ResponseFieldsInner](docs/Model/ListCustomFields200ResponseFieldsInner.md)
@@ -4136,6 +4158,7 @@ Class | Method | HTTP request | Description
 - [SearchAvailablePhoneNumbers200ResponseNumbersInner](docs/Model/SearchAvailablePhoneNumbers200ResponseNumbersInner.md)
 - [SearchAvailableWhatsAppNumbers200Response](docs/Model/SearchAvailableWhatsAppNumbers200Response.md)
 - [SearchAvailableWhatsAppNumbers200ResponseNumbersInner](docs/Model/SearchAvailableWhatsAppNumbers200ResponseNumbersInner.md)
+- [SearchCrmContacts200Response](docs/Model/SearchCrmContacts200Response.md)
 - [SearchDiscordGuildMembers200Response](docs/Model/SearchDiscordGuildMembers200Response.md)
 - [SearchGoogleBusinessLocations200Response](docs/Model/SearchGoogleBusinessLocations200Response.md)
 - [SearchGoogleBusinessLocations200ResponseGoogleLocationsInner](docs/Model/SearchGoogleBusinessLocations200ResponseGoogleLocationsInner.md)
@@ -4605,6 +4628,7 @@ Class | Method | HTTP request | Description
 - [UpdateConversionActionRequest](docs/Model/UpdateConversionActionRequest.md)
 - [UpdateConversionDestinationRequest](docs/Model/UpdateConversionDestinationRequest.md)
 - [UpdateCreatorCampaignRequest](docs/Model/UpdateCreatorCampaignRequest.md)
+- [UpdateCrmDealRequest](docs/Model/UpdateCrmDealRequest.md)
 - [UpdateCustomConversionGoal200Response](docs/Model/UpdateCustomConversionGoal200Response.md)
 - [UpdateCustomConversionGoalRequest](docs/Model/UpdateCustomConversionGoalRequest.md)
 - [UpdateCustomField200Response](docs/Model/UpdateCustomField200Response.md)
@@ -5194,6 +5218,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.651.0`
+- API version: `1.652.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

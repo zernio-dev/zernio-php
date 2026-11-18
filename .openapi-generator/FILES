@@ -22,6 +22,7 @@ docs/Api/BlogsApi.md
 docs/Api/BrandedCallingApi.md
 docs/Api/BroadcastsApi.md
 docs/Api/BusinessAgentApi.md
+docs/Api/CRMApi.md
 docs/Api/CalendarApi.md
 docs/Api/CallsApi.md
 docs/Api/ChangelogApi.md
@@ -894,6 +895,10 @@ docs/Model/CreateConversionDestinationRequest.md
 docs/Model/CreateCreatorCampaign201Response.md
 docs/Model/CreateCreatorCampaignRequest.md
 docs/Model/CreateCreatorPayoutLogin200Response.md
+docs/Model/CreateCrmActivity201Response.md
+docs/Model/CreateCrmActivityRequest.md
+docs/Model/CreateCrmContact201Response.md
+docs/Model/CreateCrmContactRequest.md
 docs/Model/CreateCustomConversionGoalRequest.md
 docs/Model/CreateCustomConversionRequest.md
 docs/Model/CreateCustomField200Response.md
@@ -1153,6 +1158,12 @@ docs/Model/CreatorPortalReferralOrdersInner.md
 docs/Model/CreatorPortalReferralTotals.md
 docs/Model/CreatorPortalSample.md
 docs/Model/CreatorPortalSubmission.md
+docs/Model/CrmActivity.md
+docs/Model/CrmContact.md
+docs/Model/CrmContactInput.md
+docs/Model/CrmDeal.md
+docs/Model/CrmNativePropertiesValue.md
+docs/Model/CrmOwner.md
 docs/Model/CrosspostDiscordMessage200Response.md
 docs/Model/CtwaAdRequestBody.md
 docs/Model/CtwaAdRequestBodyCitiesInner.md
@@ -1537,6 +1548,7 @@ docs/Model/GetConversionsQuality200ResponseRowsInner.md
 docs/Model/GetConversionsQuality200ResponseRowsInnerMatchKeysInner.md
 docs/Model/GetCreatorPayouts200Response.md
 docs/Model/GetCreatorPortal200Response.md
+docs/Model/GetCrmDeal200Response.md
 docs/Model/GetDailyMetrics200Response.md
 docs/Model/GetDailyMetrics200ResponseDailyDataInner.md
 docs/Model/GetDailyMetrics200ResponseDailyDataInnerMetrics.md
@@ -2260,6 +2272,8 @@ docs/Model/ListContacts200ResponseFilters.md
 docs/Model/ListContacts200ResponsePagination.md
 docs/Model/ListConversionActions200Response.md
 docs/Model/ListCreatorCampaigns200Response.md
+docs/Model/ListCrmDeals200Response.md
+docs/Model/ListCrmOwners200Response.md
 docs/Model/ListCustomConversionGoals200Response.md
 docs/Model/ListCustomFields200Response.md
 docs/Model/ListCustomFields200ResponseFieldsInner.md
@@ -2858,6 +2872,7 @@ docs/Model/SearchAvailablePhoneNumbers200Response.md
 docs/Model/SearchAvailablePhoneNumbers200ResponseNumbersInner.md
 docs/Model/SearchAvailableWhatsAppNumbers200Response.md
 docs/Model/SearchAvailableWhatsAppNumbers200ResponseNumbersInner.md
+docs/Model/SearchCrmContacts200Response.md
 docs/Model/SearchDiscordGuildMembers200Response.md
 docs/Model/SearchGoogleBusinessLocations200Response.md
 docs/Model/SearchGoogleBusinessLocations200ResponseGoogleLocationsInner.md
@@ -3327,6 +3342,7 @@ docs/Model/UpdateConversionAction200ResponseAction.md
 docs/Model/UpdateConversionActionRequest.md
 docs/Model/UpdateConversionDestinationRequest.md
 docs/Model/UpdateCreatorCampaignRequest.md
+docs/Model/UpdateCrmDealRequest.md
 docs/Model/UpdateCustomConversionGoal200Response.md
 docs/Model/UpdateCustomConversionGoalRequest.md
 docs/Model/UpdateCustomField200Response.md
@@ -3904,6 +3920,7 @@ lib/Api/BlogsApi.php
 lib/Api/BrandedCallingApi.php
 lib/Api/BroadcastsApi.php
 lib/Api/BusinessAgentApi.php
+lib/Api/CRMApi.php
 lib/Api/CalendarApi.php
 lib/Api/CallsApi.php
 lib/Api/ChangelogApi.php
@@ -4780,6 +4797,10 @@ lib/Model/CreateConversionDestinationRequest.php
 lib/Model/CreateCreatorCampaign201Response.php
 lib/Model/CreateCreatorCampaignRequest.php
 lib/Model/CreateCreatorPayoutLogin200Response.php
+lib/Model/CreateCrmActivity201Response.php
+lib/Model/CreateCrmActivityRequest.php
+lib/Model/CreateCrmContact201Response.php
+lib/Model/CreateCrmContactRequest.php
 lib/Model/CreateCustomConversionGoalRequest.php
 lib/Model/CreateCustomConversionRequest.php
 lib/Model/CreateCustomField200Response.php
@@ -5039,6 +5060,12 @@ lib/Model/CreatorPortalReferralOrdersInner.php
 lib/Model/CreatorPortalReferralTotals.php
 lib/Model/CreatorPortalSample.php
 lib/Model/CreatorPortalSubmission.php
+lib/Model/CrmActivity.php
+lib/Model/CrmContact.php
+lib/Model/CrmContactInput.php
+lib/Model/CrmDeal.php
+lib/Model/CrmNativePropertiesValue.php
+lib/Model/CrmOwner.php
 lib/Model/CrosspostDiscordMessage200Response.php
 lib/Model/CtwaAdRequestBody.php
 lib/Model/CtwaAdRequestBodyCitiesInner.php
@@ -5423,6 +5450,7 @@ lib/Model/GetConversionsQuality200ResponseRowsInner.php
 lib/Model/GetConversionsQuality200ResponseRowsInnerMatchKeysInner.php
 lib/Model/GetCreatorPayouts200Response.php
 lib/Model/GetCreatorPortal200Response.php
+lib/Model/GetCrmDeal200Response.php
 lib/Model/GetDailyMetrics200Response.php
 lib/Model/GetDailyMetrics200ResponseDailyDataInner.php
 lib/Model/GetDailyMetrics200ResponseDailyDataInnerMetrics.php
@@ -6146,6 +6174,8 @@ lib/Model/ListContacts200ResponseFilters.php
 lib/Model/ListContacts200ResponsePagination.php
 lib/Model/ListConversionActions200Response.php
 lib/Model/ListCreatorCampaigns200Response.php
+lib/Model/ListCrmDeals200Response.php
+lib/Model/ListCrmOwners200Response.php
 lib/Model/ListCustomConversionGoals200Response.php
 lib/Model/ListCustomFields200Response.php
 lib/Model/ListCustomFields200ResponseFieldsInner.php
@@ -6745,6 +6775,7 @@ lib/Model/SearchAvailablePhoneNumbers200Response.php
 lib/Model/SearchAvailablePhoneNumbers200ResponseNumbersInner.php
 lib/Model/SearchAvailableWhatsAppNumbers200Response.php
 lib/Model/SearchAvailableWhatsAppNumbers200ResponseNumbersInner.php
+lib/Model/SearchCrmContacts200Response.php
 lib/Model/SearchDiscordGuildMembers200Response.php
 lib/Model/SearchGoogleBusinessLocations200Response.php
 lib/Model/SearchGoogleBusinessLocations200ResponseGoogleLocationsInner.php
@@ -7214,6 +7245,7 @@ lib/Model/UpdateConversionAction200ResponseAction.php
 lib/Model/UpdateConversionActionRequest.php
 lib/Model/UpdateConversionDestinationRequest.php
 lib/Model/UpdateCreatorCampaignRequest.php
+lib/Model/UpdateCrmDealRequest.php
 lib/Model/UpdateCustomConversionGoal200Response.php
 lib/Model/UpdateCustomConversionGoalRequest.php
 lib/Model/UpdateCustomField200Response.php
@@ -7773,3 +7805,19 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Api/CRMApiTest.php
+test/Model/CreateCrmActivity201ResponseTest.php
+test/Model/CreateCrmActivityRequestTest.php
+test/Model/CreateCrmContact201ResponseTest.php
+test/Model/CreateCrmContactRequestTest.php
+test/Model/CrmActivityTest.php
+test/Model/CrmContactInputTest.php
+test/Model/CrmContactTest.php
+test/Model/CrmDealTest.php
+test/Model/CrmNativePropertiesValueTest.php
+test/Model/CrmOwnerTest.php
+test/Model/GetCrmDeal200ResponseTest.php
+test/Model/ListCrmDeals200ResponseTest.php
+test/Model/ListCrmOwners200ResponseTest.php
+test/Model/SearchCrmContacts200ResponseTest.php
+test/Model/UpdateCrmDealRequestTest.php
