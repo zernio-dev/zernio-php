@@ -1521,6 +1521,7 @@ docs/Model/GetCampaignConversionGoals200Response.md
 docs/Model/GetCampaignDraft200Response.md
 docs/Model/GetCampaignParticipant200Response.md
 docs/Model/GetCampaignReport200Response.md
+docs/Model/GetCampaignResultEvents200Response.md
 docs/Model/GetCampaignResultsTotals200Response.md
 docs/Model/GetCampaignResultsUpload200Response.md
 docs/Model/GetCampaignResultsUpload200ResponseUnmatchedInner.md
@@ -3047,6 +3048,8 @@ docs/Model/SetBusinessAgentConnectorCredentialsRequest.md
 docs/Model/SetBusinessAgentConnectorCredentialsRequestOneOf.md
 docs/Model/SetBusinessAgentConnectorCredentialsRequestOneOf1.md
 docs/Model/SetBusinessAgentConnectorCredentialsRequestOneOf2.md
+docs/Model/SetCampaignResultEvents200Response.md
+docs/Model/SetCampaignResultEventsRequest.md
 docs/Model/SetCampaignResultMetric200Response.md
 docs/Model/SetCampaignResultMetricRequest.md
 docs/Model/SetCommentModerationRequest.md
@@ -5444,6 +5447,7 @@ lib/Model/GetCampaignConversionGoals200Response.php
 lib/Model/GetCampaignDraft200Response.php
 lib/Model/GetCampaignParticipant200Response.php
 lib/Model/GetCampaignReport200Response.php
+lib/Model/GetCampaignResultEvents200Response.php
 lib/Model/GetCampaignResultsTotals200Response.php
 lib/Model/GetCampaignResultsUpload200Response.php
 lib/Model/GetCampaignResultsUpload200ResponseUnmatchedInner.php
@@ -6971,6 +6975,8 @@ lib/Model/SetBusinessAgentConnectorCredentialsRequest.php
 lib/Model/SetBusinessAgentConnectorCredentialsRequestOneOf.php
 lib/Model/SetBusinessAgentConnectorCredentialsRequestOneOf1.php
 lib/Model/SetBusinessAgentConnectorCredentialsRequestOneOf2.php
+lib/Model/SetCampaignResultEvents200Response.php
+lib/Model/SetCampaignResultEventsRequest.php
 lib/Model/SetCampaignResultMetric200Response.php
 lib/Model/SetCampaignResultMetricRequest.php
 lib/Model/SetCommentModerationRequest.php
@@ -7847,3 +7853,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetCampaignResultEvents200ResponseTest.php
+test/Model/SetCampaignResultEvents200ResponseTest.php
+test/Model/SetCampaignResultEventsRequestTest.php

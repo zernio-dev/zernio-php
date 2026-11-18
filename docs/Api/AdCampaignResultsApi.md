@@ -6,13 +6,72 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**getCampaignResultEvents()**](AdCampaignResultsApi.md#getCampaignResultEvents) | **GET** /v1/ads/campaign-results/events | List the events that count as campaign results |
 | [**getCampaignResultsTotals()**](AdCampaignResultsApi.md#getCampaignResultsTotals) | **GET** /v1/ads/campaign-results/totals | Get your results totals |
 | [**getCampaignResultsUpload()**](AdCampaignResultsApi.md#getCampaignResultsUpload) | **GET** /v1/ads/campaign-results/uploads/{uploadId} | Check a results upload |
 | [**listCampaignResultMetrics()**](AdCampaignResultsApi.md#listCampaignResultMetrics) | **GET** /v1/ads/campaign-results/metrics | List your result metrics |
 | [**listCampaignResults()**](AdCampaignResultsApi.md#listCampaignResults) | **GET** /v1/ads/campaign-results | List your results per campaign |
+| [**setCampaignResultEvents()**](AdCampaignResultsApi.md#setCampaignResultEvents) | **PUT** /v1/ads/campaign-results/events | Choose the events that count as campaign results |
 | [**setCampaignResultMetric()**](AdCampaignResultsApi.md#setCampaignResultMetric) | **PUT** /v1/ads/campaign-results/metrics/{key} | Name a result metric or define a formula |
 | [**uploadCampaignResults()**](AdCampaignResultsApi.md#uploadCampaignResults) | **POST** /v1/ads/campaign-results | Upload your results per campaign |
 
+
+## `getCampaignResultEvents()`
+
+```php
+getCampaignResultEvents(): \Zernio\Model\GetCampaignResultEvents200Response
+```
+
+List the events that count as campaign results
+
+The names of the events sent to `POST /v1/events` that your team counts as campaign results. Only these are tied to a campaign when they arrive. Until you choose, they are `Purchase`, `Lead` and `QualifiedLead`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignResultsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getCampaignResultEvents();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignResultsApi->getCampaignResultEvents: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\Zernio\Model\GetCampaignResultEvents200Response**](../Model/GetCampaignResultEvents200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `getCampaignResultsTotals()`
 
@@ -257,6 +316,66 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `setCampaignResultEvents()`
+
+```php
+setCampaignResultEvents($set_campaign_result_events_request): \Zernio\Model\SetCampaignResultEvents200Response
+```
+
+Choose the events that count as campaign results
+
+Sets which stored events are tied to a campaign when they arrive and add to its results.  `Purchase` adds `sales` and `revenue`, `Lead` adds `leads` and `QualifiedLead` adds `qualified_leads`. Any other event adds 1 per event to a metric keyed `event_` plus its name in lowercase, e.g. `event_completeregistration`, which formulas and rules can read.  Events stored before the change keep how they were counted. Send `null` to go back to `Purchase`, `Lead` and `QualifiedLead`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignResultsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$set_campaign_result_events_request = new \Zernio\Model\SetCampaignResultEventsRequest(); // \Zernio\Model\SetCampaignResultEventsRequest
+
+try {
+    $result = $apiInstance->setCampaignResultEvents($set_campaign_result_events_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignResultsApi->setCampaignResultEvents: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **set_campaign_result_events_request** | [**\Zernio\Model\SetCampaignResultEventsRequest**](../Model/SetCampaignResultEventsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\SetCampaignResultEvents200Response**](../Model/SetCampaignResultEvents200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
