@@ -7859,6 +7859,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetEventsOverviewDaily200ResponsePixelMissedInnerTest.php
-test/Model/GetEventsOverviewDaily200ResponsePlatformsInnerDaysInnerTest.php
-test/Model/GetEventsOverviewDaily200ResponsePlatformsInnerTest.php
