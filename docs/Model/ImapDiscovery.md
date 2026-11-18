@@ -15,7 +15,8 @@ Name | Type | Description | Notes
 **preflight** | [**\Zernio\Model\ImapDiscoveryPreflightInner[]**](ImapDiscoveryPreflightInner.md) | What to switch on at the provider first, such as IMAP access on GMX or Yandex. | [optional]
 **reconnect_cause** | **string** |  | [optional]
 **reason** | **string** |  | [optional]
-**unsupported_reason** | **string** | proton_requires_bridge: Proton Mail only works through its local bridge. forwarding_only: the domain forwards mail (Cloudflare Email Routing) and stores none, so connect the mailbox it forwards to. | [optional]
+**unsupported_reason** | **string** | Why an &#x60;unsupported&#x60; route cannot connect:  - &#x60;proton_requires_bridge&#x60;: Proton Mail only works through its local bridge. - &#x60;forwarding_only&#x60;: the domain forwards mail (Cloudflare Email Routing) and stores none, so connect the mailbox it forwards to. - &#x60;domain_typo&#x60;: the domain takes no mail and looks like a mistyped consumer domain. &#x60;suggestedEmail&#x60; has the likely address. - &#x60;no_mail_domain&#x60;: the domain has no MX and no address, so it cannot receive email. | [optional]
+**suggested_email** | **string** | With unsupportedReason domain_typo: the address the user most likely meant, such as ana7275@gmail.com for ana@7275gmail.com. Run discovery again with it once the user confirms. | [optional]
 **app_password_fallback** | **object** | Google only: Gmail over IMAP with an app password, for accounts whose admin blocks Google sign-in for other apps. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
