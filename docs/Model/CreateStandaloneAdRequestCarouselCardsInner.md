@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**image_url** | **string** | Card image; uploaded to the ad account and referenced by hash. |
+**image_url** | **string** | Image card: the card image, uploaded to the ad account and referenced by hash. | [optional]
+**video** | [**\Zernio\Model\CreateStandaloneAdRequestCarouselCardsInnerVideo**](CreateStandaloneAdRequestCarouselCardsInnerVideo.md) |  | [optional]
 **link_url** | **string** | Card destination URL. Defaults to the top-level linkUrl, or Meta&#39;s lead-form link when leadGenFormId is set and neither is provided. | [optional]
 **headline** | **string** | Card headline, shown below the card image. | [optional]
 **description** | **string** | Card description, shown under the headline. | [optional]

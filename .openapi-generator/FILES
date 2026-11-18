@@ -727,6 +727,8 @@ docs/Model/ConnectShopifyWithToken200Response.md
 docs/Model/ConnectShopifyWithToken200ResponseAccount.md
 docs/Model/ConnectShopifyWithTokenRequest.md
 docs/Model/ConnectSlackChannelRequest.md
+docs/Model/ConnectSnapchatAdsCredentials200Response.md
+docs/Model/ConnectSnapchatAdsCredentialsRequest.md
 docs/Model/ConnectWebflowWithSiteToken200Response.md
 docs/Model/ConnectWebflowWithSiteToken200ResponseAccount.md
 docs/Model/ConnectWebflowWithSiteTokenRequest.md
@@ -1051,6 +1053,7 @@ docs/Model/CreateStandaloneAdRequestAdditionalHeadlinesInner.md
 docs/Model/CreateStandaloneAdRequestBehaviorsInner.md
 docs/Model/CreateStandaloneAdRequestBrandIdentity.md
 docs/Model/CreateStandaloneAdRequestCarouselCardsInner.md
+docs/Model/CreateStandaloneAdRequestCarouselCardsInnerVideo.md
 docs/Model/CreateStandaloneAdRequestCatalogIntroCardsInner.md
 docs/Model/CreateStandaloneAdRequestCitiesInner.md
 docs/Model/CreateStandaloneAdRequestCitiesInnerOneOf.md
@@ -2528,6 +2531,7 @@ docs/Model/MediaItem.md
 docs/Model/MediaSubtitle.md
 docs/Model/MediaUploadResponse.md
 docs/Model/MessagingCarouselCard.md
+docs/Model/MessagingCarouselCardVideo.md
 docs/Model/MessengerGreeting.md
 docs/Model/MessengerIceBreakerLocale.md
 docs/Model/MessengerIceBreakerLocaleCallToActionsInner.md
@@ -4662,6 +4666,8 @@ lib/Model/ConnectShopifyWithToken200Response.php
 lib/Model/ConnectShopifyWithToken200ResponseAccount.php
 lib/Model/ConnectShopifyWithTokenRequest.php
 lib/Model/ConnectSlackChannelRequest.php
+lib/Model/ConnectSnapchatAdsCredentials200Response.php
+lib/Model/ConnectSnapchatAdsCredentialsRequest.php
 lib/Model/ConnectWebflowWithSiteToken200Response.php
 lib/Model/ConnectWebflowWithSiteToken200ResponseAccount.php
 lib/Model/ConnectWebflowWithSiteTokenRequest.php
@@ -4986,6 +4992,7 @@ lib/Model/CreateStandaloneAdRequestAdditionalHeadlinesInner.php
 lib/Model/CreateStandaloneAdRequestBehaviorsInner.php
 lib/Model/CreateStandaloneAdRequestBrandIdentity.php
 lib/Model/CreateStandaloneAdRequestCarouselCardsInner.php
+lib/Model/CreateStandaloneAdRequestCarouselCardsInnerVideo.php
 lib/Model/CreateStandaloneAdRequestCatalogIntroCardsInner.php
 lib/Model/CreateStandaloneAdRequestCitiesInner.php
 lib/Model/CreateStandaloneAdRequestCitiesInnerOneOf.php
@@ -6463,6 +6470,7 @@ lib/Model/MediaItem.php
 lib/Model/MediaSubtitle.php
 lib/Model/MediaUploadResponse.php
 lib/Model/MessagingCarouselCard.php
+lib/Model/MessagingCarouselCardVideo.php
 lib/Model/MessengerGreeting.php
 lib/Model/MessengerIceBreakerLocale.php
 lib/Model/MessengerIceBreakerLocaleCallToActionsInner.php
@@ -7871,6 +7879,7 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetLtvCohorts200ResponseCohortsInnerRevenueTest.php
-test/Model/GetLtvCohorts200ResponseCohortsInnerTest.php
-test/Model/GetLtvCohorts200ResponseTest.php
+test/Model/ConnectSnapchatAdsCredentials200ResponseTest.php
+test/Model/ConnectSnapchatAdsCredentialsRequestTest.php
+test/Model/CreateStandaloneAdRequestCarouselCardsInnerVideoTest.php
+test/Model/MessagingCarouselCardVideoTest.php

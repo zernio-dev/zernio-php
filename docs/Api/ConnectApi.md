@@ -20,6 +20,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**connectOpenAIAdsCredentials()**](ConnectApi.md#connectOpenAIAdsCredentials) | **POST** /v1/connect/openai-ads/credentials | Connect an OpenAI Ads account |
 | [**connectShopifyWithToken()**](ConnectApi.md#connectShopifyWithToken) | **POST** /v1/connect/shopify/token | Connect a Shopify store with a custom-app Admin token |
 | [**connectSlackChannel()**](ConnectApi.md#connectSlackChannel) | **POST** /v1/connect/slack | Connect a Slack channel |
+| [**connectSnapchatAdsCredentials()**](ConnectApi.md#connectSnapchatAdsCredentials) | **POST** /v1/connect/snapchat-ads/credentials | Connect a Snapchat Ads pixel |
 | [**connectWebflowWithSiteToken()**](ConnectApi.md#connectWebflowWithSiteToken) | **POST** /v1/connect/webflow/token | Connect Webflow with a site API token |
 | [**connectWechatCredentials()**](ConnectApi.md#connectWechatCredentials) | **POST** /v1/connect/wechat/credentials | Connect WeChat Official Account |
 | [**connectWhatsAppCredentials()**](ConnectApi.md#connectWhatsAppCredentials) | **POST** /v1/connect/whatsapp/credentials | Connect WhatsApp via credentials |
@@ -969,6 +970,66 @@ try {
 ### Return type
 
 void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `connectSnapchatAdsCredentials()`
+
+```php
+connectSnapchatAdsCredentials($connect_snapchat_ads_credentials_request): \Zernio\Model\ConnectSnapchatAdsCredentials200Response
+```
+
+Connect a Snapchat Ads pixel
+
+Connect a Snap Pixel with its Pixel ID and a Conversions API token generated in Snapchat Ads Manager (Business Details, Conversions API Tokens, visible to Organization Admins).  Zernio checks the token against the pixel on Snap's validate endpoint before saving it. The account then receives the conversion events you forward to it (`POST /v1/events`, forwarding rules). Connecting the same pixel again replaces its token.  Requires the Ads add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$connect_snapchat_ads_credentials_request = {"accessToken":"snap-conversions-api-token","pixelId":"1a2b3c4d-5e6f-4a8b-9c0d-1e2f3a4b5c6d","profileId":"6507a1b2c3d4e5f6a7b8c9d0"}; // \Zernio\Model\ConnectSnapchatAdsCredentialsRequest
+
+try {
+    $result = $apiInstance->connectSnapchatAdsCredentials($connect_snapchat_ads_credentials_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->connectSnapchatAdsCredentials: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **connect_snapchat_ads_credentials_request** | [**\Zernio\Model\ConnectSnapchatAdsCredentialsRequest**](../Model/ConnectSnapchatAdsCredentialsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\ConnectSnapchatAdsCredentials200Response**](../Model/ConnectSnapchatAdsCredentials200Response.md)
 
 ### Authorization
 
