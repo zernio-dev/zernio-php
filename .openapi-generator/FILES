@@ -1805,6 +1805,7 @@ docs/Model/GetStripeConnectUrl200Response.md
 docs/Model/GetStripeSettings200Response.md
 docs/Model/GetSubredditRules200Response.md
 docs/Model/GetSubredditRules200ResponseRulesInner.md
+docs/Model/GetTagNewAds200Response.md
 docs/Model/GetTelegramCommands200Response.md
 docs/Model/GetTelegramCommands200ResponseDataInner.md
 docs/Model/GetTelegramConnectStatus200Response.md
@@ -2009,6 +2010,7 @@ docs/Model/ImapConnectResultSettings.md
 docs/Model/ImapConnectResultStages.md
 docs/Model/ImapDiscovery.md
 docs/Model/ImapDiscoveryAuth.md
+docs/Model/ImapDiscoveryHostReplacementsInner.md
 docs/Model/ImapDiscoveryImap.md
 docs/Model/ImapDiscoveryPreflightInner.md
 docs/Model/ImapDiscoveryProvider.md
@@ -3093,6 +3095,8 @@ docs/Model/SetMessengerMenuRequest.md
 docs/Model/SetPartnershipAdPermission200Response.md
 docs/Model/SetPartnershipAdPermissionRequest.md
 docs/Model/SetRedditPostFlairRequest.md
+docs/Model/SetTagNewAds200Response.md
+docs/Model/SetTagNewAdsRequest.md
 docs/Model/SetTelegramCommandsRequest.md
 docs/Model/SetTelegramCommandsRequestCommandsInner.md
 docs/Model/SetUpAdAccountBilling200Response.md
@@ -3337,7 +3341,6 @@ docs/Model/UpdateBroadcastRequestTemplateVariableMappingValue.md
 docs/Model/UpdateBusinessAgentSettingsRequest.md
 docs/Model/UpdateBusinessAgentSettingsRequestFollowup.md
 docs/Model/UpdateBusinessAgentSettingsRequestHandoff.md
-docs/Model/UpdateBusinessAgentSettingsRequestRollout.md
 docs/Model/UpdateCalendarEventRequest.md
 docs/Model/UpdateCampaignAdSchedule200Response.md
 docs/Model/UpdateCampaignAdScheduleRequest.md
@@ -5752,6 +5755,7 @@ lib/Model/GetStripeConnectUrl200Response.php
 lib/Model/GetStripeSettings200Response.php
 lib/Model/GetSubredditRules200Response.php
 lib/Model/GetSubredditRules200ResponseRulesInner.php
+lib/Model/GetTagNewAds200Response.php
 lib/Model/GetTelegramCommands200Response.php
 lib/Model/GetTelegramCommands200ResponseDataInner.php
 lib/Model/GetTelegramConnectStatus200Response.php
@@ -5956,6 +5960,7 @@ lib/Model/ImapConnectResultSettings.php
 lib/Model/ImapConnectResultStages.php
 lib/Model/ImapDiscovery.php
 lib/Model/ImapDiscoveryAuth.php
+lib/Model/ImapDiscoveryHostReplacementsInner.php
 lib/Model/ImapDiscoveryImap.php
 lib/Model/ImapDiscoveryPreflightInner.php
 lib/Model/ImapDiscoveryProvider.php
@@ -7041,6 +7046,8 @@ lib/Model/SetMessengerMenuRequest.php
 lib/Model/SetPartnershipAdPermission200Response.php
 lib/Model/SetPartnershipAdPermissionRequest.php
 lib/Model/SetRedditPostFlairRequest.php
+lib/Model/SetTagNewAds200Response.php
+lib/Model/SetTagNewAdsRequest.php
 lib/Model/SetTelegramCommandsRequest.php
 lib/Model/SetTelegramCommandsRequestCommandsInner.php
 lib/Model/SetUpAdAccountBilling200Response.php
@@ -7285,7 +7292,6 @@ lib/Model/UpdateBroadcastRequestTemplateVariableMappingValue.php
 lib/Model/UpdateBusinessAgentSettingsRequest.php
 lib/Model/UpdateBusinessAgentSettingsRequestFollowup.php
 lib/Model/UpdateBusinessAgentSettingsRequestHandoff.php
-lib/Model/UpdateBusinessAgentSettingsRequestRollout.php
 lib/Model/UpdateCalendarEventRequest.php
 lib/Model/UpdateCampaignAdSchedule200Response.php
 lib/Model/UpdateCampaignAdScheduleRequest.php
@@ -7895,11 +7901,7 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Api/TrackingLinksApiTest.php
-test/Model/CreateTrackingLink201ResponseTest.php
-test/Model/CreateTrackingLinkRequestTest.php
-test/Model/ListTrackingLinks200ResponseTest.php
-test/Model/TrackingLinkCampaignTest.php
-test/Model/TrackingLinkDestinationTest.php
-test/Model/TrackingLinkTest.php
-test/Model/UpdateTrackingLinkRequestTest.php
+test/Model/GetTagNewAds200ResponseTest.php
+test/Model/ImapDiscoveryHostReplacementsInnerTest.php
+test/Model/SetTagNewAds200ResponseTest.php
+test/Model/SetTagNewAdsRequestTest.php

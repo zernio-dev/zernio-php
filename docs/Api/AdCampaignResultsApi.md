@@ -9,10 +9,12 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getCampaignResultEvents()**](AdCampaignResultsApi.md#getCampaignResultEvents) | **GET** /v1/ads/campaign-results/events | List the events that count as campaign results |
 | [**getCampaignResultsTotals()**](AdCampaignResultsApi.md#getCampaignResultsTotals) | **GET** /v1/ads/campaign-results/totals | Get your results totals |
 | [**getCampaignResultsUpload()**](AdCampaignResultsApi.md#getCampaignResultsUpload) | **GET** /v1/ads/campaign-results/uploads/{uploadId} | Check a results upload |
+| [**getTagNewAds()**](AdCampaignResultsApi.md#getTagNewAds) | **GET** /v1/ads/campaign-results/tag-new-ads | Get the Tag new ads setting |
 | [**listCampaignResultMetrics()**](AdCampaignResultsApi.md#listCampaignResultMetrics) | **GET** /v1/ads/campaign-results/metrics | List your result metrics |
 | [**listCampaignResults()**](AdCampaignResultsApi.md#listCampaignResults) | **GET** /v1/ads/campaign-results | List your results per campaign |
 | [**setCampaignResultEvents()**](AdCampaignResultsApi.md#setCampaignResultEvents) | **PUT** /v1/ads/campaign-results/events | Choose the events that count as campaign results |
 | [**setCampaignResultMetric()**](AdCampaignResultsApi.md#setCampaignResultMetric) | **PUT** /v1/ads/campaign-results/metrics/{key} | Name a result metric or define a formula |
+| [**setTagNewAds()**](AdCampaignResultsApi.md#setTagNewAds) | **PUT** /v1/ads/campaign-results/tag-new-ads | Turn Tag new ads on or off |
 | [**uploadCampaignResults()**](AdCampaignResultsApi.md#uploadCampaignResults) | **POST** /v1/ads/campaign-results | Upload your results per campaign |
 
 
@@ -185,6 +187,63 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetCampaignResultsUpload200Response**](../Model/GetCampaignResultsUpload200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getTagNewAds()`
+
+```php
+getTagNewAds(): \Zernio\Model\GetTagNewAds200Response
+```
+
+Get the Tag new ads setting
+
+Whether new Meta and Google ads created through Zernio carry the Zernio ad tag (`zrn=<platform ad id>` on the landing URL) when the create request does not set `tracking.zernioTag`. Off until you turn it on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignResultsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getTagNewAds();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignResultsApi->getTagNewAds: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\Zernio\Model\GetTagNewAds200Response**](../Model/GetTagNewAds200Response.md)
 
 ### Authorization
 
@@ -434,6 +493,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\SetCampaignResultMetric200Response**](../Model/SetCampaignResultMetric200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `setTagNewAds()`
+
+```php
+setTagNewAds($set_tag_new_ads_request): \Zernio\Model\SetTagNewAds200Response
+```
+
+Turn Tag new ads on or off
+
+With `enabled: true`, every new Meta and Google ad created through `POST /v1/ads/create` carries `zrn=<platform ad id>` on its landing URL, so the conversions it brings are tied to its campaign. A request that sets `tracking.zernioTag` keeps its own choice.  The same rules as `tracking.zernioTag` apply: lead forms, call ads, existing creatives and app promotion are skipped, and a Google ad is tagged only when it inherits no final URL suffix. Existing ads are never changed.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignResultsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$set_tag_new_ads_request = new \Zernio\Model\SetTagNewAdsRequest(); // \Zernio\Model\SetTagNewAdsRequest
+
+try {
+    $result = $apiInstance->setTagNewAds($set_tag_new_ads_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignResultsApi->setTagNewAds: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **set_tag_new_ads_request** | [**\Zernio\Model\SetTagNewAdsRequest**](../Model/SetTagNewAdsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\SetTagNewAds200Response**](../Model/SetTagNewAds200Response.md)
 
 ### Authorization
 

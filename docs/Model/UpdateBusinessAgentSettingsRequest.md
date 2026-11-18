@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**rollout** | [**\Zernio\Model\UpdateBusinessAgentSettingsRequestRollout**](UpdateBusinessAgentSettingsRequestRollout.md) |  | [optional]
+**rollout** | [**\Zernio\Model\SetTagNewAds200Response**](SetTagNewAds200Response.md) |  | [optional]
 **handoff** | [**\Zernio\Model\UpdateBusinessAgentSettingsRequestHandoff**](UpdateBusinessAgentSettingsRequestHandoff.md) |  | [optional]
 **followup** | [**\Zernio\Model\UpdateBusinessAgentSettingsRequestFollowup**](UpdateBusinessAgentSettingsRequestFollowup.md) |  | [optional]
 **ai_audience** | **string** |  | [optional]
