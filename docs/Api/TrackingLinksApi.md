@@ -9,6 +9,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**createTrackingLink()**](TrackingLinksApi.md#createTrackingLink) | **POST** /v1/tracking-links | Create a tracking link |
 | [**deleteTrackingLink()**](TrackingLinksApi.md#deleteTrackingLink) | **DELETE** /v1/tracking-links/{linkId} | Delete a tracking link |
 | [**getTrackingLink()**](TrackingLinksApi.md#getTrackingLink) | **GET** /v1/tracking-links/{linkId} | Get a tracking link |
+| [**getTrackingLinkStats()**](TrackingLinksApi.md#getTrackingLinkStats) | **GET** /v1/tracking-links/{linkId}/stats | Get a tracking link&#39;s results |
 | [**listTrackingLinks()**](TrackingLinksApi.md#listTrackingLinks) | **GET** /v1/tracking-links | List tracking links |
 | [**rotateTrackingLinkPostbackToken()**](TrackingLinksApi.md#rotateTrackingLinkPostbackToken) | **POST** /v1/tracking-links/{linkId}/rotate-postback-token | Rotate a tracking link&#39;s postback URL |
 | [**updateTrackingLink()**](TrackingLinksApi.md#updateTrackingLink) | **PATCH** /v1/tracking-links/{linkId} | Update a tracking link |
@@ -181,6 +182,70 @@ try {
 ### Return type
 
 [**\Zernio\Model\CreateTrackingLink201Response**](../Model/CreateTrackingLink201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getTrackingLinkStats()`
+
+```php
+getTrackingLinkStats($link_id, $from_date, $to_date): \Zernio\Model\TrackingLinkStats
+```
+
+Get a tracking link's results
+
+Clicks, conversions and revenue of one link over a range of days (UTC), and its clicks per destination, the result of a split test. Clicks leave out bots.  Conversions are the link's postbacks plus website conversions carrying the click id of one of its clicks, less any retracted. The range is at most 90 days, the time clicks are kept.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\TrackingLinksApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$link_id = 'link_id_example'; // string
+$from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | First day of the range, `YYYY-MM-DD`.
+$to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Last day of the range, `YYYY-MM-DD`.
+
+try {
+    $result = $apiInstance->getTrackingLinkStats($link_id, $from_date, $to_date);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TrackingLinksApi->getTrackingLinkStats: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **link_id** | **string**|  | |
+| **from_date** | **\DateTime**| First day of the range, &#x60;YYYY-MM-DD&#x60;. | |
+| **to_date** | **\DateTime**| Last day of the range, &#x60;YYYY-MM-DD&#x60;. | |
+
+### Return type
+
+[**\Zernio\Model\TrackingLinkStats**](../Model/TrackingLinkStats.md)
 
 ### Authorization
 

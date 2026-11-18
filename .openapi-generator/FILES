@@ -3192,6 +3192,9 @@ docs/Model/TikTokSmartPlusReviewStatus.md
 docs/Model/TrackingLink.md
 docs/Model/TrackingLinkCampaign.md
 docs/Model/TrackingLinkDestination.md
+docs/Model/TrackingLinkStats.md
+docs/Model/TrackingLinkStatsDestinationsInner.md
+docs/Model/TrackingLinkStatsRevenueInner.md
 docs/Model/TrackingSite.md
 docs/Model/TrackingSiteChecksInner.md
 docs/Model/TrackingSiteConsentMode.md
@@ -7143,6 +7146,9 @@ lib/Model/TikTokSmartPlusReviewStatus.php
 lib/Model/TrackingLink.php
 lib/Model/TrackingLinkCampaign.php
 lib/Model/TrackingLinkDestination.php
+lib/Model/TrackingLinkStats.php
+lib/Model/TrackingLinkStatsDestinationsInner.php
+lib/Model/TrackingLinkStatsRevenueInner.php
 lib/Model/TrackingSite.php
 lib/Model/TrackingSiteChecksInner.php
 lib/Model/TrackingSiteConsentMode.php
@@ -7901,3 +7907,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/TrackingLinkStatsDestinationsInnerTest.php
+test/Model/TrackingLinkStatsRevenueInnerTest.php
+test/Model/TrackingLinkStatsTest.php
