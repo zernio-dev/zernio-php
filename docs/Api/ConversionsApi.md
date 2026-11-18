@@ -26,6 +26,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getAdConversionMetrics()**](ConversionsApi.md#getAdConversionMetrics) | **GET** /v1/ads/conversions/destinations/{destinationId}/metrics | Get attribution metrics |
 | [**getConversionDestination()**](ConversionsApi.md#getConversionDestination) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Get a conversion destination |
 | [**getConversionMetrics()**](ConversionsApi.md#getConversionMetrics) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/metrics | Get attribution metrics |
+| [**getConversionPaths()**](ConversionsApi.md#getConversionPaths) | **GET** /v1/events/paths | List the touch paths that lead to conversions |
 | [**getConversionsQuality()**](ConversionsApi.md#getConversionsQuality) | **GET** /v1/ads/conversions/quality | Get Event Match Quality |
 | [**getEvent()**](ConversionsApi.md#getEvent) | **GET** /v1/events/{eventId} | Get one stored event and its deliveries |
 | [**getEventsOverview()**](ConversionsApi.md#getEventsOverview) | **GET** /v1/events/overview | Get today&#39;s tracking overview |
@@ -1290,6 +1291,72 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetAdConversionMetrics200Response**](../Model/GetAdConversionMetrics200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getConversionPaths()`
+
+```php
+getConversionPaths($from_date, $to_date, $profile_id, $limit): \Zernio\Model\GetConversionPaths200Response
+```
+
+List the touch paths that lead to conversions
+
+The most frequent sequences of touches people made before a conversion (sale, lead or another counted event) whose time falls in the range: ad clicks, tagged visits, search, referrals and earlier lead forms, oldest first.  Only conversions with more than one touch have a path. Without `profileId` it covers every profile you can access. Requires the Ads add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Inclusive. At most 400 days after `fromDate`.
+$profile_id = 'profile_id_example'; // string | The profile to read. Omit for every profile you can access.
+$limit = 10; // int
+
+try {
+    $result = $apiInstance->getConversionPaths($from_date, $to_date, $profile_id, $limit);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->getConversionPaths: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **from_date** | **\DateTime**|  | |
+| **to_date** | **\DateTime**| Inclusive. At most 400 days after &#x60;fromDate&#x60;. | |
+| **profile_id** | **string**| The profile to read. Omit for every profile you can access. | [optional] |
+| **limit** | **int**|  | [optional] [default to 10] |
+
+### Return type
+
+[**\Zernio\Model\GetConversionPaths200Response**](../Model/GetConversionPaths200Response.md)
 
 ### Authorization
 
