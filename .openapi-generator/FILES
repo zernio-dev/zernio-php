@@ -3173,6 +3173,7 @@ docs/Model/TrackingSiteCustomHostnameDnsRecord.md
 docs/Model/TrackingSiteInstall.md
 docs/Model/TrackingSitePeriodTotals.md
 docs/Model/TrackingSiteProxy.md
+docs/Model/TrackingSiteProxyGoogleTagsInner.md
 docs/Model/TrackingSiteSetup.md
 docs/Model/TrackingTag.md
 docs/Model/TrackingTagDiagnostic.md
@@ -7096,6 +7097,7 @@ lib/Model/TrackingSiteCustomHostnameDnsRecord.php
 lib/Model/TrackingSiteInstall.php
 lib/Model/TrackingSitePeriodTotals.php
 lib/Model/TrackingSiteProxy.php
+lib/Model/TrackingSiteProxyGoogleTagsInner.php
 lib/Model/TrackingSiteSetup.php
 lib/Model/TrackingTag.php
 lib/Model/TrackingTagDiagnostic.php
@@ -7845,3 +7847,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/TrackingSiteProxyGoogleTagsInnerTest.php
