@@ -1689,7 +1689,7 @@ try {
 ## `getAdTree()`
 
 ```php
-getAdTree($page, $limit, $source, $platform, $status, $ad_account_id, $page_id, $account_id, $profile_id, $campaign_id, $updated_since, $search, $from_date, $to_date, $has_delivery, $min_spend, $sort, $time_increment, $daily_level, $compare, $results, $depth): \Zernio\Model\AdTreeResponse
+getAdTree($page, $limit, $source, $platform, $status, $ad_account_id, $page_id, $account_id, $profile_id, $campaign_id, $updated_since, $search, $from_date, $to_date, $has_delivery, $min_spend, $sort, $time_increment, $daily_level, $compare, $results, $model, $depth): \Zernio\Model\AdTreeResponse
 ```
 
 Get campaign tree
@@ -1734,10 +1734,11 @@ $time_increment = 56; // int | Set to `1` to also return a daily breakdown (mirr
 $daily_level = 'campaign'; // string | Which tree levels get the `daily[]` series when `timeIncrement=1`. Ignored when `timeIncrement` is unset.  - `campaign` (default): on campaign nodes only. The common per-campaign-trend case, and the smallest payload. - `adset`: on ad sets too. - `ad`: on every ad in `ads[]` as well. Heaviest (a long range × up to 100 ads per ad set); scope with `campaignId` to keep responses small.
 $compare = 'compare_example'; // string | Set to `previous` to also read the period of the same length that ends the day before `fromDate`. Every campaign, ad set and ad gains `previousMetrics` (same fields as `metrics`) and the response gains `previousRange`, so a table can show the change against the previous period in one call.
 $results = True; // bool | Set to `true` to add your own results (see [Campaign results](/guides/campaign-results)): every campaign gains `results`, the values you sent for the range plus each formula they allow, and the response gains `resultMetrics` to label them.
+$model = 'last_click'; // string | With `results=true`: the attribution model your stored sales and leads count under in `results`. Uploaded values are the same under every model.
 $depth = 'ad'; // string | How deep the tree goes. Metrics always roll up over every ad, whatever the depth.  - `ad` (default): campaigns, their ad sets and each ad set's ads. - `adset`: campaigns and ad sets; every `ads[]` is empty and `adCount` still counts the ads. - `campaign`: campaigns only; every `adSets[]` is empty and `adSetCount` / `adCount` still count them.
 
 try {
-    $result = $apiInstance->getAdTree($page, $limit, $source, $platform, $status, $ad_account_id, $page_id, $account_id, $profile_id, $campaign_id, $updated_since, $search, $from_date, $to_date, $has_delivery, $min_spend, $sort, $time_increment, $daily_level, $compare, $results, $depth);
+    $result = $apiInstance->getAdTree($page, $limit, $source, $platform, $status, $ad_account_id, $page_id, $account_id, $profile_id, $campaign_id, $updated_since, $search, $from_date, $to_date, $has_delivery, $min_spend, $sort, $time_increment, $daily_level, $compare, $results, $model, $depth);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdCampaignsApi->getAdTree: ', $e->getMessage(), PHP_EOL;
@@ -1769,6 +1770,7 @@ try {
 | **daily_level** | **string**| Which tree levels get the &#x60;daily[]&#x60; series when &#x60;timeIncrement&#x3D;1&#x60;. Ignored when &#x60;timeIncrement&#x60; is unset.  - &#x60;campaign&#x60; (default): on campaign nodes only. The common per-campaign-trend case, and the smallest payload. - &#x60;adset&#x60;: on ad sets too. - &#x60;ad&#x60;: on every ad in &#x60;ads[]&#x60; as well. Heaviest (a long range × up to 100 ads per ad set); scope with &#x60;campaignId&#x60; to keep responses small. | [optional] [default to &#39;campaign&#39;] |
 | **compare** | **string**| Set to &#x60;previous&#x60; to also read the period of the same length that ends the day before &#x60;fromDate&#x60;. Every campaign, ad set and ad gains &#x60;previousMetrics&#x60; (same fields as &#x60;metrics&#x60;) and the response gains &#x60;previousRange&#x60;, so a table can show the change against the previous period in one call. | [optional] |
 | **results** | **bool**| Set to &#x60;true&#x60; to add your own results (see [Campaign results](/guides/campaign-results)): every campaign gains &#x60;results&#x60;, the values you sent for the range plus each formula they allow, and the response gains &#x60;resultMetrics&#x60; to label them. | [optional] |
+| **model** | **string**| With &#x60;results&#x3D;true&#x60;: the attribution model your stored sales and leads count under in &#x60;results&#x60;. Uploaded values are the same under every model. | [optional] [default to &#39;last_click&#39;] |
 | **depth** | **string**| How deep the tree goes. Metrics always roll up over every ad, whatever the depth.  - &#x60;ad&#x60; (default): campaigns, their ad sets and each ad set&#39;s ads. - &#x60;adset&#x60;: campaigns and ad sets; every &#x60;ads[]&#x60; is empty and &#x60;adCount&#x60; still counts the ads. - &#x60;campaign&#x60;: campaigns only; every &#x60;adSets[]&#x60; is empty and &#x60;adSetCount&#x60; / &#x60;adCount&#x60; still count them. | [optional] [default to &#39;ad&#39;] |
 
 ### Return type
