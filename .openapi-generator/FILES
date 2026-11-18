@@ -75,6 +75,7 @@ docs/Api/SMSApi.md
 docs/Api/SequencesApi.md
 docs/Api/SlackApi.md
 docs/Api/SupportAssistantApi.md
+docs/Api/TrackingLinksApi.md
 docs/Api/TrackingTagsApi.md
 docs/Api/TreasuryApi.md
 docs/Api/TwitterEngagementApi.md
@@ -1079,6 +1080,8 @@ docs/Model/CreateTestLeadRequest.md
 docs/Model/CreateTestLeadRequestFieldDataInner.md
 docs/Model/CreateTopup201Response.md
 docs/Model/CreateTopupRequest.md
+docs/Model/CreateTrackingLink201Response.md
+docs/Model/CreateTrackingLinkRequest.md
 docs/Model/CreateTrackingSite201Response.md
 docs/Model/CreateTrackingSiteRequest.md
 docs/Model/CreateTrackingTag201Response.md
@@ -2474,6 +2477,7 @@ docs/Model/ListTikTokSmartPlusReviews200ResponseListing.md
 docs/Model/ListTikTokSmartPlusReviews200ResponseListingError.md
 docs/Model/ListTikTokSmartPlusReviews200ResponseReviewError.md
 docs/Model/ListTopups200Response.md
+docs/Model/ListTrackingLinks200Response.md
 docs/Model/ListTrackingSites200Response.md
 docs/Model/ListTrackingSites200ResponsePagination.md
 docs/Model/ListTrackingTagEvents200Response.md
@@ -3181,6 +3185,9 @@ docs/Model/TikTokReviewRejectionContent.md
 docs/Model/TikTokSmartPlusAdLevelReview.md
 docs/Model/TikTokSmartPlusMaterialReview.md
 docs/Model/TikTokSmartPlusReviewStatus.md
+docs/Model/TrackingLink.md
+docs/Model/TrackingLinkCampaign.md
+docs/Model/TrackingLinkDestination.md
 docs/Model/TrackingSite.md
 docs/Model/TrackingSiteChecksInner.md
 docs/Model/TrackingSiteConsentMode.md
@@ -3477,6 +3484,7 @@ docs/Model/UpdateSequenceRequestStepsInnerTemplate.md
 docs/Model/UpdateSlackSettingsRequest.md
 docs/Model/UpdateStripeSettings200Response.md
 docs/Model/UpdateStripeSettingsRequest.md
+docs/Model/UpdateTrackingLinkRequest.md
 docs/Model/UpdateTrackingSiteRequest.md
 docs/Model/UpdateTrackingTagRequest.md
 docs/Model/UpdateValueRuleSet200Response.md
@@ -4010,6 +4018,7 @@ lib/Api/SMSApi.php
 lib/Api/SequencesApi.php
 lib/Api/SlackApi.php
 lib/Api/SupportAssistantApi.php
+lib/Api/TrackingLinksApi.php
 lib/Api/TrackingTagsApi.php
 lib/Api/TreasuryApi.php
 lib/Api/TwitterEngagementApi.php
@@ -5018,6 +5027,8 @@ lib/Model/CreateTestLeadRequest.php
 lib/Model/CreateTestLeadRequestFieldDataInner.php
 lib/Model/CreateTopup201Response.php
 lib/Model/CreateTopupRequest.php
+lib/Model/CreateTrackingLink201Response.php
+lib/Model/CreateTrackingLinkRequest.php
 lib/Model/CreateTrackingSite201Response.php
 lib/Model/CreateTrackingSiteRequest.php
 lib/Model/CreateTrackingTag201Response.php
@@ -6413,6 +6424,7 @@ lib/Model/ListTikTokSmartPlusReviews200ResponseListing.php
 lib/Model/ListTikTokSmartPlusReviews200ResponseListingError.php
 lib/Model/ListTikTokSmartPlusReviews200ResponseReviewError.php
 lib/Model/ListTopups200Response.php
+lib/Model/ListTrackingLinks200Response.php
 lib/Model/ListTrackingSites200Response.php
 lib/Model/ListTrackingSites200ResponsePagination.php
 lib/Model/ListTrackingTagEvents200Response.php
@@ -7121,6 +7133,9 @@ lib/Model/TikTokReviewRejectionContent.php
 lib/Model/TikTokSmartPlusAdLevelReview.php
 lib/Model/TikTokSmartPlusMaterialReview.php
 lib/Model/TikTokSmartPlusReviewStatus.php
+lib/Model/TrackingLink.php
+lib/Model/TrackingLinkCampaign.php
+lib/Model/TrackingLinkDestination.php
 lib/Model/TrackingSite.php
 lib/Model/TrackingSiteChecksInner.php
 lib/Model/TrackingSiteConsentMode.php
@@ -7417,6 +7432,7 @@ lib/Model/UpdateSequenceRequestStepsInnerTemplate.php
 lib/Model/UpdateSlackSettingsRequest.php
 lib/Model/UpdateStripeSettings200Response.php
 lib/Model/UpdateStripeSettingsRequest.php
+lib/Model/UpdateTrackingLinkRequest.php
 lib/Model/UpdateTrackingSiteRequest.php
 lib/Model/UpdateTrackingTagRequest.php
 lib/Model/UpdateValueRuleSet200Response.php
@@ -7879,7 +7895,11 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ConnectSnapchatAdsCredentials200ResponseTest.php
-test/Model/ConnectSnapchatAdsCredentialsRequestTest.php
-test/Model/CreateStandaloneAdRequestCarouselCardsInnerVideoTest.php
-test/Model/MessagingCarouselCardVideoTest.php
+test/Api/TrackingLinksApiTest.php
+test/Model/CreateTrackingLink201ResponseTest.php
+test/Model/CreateTrackingLinkRequestTest.php
+test/Model/ListTrackingLinks200ResponseTest.php
+test/Model/TrackingLinkCampaignTest.php
+test/Model/TrackingLinkDestinationTest.php
+test/Model/TrackingLinkTest.php
+test/Model/UpdateTrackingLinkRequestTest.php
