@@ -31,6 +31,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getEvent()**](ConversionsApi.md#getEvent) | **GET** /v1/events/{eventId} | Get one stored event and its deliveries |
 | [**getEventsOverview()**](ConversionsApi.md#getEventsOverview) | **GET** /v1/events/overview | Get today&#39;s tracking overview |
 | [**getEventsOverviewDaily()**](ConversionsApi.md#getEventsOverviewDaily) | **GET** /v1/events/overview/daily | Get daily tracking figures |
+| [**getLtvCohorts()**](ConversionsApi.md#getLtvCohorts) | **GET** /v1/events/ltv | Get buyer cohorts by first purchase month and first channel |
 | [**getTrackingSite()**](ConversionsApi.md#getTrackingSite) | **GET** /v1/tracking-sites/{siteId} | Get a tracking site |
 | [**listAdConversionAssociations()**](ConversionsApi.md#listAdConversionAssociations) | **GET** /v1/ads/conversions/destinations/{destinationId}/associations | List associated campaigns |
 | [**listAdConversionDestinations()**](ConversionsApi.md#listAdConversionDestinations) | **GET** /v1/ads/conversions/destinations | List conversion destinations |
@@ -1609,6 +1610,70 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetEventsOverviewDaily200Response**](../Model/GetEventsOverviewDaily200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getLtvCohorts()`
+
+```php
+getLtvCohorts($from_month, $to_month, $profile_id): \Zernio\Model\GetLtvCohorts200Response
+```
+
+Get buyer cohorts by first purchase month and first channel
+
+Buyers grouped by the month of their first purchase and the platform that first brought them, with their purchases added up over the year after (months 0, 1, 3, 6 and 12).  A buyer is a hashed email, else external id, else phone. The first channel is the first touch's platform, else the first purchase's own campaign, else `none`. Values stay in each purchase's currency, one row per currency. Requires the Ads add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$from_month = 2026-01; // string
+$to_month = 2026-11; // string
+$profile_id = 'profile_id_example'; // string | The profile to read. Omit for every profile you can access.
+
+try {
+    $result = $apiInstance->getLtvCohorts($from_month, $to_month, $profile_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->getLtvCohorts: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **from_month** | **string**|  | |
+| **to_month** | **string**|  | |
+| **profile_id** | **string**| The profile to read. Omit for every profile you can access. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\GetLtvCohorts200Response**](../Model/GetLtvCohorts200Response.md)
 
 ### Authorization
 

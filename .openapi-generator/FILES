@@ -1730,6 +1730,9 @@ docs/Model/GetLinkedInSupplyForecast200ResponseForecastInnerTimeSeriesInner.md
 docs/Model/GetLinkedInSupplyForecast200ResponseForecastInnerTimeSeriesInnerAdForecastRange.md
 docs/Model/GetLinkedInSupplyForecastRequest.md
 docs/Model/GetLinkedInSupplyForecastRequestCompetingBid.md
+docs/Model/GetLtvCohorts200Response.md
+docs/Model/GetLtvCohorts200ResponseCohortsInner.md
+docs/Model/GetLtvCohorts200ResponseCohortsInnerRevenue.md
 docs/Model/GetMediaPresignedUrl200Response.md
 docs/Model/GetMediaPresignedUrlRequest.md
 docs/Model/GetMessageAttachment200Response.md
@@ -5662,6 +5665,9 @@ lib/Model/GetLinkedInSupplyForecast200ResponseForecastInnerTimeSeriesInner.php
 lib/Model/GetLinkedInSupplyForecast200ResponseForecastInnerTimeSeriesInnerAdForecastRange.php
 lib/Model/GetLinkedInSupplyForecastRequest.php
 lib/Model/GetLinkedInSupplyForecastRequestCompetingBid.php
+lib/Model/GetLtvCohorts200Response.php
+lib/Model/GetLtvCohorts200ResponseCohortsInner.php
+lib/Model/GetLtvCohorts200ResponseCohortsInnerRevenue.php
 lib/Model/GetMediaPresignedUrl200Response.php
 lib/Model/GetMediaPresignedUrlRequest.php
 lib/Model/GetMessageAttachment200Response.php
@@ -7865,3 +7871,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetLtvCohorts200ResponseCohortsInnerRevenueTest.php
+test/Model/GetLtvCohorts200ResponseCohortsInnerTest.php
+test/Model/GetLtvCohorts200ResponseTest.php
