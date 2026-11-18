@@ -7901,7 +7901,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetTagNewAds200ResponseTest.php
-test/Model/ImapDiscoveryHostReplacementsInnerTest.php
-test/Model/SetTagNewAds200ResponseTest.php
-test/Model/SetTagNewAdsRequestTest.php
