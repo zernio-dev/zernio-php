@@ -76,7 +76,7 @@ This endpoint does not need any parameter.
 ## `getCampaignResultsTotals()`
 
 ```php
-getCampaignResultsTotals($from_date, $to_date, $ad_account_ids): \Zernio\Model\GetCampaignResultsTotals200Response
+getCampaignResultsTotals($from_date, $to_date, $model, $ad_account_ids): \Zernio\Model\GetCampaignResultsTotals200Response
 ```
 
 Get your results totals
@@ -102,10 +102,11 @@ $apiInstance = new Zernio\Api\AdCampaignResultsApi(
 );
 $from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Inclusive. At most 400 days after `fromDate`.
+$model = 'last_click'; // string | Attribution model your stored sales and leads count under. `last_click` (default) counts each event whole for the campaign it matched. The others split it across the campaigns of its earlier touches, so counts and revenue can be fractional. Uploads read the same under every model.
 $ad_account_ids = 'ad_account_ids_example'; // string | Comma-separated platform ad account ids, at most 100. Omit for every ad account your key can see.
 
 try {
-    $result = $apiInstance->getCampaignResultsTotals($from_date, $to_date, $ad_account_ids);
+    $result = $apiInstance->getCampaignResultsTotals($from_date, $to_date, $model, $ad_account_ids);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdCampaignResultsApi->getCampaignResultsTotals: ', $e->getMessage(), PHP_EOL;
@@ -118,6 +119,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **from_date** | **\DateTime**|  | |
 | **to_date** | **\DateTime**| Inclusive. At most 400 days after &#x60;fromDate&#x60;. | |
+| **model** | **string**| Attribution model your stored sales and leads count under. &#x60;last_click&#x60; (default) counts each event whole for the campaign it matched. The others split it across the campaigns of its earlier touches, so counts and revenue can be fractional. Uploads read the same under every model. | [optional] [default to &#39;last_click&#39;] |
 | **ad_account_ids** | **string**| Comma-separated platform ad account ids, at most 100. Omit for every ad account your key can see. | [optional] |
 
 ### Return type
@@ -257,7 +259,7 @@ This endpoint does not need any parameter.
 ## `listCampaignResults()`
 
 ```php
-listCampaignResults($from_date, $to_date, $campaign_ids, $limit, $cursor): \Zernio\Model\ListCampaignResults200Response
+listCampaignResults($from_date, $to_date, $model, $campaign_ids, $limit, $cursor): \Zernio\Model\ListCampaignResults200Response
 ```
 
 List your results per campaign
@@ -283,12 +285,13 @@ $apiInstance = new Zernio\Api\AdCampaignResultsApi(
 );
 $from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Inclusive. At most 400 days after `fromDate`.
+$model = 'last_click'; // string | Attribution model your stored sales and leads count under. `last_click` (default) counts each event whole for the campaign it matched. The others split it across the campaigns of its earlier touches, so counts and revenue can be fractional. Uploads read the same under every model.
 $campaign_ids = 'campaign_ids_example'; // string | Comma-separated platform campaign ids, at most 500. Omit for all campaigns.
 $limit = 100; // int | Campaigns per page.
 $cursor = 'cursor_example'; // string | `nextCursor` from the previous page.
 
 try {
-    $result = $apiInstance->listCampaignResults($from_date, $to_date, $campaign_ids, $limit, $cursor);
+    $result = $apiInstance->listCampaignResults($from_date, $to_date, $model, $campaign_ids, $limit, $cursor);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdCampaignResultsApi->listCampaignResults: ', $e->getMessage(), PHP_EOL;
@@ -301,6 +304,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **from_date** | **\DateTime**|  | |
 | **to_date** | **\DateTime**| Inclusive. At most 400 days after &#x60;fromDate&#x60;. | |
+| **model** | **string**| Attribution model your stored sales and leads count under. &#x60;last_click&#x60; (default) counts each event whole for the campaign it matched. The others split it across the campaigns of its earlier touches, so counts and revenue can be fractional. Uploads read the same under every model. | [optional] [default to &#39;last_click&#39;] |
 | **campaign_ids** | **string**| Comma-separated platform campaign ids, at most 500. Omit for all campaigns. | [optional] |
 | **limit** | **int**| Campaigns per page. | [optional] [default to 100] |
 | **cursor** | **string**| &#x60;nextCursor&#x60; from the previous page. | [optional] |

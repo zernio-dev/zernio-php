@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **from_date** | **\DateTime** |  |
 **to_date** | **\DateTime** |  |
+**model** | **string** | The attribution model the results are counted under. |
 **campaigns** | [**\Zernio\Model\ListCampaignResults200ResponseCampaignsInner[]**](ListCampaignResults200ResponseCampaignsInner.md) |  |
 **next_cursor** | **string** |  |
 
