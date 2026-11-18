@@ -1578,6 +1578,9 @@ docs/Model/GetEventsOverview200ResponseWebsite.md
 docs/Model/GetEventsOverview200ResponseWebsiteStepsInner.md
 docs/Model/GetEventsOverviewDaily200Response.md
 docs/Model/GetEventsOverviewDaily200ResponseDaysInner.md
+docs/Model/GetEventsOverviewDaily200ResponsePixelMissedInner.md
+docs/Model/GetEventsOverviewDaily200ResponsePlatformsInner.md
+docs/Model/GetEventsOverviewDaily200ResponsePlatformsInnerDaysInner.md
 docs/Model/GetEventsOverviewDaily200ResponseTotals.md
 docs/Model/GetFacebookDemographics200Response.md
 docs/Model/GetFacebookDemographics200ResponseDemographics.md
@@ -5504,6 +5507,9 @@ lib/Model/GetEventsOverview200ResponseWebsite.php
 lib/Model/GetEventsOverview200ResponseWebsiteStepsInner.php
 lib/Model/GetEventsOverviewDaily200Response.php
 lib/Model/GetEventsOverviewDaily200ResponseDaysInner.php
+lib/Model/GetEventsOverviewDaily200ResponsePixelMissedInner.php
+lib/Model/GetEventsOverviewDaily200ResponsePlatformsInner.php
+lib/Model/GetEventsOverviewDaily200ResponsePlatformsInnerDaysInner.php
 lib/Model/GetEventsOverviewDaily200ResponseTotals.php
 lib/Model/GetFacebookDemographics200Response.php
 lib/Model/GetFacebookDemographics200ResponseDemographics.php
@@ -7853,6 +7859,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetCampaignResultEvents200ResponseTest.php
-test/Model/SetCampaignResultEvents200ResponseTest.php
-test/Model/SetCampaignResultEventsRequestTest.php
+test/Model/GetEventsOverviewDaily200ResponsePixelMissedInnerTest.php
+test/Model/GetEventsOverviewDaily200ResponsePlatformsInnerDaysInnerTest.php
+test/Model/GetEventsOverviewDaily200ResponsePlatformsInnerTest.php

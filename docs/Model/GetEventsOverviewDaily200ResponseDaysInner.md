@@ -8,5 +8,6 @@ Name | Type | Description | Notes
 **conversions** | **int** | Stored events that occurred that day. | [optional]
 **sent** | **int** | Events first sent to a destination that day. | [optional]
 **accepted** | **int** | Those the platform accepted. | [optional]
+**by_event** | **array<string,int>** | The day&#39;s stored events per event name. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
