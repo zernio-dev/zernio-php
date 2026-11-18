@@ -42,11 +42,14 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getYouTubeDailyViews()**](AnalyticsApi.md#getYouTubeDailyViews) | **GET** /v1/analytics/youtube/daily-views | Get YouTube daily views |
 | [**getYouTubeDemographics()**](AnalyticsApi.md#getYouTubeDemographics) | **GET** /v1/analytics/youtube/demographics | Get YouTube demographics |
 | [**getYouTubeVideoRetention()**](AnalyticsApi.md#getYouTubeVideoRetention) | **GET** /v1/analytics/youtube/video-retention | Get YouTube video retention curve |
+| [**inspectGoogleSearchConsoleUrl()**](AnalyticsApi.md#inspectGoogleSearchConsoleUrl) | **POST** /v1/analytics/googlesearchconsole/url-inspection | Inspect a URL in Google Search Console |
 | [**listFacebookTaggedPosts()**](AnalyticsApi.md#listFacebookTaggedPosts) | **GET** /v1/accounts/{accountId}/facebook-tagged-posts | List the posts a Facebook Page is tagged in |
 | [**listFacebookVisitorPosts()**](AnalyticsApi.md#listFacebookVisitorPosts) | **GET** /v1/accounts/{accountId}/facebook-visitor-posts | List visitor posts on a Facebook Page |
+| [**listGoogleSearchConsoleSitemaps()**](AnalyticsApi.md#listGoogleSearchConsoleSitemaps) | **GET** /v1/analytics/googlesearchconsole/sitemaps | List Google Search Console sitemaps |
 | [**listPostAuthenticity()**](AnalyticsApi.md#listPostAuthenticity) | **GET** /v1/analytics/authenticity | List authenticity scores |
 | [**listTrackingWindows()**](AnalyticsApi.md#listTrackingWindows) | **GET** /v1/analytics/tracking | List tracking windows |
 | [**openTrackingWindow()**](AnalyticsApi.md#openTrackingWindow) | **POST** /v1/analytics/tracking | Open a tracking window |
+| [**queryGoogleSearchConsoleSearchAnalytics()**](AnalyticsApi.md#queryGoogleSearchConsoleSearchAnalytics) | **POST** /v1/analytics/googlesearchconsole/search-analytics | Query Google Search Console search analytics |
 | [**runGoogleAnalyticsRealtimeReport()**](AnalyticsApi.md#runGoogleAnalyticsRealtimeReport) | **POST** /v1/analytics/googleanalytics/realtime | Run a Google Analytics (GA4) realtime report |
 | [**runGoogleAnalyticsReport()**](AnalyticsApi.md#runGoogleAnalyticsReport) | **POST** /v1/analytics/googleanalytics/report | Run a Google Analytics (GA4) report |
 | [**syncExternalPosts()**](AnalyticsApi.md#syncExternalPosts) | **POST** /v1/posts/sync-external | Sync an external post |
@@ -2478,6 +2481,66 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `inspectGoogleSearchConsoleUrl()`
+
+```php
+inspectGoogleSearchConsoleUrl($inspect_google_search_console_url_request): \Zernio\Model\InspectGoogleSearchConsoleUrl200Response
+```
+
+Inspect a URL in Google Search Console
+
+Google's index status for one URL of a connected site: whether it is indexed, its canonical, last crawl, robots and fetch state, mobile usability and rich results. Returns Google's `inspectionResult` as is.  The URL must belong to the connected site (any host under a Domain property, or starting with the URL prefix); any other URL returns 400 before Google is called. Google allows 2,000 inspections a day and 600 a minute per site; results are cached for one hour.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$inspect_google_search_console_url_request = new \Zernio\Model\InspectGoogleSearchConsoleUrlRequest(); // \Zernio\Model\InspectGoogleSearchConsoleUrlRequest
+
+try {
+    $result = $apiInstance->inspectGoogleSearchConsoleUrl($inspect_google_search_console_url_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->inspectGoogleSearchConsoleUrl: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **inspect_google_search_console_url_request** | [**\Zernio\Model\InspectGoogleSearchConsoleUrlRequest**](../Model/InspectGoogleSearchConsoleUrlRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\InspectGoogleSearchConsoleUrl200Response**](../Model/InspectGoogleSearchConsoleUrl200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listFacebookTaggedPosts()`
 
 ```php
@@ -2592,6 +2655,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListFacebookVisitorPosts200Response**](../Model/ListFacebookVisitorPosts200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listGoogleSearchConsoleSitemaps()`
+
+```php
+listGoogleSearchConsoleSitemaps($account_id): \Zernio\Model\ListGoogleSearchConsoleSitemaps200Response
+```
+
+List Google Search Console sitemaps
+
+The sitemaps submitted for a connected Search Console site, with when Google last read them, their errors and warnings and how many URLs each holds. Cached for 10 minutes.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Zernio account ID of the Google Search Console connection.
+
+try {
+    $result = $apiInstance->listGoogleSearchConsoleSitemaps($account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->listGoogleSearchConsoleSitemaps: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Zernio account ID of the Google Search Console connection. | |
+
+### Return type
+
+[**\Zernio\Model\ListGoogleSearchConsoleSitemaps200Response**](../Model/ListGoogleSearchConsoleSitemaps200Response.md)
 
 ### Authorization
 
@@ -2790,6 +2913,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\TrackingWindowResponse**](../Model/TrackingWindowResponse.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `queryGoogleSearchConsoleSearchAnalytics()`
+
+```php
+queryGoogleSearchConsoleSearchAnalytics($query_google_search_console_search_analytics_request): \Zernio\Model\QueryGoogleSearchConsoleSearchAnalytics200Response
+```
+
+Query Google Search Console search analytics
+
+Clicks, impressions, CTR and average position from Google Search for a connected Search Console site, through Google's `searchAnalytics.query`.  Group by any of `date`, `hour`, `query`, `page`, `country`, `device` and `searchAppearance`, and filter with Google's own filter groups. With no dimensions you get one row with the site's totals.  ### Dates  Dates are `YYYY-MM-DD` in Pacific time. `toDate` defaults to yesterday and `fromDate` to 27 days before `toDate`, the window every report takes. Unknown fields answer 400. Google keeps 16 months, and the last two or three days are still filling in unless you pass `dataState: all`.  ### Caching and quota  Identical requests on the same site are cached for 10 minutes. Google limits each site to 1,200 queries a minute; past it the request returns 429.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$query_google_search_console_search_analytics_request = {"accountId":"6650f1c2a1b2c3d4e5f60789","fromDate":"2026-10-01","toDate":"2026-10-31","dimensions":["query"],"rowLimit":50}; // \Zernio\Model\QueryGoogleSearchConsoleSearchAnalyticsRequest
+
+try {
+    $result = $apiInstance->queryGoogleSearchConsoleSearchAnalytics($query_google_search_console_search_analytics_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->queryGoogleSearchConsoleSearchAnalytics: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **query_google_search_console_search_analytics_request** | [**\Zernio\Model\QueryGoogleSearchConsoleSearchAnalyticsRequest**](../Model/QueryGoogleSearchConsoleSearchAnalyticsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\QueryGoogleSearchConsoleSearchAnalytics200Response**](../Model/QueryGoogleSearchConsoleSearchAnalytics200Response.md)
 
 ### Authorization
 

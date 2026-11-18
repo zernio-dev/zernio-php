@@ -365,11 +365,14 @@ Class | Method | HTTP request | Description
 *AnalyticsApi* | [**getYouTubeDailyViews**](docs/Api/AnalyticsApi.md#getyoutubedailyviews) | **GET** /v1/analytics/youtube/daily-views | Get YouTube daily views
 *AnalyticsApi* | [**getYouTubeDemographics**](docs/Api/AnalyticsApi.md#getyoutubedemographics) | **GET** /v1/analytics/youtube/demographics | Get YouTube demographics
 *AnalyticsApi* | [**getYouTubeVideoRetention**](docs/Api/AnalyticsApi.md#getyoutubevideoretention) | **GET** /v1/analytics/youtube/video-retention | Get YouTube video retention curve
+*AnalyticsApi* | [**inspectGoogleSearchConsoleUrl**](docs/Api/AnalyticsApi.md#inspectgooglesearchconsoleurl) | **POST** /v1/analytics/googlesearchconsole/url-inspection | Inspect a URL in Google Search Console
 *AnalyticsApi* | [**listFacebookTaggedPosts**](docs/Api/AnalyticsApi.md#listfacebooktaggedposts) | **GET** /v1/accounts/{accountId}/facebook-tagged-posts | List the posts a Facebook Page is tagged in
 *AnalyticsApi* | [**listFacebookVisitorPosts**](docs/Api/AnalyticsApi.md#listfacebookvisitorposts) | **GET** /v1/accounts/{accountId}/facebook-visitor-posts | List visitor posts on a Facebook Page
+*AnalyticsApi* | [**listGoogleSearchConsoleSitemaps**](docs/Api/AnalyticsApi.md#listgooglesearchconsolesitemaps) | **GET** /v1/analytics/googlesearchconsole/sitemaps | List Google Search Console sitemaps
 *AnalyticsApi* | [**listPostAuthenticity**](docs/Api/AnalyticsApi.md#listpostauthenticity) | **GET** /v1/analytics/authenticity | List authenticity scores
 *AnalyticsApi* | [**listTrackingWindows**](docs/Api/AnalyticsApi.md#listtrackingwindows) | **GET** /v1/analytics/tracking | List tracking windows
 *AnalyticsApi* | [**openTrackingWindow**](docs/Api/AnalyticsApi.md#opentrackingwindow) | **POST** /v1/analytics/tracking | Open a tracking window
+*AnalyticsApi* | [**queryGoogleSearchConsoleSearchAnalytics**](docs/Api/AnalyticsApi.md#querygooglesearchconsolesearchanalytics) | **POST** /v1/analytics/googlesearchconsole/search-analytics | Query Google Search Console search analytics
 *AnalyticsApi* | [**runGoogleAnalyticsRealtimeReport**](docs/Api/AnalyticsApi.md#rungoogleanalyticsrealtimereport) | **POST** /v1/analytics/googleanalytics/realtime | Run a Google Analytics (GA4) realtime report
 *AnalyticsApi* | [**runGoogleAnalyticsReport**](docs/Api/AnalyticsApi.md#rungoogleanalyticsreport) | **POST** /v1/analytics/googleanalytics/report | Run a Google Analytics (GA4) report
 *AnalyticsApi* | [**syncExternalPosts**](docs/Api/AnalyticsApi.md#syncexternalposts) | **POST** /v1/posts/sync-external | Sync an external post
@@ -661,6 +664,7 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**getFacebookPages**](docs/Api/ConnectApi.md#getfacebookpages) | **GET** /v1/accounts/{accountId}/facebook-page | List Facebook pages
 *ConnectApi* | [**getGmbLocations**](docs/Api/ConnectApi.md#getgmblocations) | **GET** /v1/accounts/{accountId}/gmb-locations | List Google Business Profile locations
 *ConnectApi* | [**getGoogleAnalyticsConnectUrl**](docs/Api/ConnectApi.md#getgoogleanalyticsconnecturl) | **GET** /v1/connect/googleanalytics | Get Google Analytics OAuth connect URL
+*ConnectApi* | [**getGoogleSearchConsoleConnectUrl**](docs/Api/ConnectApi.md#getgooglesearchconsoleconnecturl) | **GET** /v1/connect/googlesearchconsole | Get Google Search Console OAuth connect URL
 *ConnectApi* | [**getHubSpotConnectUrl**](docs/Api/ConnectApi.md#gethubspotconnecturl) | **GET** /v1/connect/hubspot | Get HubSpot OAuth connect URL
 *ConnectApi* | [**getLinkedInOrganizations**](docs/Api/ConnectApi.md#getlinkedinorganizations) | **GET** /v1/accounts/{accountId}/linkedin-organizations | List LinkedIn orgs
 *ConnectApi* | [**getOAuthApp**](docs/Api/ConnectApi.md#getoauthapp) | **GET** /v1/connect/oauth-apps/{appId} | Get an OAuth app
@@ -688,6 +692,7 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**listGoogleAnalyticsProperties**](docs/Api/ConnectApi.md#listgoogleanalyticsproperties) | **GET** /v1/connect/googleanalytics/properties | List Google Analytics properties for a pending connect
 *ConnectApi* | [**listGoogleBusinessCategories**](docs/Api/ConnectApi.md#listgooglebusinesscategories) | **GET** /v1/accounts/{accountId}/gmb-categories | List Google Business Profile categories
 *ConnectApi* | [**listGoogleBusinessLocations**](docs/Api/ConnectApi.md#listgooglebusinesslocations) | **GET** /v1/connect/googlebusiness/locations | List Google Business Profile locations
+*ConnectApi* | [**listGoogleSearchConsoleSites**](docs/Api/ConnectApi.md#listgooglesearchconsolesites) | **GET** /v1/connect/googlesearchconsole/sites | List Search Console sites for a pending connect
 *ConnectApi* | [**listInstagramPages**](docs/Api/ConnectApi.md#listinstagrampages) | **GET** /v1/connect/instagram/select-account | List Pages with a linked Instagram account
 *ConnectApi* | [**listLinkedInOrganizations**](docs/Api/ConnectApi.md#listlinkedinorganizations) | **GET** /v1/connect/linkedin/organizations | List LinkedIn orgs
 *ConnectApi* | [**listOAuthApps**](docs/Api/ConnectApi.md#listoauthapps) | **GET** /v1/connect/oauth-apps | List your OAuth apps
@@ -702,6 +707,7 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**selectFacebookPage**](docs/Api/ConnectApi.md#selectfacebookpage) | **POST** /v1/connect/facebook/select-page | Select Facebook page
 *ConnectApi* | [**selectGoogleAnalyticsProperty**](docs/Api/ConnectApi.md#selectgoogleanalyticsproperty) | **POST** /v1/connect/googleanalytics/select-property | Connect the chosen Google Analytics property
 *ConnectApi* | [**selectGoogleBusinessLocation**](docs/Api/ConnectApi.md#selectgooglebusinesslocation) | **POST** /v1/connect/googlebusiness/select-location | Select Google Business Profile location
+*ConnectApi* | [**selectGoogleSearchConsoleSite**](docs/Api/ConnectApi.md#selectgooglesearchconsolesite) | **POST** /v1/connect/googlesearchconsole/select-site | Connect the chosen Search Console site
 *ConnectApi* | [**selectInstagramAccount**](docs/Api/ConnectApi.md#selectinstagramaccount) | **POST** /v1/connect/instagram/select-account | Select the Page whose Instagram account to connect
 *ConnectApi* | [**selectLinkedInOrganization**](docs/Api/ConnectApi.md#selectlinkedinorganization) | **POST** /v1/connect/linkedin/select-organization | Select LinkedIn org
 *ConnectApi* | [**selectPinterestBoard**](docs/Api/ConnectApi.md#selectpinterestboard) | **POST** /v1/connect/pinterest/select-board | Select Pinterest board
@@ -3314,6 +3320,9 @@ Class | Method | HTTP request | Description
 - [InlineObject4Details](docs/Model/InlineObject4Details.md)
 - [InlineObject5](docs/Model/InlineObject5.md)
 - [InlineObject5Details](docs/Model/InlineObject5Details.md)
+- [InspectGoogleSearchConsoleUrl200Response](docs/Model/InspectGoogleSearchConsoleUrl200Response.md)
+- [InspectGoogleSearchConsoleUrl200ResponseData](docs/Model/InspectGoogleSearchConsoleUrl200ResponseData.md)
+- [InspectGoogleSearchConsoleUrlRequest](docs/Model/InspectGoogleSearchConsoleUrlRequest.md)
 - [InstagramAccountInsightsResponse](docs/Model/InstagramAccountInsightsResponse.md)
 - [InstagramAccountInsightsResponseDateRange](docs/Model/InstagramAccountInsightsResponseDateRange.md)
 - [InstagramAccountInsightsResponseMetricsValue](docs/Model/InstagramAccountInsightsResponseMetricsValue.md)
@@ -3607,6 +3616,12 @@ Class | Method | HTTP request | Description
 - [ListGoogleBusinessPlaceActions200Response](docs/Model/ListGoogleBusinessPlaceActions200Response.md)
 - [ListGoogleBusinessPlaceActions200ResponsePlaceActionLinksInner](docs/Model/ListGoogleBusinessPlaceActions200ResponsePlaceActionLinksInner.md)
 - [ListGoogleRecommendations200Response](docs/Model/ListGoogleRecommendations200Response.md)
+- [ListGoogleSearchConsoleSitemaps200Response](docs/Model/ListGoogleSearchConsoleSitemaps200Response.md)
+- [ListGoogleSearchConsoleSitemaps200ResponseDataInner](docs/Model/ListGoogleSearchConsoleSitemaps200ResponseDataInner.md)
+- [ListGoogleSearchConsoleSitemaps200ResponseDataInnerContentsInner](docs/Model/ListGoogleSearchConsoleSitemaps200ResponseDataInnerContentsInner.md)
+- [ListGoogleSearchConsoleSitemaps200ResponseMeta](docs/Model/ListGoogleSearchConsoleSitemaps200ResponseMeta.md)
+- [ListGoogleSearchConsoleSites200Response](docs/Model/ListGoogleSearchConsoleSites200Response.md)
+- [ListGoogleSearchConsoleSites200ResponseSitesInner](docs/Model/ListGoogleSearchConsoleSites200ResponseSitesInner.md)
 - [ListHighDemandPeriods200Response](docs/Model/ListHighDemandPeriods200Response.md)
 - [ListImessageAudience200Response](docs/Model/ListImessageAudience200Response.md)
 - [ListImessageAvailableNumbers200Response](docs/Model/ListImessageAvailableNumbers200Response.md)
@@ -3973,6 +3988,13 @@ Class | Method | HTTP request | Description
 - [PurchaseWhatsAppPhoneNumberRequest](docs/Model/PurchaseWhatsAppPhoneNumberRequest.md)
 - [QueryAdInsights200Response](docs/Model/QueryAdInsights200Response.md)
 - [QueryAdInsights200ResponsePaging](docs/Model/QueryAdInsights200ResponsePaging.md)
+- [QueryGoogleSearchConsoleSearchAnalytics200Response](docs/Model/QueryGoogleSearchConsoleSearchAnalytics200Response.md)
+- [QueryGoogleSearchConsoleSearchAnalytics200ResponseDataInner](docs/Model/QueryGoogleSearchConsoleSearchAnalytics200ResponseDataInner.md)
+- [QueryGoogleSearchConsoleSearchAnalytics200ResponseMeta](docs/Model/QueryGoogleSearchConsoleSearchAnalytics200ResponseMeta.md)
+- [QueryGoogleSearchConsoleSearchAnalytics200ResponsePagination](docs/Model/QueryGoogleSearchConsoleSearchAnalytics200ResponsePagination.md)
+- [QueryGoogleSearchConsoleSearchAnalyticsRequest](docs/Model/QueryGoogleSearchConsoleSearchAnalyticsRequest.md)
+- [QueryGoogleSearchConsoleSearchAnalyticsRequestDimensionFilterGroupsInner](docs/Model/QueryGoogleSearchConsoleSearchAnalyticsRequestDimensionFilterGroupsInner.md)
+- [QueryGoogleSearchConsoleSearchAnalyticsRequestDimensionFilterGroupsInnerFiltersInner](docs/Model/QueryGoogleSearchConsoleSearchAnalyticsRequestDimensionFilterGroupsInnerFiltersInner.md)
 - [QueueDeleteResponse](docs/Model/QueueDeleteResponse.md)
 - [QueueNextSlotResponse](docs/Model/QueueNextSlotResponse.md)
 - [QueuePreviewResponse](docs/Model/QueuePreviewResponse.md)
@@ -4196,6 +4218,9 @@ Class | Method | HTTP request | Description
 - [SelectGoogleBusinessLocation200ResponseFailedInner](docs/Model/SelectGoogleBusinessLocation200ResponseFailedInner.md)
 - [SelectGoogleBusinessLocationRequest](docs/Model/SelectGoogleBusinessLocationRequest.md)
 - [SelectGoogleBusinessLocationRequestLocationsInner](docs/Model/SelectGoogleBusinessLocationRequestLocationsInner.md)
+- [SelectGoogleSearchConsoleSite200Response](docs/Model/SelectGoogleSearchConsoleSite200Response.md)
+- [SelectGoogleSearchConsoleSite200ResponseAccount](docs/Model/SelectGoogleSearchConsoleSite200ResponseAccount.md)
+- [SelectGoogleSearchConsoleSiteRequest](docs/Model/SelectGoogleSearchConsoleSiteRequest.md)
 - [SelectInstagramAccount200Response](docs/Model/SelectInstagramAccount200Response.md)
 - [SelectInstagramAccount200ResponseAccount](docs/Model/SelectInstagramAccount200ResponseAccount.md)
 - [SelectInstagramAccountRequest](docs/Model/SelectInstagramAccountRequest.md)
@@ -5218,6 +5243,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.653.1`
+- API version: `1.654.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

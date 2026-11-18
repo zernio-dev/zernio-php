@@ -1,0 +1,13 @@
+# # QueryGoogleSearchConsoleSearchAnalytics200ResponseMeta
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**account_id** | **string** |  | [optional]
+**site_url** | **string** |  | [optional]
+**from_date** | **\DateTime** |  | [optional]
+**to_date** | **\DateTime** |  | [optional]
+**aggregation_type** | **string** |  | [optional]
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

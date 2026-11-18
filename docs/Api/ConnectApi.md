@@ -42,6 +42,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getFacebookPages()**](ConnectApi.md#getFacebookPages) | **GET** /v1/accounts/{accountId}/facebook-page | List Facebook pages |
 | [**getGmbLocations()**](ConnectApi.md#getGmbLocations) | **GET** /v1/accounts/{accountId}/gmb-locations | List Google Business Profile locations |
 | [**getGoogleAnalyticsConnectUrl()**](ConnectApi.md#getGoogleAnalyticsConnectUrl) | **GET** /v1/connect/googleanalytics | Get Google Analytics OAuth connect URL |
+| [**getGoogleSearchConsoleConnectUrl()**](ConnectApi.md#getGoogleSearchConsoleConnectUrl) | **GET** /v1/connect/googlesearchconsole | Get Google Search Console OAuth connect URL |
 | [**getHubSpotConnectUrl()**](ConnectApi.md#getHubSpotConnectUrl) | **GET** /v1/connect/hubspot | Get HubSpot OAuth connect URL |
 | [**getLinkedInOrganizations()**](ConnectApi.md#getLinkedInOrganizations) | **GET** /v1/accounts/{accountId}/linkedin-organizations | List LinkedIn orgs |
 | [**getOAuthApp()**](ConnectApi.md#getOAuthApp) | **GET** /v1/connect/oauth-apps/{appId} | Get an OAuth app |
@@ -69,6 +70,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listGoogleAnalyticsProperties()**](ConnectApi.md#listGoogleAnalyticsProperties) | **GET** /v1/connect/googleanalytics/properties | List Google Analytics properties for a pending connect |
 | [**listGoogleBusinessCategories()**](ConnectApi.md#listGoogleBusinessCategories) | **GET** /v1/accounts/{accountId}/gmb-categories | List Google Business Profile categories |
 | [**listGoogleBusinessLocations()**](ConnectApi.md#listGoogleBusinessLocations) | **GET** /v1/connect/googlebusiness/locations | List Google Business Profile locations |
+| [**listGoogleSearchConsoleSites()**](ConnectApi.md#listGoogleSearchConsoleSites) | **GET** /v1/connect/googlesearchconsole/sites | List Search Console sites for a pending connect |
 | [**listInstagramPages()**](ConnectApi.md#listInstagramPages) | **GET** /v1/connect/instagram/select-account | List Pages with a linked Instagram account |
 | [**listLinkedInOrganizations()**](ConnectApi.md#listLinkedInOrganizations) | **GET** /v1/connect/linkedin/organizations | List LinkedIn orgs |
 | [**listOAuthApps()**](ConnectApi.md#listOAuthApps) | **GET** /v1/connect/oauth-apps | List your OAuth apps |
@@ -83,6 +85,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**selectFacebookPage()**](ConnectApi.md#selectFacebookPage) | **POST** /v1/connect/facebook/select-page | Select Facebook page |
 | [**selectGoogleAnalyticsProperty()**](ConnectApi.md#selectGoogleAnalyticsProperty) | **POST** /v1/connect/googleanalytics/select-property | Connect the chosen Google Analytics property |
 | [**selectGoogleBusinessLocation()**](ConnectApi.md#selectGoogleBusinessLocation) | **POST** /v1/connect/googlebusiness/select-location | Select Google Business Profile location |
+| [**selectGoogleSearchConsoleSite()**](ConnectApi.md#selectGoogleSearchConsoleSite) | **POST** /v1/connect/googlesearchconsole/select-site | Connect the chosen Search Console site |
 | [**selectInstagramAccount()**](ConnectApi.md#selectInstagramAccount) | **POST** /v1/connect/instagram/select-account | Select the Page whose Instagram account to connect |
 | [**selectLinkedInOrganization()**](ConnectApi.md#selectLinkedInOrganization) | **POST** /v1/connect/linkedin/select-organization | Select LinkedIn org |
 | [**selectPinterestBoard()**](ConnectApi.md#selectPinterestBoard) | **POST** /v1/connect/pinterest/select-board | Select Pinterest board |
@@ -2390,6 +2393,75 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getGoogleSearchConsoleConnectUrl()`
+
+```php
+getGoogleSearchConsoleConnectUrl($profile_id, $redirect_url, $reconnect_account_id): \Zernio\Model\GetGoogleAnalyticsConnectUrl200Response
+```
+
+Get Google Search Console OAuth connect URL
+
+Starts OAuth for Google Search Console. Each connected site becomes its own account with platform `googlesearchconsole`; it reads Google Search data and does not post.  Requested scope: `https://www.googleapis.com/auth/webmasters.readonly`.  ### Flow  Redirect the user to `authUrl`.  - **One verified site:** Zernio connects it and redirects to `redirect_url` (or the dashboard) with `connected=googlesearchconsole`, `profileId`, `accountId` and `username` (the site, such as `acme.com`). - **Several sites:** the user first picks one on a Zernio-hosted page, which then redirects the same way.  ### Your own site picker  Add `headless=true` to `redirect_url`. Zernio then redirects there with `step=select_site`, `profileId`, `platform=googlesearchconsole` and a `pendingDataToken` for `GET /v1/connect/googlesearchconsole/sites` and `POST /v1/connect/googlesearchconsole/select-site`.  ### Errors  On failure the redirect carries `error`, `platform=googlesearchconsole` and `error_message`. Errors include:  - `googlesearchconsole_scope_missing`: the user unticked Search Console access. - `googlesearchconsole_no_sites`: the Google account has no verified Search Console site. - `googlesearchconsole_no_refresh_token`: Google returned no refresh token; connect again.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: connectToken
+$config = Zernio\Configuration::getDefaultConfiguration()->setApiKey('X-Connect-Token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Zernio\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Connect-Token', 'Bearer');
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$profile_id = 'profile_id_example'; // string | Your Zernio profile ID (get from /v1/profiles).
+$redirect_url = 'redirect_url_example'; // string | Custom redirect after connection. Must be an absolute http(s) URL or custom app scheme such as `myapp://callback`; relative and unsafe URLs return 400.
+$reconnect_account_id = 'reconnect_account_id_example'; // string | Zernio account ID of the Google Search Console account being reconnected. Picking a different site then fails instead of adding a second account.
+
+try {
+    $result = $apiInstance->getGoogleSearchConsoleConnectUrl($profile_id, $redirect_url, $reconnect_account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->getGoogleSearchConsoleConnectUrl: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **profile_id** | **string**| Your Zernio profile ID (get from /v1/profiles). | |
+| **redirect_url** | **string**| Custom redirect after connection. Must be an absolute http(s) URL or custom app scheme such as &#x60;myapp://callback&#x60;; relative and unsafe URLs return 400. | [optional] |
+| **reconnect_account_id** | **string**| Zernio account ID of the Google Search Console account being reconnected. Picking a different site then fails instead of adding a second account. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\GetGoogleAnalyticsConnectUrl200Response**](../Model/GetGoogleAnalyticsConnectUrl200Response.md)
+
+### Authorization
+
+[connectToken](../../README.md#connectToken), [bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getHubSpotConnectUrl()`
 
 ```php
@@ -4109,6 +4181,71 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listGoogleSearchConsoleSites()`
+
+```php
+listGoogleSearchConsoleSites($pending_data_token): \Zernio\Model\ListGoogleSearchConsoleSites200Response
+```
+
+List Search Console sites for a pending connect
+
+For headless flows: lists the verified Search Console sites of a pending connect, so you can show your own picker.  ### Flow  1. The connect started with `redirect_url=...?headless=true`, and the Google account has several verified sites. 2. Zernio redirects to your `redirect_url` with `step=select_site`, `profileId`, `platform=googlesearchconsole` and a `pendingDataToken`. 3. Call this to list the sites and show your own picker. 4. Call `POST /v1/connect/googlesearchconsole/select-site`.  ### Token  - Listing does not consume the token. - A headless token passes through your own URLs, so it is honored only together with your API key (or connect token) for the same profile. - It expires after one hour.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: connectToken
+$config = Zernio\Configuration::getDefaultConfiguration()->setApiKey('X-Connect-Token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Zernio\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Connect-Token', 'Bearer');
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$pending_data_token = 'pending_data_token_example'; // string | Token from the headless redirect.
+
+try {
+    $result = $apiInstance->listGoogleSearchConsoleSites($pending_data_token);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->listGoogleSearchConsoleSites: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **pending_data_token** | **string**| Token from the headless redirect. | |
+
+### Return type
+
+[**\Zernio\Model\ListGoogleSearchConsoleSites200Response**](../Model/ListGoogleSearchConsoleSites200Response.md)
+
+### Authorization
+
+[connectToken](../../README.md#connectToken), [bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listInstagramPages()`
 
 ```php
@@ -4997,6 +5134,71 @@ try {
 ### Return type
 
 [**\Zernio\Model\SelectGoogleBusinessLocation200Response**](../Model/SelectGoogleBusinessLocation200Response.md)
+
+### Authorization
+
+[connectToken](../../README.md#connectToken), [bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `selectGoogleSearchConsoleSite()`
+
+```php
+selectGoogleSearchConsoleSite($select_google_search_console_site_request): \Zernio\Model\SelectGoogleSearchConsoleSite200Response
+```
+
+Connect the chosen Search Console site
+
+For headless flows. Connects the site the user picked as a `googlesearchconsole` account and returns where to send the user next.  - On success: your `redirect_url` with `connected=googlesearchconsole`, `profileId`, `accountId` and `username`. - When the connect was refused (for example a billing block): an `error`.  Consumes the `pendingDataToken`; a refused or failed attempt leaves it usable for a retry.  Send your API key (or connect token) for the same profile with a headless token.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: connectToken
+$config = Zernio\Configuration::getDefaultConfiguration()->setApiKey('X-Connect-Token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Zernio\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Connect-Token', 'Bearer');
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$select_google_search_console_site_request = new \Zernio\Model\SelectGoogleSearchConsoleSiteRequest(); // \Zernio\Model\SelectGoogleSearchConsoleSiteRequest
+
+try {
+    $result = $apiInstance->selectGoogleSearchConsoleSite($select_google_search_console_site_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->selectGoogleSearchConsoleSite: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **select_google_search_console_site_request** | [**\Zernio\Model\SelectGoogleSearchConsoleSiteRequest**](../Model/SelectGoogleSearchConsoleSiteRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\SelectGoogleSearchConsoleSite200Response**](../Model/SelectGoogleSearchConsoleSite200Response.md)
 
 ### Authorization
 
