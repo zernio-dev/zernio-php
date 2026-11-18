@@ -373,7 +373,7 @@ $to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Zero-padde
 $date_from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Alias of fromDate, kept for existing callers
 $date_to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Alias of toDate, kept for existing callers
 $include_hidden = false; // bool
-$search = 'search_example'; // string | Search posts by text content.
+$search = 'search_example'; // string | Search posts by text content. Not available with `source=external` (400).
 $tags = job,engineering; // string | Comma-separated tags (at most 20). Returns only posts carrying every listed tag, matched exactly and case-sensitively against the tags set when the post was created. An empty value means no tag filter. `tag` is accepted as an alias.
 $sort_by = 'scheduled-desc'; // string | Sort order for results.
 $account_id = 'account_id_example'; // string | Filter posts to those published via a specific account (24-char hex ObjectId).
@@ -407,7 +407,7 @@ try {
 | **date_from** | **\DateTime**| Alias of fromDate, kept for existing callers | [optional] |
 | **date_to** | **\DateTime**| Alias of toDate, kept for existing callers | [optional] |
 | **include_hidden** | **bool**|  | [optional] [default to false] |
-| **search** | **string**| Search posts by text content. | [optional] |
+| **search** | **string**| Search posts by text content. Not available with &#x60;source&#x3D;external&#x60; (400). | [optional] |
 | **tags** | **string**| Comma-separated tags (at most 20). Returns only posts carrying every listed tag, matched exactly and case-sensitively against the tags set when the post was created. An empty value means no tag filter. &#x60;tag&#x60; is accepted as an alias. | [optional] |
 | **sort_by** | **string**| Sort order for results. | [optional] [default to &#39;scheduled-desc&#39;] |
 | **account_id** | **string**| Filter posts to those published via a specific account (24-char hex ObjectId). | [optional] |
