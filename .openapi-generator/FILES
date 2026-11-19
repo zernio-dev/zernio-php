@@ -136,6 +136,7 @@ docs/Model/AdKeyword.md
 docs/Model/AdKeywordMetrics.md
 docs/Model/AdKeywordQuality.md
 docs/Model/AdLead.md
+docs/Model/AdLeadAttribution.md
 docs/Model/AdLeadConsent.md
 docs/Model/AdMetricRow.md
 docs/Model/AdMetricRowDailyInner.md
@@ -995,10 +996,13 @@ docs/Model/CreateInboxLabel201Response.md
 docs/Model/CreateInboxLabelRequest.md
 docs/Model/CreateInviteToken201Response.md
 docs/Model/CreateInviteTokenRequest.md
+docs/Model/CreateLead200Response.md
+docs/Model/CreateLead201Response.md
 docs/Model/CreateLeadForm200Response.md
 docs/Model/CreateLeadFormRequest.md
 docs/Model/CreateLeadFormRequestPlatformSpecificData.md
 docs/Model/CreateLeadFormRequestQuestionsInner.md
+docs/Model/CreateLeadRequest.md
 docs/Model/CreateMessagingAd200Response.md
 docs/Model/CreateMessagingAd200ResponseResultsInner.md
 docs/Model/CreateMessagingAd201Response.md
@@ -4192,6 +4196,7 @@ lib/Model/AdKeyword.php
 lib/Model/AdKeywordMetrics.php
 lib/Model/AdKeywordQuality.php
 lib/Model/AdLead.php
+lib/Model/AdLeadAttribution.php
 lib/Model/AdLeadConsent.php
 lib/Model/AdMetricRow.php
 lib/Model/AdMetricRowDailyInner.php
@@ -5051,10 +5056,13 @@ lib/Model/CreateInboxLabel201Response.php
 lib/Model/CreateInboxLabelRequest.php
 lib/Model/CreateInviteToken201Response.php
 lib/Model/CreateInviteTokenRequest.php
+lib/Model/CreateLead200Response.php
+lib/Model/CreateLead201Response.php
 lib/Model/CreateLeadForm200Response.php
 lib/Model/CreateLeadFormRequest.php
 lib/Model/CreateLeadFormRequestPlatformSpecificData.php
 lib/Model/CreateLeadFormRequestQuestionsInner.php
+lib/Model/CreateLeadRequest.php
 lib/Model/CreateMessagingAd200Response.php
 lib/Model/CreateMessagingAd200ResponseResultsInner.php
 lib/Model/CreateMessagingAd201Response.php
@@ -8113,3 +8121,7 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/AdLeadAttributionTest.php
+test/Model/CreateLead200ResponseTest.php
+test/Model/CreateLead201ResponseTest.php
+test/Model/CreateLeadRequestTest.php

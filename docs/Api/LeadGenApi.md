@@ -8,6 +8,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | ------------- | ------------- | ------------- |
 | [**archiveLeadForm()**](LeadGenApi.md#archiveLeadForm) | **DELETE** /v1/ads/lead-forms/{formId} | Archive a lead form |
 | [**countLeads()**](LeadGenApi.md#countLeads) | **GET** /v1/ads/leads/counts | Count leads by status |
+| [**createLead()**](LeadGenApi.md#createLead) | **POST** /v1/leads | Create a lead from your own form |
 | [**createLeadForm()**](LeadGenApi.md#createLeadForm) | **POST** /v1/ads/lead-forms | Create a lead form |
 | [**createTestLead()**](LeadGenApi.md#createTestLead) | **POST** /v1/ads/lead-forms/{formId}/test-leads | Create a test lead |
 | [**deleteTestLead()**](LeadGenApi.md#deleteTestLead) | **DELETE** /v1/ads/lead-forms/{formId}/test-leads | Delete a test lead |
@@ -136,6 +137,66 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createLead()`
+
+```php
+createLead($create_lead_request): \Zernio\Model\CreateLead200Response
+```
+
+Create a lead from your own form
+
+Stores a lead from a form on your own site or app, posted by your backend. It joins the leads from ad networks: it is listed on `GET /v1/ads/leads` (`platform: web`), fires `lead.received`, starts lead workflows, and moves through statuses with `PATCH /v1/ads/leads/{id}`.  - **Lead event.** A `Lead` event is stored and sent through the profile's forwarding rules that take the `form_leads` source, like an event sent to `POST /v1/events`. - **Attribution.** Pass the ad click ids from the landing URL in `clickIds` (a raw `fbclid` becomes Meta's `fbc`) and the Zernio tag's visitor id (`_zid` cookie) in `visitorId`. - **Earlier visits.** Zernio adds the click ids it saw on that visitor's, email's or phone's earlier website visits. Qualifying or converting the lead later sends those ids with the stage event. - **Idempotent by `leadId`.** Posting the same `leadId` again returns the stored lead with `created: false` and sends nothing twice. Without `leadId`, every call creates a lead.  A tracked website can capture form leads without any code: turn on lead capture for the site. Requires the Ads add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\LeadGenApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_lead_request = {"profileId":"6a0000000000000000000001","email":"ana@example.com","fields":{"full_name":"Ana Garcia","company":"Acme"},"formName":"Demo request","leadId":"crm_4821","sourceUrl":"https://example.com/demo?utm_source=facebook","clickIds":{"fbclid":"IwAR2xyz"}}; // \Zernio\Model\CreateLeadRequest
+
+try {
+    $result = $apiInstance->createLead($create_lead_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling LeadGenApi->createLead: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_lead_request** | [**\Zernio\Model\CreateLeadRequest**](../Model/CreateLeadRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateLead200Response**](../Model/CreateLead200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -558,7 +619,7 @@ $account_id = 'account_id_example'; // string | Filter to a single connected acc
 $account_ids = 'account_ids_example'; // string | Meta only. Comma-separated connected account ids, to list several accounts at once. Without accountId or accountIds every account of the team is listed.
 $status = new,contacted; // string | Meta only. Comma-separated lead statuses: new, contacted, unreachable, qualified, converted, disqualified.
 $campaign_id = 'campaign_id_example'; // string | Meta only. The platform campaign id the lead came from.
-$platform = 'platform_example'; // string | Only leads of this network. meta and google list stored leads of that network (no LinkedIn live fetch); linkedin requires accountId to be a LinkedIn ads connection (400 otherwise). Without it, every stored network is listed, and an accountId that is a LinkedIn ads connection switches to the live fetch.
+$platform = 'platform_example'; // string | Only leads of this network.  - `web`: your own website and API forms. - `meta` and `google` list stored leads of that network (no LinkedIn live fetch). - `linkedin` requires accountId to be a LinkedIn ads connection (400 otherwise).  Without it, every stored network is listed, and an accountId that is a LinkedIn ads connection switches to the live fetch.
 $q = 'q_example'; // string | Meta only. Case-insensitive text search over the lead's answers and the form name.
 $ad_account_id = 'ad_account_id_example'; // string | LinkedIn only: the LinkedIn ad account id whose responses to read (owner-scoped finder).
 $limit = 25; // int
@@ -582,7 +643,7 @@ try {
 | **account_ids** | **string**| Meta only. Comma-separated connected account ids, to list several accounts at once. Without accountId or accountIds every account of the team is listed. | [optional] |
 | **status** | **string**| Meta only. Comma-separated lead statuses: new, contacted, unreachable, qualified, converted, disqualified. | [optional] |
 | **campaign_id** | **string**| Meta only. The platform campaign id the lead came from. | [optional] |
-| **platform** | **string**| Only leads of this network. meta and google list stored leads of that network (no LinkedIn live fetch); linkedin requires accountId to be a LinkedIn ads connection (400 otherwise). Without it, every stored network is listed, and an accountId that is a LinkedIn ads connection switches to the live fetch. | [optional] |
+| **platform** | **string**| Only leads of this network.  - &#x60;web&#x60;: your own website and API forms. - &#x60;meta&#x60; and &#x60;google&#x60; list stored leads of that network (no LinkedIn live fetch). - &#x60;linkedin&#x60; requires accountId to be a LinkedIn ads connection (400 otherwise).  Without it, every stored network is listed, and an accountId that is a LinkedIn ads connection switches to the live fetch. | [optional] |
 | **q** | **string**| Meta only. Case-insensitive text search over the lead&#39;s answers and the form name. | [optional] |
 | **ad_account_id** | **string**| LinkedIn only: the LinkedIn ad account id whose responses to read (owner-scoped finder). | [optional] |
 | **limit** | **int**|  | [optional] [default to 25] |
@@ -614,7 +675,7 @@ updateLead($id, $update_lead_request): \Zernio\Model\UpdateLead200Response
 
 Update a lead's status
 
-Sets the status of a Meta lead (and optionally its value) so you can track it from lead to sale.  `{id}` is the Zernio lead id (`id` on `GET /v1/ads/leads`, `leadId` on `GET /v1/ads/lead-forms/{formId}/leads`) or the Meta `leadgenId` together with `accountId` in the body. Requires the Ads add-on.
+Sets the status of a lead (and optionally its value) so you can track it from lead to sale.  Moving a lead to `qualified` stores a `QualifiedLead` event, and to `converted` a `Purchase` with the lead's value. Moving away from a stage retracts its event.  Each stage event is also sent to the ad platforms, but only through the forwarding rules that list that event name in `eventNames`. A rule taking every event name never gets them, so a won lead is never counted as a second sale next to your store's or Stripe's own.  Meta leads are matched by their lead id. Website and API form leads (`platform: web`) are matched by the email, phone and ad click ids they arrived with, and are sent under the `form_leads` source.  `{id}` is the Zernio lead id (`id` on `GET /v1/ads/leads`, `leadId` on `GET /v1/ads/lead-forms/{formId}/leads`) or the Meta `leadgenId` together with `accountId` in the body. Requires the Ads add-on.
 
 ### Example
 
