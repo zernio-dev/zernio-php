@@ -6,8 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **available_cents** | **int** | Your balance. It goes negative after a dispute or refund of funds already spent, or when pay-per-use already in flight lands past zero. The next funds you add cover it. New payout batches are refused while it is negative. | [optional]
 **balance_billing** | **bool** | True when the account pays pay-per-use from this prepaid balance (new signups). Absent otherwise: that pay-per-use is on the monthly invoice. | [optional]
-**spendable_cents** | **int** | Balance billing only (absent otherwise). What pay-per-use can still spend: availableCents plus promoCents, minus usage not yet posted. At 0 or below, new pay-per-use answers 402 &#x60;insufficient_balance&#x60;. | [optional]
+**spendable_cents** | **int** | Balance billing only (absent otherwise). What pay-per-use can still spend: availableCents plus promoCents plus bonusCents, minus usage not yet posted. At 0 or below, new pay-per-use answers 402 &#x60;insufficient_balance&#x60;. | [optional]
 **promo_cents** | **int** | Balance billing only (absent otherwise). Promotional and support credit Zernio added to your balance. Pay-per-use spends it before availableCents. It is never paid out to payees and is not part of availableCents. | [optional]
+**bonus_cents** | **int** | Balance billing only (absent otherwise). Bonus credit in the balance, usually 0. Pay-per-use spends it after availableCents. It is not cash, never paid out or refunded, and not part of availableCents. | [optional]
 **held** | [**\Zernio\Model\GetBalance200ResponseHeld**](GetBalance200ResponseHeld.md) |  | [optional]
 **payout_locked_cents** | **int** | Always 0. The balance no longer pays creators, so none of it is locked from them. | [optional]
 **payout_locks** | [**\Zernio\Model\GetBalance200ResponsePayoutLocksInner[]**](GetBalance200ResponsePayoutLocksInner.md) | Always empty. The balance no longer pays creators. | [optional]
