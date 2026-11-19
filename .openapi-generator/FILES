@@ -7943,7 +7943,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetEventsOverviewDaily200ResponsePixelMissedInnerDaysInnerTest.php
-test/Model/GetEventsOverviewDaily200ResponsePreviousTest.php
-test/Model/GetSurveyAnswers200ResponseAnswersInnerTest.php
-test/Model/GetSurveyAnswers200ResponseTest.php
