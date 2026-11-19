@@ -2720,7 +2720,7 @@ listAdsByPerformance($account_id, $from_date, $to_date, $ad_account_id, $platfor
 
 Rank ads by performance
 
-Returns an ads account's ads ranked by spend, impressions, clicks, results or ROAS over a date range, each with its creative (type, thumbnail, headline, body, link) and campaign.  Use it to see which creatives perform best. `accountId` is sibling-expanded like `/v1/ads/timeline`.  Money is ranked by its raw amount, so pass `adAccountId` when the connection's ad accounts bill in different currencies.  A Meta range older than the imported history answers `202` with `backfillPending: true` and the covered part; repeat the request until it returns 200.
+Returns an ads account's ads ranked by spend, impressions, clicks, results or ROAS over a date range, each with its creative (type, thumbnail, headline, body, link) and campaign.  Use it to see which creatives perform best, and from `frequency` which ones the same people keep seeing. `accountId` is sibling-expanded like `/v1/ads/timeline`.  Money is ranked by its raw amount, so pass `adAccountId` when the connection's ad accounts bill in different currencies.  A Meta range older than the imported history answers `202` with `backfillPending: true` and the covered part; repeat the request until it returns 200.
 
 ### Example
 
