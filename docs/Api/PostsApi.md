@@ -494,12 +494,12 @@ try {
 ## `retryPost()`
 
 ```php
-retryPost($post_id): \Zernio\Model\PostRetryResponse
+retryPost($post_id, $post_retry_request): \Zernio\Model\PostRetryResponse
 ```
 
 Retry failed post
 
-Immediately retries publishing a failed post. Returns the updated post with its new status.
+Immediately retries publishing a failed or partial post and returns the updated post with a per-platform result.  - Without a body, every failed or pending platform is retried. - Pass `platforms` to retry only some of them, for example the one platform that failed on a partial post. Platforms not listed are left alone. - Prefer this over creating the post again, which posts a second time to the platforms that already published.  A retry never collides with its own post in the 24-hour duplicate-content check. It still answers 409 when another post with identical content published, or is about to publish, to the same account.
 
 ### Example
 
@@ -519,9 +519,10 @@ $apiInstance = new Zernio\Api\PostsApi(
     $config
 );
 $post_id = 'post_id_example'; // string
+$post_retry_request = {"platforms":[{"platform":"twitter"}]}; // \Zernio\Model\PostRetryRequest
 
 try {
-    $result = $apiInstance->retryPost($post_id);
+    $result = $apiInstance->retryPost($post_id, $post_retry_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PostsApi->retryPost: ', $e->getMessage(), PHP_EOL;
@@ -533,6 +534,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **post_id** | **string**|  | |
+| **post_retry_request** | [**\Zernio\Model\PostRetryRequest**](../Model/PostRetryRequest.md)|  | [optional] |
 
 ### Return type
 
@@ -544,7 +546,7 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

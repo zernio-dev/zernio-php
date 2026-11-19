@@ -144,6 +144,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onSmsRegistrationStatusUpdated()**](WebhookEventsApi.md#onSmsRegistrationStatusUpdated) | **POST** /sms.registration.status_updated | SMS registration status updated event |
 | [**onSupportRunCompleted()**](WebhookEventsApi.md#onSupportRunCompleted) | **POST** /support.run.completed | Support Assistant finished event |
 | [**onSupportRunFailed()**](WebhookEventsApi.md#onSupportRunFailed) | **POST** /support.run.failed | Support Assistant failed event |
+| [**onTrackingSiteReady()**](WebhookEventsApi.md#onTrackingSiteReady) | **POST** /tracking_site.ready | Tracking site ready event |
 | [**onVerificationApproved()**](WebhookEventsApi.md#onVerificationApproved) | **POST** /verification.approved | Verification approved event |
 | [**onVerificationFailed()**](WebhookEventsApi.md#onVerificationFailed) | **POST** /verification.failed | Verification failed event |
 | [**onWebhookTest()**](WebhookEventsApi.md#onWebhookTest) | **POST** /webhook.test | Webhook test event |
@@ -8292,6 +8293,65 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_support_run** | [**\Zernio\Model\WebhookPayloadSupportRun**](../Model/WebhookPayloadSupportRun.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onTrackingSiteReady()`
+
+```php
+onTrackingSiteReady($webhook_payload_tracking_site)
+```
+
+Tracking site ready event
+
+A tracked website's tag is confirmed on it, so its `setup.status` turned `ready`.  ### When it fires  Once the store app or Tag Manager install put the tag on the site, or, for a pasted line (or a Webflow site waiting on its next publish), with the site's first visit that is not a bot. A visit after that fires nothing.  `trackingSite` is the site as `GET /v1/tracking-sites/{siteId}` returns it, without `proxy.secret`.  ### Deduplication  The event `id` follows the site and the moment its tag was confirmed. Deduplicate on it.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_tracking_site = {"id":"00000000-0000-4000-8000-000000000000","event":"tracking_site.ready","timestamp":"2026-01-15T10:00:00Z","trackingSite":{"id":"6720f1c2a9b3c4d5e6f70812","profileId":"507f1f77bcf86cd799439012","name":"shop.example.com","status":"active","domains":["shop.example.com"],"install":{"method":"snippet","storeAccountId":null,"tagManagerContainer":null},"checks":[{"key":"script","status":"passed","detail":null,"checkedAt":"2026-01-15T10:00:00.000Z"}],"setup":{"status":"ready"},"createdAt":"2026-01-15T10:00:00.000Z","updatedAt":"2026-01-15T10:00:00.000Z"},"profileId":"507f1f77bcf86cd799439012","profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadTrackingSite
+
+try {
+    $apiInstance->onTrackingSiteReady($webhook_payload_tracking_site);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onTrackingSiteReady: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_tracking_site** | [**\Zernio\Model\WebhookPayloadTrackingSite**](../Model/WebhookPayloadTrackingSite.md)|  | |
 
 ### Return type
 

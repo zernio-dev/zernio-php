@@ -2741,6 +2741,9 @@ docs/Model/PostMetricsResponseMetaAllOfMetricsSample.md
 docs/Model/PostPlatformError.md
 docs/Model/PostPublishIncompleteResponse.md
 docs/Model/PostPublishIncompleteResponsePlatformResultsInner.md
+docs/Model/PostRetryPlatformResult.md
+docs/Model/PostRetryRequest.md
+docs/Model/PostRetryRequestPlatformsInner.md
 docs/Model/PostRetryResponse.md
 docs/Model/PostSample.md
 docs/Model/PostUpdateResponse.md
@@ -2944,7 +2947,6 @@ docs/Model/RestoreWorkflowVersion200ResponseWorkflow.md
 docs/Model/ResyncPageWebhookSubscription200Response.md
 docs/Model/Retainer.md
 docs/Model/RetractEvent200Response.md
-docs/Model/RetryPost207Response.md
 docs/Model/RetryPost402Response.md
 docs/Model/RetweetPost200Response.md
 docs/Model/RetweetPostRequest.md
@@ -3942,6 +3944,7 @@ docs/Model/WebhookPayloadReviewUpdated.md
 docs/Model/WebhookPayloadSequenceEnrollment.md
 docs/Model/WebhookPayloadSupportRun.md
 docs/Model/WebhookPayloadTest.md
+docs/Model/WebhookPayloadTrackingSite.md
 docs/Model/WebhookPayloadWhatsAppAccountAlertReceived.md
 docs/Model/WebhookPayloadWhatsAppAccountAlertReceivedAlert.md
 docs/Model/WebhookPayloadWhatsAppAccountNameStatusUpdated.md
@@ -6781,6 +6784,9 @@ lib/Model/PostMetricsResponseMetaAllOfMetricsSample.php
 lib/Model/PostPlatformError.php
 lib/Model/PostPublishIncompleteResponse.php
 lib/Model/PostPublishIncompleteResponsePlatformResultsInner.php
+lib/Model/PostRetryPlatformResult.php
+lib/Model/PostRetryRequest.php
+lib/Model/PostRetryRequestPlatformsInner.php
 lib/Model/PostRetryResponse.php
 lib/Model/PostSample.php
 lib/Model/PostUpdateResponse.php
@@ -6984,7 +6990,6 @@ lib/Model/RestoreWorkflowVersion200ResponseWorkflow.php
 lib/Model/ResyncPageWebhookSubscription200Response.php
 lib/Model/Retainer.php
 lib/Model/RetractEvent200Response.php
-lib/Model/RetryPost207Response.php
 lib/Model/RetryPost402Response.php
 lib/Model/RetweetPost200Response.php
 lib/Model/RetweetPostRequest.php
@@ -7982,6 +7987,7 @@ lib/Model/WebhookPayloadReviewUpdated.php
 lib/Model/WebhookPayloadSequenceEnrollment.php
 lib/Model/WebhookPayloadSupportRun.php
 lib/Model/WebhookPayloadTest.php
+lib/Model/WebhookPayloadTrackingSite.php
 lib/Model/WebhookPayloadWhatsAppAccountAlertReceived.php
 lib/Model/WebhookPayloadWhatsAppAccountAlertReceivedAlert.php
 lib/Model/WebhookPayloadWhatsAppAccountNameStatusUpdated.php
@@ -8079,4 +8085,7 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreatePost404ResponseTest.php
+test/Model/PostRetryPlatformResultTest.php
+test/Model/PostRetryRequestPlatformsInnerTest.php
+test/Model/PostRetryRequestTest.php
+test/Model/WebhookPayloadTrackingSiteTest.php
