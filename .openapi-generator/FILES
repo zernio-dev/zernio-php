@@ -2726,9 +2726,9 @@ docs/Model/PostMetricAuthenticity.md
 docs/Model/PostMetricAuthenticityReasonsInner.md
 docs/Model/PostMetricChange.md
 docs/Model/PostMetricContent.md
-docs/Model/PostMetricContentMediaItemsInner.md
 docs/Model/PostMetricFormat.md
 docs/Model/PostMetricGroup.md
+docs/Model/PostMetricMediaItem.md
 docs/Model/PostMetricRow.md
 docs/Model/PostMetricRowBreakdownsValue.md
 docs/Model/PostMetricRowSyncError.md
@@ -6769,9 +6769,9 @@ lib/Model/PostMetricAuthenticity.php
 lib/Model/PostMetricAuthenticityReasonsInner.php
 lib/Model/PostMetricChange.php
 lib/Model/PostMetricContent.php
-lib/Model/PostMetricContentMediaItemsInner.php
 lib/Model/PostMetricFormat.php
 lib/Model/PostMetricGroup.php
+lib/Model/PostMetricMediaItem.php
 lib/Model/PostMetricRow.php
 lib/Model/PostMetricRowBreakdownsValue.php
 lib/Model/PostMetricRowSyncError.php
@@ -8085,3 +8085,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/PostMetricMediaItemTest.php

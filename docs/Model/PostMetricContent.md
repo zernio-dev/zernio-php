@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **content_not_retained** | **bool** |  | [optional]
 **thumbnail_url** | **string** |  |
 **media_type** | **string** |  |
-**media_items** | [**\Zernio\Model\PostMetricContentMediaItemsInner[]**](PostMetricContentMediaItemsInner.md) |  |
+**media_items** | [**\Zernio\Model\PostMetricMediaItem[]**](PostMetricMediaItem.md) |  |
 **video_duration_seconds** | **float** |  |
 **media_product_type** | **string** |  | [optional]
 **is_ai_generated** | **bool** |  | [optional]
