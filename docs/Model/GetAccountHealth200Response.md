@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **unhealthy_since** | **\DateTime** | When the earliest current stored cause was recorded (the start of the outage); for an intentional disconnect, when it was disconnected. Null when the connection is healthy, including when the account is unhealthy for another reason (analytics, messaging restriction, missing analytics scopes, Meta phone status), or when unknown. | [optional]
 **analytics_sync** | [**\Zernio\Model\GetAllAccountsHealth200ResponseAccountsInnerAnalyticsSync**](GetAllAccountsHealth200ResponseAccountsInnerAnalyticsSync.md) |  | [optional]
 **inbound_activity** | [**\Zernio\Model\InboundActivity**](InboundActivity.md) |  | [optional]
+**publishing_restriction** | [**\Zernio\Model\GetAllAccountsHealth200ResponseAccountsInnerPublishingRestriction**](GetAllAccountsHealth200ResponseAccountsInnerPublishingRestriction.md) |  | [optional]
 **messaging_restriction** | [**\Zernio\Model\GetAccountHealth200ResponseMessagingRestriction**](GetAccountHealth200ResponseMessagingRestriction.md) |  | [optional]
 **platform_connection** | [**\Zernio\Model\GetAccountHealth200ResponsePlatformConnection**](GetAccountHealth200ResponsePlatformConnection.md) |  | [optional]
 **line_webhook** | [**\Zernio\Model\GetAccountHealth200ResponseLineWebhook**](GetAccountHealth200ResponseLineWebhook.md) |  | [optional]

@@ -1505,6 +1505,7 @@ docs/Model/GetAllAccountsHealth200Response.md
 docs/Model/GetAllAccountsHealth200ResponseAccountsInner.md
 docs/Model/GetAllAccountsHealth200ResponseAccountsInnerAnalyticsSync.md
 docs/Model/GetAllAccountsHealth200ResponseAccountsInnerMessagingRestriction.md
+docs/Model/GetAllAccountsHealth200ResponseAccountsInnerPublishingRestriction.md
 docs/Model/GetAllAccountsHealth200ResponseSummary.md
 docs/Model/GetAnalytics200Response.md
 docs/Model/GetAnalytics400Response.md
@@ -5565,6 +5566,7 @@ lib/Model/GetAllAccountsHealth200Response.php
 lib/Model/GetAllAccountsHealth200ResponseAccountsInner.php
 lib/Model/GetAllAccountsHealth200ResponseAccountsInnerAnalyticsSync.php
 lib/Model/GetAllAccountsHealth200ResponseAccountsInnerMessagingRestriction.php
+lib/Model/GetAllAccountsHealth200ResponseAccountsInnerPublishingRestriction.php
 lib/Model/GetAllAccountsHealth200ResponseSummary.php
 lib/Model/GetAnalytics200Response.php
 lib/Model/GetAnalytics400Response.php
@@ -8121,7 +8123,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/AdLeadAttributionTest.php
-test/Model/CreateLead200ResponseTest.php
-test/Model/CreateLead201ResponseTest.php
-test/Model/CreateLeadRequestTest.php
+test/Model/GetAllAccountsHealth200ResponseAccountsInnerPublishingRestrictionTest.php
