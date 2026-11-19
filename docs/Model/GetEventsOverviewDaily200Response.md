@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **event_names** | **string[]** | The event names stored in the period, most events first. | [optional]
 **platforms** | [**\Zernio\Model\GetEventsOverviewDaily200ResponsePlatformsInner[]**](GetEventsOverviewDaily200ResponsePlatformsInner.md) | Each platform events were sent to in the period, most sends first. | [optional]
 **pixel_missed** | [**\Zernio\Model\GetEventsOverviewDaily200ResponsePixelMissedInner[]**](GetEventsOverviewDaily200ResponsePixelMissedInner.md) | For each platform sent to in the period, the website conversions of people who allowed ad cookies (bots left out) and how many its browser pixel missed, which Zernio sent from its server. Most missed first; &#x60;null&#x60; without a tracked website in scope. | [optional]
+**breakdown** | [**\Zernio\Model\GetEventsOverviewDaily200ResponseBreakdown**](GetEventsOverviewDaily200ResponseBreakdown.md) |  | [optional]
 **previous** | [**\Zernio\Model\GetEventsOverviewDaily200ResponsePrevious**](GetEventsOverviewDaily200ResponsePrevious.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
