@@ -12732,6 +12732,8 @@ class ConversionsApi
      * @param  string|null $source Only events from this source, such as &#x60;stripe&#x60; for the payments of a connected Stripe account. (optional)
      * @param  string|null $platform Only events sent to this ad platform, such as &#x60;metaads&#x60; or &#x60;googleads&#x60;. (optional)
      * @param  string|null $delivery_status Only events whose latest send to a destination (of &#x60;platform&#x60;, when given) was accepted (&#x60;sent&#x60;) or was not (&#x60;failed&#x60;: failed or still retrying). (optional)
+     * @param  bool|null $from_ad &#x60;true&#x60;: only events carrying an ad click or a campaign (a gclid, gbraid or wbraid, a &#x60;zrn&#x60;, or a matched campaign). &#x60;false&#x60;: only the others. (optional)
+     * @param  string|null $campaign_id Only events of this ad platform campaign id: matched to it, or behind a Google click of it. (optional)
      * @param  string|null $cursor &#x60;nextCursor&#x60; from the previous page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listEvents'] to see the possible values for this operation
      *
@@ -12739,9 +12741,9 @@ class ConversionsApi
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\ListEvents200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject2
      */
-    public function listEvents($profile_id = null, $limit = 50, $from = null, $to = null, $event_name = null, $source = null, $platform = null, $delivery_status = null, $cursor = null, string $contentType = self::contentTypes['listEvents'][0])
+    public function listEvents($profile_id = null, $limit = 50, $from = null, $to = null, $event_name = null, $source = null, $platform = null, $delivery_status = null, $from_ad = null, $campaign_id = null, $cursor = null, string $contentType = self::contentTypes['listEvents'][0])
     {
-        list($response) = $this->listEventsWithHttpInfo($profile_id, $limit, $from, $to, $event_name, $source, $platform, $delivery_status, $cursor, $contentType);
+        list($response) = $this->listEventsWithHttpInfo($profile_id, $limit, $from, $to, $event_name, $source, $platform, $delivery_status, $from_ad, $campaign_id, $cursor, $contentType);
         return $response;
     }
 
@@ -12758,6 +12760,8 @@ class ConversionsApi
      * @param  string|null $source Only events from this source, such as &#x60;stripe&#x60; for the payments of a connected Stripe account. (optional)
      * @param  string|null $platform Only events sent to this ad platform, such as &#x60;metaads&#x60; or &#x60;googleads&#x60;. (optional)
      * @param  string|null $delivery_status Only events whose latest send to a destination (of &#x60;platform&#x60;, when given) was accepted (&#x60;sent&#x60;) or was not (&#x60;failed&#x60;: failed or still retrying). (optional)
+     * @param  bool|null $from_ad &#x60;true&#x60;: only events carrying an ad click or a campaign (a gclid, gbraid or wbraid, a &#x60;zrn&#x60;, or a matched campaign). &#x60;false&#x60;: only the others. (optional)
+     * @param  string|null $campaign_id Only events of this ad platform campaign id: matched to it, or behind a Google click of it. (optional)
      * @param  string|null $cursor &#x60;nextCursor&#x60; from the previous page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listEvents'] to see the possible values for this operation
      *
@@ -12765,9 +12769,9 @@ class ConversionsApi
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\ListEvents200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listEventsWithHttpInfo($profile_id = null, $limit = 50, $from = null, $to = null, $event_name = null, $source = null, $platform = null, $delivery_status = null, $cursor = null, string $contentType = self::contentTypes['listEvents'][0])
+    public function listEventsWithHttpInfo($profile_id = null, $limit = 50, $from = null, $to = null, $event_name = null, $source = null, $platform = null, $delivery_status = null, $from_ad = null, $campaign_id = null, $cursor = null, string $contentType = self::contentTypes['listEvents'][0])
     {
-        $request = $this->listEventsRequest($profile_id, $limit, $from, $to, $event_name, $source, $platform, $delivery_status, $cursor, $contentType);
+        $request = $this->listEventsRequest($profile_id, $limit, $from, $to, $event_name, $source, $platform, $delivery_status, $from_ad, $campaign_id, $cursor, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -12893,15 +12897,17 @@ class ConversionsApi
      * @param  string|null $source Only events from this source, such as &#x60;stripe&#x60; for the payments of a connected Stripe account. (optional)
      * @param  string|null $platform Only events sent to this ad platform, such as &#x60;metaads&#x60; or &#x60;googleads&#x60;. (optional)
      * @param  string|null $delivery_status Only events whose latest send to a destination (of &#x60;platform&#x60;, when given) was accepted (&#x60;sent&#x60;) or was not (&#x60;failed&#x60;: failed or still retrying). (optional)
+     * @param  bool|null $from_ad &#x60;true&#x60;: only events carrying an ad click or a campaign (a gclid, gbraid or wbraid, a &#x60;zrn&#x60;, or a matched campaign). &#x60;false&#x60;: only the others. (optional)
+     * @param  string|null $campaign_id Only events of this ad platform campaign id: matched to it, or behind a Google click of it. (optional)
      * @param  string|null $cursor &#x60;nextCursor&#x60; from the previous page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listEvents'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listEventsAsync($profile_id = null, $limit = 50, $from = null, $to = null, $event_name = null, $source = null, $platform = null, $delivery_status = null, $cursor = null, string $contentType = self::contentTypes['listEvents'][0])
+    public function listEventsAsync($profile_id = null, $limit = 50, $from = null, $to = null, $event_name = null, $source = null, $platform = null, $delivery_status = null, $from_ad = null, $campaign_id = null, $cursor = null, string $contentType = self::contentTypes['listEvents'][0])
     {
-        return $this->listEventsAsyncWithHttpInfo($profile_id, $limit, $from, $to, $event_name, $source, $platform, $delivery_status, $cursor, $contentType)
+        return $this->listEventsAsyncWithHttpInfo($profile_id, $limit, $from, $to, $event_name, $source, $platform, $delivery_status, $from_ad, $campaign_id, $cursor, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -12922,16 +12928,18 @@ class ConversionsApi
      * @param  string|null $source Only events from this source, such as &#x60;stripe&#x60; for the payments of a connected Stripe account. (optional)
      * @param  string|null $platform Only events sent to this ad platform, such as &#x60;metaads&#x60; or &#x60;googleads&#x60;. (optional)
      * @param  string|null $delivery_status Only events whose latest send to a destination (of &#x60;platform&#x60;, when given) was accepted (&#x60;sent&#x60;) or was not (&#x60;failed&#x60;: failed or still retrying). (optional)
+     * @param  bool|null $from_ad &#x60;true&#x60;: only events carrying an ad click or a campaign (a gclid, gbraid or wbraid, a &#x60;zrn&#x60;, or a matched campaign). &#x60;false&#x60;: only the others. (optional)
+     * @param  string|null $campaign_id Only events of this ad platform campaign id: matched to it, or behind a Google click of it. (optional)
      * @param  string|null $cursor &#x60;nextCursor&#x60; from the previous page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listEvents'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listEventsAsyncWithHttpInfo($profile_id = null, $limit = 50, $from = null, $to = null, $event_name = null, $source = null, $platform = null, $delivery_status = null, $cursor = null, string $contentType = self::contentTypes['listEvents'][0])
+    public function listEventsAsyncWithHttpInfo($profile_id = null, $limit = 50, $from = null, $to = null, $event_name = null, $source = null, $platform = null, $delivery_status = null, $from_ad = null, $campaign_id = null, $cursor = null, string $contentType = self::contentTypes['listEvents'][0])
     {
         $returnType = '\Zernio\Model\ListEvents200Response';
-        $request = $this->listEventsRequest($profile_id, $limit, $from, $to, $event_name, $source, $platform, $delivery_status, $cursor, $contentType);
+        $request = $this->listEventsRequest($profile_id, $limit, $from, $to, $event_name, $source, $platform, $delivery_status, $from_ad, $campaign_id, $cursor, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -12980,13 +12988,15 @@ class ConversionsApi
      * @param  string|null $source Only events from this source, such as &#x60;stripe&#x60; for the payments of a connected Stripe account. (optional)
      * @param  string|null $platform Only events sent to this ad platform, such as &#x60;metaads&#x60; or &#x60;googleads&#x60;. (optional)
      * @param  string|null $delivery_status Only events whose latest send to a destination (of &#x60;platform&#x60;, when given) was accepted (&#x60;sent&#x60;) or was not (&#x60;failed&#x60;: failed or still retrying). (optional)
+     * @param  bool|null $from_ad &#x60;true&#x60;: only events carrying an ad click or a campaign (a gclid, gbraid or wbraid, a &#x60;zrn&#x60;, or a matched campaign). &#x60;false&#x60;: only the others. (optional)
+     * @param  string|null $campaign_id Only events of this ad platform campaign id: matched to it, or behind a Google click of it. (optional)
      * @param  string|null $cursor &#x60;nextCursor&#x60; from the previous page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listEvents'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listEventsRequest($profile_id = null, $limit = 50, $from = null, $to = null, $event_name = null, $source = null, $platform = null, $delivery_status = null, $cursor = null, string $contentType = self::contentTypes['listEvents'][0])
+    public function listEventsRequest($profile_id = null, $limit = 50, $from = null, $to = null, $event_name = null, $source = null, $platform = null, $delivery_status = null, $from_ad = null, $campaign_id = null, $cursor = null, string $contentType = self::contentTypes['listEvents'][0])
     {
 
 
@@ -12997,6 +13007,8 @@ class ConversionsApi
             throw new \InvalidArgumentException('invalid value for "$limit" when calling ConversionsApi.listEvents, must be bigger than or equal to 1.');
         }
         
+
+
 
 
 
@@ -13079,6 +13091,24 @@ class ConversionsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $delivery_status,
             'deliveryStatus', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $from_ad,
+            'fromAd', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $campaign_id,
+            'campaignId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

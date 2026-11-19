@@ -4457,6 +4457,7 @@ Class | Method | HTTP request | Description
 - [StorePixelInstallTagsInner](docs/Model/StorePixelInstallTagsInner.md)
 - [StoredEvent](docs/Model/StoredEvent.md)
 - [StoredEventAd](docs/Model/StoredEventAd.md)
+- [StoredEventCampaign](docs/Model/StoredEventCampaign.md)
 - [StoredEventClickIds](docs/Model/StoredEventClickIds.md)
 - [StoredEventUtm](docs/Model/StoredEventUtm.md)
 - [StripeSettings](docs/Model/StripeSettings.md)

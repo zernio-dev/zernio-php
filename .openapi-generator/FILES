@@ -3151,6 +3151,7 @@ docs/Model/StorePixelInstall.md
 docs/Model/StorePixelInstallTagsInner.md
 docs/Model/StoredEvent.md
 docs/Model/StoredEventAd.md
+docs/Model/StoredEventCampaign.md
 docs/Model/StoredEventClickIds.md
 docs/Model/StoredEventUtm.md
 docs/Model/StripeSettings.md
@@ -7113,6 +7114,7 @@ lib/Model/StorePixelInstall.php
 lib/Model/StorePixelInstallTagsInner.php
 lib/Model/StoredEvent.php
 lib/Model/StoredEventAd.php
+lib/Model/StoredEventCampaign.php
 lib/Model/StoredEventClickIds.php
 lib/Model/StoredEventUtm.php
 lib/Model/StripeSettings.php
@@ -7923,8 +7925,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/HubSpotContactPropertyOptionsInnerTest.php
-test/Model/HubSpotContactPropertyTest.php
-test/Model/HubSpotQualifiedLeadsTest.php
-test/Model/ListHubSpotContactProperties200ResponseTest.php
-test/Model/UpdateHubSpotSettingsRequestQualifiedLeadsTest.php
+test/Model/StoredEventCampaignTest.php

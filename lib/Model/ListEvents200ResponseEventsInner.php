@@ -77,6 +77,7 @@ class ListEvents200ResponseEventsInner implements ModelInterface, ArrayAccess, \
         'has_external_id' => 'bool',
         'paired_event_id' => 'string',
         'ad' => '\Zernio\Model\StoredEventAd',
+        'campaign' => '\Zernio\Model\StoredEventCampaign',
         'deliveries' => '\Zernio\Model\ListEvents200ResponseEventsInnerAllOfDeliveriesInner[]'
     ];
 
@@ -107,6 +108,7 @@ class ListEvents200ResponseEventsInner implements ModelInterface, ArrayAccess, \
         'has_external_id' => null,
         'paired_event_id' => null,
         'ad' => null,
+        'campaign' => null,
         'deliveries' => null
     ];
 
@@ -135,6 +137,7 @@ class ListEvents200ResponseEventsInner implements ModelInterface, ArrayAccess, \
         'has_external_id' => false,
         'paired_event_id' => false,
         'ad' => false,
+        'campaign' => false,
         'deliveries' => false
     ];
 
@@ -243,6 +246,7 @@ class ListEvents200ResponseEventsInner implements ModelInterface, ArrayAccess, \
         'has_external_id' => 'hasExternalId',
         'paired_event_id' => 'pairedEventId',
         'ad' => 'ad',
+        'campaign' => 'campaign',
         'deliveries' => 'deliveries'
     ];
 
@@ -271,6 +275,7 @@ class ListEvents200ResponseEventsInner implements ModelInterface, ArrayAccess, \
         'has_external_id' => 'setHasExternalId',
         'paired_event_id' => 'setPairedEventId',
         'ad' => 'setAd',
+        'campaign' => 'setCampaign',
         'deliveries' => 'setDeliveries'
     ];
 
@@ -299,6 +304,7 @@ class ListEvents200ResponseEventsInner implements ModelInterface, ArrayAccess, \
         'has_external_id' => 'getHasExternalId',
         'paired_event_id' => 'getPairedEventId',
         'ad' => 'getAd',
+        'campaign' => 'getCampaign',
         'deliveries' => 'getDeliveries'
     ];
 
@@ -378,6 +384,7 @@ class ListEvents200ResponseEventsInner implements ModelInterface, ArrayAccess, \
         $this->setIfExists('has_external_id', $data ?? [], null);
         $this->setIfExists('paired_event_id', $data ?? [], null);
         $this->setIfExists('ad', $data ?? [], null);
+        $this->setIfExists('campaign', $data ?? [], null);
         $this->setIfExists('deliveries', $data ?? [], null);
     }
 
@@ -932,6 +939,33 @@ class ListEvents200ResponseEventsInner implements ModelInterface, ArrayAccess, \
             throw new \InvalidArgumentException('non-nullable ad cannot be null');
         }
         $this->container['ad'] = $ad;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaign
+     *
+     * @return \Zernio\Model\StoredEventCampaign|null
+     */
+    public function getCampaign()
+    {
+        return $this->container['campaign'];
+    }
+
+    /**
+     * Sets campaign
+     *
+     * @param \Zernio\Model\StoredEventCampaign|null $campaign campaign
+     *
+     * @return self
+     */
+    public function setCampaign($campaign)
+    {
+        if (is_null($campaign)) {
+            throw new \InvalidArgumentException('non-nullable campaign cannot be null');
+        }
+        $this->container['campaign'] = $campaign;
 
         return $this;
     }

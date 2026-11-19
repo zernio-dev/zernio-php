@@ -76,7 +76,8 @@ class StoredEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'has_phone' => 'bool',
         'has_external_id' => 'bool',
         'paired_event_id' => 'string',
-        'ad' => '\Zernio\Model\StoredEventAd'
+        'ad' => '\Zernio\Model\StoredEventAd',
+        'campaign' => '\Zernio\Model\StoredEventCampaign'
     ];
 
     /**
@@ -105,7 +106,8 @@ class StoredEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'has_phone' => null,
         'has_external_id' => null,
         'paired_event_id' => null,
-        'ad' => null
+        'ad' => null,
+        'campaign' => null
     ];
 
     /**
@@ -132,7 +134,8 @@ class StoredEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'has_phone' => false,
         'has_external_id' => false,
         'paired_event_id' => true,
-        'ad' => false
+        'ad' => false,
+        'campaign' => false
     ];
 
     /**
@@ -239,7 +242,8 @@ class StoredEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'has_phone' => 'hasPhone',
         'has_external_id' => 'hasExternalId',
         'paired_event_id' => 'pairedEventId',
-        'ad' => 'ad'
+        'ad' => 'ad',
+        'campaign' => 'campaign'
     ];
 
     /**
@@ -266,7 +270,8 @@ class StoredEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'has_phone' => 'setHasPhone',
         'has_external_id' => 'setHasExternalId',
         'paired_event_id' => 'setPairedEventId',
-        'ad' => 'setAd'
+        'ad' => 'setAd',
+        'campaign' => 'setCampaign'
     ];
 
     /**
@@ -293,7 +298,8 @@ class StoredEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'has_phone' => 'getHasPhone',
         'has_external_id' => 'getHasExternalId',
         'paired_event_id' => 'getPairedEventId',
-        'ad' => 'getAd'
+        'ad' => 'getAd',
+        'campaign' => 'getCampaign'
     ];
 
     /**
@@ -372,6 +378,7 @@ class StoredEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('has_external_id', $data ?? [], null);
         $this->setIfExists('paired_event_id', $data ?? [], null);
         $this->setIfExists('ad', $data ?? [], null);
+        $this->setIfExists('campaign', $data ?? [], null);
     }
 
     /**
@@ -967,6 +974,33 @@ class StoredEvent implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable ad cannot be null');
         }
         $this->container['ad'] = $ad;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaign
+     *
+     * @return \Zernio\Model\StoredEventCampaign|null
+     */
+    public function getCampaign()
+    {
+        return $this->container['campaign'];
+    }
+
+    /**
+     * Sets campaign
+     *
+     * @param \Zernio\Model\StoredEventCampaign|null $campaign campaign
+     *
+     * @return self
+     */
+    public function setCampaign($campaign)
+    {
+        if (is_null($campaign)) {
+            throw new \InvalidArgumentException('non-nullable campaign cannot be null');
+        }
+        $this->container['campaign'] = $campaign;
 
         return $this;
     }
