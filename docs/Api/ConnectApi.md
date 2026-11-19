@@ -110,7 +110,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `addOrgConnectionMailbox()`
 
 ```php
-addOrgConnectionMailbox($org_connection_id, $add_org_connection_mailbox_request): \Zernio\Model\InlineObject1
+addOrgConnectionMailbox($org_connection_id, $add_org_connection_mailbox_request): \Zernio\Model\InlineObject2
 ```
 
 Add a mailbox from an organization connection
@@ -154,7 +154,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\InlineObject1**](../Model/InlineObject1.md)
+[**\Zernio\Model\InlineObject2**](../Model/InlineObject2.md)
 
 ### Authorization
 

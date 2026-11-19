@@ -502,7 +502,7 @@ try {
 ## `deleteBusinessAgentConnector()`
 
 ```php
-deleteBusinessAgentConnector($account_id, $connector_id): \Zernio\Model\InlineObject
+deleteBusinessAgentConnector($account_id, $connector_id): \Zernio\Model\InlineObject1
 ```
 
 Delete a connector
@@ -544,7 +544,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\InlineObject**](../Model/InlineObject.md)
+[**\Zernio\Model\InlineObject1**](../Model/InlineObject1.md)
 
 ### Authorization
 
@@ -562,7 +562,7 @@ try {
 ## `deleteBusinessAgentConnectorTool()`
 
 ```php
-deleteBusinessAgentConnectorTool($account_id, $connector_id, $tool_id): \Zernio\Model\InlineObject
+deleteBusinessAgentConnectorTool($account_id, $connector_id, $tool_id): \Zernio\Model\InlineObject1
 ```
 
 Delete a connector tool
@@ -606,7 +606,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\InlineObject**](../Model/InlineObject.md)
+[**\Zernio\Model\InlineObject1**](../Model/InlineObject1.md)
 
 ### Authorization
 
@@ -624,7 +624,7 @@ try {
 ## `deleteBusinessAgentFaq()`
 
 ```php
-deleteBusinessAgentFaq($account_id, $faq_id): \Zernio\Model\InlineObject
+deleteBusinessAgentFaq($account_id, $faq_id): \Zernio\Model\InlineObject1
 ```
 
 Delete a FAQ
@@ -666,7 +666,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\InlineObject**](../Model/InlineObject.md)
+[**\Zernio\Model\InlineObject1**](../Model/InlineObject1.md)
 
 ### Authorization
 
@@ -684,7 +684,7 @@ try {
 ## `deleteBusinessAgentFile()`
 
 ```php
-deleteBusinessAgentFile($account_id, $file_id): \Zernio\Model\InlineObject
+deleteBusinessAgentFile($account_id, $file_id): \Zernio\Model\InlineObject1
 ```
 
 Delete a knowledge file
@@ -726,7 +726,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\InlineObject**](../Model/InlineObject.md)
+[**\Zernio\Model\InlineObject1**](../Model/InlineObject1.md)
 
 ### Authorization
 
@@ -744,7 +744,7 @@ try {
 ## `deleteBusinessAgentSkill()`
 
 ```php
-deleteBusinessAgentSkill($account_id, $skill_id): \Zernio\Model\InlineObject
+deleteBusinessAgentSkill($account_id, $skill_id): \Zernio\Model\InlineObject1
 ```
 
 Delete a skill
@@ -786,7 +786,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\InlineObject**](../Model/InlineObject.md)
+[**\Zernio\Model\InlineObject1**](../Model/InlineObject1.md)
 
 ### Authorization
 
@@ -804,7 +804,7 @@ try {
 ## `deleteBusinessAgentUiSkill()`
 
 ```php
-deleteBusinessAgentUiSkill($account_id, $ui_skill_id): \Zernio\Model\InlineObject
+deleteBusinessAgentUiSkill($account_id, $ui_skill_id): \Zernio\Model\InlineObject1
 ```
 
 Delete a UI skill
@@ -846,7 +846,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\InlineObject**](../Model/InlineObject.md)
+[**\Zernio\Model\InlineObject1**](../Model/InlineObject1.md)
 
 ### Authorization
 
@@ -864,7 +864,7 @@ try {
 ## `deleteBusinessAgentWebsite()`
 
 ```php
-deleteBusinessAgentWebsite($account_id, $website_id): \Zernio\Model\InlineObject
+deleteBusinessAgentWebsite($account_id, $website_id): \Zernio\Model\InlineObject1
 ```
 
 Remove a crawled website
@@ -906,7 +906,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\InlineObject**](../Model/InlineObject.md)
+[**\Zernio\Model\InlineObject1**](../Model/InlineObject1.md)
 
 ### Authorization
 
@@ -2390,7 +2390,7 @@ try {
 ## `removeBusinessAgentAllowlistEntry()`
 
 ```php
-removeBusinessAgentAllowlistEntry($account_id, $entry_id): \Zernio\Model\InlineObject
+removeBusinessAgentAllowlistEntry($account_id, $entry_id): \Zernio\Model\InlineObject1
 ```
 
 Remove an allowlisted consumer
@@ -2432,7 +2432,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\InlineObject**](../Model/InlineObject.md)
+[**\Zernio\Model\InlineObject1**](../Model/InlineObject1.md)
 
 ### Authorization
 
@@ -2574,7 +2574,7 @@ try {
 ## `resetBusinessAgentBusinessInformation()`
 
 ```php
-resetBusinessAgentBusinessInformation($account_id): \Zernio\Model\InlineObject
+resetBusinessAgentBusinessInformation($account_id): \Zernio\Model\InlineObject1
 ```
 
 Reset business information
@@ -2614,7 +2614,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\InlineObject**](../Model/InlineObject.md)
+[**\Zernio\Model\InlineObject1**](../Model/InlineObject1.md)
 
 ### Authorization
 

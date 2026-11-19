@@ -1048,6 +1048,14 @@ Class | Method | HTTP request | Description
 *MessagingAdsApi* | [**createCallAd**](docs/Api/MessagingAdsApi.md#createcallad) | **POST** /v1/ads/call | Create Click-to-Call ad
 *MessagingAdsApi* | [**createCtwaAd**](docs/Api/MessagingAdsApi.md#createctwaad) | **POST** /v1/ads/ctwa | Create CTWA ad (deprecated)
 *MessagingAdsApi* | [**createMessagingAd**](docs/Api/MessagingAdsApi.md#createmessagingad) | **POST** /v1/ads/messaging | Create messaging ad
+*MetricsApi* | [**getAccountMetrics**](docs/Api/MetricsApi.md#getaccountmetrics) | **GET** /v1/metrics/accounts | Read follower and post totals per account, platform or scope over time
+*MetricsApi* | [**getAdAccountMetrics**](docs/Api/MetricsApi.md#getadaccountmetrics) | **GET** /v1/metrics/ad-accounts | Read the uploaded results summed across ad accounts
+*MetricsApi* | [**getAdMetrics**](docs/Api/MetricsApi.md#getadmetrics) | **GET** /v1/metrics/ads | Read ad metrics by id, or one ad day by day with breakdowns
+*MetricsApi* | [**getCampaignMetrics**](docs/Api/MetricsApi.md#getcampaignmetrics) | **GET** /v1/metrics/campaigns | Read the uploaded results of each campaign over a window
+*MetricsApi* | [**getInboxMetrics**](docs/Api/MetricsApi.md#getinboxmetrics) | **GET** /v1/metrics/inbox | Read message volume and response times
+*MetricsApi* | [**getInsightMetrics**](docs/Api/MetricsApi.md#getinsightmetrics) | **GET** /v1/metrics/insights | Read live account or post insights from the platform
+*MetricsApi* | [**getMetricsCatalog**](docs/Api/MetricsApi.md#getmetricscatalog) | **GET** /v1/metrics/catalog | List the metrics, groupings and limits of each metrics endpoint
+*MetricsApi* | [**getPostMetrics**](docs/Api/MetricsApi.md#getpostmetrics) | **GET** /v1/metrics/posts | Read post metrics by id, day by day, as a list, or grouped
 *PhoneNumbersApi* | [**cancelPhoneNumberPortIn**](docs/Api/PhoneNumbersApi.md#cancelphonenumberportin) | **DELETE** /v1/phone-numbers/port-in/{id} | Cancel a port-in
 *PhoneNumbersApi* | [**checkPhoneNumberAvailability**](docs/Api/PhoneNumbersApi.md#checkphonenumberavailability) | **GET** /v1/phone-numbers/availability | Check country availability
 *PhoneNumbersApi* | [**checkPhoneNumberPortability**](docs/Api/PhoneNumbersApi.md#checkphonenumberportability) | **POST** /v1/phone-numbers/port-in/check | Check portability
@@ -1407,6 +1415,9 @@ Class | Method | HTTP request | Description
 - [AcceptConversationRequest200ResponseData](docs/Model/AcceptConversationRequest200ResponseData.md)
 - [AcceptConversationRequestRequest](docs/Model/AcceptConversationRequestRequest.md)
 - [AccountCursorPagination](docs/Model/AccountCursorPagination.md)
+- [AccountMetricRow](docs/Model/AccountMetricRow.md)
+- [AccountMetricsResponse](docs/Model/AccountMetricsResponse.md)
+- [AccountMetricsResponseMeta](docs/Model/AccountMetricsResponseMeta.md)
 - [AccountWithFollowerStats](docs/Model/AccountWithFollowerStats.md)
 - [AccountWithFollowerStatsAllOfAccountStats](docs/Model/AccountWithFollowerStatsAllOfAccountStats.md)
 - [AccountsListResponse](docs/Model/AccountsListResponse.md)
@@ -1416,6 +1427,7 @@ Class | Method | HTTP request | Description
 - [ActivateWorkflow200Response](docs/Model/ActivateWorkflow200Response.md)
 - [ActivateWorkflow200ResponseWorkflow](docs/Model/ActivateWorkflow200ResponseWorkflow.md)
 - [Ad](docs/Model/Ad.md)
+- [AdAccountMetricsResponse](docs/Model/AdAccountMetricsResponse.md)
 - [AdActivationStatus](docs/Model/AdActivationStatus.md)
 - [AdAnalyticsResponse](docs/Model/AdAnalyticsResponse.md)
 - [AdAnalyticsResponseAd](docs/Model/AdAnalyticsResponseAd.md)
@@ -1442,7 +1454,12 @@ Class | Method | HTTP request | Description
 - [AdKeywordQuality](docs/Model/AdKeywordQuality.md)
 - [AdLead](docs/Model/AdLead.md)
 - [AdLeadConsent](docs/Model/AdLeadConsent.md)
+- [AdMetricRow](docs/Model/AdMetricRow.md)
+- [AdMetricRowDailyInner](docs/Model/AdMetricRowDailyInner.md)
+- [AdMetricRowSummary](docs/Model/AdMetricRowSummary.md)
 - [AdMetrics](docs/Model/AdMetrics.md)
+- [AdMetricsResponse](docs/Model/AdMetricsResponse.md)
+- [AdMetricsResponseMeta](docs/Model/AdMetricsResponseMeta.md)
 - [AdNegativeKeywordList](docs/Model/AdNegativeKeywordList.md)
 - [AdNegativeKeywordListKeyword](docs/Model/AdNegativeKeywordListKeyword.md)
 - [AdPromotedObject](docs/Model/AdPromotedObject.md)
@@ -1877,6 +1894,9 @@ Class | Method | HTTP request | Description
 - [CampaignDraftCommentsInner](docs/Model/CampaignDraftCommentsInner.md)
 - [CampaignDraftCounts](docs/Model/CampaignDraftCounts.md)
 - [CampaignLedgerEntry](docs/Model/CampaignLedgerEntry.md)
+- [CampaignMetricRow](docs/Model/CampaignMetricRow.md)
+- [CampaignMetricsResponse](docs/Model/CampaignMetricsResponse.md)
+- [CampaignMetricsResponseMeta](docs/Model/CampaignMetricsResponseMeta.md)
 - [CampaignParticipant](docs/Model/CampaignParticipant.md)
 - [CampaignParticipantAccountsInner](docs/Model/CampaignParticipantAccountsInner.md)
 - [CampaignParticipantBalances](docs/Model/CampaignParticipantBalances.md)
@@ -3017,6 +3037,7 @@ Class | Method | HTTP request | Description
 - [GetInboxVolume200ResponseSummary](docs/Model/GetInboxVolume200ResponseSummary.md)
 - [GetInboxVolume200ResponseTimeseriesInner](docs/Model/GetInboxVolume200ResponseTimeseriesInner.md)
 - [GetInboxVolume400Response](docs/Model/GetInboxVolume400Response.md)
+- [GetInsightMetrics401Response](docs/Model/GetInsightMetrics401Response.md)
 - [GetInstagramAccountInsights404Response](docs/Model/GetInstagramAccountInsights404Response.md)
 - [GetInstagramAudio200Response](docs/Model/GetInstagramAudio200Response.md)
 - [GetInstagramFollowStatus200Response](docs/Model/GetInstagramFollowStatus200Response.md)
@@ -3358,6 +3379,11 @@ Class | Method | HTTP request | Description
 - [InboxConversationAdMetadata](docs/Model/InboxConversationAdMetadata.md)
 - [InboxMessageEditAttachment](docs/Model/InboxMessageEditAttachment.md)
 - [InboxMessageEditHistoryEntry](docs/Model/InboxMessageEditHistoryEntry.md)
+- [InboxMetricRow](docs/Model/InboxMetricRow.md)
+- [InboxMetricRowAccount](docs/Model/InboxMetricRowAccount.md)
+- [InboxMetricRowConversation](docs/Model/InboxMetricRowConversation.md)
+- [InboxMetricsResponse](docs/Model/InboxMetricsResponse.md)
+- [InboxMetricsResponseMeta](docs/Model/InboxMetricsResponseMeta.md)
 - [InboxWebhookAccount](docs/Model/InboxWebhookAccount.md)
 - [InboxWebhookConversation](docs/Model/InboxWebhookConversation.md)
 - [InboxWebhookConversationDetail](docs/Model/InboxWebhookConversationDetail.md)
@@ -3373,13 +3399,22 @@ Class | Method | HTTP request | Description
 - [InitiateWhatsAppCallRequest](docs/Model/InitiateWhatsAppCallRequest.md)
 - [InlineObject](docs/Model/InlineObject.md)
 - [InlineObject1](docs/Model/InlineObject1.md)
-- [InlineObject1Data](docs/Model/InlineObject1Data.md)
 - [InlineObject2](docs/Model/InlineObject2.md)
+- [InlineObject2Data](docs/Model/InlineObject2Data.md)
 - [InlineObject3](docs/Model/InlineObject3.md)
 - [InlineObject4](docs/Model/InlineObject4.md)
-- [InlineObject4Details](docs/Model/InlineObject4Details.md)
 - [InlineObject5](docs/Model/InlineObject5.md)
 - [InlineObject5Details](docs/Model/InlineObject5Details.md)
+- [InlineObject6](docs/Model/InlineObject6.md)
+- [InlineObject6Details](docs/Model/InlineObject6Details.md)
+- [InlineObjectAllOfDetails](docs/Model/InlineObjectAllOfDetails.md)
+- [InsightMetricRow](docs/Model/InsightMetricRow.md)
+- [InsightMetricsResponse](docs/Model/InsightMetricsResponse.md)
+- [InsightMetricsResponseMeta](docs/Model/InsightMetricsResponseMeta.md)
+- [InsightMetricsResponseMetaUnavailableMetricsInner](docs/Model/InsightMetricsResponseMetaUnavailableMetricsInner.md)
+- [InsightMetricsResponseMetaUnitsValue](docs/Model/InsightMetricsResponseMetaUnitsValue.md)
+- [InsightRetentionCurve](docs/Model/InsightRetentionCurve.md)
+- [InsightRetentionPoint](docs/Model/InsightRetentionPoint.md)
 - [InspectGoogleSearchConsoleUrl200Response](docs/Model/InspectGoogleSearchConsoleUrl200Response.md)
 - [InspectGoogleSearchConsoleUrl200ResponseData](docs/Model/InspectGoogleSearchConsoleUrl200ResponseData.md)
 - [InspectGoogleSearchConsoleUrlRequest](docs/Model/InspectGoogleSearchConsoleUrlRequest.md)
@@ -3907,6 +3942,14 @@ Class | Method | HTTP request | Description
 - [MetaProductFeedSchedule](docs/Model/MetaProductFeedSchedule.md)
 - [MetaProductSet](docs/Model/MetaProductSet.md)
 - [MetaRecoveredWritesInner](docs/Model/MetaRecoveredWritesInner.md)
+- [MetricDefinition](docs/Model/MetricDefinition.md)
+- [MetricEntity](docs/Model/MetricEntity.md)
+- [MetricEntityAttributionsInner](docs/Model/MetricEntityAttributionsInner.md)
+- [MetricEntityGroupByInner](docs/Model/MetricEntityGroupByInner.md)
+- [MetricEntityIncludesInner](docs/Model/MetricEntityIncludesInner.md)
+- [MetricsCatalogResponse](docs/Model/MetricsCatalogResponse.md)
+- [MetricsFreshness](docs/Model/MetricsFreshness.md)
+- [MetricsPagination](docs/Model/MetricsPagination.md)
 - [Money](docs/Model/Money.md)
 - [MoneyAmount](docs/Model/MoneyAmount.md)
 - [MoveAccountToProfile200Response](docs/Model/MoveAccountToProfile200Response.md)
@@ -3993,6 +4036,23 @@ Class | Method | HTTP request | Description
 - [PostCreateResponse](docs/Model/PostCreateResponse.md)
 - [PostDeleteResponse](docs/Model/PostDeleteResponse.md)
 - [PostGetResponse](docs/Model/PostGetResponse.md)
+- [PostMetricAge](docs/Model/PostMetricAge.md)
+- [PostMetricAuthenticity](docs/Model/PostMetricAuthenticity.md)
+- [PostMetricAuthenticityReasonsInner](docs/Model/PostMetricAuthenticityReasonsInner.md)
+- [PostMetricChange](docs/Model/PostMetricChange.md)
+- [PostMetricContent](docs/Model/PostMetricContent.md)
+- [PostMetricContentMediaItemsInner](docs/Model/PostMetricContentMediaItemsInner.md)
+- [PostMetricFormat](docs/Model/PostMetricFormat.md)
+- [PostMetricGroup](docs/Model/PostMetricGroup.md)
+- [PostMetricRow](docs/Model/PostMetricRow.md)
+- [PostMetricRowBreakdownsValue](docs/Model/PostMetricRowBreakdownsValue.md)
+- [PostMetricRowSyncError](docs/Model/PostMetricRowSyncError.md)
+- [PostMetricSample](docs/Model/PostMetricSample.md)
+- [PostMetricSlot](docs/Model/PostMetricSlot.md)
+- [PostMetricsResponse](docs/Model/PostMetricsResponse.md)
+- [PostMetricsResponseDataInner](docs/Model/PostMetricsResponseDataInner.md)
+- [PostMetricsResponseMeta](docs/Model/PostMetricsResponseMeta.md)
+- [PostMetricsResponseMetaAllOfMetricsSample](docs/Model/PostMetricsResponseMetaAllOfMetricsSample.md)
 - [PostPlatformError](docs/Model/PostPlatformError.md)
 - [PostPublishIncompleteResponse](docs/Model/PostPublishIncompleteResponse.md)
 - [PostPublishIncompleteResponsePlatformResultsInner](docs/Model/PostPublishIncompleteResponsePlatformResultsInner.md)
@@ -4191,6 +4251,7 @@ Class | Method | HTTP request | Description
 - [RespondToSmsRegistrationReview200Response](docs/Model/RespondToSmsRegistrationReview200Response.md)
 - [RespondToSmsRegistrationReviewRequest](docs/Model/RespondToSmsRegistrationReviewRequest.md)
 - [RespondToSmsRegistrationReviewRequestAnswersInner](docs/Model/RespondToSmsRegistrationReviewRequestAnswersInner.md)
+- [ResponseTimeBucket](docs/Model/ResponseTimeBucket.md)
 - [RestateEvent200Response](docs/Model/RestateEvent200Response.md)
 - [RestateEventRequest](docs/Model/RestateEventRequest.md)
 - [RestoreWorkflowVersion200Response](docs/Model/RestoreWorkflowVersion200Response.md)
@@ -5323,6 +5384,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.692.1`
+- API version: `1.693.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`
