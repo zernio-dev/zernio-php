@@ -7,6 +7,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**deleteAccount()**](AccountsApi.md#deleteAccount) | **DELETE** /v1/accounts/{accountId} | Disconnect account |
+| [**getAccount()**](AccountsApi.md#getAccount) | **GET** /v1/accounts/{accountId} | Get account |
 | [**getAccountHealth()**](AccountsApi.md#getAccountHealth) | **GET** /v1/accounts/{accountId}/health | Check account health |
 | [**getAccountPosts()**](AccountsApi.md#getAccountPosts) | **GET** /v1/accounts/{accountId}/posts | List posts published on the platform |
 | [**getAllAccountsHealth()**](AccountsApi.md#getAllAccountsHealth) | **GET** /v1/accounts/health | Check accounts health |
@@ -94,6 +95,66 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getAccount()`
+
+```php
+getAccount($account_id): \Zernio\Model\GetAccount200Response
+```
+
+Get account
+
+Returns one connected account, in the same shape as an item of `GET /v1/accounts`.  The same access rules apply: a key or a team member limited to some profiles gets a 404 for an account outside them.  An account the list leaves out by default is still returned when you name it:  - one over the plan's profile limit - one on a creator profile - an ad account listed behind its ads login  A malformed `accountId` returns 400; an unknown account, or one you cannot access, returns 404.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+
+try {
+    $result = $apiInstance->getAccount($account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountsApi->getAccount: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\GetAccount200Response**](../Model/GetAccount200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getAccountHealth()`
 
 ```php
@@ -157,12 +218,12 @@ try {
 ## `getAccountPosts()`
 
 ```php
-getAccountPosts($account_id): \Zernio\Model\GetAccountPosts200Response
+getAccountPosts($account_id, $limit, $cursor): \Zernio\Model\GetAccountPosts200Response
 ```
 
 List posts published on the platform
 
-Returns the 25 most recent posts that exist on the platform for a connected account, read live from the platform API. This covers everything on the account, including posts that were never created through Zernio.  Use it to obtain the platform's own post id, which the analytics endpoints take as input. On YouTube the returned `id` is the video ID that `GET /v1/analytics/youtube/daily-views`, `/video-retention` and `/demographics` expect as `videoId`, so this endpoint is what backs a video picker in your own UI.  ### Platform-specific fields  Not every field applies to every platform. Absent fields are omitted from the response.  - `reactionCount`: Facebook and LinkedIn. - `shareCount`: platform dependent. - `cid`: the Bluesky content id needed to reply. - `subreddit`: Reddit only. - `title`, `description`, `link`, `boardId` and `boardOwnerUsername`: Pinterest only (the native Pin values; `message` keeps title and description joined). - `isOwner`: Pinterest and Facebook. On Pinterest, true for a Pin the account created and false for a Pin it saved from another user, so keep `isOwner: true` to import only its own Pins. On Facebook, false marks a collab post by another Page.  ### Expired tokens  The account's token is refreshed before the call when it has expired. When the refresh cannot recover it, the response is a 401 with code `TOKEN_EXPIRED` and the account has to be reconnected.
+Returns the most recent posts that exist on the platform for a connected account, newest first, read live from the platform API. This covers everything on the account, including posts that were never created through Zernio.  ### Pagination  Returns `limit` posts (25 by default, up to 100). When `pagination.hasMore` is true, send `pagination.nextCursor` back as `cursor` for the next, older page, until `nextCursor` is null.  On X and TikTok only the newest page is available for now: `pagination.hasMore` is always false there.  Use it to obtain the platform's own post id, which the analytics endpoints take as input. On YouTube the returned `id` is the video ID that `GET /v1/analytics/youtube/daily-views`, `/video-retention` and `/demographics` expect as `videoId`, so this endpoint is what backs a video picker in your own UI.  ### Platform-specific fields  Not every field applies to every platform. Absent fields are omitted from the response.  - `reactionCount`: Facebook and LinkedIn. - `shareCount`: platform dependent. - `cid`: the Bluesky content id needed to reply. - `subreddit`: Reddit only. - `title`, `description`, `link`, `boardId` and `boardOwnerUsername`: Pinterest only (the native Pin values; `message` keeps title and description joined). - `isOwner`: Pinterest and Facebook. On Pinterest, true for a Pin the account created and false for a Pin it saved from another user, so keep `isOwner: true` to import only its own Pins. On Facebook, false marks a collab post by another Page.  ### Expired tokens  The account's token is refreshed before the call when it has expired. When the refresh cannot recover it, the response is a 401 with code `TOKEN_EXPIRED` and the account has to be reconnected.
 
 ### Example
 
@@ -182,9 +243,11 @@ $apiInstance = new Zernio\Api\AccountsApi(
     $config
 );
 $account_id = 'account_id_example'; // string
+$limit = 25; // int | Page size. Values above the maximum return 400 rather than being clamped.
+$cursor = 'cursor_example'; // string | `pagination.nextCursor` of the previous page, sent back unchanged. An unreadable cursor returns 400.
 
 try {
-    $result = $apiInstance->getAccountPosts($account_id);
+    $result = $apiInstance->getAccountPosts($account_id, $limit, $cursor);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountsApi->getAccountPosts: ', $e->getMessage(), PHP_EOL;
@@ -196,6 +259,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
+| **limit** | **int**| Page size. Values above the maximum return 400 rather than being clamped. | [optional] [default to 25] |
+| **cursor** | **string**| &#x60;pagination.nextCursor&#x60; of the previous page, sent back unchanged. An unreadable cursor returns 400. | [optional] |
 
 ### Return type
 

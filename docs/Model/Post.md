@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **mentions** | **string[]** | Stored for reference only. Publishing does not create mentions from this field. | [optional]
 **visibility** | **string** |  | [optional]
 **metadata** | **array<string,mixed>** |  | [optional]
+**external_id** | **string** | Your own identifier for this post, as set on create or update. Absent when unset. Not unique: filter with &#x60;GET /v1/posts?externalId&#x3D;&#x60;. | [optional]
 **recycling** | [**\Zernio\Model\RecyclingState**](RecyclingState.md) |  | [optional]
 **recycled_from_post_id** | **string** | ID of the original post if this post was created via recycling | [optional]
 **queued_from_profile** | **string** | Profile ID if the post was scheduled via the queue | [optional]

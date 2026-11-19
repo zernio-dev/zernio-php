@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **mentions** | **string[]** |  | [optional]
 **crossposting_enabled** | **bool** |  | [optional]
 **metadata** | **array<string,mixed>** |  | [optional]
+**external_id** | **string** | Your own identifier for this post (see &#x60;externalId&#x60; on create). Send &#x60;null&#x60; to clear it. Also accepted on published posts. | [optional]
 **queued_from_profile** | **string** | Profile ID to schedule via queue. | [optional]
 **queue_id** | **string** | Specific queue ID to use when scheduling via queue. | [optional]
 **tiktok_settings** | [**\Zernio\Model\TikTokPlatformData**](TikTokPlatformData.md) | Root-level TikTok settings applied to the TikTok platforms sent in the same request. Merged into each platform&#39;s platformSpecificData, with platform-specific settings taking precedence. Returns 400 if sent without a platforms array. | [optional]

@@ -1415,6 +1415,7 @@ docs/Model/GenerateKeywordIdeas200Response.md
 docs/Model/GenerateKeywordIdeas200ResponsePaging.md
 docs/Model/GenerateKeywordIdeasRequest.md
 docs/Model/GeoRestriction.md
+docs/Model/GetAccount200Response.md
 docs/Model/GetAccountHealth200Response.md
 docs/Model/GetAccountHealth200ResponseLineWebhook.md
 docs/Model/GetAccountHealth200ResponseMailbox.md
@@ -1427,6 +1428,7 @@ docs/Model/GetAccountHealth200ResponsePlatformConnectionMetaError.md
 docs/Model/GetAccountHealth200ResponseSendCap.md
 docs/Model/GetAccountHealth200ResponseTokenStatus.md
 docs/Model/GetAccountPosts200Response.md
+docs/Model/GetAccountPosts200ResponsePagination.md
 docs/Model/GetAccountPosts200ResponsePostsInner.md
 docs/Model/GetAd200Response.md
 docs/Model/GetAd200ResponseDarkPost.md
@@ -5469,6 +5471,7 @@ lib/Model/GenerateKeywordIdeas200Response.php
 lib/Model/GenerateKeywordIdeas200ResponsePaging.php
 lib/Model/GenerateKeywordIdeasRequest.php
 lib/Model/GeoRestriction.php
+lib/Model/GetAccount200Response.php
 lib/Model/GetAccountHealth200Response.php
 lib/Model/GetAccountHealth200ResponseLineWebhook.php
 lib/Model/GetAccountHealth200ResponseMailbox.php
@@ -5481,6 +5484,7 @@ lib/Model/GetAccountHealth200ResponsePlatformConnectionMetaError.php
 lib/Model/GetAccountHealth200ResponseSendCap.php
 lib/Model/GetAccountHealth200ResponseTokenStatus.php
 lib/Model/GetAccountPosts200Response.php
+lib/Model/GetAccountPosts200ResponsePagination.php
 lib/Model/GetAccountPosts200ResponsePostsInner.php
 lib/Model/GetAd200Response.php
 lib/Model/GetAd200ResponseDarkPost.php
@@ -8109,14 +8113,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreatePost422ResponseDetailsTest.php
-test/Model/CreatePost422ResponseTest.php
-test/Model/WebhookPayloadAccountRecoveredRecoveryTest.php
-test/Model/WebhookPayloadAccountRecoveredTest.php
-test/Model/WebhookPayloadAccountRestrictedRestrictionPlatformErrorTest.php
-test/Model/WebhookPayloadAccountRestrictedRestrictionTest.php
-test/Model/WebhookPayloadAccountRestrictedTest.php
-test/Model/WebhookPayloadBillingPublishingBlockedBillingTest.php
-test/Model/WebhookPayloadBillingPublishingBlockedTest.php
-test/Model/WebhookPayloadBillingPublishingUnblockedBillingTest.php
-test/Model/WebhookPayloadBillingPublishingUnblockedTest.php
+test/Model/GetAccount200ResponseTest.php
+test/Model/GetAccountPosts200ResponsePaginationTest.php
