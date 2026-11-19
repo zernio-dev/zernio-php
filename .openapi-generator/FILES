@@ -1420,6 +1420,7 @@ docs/Model/GetAccountHealth200ResponseMessagingRestriction.md
 docs/Model/GetAccountHealth200ResponsePermissions.md
 docs/Model/GetAccountHealth200ResponsePermissionsPostingInner.md
 docs/Model/GetAccountHealth200ResponsePlatformConnection.md
+docs/Model/GetAccountHealth200ResponsePlatformConnectionMessagingBlockersInner.md
 docs/Model/GetAccountHealth200ResponsePlatformConnectionMetaError.md
 docs/Model/GetAccountHealth200ResponseSendCap.md
 docs/Model/GetAccountHealth200ResponseTokenStatus.md
@@ -5462,6 +5463,7 @@ lib/Model/GetAccountHealth200ResponseMessagingRestriction.php
 lib/Model/GetAccountHealth200ResponsePermissions.php
 lib/Model/GetAccountHealth200ResponsePermissionsPostingInner.php
 lib/Model/GetAccountHealth200ResponsePlatformConnection.php
+lib/Model/GetAccountHealth200ResponsePlatformConnectionMessagingBlockersInner.php
 lib/Model/GetAccountHealth200ResponsePlatformConnectionMetaError.php
 lib/Model/GetAccountHealth200ResponseSendCap.php
 lib/Model/GetAccountHealth200ResponseTokenStatus.php
@@ -8085,3 +8087,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetAccountHealth200ResponsePlatformConnectionMessagingBlockersInnerTest.php
