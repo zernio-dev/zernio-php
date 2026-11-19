@@ -33,6 +33,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getEventsOverview()**](ConversionsApi.md#getEventsOverview) | **GET** /v1/events/overview | Get today&#39;s tracking overview |
 | [**getEventsOverviewDaily()**](ConversionsApi.md#getEventsOverviewDaily) | **GET** /v1/events/overview/daily | Get daily tracking figures |
 | [**getLtvCohorts()**](ConversionsApi.md#getLtvCohorts) | **GET** /v1/events/ltv | Get buyer cohorts by first purchase month and first channel |
+| [**getSurveyAnswers()**](ConversionsApi.md#getSurveyAnswers) | **GET** /v1/events/survey | Get post-purchase survey answers |
 | [**getTrackingSite()**](ConversionsApi.md#getTrackingSite) | **GET** /v1/tracking-sites/{siteId} | Get a tracking site |
 | [**listAdConversionAssociations()**](ConversionsApi.md#listAdConversionAssociations) | **GET** /v1/ads/conversions/destinations/{destinationId}/associations | List associated campaigns |
 | [**listAdConversionDestinations()**](ConversionsApi.md#listAdConversionDestinations) | **GET** /v1/ads/conversions/destinations | List conversion destinations |
@@ -1737,6 +1738,70 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetLtvCohorts200Response**](../Model/GetLtvCohorts200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getSurveyAnswers()`
+
+```php
+getSurveyAnswers($from_date, $to_date, $profile_id): \Zernio\Model\GetSurveyAnswers200Response
+```
+
+Get post-purchase survey answers
+
+How buyers said they heard about the store, from the \"How did you hear about us?\" block on the Shopify thank-you page. Each answer comes with its orders and their revenue.  Revenue is what the orders are worth now (refunds taken off), summed across currencies as sent. Without `profileId` it covers every profile you can access. Requires the Ads add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | First day an answer was given.
+$to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Inclusive. At most 400 days after `fromDate`.
+$profile_id = 'profile_id_example'; // string | The profile to read. Omit for every profile you can access.
+
+try {
+    $result = $apiInstance->getSurveyAnswers($from_date, $to_date, $profile_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->getSurveyAnswers: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **from_date** | **\DateTime**| First day an answer was given. | |
+| **to_date** | **\DateTime**| Inclusive. At most 400 days after &#x60;fromDate&#x60;. | |
+| **profile_id** | **string**| The profile to read. Omit for every profile you can access. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\GetSurveyAnswers200Response**](../Model/GetSurveyAnswers200Response.md)
 
 ### Authorization
 

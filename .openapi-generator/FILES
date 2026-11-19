@@ -1594,8 +1594,10 @@ docs/Model/GetEventsOverview200ResponseWebsiteStepsInner.md
 docs/Model/GetEventsOverviewDaily200Response.md
 docs/Model/GetEventsOverviewDaily200ResponseDaysInner.md
 docs/Model/GetEventsOverviewDaily200ResponsePixelMissedInner.md
+docs/Model/GetEventsOverviewDaily200ResponsePixelMissedInnerDaysInner.md
 docs/Model/GetEventsOverviewDaily200ResponsePlatformsInner.md
 docs/Model/GetEventsOverviewDaily200ResponsePlatformsInnerDaysInner.md
+docs/Model/GetEventsOverviewDaily200ResponsePrevious.md
 docs/Model/GetEventsOverviewDaily200ResponseTotals.md
 docs/Model/GetFacebookDemographics200Response.md
 docs/Model/GetFacebookDemographics200ResponseDemographics.md
@@ -1811,6 +1813,8 @@ docs/Model/GetStripeConnectUrl200Response.md
 docs/Model/GetStripeSettings200Response.md
 docs/Model/GetSubredditRules200Response.md
 docs/Model/GetSubredditRules200ResponseRulesInner.md
+docs/Model/GetSurveyAnswers200Response.md
+docs/Model/GetSurveyAnswers200ResponseAnswersInner.md
 docs/Model/GetTagNewAds200Response.md
 docs/Model/GetTelegramCommands200Response.md
 docs/Model/GetTelegramCommands200ResponseDataInner.md
@@ -5561,8 +5565,10 @@ lib/Model/GetEventsOverview200ResponseWebsiteStepsInner.php
 lib/Model/GetEventsOverviewDaily200Response.php
 lib/Model/GetEventsOverviewDaily200ResponseDaysInner.php
 lib/Model/GetEventsOverviewDaily200ResponsePixelMissedInner.php
+lib/Model/GetEventsOverviewDaily200ResponsePixelMissedInnerDaysInner.php
 lib/Model/GetEventsOverviewDaily200ResponsePlatformsInner.php
 lib/Model/GetEventsOverviewDaily200ResponsePlatformsInnerDaysInner.php
+lib/Model/GetEventsOverviewDaily200ResponsePrevious.php
 lib/Model/GetEventsOverviewDaily200ResponseTotals.php
 lib/Model/GetFacebookDemographics200Response.php
 lib/Model/GetFacebookDemographics200ResponseDemographics.php
@@ -5778,6 +5784,8 @@ lib/Model/GetStripeConnectUrl200Response.php
 lib/Model/GetStripeSettings200Response.php
 lib/Model/GetSubredditRules200Response.php
 lib/Model/GetSubredditRules200ResponseRulesInner.php
+lib/Model/GetSurveyAnswers200Response.php
+lib/Model/GetSurveyAnswers200ResponseAnswersInner.php
 lib/Model/GetTagNewAds200Response.php
 lib/Model/GetTelegramCommands200Response.php
 lib/Model/GetTelegramCommands200ResponseDataInner.php
@@ -7935,3 +7943,7 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetEventsOverviewDaily200ResponsePixelMissedInnerDaysInnerTest.php
+test/Model/GetEventsOverviewDaily200ResponsePreviousTest.php
+test/Model/GetSurveyAnswers200ResponseAnswersInnerTest.php
+test/Model/GetSurveyAnswers200ResponseTest.php
