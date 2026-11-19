@@ -1459,7 +1459,8 @@ docs/Model/GetAdNegativeKeywordList200ResponseList.md
 docs/Model/GetAdPreviews200Response.md
 docs/Model/GetAdReview200Response.md
 docs/Model/GetAdReview200ResponseReview.md
-docs/Model/GetAdReview200ResponseReviewPolicyTopicsInner.md
+docs/Model/GetAdReview200ResponseReviewAssetGroup.md
+docs/Model/GetAdReview200ResponseReviewAssetGroupAssetsInner.md
 docs/Model/GetAdReview200ResponseReviewRejectionsInner.md
 docs/Model/GetAdReview200ResponseReviewRejectionsInnerContent.md
 docs/Model/GetAdReview200ResponseReviewReviewFeedback.md
@@ -1976,11 +1977,13 @@ docs/Model/GoogleManualCpc.md
 docs/Model/GoogleNetworkSettings.md
 docs/Model/GooglePmaxAssetGroup.md
 docs/Model/GooglePmaxAssetGroupAssetsInner.md
+docs/Model/GooglePmaxAssetGroupAssetsInnerPolicySummary.md
 docs/Model/GooglePmaxAssetGroupDetail.md
 docs/Model/GooglePmaxAssetGroupInput.md
 docs/Model/GooglePmaxAssetGroupInputImages.md
 docs/Model/GooglePmaxAssetGroupUpdate.md
 docs/Model/GooglePmaxAssetGroupUpdateImages.md
+docs/Model/GooglePolicyTopicEntry.md
 docs/Model/GoogleRecommendation.md
 docs/Model/GoogleRecommendationImpact.md
 docs/Model/GoogleRecommendationMetrics.md
@@ -5412,7 +5415,8 @@ lib/Model/GetAdNegativeKeywordList200ResponseList.php
 lib/Model/GetAdPreviews200Response.php
 lib/Model/GetAdReview200Response.php
 lib/Model/GetAdReview200ResponseReview.php
-lib/Model/GetAdReview200ResponseReviewPolicyTopicsInner.php
+lib/Model/GetAdReview200ResponseReviewAssetGroup.php
+lib/Model/GetAdReview200ResponseReviewAssetGroupAssetsInner.php
 lib/Model/GetAdReview200ResponseReviewRejectionsInner.php
 lib/Model/GetAdReview200ResponseReviewRejectionsInnerContent.php
 lib/Model/GetAdReview200ResponseReviewReviewFeedback.php
@@ -5929,11 +5933,13 @@ lib/Model/GoogleManualCpc.php
 lib/Model/GoogleNetworkSettings.php
 lib/Model/GooglePmaxAssetGroup.php
 lib/Model/GooglePmaxAssetGroupAssetsInner.php
+lib/Model/GooglePmaxAssetGroupAssetsInnerPolicySummary.php
 lib/Model/GooglePmaxAssetGroupDetail.php
 lib/Model/GooglePmaxAssetGroupInput.php
 lib/Model/GooglePmaxAssetGroupInputImages.php
 lib/Model/GooglePmaxAssetGroupUpdate.php
 lib/Model/GooglePmaxAssetGroupUpdateImages.php
+lib/Model/GooglePolicyTopicEntry.php
 lib/Model/GoogleRecommendation.php
 lib/Model/GoogleRecommendationImpact.php
 lib/Model/GoogleRecommendationMetrics.php
@@ -7907,3 +7913,7 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetAdReview200ResponseReviewAssetGroupAssetsInnerTest.php
+test/Model/GetAdReview200ResponseReviewAssetGroupTest.php
+test/Model/GooglePmaxAssetGroupAssetsInnerPolicySummaryTest.php
+test/Model/GooglePolicyTopicEntryTest.php
