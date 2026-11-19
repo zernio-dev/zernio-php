@@ -1029,6 +1029,7 @@ docs/Model/CreatePost200Response.md
 docs/Model/CreatePost400Response.md
 docs/Model/CreatePost400ResponseDetails.md
 docs/Model/CreatePost403Response.md
+docs/Model/CreatePost404Response.md
 docs/Model/CreatePost409Response.md
 docs/Model/CreatePost409ResponseDetails.md
 docs/Model/CreatePost429Response.md
@@ -5067,6 +5068,7 @@ lib/Model/CreatePost200Response.php
 lib/Model/CreatePost400Response.php
 lib/Model/CreatePost400ResponseDetails.php
 lib/Model/CreatePost403Response.php
+lib/Model/CreatePost404Response.php
 lib/Model/CreatePost409Response.php
 lib/Model/CreatePost409ResponseDetails.php
 lib/Model/CreatePost429Response.php
@@ -8077,3 +8079,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/CreatePost404ResponseTest.php
