@@ -7965,8 +7965,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetVoiceCallEstimate200ResponseBillingIncrementSecondsTest.php
-test/Model/GetVoiceCallEstimate200ResponseRatesTest.php
-test/Model/GetVoiceCallEstimate200ResponseTrunkTest.php
-test/Model/VoiceCallLineRatesNetworksInnerTest.php
-test/Model/VoiceCallLineRatesTest.php
