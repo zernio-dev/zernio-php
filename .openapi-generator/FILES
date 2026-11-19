@@ -7935,8 +7935,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetEventsAccuracy200ResponseDestinationsInnerDeliveriesTest.php
-test/Model/GetEventsAccuracy200ResponseDestinationsInnerMatchTest.php
-test/Model/GetEventsAccuracy200ResponseDestinationsInnerTest.php
-test/Model/GetEventsAccuracy200ResponseTest.php
-test/Model/GetEventsOverview200ResponseEventNamesInnerTest.php
