@@ -14,6 +14,8 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onAccountPermissionsChanged()**](WebhookEventsApi.md#onAccountPermissionsChanged) | **POST** /account.permissions_changed | Account permissions changed event |
 | [**onAccountPrivacyRequest()**](WebhookEventsApi.md#onAccountPrivacyRequest) | **POST** /account.privacy_request | Store privacy request |
 | [**onAccountRateLimited()**](WebhookEventsApi.md#onAccountRateLimited) | **POST** /account.rate_limited | Mailbox sending cooldown started |
+| [**onAccountRecovered()**](WebhookEventsApi.md#onAccountRecovered) | **POST** /account.recovered | Account publishing again |
+| [**onAccountRestricted()**](WebhookEventsApi.md#onAccountRestricted) | **POST** /account.restricted | Account restricted from publishing |
 | [**onAdAccountStatusChanged()**](WebhookEventsApi.md#onAdAccountStatusChanged) | **POST** /ad_account.status_changed | Ad account status changed event |
 | [**onAdCreated()**](WebhookEventsApi.md#onAdCreated) | **POST** /ad.created | Ad created event |
 | [**onAdDeliveryIssue()**](WebhookEventsApi.md#onAdDeliveryIssue) | **POST** /ad.delivery_issue | Ad delivery issue event |
@@ -37,6 +39,8 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onBalanceCharged()**](WebhookEventsApi.md#onBalanceCharged) | **POST** /balance.charged | Balance charged event |
 | [**onBalanceEmpty()**](WebhookEventsApi.md#onBalanceEmpty) | **POST** /balance.empty | Balance empty event |
 | [**onBalanceLow()**](WebhookEventsApi.md#onBalanceLow) | **POST** /balance.low | Balance low event |
+| [**onBillingPublishingBlocked()**](WebhookEventsApi.md#onBillingPublishingBlocked) | **POST** /billing.publishing_blocked | Publishing paused for a failed payment |
+| [**onBillingPublishingUnblocked()**](WebhookEventsApi.md#onBillingPublishingUnblocked) | **POST** /billing.publishing_unblocked | Publishing resumed after payment |
 | [**onBrandedCallingIdentityActionRequired()**](WebhookEventsApi.md#onBrandedCallingIdentityActionRequired) | **POST** /branded_calling.identity.action_required | Caller identity action required event |
 | [**onBrandedCallingIdentityStatusUpdated()**](WebhookEventsApi.md#onBrandedCallingIdentityStatusUpdated) | **POST** /branded_calling.identity.status_updated | Caller identity status updated event |
 | [**onBrandedCallingNumberStatusUpdated()**](WebhookEventsApi.md#onBrandedCallingNumberStatusUpdated) | **POST** /branded_calling.number.status_updated | Branded number status updated event |
@@ -623,6 +627,124 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_account_rate_limited** | [**\Zernio\Model\WebhookPayloadAccountRateLimited**](../Model/WebhookPayloadAccountRateLimited.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onAccountRecovered()`
+
+```php
+onAccountRecovered($webhook_payload_account_recovered)
+```
+
+Account publishing again
+
+A publish succeeded on an account that `account.restricted` reported, so the restriction is lifted and publish-now posts to it are accepted again. A reconnect also lifts it; that sends `account.connected` instead.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_account_recovered = {"id":"00000000-0000-4000-8000-000000000000","event":"account.recovered","timestamp":"2026-01-15T10:00:00Z","account":{"accountId":"507f1f77bcf86cd799439011","profileId":"507f1f77bcf86cd799439012","platform":"facebook","username":"Sample Brand","displayName":"Sample Brand"},"recovery":{"reason":"verification_required","restrictedSince":"2026-01-14T10:00:00.000Z","recoveredAt":"2026-01-15T10:00:00.000Z","postId":"507f1f77bcf86cd799439013"},"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadAccountRecovered
+
+try {
+    $apiInstance->onAccountRecovered($webhook_payload_account_recovered);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onAccountRecovered: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_account_recovered** | [**\Zernio\Model\WebhookPayloadAccountRecovered**](../Model/WebhookPayloadAccountRecovered.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onAccountRestricted()`
+
+```php
+onAccountRestricted($webhook_payload_account_restricted)
+```
+
+Account restricted from publishing
+
+A social account failed its last three publishes with the same account-level error: the platform suspended or banned it, restricted or locked it, asks for an identity or security check, or stopped accepting its login.  ### When it fires  Once per restriction, on the third identical failure in a row. Further failures do not fire it again.  ### What changes  `POST /v1/posts` with `publishNow` (or a time already past) to this account answers 422 `account_restricted`, because it would fail the same way. Scheduled posts are still accepted.  Fix the account on the platform, then reconnect it to lift the check at once; otherwise the next successful publish lifts it (`account.recovered`). 24 hours after the last failure one publish-now is let through again.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_account_restricted = {"id":"00000000-0000-4000-8000-000000000000","event":"account.restricted","timestamp":"2026-01-15T10:00:00Z","account":{"accountId":"507f1f77bcf86cd799439011","profileId":"507f1f77bcf86cd799439012","platform":"facebook","username":"Sample Brand","displayName":"Sample Brand"},"restriction":{"reason":"verification_required","message":"Facebook needs you to confirm your identity before you can publish as this Page. Open the Facebook mobile app, go to this Page, and complete the identity check.","platformError":{"code":368,"subcode":4854002,"message":"Confirm your identity before you can publish as this Page."},"consecutiveFailures":3,"since":"2026-01-15T10:00:00.000Z","postId":"507f1f77bcf86cd799439013"},"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadAccountRestricted
+
+try {
+    $apiInstance->onAccountRestricted($webhook_payload_account_restricted);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onAccountRestricted: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_account_restricted** | [**\Zernio\Model\WebhookPayloadAccountRestricted**](../Model/WebhookPayloadAccountRestricted.md)|  | |
 
 ### Return type
 
@@ -1980,6 +2102,124 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_balance_low** | [**\Zernio\Model\WebhookPayloadBalanceLow**](../Model/WebhookPayloadBalanceLow.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onBillingPublishingBlocked()`
+
+```php
+onBillingPublishingBlocked($webhook_payload_billing_publishing_blocked)
+```
+
+Publishing paused for a failed payment
+
+A failed payment paused the billing owner's account. Until it is paid, every API call answers 402 `PAYMENT_REQUIRED` and posts that come due fail with \"Publishing blocked: payment failed\".  ### When it fires  Once per pause. `billing.reason` says why: the card was declined (`payment_failed`), there is no card (`no_payment_method`), or the billing address was refused (`invalid_billing_address`). Pay or replace the card at `billingUrl`.  ### Who receives it  The billing owner's endpoints. Restricted keys need the `money` resource group.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_billing_publishing_blocked = {"id":"00000000-0000-4000-8000-000000000000","event":"billing.publishing_blocked","timestamp":"2026-01-15T10:00:00Z","billing":{"reason":"payment_failed","blockedAt":"2026-01-15T10:00:00.000Z"},"billingUrl":"https://zernio.com/dashboard/billing"}; // \Zernio\Model\WebhookPayloadBillingPublishingBlocked
+
+try {
+    $apiInstance->onBillingPublishingBlocked($webhook_payload_billing_publishing_blocked);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onBillingPublishingBlocked: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_billing_publishing_blocked** | [**\Zernio\Model\WebhookPayloadBillingPublishingBlocked**](../Model/WebhookPayloadBillingPublishingBlocked.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onBillingPublishingUnblocked()`
+
+```php
+onBillingPublishingUnblocked($webhook_payload_billing_publishing_unblocked)
+```
+
+Publishing resumed after payment
+
+The account paused by `billing.publishing_blocked` was paid: the API accepts calls again and scheduled posts publish. Posts that failed during the pause stay failed; retry them with `POST /v1/posts/{postId}/retry`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_billing_publishing_unblocked = {"id":"00000000-0000-4000-8000-000000000000","event":"billing.publishing_unblocked","timestamp":"2026-01-15T10:00:00Z","billing":{"blockedAt":"2026-01-14T10:00:00.000Z","unblockedAt":"2026-01-15T10:00:00.000Z"}}; // \Zernio\Model\WebhookPayloadBillingPublishingUnblocked
+
+try {
+    $apiInstance->onBillingPublishingUnblocked($webhook_payload_billing_publishing_unblocked);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onBillingPublishingUnblocked: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_billing_publishing_unblocked** | [**\Zernio\Model\WebhookPayloadBillingPublishingUnblocked**](../Model/WebhookPayloadBillingPublishingUnblocked.md)|  | |
 
 ### Return type
 
