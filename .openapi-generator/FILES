@@ -1590,6 +1590,7 @@ docs/Model/GetEmailConnectUrl200Response.md
 docs/Model/GetEmailThread200Response.md
 docs/Model/GetEmailThread200ResponseData.md
 docs/Model/GetEvent200Response.md
+docs/Model/GetEvent200ResponseAfterInner.md
 docs/Model/GetEvent200ResponseDeliveriesInner.md
 docs/Model/GetEvent200ResponseTouchesInner.md
 docs/Model/GetEvent200ResponseTouchesInnerDetail.md
@@ -5627,6 +5628,7 @@ lib/Model/GetEmailConnectUrl200Response.php
 lib/Model/GetEmailThread200Response.php
 lib/Model/GetEmailThread200ResponseData.php
 lib/Model/GetEvent200Response.php
+lib/Model/GetEvent200ResponseAfterInner.php
 lib/Model/GetEvent200ResponseDeliveriesInner.php
 lib/Model/GetEvent200ResponseTouchesInner.php
 lib/Model/GetEvent200ResponseTouchesInnerDetail.php
@@ -8075,3 +8077,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetEvent200ResponseAfterInnerTest.php
