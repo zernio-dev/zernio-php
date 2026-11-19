@@ -78,6 +78,9 @@ class AdCampaignResultsApi
         'getCampaignResultEvents' => [
             'application/json',
         ],
+        'getCampaignResultProfit' => [
+            'application/json',
+        ],
         'getCampaignResultsTotals' => [
             'application/json',
         ],
@@ -97,6 +100,9 @@ class AdCampaignResultsApi
             'application/json',
         ],
         'setCampaignResultMetric' => [
+            'application/json',
+        ],
+        'setCampaignResultProfit' => [
             'application/json',
         ],
         'setTagNewAds' => [
@@ -352,6 +358,272 @@ class AdCampaignResultsApi
 
 
         $resourcePath = '/v1/ads/campaign-results/events';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getCampaignResultProfit
+     *
+     * Get your profit setting
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignResultProfit'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\CampaignResultProfit|\Zernio\Model\ErrorResponse
+     */
+    public function getCampaignResultProfit(string $contentType = self::contentTypes['getCampaignResultProfit'][0])
+    {
+        list($response) = $this->getCampaignResultProfitWithHttpInfo($contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getCampaignResultProfitWithHttpInfo
+     *
+     * Get your profit setting
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignResultProfit'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\CampaignResultProfit|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getCampaignResultProfitWithHttpInfo(string $contentType = self::contentTypes['getCampaignResultProfit'][0])
+    {
+        $request = $this->getCampaignResultProfitRequest($contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\CampaignResultProfit',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\CampaignResultProfit',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\CampaignResultProfit',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getCampaignResultProfitAsync
+     *
+     * Get your profit setting
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignResultProfit'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCampaignResultProfitAsync(string $contentType = self::contentTypes['getCampaignResultProfit'][0])
+    {
+        return $this->getCampaignResultProfitAsyncWithHttpInfo($contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getCampaignResultProfitAsyncWithHttpInfo
+     *
+     * Get your profit setting
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignResultProfit'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCampaignResultProfitAsyncWithHttpInfo(string $contentType = self::contentTypes['getCampaignResultProfit'][0])
+    {
+        $returnType = '\Zernio\Model\CampaignResultProfit';
+        $request = $this->getCampaignResultProfitRequest($contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getCampaignResultProfit'
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignResultProfit'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getCampaignResultProfitRequest(string $contentType = self::contentTypes['getCampaignResultProfit'][0])
+    {
+
+
+        $resourcePath = '/v1/ads/campaign-results/profit';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2561,6 +2833,305 @@ class AdCampaignResultsApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($set_campaign_result_metric_request));
             } else {
                 $httpBody = $set_campaign_result_metric_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation setCampaignResultProfit
+     *
+     * Set your margin and cost per order
+     *
+     * @param  \Zernio\Model\SetCampaignResultProfitRequest $set_campaign_result_profit_request set_campaign_result_profit_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setCampaignResultProfit'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\CampaignResultProfit|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
+     */
+    public function setCampaignResultProfit($set_campaign_result_profit_request, string $contentType = self::contentTypes['setCampaignResultProfit'][0])
+    {
+        list($response) = $this->setCampaignResultProfitWithHttpInfo($set_campaign_result_profit_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation setCampaignResultProfitWithHttpInfo
+     *
+     * Set your margin and cost per order
+     *
+     * @param  \Zernio\Model\SetCampaignResultProfitRequest $set_campaign_result_profit_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setCampaignResultProfit'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\CampaignResultProfit|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function setCampaignResultProfitWithHttpInfo($set_campaign_result_profit_request, string $contentType = self::contentTypes['setCampaignResultProfit'][0])
+    {
+        $request = $this->setCampaignResultProfitRequest($set_campaign_result_profit_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\CampaignResultProfit',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\CampaignResultProfit',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\CampaignResultProfit',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation setCampaignResultProfitAsync
+     *
+     * Set your margin and cost per order
+     *
+     * @param  \Zernio\Model\SetCampaignResultProfitRequest $set_campaign_result_profit_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setCampaignResultProfit'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function setCampaignResultProfitAsync($set_campaign_result_profit_request, string $contentType = self::contentTypes['setCampaignResultProfit'][0])
+    {
+        return $this->setCampaignResultProfitAsyncWithHttpInfo($set_campaign_result_profit_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation setCampaignResultProfitAsyncWithHttpInfo
+     *
+     * Set your margin and cost per order
+     *
+     * @param  \Zernio\Model\SetCampaignResultProfitRequest $set_campaign_result_profit_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setCampaignResultProfit'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function setCampaignResultProfitAsyncWithHttpInfo($set_campaign_result_profit_request, string $contentType = self::contentTypes['setCampaignResultProfit'][0])
+    {
+        $returnType = '\Zernio\Model\CampaignResultProfit';
+        $request = $this->setCampaignResultProfitRequest($set_campaign_result_profit_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'setCampaignResultProfit'
+     *
+     * @param  \Zernio\Model\SetCampaignResultProfitRequest $set_campaign_result_profit_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setCampaignResultProfit'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function setCampaignResultProfitRequest($set_campaign_result_profit_request, string $contentType = self::contentTypes['setCampaignResultProfit'][0])
+    {
+
+        // verify the required parameter 'set_campaign_result_profit_request' is set
+        if ($set_campaign_result_profit_request === null || (is_array($set_campaign_result_profit_request) && count($set_campaign_result_profit_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $set_campaign_result_profit_request when calling setCampaignResultProfit'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/campaign-results/profit';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($set_campaign_result_profit_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($set_campaign_result_profit_request));
+            } else {
+                $httpBody = $set_campaign_result_profit_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

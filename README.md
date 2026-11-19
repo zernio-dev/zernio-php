@@ -206,6 +206,7 @@ Class | Method | HTTP request | Description
 *AdAudiencesApi* | [**replaceAdAudienceCompanies**](docs/Api/AdAudiencesApi.md#replaceadaudiencecompanies) | **POST** /v1/ads/audiences/{audienceId}/companies | Replace audience companies
 *AdAudiencesApi* | [**updateAdAudience**](docs/Api/AdAudiencesApi.md#updateadaudience) | **PUT** /v1/ads/audiences/{audienceId} | Update an audience
 *AdCampaignResultsApi* | [**getCampaignResultEvents**](docs/Api/AdCampaignResultsApi.md#getcampaignresultevents) | **GET** /v1/ads/campaign-results/events | List the events that count as campaign results
+*AdCampaignResultsApi* | [**getCampaignResultProfit**](docs/Api/AdCampaignResultsApi.md#getcampaignresultprofit) | **GET** /v1/ads/campaign-results/profit | Get your profit setting
 *AdCampaignResultsApi* | [**getCampaignResultsTotals**](docs/Api/AdCampaignResultsApi.md#getcampaignresultstotals) | **GET** /v1/ads/campaign-results/totals | Get your results totals
 *AdCampaignResultsApi* | [**getCampaignResultsUpload**](docs/Api/AdCampaignResultsApi.md#getcampaignresultsupload) | **GET** /v1/ads/campaign-results/uploads/{uploadId} | Check a results upload
 *AdCampaignResultsApi* | [**getTagNewAds**](docs/Api/AdCampaignResultsApi.md#gettagnewads) | **GET** /v1/ads/campaign-results/tag-new-ads | Get the Tag new ads setting
@@ -213,6 +214,7 @@ Class | Method | HTTP request | Description
 *AdCampaignResultsApi* | [**listCampaignResults**](docs/Api/AdCampaignResultsApi.md#listcampaignresults) | **GET** /v1/ads/campaign-results | List your results per campaign
 *AdCampaignResultsApi* | [**setCampaignResultEvents**](docs/Api/AdCampaignResultsApi.md#setcampaignresultevents) | **PUT** /v1/ads/campaign-results/events | Choose the events that count as campaign results
 *AdCampaignResultsApi* | [**setCampaignResultMetric**](docs/Api/AdCampaignResultsApi.md#setcampaignresultmetric) | **PUT** /v1/ads/campaign-results/metrics/{key} | Name a result metric or define a formula
+*AdCampaignResultsApi* | [**setCampaignResultProfit**](docs/Api/AdCampaignResultsApi.md#setcampaignresultprofit) | **PUT** /v1/ads/campaign-results/profit | Set your margin and cost per order
 *AdCampaignResultsApi* | [**setTagNewAds**](docs/Api/AdCampaignResultsApi.md#settagnewads) | **PUT** /v1/ads/campaign-results/tag-new-ads | Turn Tag new ads on or off
 *AdCampaignResultsApi* | [**uploadCampaignResults**](docs/Api/AdCampaignResultsApi.md#uploadcampaignresults) | **POST** /v1/ads/campaign-results | Upload your results per campaign
 *AdCampaignsApi* | [**addAdKeywords**](docs/Api/AdCampaignsApi.md#addadkeywords) | **POST** /v1/ads/keywords | Add Search ad-group keywords
@@ -1888,6 +1890,7 @@ Class | Method | HTTP request | Description
 - [CampaignReportSpend](docs/Model/CampaignReportSpend.md)
 - [CampaignReportViews](docs/Model/CampaignReportViews.md)
 - [CampaignResultMetric](docs/Model/CampaignResultMetric.md)
+- [CampaignResultProfit](docs/Model/CampaignResultProfit.md)
 - [CampaignSample](docs/Model/CampaignSample.md)
 - [CampaignSampleCounts](docs/Model/CampaignSampleCounts.md)
 - [CampaignSampleShippingAddress](docs/Model/CampaignSampleShippingAddress.md)
@@ -4399,6 +4402,7 @@ Class | Method | HTTP request | Description
 - [SetCampaignResultEventsRequest](docs/Model/SetCampaignResultEventsRequest.md)
 - [SetCampaignResultMetric200Response](docs/Model/SetCampaignResultMetric200Response.md)
 - [SetCampaignResultMetricRequest](docs/Model/SetCampaignResultMetricRequest.md)
+- [SetCampaignResultProfitRequest](docs/Model/SetCampaignResultProfitRequest.md)
 - [SetCommentModerationRequest](docs/Model/SetCommentModerationRequest.md)
 - [SetCommerceDiscountActiveRequest](docs/Model/SetCommerceDiscountActiveRequest.md)
 - [SetCommercePriceListPrices200Response](docs/Model/SetCommercePriceListPrices200Response.md)

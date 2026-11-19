@@ -7,6 +7,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**getCampaignResultEvents()**](AdCampaignResultsApi.md#getCampaignResultEvents) | **GET** /v1/ads/campaign-results/events | List the events that count as campaign results |
+| [**getCampaignResultProfit()**](AdCampaignResultsApi.md#getCampaignResultProfit) | **GET** /v1/ads/campaign-results/profit | Get your profit setting |
 | [**getCampaignResultsTotals()**](AdCampaignResultsApi.md#getCampaignResultsTotals) | **GET** /v1/ads/campaign-results/totals | Get your results totals |
 | [**getCampaignResultsUpload()**](AdCampaignResultsApi.md#getCampaignResultsUpload) | **GET** /v1/ads/campaign-results/uploads/{uploadId} | Check a results upload |
 | [**getTagNewAds()**](AdCampaignResultsApi.md#getTagNewAds) | **GET** /v1/ads/campaign-results/tag-new-ads | Get the Tag new ads setting |
@@ -14,6 +15,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listCampaignResults()**](AdCampaignResultsApi.md#listCampaignResults) | **GET** /v1/ads/campaign-results | List your results per campaign |
 | [**setCampaignResultEvents()**](AdCampaignResultsApi.md#setCampaignResultEvents) | **PUT** /v1/ads/campaign-results/events | Choose the events that count as campaign results |
 | [**setCampaignResultMetric()**](AdCampaignResultsApi.md#setCampaignResultMetric) | **PUT** /v1/ads/campaign-results/metrics/{key} | Name a result metric or define a formula |
+| [**setCampaignResultProfit()**](AdCampaignResultsApi.md#setCampaignResultProfit) | **PUT** /v1/ads/campaign-results/profit | Set your margin and cost per order |
 | [**setTagNewAds()**](AdCampaignResultsApi.md#setTagNewAds) | **PUT** /v1/ads/campaign-results/tag-new-ads | Turn Tag new ads on or off |
 | [**uploadCampaignResults()**](AdCampaignResultsApi.md#uploadCampaignResults) | **POST** /v1/ads/campaign-results | Upload your results per campaign |
 
@@ -61,6 +63,63 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**\Zernio\Model\GetCampaignResultEvents200Response**](../Model/GetCampaignResultEvents200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getCampaignResultProfit()`
+
+```php
+getCampaignResultProfit(): \Zernio\Model\CampaignResultProfit
+```
+
+Get your profit setting
+
+The margin and cost per order your team's profit metrics use. Both are `null` until you set them.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignResultsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getCampaignResultProfit();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignResultsApi->getCampaignResultProfit: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\Zernio\Model\CampaignResultProfit**](../Model/CampaignResultProfit.md)
 
 ### Authorization
 
@@ -266,7 +325,7 @@ listCampaignResultMetrics(): \Zernio\Model\ListCampaignResultMetrics200Response
 
 List your result metrics
 
-The metric keys your team has sent, with their label and kind, then the formulas: your own and the built-in ones (`cac_percent`, `cost_per_sale`, `cost_per_qualified_lead`, `lead_to_sale`, `qualified_rate`). A new key appears as a `count` labelled from the key; name it, or define a formula, with `PUT /v1/ads/campaign-results/metrics/{key}`.
+The metric keys your team has sent, with their label and kind, then the formulas: your own and the built-in ones (`cac_percent`, `cost_per_sale`, `cost_per_qualified_lead`, `lead_to_sale`, `qualified_rate`).  Once you set a margin with `PUT /v1/ads/campaign-results/profit`, the built-ins add `profit`, `poas` and `profit_after_ads`. A new key appears as a `count` labelled from the key; name it, or define a formula, with `PUT /v1/ads/campaign-results/metrics/{key}`.
 
 ### Example
 
@@ -493,6 +552,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\SetCampaignResultMetric200Response**](../Model/SetCampaignResultMetric200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `setCampaignResultProfit()`
+
+```php
+setCampaignResultProfit($set_campaign_result_profit_request): \Zernio\Model\CampaignResultProfit
+```
+
+Set your margin and cost per order
+
+With a `marginPercent`, your team gets three built-in formulas, listed in `GET /v1/ads/campaign-results/metrics` and readable in `GET /v1/ads/campaign-results`, the Campaigns table and ad rules (`result:profit`), under every attribution model:  - `profit` = `revenue * marginPercent / 100 - sales * costPerOrder` - `poas` = `profit / spend` (profit on ad spend) - `profit_after_ads` = `profit - spend`  `revenue` and `sales` are the values counted from `Purchase` events or the ones you upload. `costPerOrder` is in each ad account's currency, the one its revenue is counted in. Values are rounded to 2 decimals. Send `marginPercent: null` to remove the profit metrics.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignResultsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$set_campaign_result_profit_request = new \Zernio\Model\SetCampaignResultProfitRequest(); // \Zernio\Model\SetCampaignResultProfitRequest
+
+try {
+    $result = $apiInstance->setCampaignResultProfit($set_campaign_result_profit_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignResultsApi->setCampaignResultProfit: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **set_campaign_result_profit_request** | [**\Zernio\Model\SetCampaignResultProfitRequest**](../Model/SetCampaignResultProfitRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CampaignResultProfit**](../Model/CampaignResultProfit.md)
 
 ### Authorization
 

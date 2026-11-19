@@ -543,7 +543,7 @@ class CampaignResultMetric implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets built_in
      *
-     * @param bool $built_in One of the formulas every team has (`cac_percent`, `cost_per_sale`, `cost_per_qualified_lead`, `lead_to_sale`, `qualified_rate`). Setting the same key replaces it for your team.
+     * @param bool $built_in One of the formulas every team has (`cac_percent`, `cost_per_sale`, `cost_per_qualified_lead`, `lead_to_sale`, `qualified_rate`, plus `profit`, `poas` and `profit_after_ads` once a margin is set). Setting the same key replaces it for your team.
      *
      * @return self
      */

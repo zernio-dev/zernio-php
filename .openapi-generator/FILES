@@ -580,6 +580,7 @@ docs/Model/CampaignReportParticipantsInner.md
 docs/Model/CampaignReportSpend.md
 docs/Model/CampaignReportViews.md
 docs/Model/CampaignResultMetric.md
+docs/Model/CampaignResultProfit.md
 docs/Model/CampaignSample.md
 docs/Model/CampaignSampleCounts.md
 docs/Model/CampaignSampleShippingAddress.md
@@ -3091,6 +3092,7 @@ docs/Model/SetCampaignResultEvents200Response.md
 docs/Model/SetCampaignResultEventsRequest.md
 docs/Model/SetCampaignResultMetric200Response.md
 docs/Model/SetCampaignResultMetricRequest.md
+docs/Model/SetCampaignResultProfitRequest.md
 docs/Model/SetCommentModerationRequest.md
 docs/Model/SetCommerceDiscountActiveRequest.md
 docs/Model/SetCommercePriceListPrices200Response.md
@@ -4555,6 +4557,7 @@ lib/Model/CampaignReportParticipantsInner.php
 lib/Model/CampaignReportSpend.php
 lib/Model/CampaignReportViews.php
 lib/Model/CampaignResultMetric.php
+lib/Model/CampaignResultProfit.php
 lib/Model/CampaignSample.php
 lib/Model/CampaignSampleCounts.php
 lib/Model/CampaignSampleShippingAddress.php
@@ -7067,6 +7070,7 @@ lib/Model/SetCampaignResultEvents200Response.php
 lib/Model/SetCampaignResultEventsRequest.php
 lib/Model/SetCampaignResultMetric200Response.php
 lib/Model/SetCampaignResultMetricRequest.php
+lib/Model/SetCampaignResultProfitRequest.php
 lib/Model/SetCommentModerationRequest.php
 lib/Model/SetCommerceDiscountActiveRequest.php
 lib/Model/SetCommercePriceListPrices200Response.php
@@ -7951,7 +7955,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetEventsOverviewDaily200ResponseBreakdownCampaignsInnerTest.php
-test/Model/GetEventsOverviewDaily200ResponseBreakdownEventsInnerTest.php
-test/Model/GetEventsOverviewDaily200ResponseBreakdownSourcesInnerTest.php
-test/Model/GetEventsOverviewDaily200ResponseBreakdownTest.php
+test/Model/CampaignResultProfitTest.php
+test/Model/SetCampaignResultProfitRequestTest.php
