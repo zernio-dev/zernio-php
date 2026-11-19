@@ -21,6 +21,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**grantBusinessPartner()**](AccountsApi.md#grantBusinessPartner) | **POST** /v1/accounts/{accountId}/business-partners | Share the Page with a partner business |
 | [**listAccounts()**](AccountsApi.md#listAccounts) | **GET** /v1/accounts | List accounts |
 | [**listBusinessPartners()**](AccountsApi.md#listBusinessPartners) | **GET** /v1/accounts/{accountId}/business-partners | List partner businesses of the Page |
+| [**listHubSpotContactProperties()**](AccountsApi.md#listHubSpotContactProperties) | **GET** /v1/accounts/{accountId}/hubspot-settings/contact-properties | List HubSpot contact properties |
 | [**listTikTokCommercialMusic()**](AccountsApi.md#listTikTokCommercialMusic) | **GET** /v1/accounts/{accountId}/tiktok/commercial-music | List trending commercial music |
 | [**moveAccountToProfile()**](AccountsApi.md#moveAccountToProfile) | **PATCH** /v1/accounts/{accountId} | Move account to another profile |
 | [**revokeBusinessPartner()**](AccountsApi.md#revokeBusinessPartner) | **DELETE** /v1/accounts/{accountId}/business-partners | Revoke a partner business from the Page |
@@ -993,6 +994,66 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listHubSpotContactProperties()`
+
+```php
+listHubSpotContactProperties($account_id): \Zernio\Model\ListHubSpotContactProperties200Response
+```
+
+List HubSpot contact properties
+
+The connected portal's visible contact properties, with the values of those that have a fixed list. Use it to pick the property and values of `qualifiedLeads`. Cached for 10 minutes.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+
+try {
+    $result = $apiInstance->listHubSpotContactProperties($account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountsApi->listHubSpotContactProperties: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\ListHubSpotContactProperties200Response**](../Model/ListHubSpotContactProperties200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listTikTokCommercialMusic()`
 
 ```php
@@ -1372,7 +1433,7 @@ updateHubSpotSettings($account_id, $update_hub_spot_settings_request): \Zernio\M
 
 Update HubSpot account settings
 
-Turn contact sync, message logging, delivery status or deal reporting on or off for a connected HubSpot portal, or set defaults for the contact properties the portal requires. Send at least one field; omitted fields keep their value. Settings survive reconnecting the same portal.
+Turn contact sync, message logging, delivery status, deal reporting or qualified leads on or off for a connected HubSpot portal, or set defaults for the contact properties the portal requires. Send at least one field; omitted fields keep their value. Settings survive reconnecting the same portal.
 
 ### Example
 

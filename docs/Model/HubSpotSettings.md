@@ -16,5 +16,6 @@ Name | Type | Description | Notes
 **sync_issue** | [**\Zernio\Model\HubSpotSettingsSyncIssue**](HubSpotSettingsSyncIssue.md) |  |
 **report_deals** | **bool** | Whether Zernio sends closed-won deals as Purchase events to the profile&#39;s event destinations. |
 **use_deals_as_results** | **bool** | Whether closed-won deals count as sales on the ad campaign that brought their contact, in campaign results and ad rules. |
+**qualified_leads** | [**\Zernio\Model\HubSpotQualifiedLeads**](HubSpotQualifiedLeads.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

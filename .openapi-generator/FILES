@@ -2003,6 +2003,9 @@ docs/Model/HideAdComment200Response.md
 docs/Model/HideAdCommentRequest.md
 docs/Model/HideInboxComment200Response.md
 docs/Model/HideInboxCommentRequest.md
+docs/Model/HubSpotContactProperty.md
+docs/Model/HubSpotContactPropertyOptionsInner.md
+docs/Model/HubSpotQualifiedLeads.md
 docs/Model/HubSpotSettings.md
 docs/Model/HubSpotSettingsSyncIssue.md
 docs/Model/Ids.md
@@ -2352,6 +2355,7 @@ docs/Model/ListGoogleSearchConsoleSitemaps200ResponseMeta.md
 docs/Model/ListGoogleSearchConsoleSites200Response.md
 docs/Model/ListGoogleSearchConsoleSites200ResponseSitesInner.md
 docs/Model/ListHighDemandPeriods200Response.md
+docs/Model/ListHubSpotContactProperties200Response.md
 docs/Model/ListImessageAudience200Response.md
 docs/Model/ListImessageAvailableNumbers200Response.md
 docs/Model/ListImessageAvailableNumbers200ResponseNumbersInner.md
@@ -3456,6 +3460,7 @@ docs/Model/UpdateGoogleBusinessServicesRequestServiceItemsInnerPrice.md
 docs/Model/UpdateGoogleBusinessServicesRequestServiceItemsInnerStructuredServiceItem.md
 docs/Model/UpdateHubSpotSettings200Response.md
 docs/Model/UpdateHubSpotSettingsRequest.md
+docs/Model/UpdateHubSpotSettingsRequestQualifiedLeads.md
 docs/Model/UpdateImessageGroup200Response.md
 docs/Model/UpdateImessageGroupRequest.md
 docs/Model/UpdateImessageSenderRequest.md
@@ -5959,6 +5964,9 @@ lib/Model/HideAdComment200Response.php
 lib/Model/HideAdCommentRequest.php
 lib/Model/HideInboxComment200Response.php
 lib/Model/HideInboxCommentRequest.php
+lib/Model/HubSpotContactProperty.php
+lib/Model/HubSpotContactPropertyOptionsInner.php
+lib/Model/HubSpotQualifiedLeads.php
 lib/Model/HubSpotSettings.php
 lib/Model/HubSpotSettingsSyncIssue.php
 lib/Model/Ids.php
@@ -6308,6 +6316,7 @@ lib/Model/ListGoogleSearchConsoleSitemaps200ResponseMeta.php
 lib/Model/ListGoogleSearchConsoleSites200Response.php
 lib/Model/ListGoogleSearchConsoleSites200ResponseSitesInner.php
 lib/Model/ListHighDemandPeriods200Response.php
+lib/Model/ListHubSpotContactProperties200Response.php
 lib/Model/ListImessageAudience200Response.php
 lib/Model/ListImessageAvailableNumbers200Response.php
 lib/Model/ListImessageAvailableNumbers200ResponseNumbersInner.php
@@ -7413,6 +7422,7 @@ lib/Model/UpdateGoogleBusinessServicesRequestServiceItemsInnerPrice.php
 lib/Model/UpdateGoogleBusinessServicesRequestServiceItemsInnerStructuredServiceItem.php
 lib/Model/UpdateHubSpotSettings200Response.php
 lib/Model/UpdateHubSpotSettingsRequest.php
+lib/Model/UpdateHubSpotSettingsRequestQualifiedLeads.php
 lib/Model/UpdateImessageGroup200Response.php
 lib/Model/UpdateImessageGroupRequest.php
 lib/Model/UpdateImessageSenderRequest.php
@@ -7913,3 +7923,8 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/HubSpotContactPropertyOptionsInnerTest.php
+test/Model/HubSpotContactPropertyTest.php
+test/Model/HubSpotQualifiedLeadsTest.php
+test/Model/ListHubSpotContactProperties200ResponseTest.php
+test/Model/UpdateHubSpotSettingsRequestQualifiedLeadsTest.php
