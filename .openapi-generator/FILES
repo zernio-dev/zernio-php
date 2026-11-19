@@ -1578,7 +1578,12 @@ docs/Model/GetEmailThread200ResponseData.md
 docs/Model/GetEvent200Response.md
 docs/Model/GetEvent200ResponseDeliveriesInner.md
 docs/Model/GetEvent200ResponseTouchesInner.md
+docs/Model/GetEventsAccuracy200Response.md
+docs/Model/GetEventsAccuracy200ResponseDestinationsInner.md
+docs/Model/GetEventsAccuracy200ResponseDestinationsInnerDeliveries.md
+docs/Model/GetEventsAccuracy200ResponseDestinationsInnerMatch.md
 docs/Model/GetEventsOverview200Response.md
+docs/Model/GetEventsOverview200ResponseEventNamesInner.md
 docs/Model/GetEventsOverview200ResponsePlatformsInner.md
 docs/Model/GetEventsOverview200ResponseSitesInner.md
 docs/Model/GetEventsOverview200ResponseSitesInnerTotals.md
@@ -5540,7 +5545,12 @@ lib/Model/GetEmailThread200ResponseData.php
 lib/Model/GetEvent200Response.php
 lib/Model/GetEvent200ResponseDeliveriesInner.php
 lib/Model/GetEvent200ResponseTouchesInner.php
+lib/Model/GetEventsAccuracy200Response.php
+lib/Model/GetEventsAccuracy200ResponseDestinationsInner.php
+lib/Model/GetEventsAccuracy200ResponseDestinationsInnerDeliveries.php
+lib/Model/GetEventsAccuracy200ResponseDestinationsInnerMatch.php
 lib/Model/GetEventsOverview200Response.php
+lib/Model/GetEventsOverview200ResponseEventNamesInner.php
 lib/Model/GetEventsOverview200ResponsePlatformsInner.php
 lib/Model/GetEventsOverview200ResponseSitesInner.php
 lib/Model/GetEventsOverview200ResponseSitesInnerTotals.php
@@ -7925,4 +7935,8 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/StoredEventCampaignTest.php
+test/Model/GetEventsAccuracy200ResponseDestinationsInnerDeliveriesTest.php
+test/Model/GetEventsAccuracy200ResponseDestinationsInnerMatchTest.php
+test/Model/GetEventsAccuracy200ResponseDestinationsInnerTest.php
+test/Model/GetEventsAccuracy200ResponseTest.php
+test/Model/GetEventsOverview200ResponseEventNamesInnerTest.php

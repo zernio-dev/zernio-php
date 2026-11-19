@@ -29,6 +29,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getConversionPaths()**](ConversionsApi.md#getConversionPaths) | **GET** /v1/events/paths | List the touch paths that lead to conversions |
 | [**getConversionsQuality()**](ConversionsApi.md#getConversionsQuality) | **GET** /v1/ads/conversions/quality | Get Event Match Quality |
 | [**getEvent()**](ConversionsApi.md#getEvent) | **GET** /v1/events/{eventId} | Get one stored event and its deliveries |
+| [**getEventsAccuracy()**](ConversionsApi.md#getEventsAccuracy) | **GET** /v1/events/accuracy | Get delivery accuracy per destination |
 | [**getEventsOverview()**](ConversionsApi.md#getEventsOverview) | **GET** /v1/events/overview | Get today&#39;s tracking overview |
 | [**getEventsOverviewDaily()**](ConversionsApi.md#getEventsOverviewDaily) | **GET** /v1/events/overview/daily | Get daily tracking figures |
 | [**getLtvCohorts()**](ConversionsApi.md#getLtvCohorts) | **GET** /v1/events/ltv | Get buyer cohorts by first purchase month and first channel |
@@ -1482,6 +1483,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetEvent200Response**](../Model/GetEvent200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getEventsAccuracy()`
+
+```php
+getEventsAccuracy($profile_id, $period): \Zernio\Model\GetEventsAccuracy200Response
+```
+
+Get delivery accuracy per destination
+
+For each forwarding rule of a profile: what its destination received over a period, and how many of the profile's real sales reached it.  `deliveries` counts every event sent to the destination in the period, whatever its source, by the latest outcome of each. `accuracy` compares only sales: Shopify and WooCommerce orders and Stripe payments, as Elevar's Channel Accuracy does. Sales a rule leaves out by choice do not count against it.  Without `profileId` it covers every profile you can access. Requires the Ads add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$profile_id = 'profile_id_example'; // string | The profile to read. Omit to cover every profile you can access.
+$period = '7d'; // string | The window, ending now: `today` (since 00:00 UTC), or the last 7, 30 or 90 days.
+
+try {
+    $result = $apiInstance->getEventsAccuracy($profile_id, $period);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->getEventsAccuracy: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **profile_id** | **string**| The profile to read. Omit to cover every profile you can access. | [optional] |
+| **period** | **string**| The window, ending now: &#x60;today&#x60; (since 00:00 UTC), or the last 7, 30 or 90 days. | [optional] [default to &#39;7d&#39;] |
+
+### Return type
+
+[**\Zernio\Model\GetEventsAccuracy200Response**](../Model/GetEventsAccuracy200Response.md)
 
 ### Authorization
 
@@ -3028,7 +3091,7 @@ sendEvents($send_events_request, $idempotency_key): \Zernio\Model\SendEvents200R
 
 Send events to every destination
 
-The recommended way to send conversions. Sends conversion events once and forwards them to every ad platform destination saved for the profile (see `POST /v1/events/destinations`), or to the `destinations` given in the request. Requires the Ads add-on.  ### Forwarding  - Each destination receives the events exactly as `POST /v1/ads/conversions` would send them, so the per-platform notes there (hashing, batching, `eventName` semantics, dedup on `eventId`) apply here too. - A destination saved with `eventNames` only receives events with those names. - One destination failing never blocks the others: each one reports its own result.  ### Storage  Zernio also stores each event for the profile's reporting.  - Email, phone and `externalId` are stored only as SHA-256 hashes. - `sourceUrl` keeps only its origin, path and attribution parameters (`utm_*`, `gclid`, `fbclid`, `ttclid`, `li_fat_id`, `epik`, `rdt_cid`, `gbraid`, `wbraid`). - Events sent with `testCode` are forwarded but not stored. - Sending an event again with the same `eventId` replaces the stored one. - A stored `Purchase`, `Lead` or `QualifiedLead` tied to one of your campaigns (see `campaign` on each event) counts in `GET /v1/ads/campaign-results` and in ad rules as `sales` and `revenue`, `leads` or `qualified_leads`.
+The recommended way to send conversions. Sends conversion events once and forwards them to every ad platform destination saved for the profile (see `POST /v1/events/destinations`), or to the `destinations` given in the request. Requires the Ads add-on.  ### Forwarding  - Each destination receives the events exactly as `POST /v1/ads/conversions` would send them, so the per-platform notes there (hashing, batching, `eventName` semantics, dedup on `eventId`) apply here too. - A destination saved with `eventNames` only receives events with those names. - One destination failing never blocks the others: each one reports its own result.  ### Storage  Zernio also stores each event for the profile's reporting.  - Email, phone and `externalId` are stored only as SHA-256 hashes. - `sourceUrl` keeps only its origin, path and attribution parameters (`utm_*`, `zrn`, `zcid`, `gclid`, `gbraid`, `wbraid`, `fbclid`, `ttclid`, `twclid`, `msclkid`, `li_fat_id`, `epik`, `rdt_cid`, `oppref`, `aleid`, `alart`), each also under a `z`-prefixed copy such as `zgclid`. - Events sent with `testCode` are forwarded but not stored. - Sending an event again with the same `eventId` replaces the stored one. - A stored `Purchase`, `Lead` or `QualifiedLead` tied to one of your campaigns (see `campaign` on each event) counts in `GET /v1/ads/campaign-results` and in ad rules as `sales` and `revenue`, `leads` or `qualified_leads`.
 
 ### Example
 
