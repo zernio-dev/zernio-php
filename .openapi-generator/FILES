@@ -1858,7 +1858,10 @@ docs/Model/GetUser200ResponseUser.md
 docs/Model/GetValueRuleSet200Response.md
 docs/Model/GetVoiceCall200Response.md
 docs/Model/GetVoiceCallEstimate200Response.md
+docs/Model/GetVoiceCallEstimate200ResponseBillingIncrementSeconds.md
 docs/Model/GetVoiceCallEstimate200ResponseBreakdown.md
+docs/Model/GetVoiceCallEstimate200ResponseRates.md
+docs/Model/GetVoiceCallEstimate200ResponseTrunk.md
 docs/Model/GetWebflowConnectUrl200Response.md
 docs/Model/GetWebhookLogs200Response.md
 docs/Model/GetWebhookLogs200ResponsePagination.md
@@ -3634,6 +3637,8 @@ docs/Model/VerifySmsRegistrationOtpRequest.md
 docs/Model/VerifyWhatsAppCallerIdRequest.md
 docs/Model/VerifyWhatsAppNumber200Response.md
 docs/Model/VerifyWhatsAppNumberRequest.md
+docs/Model/VoiceCallLineRates.md
+docs/Model/VoiceCallLineRatesNetworksInner.md
 docs/Model/VoteRedditThingRequest.md
 docs/Model/Webhook.md
 docs/Model/WebhookAdsAccount.md
@@ -5835,7 +5840,10 @@ lib/Model/GetUser200ResponseUser.php
 lib/Model/GetValueRuleSet200Response.php
 lib/Model/GetVoiceCall200Response.php
 lib/Model/GetVoiceCallEstimate200Response.php
+lib/Model/GetVoiceCallEstimate200ResponseBillingIncrementSeconds.php
 lib/Model/GetVoiceCallEstimate200ResponseBreakdown.php
+lib/Model/GetVoiceCallEstimate200ResponseRates.php
+lib/Model/GetVoiceCallEstimate200ResponseTrunk.php
 lib/Model/GetWebflowConnectUrl200Response.php
 lib/Model/GetWebhookLogs200Response.php
 lib/Model/GetWebhookLogs200ResponsePagination.php
@@ -7612,6 +7620,8 @@ lib/Model/VerifySmsRegistrationOtpRequest.php
 lib/Model/VerifyWhatsAppCallerIdRequest.php
 lib/Model/VerifyWhatsAppNumber200Response.php
 lib/Model/VerifyWhatsAppNumberRequest.php
+lib/Model/VoiceCallLineRates.php
+lib/Model/VoiceCallLineRatesNetworksInner.php
 lib/Model/VoteRedditThingRequest.php
 lib/Model/Webhook.php
 lib/Model/WebhookAdsAccount.php
@@ -7955,3 +7965,8 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetVoiceCallEstimate200ResponseBillingIncrementSecondsTest.php
+test/Model/GetVoiceCallEstimate200ResponseRatesTest.php
+test/Model/GetVoiceCallEstimate200ResponseTrunkTest.php
+test/Model/VoiceCallLineRatesNetworksInnerTest.php
+test/Model/VoiceCallLineRatesTest.php
