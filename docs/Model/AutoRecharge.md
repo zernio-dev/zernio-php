@@ -9,7 +9,8 @@ Name | Type | Description | Notes
 **to_cents** | **int** | The back-to amount, in cents. The charge is toCents minus the balance (at least $5, at most toCents unless the balance is below $0 or a monthly fee is due), plus tax. |
 **monthly_limit_cents** | **int** | Most auto top-up may add per calendar month (UTC), before tax; null for no limit. |
 **alert_below_cents** | **int** | Low-balance email threshold, sent once per drop below it; null for none. |
-**disabled_reason** | **string** | &#x60;payment_failed&#x60; once a declined charge is not retried, or its one retry fails; updating the card clears it. &#x60;charge_error&#x60; after 24 charges in a row failed on our side (not the card); turning auto top-up back on (&#x60;enabled: true&#x60;) clears it. |
+**disabled_reason** | **string** | &#x60;payment_failed&#x60; once a declined charge is not retried, or its one retry fails; updating the card clears it. &#x60;charge_error&#x60; after 24 charges in a row failed for a reason other than a decline; turning auto top-up back on (&#x60;enabled: true&#x60;) clears it. |
+**disabled_cause** | **string** | With &#x60;charge_error&#x60;: &#x60;billing_address&#x60; when the last failure was a billing address that tax cannot be worked out from (fix it, then turn auto top-up back on). Null otherwise. |
 **retry_count** | **int** | Failed charges in a row; 0 once one goes through. |
 **next_retry_at** | **\DateTime** | When a declined auto top-up is tried again; null when none is waiting. |
 **month_recharged_cents** | **int** | Auto top-ups this calendar month (UTC), paid or being paid, before tax. |
