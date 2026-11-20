@@ -8151,16 +8151,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GoogleAdsPlatformQueryBodyTest.php
-test/Model/GoogleAnalyticsPlatformQueryBodyOneOf1MinuteRangesInnerTest.php
-test/Model/GoogleAnalyticsPlatformQueryBodyOneOf1Test.php
-test/Model/GoogleAnalyticsPlatformQueryBodyOneOfDateRangesInnerTest.php
-test/Model/GoogleAnalyticsPlatformQueryBodyOneOfTest.php
-test/Model/GoogleAnalyticsPlatformQueryBodyTest.php
-test/Model/MetaAdsPlatformQueryBodyFilteringInnerTest.php
-test/Model/MetaAdsPlatformQueryBodyTest.php
-test/Model/MetaAdsPlatformQueryBodyTimeIncrementTest.php
-test/Model/PlatformQueryPageMetaTest.php
-test/Model/PlatformQueryPagePaginationTest.php
-test/Model/PlatformQueryPageTest.php
-test/Model/TikTokAdsPlatformQueryBodyTest.php

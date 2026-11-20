@@ -399,12 +399,12 @@ try {
 ## `listBlogArticles()`
 
 ```php
-listBlogArticles($account_id, $blog_id, $limit, $cursor): \Zernio\Model\ListBlogArticles200Response
+listBlogArticles($account_id, $blog_id, $limit, $cursor, $handle): \Zernio\Model\ListBlogArticles200Response
 ```
 
 List blog articles
 
-Lists the articles of a blog. Supported on Shopify (`shopify`), WordPress (`wordpress`), Wix (`wix`) and Webflow (`webflow`).  ### Pagination  Cursor-paginated: pass `limit` (1-50, default 20) and the `cursor` from a previous response's `nextCursor`. `nextCursor` is null when there are no more pages. Treat cursors as opaque and pass them unchanged.  ### Platform differences  - WordPress and Wix results include `status`, and include `publishDate` only for scheduled (`future`) posts. - Wix lists return `bodyHtml: null`; get the article for its body. - Webflow results report `status` as `publish` or `draft` only.
+Lists the articles of a blog. Supported on Shopify (`shopify`), WordPress (`wordpress`), Wix (`wix`) and Webflow (`webflow`).  ### Pagination  Cursor-paginated: pass `limit` (1-50, default 20) and the `cursor` from a previous response's `nextCursor`. `nextCursor` is null when there are no more pages. Treat cursors as opaque and pass them unchanged.  ### Find an article by handle  Pass `handle` to get that one article in any status (published, draft or scheduled), or an empty list. WordPress and Webflow only.  Use it after a `502` on create to see whether the article exists.  ### Platform differences  - WordPress and Wix results include `status`, and include `publishDate` only for scheduled (`future`) posts. - Wix lists return `bodyHtml: null`; get the article for its body. - Webflow results report `status` as `publish` or `draft` only.
 
 ### Example
 
@@ -427,9 +427,10 @@ $account_id = 'account_id_example'; // string | Connected Shopify, WordPress, Wi
 $blog_id = 'blog_id_example'; // string | Platform-native blog/site id returned by the list operation.
 $limit = 20; // int | Page size (1-50).
 $cursor = 'cursor_example'; // string | Opaque cursor from a previous response. Omit for the first page.
+$handle = 'handle_example'; // string | Only the article with this handle, in any status. WordPress and Webflow only.
 
 try {
-    $result = $apiInstance->listBlogArticles($account_id, $blog_id, $limit, $cursor);
+    $result = $apiInstance->listBlogArticles($account_id, $blog_id, $limit, $cursor, $handle);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BlogsApi->listBlogArticles: ', $e->getMessage(), PHP_EOL;
@@ -444,6 +445,7 @@ try {
 | **blog_id** | **string**| Platform-native blog/site id returned by the list operation. | |
 | **limit** | **int**| Page size (1-50). | [optional] [default to 20] |
 | **cursor** | **string**| Opaque cursor from a previous response. Omit for the first page. | [optional] |
+| **handle** | **string**| Only the article with this handle, in any status. WordPress and Webflow only. | [optional] |
 
 ### Return type
 
