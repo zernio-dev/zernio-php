@@ -1140,6 +1140,7 @@ docs/Model/CreateWorkflow200Response.md
 docs/Model/CreateWorkflow200ResponseWorkflow.md
 docs/Model/CreateWorkflowRequest.md
 docs/Model/CreateWorkspace201Response.md
+docs/Model/CreateWorkspace201ResponseApiKeyError.md
 docs/Model/CreateWorkspaceApiKey201Response.md
 docs/Model/CreateWorkspaceApiKeyRequest.md
 docs/Model/CreateWorkspaceRequest.md
@@ -5233,6 +5234,7 @@ lib/Model/CreateWorkflow200Response.php
 lib/Model/CreateWorkflow200ResponseWorkflow.php
 lib/Model/CreateWorkflowRequest.php
 lib/Model/CreateWorkspace201Response.php
+lib/Model/CreateWorkspace201ResponseApiKeyError.php
 lib/Model/CreateWorkspaceApiKey201Response.php
 lib/Model/CreateWorkspaceApiKeyRequest.php
 lib/Model/CreateWorkspaceRequest.php
@@ -8187,3 +8189,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/CreateWorkspace201ResponseApiKeyErrorTest.php
