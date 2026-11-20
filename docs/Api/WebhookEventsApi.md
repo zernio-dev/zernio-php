@@ -2128,7 +2128,7 @@ onBillingPublishingBlocked($webhook_payload_billing_publishing_blocked)
 
 Publishing paused for a failed payment
 
-A failed payment paused the billing owner's account. Until it is paid, every API call answers 402 `PAYMENT_REQUIRED` and posts that come due fail with \"Publishing blocked: payment failed\".  ### When it fires  Once per pause. `billing.reason` says why: the card was declined (`payment_failed`), there is no card (`no_payment_method`), or the billing address was refused (`invalid_billing_address`). Pay or replace the card at `billingUrl`.  ### Who receives it  The billing owner's endpoints. Restricted keys need the `money` resource group.
+A failed payment paused the billing owner's account. Until it is paid, every API call answers 402 `PAYMENT_REQUIRED`.  ### Scheduled posts during the pause  Posts that come due are held, not failed: `platforms[].status` stays `pending` and `errorMessage` says the post waits for the payment. No platform is called.  - Paid within 24 hours of a post's scheduled time: the post publishes within minutes of `billing.publishing_unblocked`. - Not paid by then: the post fails with \"Publishing blocked: payment failed\" and `post.failed` (or `post.partial`) fires as usual. Retry it once paid. - A Terms of Service hold is not a billing pause: its posts fail at once, as before.  ### When it fires  Once per pause. `billing.reason` says why: the card was declined (`payment_failed`), there is no card (`no_payment_method`), or the billing address was refused (`invalid_billing_address`). Pay or replace the card at `billingUrl`.  ### Who receives it  The billing owner's endpoints. Restricted keys need the `money` resource group.
 
 ### Example
 
@@ -2187,7 +2187,7 @@ onBillingPublishingUnblocked($webhook_payload_billing_publishing_unblocked)
 
 Publishing resumed after payment
 
-The account paused by `billing.publishing_blocked` was paid: the API accepts calls again and scheduled posts publish. Posts that failed during the pause stay failed; retry them with `POST /v1/posts/{postId}/retry`.
+The account paused by `billing.publishing_blocked` was paid: the API accepts calls again and scheduled posts publish.  Posts held during the pause publish within minutes, unless their scheduled time is more than 24 hours past: those fail with \"Publishing blocked: payment failed\" instead of going out late. Posts that failed stay failed; retry them with `POST /v1/posts/{postId}/retry`.
 
 ### Example
 
