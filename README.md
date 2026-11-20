@@ -1058,6 +1058,10 @@ Class | Method | HTTP request | Description
 *MetricsApi* | [**getInsightMetrics**](docs/Api/MetricsApi.md#getinsightmetrics) | **GET** /v1/metrics/insights | Read live account or post insights from the platform
 *MetricsApi* | [**getMetricsCatalog**](docs/Api/MetricsApi.md#getmetricscatalog) | **GET** /v1/metrics/catalog | List the metrics, groupings and limits of each metrics endpoint
 *MetricsApi* | [**getPostMetrics**](docs/Api/MetricsApi.md#getpostmetrics) | **GET** /v1/metrics/posts | Read post metrics by id, day by day, as a list, or grouped
+*MetricsApi* | [**queryGoogleAds**](docs/Api/MetricsApi.md#querygoogleads) | **POST** /v1/metrics/platform-queries/google-ads | Run a Google Ads Query Language search on one customer
+*MetricsApi* | [**queryGoogleAnalytics**](docs/Api/MetricsApi.md#querygoogleanalytics) | **POST** /v1/metrics/platform-queries/google-analytics | Run a GA4 standard or realtime report on one property
+*MetricsApi* | [**queryMetaAds**](docs/Api/MetricsApi.md#querymetaads) | **POST** /v1/metrics/platform-queries/meta-ads | Run a Meta Marketing API insights query on one ad account
+*MetricsApi* | [**queryTikTokAds**](docs/Api/MetricsApi.md#querytiktokads) | **POST** /v1/metrics/platform-queries/tiktok-ads | Run a TikTok Marketing API report on one advertiser
 *PhoneNumbersApi* | [**cancelPhoneNumberPortIn**](docs/Api/PhoneNumbersApi.md#cancelphonenumberportin) | **DELETE** /v1/phone-numbers/port-in/{id} | Cancel a port-in
 *PhoneNumbersApi* | [**checkPhoneNumberAvailability**](docs/Api/PhoneNumbersApi.md#checkphonenumberavailability) | **GET** /v1/phone-numbers/availability | Check country availability
 *PhoneNumbersApi* | [**checkPhoneNumberPortability**](docs/Api/PhoneNumbersApi.md#checkphonenumberportability) | **POST** /v1/phone-numbers/port-in/check | Check portability
@@ -3288,9 +3292,15 @@ Class | Method | HTTP request | Description
 - [GoogleAdsAccessRole](docs/Model/GoogleAdsAccessRole.md)
 - [GoogleAdsHierarchyClient](docs/Model/GoogleAdsHierarchyClient.md)
 - [GoogleAdsManagerLink](docs/Model/GoogleAdsManagerLink.md)
+- [GoogleAdsPlatformQueryBody](docs/Model/GoogleAdsPlatformQueryBody.md)
 - [GoogleAdsUserAccessInvitation](docs/Model/GoogleAdsUserAccessInvitation.md)
 - [GoogleAdsUserAccessInvitationResult](docs/Model/GoogleAdsUserAccessInvitationResult.md)
 - [GoogleAdsUserInvitationApproval](docs/Model/GoogleAdsUserInvitationApproval.md)
+- [GoogleAnalyticsPlatformQueryBody](docs/Model/GoogleAnalyticsPlatformQueryBody.md)
+- [GoogleAnalyticsPlatformQueryBodyOneOf](docs/Model/GoogleAnalyticsPlatformQueryBodyOneOf.md)
+- [GoogleAnalyticsPlatformQueryBodyOneOf1](docs/Model/GoogleAnalyticsPlatformQueryBodyOneOf1.md)
+- [GoogleAnalyticsPlatformQueryBodyOneOf1MinuteRangesInner](docs/Model/GoogleAnalyticsPlatformQueryBodyOneOf1MinuteRangesInner.md)
+- [GoogleAnalyticsPlatformQueryBodyOneOfDateRangesInner](docs/Model/GoogleAnalyticsPlatformQueryBodyOneOfDateRangesInner.md)
 - [GoogleAnalyticsReport](docs/Model/GoogleAnalyticsReport.md)
 - [GoogleAnalyticsReportDimensionHeadersInner](docs/Model/GoogleAnalyticsReportDimensionHeadersInner.md)
 - [GoogleAnalyticsReportFields](docs/Model/GoogleAnalyticsReportFields.md)
@@ -3928,6 +3938,9 @@ Class | Method | HTTP request | Description
 - [MessengerIceBreakerLocaleCallToActionsInner](docs/Model/MessengerIceBreakerLocaleCallToActionsInner.md)
 - [MetaAdScheduleInner](docs/Model/MetaAdScheduleInner.md)
 - [MetaAdsPlatformData](docs/Model/MetaAdsPlatformData.md)
+- [MetaAdsPlatformQueryBody](docs/Model/MetaAdsPlatformQueryBody.md)
+- [MetaAdsPlatformQueryBodyFilteringInner](docs/Model/MetaAdsPlatformQueryBodyFilteringInner.md)
+- [MetaAdsPlatformQueryBodyTimeIncrement](docs/Model/MetaAdsPlatformQueryBodyTimeIncrement.md)
 - [MetaAssignedUser](docs/Model/MetaAssignedUser.md)
 - [MetaBusinessUser](docs/Model/MetaBusinessUser.md)
 - [MetaCatalogProduct](docs/Model/MetaCatalogProduct.md)
@@ -4040,6 +4053,9 @@ Class | Method | HTTP request | Description
 - [PinPostResponse](docs/Model/PinPostResponse.md)
 - [PinterestPlatformData](docs/Model/PinterestPlatformData.md)
 - [PlatformAnalytics](docs/Model/PlatformAnalytics.md)
+- [PlatformQueryPage](docs/Model/PlatformQueryPage.md)
+- [PlatformQueryPageMeta](docs/Model/PlatformQueryPageMeta.md)
+- [PlatformQueryPagePagination](docs/Model/PlatformQueryPagePagination.md)
 - [PlatformTarget](docs/Model/PlatformTarget.md)
 - [PlatformTargetAccountId](docs/Model/PlatformTargetAccountId.md)
 - [Pool](docs/Model/Pool.md)
@@ -4595,6 +4611,7 @@ Class | Method | HTTP request | Description
 - [TelegramPlatformData](docs/Model/TelegramPlatformData.md)
 - [TestWebhookRequest](docs/Model/TestWebhookRequest.md)
 - [ThreadsPlatformData](docs/Model/ThreadsPlatformData.md)
+- [TikTokAdsPlatformQueryBody](docs/Model/TikTokAdsPlatformQueryBody.md)
 - [TikTokDryRunVerdict](docs/Model/TikTokDryRunVerdict.md)
 - [TikTokDryRunVerdictTiktokInner](docs/Model/TikTokDryRunVerdictTiktokInner.md)
 - [TikTokPlatformData](docs/Model/TikTokPlatformData.md)
@@ -5411,6 +5428,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.709.0`
+- API version: `1.710.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

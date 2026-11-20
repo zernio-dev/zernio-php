@@ -14,6 +14,10 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getInsightMetrics()**](MetricsApi.md#getInsightMetrics) | **GET** /v1/metrics/insights | Read live account or post insights from the platform |
 | [**getMetricsCatalog()**](MetricsApi.md#getMetricsCatalog) | **GET** /v1/metrics/catalog | List the metrics, groupings and limits of each metrics endpoint |
 | [**getPostMetrics()**](MetricsApi.md#getPostMetrics) | **GET** /v1/metrics/posts | Read post metrics by id, day by day, as a list, or grouped |
+| [**queryGoogleAds()**](MetricsApi.md#queryGoogleAds) | **POST** /v1/metrics/platform-queries/google-ads | Run a Google Ads Query Language search on one customer |
+| [**queryGoogleAnalytics()**](MetricsApi.md#queryGoogleAnalytics) | **POST** /v1/metrics/platform-queries/google-analytics | Run a GA4 standard or realtime report on one property |
+| [**queryMetaAds()**](MetricsApi.md#queryMetaAds) | **POST** /v1/metrics/platform-queries/meta-ads | Run a Meta Marketing API insights query on one ad account |
+| [**queryTikTokAds()**](MetricsApi.md#queryTikTokAds) | **POST** /v1/metrics/platform-queries/tiktok-ads | Run a TikTok Marketing API report on one advertiser |
 
 
 ## `getAccountMetrics()`
@@ -612,6 +616,246 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `queryGoogleAds()`
+
+```php
+queryGoogleAds($google_ads_platform_query_body): \Zernio\Model\PlatformQueryPage
+```
+
+Run a Google Ads Query Language search on one customer
+
+Runs a GAQL `SELECT` on one Google Ads customer, read only. Without `adAccountId` it reads the connection's own customer.  Runs a native query on the platform with the account's own token and answers the platform's rows unchanged, with its own field names, plus its headers, counts and quota in `meta`. Use it for what `/v1/metrics/_*` does not store; the stored metrics stay cheaper and faster.  - Up to 120 reads per hour per platform target (the Zernio account plus the ad account or property); past it, 429 with `details.scope` `platform_query_target`.  - Up to 10 queries in flight per team.  - A query must answer within 25 seconds.  - An account of another source answers 400 on `accountId` with the route it belongs to.  - The next page goes in `cursor`, from `pagination.nextCursor`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\MetricsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$google_ads_platform_query_body = {"accountId":"69ce75d483e990e1c01ccfe4","adAccountId":"9122445560","query":"SELECT campaign.id, metrics.clicks FROM campaign WHERE segments.date DURING LAST_30_DAYS"}; // \Zernio\Model\GoogleAdsPlatformQueryBody
+
+try {
+    $result = $apiInstance->queryGoogleAds($google_ads_platform_query_body);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MetricsApi->queryGoogleAds: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **google_ads_platform_query_body** | [**\Zernio\Model\GoogleAdsPlatformQueryBody**](../Model/GoogleAdsPlatformQueryBody.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\PlatformQueryPage**](../Model/PlatformQueryPage.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `queryGoogleAnalytics()`
+
+```php
+queryGoogleAnalytics($google_analytics_platform_query_body): \Zernio\Model\PlatformQueryPage
+```
+
+Run a GA4 standard or realtime report on one property
+
+Runs a GA4 `standard` report over up to 4 date ranges, paged, or a `realtime` report on the last 30 minutes. Needs the Analytics add-on.  Runs a native query on the platform with the account's own token and answers the platform's rows unchanged, with its own field names, plus its headers, counts and quota in `meta`. Use it for what `/v1/metrics/_*` does not store; the stored metrics stay cheaper and faster.  - Up to 120 reads per hour per platform target (the Zernio account plus the ad account or property); past it, 429 with `details.scope` `platform_query_target`.  - Up to 10 queries in flight per team.  - A query must answer within 25 seconds.  - An account of another source answers 400 on `accountId` with the route it belongs to.  - The next page goes in `cursor`, from `pagination.nextCursor`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\MetricsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$google_analytics_platform_query_body = {"reportType":"standard","accountId":"6ae38efd7a6050c11aa50bc9","metrics":["sessions"],"dimensions":["date"],"dateRanges":[{"startDate":"2026-11-10","endDate":"2026-11-16"}]}; // \Zernio\Model\GoogleAnalyticsPlatformQueryBody
+
+try {
+    $result = $apiInstance->queryGoogleAnalytics($google_analytics_platform_query_body);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MetricsApi->queryGoogleAnalytics: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **google_analytics_platform_query_body** | [**\Zernio\Model\GoogleAnalyticsPlatformQueryBody**](../Model/GoogleAnalyticsPlatformQueryBody.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\PlatformQueryPage**](../Model/PlatformQueryPage.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `queryMetaAds()`
+
+```php
+queryMetaAds($meta_ads_platform_query_body): \Zernio\Model\PlatformQueryPage
+```
+
+Run a Meta Marketing API insights query on one ad account
+
+Reads Meta's insights for one ad account (`act_<n>`). Read its campaigns, ad sets or ads with `level` and `filtering` on the same ad account.  Runs a native query on the platform with the account's own token and answers the platform's rows unchanged, with its own field names, plus its headers, counts and quota in `meta`. Use it for what `/v1/metrics/_*` does not store; the stored metrics stay cheaper and faster.  - Up to 120 reads per hour per platform target (the Zernio account plus the ad account or property); past it, 429 with `details.scope` `platform_query_target`.  - Up to 10 queries in flight per team.  - A query must answer within 25 seconds.  - An account of another source answers 400 on `accountId` with the route it belongs to.  - The next page goes in `cursor`, from `pagination.nextCursor`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\MetricsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$meta_ads_platform_query_body = {"accountId":"69fc524892b3d8e85f893e73","adAccountId":"act_757082720485182","level":"campaign","fields":["spend","impressions","clicks"],"fromDate":"2026-11-01","toDate":"2026-11-18"}; // \Zernio\Model\MetaAdsPlatformQueryBody
+
+try {
+    $result = $apiInstance->queryMetaAds($meta_ads_platform_query_body);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MetricsApi->queryMetaAds: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **meta_ads_platform_query_body** | [**\Zernio\Model\MetaAdsPlatformQueryBody**](../Model/MetaAdsPlatformQueryBody.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\PlatformQueryPage**](../Model/PlatformQueryPage.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `queryTikTokAds()`
+
+```php
+queryTikTokAds($tik_tok_ads_platform_query_body): \Zernio\Model\PlatformQueryPage
+```
+
+Run a TikTok Marketing API report on one advertiser
+
+Runs a synchronous TikTok report (`BASIC` or `AUDIENCE`) for one advertiser at the data level asked.  Runs a native query on the platform with the account's own token and answers the platform's rows unchanged, with its own field names, plus its headers, counts and quota in `meta`. Use it for what `/v1/metrics/_*` does not store; the stored metrics stay cheaper and faster.  - Up to 120 reads per hour per platform target (the Zernio account plus the ad account or property); past it, 429 with `details.scope` `platform_query_target`.  - Up to 10 queries in flight per team.  - A query must answer within 25 seconds.  - An account of another source answers 400 on `accountId` with the route it belongs to.  - The next page goes in `cursor`, from `pagination.nextCursor`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\MetricsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tik_tok_ads_platform_query_body = {"accountId":"6abb67f34dc9098d7c2f1955","adAccountId":"7330955083452284929","dataLevel":"AUCTION_CAMPAIGN","dimensions":["campaign_id"],"metrics":["spend","impressions"],"fromDate":"2026-11-01","toDate":"2026-11-18"}; // \Zernio\Model\TikTokAdsPlatformQueryBody
+
+try {
+    $result = $apiInstance->queryTikTokAds($tik_tok_ads_platform_query_body);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MetricsApi->queryTikTokAds: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tik_tok_ads_platform_query_body** | [**\Zernio\Model\TikTokAdsPlatformQueryBody**](../Model/TikTokAdsPlatformQueryBody.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\PlatformQueryPage**](../Model/PlatformQueryPage.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
