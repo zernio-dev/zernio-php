@@ -2434,6 +2434,7 @@ docs/Model/ListInboxConversations200ResponseDataInnerInstagramProfile.md
 docs/Model/ListInboxConversations200ResponseMeta.md
 docs/Model/ListInboxConversations200ResponseMetaAccountsSkippedInner.md
 docs/Model/ListInboxConversations200ResponseMetaFailedAccountsInner.md
+docs/Model/ListInboxConversations200ResponseSync.md
 docs/Model/ListInboxLabels200Response.md
 docs/Model/ListInboxLabels200ResponseLabelsInner.md
 docs/Model/ListInboxMentions200Response.md
@@ -6495,6 +6496,7 @@ lib/Model/ListInboxConversations200ResponseDataInnerInstagramProfile.php
 lib/Model/ListInboxConversations200ResponseMeta.php
 lib/Model/ListInboxConversations200ResponseMetaAccountsSkippedInner.php
 lib/Model/ListInboxConversations200ResponseMetaFailedAccountsInner.php
+lib/Model/ListInboxConversations200ResponseSync.php
 lib/Model/ListInboxLabels200Response.php
 lib/Model/ListInboxLabels200ResponseLabelsInner.php
 lib/Model/ListInboxMentions200Response.php
@@ -8123,3 +8125,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ListInboxConversations200ResponseSyncTest.php
