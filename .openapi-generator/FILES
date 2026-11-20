@@ -8163,10 +8163,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetCurrentUser200ResponseTest.php
-test/Model/RemoveUser200ResponseRemovedUserTest.php
-test/Model/RemoveUser200ResponseTest.php
-test/Model/RemoveUser403ResponseTest.php
-test/Model/TakeOverAutomation200ResponseTest.php
-test/Model/TakeOverWorkflow200ResponseTest.php
-test/Model/TakeOverWorkflow200ResponseWorkflowTest.php
