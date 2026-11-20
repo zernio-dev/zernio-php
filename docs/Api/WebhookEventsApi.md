@@ -2796,7 +2796,7 @@ $apiInstance = new Zernio\Api\WebhookEventsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$webhook_payload_call_received = {"id":"00000000-0000-4000-8000-000000000000","event":"call.received","timestamp":"2026-01-15T10:00:00Z","call":{"id":"507f1f77bcf86cd799439017","metaCallId":"wacid.SAMPLE1234567890","accountId":"507f1f77bcf86cd799439011","phoneNumberId":"100000000000001","direction":"inbound","from":"+15555550123","to":"+15555550100","contactId":"507f1f77bcf86cd799439016","conversationId":"507f1f77bcf86cd799439014","startedAt":"2026-01-15T10:00:00.000Z"},"account":{"id":"507f1f77bcf86cd799439011","accountId":"507f1f77bcf86cd799439011","platform":"whatsapp","username":"+15555550100","displayName":"Sample Brand"},"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadCallReceived
+$webhook_payload_call_received = {"id":"00000000-0000-4000-8000-000000000000","event":"call.received","timestamp":"2026-01-15T10:00:00Z","call":{"id":"507f1f77bcf86cd799439017","metaCallId":"wacid.SAMPLE1234567890","accountId":"507f1f77bcf86cd799439011","phoneNumberId":"100000000000001","direction":"inbound","from":"+15555550123","to":"+15555550100","contactId":"507f1f77bcf86cd799439016","conversationId":"507f1f77bcf86cd799439014","telnyxCallControlId":"v3:SAMPLE-call-control-id","telnyxCallSessionId":"SAMPLE-call-session-id","startedAt":"2026-01-15T10:00:00.000Z"},"account":{"id":"507f1f77bcf86cd799439011","accountId":"507f1f77bcf86cd799439011","platform":"whatsapp","username":"+15555550100","displayName":"Sample Brand"},"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadCallReceived
 
 try {
     $apiInstance->onCallReceived($webhook_payload_call_received);
