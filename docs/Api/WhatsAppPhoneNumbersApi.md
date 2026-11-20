@@ -237,7 +237,7 @@ $apiInstance = new Zernio\Api\WhatsAppPhoneNumbersApi(
     $config
 );
 $country = 'country_example'; // string
-$profile_id = 'profile_id_example'; // string
+$profile_id = 'profile_id_example'; // string | Profile the order is for. When given, `reusable.options` only lists verifications held by numbers on this profile. A key or team member limited to some profiles must pass it to get any options.
 
 try {
     $result = $apiInstance->getWhatsAppNumberKycForm($country, $profile_id);
@@ -252,7 +252,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **country** | **string**|  | |
-| **profile_id** | **string**|  | |
+| **profile_id** | **string**| Profile the order is for. When given, &#x60;reusable.options&#x60; only lists verifications held by numbers on this profile. A key or team member limited to some profiles must pass it to get any options. | [optional] |
 
 ### Return type
 

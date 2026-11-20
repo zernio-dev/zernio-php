@@ -584,7 +584,7 @@ try {
 ## `getPhoneNumberKycForm()`
 
 ```php
-getPhoneNumberKycForm($country, $number_type): \Zernio\Model\GetPhoneNumberKycForm200Response
+getPhoneNumberKycForm($country, $number_type, $profile_id): \Zernio\Model\GetPhoneNumberKycForm200Response
 ```
 
 Get KYC form spec
@@ -610,9 +610,10 @@ $apiInstance = new Zernio\Api\PhoneNumbersApi(
 );
 $country = 'country_example'; // string
 $number_type = 'number_type_example'; // string | Requirements and reuse eligibility are per (country, type). Omitted = the country's default type. Pass the same value on the POST.
+$profile_id = 'profile_id_example'; // string | Profile the order is for. When given, `reusable.options` only lists verifications held by numbers on this profile. A key or team member limited to some profiles must pass it to get any options.
 
 try {
-    $result = $apiInstance->getPhoneNumberKycForm($country, $number_type);
+    $result = $apiInstance->getPhoneNumberKycForm($country, $number_type, $profile_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PhoneNumbersApi->getPhoneNumberKycForm: ', $e->getMessage(), PHP_EOL;
@@ -625,6 +626,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **country** | **string**|  | |
 | **number_type** | **string**| Requirements and reuse eligibility are per (country, type). Omitted &#x3D; the country&#39;s default type. Pass the same value on the POST. | [optional] |
+| **profile_id** | **string**| Profile the order is for. When given, &#x60;reusable.options&#x60; only lists verifications held by numbers on this profile. A key or team member limited to some profiles must pass it to get any options. | [optional] |
 
 ### Return type
 
