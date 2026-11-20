@@ -31,5 +31,11 @@ Name | Type | Description | Notes
 **unsupported** | [**\Zernio\Model\WebhookPayloadMessageMetadataUnsupported**](WebhookPayloadMessageMetadataUnsupported.md) |  | [optional]
 **no_renderable_content** | **bool** | Instagram / Facebook Messenger only. Set when the message carries nothing an integrator can render: a &#x60;template&#x60; attachment with no text and no parseable content, or Meta&#39;s own &#x60;is_unsupported&#x60; flag.  Sibling of &#x60;unsupported&#x60; above (WhatsApp only, carries Meta&#39;s error code/title/details and unsupported type); this field has no error envelope, only the boolean.  Absence means \&quot;not flagged\&quot;, never \&quot;checked and renderable\&quot;. | [optional]
 **tiktok_message_type** | **string** | TikTok only. The message type as TikTok reports it, forwarded verbatim (for example image, video, sticker, share_post, emoji, reaction, template).  Present on every TikTok DM that is not plain text. Those arrive with text empty and, for image, video, share_post, sticker and emoji, an attachment:  - share_post: type share, with the embed url and payload.videoId. - sticker/emoji: type sticker, url signed and expiring. | [optional]
+**channel** | **string** | iMessage only. Delivery channel the message arrived on (imessage, sms, rcs or whatsapp). | [optional]
+**message_type** | **string** | iMessage only. Provider message type (for example text, audio, sticker). | [optional]
+**thread_id** | **string** | iMessage only. Id of the reply thread the message belongs to. | [optional]
+**language_code** | **string** | iMessage only. Language detected by the provider. | [optional]
+**transcript** | **string** | iMessage only. Provider transcription of a voice message. | [optional]
+**markdown_text** | **string** | iMessage only. Rich-text markup rendered to markdown; &#x60;text&#x60; stays plain. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
