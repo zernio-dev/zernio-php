@@ -1584,6 +1584,7 @@ docs/Model/GetConversionsQuality200ResponseRowsInnerMatchKeysInner.md
 docs/Model/GetCreatorPayouts200Response.md
 docs/Model/GetCreatorPortal200Response.md
 docs/Model/GetCrmDeal200Response.md
+docs/Model/GetCurrentUser200Response.md
 docs/Model/GetDailyMetrics200Response.md
 docs/Model/GetDailyMetrics200ResponseDailyDataInner.md
 docs/Model/GetDailyMetrics200ResponseDailyDataInnerMetrics.md
@@ -1749,7 +1750,6 @@ docs/Model/GetLeadForm200ResponseForm.md
 docs/Model/GetLedgerBalances200Response.md
 docs/Model/GetLinkedInAggregateAnalytics200Response.md
 docs/Model/GetLinkedInAggregateAnalytics400Response.md
-docs/Model/GetLinkedInAggregateAnalytics402Response.md
 docs/Model/GetLinkedInAggregateAnalytics403Response.md
 docs/Model/GetLinkedInBidPricing200Response.md
 docs/Model/GetLinkedInBidPricing200ResponsePricing.md
@@ -2906,6 +2906,9 @@ docs/Model/RemovePageUser200Response.md
 docs/Model/RemoveTrackingTagFromStore200Response.md
 docs/Model/RemoveTrackingTagFromStore200ResponseInstall.md
 docs/Model/RemoveTrackingTagUser200Response.md
+docs/Model/RemoveUser200Response.md
+docs/Model/RemoveUser200ResponseRemovedUser.md
+docs/Model/RemoveUser403Response.md
 docs/Model/RemoveUsersFromAdAudience200Response.md
 docs/Model/RemoveUsersFromAdAudienceRequest.md
 docs/Model/RemoveWhatsAppGroupParticipantsRequest.md
@@ -3279,6 +3282,9 @@ docs/Model/SupportRunUsage.md
 docs/Model/SyncExternalPosts200Response.md
 docs/Model/SyncExternalPosts200ResponseSynced.md
 docs/Model/SyncExternalPostsRequest.md
+docs/Model/TakeOverAutomation200Response.md
+docs/Model/TakeOverWorkflow200Response.md
+docs/Model/TakeOverWorkflow200ResponseWorkflow.md
 docs/Model/TargetingSpec.md
 docs/Model/TargetingSpecCitiesInner.md
 docs/Model/TargetingSpecCitiesInnerOneOf.md
@@ -5659,6 +5665,7 @@ lib/Model/GetConversionsQuality200ResponseRowsInnerMatchKeysInner.php
 lib/Model/GetCreatorPayouts200Response.php
 lib/Model/GetCreatorPortal200Response.php
 lib/Model/GetCrmDeal200Response.php
+lib/Model/GetCurrentUser200Response.php
 lib/Model/GetDailyMetrics200Response.php
 lib/Model/GetDailyMetrics200ResponseDailyDataInner.php
 lib/Model/GetDailyMetrics200ResponseDailyDataInnerMetrics.php
@@ -5824,7 +5831,6 @@ lib/Model/GetLeadForm200ResponseForm.php
 lib/Model/GetLedgerBalances200Response.php
 lib/Model/GetLinkedInAggregateAnalytics200Response.php
 lib/Model/GetLinkedInAggregateAnalytics400Response.php
-lib/Model/GetLinkedInAggregateAnalytics402Response.php
 lib/Model/GetLinkedInAggregateAnalytics403Response.php
 lib/Model/GetLinkedInBidPricing200Response.php
 lib/Model/GetLinkedInBidPricing200ResponsePricing.php
@@ -6982,6 +6988,9 @@ lib/Model/RemovePageUser200Response.php
 lib/Model/RemoveTrackingTagFromStore200Response.php
 lib/Model/RemoveTrackingTagFromStore200ResponseInstall.php
 lib/Model/RemoveTrackingTagUser200Response.php
+lib/Model/RemoveUser200Response.php
+lib/Model/RemoveUser200ResponseRemovedUser.php
+lib/Model/RemoveUser403Response.php
 lib/Model/RemoveUsersFromAdAudience200Response.php
 lib/Model/RemoveUsersFromAdAudienceRequest.php
 lib/Model/RemoveWhatsAppGroupParticipantsRequest.php
@@ -7355,6 +7364,9 @@ lib/Model/SupportRunUsage.php
 lib/Model/SyncExternalPosts200Response.php
 lib/Model/SyncExternalPosts200ResponseSynced.php
 lib/Model/SyncExternalPostsRequest.php
+lib/Model/TakeOverAutomation200Response.php
+lib/Model/TakeOverWorkflow200Response.php
+lib/Model/TakeOverWorkflow200ResponseWorkflow.php
 lib/Model/TargetingSpec.php
 lib/Model/TargetingSpecCitiesInner.php
 lib/Model/TargetingSpecCitiesInnerOneOf.php
@@ -8151,3 +8163,10 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetCurrentUser200ResponseTest.php
+test/Model/RemoveUser200ResponseRemovedUserTest.php
+test/Model/RemoveUser200ResponseTest.php
+test/Model/RemoveUser403ResponseTest.php
+test/Model/TakeOverAutomation200ResponseTest.php
+test/Model/TakeOverWorkflow200ResponseTest.php
+test/Model/TakeOverWorkflow200ResponseWorkflowTest.php

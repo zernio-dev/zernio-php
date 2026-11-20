@@ -411,6 +411,7 @@ Class | Method | HTTP request | Description
 *AutomationsApi* | [**previewAutomation**](docs/Api/AutomationsApi.md#previewautomation) | **POST** /v1/automations/{automationId}/preview | Preview a saved automation
 *AutomationsApi* | [**previewAutomationDraft**](docs/Api/AutomationsApi.md#previewautomationdraft) | **POST** /v1/automations/preview | Preview an unsaved automation
 *AutomationsApi* | [**rejectAutomationApproval**](docs/Api/AutomationsApi.md#rejectautomationapproval) | **POST** /v1/automations/{automationId}/approvals/{approvalId}/reject | Reject an approval request
+*AutomationsApi* | [**takeOverAutomation**](docs/Api/AutomationsApi.md#takeoverautomation) | **POST** /v1/automations/{automationId}/take-over | Take over an automation
 *AutomationsApi* | [**updateAutomation**](docs/Api/AutomationsApi.md#updateautomation) | **PATCH** /v1/automations/{automationId} | Edit an automation
 *AutomationsApi* | [**updateAutomationAdAccountControls**](docs/Api/AutomationsApi.md#updateautomationadaccountcontrols) | **PATCH** /v1/automations/controls/ad-accounts | Update one ad account&#39;s controls
 *AutomationsApi* | [**updateAutomationControls**](docs/Api/AutomationsApi.md#updateautomationcontrols) | **PATCH** /v1/automations/controls | Turn every ad automation off or on
@@ -1263,8 +1264,10 @@ Class | Method | HTTP request | Description
 *UsageApi* | [**getUsage**](docs/Api/UsageApi.md#getusage) | **GET** /v1/usage | Usage snapshot (default) or billed-spend metering (with params)
 *UsageApi* | [**getUsageStats**](docs/Api/UsageApi.md#getusagestats) | **GET** /v1/usage-stats | Get plan and usage snapshot (plan, limits, payment status)
 *UsageApi* | [**getXApiPricing**](docs/Api/UsageApi.md#getxapipricing) | **GET** /v1/billing/x-pricing | Get X API pricing table
+*UsersApi* | [**getCurrentUser**](docs/Api/UsersApi.md#getcurrentuser) | **GET** /v1/users/me | Get the current user
 *UsersApi* | [**getUser**](docs/Api/UsersApi.md#getuser) | **GET** /v1/users/{userId} | Get user
 *UsersApi* | [**listUsers**](docs/Api/UsersApi.md#listusers) | **GET** /v1/users | List users
+*UsersApi* | [**removeUser**](docs/Api/UsersApi.md#removeuser) | **DELETE** /v1/users/{userId} | Remove member
 *ValidateApi* | [**validateMedia**](docs/Api/ValidateApi.md#validatemedia) | **POST** /v1/tools/validate/media | Validate media URL
 *ValidateApi* | [**validatePost**](docs/Api/ValidateApi.md#validatepost) | **POST** /v1/tools/validate/post | Validate post content
 *ValidateApi* | [**validatePostLength**](docs/Api/ValidateApi.md#validatepostlength) | **POST** /v1/tools/validate/post-length | Validate character count
@@ -1411,6 +1414,7 @@ Class | Method | HTTP request | Description
 *WorkflowsApi* | [**listWorkflows**](docs/Api/WorkflowsApi.md#listworkflows) | **GET** /v1/workflows | List workflows
 *WorkflowsApi* | [**pauseWorkflow**](docs/Api/WorkflowsApi.md#pauseworkflow) | **POST** /v1/workflows/{workflowId}/pause | Pause workflow
 *WorkflowsApi* | [**restoreWorkflowVersion**](docs/Api/WorkflowsApi.md#restoreworkflowversion) | **POST** /v1/workflows/{workflowId}/versions/{version}/restore | Restore a workflow version
+*WorkflowsApi* | [**takeOverWorkflow**](docs/Api/WorkflowsApi.md#takeoverworkflow) | **POST** /v1/workflows/{workflowId}/take-over | Take over a workflow
 *WorkflowsApi* | [**triggerApiCallWorkflow**](docs/Api/WorkflowsApi.md#triggerapicallworkflow) | **POST** /v1/workflows/{workflowId}/trigger | Start an API-triggered workflow
 *WorkflowsApi* | [**triggerWorkflow**](docs/Api/WorkflowsApi.md#triggerworkflow) | **POST** /v1/workflows/{workflowId}/executions | Manually start a workflow run
 *WorkflowsApi* | [**updateWorkflow**](docs/Api/WorkflowsApi.md#updateworkflow) | **PATCH** /v1/workflows/{workflowId} | Update workflow
@@ -2907,6 +2911,7 @@ Class | Method | HTTP request | Description
 - [GetCreatorPayouts200Response](docs/Model/GetCreatorPayouts200Response.md)
 - [GetCreatorPortal200Response](docs/Model/GetCreatorPortal200Response.md)
 - [GetCrmDeal200Response](docs/Model/GetCrmDeal200Response.md)
+- [GetCurrentUser200Response](docs/Model/GetCurrentUser200Response.md)
 - [GetDailyMetrics200Response](docs/Model/GetDailyMetrics200Response.md)
 - [GetDailyMetrics200ResponseDailyDataInner](docs/Model/GetDailyMetrics200ResponseDailyDataInner.md)
 - [GetDailyMetrics200ResponseDailyDataInnerMetrics](docs/Model/GetDailyMetrics200ResponseDailyDataInnerMetrics.md)
@@ -3072,7 +3077,6 @@ Class | Method | HTTP request | Description
 - [GetLedgerBalances200Response](docs/Model/GetLedgerBalances200Response.md)
 - [GetLinkedInAggregateAnalytics200Response](docs/Model/GetLinkedInAggregateAnalytics200Response.md)
 - [GetLinkedInAggregateAnalytics400Response](docs/Model/GetLinkedInAggregateAnalytics400Response.md)
-- [GetLinkedInAggregateAnalytics402Response](docs/Model/GetLinkedInAggregateAnalytics402Response.md)
 - [GetLinkedInAggregateAnalytics403Response](docs/Model/GetLinkedInAggregateAnalytics403Response.md)
 - [GetLinkedInBidPricing200Response](docs/Model/GetLinkedInBidPricing200Response.md)
 - [GetLinkedInBidPricing200ResponsePricing](docs/Model/GetLinkedInBidPricing200ResponsePricing.md)
@@ -4229,6 +4233,9 @@ Class | Method | HTTP request | Description
 - [RemoveTrackingTagFromStore200Response](docs/Model/RemoveTrackingTagFromStore200Response.md)
 - [RemoveTrackingTagFromStore200ResponseInstall](docs/Model/RemoveTrackingTagFromStore200ResponseInstall.md)
 - [RemoveTrackingTagUser200Response](docs/Model/RemoveTrackingTagUser200Response.md)
+- [RemoveUser200Response](docs/Model/RemoveUser200Response.md)
+- [RemoveUser200ResponseRemovedUser](docs/Model/RemoveUser200ResponseRemovedUser.md)
+- [RemoveUser403Response](docs/Model/RemoveUser403Response.md)
 - [RemoveUsersFromAdAudience200Response](docs/Model/RemoveUsersFromAdAudience200Response.md)
 - [RemoveUsersFromAdAudienceRequest](docs/Model/RemoveUsersFromAdAudienceRequest.md)
 - [RemoveWhatsAppGroupParticipantsRequest](docs/Model/RemoveWhatsAppGroupParticipantsRequest.md)
@@ -4602,6 +4609,9 @@ Class | Method | HTTP request | Description
 - [SyncExternalPosts200Response](docs/Model/SyncExternalPosts200Response.md)
 - [SyncExternalPosts200ResponseSynced](docs/Model/SyncExternalPosts200ResponseSynced.md)
 - [SyncExternalPostsRequest](docs/Model/SyncExternalPostsRequest.md)
+- [TakeOverAutomation200Response](docs/Model/TakeOverAutomation200Response.md)
+- [TakeOverWorkflow200Response](docs/Model/TakeOverWorkflow200Response.md)
+- [TakeOverWorkflow200ResponseWorkflow](docs/Model/TakeOverWorkflow200ResponseWorkflow.md)
 - [TargetingSpec](docs/Model/TargetingSpec.md)
 - [TargetingSpecCitiesInner](docs/Model/TargetingSpecCitiesInner.md)
 - [TargetingSpecCitiesInnerOneOf](docs/Model/TargetingSpecCitiesInnerOneOf.md)
@@ -5428,6 +5438,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.713.0`
+- API version: `1.714.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

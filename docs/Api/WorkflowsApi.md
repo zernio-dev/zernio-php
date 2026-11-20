@@ -18,6 +18,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listWorkflows()**](WorkflowsApi.md#listWorkflows) | **GET** /v1/workflows | List workflows |
 | [**pauseWorkflow()**](WorkflowsApi.md#pauseWorkflow) | **POST** /v1/workflows/{workflowId}/pause | Pause workflow |
 | [**restoreWorkflowVersion()**](WorkflowsApi.md#restoreWorkflowVersion) | **POST** /v1/workflows/{workflowId}/versions/{version}/restore | Restore a workflow version |
+| [**takeOverWorkflow()**](WorkflowsApi.md#takeOverWorkflow) | **POST** /v1/workflows/{workflowId}/take-over | Take over a workflow |
 | [**triggerApiCallWorkflow()**](WorkflowsApi.md#triggerApiCallWorkflow) | **POST** /v1/workflows/{workflowId}/trigger | Start an API-triggered workflow |
 | [**triggerWorkflow()**](WorkflowsApi.md#triggerWorkflow) | **POST** /v1/workflows/{workflowId}/executions | Manually start a workflow run |
 | [**updateWorkflow()**](WorkflowsApi.md#updateWorkflow) | **PATCH** /v1/workflows/{workflowId} | Update workflow |
@@ -746,6 +747,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\RestoreWorkflowVersion200Response**](../Model/RestoreWorkflowVersion200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `takeOverWorkflow()`
+
+```php
+takeOverWorkflow($workflow_id): \Zernio\Model\TakeOverWorkflow200Response
+```
+
+Take over a workflow
+
+Makes the caller the workflow's owner, so its AI steps use the caller's own AI key. Only the owner or an admin of the active workspace can take over, from the dashboard.  When the member who made a workflow leaves the workspace, its AI steps pause (they take the error edge with \"{Name} left this workspace. Add a workspace AI key or take over this automation.\") and every other step keeps running; taking it over starts the AI steps again.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WorkflowsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$workflow_id = 'workflow_id_example'; // string
+
+try {
+    $result = $apiInstance->takeOverWorkflow($workflow_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WorkflowsApi->takeOverWorkflow: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **workflow_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\TakeOverWorkflow200Response**](../Model/TakeOverWorkflow200Response.md)
 
 ### Authorization
 

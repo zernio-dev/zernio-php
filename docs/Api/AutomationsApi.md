@@ -33,6 +33,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**previewAutomation()**](AutomationsApi.md#previewAutomation) | **POST** /v1/automations/{automationId}/preview | Preview a saved automation |
 | [**previewAutomationDraft()**](AutomationsApi.md#previewAutomationDraft) | **POST** /v1/automations/preview | Preview an unsaved automation |
 | [**rejectAutomationApproval()**](AutomationsApi.md#rejectAutomationApproval) | **POST** /v1/automations/{automationId}/approvals/{approvalId}/reject | Reject an approval request |
+| [**takeOverAutomation()**](AutomationsApi.md#takeOverAutomation) | **POST** /v1/automations/{automationId}/take-over | Take over an automation |
 | [**updateAutomation()**](AutomationsApi.md#updateAutomation) | **PATCH** /v1/automations/{automationId} | Edit an automation |
 | [**updateAutomationAdAccountControls()**](AutomationsApi.md#updateAutomationAdAccountControls) | **PATCH** /v1/automations/controls/ad-accounts | Update one ad account&#39;s controls |
 | [**updateAutomationControls()**](AutomationsApi.md#updateAutomationControls) | **PATCH** /v1/automations/controls | Turn every ad automation off or on |
@@ -1705,6 +1706,66 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `takeOverAutomation()`
+
+```php
+takeOverAutomation($automation_id): \Zernio\Model\TakeOverAutomation200Response
+```
+
+Take over an automation
+
+Makes the caller the automation's owner, so its AI steps use the caller's own AI key. Only the owner or an admin of the active workspace can take over, from the dashboard.  When the member who made an automation leaves the workspace, its AI steps pause until it is taken over; every other step keeps running.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AutomationsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$automation_id = 'automation_id_example'; // string
+
+try {
+    $result = $apiInstance->takeOverAutomation($automation_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AutomationsApi->takeOverAutomation: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **automation_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\TakeOverAutomation200Response**](../Model/TakeOverAutomation200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
