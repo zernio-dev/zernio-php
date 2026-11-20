@@ -1418,6 +1418,12 @@ Class | Method | HTTP request | Description
 *WorkflowsApi* | [**triggerApiCallWorkflow**](docs/Api/WorkflowsApi.md#triggerapicallworkflow) | **POST** /v1/workflows/{workflowId}/trigger | Start an API-triggered workflow
 *WorkflowsApi* | [**triggerWorkflow**](docs/Api/WorkflowsApi.md#triggerworkflow) | **POST** /v1/workflows/{workflowId}/executions | Manually start a workflow run
 *WorkflowsApi* | [**updateWorkflow**](docs/Api/WorkflowsApi.md#updateworkflow) | **PATCH** /v1/workflows/{workflowId} | Update workflow
+*WorkspacesApi* | [**createWorkspace**](docs/Api/WorkspacesApi.md#createworkspace) | **POST** /v1/workspaces | Create workspace
+*WorkspacesApi* | [**createWorkspaceApiKey**](docs/Api/WorkspacesApi.md#createworkspaceapikey) | **POST** /v1/workspaces/{workspaceId}/api-keys | Create workspace key
+*WorkspacesApi* | [**deleteWorkspace**](docs/Api/WorkspacesApi.md#deleteworkspace) | **DELETE** /v1/workspaces/{workspaceId} | Delete workspace
+*WorkspacesApi* | [**getWorkspace**](docs/Api/WorkspacesApi.md#getworkspace) | **GET** /v1/workspaces/{workspaceId} | Get workspace
+*WorkspacesApi* | [**listWorkspaces**](docs/Api/WorkspacesApi.md#listworkspaces) | **GET** /v1/workspaces | List workspaces
+*WorkspacesApi* | [**updateWorkspace**](docs/Api/WorkspacesApi.md#updateworkspace) | **PATCH** /v1/workspaces/{workspaceId} | Rename workspace
 
 ## Models
 
@@ -2465,6 +2471,11 @@ Class | Method | HTTP request | Description
 - [CreateWorkflow200Response](docs/Model/CreateWorkflow200Response.md)
 - [CreateWorkflow200ResponseWorkflow](docs/Model/CreateWorkflow200ResponseWorkflow.md)
 - [CreateWorkflowRequest](docs/Model/CreateWorkflowRequest.md)
+- [CreateWorkspace201Response](docs/Model/CreateWorkspace201Response.md)
+- [CreateWorkspaceApiKey201Response](docs/Model/CreateWorkspaceApiKey201Response.md)
+- [CreateWorkspaceApiKeyRequest](docs/Model/CreateWorkspaceApiKeyRequest.md)
+- [CreateWorkspaceRequest](docs/Model/CreateWorkspaceRequest.md)
+- [CreateWorkspaceRequestApiKey](docs/Model/CreateWorkspaceRequestApiKey.md)
 - [CreateYoutubePlaylist201Response](docs/Model/CreateYoutubePlaylist201Response.md)
 - [CreateYoutubePlaylist201ResponsePlaylist](docs/Model/CreateYoutubePlaylist201ResponsePlaylist.md)
 - [CreateYoutubePlaylistRequest](docs/Model/CreateYoutubePlaylistRequest.md)
@@ -3280,6 +3291,7 @@ Class | Method | HTTP request | Description
 - [GetWorkflow200ResponseWorkflow](docs/Model/GetWorkflow200ResponseWorkflow.md)
 - [GetWorkflowVersion200Response](docs/Model/GetWorkflowVersion200Response.md)
 - [GetWorkflowVersion200ResponseVersion](docs/Model/GetWorkflowVersion200ResponseVersion.md)
+- [GetWorkspace200Response](docs/Model/GetWorkspace200Response.md)
 - [GetYouTubeDailyViews400Response](docs/Model/GetYouTubeDailyViews400Response.md)
 - [GetYouTubeDailyViews403Response](docs/Model/GetYouTubeDailyViews403Response.md)
 - [GetYouTubeDailyViews500Response](docs/Model/GetYouTubeDailyViews500Response.md)
@@ -3687,7 +3699,6 @@ Class | Method | HTTP request | Description
 - [ListContacts200Response](docs/Model/ListContacts200Response.md)
 - [ListContacts200ResponseContactsInner](docs/Model/ListContacts200ResponseContactsInner.md)
 - [ListContacts200ResponseFilters](docs/Model/ListContacts200ResponseFilters.md)
-- [ListContacts200ResponsePagination](docs/Model/ListContacts200ResponsePagination.md)
 - [ListConversionActions200Response](docs/Model/ListConversionActions200Response.md)
 - [ListCreatorCampaigns200Response](docs/Model/ListCreatorCampaigns200Response.md)
 - [ListCrmDeals200Response](docs/Model/ListCrmDeals200Response.md)
@@ -3927,6 +3938,8 @@ Class | Method | HTTP request | Description
 - [ListWorkflowVersions200ResponseVersionsInner](docs/Model/ListWorkflowVersions200ResponseVersionsInner.md)
 - [ListWorkflows200Response](docs/Model/ListWorkflows200Response.md)
 - [ListWorkflows200ResponseWorkflowsInner](docs/Model/ListWorkflows200ResponseWorkflowsInner.md)
+- [ListWorkspaces200Response](docs/Model/ListWorkspaces200Response.md)
+- [ListWorkspaces200ResponsePagination](docs/Model/ListWorkspaces200ResponsePagination.md)
 - [ListedAccount](docs/Model/ListedAccount.md)
 - [LookupSmsNumber200Response](docs/Model/LookupSmsNumber200Response.md)
 - [MarkConversationRead200Response](docs/Model/MarkConversationRead200Response.md)
@@ -4957,6 +4970,7 @@ Class | Method | HTTP request | Description
 - [UpdateWorkflow200Response](docs/Model/UpdateWorkflow200Response.md)
 - [UpdateWorkflow200ResponseWorkflow](docs/Model/UpdateWorkflow200ResponseWorkflow.md)
 - [UpdateWorkflowRequest](docs/Model/UpdateWorkflowRequest.md)
+- [UpdateWorkspaceRequest](docs/Model/UpdateWorkspaceRequest.md)
 - [UpdateYoutubeDefaultPlaylist200Response](docs/Model/UpdateYoutubeDefaultPlaylist200Response.md)
 - [UpdateYoutubeDefaultPlaylistRequest](docs/Model/UpdateYoutubeDefaultPlaylistRequest.md)
 - [UploadAdImage201Response](docs/Model/UploadAdImage201Response.md)
@@ -5364,6 +5378,9 @@ Class | Method | HTTP request | Description
 - [WorkflowExecutionEvent](docs/Model/WorkflowExecutionEvent.md)
 - [WorkflowNode](docs/Model/WorkflowNode.md)
 - [WorkflowNodePosition](docs/Model/WorkflowNodePosition.md)
+- [Workspace](docs/Model/Workspace.md)
+- [WorkspaceWithBilling](docs/Model/WorkspaceWithBilling.md)
+- [WorkspaceWithBillingAllOfBilling](docs/Model/WorkspaceWithBillingAllOfBilling.md)
 - [XApiOperation](docs/Model/XApiOperation.md)
 - [XApiOperationTriggeredByInner](docs/Model/XApiOperationTriggeredByInner.md)
 - [XApiPricing](docs/Model/XApiPricing.md)
@@ -5438,6 +5455,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.715.0`
+- API version: `1.716.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

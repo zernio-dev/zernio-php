@@ -94,6 +94,7 @@ docs/Api/WhatsAppPhoneNumbersApi.md
 docs/Api/WhatsAppSandboxApi.md
 docs/Api/WhatsAppTemplatesApi.md
 docs/Api/WorkflowsApi.md
+docs/Api/WorkspacesApi.md
 docs/Model/AcceptConversationRequest200Response.md
 docs/Model/AcceptConversationRequest200ResponseData.md
 docs/Model/AcceptConversationRequestRequest.md
@@ -1138,6 +1139,11 @@ docs/Model/CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInnerUrl.md
 docs/Model/CreateWorkflow200Response.md
 docs/Model/CreateWorkflow200ResponseWorkflow.md
 docs/Model/CreateWorkflowRequest.md
+docs/Model/CreateWorkspace201Response.md
+docs/Model/CreateWorkspaceApiKey201Response.md
+docs/Model/CreateWorkspaceApiKeyRequest.md
+docs/Model/CreateWorkspaceRequest.md
+docs/Model/CreateWorkspaceRequestApiKey.md
 docs/Model/CreateYoutubePlaylist201Response.md
 docs/Model/CreateYoutubePlaylist201ResponsePlaylist.md
 docs/Model/CreateYoutubePlaylistRequest.md
@@ -1953,6 +1959,7 @@ docs/Model/GetWorkflow200Response.md
 docs/Model/GetWorkflow200ResponseWorkflow.md
 docs/Model/GetWorkflowVersion200Response.md
 docs/Model/GetWorkflowVersion200ResponseVersion.md
+docs/Model/GetWorkspace200Response.md
 docs/Model/GetYouTubeDailyViews400Response.md
 docs/Model/GetYouTubeDailyViews403Response.md
 docs/Model/GetYouTubeDailyViews500Response.md
@@ -2360,7 +2367,6 @@ docs/Model/ListContactGroups200ResponseMeta.md
 docs/Model/ListContacts200Response.md
 docs/Model/ListContacts200ResponseContactsInner.md
 docs/Model/ListContacts200ResponseFilters.md
-docs/Model/ListContacts200ResponsePagination.md
 docs/Model/ListConversionActions200Response.md
 docs/Model/ListCreatorCampaigns200Response.md
 docs/Model/ListCrmDeals200Response.md
@@ -2600,6 +2606,8 @@ docs/Model/ListWorkflowVersions200Response.md
 docs/Model/ListWorkflowVersions200ResponseVersionsInner.md
 docs/Model/ListWorkflows200Response.md
 docs/Model/ListWorkflows200ResponseWorkflowsInner.md
+docs/Model/ListWorkspaces200Response.md
+docs/Model/ListWorkspaces200ResponsePagination.md
 docs/Model/ListedAccount.md
 docs/Model/LookupSmsNumber200Response.md
 docs/Model/MarkConversationRead200Response.md
@@ -3630,6 +3638,7 @@ docs/Model/UpdateWhatsAppTemplateRequest.md
 docs/Model/UpdateWorkflow200Response.md
 docs/Model/UpdateWorkflow200ResponseWorkflow.md
 docs/Model/UpdateWorkflowRequest.md
+docs/Model/UpdateWorkspaceRequest.md
 docs/Model/UpdateYoutubeDefaultPlaylist200Response.md
 docs/Model/UpdateYoutubeDefaultPlaylistRequest.md
 docs/Model/UploadAdImage201Response.md
@@ -4037,6 +4046,9 @@ docs/Model/WorkflowEdge.md
 docs/Model/WorkflowExecutionEvent.md
 docs/Model/WorkflowNode.md
 docs/Model/WorkflowNodePosition.md
+docs/Model/Workspace.md
+docs/Model/WorkspaceWithBilling.md
+docs/Model/WorkspaceWithBillingAllOfBilling.md
 docs/Model/XApiOperation.md
 docs/Model/XApiOperationTriggeredByInner.md
 docs/Model/XApiPricing.md
@@ -4171,6 +4183,7 @@ lib/Api/WhatsAppPhoneNumbersApi.php
 lib/Api/WhatsAppSandboxApi.php
 lib/Api/WhatsAppTemplatesApi.php
 lib/Api/WorkflowsApi.php
+lib/Api/WorkspacesApi.php
 lib/ApiException.php
 lib/Configuration.php
 lib/FormDataProcessor.php
@@ -5219,6 +5232,11 @@ lib/Model/CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInnerUrl.php
 lib/Model/CreateWorkflow200Response.php
 lib/Model/CreateWorkflow200ResponseWorkflow.php
 lib/Model/CreateWorkflowRequest.php
+lib/Model/CreateWorkspace201Response.php
+lib/Model/CreateWorkspaceApiKey201Response.php
+lib/Model/CreateWorkspaceApiKeyRequest.php
+lib/Model/CreateWorkspaceRequest.php
+lib/Model/CreateWorkspaceRequestApiKey.php
 lib/Model/CreateYoutubePlaylist201Response.php
 lib/Model/CreateYoutubePlaylist201ResponsePlaylist.php
 lib/Model/CreateYoutubePlaylistRequest.php
@@ -6034,6 +6052,7 @@ lib/Model/GetWorkflow200Response.php
 lib/Model/GetWorkflow200ResponseWorkflow.php
 lib/Model/GetWorkflowVersion200Response.php
 lib/Model/GetWorkflowVersion200ResponseVersion.php
+lib/Model/GetWorkspace200Response.php
 lib/Model/GetYouTubeDailyViews400Response.php
 lib/Model/GetYouTubeDailyViews403Response.php
 lib/Model/GetYouTubeDailyViews500Response.php
@@ -6441,7 +6460,6 @@ lib/Model/ListContactGroups200ResponseMeta.php
 lib/Model/ListContacts200Response.php
 lib/Model/ListContacts200ResponseContactsInner.php
 lib/Model/ListContacts200ResponseFilters.php
-lib/Model/ListContacts200ResponsePagination.php
 lib/Model/ListConversionActions200Response.php
 lib/Model/ListCreatorCampaigns200Response.php
 lib/Model/ListCrmDeals200Response.php
@@ -6681,6 +6699,8 @@ lib/Model/ListWorkflowVersions200Response.php
 lib/Model/ListWorkflowVersions200ResponseVersionsInner.php
 lib/Model/ListWorkflows200Response.php
 lib/Model/ListWorkflows200ResponseWorkflowsInner.php
+lib/Model/ListWorkspaces200Response.php
+lib/Model/ListWorkspaces200ResponsePagination.php
 lib/Model/ListedAccount.php
 lib/Model/LookupSmsNumber200Response.php
 lib/Model/MarkConversationRead200Response.php
@@ -7712,6 +7732,7 @@ lib/Model/UpdateWhatsAppTemplateRequest.php
 lib/Model/UpdateWorkflow200Response.php
 lib/Model/UpdateWorkflow200ResponseWorkflow.php
 lib/Model/UpdateWorkflowRequest.php
+lib/Model/UpdateWorkspaceRequest.php
 lib/Model/UpdateYoutubeDefaultPlaylist200Response.php
 lib/Model/UpdateYoutubeDefaultPlaylistRequest.php
 lib/Model/UploadAdImage201Response.php
@@ -8119,6 +8140,9 @@ lib/Model/WorkflowEdge.php
 lib/Model/WorkflowExecutionEvent.php
 lib/Model/WorkflowNode.php
 lib/Model/WorkflowNodePosition.php
+lib/Model/Workspace.php
+lib/Model/WorkspaceWithBilling.php
+lib/Model/WorkspaceWithBillingAllOfBilling.php
 lib/Model/XApiOperation.php
 lib/Model/XApiOperationTriggeredByInner.php
 lib/Model/XApiPricing.php
@@ -8163,3 +8187,16 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Api/WorkspacesApiTest.php
+test/Model/CreateWorkspace201ResponseTest.php
+test/Model/CreateWorkspaceApiKey201ResponseTest.php
+test/Model/CreateWorkspaceApiKeyRequestTest.php
+test/Model/CreateWorkspaceRequestApiKeyTest.php
+test/Model/CreateWorkspaceRequestTest.php
+test/Model/GetWorkspace200ResponseTest.php
+test/Model/ListWorkspaces200ResponsePaginationTest.php
+test/Model/ListWorkspaces200ResponseTest.php
+test/Model/UpdateWorkspaceRequestTest.php
+test/Model/WorkspaceTest.php
+test/Model/WorkspaceWithBillingAllOfBillingTest.php
+test/Model/WorkspaceWithBillingTest.php
