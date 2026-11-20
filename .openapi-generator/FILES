@@ -8187,16 +8187,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Api/WorkspacesApiTest.php
-test/Model/CreateWorkspace201ResponseTest.php
-test/Model/CreateWorkspaceApiKey201ResponseTest.php
-test/Model/CreateWorkspaceApiKeyRequestTest.php
-test/Model/CreateWorkspaceRequestApiKeyTest.php
-test/Model/CreateWorkspaceRequestTest.php
-test/Model/GetWorkspace200ResponseTest.php
-test/Model/ListWorkspaces200ResponsePaginationTest.php
-test/Model/ListWorkspaces200ResponseTest.php
-test/Model/UpdateWorkspaceRequestTest.php
-test/Model/WorkspaceTest.php
-test/Model/WorkspaceWithBillingAllOfBillingTest.php
-test/Model/WorkspaceWithBillingTest.php
