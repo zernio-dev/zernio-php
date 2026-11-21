@@ -8241,17 +8241,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Api/ConversionAuditApiTest.php
-test/Model/ConversionAuditAnswerPublicReportTest.php
-test/Model/ConversionAuditAnswerTest.php
-test/Model/ConversionAuditReportChecksInnerTest.php
-test/Model/ConversionAuditReportChecksInnerVerifyTest.php
-test/Model/ConversionAuditReportConsentScanTest.php
-test/Model/ConversionAuditReportConsentTest.php
-test/Model/ConversionAuditReportOtherNetworksInnerTest.php
-test/Model/ConversionAuditReportPlatformsInnerTest.php
-test/Model/ConversionAuditReportScoreRangeTest.php
-test/Model/ConversionAuditReportServerSideSignalsInnerTest.php
-test/Model/ConversionAuditReportServerSideTest.php
-test/Model/ConversionAuditReportTest.php
-test/Model/GetLatestConversionAudit200ResponseTest.php
