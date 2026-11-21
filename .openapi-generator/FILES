@@ -1309,6 +1309,10 @@ docs/Model/DuplicateAdSetRequest.md
 docs/Model/DuplicateCommerceProductRequest.md
 docs/Model/DuplicateWorkflow201Response.md
 docs/Model/DuplicateWorkflow201ResponseWorkflow.md
+docs/Model/EditAdNegativeKeywordListKeywordsRequest.md
+docs/Model/EditCampaignNegativeKeywordListsRequest.md
+docs/Model/EditCampaignNegativeKeywords200Response.md
+docs/Model/EditCampaignNegativeKeywordsRequest.md
 docs/Model/EditDiscordGuildRoleRequest.md
 docs/Model/EditGoogleAssetGroupAssets200Response.md
 docs/Model/EditGoogleAssetGroupAssetsRequest.md
@@ -5411,6 +5415,10 @@ lib/Model/DuplicateAdSetRequest.php
 lib/Model/DuplicateCommerceProductRequest.php
 lib/Model/DuplicateWorkflow201Response.php
 lib/Model/DuplicateWorkflow201ResponseWorkflow.php
+lib/Model/EditAdNegativeKeywordListKeywordsRequest.php
+lib/Model/EditCampaignNegativeKeywordListsRequest.php
+lib/Model/EditCampaignNegativeKeywords200Response.php
+lib/Model/EditCampaignNegativeKeywordsRequest.php
 lib/Model/EditDiscordGuildRoleRequest.php
 lib/Model/EditGoogleAssetGroupAssets200Response.php
 lib/Model/EditGoogleAssetGroupAssetsRequest.php
@@ -8205,3 +8213,7 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/EditAdNegativeKeywordListKeywordsRequestTest.php
+test/Model/EditCampaignNegativeKeywordListsRequestTest.php
+test/Model/EditCampaignNegativeKeywords200ResponseTest.php
+test/Model/EditCampaignNegativeKeywordsRequestTest.php

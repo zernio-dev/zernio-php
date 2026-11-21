@@ -26,6 +26,8 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**duplicateAd()**](AdCampaignsApi.md#duplicateAd) | **POST** /v1/ads/{adId}/duplicate | Duplicate an ad |
 | [**duplicateAdCampaign()**](AdCampaignsApi.md#duplicateAdCampaign) | **POST** /v1/ads/campaigns/{campaignId}/duplicate | Duplicate a campaign |
 | [**duplicateAdSet()**](AdCampaignsApi.md#duplicateAdSet) | **POST** /v1/ads/ad-sets/{adSetId}/duplicate | Duplicate an ad set |
+| [**editCampaignNegativeKeywordLists()**](AdCampaignsApi.md#editCampaignNegativeKeywordLists) | **PATCH** /v1/ads/campaigns/{campaignId}/negative-keyword-lists | Attach or detach campaign negative lists |
+| [**editCampaignNegativeKeywords()**](AdCampaignsApi.md#editCampaignNegativeKeywords) | **PATCH** /v1/ads/campaigns/{campaignId}/negative-keywords | Add or remove campaign-level negative keywords |
 | [**editGoogleAssetGroupAssets()**](AdCampaignsApi.md#editGoogleAssetGroupAssets) | **POST** /v1/ads/campaigns/{campaignId}/asset-groups/{assetGroupId}/assets | Link or unlink asset group assets |
 | [**getAd()**](AdCampaignsApi.md#getAd) | **GET** /v1/ads/{adId} | Get ad details |
 | [**getAdCampaignDetails()**](AdCampaignsApi.md#getAdCampaignDetails) | **GET** /v1/ads/campaigns/{campaignId} | Get live campaign details |
@@ -1310,6 +1312,134 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `editCampaignNegativeKeywordLists()`
+
+```php
+editCampaignNegativeKeywordLists($campaign_id, $edit_campaign_negative_keyword_lists_request, $idempotency_key): \Zernio\Model\ReplaceAdNegativeKeywordListKeywords200Response
+```
+
+Attach or detach campaign negative lists
+
+Attaches and detaches single shared negative keyword lists on a Google campaign without resending the full set. The lists and their keywords are not changed.  - `remove` wins over `add` for the same list. - A list already attached is not attached twice; a list not attached is skipped on remove. - Every list in `add` must belong to the campaign customer and have type NEGATIVE_KEYWORDS.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string
+$edit_campaign_negative_keyword_lists_request = {"platform":"google","add":["1234567890"]}; // \Zernio\Model\EditCampaignNegativeKeywordListsRequest
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago.
+
+try {
+    $result = $apiInstance->editCampaignNegativeKeywordLists($campaign_id, $edit_campaign_negative_keyword_lists_request, $idempotency_key);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->editCampaignNegativeKeywordLists: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**|  | |
+| **edit_campaign_negative_keyword_lists_request** | [**\Zernio\Model\EditCampaignNegativeKeywordListsRequest**](../Model/EditCampaignNegativeKeywordListsRequest.md)|  | |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ReplaceAdNegativeKeywordListKeywords200Response**](../Model/ReplaceAdNegativeKeywordListKeywords200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `editCampaignNegativeKeywords()`
+
+```php
+editCampaignNegativeKeywords($campaign_id, $edit_campaign_negative_keywords_request, $idempotency_key): \Zernio\Model\EditCampaignNegativeKeywords200Response
+```
+
+Add or remove campaign-level negative keywords
+
+Adds and removes single campaign-level negative keywords on a Google campaign without resending the full set.  - `remove` matches by text (any case) and match type, and wins over `add` for the same keyword. - Keywords already on the campaign are not added twice; keywords not on it are skipped on remove. - Changes go to Google in `create`/`remove` mutates of up to 5,000 operations, like the full replace.  The platform is always discovered from the campaign itself; a non-Google campaign returns 501 rather than 404, whether or not `platform` was sent.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string | Platform campaign ID
+$edit_campaign_negative_keywords_request = new \Zernio\Model\EditCampaignNegativeKeywordsRequest(); // \Zernio\Model\EditCampaignNegativeKeywordsRequest
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago.
+
+try {
+    $result = $apiInstance->editCampaignNegativeKeywords($campaign_id, $edit_campaign_negative_keywords_request, $idempotency_key);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->editCampaignNegativeKeywords: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| Platform campaign ID | |
+| **edit_campaign_negative_keywords_request** | [**\Zernio\Model\EditCampaignNegativeKeywordsRequest**](../Model/EditCampaignNegativeKeywordsRequest.md)|  | |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\EditCampaignNegativeKeywords200Response**](../Model/EditCampaignNegativeKeywords200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `editGoogleAssetGroupAssets()`
 
 ```php
@@ -1382,7 +1512,7 @@ getAd($ad_id, $live, $account_id): \Zernio\Model\GetAd200Response
 
 Get ad details
 
-Shows one ad with its creative, targeting, status and performance metrics.  ### Google Search ads  Google Search ads include current creative.headlines, creative.descriptions and creative.finalUrls, preserving pinnedField. Top-level cachedAt and stale report cache freshness. Google mutations invalidate this read.  RSA enrichment requires a stored advertisingChannelType of SEARCH. Ads with an unknown or other channel return their stored details without a Google read. If RSA enrichment fails, the stored ad is returned with HTTP 200 and without cache metadata.  ### Accepted ad ids  The `{adId}` path segment accepts any identifier dialect Zernio indexes for the ad:  - the Zernio internal `_id` (24-char hex) - Meta's numeric `platformAdId` (the value shipped in `comment.received` webhooks as `comment.ad.id`) - the creative's `effective_object_story_id` (`{pageId}_{postId}` shape, Facebook side) - the creative's `effective_instagram_media_id` (Instagram side) - an Instagram media id an ad comment arrived on (`comment.platformPostId` of a `comment.received` carrying `comment.ad.id`), including the extra media Meta creates for placement variants  Any of these resolve to the same ad, so the caller doesn't need a translation step.  `creative.creativeFeatures` holds the stored requested settings, which do not confirm platform application.  ### Facebook ad dark posts  Meta gives an ad with per-placement assets one extra unpublished post per placement, and comments land on it. Meta exposes no link from that post to its ad.  - When exactly one ad on the Page, created before the dark post, carries the same copy as the post, the dark post id resolves to that ad. - Otherwise, when the id is a dark post Zernio has seen comments on and its Page is connected, the response is `ad: null` plus `darkPost`. It carries the Meta Ads account and the ad accounts running ads for that Page.  Read its comments with GET /v1/ads/{adId}/comments using the same id.  ### Status freshness  `status`, `configuredStatus`, `platformStatus`, `platformAdSetStatus` and `platformCampaignStatus` are the values Zernio last stored.  Background sync refreshes them, typically within 15 to 60 minutes (Google up to about 3 hours), and ended or long-paused objects may be refreshed less often.  Zernio's own status writes re-read the switches they change. A change made in the platform's own ads manager therefore shows up here only after the next sync.  Controllers that act on a switch should pass `live=true`. It reads the switches from the platform now, stores them, and returns `statusReadAt` (null when the read failed and the stored values were returned).  With `live=true` these are read live:  - the ad's own switch (`configuredStatus`) - its delivery status (`status`, `platformStatus`) - its ad set and campaign switches (`platformAdSetStatus`, `platformCampaignStatus`) - on TikTok, the creative TikTok holds now: `creative.body` (ad text), `creative.callToAction`, `creative.linkUrl` (landing page), `creative.videoId`, `creative.adFormat`, `creative.identityId`, `creative.identityType`, `creative.identityAuthorizedBcId` and, on a Spark ad, `creative.tiktokItemId`.  The TikTok creative comes from the same TikTok call as the switches. It replaces the stored values in the response only and is never stored. A key TikTok leaves empty keeps its stored value.  ### Meta ads that are not synced yet  Pass `accountId` with a Meta `platformAdId` to read an ad Zernio has not synced (for example one created in Ads Manager on an ad account reached only through a Facebook connection).  The ad is read live from Meta and mapped exactly like a synced row: name, `status`, `platformStatus`, `configuredStatus`, `platformAdSetId`, `platformCampaignId`, campaign and ad set names, budgets, and `creative` with its `id`, body, link, image and video.  It comes back with `synced: false`, no `id` (it has no Zernio row) and `statusReadAt` set to the time of the read. Synced ads answer `synced: true`.  Only a numeric id takes this path, so dark post ids (`{pageId}_{postId}`) keep the dark post lookup above.
+Shows one ad with its creative, targeting, status and performance metrics.  ### Google Search ads  Google Search ads include current creative.headlines, creative.descriptions, creative.finalUrls and, when set, creative.path1 and creative.path2, preserving pinnedField. Top-level cachedAt and stale report cache freshness. Google mutations invalidate this read.  RSA enrichment requires a stored advertisingChannelType of SEARCH. Ads with an unknown or other channel return their stored details without a Google read. If RSA enrichment fails, the stored ad is returned with HTTP 200 and without cache metadata.  ### Accepted ad ids  The `{adId}` path segment accepts any identifier dialect Zernio indexes for the ad:  - the Zernio internal `_id` (24-char hex) - Meta's numeric `platformAdId` (the value shipped in `comment.received` webhooks as `comment.ad.id`) - the creative's `effective_object_story_id` (`{pageId}_{postId}` shape, Facebook side) - the creative's `effective_instagram_media_id` (Instagram side) - an Instagram media id an ad comment arrived on (`comment.platformPostId` of a `comment.received` carrying `comment.ad.id`), including the extra media Meta creates for placement variants  Any of these resolve to the same ad, so the caller doesn't need a translation step.  `creative.creativeFeatures` holds the stored requested settings, which do not confirm platform application.  ### Facebook ad dark posts  Meta gives an ad with per-placement assets one extra unpublished post per placement, and comments land on it. Meta exposes no link from that post to its ad.  - When exactly one ad on the Page, created before the dark post, carries the same copy as the post, the dark post id resolves to that ad. - Otherwise, when the id is a dark post Zernio has seen comments on and its Page is connected, the response is `ad: null` plus `darkPost`. It carries the Meta Ads account and the ad accounts running ads for that Page.  Read its comments with GET /v1/ads/{adId}/comments using the same id.  ### Status freshness  `status`, `configuredStatus`, `platformStatus`, `platformAdSetStatus` and `platformCampaignStatus` are the values Zernio last stored.  Background sync refreshes them, typically within 15 to 60 minutes (Google up to about 3 hours), and ended or long-paused objects may be refreshed less often.  Zernio's own status writes re-read the switches they change. A change made in the platform's own ads manager therefore shows up here only after the next sync.  Controllers that act on a switch should pass `live=true`. It reads the switches from the platform now, stores them, and returns `statusReadAt` (null when the read failed and the stored values were returned).  With `live=true` these are read live:  - the ad's own switch (`configuredStatus`) - its delivery status (`status`, `platformStatus`) - its ad set and campaign switches (`platformAdSetStatus`, `platformCampaignStatus`) - on TikTok, the creative TikTok holds now: `creative.body` (ad text), `creative.callToAction`, `creative.linkUrl` (landing page), `creative.videoId`, `creative.adFormat`, `creative.identityId`, `creative.identityType`, `creative.identityAuthorizedBcId` and, on a Spark ad, `creative.tiktokItemId`.  The TikTok creative comes from the same TikTok call as the switches. It replaces the stored values in the response only and is never stored. A key TikTok leaves empty keeps its stored value.  ### Meta ads that are not synced yet  Pass `accountId` with a Meta `platformAdId` to read an ad Zernio has not synced (for example one created in Ads Manager on an ad account reached only through a Facebook connection).  The ad is read live from Meta and mapped exactly like a synced row: name, `status`, `platformStatus`, `configuredStatus`, `platformAdSetId`, `platformCampaignId`, campaign and ad set names, budgets, and `creative` with its `id`, body, link, image and video.  It comes back with `synced: false`, no `id` (it has no Zernio row) and `statusReadAt` set to the time of the read. Synced ads answer `synced: true`.  Only a numeric id takes this path, so dark post ids (`{pageId}_{postId}`) keep the dark post lookup above.
 
 ### Example
 
@@ -3772,7 +3902,7 @@ updateAd($ad_id, $update_ad_request, $idempotency_key): \Zernio\Model\UpdateAd20
 
 Update ad
 
-Changes an ad's status, budget, targeting or creative and applies the change on the platform.  Patch one or more fields on an ad. Status, budget, targeting, and creative changes are propagated to the platform.  ### Per-platform support  - **Meta** (Facebook + Instagram): all fields supported. - **TikTok**: status, budget, `name` (renames the ad), targeting (via `/v2/adgroup/update/`), and creative (via `/v2/ad/update/` patch-style: `headline` is ignored, `body` becomes `ad_text`). - **Google**: see the Google sections below. - **LinkedIn**: status, budget, targeting and creative (details below). - **Pinterest / X / OpenAI Ads**: status + budget only. Sending `targeting` or `creative` returns 501 with code `feature_not_available`. OpenAI Ads budget is the campaign's spend cap, daily or lifetime (see `budget.type` below). - **Reddit Ads**: status, budget, `name` (renames the ad) and targeting (details below).  ### Google  Supported: status, budget, and these targeting edits:  - KEYWORD edits via `targeting.keywords` / `targeting.negativeKeywords` - DEVICE bid adjustments via `targeting.devices` - LOCATION edits via `targeting.locations` (or the equivalent top-level `targeting.countries` / `regions` / `cities` / `zips` / `metros`) - LANGUAGE edits via `targeting.languages`  Each list you send becomes the FULL new set of its kind: criteria not in the list are removed. Devices are the exception: Google cannot remove them, so they are switched off with a bid modifier of 0 instead. A kind left out is untouched.  Any other `targeting` field returns 400: Google cannot mutate it post-create without recreating the campaign.  Creative edits are dispatched on the ad's `advertisingChannelType`. Every supported field replaces a whole set; a field you omit is preserved.  - **Search**: top-level `headlines`, `descriptions` and `finalUrls`. Use 3-15 headlines (1-30 characters) and 2-4 descriptions (1-90 characters). Omit an asset to remove it; omit pinnedField on an included asset to unpin it. Updates do not pad or truncate text. The legacy creative fields remain unsupported. - **Display**: top-level `headlines` (1-5, no pinnedField, display ads have no pinned positions), `descriptions` (1-5) and `finalUrls`, plus `creative.longHeadline`, `creative.businessName`, `creative.imageUrl` (the landscape marketing image) and `creative.squareImageUrl`. - **Performance Max**: top-level `assetGroup`, which swaps asset roles on the ad's asset group. The other creative fields return 422 for this channel, and `assetGroup` returns 422 on any other channel. - **Demand Gen**: top-level `demandGen` (see GoogleDemandGenUpdate): creative, channel and audience changes in one atomic Google request. The other creative fields return 422 for this channel.  For Display, each image URL is uploaded as a new Google asset and the ad is pointed at it.  Google assets are immutable, so the previous asset stays in the account's asset library. A new landscape image also updates `creative.assetResourceName` to the new asset, and each replaced image updates its own role in `creative.assets`.  For Demand Gen, `targeting` takes locations, languages, `locationTargetingType` and `devices`. Locations and languages are written to the ad's ad group, which Demand Gen requires, so they apply to every ad in that ad group. Campaigns migrated from Discovery that still target on the campaign keep being written there.  ### LinkedIn  - **Status and budget**: supported. - **Targeting**: countries or regions, excludedLocations (countries), the B2B facets, and audience segments. Applied to the LinkedIn Campaign via PARTIAL_UPDATE, and REPLACES the campaign's entire targetingCriteria, not a merge. - **Creative**: uploads new media, creates a replacement inline creative on the same campaign, and removes the old one (it is deleted, the ad's `platformAdId` and `creative.creativeId` move to the new creative, and the new creative keeps the old one's held-off state: `DRAFT` stays `DRAFT`). - **Name**: updating `name` returns 400 (LinkedIn does not support renaming an ad).  ### Reddit Ads  - `budget` goes to the ad's ad group, or to its campaign when the ad group spends a campaign budget. It keeps its daily or lifetime type (422 to switch). - `targeting` REPLACES the ad group's whole targeting (geo, communities, conversation keywords, interests, audiences, languages, gender), so it applies to every ad in the ad group. - `creative` returns 501: a Reddit ad runs a post, so create a new ad with the new creative instead.  ### Google location and language replacement  Locations, languages and devices are campaign-level criteria on Google, so these edits apply to every ad group and ad in the ad's campaign. Send the complete list you want to keep.  Zernio diffs it against the campaign's live criteria and sends the removes and the creates in ONE `googleAds:mutate`, so the campaign is never left with a half-applied set. Criteria already in the list keep their criterion ID and history. Excluded (negative) locations are left untouched.  - An empty location list returns 400. A Google campaign with no location criteria targets every country, which is never what \"remove my locations\" means, so omit the field instead. - Send either `targeting.locations` or the top-level geo fields, not both: mixing them returns 400.  ### Google radius targeting  `customLocations` is editable and is replaced the same way, but as its OWN set. Google models a place (LOCATION) and a point plus radius (PROXIMITY) as different criterion types, so the two are independent:  - Sending `customLocations` replaces every radius and leaves the cities and countries alone. - Sending places replaces those and leaves the radius alone. - Send `customLocations: []` to drop radius targeting entirely.  A circle you re-send unchanged keeps its criterion ID rather than being removed and recreated.  ### Google keyword replacement  These edits affect the ad's entire ad group, including sibling ads. Positive (`targeting.keywords`) and negative (`targeting.negativeKeywords`) sets are independent: omit a field to leave that set unchanged, or send `[]` to remove every keyword of that kind.  Zernio compares each supplied set with Google's live criteria by case-insensitive keyword text and match type. Text comparison does not trim whitespace.  A matching criterion is left untouched, retaining its criterion ID, enabled/paused status, keyword-level bid overrides, labels, and criterion-associated history/statistics. Zernio does not reset its quality score; Google continues to calculate scores and statistics normally.  A bare string or an object without `matchType` means `broad`, not the existing criterion's match type. For example, resending an existing `{ \"text\": \"plumber\", \"matchType\": \"exact\" }` preserves it; sending `\"plumber\"` instead removes that EXACT criterion and requests a BROAD one.  Changing text or match type removes criteria no longer requested and creates any missing criteria. New criteria get new IDs and do not inherit removed criteria's bid overrides, labels, or history. Historical reporting for a removed criterion is not transferred to its replacement.  ### Other keyword endpoints  - To add keywords without replacing a set, use [POST /v1/ads/keywords](https://docs.zernio.com/ad-campaigns/add-ad-keywords). - Use `PATCH /v1/ads/keywords/{keywordId}` to pause/enable one keyword. - Use `DELETE /v1/ads/keywords/{keywordId}` to remove it.
+Changes an ad's status, budget, targeting or creative and applies the change on the platform.  Patch one or more fields on an ad. Status, budget, targeting, and creative changes are propagated to the platform.  ### Per-platform support  - **Meta** (Facebook + Instagram): all fields supported. - **TikTok**: status, budget, `name` (renames the ad), targeting (via `/v2/adgroup/update/`), and creative (via `/v2/ad/update/` patch-style: `headline` is ignored, `body` becomes `ad_text`). - **Google**: see the Google sections below. - **LinkedIn**: status, budget, targeting and creative (details below). - **Pinterest / X / OpenAI Ads**: status + budget only. Sending `targeting` or `creative` returns 501 with code `feature_not_available`. OpenAI Ads budget is the campaign's spend cap, daily or lifetime (see `budget.type` below). - **Reddit Ads**: status, budget, `name` (renames the ad) and targeting (details below).  ### Google  Supported: status, budget, and these targeting edits:  - KEYWORD edits via `targeting.keywords` / `targeting.negativeKeywords` - DEVICE bid adjustments via `targeting.devices` - LOCATION edits via `targeting.locations` (or the equivalent top-level `targeting.countries` / `regions` / `cities` / `zips` / `metros`) - LANGUAGE edits via `targeting.languages`  Each list you send becomes the FULL new set of its kind: criteria not in the list are removed. Devices are the exception: Google cannot remove them, so they are switched off with a bid modifier of 0 instead. A kind left out is untouched.  Any other `targeting` field returns 400: Google cannot mutate it post-create without recreating the campaign.  Creative edits are dispatched on the ad's `advertisingChannelType`. Every supported field replaces a whole set; a field you omit is preserved.  - **Search**: top-level `headlines`, `descriptions`, `finalUrls`, `path1` and `path2`. Use 3-15 headlines (1-30 characters) and 2-4 descriptions (1-90 characters). Omit an asset to remove it; omit pinnedField on an included asset to unpin it. Updates do not pad or truncate text. The legacy creative fields remain unsupported. - **Display**: top-level `headlines` (1-5, no pinnedField, display ads have no pinned positions), `descriptions` (1-5) and `finalUrls`, plus `creative.longHeadline`, `creative.businessName`, `creative.imageUrl` (the landscape marketing image) and `creative.squareImageUrl`. - **Performance Max**: top-level `assetGroup`, which swaps asset roles on the ad's asset group. The other creative fields return 422 for this channel, and `assetGroup` returns 422 on any other channel. - **Demand Gen**: top-level `demandGen` (see GoogleDemandGenUpdate): creative, channel and audience changes in one atomic Google request. The other creative fields return 422 for this channel.  For Display, each image URL is uploaded as a new Google asset and the ad is pointed at it.  Google assets are immutable, so the previous asset stays in the account's asset library. A new landscape image also updates `creative.assetResourceName` to the new asset, and each replaced image updates its own role in `creative.assets`.  For Demand Gen, `targeting` takes locations, languages, `locationTargetingType` and `devices`. Locations and languages are written to the ad's ad group, which Demand Gen requires, so they apply to every ad in that ad group. Campaigns migrated from Discovery that still target on the campaign keep being written there.  ### LinkedIn  - **Status and budget**: supported. - **Targeting**: countries or regions, excludedLocations (countries), the B2B facets, and audience segments. Applied to the LinkedIn Campaign via PARTIAL_UPDATE, and REPLACES the campaign's entire targetingCriteria, not a merge. - **Creative**: uploads new media, creates a replacement inline creative on the same campaign, and removes the old one (it is deleted, the ad's `platformAdId` and `creative.creativeId` move to the new creative, and the new creative keeps the old one's held-off state: `DRAFT` stays `DRAFT`). - **Name**: updating `name` returns 400 (LinkedIn does not support renaming an ad).  ### Reddit Ads  - `budget` goes to the ad's ad group, or to its campaign when the ad group spends a campaign budget. It keeps its daily or lifetime type (422 to switch). - `targeting` REPLACES the ad group's whole targeting (geo, communities, conversation keywords, interests, audiences, languages, gender), so it applies to every ad in the ad group. - `creative` returns 501: a Reddit ad runs a post, so create a new ad with the new creative instead.  ### Google location and language replacement  Locations, languages and devices are campaign-level criteria on Google, so these edits apply to every ad group and ad in the ad's campaign. Send the complete list you want to keep.  Zernio diffs it against the campaign's live criteria and sends the removes and the creates in ONE `googleAds:mutate`, so the campaign is never left with a half-applied set. Criteria already in the list keep their criterion ID and history. Excluded (negative) locations are left untouched.  - An empty location list returns 400. A Google campaign with no location criteria targets every country, which is never what \"remove my locations\" means, so omit the field instead. - Send either `targeting.locations` or the top-level geo fields, not both: mixing them returns 400.  ### Google radius targeting  `customLocations` is editable and is replaced the same way, but as its OWN set. Google models a place (LOCATION) and a point plus radius (PROXIMITY) as different criterion types, so the two are independent:  - Sending `customLocations` replaces every radius and leaves the cities and countries alone. - Sending places replaces those and leaves the radius alone. - Send `customLocations: []` to drop radius targeting entirely.  A circle you re-send unchanged keeps its criterion ID rather than being removed and recreated.  ### Google keyword replacement  These edits affect the ad's entire ad group, including sibling ads. Positive (`targeting.keywords`) and negative (`targeting.negativeKeywords`) sets are independent: omit a field to leave that set unchanged, or send `[]` to remove every keyword of that kind.  Zernio compares each supplied set with Google's live criteria by case-insensitive keyword text and match type. Text comparison does not trim whitespace.  A matching criterion is left untouched, retaining its criterion ID, enabled/paused status, keyword-level bid overrides, labels, and criterion-associated history/statistics. Zernio does not reset its quality score; Google continues to calculate scores and statistics normally.  A bare string or an object without `matchType` means `broad`, not the existing criterion's match type. For example, resending an existing `{ \"text\": \"plumber\", \"matchType\": \"exact\" }` preserves it; sending `\"plumber\"` instead removes that EXACT criterion and requests a BROAD one.  Changing text or match type removes criteria no longer requested and creates any missing criteria. New criteria get new IDs and do not inherit removed criteria's bid overrides, labels, or history. Historical reporting for a removed criterion is not transferred to its replacement.  ### Other keyword endpoints  - To add keywords without replacing a set, use [POST /v1/ads/keywords](https://docs.zernio.com/ad-campaigns/add-ad-keywords). - Use `PATCH /v1/ads/keywords/{keywordId}` to pause/enable one keyword. - Use `DELETE /v1/ads/keywords/{keywordId}` to remove it.
 
 ### Example
 

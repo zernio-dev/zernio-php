@@ -22,6 +22,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**deleteAdNegativeKeywordList()**](AdAccountsApi.md#deleteAdNegativeKeywordList) | **DELETE** /v1/ads/accounts/negative-keyword-lists/{listId} | Delete a negative keyword list |
 | [**deleteValueRuleSet()**](AdAccountsApi.md#deleteValueRuleSet) | **DELETE** /v1/ads/value-rule-sets/{valueRuleSetId} | Delete a value rule set |
 | [**detachAdLabel()**](AdAccountsApi.md#detachAdLabel) | **DELETE** /v1/ads/labels/{labelId}/assignments | Detach a Google Ads label |
+| [**editAdNegativeKeywordListKeywords()**](AdAccountsApi.md#editAdNegativeKeywordListKeywords) | **PATCH** /v1/ads/accounts/negative-keyword-lists/{listId}/keywords | Add or remove negative list keywords |
 | [**getAdAccountBilling()**](AdAccountsApi.md#getAdAccountBilling) | **GET** /v1/ads/accounts/billing | Get ad account billing |
 | [**getAdAccountFinance()**](AdAccountsApi.md#getAdAccountFinance) | **GET** /v1/ads/accounts/finance | Ad account finances |
 | [**getAdAccountHealth()**](AdAccountsApi.md#getAdAccountHealth) | **GET** /v1/ads/accounts/health | Check an ad account before creating ads |
@@ -1073,6 +1074,70 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `editAdNegativeKeywordListKeywords()`
+
+```php
+editAdNegativeKeywordListKeywords($list_id, $edit_ad_negative_keyword_list_keywords_request, $idempotency_key): \Zernio\Model\ReplaceAdNegativeKeywordListKeywords200Response
+```
+
+Add or remove negative list keywords
+
+Adds and removes single keywords in a shared Google Ads negative keyword list without resending the full set, affecting every campaign that uses the list.  - `remove` matches by normalized text and match type, and wins over `add` for the same keyword. - Keywords already in the list are not added twice; keywords not in it are skipped on remove. - Creates and removals are applied atomically in one mutation.  ### Quota  Each create or removal consumes one daily operation; the entire batch must fit the remaining quota.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$list_id = 'list_id_example'; // string
+$edit_ad_negative_keyword_list_keywords_request = {"accountId":"69ce75d483e990e1c01ccfe4","adAccountId":"9122445560","add":["free"],"remove":[{"text":"jobs","matchType":"phrase"}]}; // \Zernio\Model\EditAdNegativeKeywordListKeywordsRequest
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago.
+
+try {
+    $result = $apiInstance->editAdNegativeKeywordListKeywords($list_id, $edit_ad_negative_keyword_list_keywords_request, $idempotency_key);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->editAdNegativeKeywordListKeywords: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **list_id** | **string**|  | |
+| **edit_ad_negative_keyword_list_keywords_request** | [**\Zernio\Model\EditAdNegativeKeywordListKeywordsRequest**](../Model/EditAdNegativeKeywordListKeywordsRequest.md)|  | |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ReplaceAdNegativeKeywordListKeywords200Response**](../Model/ReplaceAdNegativeKeywordListKeywords200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
