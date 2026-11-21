@@ -3636,7 +3636,7 @@ replaceCampaignNegativeKeywords($campaign_id, $replace_campaign_negative_keyword
 
 Replace campaign-level negative keywords
 
-Replaces a Google campaign's full list of campaign-level negative keywords, or clears it.  Replaces the FULL set of campaign-level negative keywords (C.270): the desired list is diffed against what Google already has, and the difference is applied as one `create`/`remove` mutate. Send an empty array to clear every campaign negative.  The platform is always discovered from the campaign itself; a non-Google campaign returns 501 rather than 404, whether or not `platform` was sent.
+Replaces a Google campaign's full list of campaign-level negative keywords, or clears it.  Replaces the FULL set of campaign-level negative keywords (C.270). The desired list is diffed against what Google already has, and the difference is applied in `create`/`remove` mutates of up to 5,000 operations.  - Creates run first, so a failed batch leaves extra negatives rather than missing ones. - When the old and new sets together would pass Google's 10,000 cap, removes run first. - Send the same request again to finish a failed replace. - Send an empty array to clear every campaign negative.  The platform is always discovered from the campaign itself; a non-Google campaign returns 501 rather than 404, whether or not `platform` was sent.
 
 ### Example
 
