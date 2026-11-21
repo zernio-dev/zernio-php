@@ -122,6 +122,9 @@ docs/Model/AdCampaign.md
 docs/Model/AdCampaignBudget.md
 docs/Model/AdCampaignOptimizationGoal.md
 docs/Model/AdCreative.md
+docs/Model/AdCreativeAssetFeed.md
+docs/Model/AdCreativeAssetFeedImagesInner.md
+docs/Model/AdCreativeAssetFeedVideosInner.md
 docs/Model/AdCreativeAssets.md
 docs/Model/AdCreativeAssetsMarketingImagesInner.md
 docs/Model/AdCreativeAssetsSquareMarketingImagesInner.md
@@ -4221,6 +4224,9 @@ lib/Model/AdCampaign.php
 lib/Model/AdCampaignBudget.php
 lib/Model/AdCampaignOptimizationGoal.php
 lib/Model/AdCreative.php
+lib/Model/AdCreativeAssetFeed.php
+lib/Model/AdCreativeAssetFeedImagesInner.php
+lib/Model/AdCreativeAssetFeedVideosInner.php
 lib/Model/AdCreativeAssets.php
 lib/Model/AdCreativeAssetsMarketingImagesInner.php
 lib/Model/AdCreativeAssetsSquareMarketingImagesInner.php
@@ -8199,8 +8205,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetGohighlevelConnectUrl200ResponseTest.php
-test/Model/GetGohighlevelSettings200ResponseTest.php
-test/Model/GohighlevelSettingsTest.php
-test/Model/UpdateGohighlevelSettings200ResponseTest.php
-test/Model/UpdateGohighlevelSettingsRequestTest.php
+test/Model/AdCreativeAssetFeedImagesInnerTest.php
+test/Model/AdCreativeAssetFeedTest.php
+test/Model/AdCreativeAssetFeedVideosInnerTest.php

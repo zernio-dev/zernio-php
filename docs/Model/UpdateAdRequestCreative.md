@@ -22,5 +22,7 @@ Name | Type | Description | Notes
 **video_url** | **string** |  | [optional]
 **video_id** | **string** | Meta only. Reuse an already-uploaded ad video (from POST /v1/ads/videos or GET /v1/ads/videos) instead of re-uploading via videoUrl. | [optional]
 **existing_creative_id** | **string** | Meta only. Repoint the ad at an existing library creative (from GET /v1/ads/creatives); all other creative fields are ignored. | [optional]
+**lead_gen_form_id** | **string** | Meta only. Moves a lead ad to another instant form (from GET /v1/ads/lead-forms), keeping the rest of the creative. Returns 422 on an ad that does not open an instant form. | [optional]
+**caption** | **string** | Meta only. The display link shown on link (image) ads, Meta link_data.caption. Returns 422 on video creatives and on asset feeds without a link. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
