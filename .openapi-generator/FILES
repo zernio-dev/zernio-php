@@ -1653,6 +1653,8 @@ docs/Model/GetGmbAttributeMetadata200ResponseAttributeMetadataInner.md
 docs/Model/GetGmbAttributeMetadata200ResponseAttributeMetadataInnerValueMetadataInner.md
 docs/Model/GetGmbLocations200Response.md
 docs/Model/GetGmbLocations200ResponseLocationsInner.md
+docs/Model/GetGohighlevelConnectUrl200Response.md
+docs/Model/GetGohighlevelSettings200Response.md
 docs/Model/GetGoogleAnalyticsConnectUrl200Response.md
 docs/Model/GetGoogleAnalyticsMetadata200Response.md
 docs/Model/GetGoogleAnalyticsMetadata200ResponseDimensionsInner.md
@@ -1972,6 +1974,7 @@ docs/Model/GetYoutubeCaptions200ResponseAvailableTracksInner.md
 docs/Model/GetYoutubeCaptions200ResponseCuesInner.md
 docs/Model/GetYoutubePlaylists200Response.md
 docs/Model/GetYoutubePlaylists200ResponsePlaylistsInner.md
+docs/Model/GohighlevelSettings.md
 docs/Model/GoogleAdLabel.md
 docs/Model/GoogleAdLabelAssignments.md
 docs/Model/GoogleAdsAccessRole.md
@@ -3537,6 +3540,8 @@ docs/Model/UpdateFileRequest.md
 docs/Model/UpdateForwardingRuleRequest.md
 docs/Model/UpdateGmbLocation200Response.md
 docs/Model/UpdateGmbLocationRequest.md
+docs/Model/UpdateGohighlevelSettings200Response.md
+docs/Model/UpdateGohighlevelSettingsRequest.md
 docs/Model/UpdateGoogleAssetGroup200Response.md
 docs/Model/UpdateGoogleAssetGroupRequest.md
 docs/Model/UpdateGoogleBusinessAttributes200Response.md
@@ -5747,6 +5752,8 @@ lib/Model/GetGmbAttributeMetadata200ResponseAttributeMetadataInner.php
 lib/Model/GetGmbAttributeMetadata200ResponseAttributeMetadataInnerValueMetadataInner.php
 lib/Model/GetGmbLocations200Response.php
 lib/Model/GetGmbLocations200ResponseLocationsInner.php
+lib/Model/GetGohighlevelConnectUrl200Response.php
+lib/Model/GetGohighlevelSettings200Response.php
 lib/Model/GetGoogleAnalyticsConnectUrl200Response.php
 lib/Model/GetGoogleAnalyticsMetadata200Response.php
 lib/Model/GetGoogleAnalyticsMetadata200ResponseDimensionsInner.php
@@ -6066,6 +6073,7 @@ lib/Model/GetYoutubeCaptions200ResponseAvailableTracksInner.php
 lib/Model/GetYoutubeCaptions200ResponseCuesInner.php
 lib/Model/GetYoutubePlaylists200Response.php
 lib/Model/GetYoutubePlaylists200ResponsePlaylistsInner.php
+lib/Model/GohighlevelSettings.php
 lib/Model/GoogleAdLabel.php
 lib/Model/GoogleAdLabelAssignments.php
 lib/Model/GoogleAdsAccessRole.php
@@ -7632,6 +7640,8 @@ lib/Model/UpdateFileRequest.php
 lib/Model/UpdateForwardingRuleRequest.php
 lib/Model/UpdateGmbLocation200Response.php
 lib/Model/UpdateGmbLocationRequest.php
+lib/Model/UpdateGohighlevelSettings200Response.php
+lib/Model/UpdateGohighlevelSettingsRequest.php
 lib/Model/UpdateGoogleAssetGroup200Response.php
 lib/Model/UpdateGoogleAssetGroupRequest.php
 lib/Model/UpdateGoogleBusinessAttributes200Response.php
@@ -8189,3 +8199,8 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetGohighlevelConnectUrl200ResponseTest.php
+test/Model/GetGohighlevelSettings200ResponseTest.php
+test/Model/GohighlevelSettingsTest.php
+test/Model/UpdateGohighlevelSettings200ResponseTest.php
+test/Model/UpdateGohighlevelSettingsRequestTest.php
