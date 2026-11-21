@@ -8205,6 +8205,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/AdCreativeAssetFeedImagesInnerTest.php
-test/Model/AdCreativeAssetFeedTest.php
-test/Model/AdCreativeAssetFeedVideosInnerTest.php

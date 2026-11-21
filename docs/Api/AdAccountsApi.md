@@ -566,7 +566,7 @@ try {
 ## `createAdNegativeKeywordList()`
 
 ```php
-createAdNegativeKeywordList($create_ad_negative_keyword_list_request): \Zernio\Model\CreateAdNegativeKeywordList201Response
+createAdNegativeKeywordList($create_ad_negative_keyword_list_request, $idempotency_key): \Zernio\Model\CreateAdNegativeKeywordList201Response
 ```
 
 Create a negative keyword list
@@ -591,9 +591,10 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
     $config
 );
 $create_ad_negative_keyword_list_request = {"accountId":"69ce75d483e990e1c01ccfe4","adAccountId":"9122445560","name":"Excluded searches","keywords":["free",{"text":"jobs","matchType":"phrase"}]}; // \Zernio\Model\CreateAdNegativeKeywordListRequest
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago.
 
 try {
-    $result = $apiInstance->createAdNegativeKeywordList($create_ad_negative_keyword_list_request);
+    $result = $apiInstance->createAdNegativeKeywordList($create_ad_negative_keyword_list_request, $idempotency_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdAccountsApi->createAdNegativeKeywordList: ', $e->getMessage(), PHP_EOL;
@@ -605,6 +606,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **create_ad_negative_keyword_list_request** | [**\Zernio\Model\CreateAdNegativeKeywordListRequest**](../Model/CreateAdNegativeKeywordListRequest.md)|  | |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago. | [optional] |
 
 ### Return type
 
@@ -874,7 +876,7 @@ try {
 ## `deleteAdNegativeKeywordList()`
 
 ```php
-deleteAdNegativeKeywordList($list_id, $account_id, $ad_account_id, $customer_id, $platform): \Zernio\Model\DeleteAdNegativeKeywordList200Response
+deleteAdNegativeKeywordList($list_id, $account_id, $idempotency_key, $ad_account_id, $customer_id, $platform): \Zernio\Model\DeleteAdNegativeKeywordList200Response
 ```
 
 Delete a negative keyword list
@@ -900,12 +902,13 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
 );
 $list_id = 'list_id_example'; // string
 $account_id = 'account_id_example'; // string
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago.
 $ad_account_id = 'ad_account_id_example'; // string
 $customer_id = 'customer_id_example'; // string
 $platform = 'platform_example'; // string
 
 try {
-    $result = $apiInstance->deleteAdNegativeKeywordList($list_id, $account_id, $ad_account_id, $customer_id, $platform);
+    $result = $apiInstance->deleteAdNegativeKeywordList($list_id, $account_id, $idempotency_key, $ad_account_id, $customer_id, $platform);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdAccountsApi->deleteAdNegativeKeywordList: ', $e->getMessage(), PHP_EOL;
@@ -918,6 +921,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **list_id** | **string**|  | |
 | **account_id** | **string**|  | |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago. | [optional] |
 | **ad_account_id** | **string**|  | [optional] |
 | **customer_id** | **string**|  | [optional] |
 | **platform** | **string**|  | [optional] |
@@ -3792,7 +3796,7 @@ try {
 ## `replaceAdNegativeKeywordListKeywords()`
 
 ```php
-replaceAdNegativeKeywordListKeywords($list_id, $replace_ad_negative_keyword_list_keywords_request): \Zernio\Model\ReplaceAdNegativeKeywordListKeywords200Response
+replaceAdNegativeKeywordListKeywords($list_id, $replace_ad_negative_keyword_list_keywords_request, $idempotency_key): \Zernio\Model\ReplaceAdNegativeKeywordListKeywords200Response
 ```
 
 Replace negative list keywords
@@ -3818,9 +3822,10 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
 );
 $list_id = 'list_id_example'; // string
 $replace_ad_negative_keyword_list_keywords_request = {"accountId":"69ce75d483e990e1c01ccfe4","adAccountId":"9122445560","keywords":["free",{"text":"jobs","matchType":"phrase"}]}; // \Zernio\Model\ReplaceAdNegativeKeywordListKeywordsRequest
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago.
 
 try {
-    $result = $apiInstance->replaceAdNegativeKeywordListKeywords($list_id, $replace_ad_negative_keyword_list_keywords_request);
+    $result = $apiInstance->replaceAdNegativeKeywordListKeywords($list_id, $replace_ad_negative_keyword_list_keywords_request, $idempotency_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdAccountsApi->replaceAdNegativeKeywordListKeywords: ', $e->getMessage(), PHP_EOL;
@@ -3833,6 +3838,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **list_id** | **string**|  | |
 | **replace_ad_negative_keyword_list_keywords_request** | [**\Zernio\Model\ReplaceAdNegativeKeywordListKeywordsRequest**](../Model/ReplaceAdNegativeKeywordListKeywordsRequest.md)|  | |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago. | [optional] |
 
 ### Return type
 
@@ -4408,7 +4414,7 @@ try {
 ## `updateAdNegativeKeywordList()`
 
 ```php
-updateAdNegativeKeywordList($list_id, $update_ad_negative_keyword_list_request): \Zernio\Model\UpdateAdNegativeKeywordList200Response
+updateAdNegativeKeywordList($list_id, $update_ad_negative_keyword_list_request, $idempotency_key): \Zernio\Model\UpdateAdNegativeKeywordList200Response
 ```
 
 Rename a negative keyword list
@@ -4434,9 +4440,10 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
 );
 $list_id = 'list_id_example'; // string
 $update_ad_negative_keyword_list_request = {"accountId":"69ce75d483e990e1c01ccfe4","adAccountId":"9122445560","name":"Excluded searches renamed"}; // \Zernio\Model\UpdateAdNegativeKeywordListRequest
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago.
 
 try {
-    $result = $apiInstance->updateAdNegativeKeywordList($list_id, $update_ad_negative_keyword_list_request);
+    $result = $apiInstance->updateAdNegativeKeywordList($list_id, $update_ad_negative_keyword_list_request, $idempotency_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdAccountsApi->updateAdNegativeKeywordList: ', $e->getMessage(), PHP_EOL;
@@ -4449,6 +4456,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **list_id** | **string**|  | |
 | **update_ad_negative_keyword_list_request** | [**\Zernio\Model\UpdateAdNegativeKeywordListRequest**](../Model/UpdateAdNegativeKeywordListRequest.md)|  | |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago. | [optional] |
 
 ### Return type
 
