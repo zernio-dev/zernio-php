@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **is_ai_generated** | **bool** | Instagram only: whether Instagram labeled the media as AI-generated. Absent when the platform did not report it. | [optional]
 **is_shared_to_feed** | **bool** | Instagram reels only: whether the reel is also shared to the main feed. Absent when the platform did not report it. | [optional]
 **media_audio_type** | **string** | Instagram only: audio type of the media (MUSIC or ORIGINAL_SOUND). Absent when the platform did not report it. | [optional]
+**upcoming_start_at** | **\DateTime** | YouTube only. Start time of an upcoming Premiere or scheduled live stream, absent once it airs. Sent on post.external.created and on any event fired for another change; the airing itself does not fire an event. | [optional]
 **source** | **string** | Always \&quot;external\&quot;. Distinguishes these from Zernio-originated post.* events. |
 **deleted_at** | **\DateTime** | Detection time of deletion. Present on post.external.deleted; null/absent otherwise. | [optional]
 
