@@ -11,5 +11,6 @@ Name | Type | Description | Notes
 **log_messages** | **bool** | Log inbox messages from every channel on the matched HighLevel contact, one note per channel and UTC day. | [optional]
 **log_delivery_status** | **bool** | Mark sent, delivered, read and failed on logged outgoing messages. | [optional]
 **sync_ad_leads** | **bool** | Create or update a HighLevel contact for every lead from the profile&#39;s ad network lead forms (Meta, TikTok, LinkedIn, Google), tagged with the network, campaign and form. | [optional]
+**mirror_conversations** | **bool** | Put Telegram, LINE, WeChat, iMessage and RCS messages into the contact&#39;s Conversations thread under the Zernio channel, so a HighLevel user reads and answers them there. Off logs them as notes. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

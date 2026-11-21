@@ -17,5 +17,6 @@ Name | Type | Description | Notes
 **log_messages** | **bool** | Inbox messages from every channel (both directions) are logged on the HighLevel contact as one note per channel and day. Default true. |
 **log_delivery_status** | **bool** | Logged outgoing messages show their delivery status (sent, delivered, read, failed) on their note line. Default true. |
 **sync_ad_leads** | **bool** | Leads from the profile&#39;s ad network lead forms become HighLevel contacts, deduplicated by email, then phone. Default true. |
+**mirror_conversations** | **bool** | Telegram, LINE, WeChat, iMessage and RCS messages go into the contact&#39;s Conversations thread under the Zernio channel (answerable from HighLevel) instead of a note. Default true. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
