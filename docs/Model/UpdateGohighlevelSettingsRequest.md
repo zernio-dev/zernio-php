@@ -10,5 +10,6 @@ Name | Type | Description | Notes
 **sync_contacts** | **bool** | Match inbox contacts to HighLevel contacts (phone, then email) and create the ones that do not exist. | [optional]
 **log_messages** | **bool** | Log inbox messages from every channel on the matched HighLevel contact, one note per channel and UTC day. | [optional]
 **log_delivery_status** | **bool** | Mark sent, delivered, read and failed on logged outgoing messages. | [optional]
+**sync_ad_leads** | **bool** | Create or update a HighLevel contact for every lead from the profile&#39;s ad network lead forms (Meta, TikTok, LinkedIn, Google), tagged with the network, campaign and form. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
