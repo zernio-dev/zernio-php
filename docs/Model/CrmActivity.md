@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  |
-**object_type** | **string** | HubSpot &#x60;note&#x60; or &#x60;communication&#x60; (WhatsApp, SMS); Salesforce &#x60;task&#x60;; GoHighLevel &#x60;note&#x60;. |
+**object_type** | **string** | HubSpot &#x60;note&#x60; or &#x60;communication&#x60; (WhatsApp, SMS); Salesforce &#x60;task&#x60;; HighLevel &#x60;note&#x60;. |
 **contact_id** | **string** |  |
 **channel** | **string** |  |
 **direction** | **string** |  |
 **subject** | **string** |  |
 **body** | **string** |  |
 **occurred_at** | **\DateTime** |  |
-**url** | **string** | The Salesforce Task, or the HubSpot or GoHighLevel contact whose record shows it. |
+**url** | **string** | The Salesforce Task, or the HubSpot or HighLevel contact whose record shows it. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

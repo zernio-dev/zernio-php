@@ -13,7 +13,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getAllAccountsHealth()**](AccountsApi.md#getAllAccountsHealth) | **GET** /v1/accounts/health | Check accounts health |
 | [**getBlueskySettings()**](AccountsApi.md#getBlueskySettings) | **GET** /v1/accounts/{accountId}/bluesky-settings | Get Bluesky account settings |
 | [**getFollowerStats()**](AccountsApi.md#getFollowerStats) | **GET** /v1/accounts/follower-stats | Get follower stats |
-| [**getGohighlevelSettings()**](AccountsApi.md#getGohighlevelSettings) | **GET** /v1/accounts/{accountId}/gohighlevel-settings | Get GoHighLevel account settings |
+| [**getGohighlevelSettings()**](AccountsApi.md#getGohighlevelSettings) | **GET** /v1/accounts/{accountId}/gohighlevel-settings | Get HighLevel account settings |
 | [**getHubSpotSettings()**](AccountsApi.md#getHubSpotSettings) | **GET** /v1/accounts/{accountId}/hubspot-settings | Get HubSpot account settings |
 | [**getInstagramFollowStatus()**](AccountsApi.md#getInstagramFollowStatus) | **GET** /v1/accounts/{accountId}/follow-status/{userId} | Check whether an Instagram user follows the account |
 | [**getSalesforceSettings()**](AccountsApi.md#getSalesforceSettings) | **GET** /v1/accounts/{accountId}/salesforce-settings | Get Salesforce account settings |
@@ -30,7 +30,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**searchTikTokLocations()**](AccountsApi.md#searchTikTokLocations) | **GET** /v1/accounts/{accountId}/tiktok/locations | Search TikTok location tags |
 | [**updateAccount()**](AccountsApi.md#updateAccount) | **PUT** /v1/accounts/{accountId} | Update account |
 | [**updateBlueskySettings()**](AccountsApi.md#updateBlueskySettings) | **PATCH** /v1/accounts/{accountId}/bluesky-settings | Update Bluesky account settings |
-| [**updateGohighlevelSettings()**](AccountsApi.md#updateGohighlevelSettings) | **PATCH** /v1/accounts/{accountId}/gohighlevel-settings | Update GoHighLevel account settings |
+| [**updateGohighlevelSettings()**](AccountsApi.md#updateGohighlevelSettings) | **PATCH** /v1/accounts/{accountId}/gohighlevel-settings | Update HighLevel account settings |
 | [**updateHubSpotSettings()**](AccountsApi.md#updateHubSpotSettings) | **PATCH** /v1/accounts/{accountId}/hubspot-settings | Update HubSpot account settings |
 | [**updateSalesforceSettings()**](AccountsApi.md#updateSalesforceSettings) | **PATCH** /v1/accounts/{accountId}/salesforce-settings | Update Salesforce account settings |
 | [**updateSlackSettings()**](AccountsApi.md#updateSlackSettings) | **PATCH** /v1/accounts/{accountId}/slack-settings | Update Slack account settings |
@@ -483,9 +483,9 @@ try {
 getGohighlevelSettings($account_id): \Zernio\Model\GetGohighlevelSettings200Response
 ```
 
-Get GoHighLevel account settings
+Get HighLevel account settings
 
-Read a connected GoHighLevel sub-account and what Zernio relays from it and writes back to it.
+Read a connected HighLevel sub-account and what Zernio relays from it and writes back to it.
 
 ### Example
 
@@ -1558,7 +1558,7 @@ void (empty response body)
 updateGohighlevelSettings($account_id, $update_gohighlevel_settings_request): \Zernio\Model\UpdateGohighlevelSettings200Response
 ```
 
-Update GoHighLevel account settings
+Update HighLevel account settings
 
 Turn the conversion relay, the write-back to HighLevel contacts, forwarding to the profile's ad platforms, contact sync, conversation logging, delivery marks or the ad lead sync on or off for a connected HighLevel sub-account. Send at least one field; omitted fields keep their value. Settings survive reconnecting the same sub-account.
 
