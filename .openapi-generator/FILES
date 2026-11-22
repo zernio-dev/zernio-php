@@ -388,6 +388,8 @@ docs/Model/AutomationNotifyStepToInner.md
 docs/Model/AutomationOneOf.md
 docs/Model/AutomationOneOf1.md
 docs/Model/AutomationOneOf2.md
+docs/Model/AutomationOneOf3.md
+docs/Model/AutomationOneOf3AllOfEnrollments.md
 docs/Model/AutomationPostSchedule.md
 docs/Model/AutomationPostSubjects.md
 docs/Model/AutomationPreview.md
@@ -403,6 +405,10 @@ docs/Model/AutomationRunResult.md
 docs/Model/AutomationScheduleTrigger.md
 docs/Model/AutomationScheduleTriggerQuietHours.md
 docs/Model/AutomationScheduleTriggerTimesInner.md
+docs/Model/AutomationSequenceStep.md
+docs/Model/AutomationSequenceStepMessage.md
+docs/Model/AutomationSequenceStepMessageAttachmentsInner.md
+docs/Model/AutomationSequenceStepTemplate.md
 docs/Model/AutomationStep.md
 docs/Model/AutomationStepOneOf.md
 docs/Model/AutomationStepOneOf1.md
@@ -3231,6 +3237,9 @@ docs/Model/SendWhatsAppFlowMessage200Response.md
 docs/Model/SendWhatsAppFlowMessageRequest.md
 docs/Model/SendWhatsAppFlowMessageRequestFlowActionPayload.md
 docs/Model/SendWhatsAppFlowMessageRequestHeader.md
+docs/Model/SequenceAutomationDefinition.md
+docs/Model/SequenceAutomationDefinitionLimits.md
+docs/Model/SequenceAutomationDefinitionTrigger.md
 docs/Model/SetBusinessAgentConnectorCredentialsRequest.md
 docs/Model/SetBusinessAgentConnectorCredentialsRequestOneOf.md
 docs/Model/SetBusinessAgentConnectorCredentialsRequestOneOf1.md
@@ -4538,6 +4547,8 @@ lib/Model/AutomationNotifyStepToInner.php
 lib/Model/AutomationOneOf.php
 lib/Model/AutomationOneOf1.php
 lib/Model/AutomationOneOf2.php
+lib/Model/AutomationOneOf3.php
+lib/Model/AutomationOneOf3AllOfEnrollments.php
 lib/Model/AutomationPostSchedule.php
 lib/Model/AutomationPostSubjects.php
 lib/Model/AutomationPreview.php
@@ -4553,6 +4564,10 @@ lib/Model/AutomationRunResult.php
 lib/Model/AutomationScheduleTrigger.php
 lib/Model/AutomationScheduleTriggerQuietHours.php
 lib/Model/AutomationScheduleTriggerTimesInner.php
+lib/Model/AutomationSequenceStep.php
+lib/Model/AutomationSequenceStepMessage.php
+lib/Model/AutomationSequenceStepMessageAttachmentsInner.php
+lib/Model/AutomationSequenceStepTemplate.php
 lib/Model/AutomationStep.php
 lib/Model/AutomationStepOneOf.php
 lib/Model/AutomationStepOneOf1.php
@@ -7382,6 +7397,9 @@ lib/Model/SendWhatsAppFlowMessage200Response.php
 lib/Model/SendWhatsAppFlowMessageRequest.php
 lib/Model/SendWhatsAppFlowMessageRequestFlowActionPayload.php
 lib/Model/SendWhatsAppFlowMessageRequestHeader.php
+lib/Model/SequenceAutomationDefinition.php
+lib/Model/SequenceAutomationDefinitionLimits.php
+lib/Model/SequenceAutomationDefinitionTrigger.php
 lib/Model/SetBusinessAgentConnectorCredentialsRequest.php
 lib/Model/SetBusinessAgentConnectorCredentialsRequestOneOf.php
 lib/Model/SetBusinessAgentConnectorCredentialsRequestOneOf1.php
@@ -8301,3 +8319,12 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/AutomationOneOf3AllOfEnrollmentsTest.php
+test/Model/AutomationOneOf3Test.php
+test/Model/AutomationSequenceStepMessageAttachmentsInnerTest.php
+test/Model/AutomationSequenceStepMessageTest.php
+test/Model/AutomationSequenceStepTemplateTest.php
+test/Model/AutomationSequenceStepTest.php
+test/Model/SequenceAutomationDefinitionLimitsTest.php
+test/Model/SequenceAutomationDefinitionTest.php
+test/Model/SequenceAutomationDefinitionTriggerTest.php

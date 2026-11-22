@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** |  |
-**status** | **string** |  |
+**status** | **string** | Only a sequence can be a draft. |
 **trigger** | [**\Zernio\Model\AutomationScheduleTrigger**](AutomationScheduleTrigger.md) |  |
 **subjects** | [**\Zernio\Model\AutomationSubjects**](AutomationSubjects.md) |  |
 **conditions** | [**\Zernio\Model\AdRuleConditions**](AdRuleConditions.md) |  |
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **kind** | **string** |  |
 **version** | **string** | Send it back as &#x60;If-Match&#x60; when editing, so an edit made after someone else saved is refused. |
 **last_check_at** | **\DateTime** | Null until an ad rule first checks. Always null for event and scheduled automations; their checks list when they ran. |
-**next_check_at** | **\DateTime** | Null while paused. Always null for event and scheduled automations. |
+**next_check_at** | **\DateTime** | Null while paused. Always null for event, scheduled and sequence automations. |
 **created_at** | **\DateTime** |  |
 **updated_at** | **\DateTime** |  |
 **template** | [**\Zernio\Model\AutomationRecordTemplate**](AutomationRecordTemplate.md) |  | [optional]
