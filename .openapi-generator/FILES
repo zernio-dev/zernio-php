@@ -8301,6 +8301,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ConsentDropTest.php
-test/Model/EventConsentTest.php
-test/Model/GetEventsOverview200ResponsePlatformsInnerDroppedTodayTest.php
