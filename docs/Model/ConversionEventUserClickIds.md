@@ -22,5 +22,9 @@ Name | Type | Description | Notes
 **scid** | **string** | Snap Pixel browser id (the &#x60;_scid&#x60; cookie). Sent to Snapchat as &#x60;sc_cookie1&#x60;, not hashed. | [optional]
 **irclickid** | **string** | Impact partner click id (the &#x60;irclickid&#x60; URL param Impact adds to partner links). Sent to Impact as &#x60;ClickId&#x60;. | [optional]
 **awc** | **string** | Awin click id (the &#x60;awc&#x60; URL param Awin adds to publisher links). Sent to Awin as the order&#39;s &#x60;awc&#x60;. | [optional]
+**dclid** | **string** | Campaign Manager 360 / Display &amp; Video 360 click ID (the &#x60;dclid&#x60; URL param). Sent to Floodlight as is. | [optional]
+**tdid** | **string** | The Trade Desk browser id (TDID) from a TTD cookie sync. Sent to The Trade Desk as &#x60;adid&#x60; of type &#x60;TDID&#x60;. | [optional]
+**uid2** | **string** | A raw UID2 for the person, from your UID2 integration. Sent to The Trade Desk as &#x60;adid&#x60; of type &#x60;UID2&#x60;. | [optional]
+**uid2_token** | **string** | A UID2 token (encrypted, from the UID2 SDK on your site). Sent to The Trade Desk as &#x60;uid2_token&#x60;. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

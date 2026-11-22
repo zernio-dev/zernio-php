@@ -667,6 +667,7 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**connectShopifyWithToken**](docs/Api/ConnectApi.md#connectshopifywithtoken) | **POST** /v1/connect/shopify/token | Connect a Shopify store with a custom-app Admin token
 *ConnectApi* | [**connectSlackChannel**](docs/Api/ConnectApi.md#connectslackchannel) | **POST** /v1/connect/slack | Connect a Slack channel
 *ConnectApi* | [**connectSnapchatAdsCredentials**](docs/Api/ConnectApi.md#connectsnapchatadscredentials) | **POST** /v1/connect/snapchat-ads/credentials | Connect a Snapchat Ads pixel
+*ConnectApi* | [**connectTradeDeskAdsCredentials**](docs/Api/ConnectApi.md#connecttradedeskadscredentials) | **POST** /v1/connect/tradedesk-ads/credentials | Connect a Trade Desk tracking tag
 *ConnectApi* | [**connectWebflowWithSiteToken**](docs/Api/ConnectApi.md#connectwebflowwithsitetoken) | **POST** /v1/connect/webflow/token | Connect Webflow with a site API token
 *ConnectApi* | [**connectWechatCredentials**](docs/Api/ConnectApi.md#connectwechatcredentials) | **POST** /v1/connect/wechat/credentials | Connect WeChat Official Account
 *ConnectApi* | [**connectWhatsAppCredentials**](docs/Api/ConnectApi.md#connectwhatsappcredentials) | **POST** /v1/connect/whatsapp/credentials | Connect WhatsApp via credentials
@@ -682,6 +683,8 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**createYoutubePlaylist**](docs/Api/ConnectApi.md#createyoutubeplaylist) | **POST** /v1/accounts/{accountId}/youtube-playlists | Create YouTube playlist
 *ConnectApi* | [**deleteOAuthApp**](docs/Api/ConnectApi.md#deleteoauthapp) | **DELETE** /v1/connect/oauth-apps/{appId} | Remove an OAuth app
 *ConnectApi* | [**deleteOrgConnection**](docs/Api/ConnectApi.md#deleteorgconnection) | **DELETE** /v1/org-connections/{orgConnectionId} | Delete an organization connection
+*ConnectApi* | [**getAmazonAdsConnectUrl**](docs/Api/ConnectApi.md#getamazonadsconnecturl) | **GET** /v1/connect/amazonads | Get Amazon Ads OAuth connect URL
+*ConnectApi* | [**getCampaignManagerConnectUrl**](docs/Api/ConnectApi.md#getcampaignmanagerconnecturl) | **GET** /v1/connect/campaignmanager360 | Get Campaign Manager 360 OAuth connect URL
 *ConnectApi* | [**getConnectHandoff**](docs/Api/ConnectApi.md#getconnecthandoff) | **GET** /v1/connect/handoffs/{handoffId} | Get a phone handoff
 *ConnectApi* | [**getConnectUrl**](docs/Api/ConnectApi.md#getconnecturl) | **GET** /v1/connect/{platform} | Get OAuth connect URL
 *ConnectApi* | [**getConnectWelcomeScreen**](docs/Api/ConnectApi.md#getconnectwelcomescreen) | **GET** /v1/connect/welcome-screen | Get the saved welcome screen
@@ -714,6 +717,7 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**getYoutubePlaylists**](docs/Api/ConnectApi.md#getyoutubeplaylists) | **GET** /v1/accounts/{accountId}/youtube-playlists | List YouTube playlists
 *ConnectApi* | [**handleOAuthCallback**](docs/Api/ConnectApi.md#handleoauthcallback) | **POST** /v1/connect/{platform} | Complete OAuth callback
 *ConnectApi* | [**initiateTelegramConnect**](docs/Api/ConnectApi.md#initiatetelegramconnect) | **POST** /v1/connect/telegram | Connect Telegram directly
+*ConnectApi* | [**listCampaignManagerProfiles**](docs/Api/ConnectApi.md#listcampaignmanagerprofiles) | **GET** /v1/connect/campaignmanager360/profiles | List Campaign Manager 360 profiles for a pending connect
 *ConnectApi* | [**listFacebookPages**](docs/Api/ConnectApi.md#listfacebookpages) | **GET** /v1/connect/facebook/select-page | List Facebook pages
 *ConnectApi* | [**listGoogleAnalyticsProperties**](docs/Api/ConnectApi.md#listgoogleanalyticsproperties) | **GET** /v1/connect/googleanalytics/properties | List Google Analytics properties for a pending connect
 *ConnectApi* | [**listGoogleBusinessCategories**](docs/Api/ConnectApi.md#listgooglebusinesscategories) | **GET** /v1/accounts/{accountId}/gmb-categories | List Google Business Profile categories
@@ -730,6 +734,7 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**listWhatsAppPhoneNumbers**](docs/Api/ConnectApi.md#listwhatsappphonenumbers) | **GET** /v1/connect/whatsapp/select-phone-number | List numbers for selection
 *ConnectApi* | [**resyncPageWebhookSubscription**](docs/Api/ConnectApi.md#resyncpagewebhooksubscription) | **POST** /v1/accounts/{accountId}/webhook-subscription | Re-subscribe an account to Zernio&#39;s webhooks
 *ConnectApi* | [**searchGoogleBusinessLocations**](docs/Api/ConnectApi.md#searchgooglebusinesslocations) | **POST** /v1/accounts/{accountId}/gmb-locations/search | Search existing Google listings
+*ConnectApi* | [**selectCampaignManagerProfile**](docs/Api/ConnectApi.md#selectcampaignmanagerprofile) | **POST** /v1/connect/campaignmanager360/select-profile | Connect the chosen Campaign Manager 360 profile
 *ConnectApi* | [**selectFacebookPage**](docs/Api/ConnectApi.md#selectfacebookpage) | **POST** /v1/connect/facebook/select-page | Select Facebook page
 *ConnectApi* | [**selectGoogleAnalyticsProperty**](docs/Api/ConnectApi.md#selectgoogleanalyticsproperty) | **POST** /v1/connect/googleanalytics/select-property | Connect the chosen Google Analytics property
 *ConnectApi* | [**selectGoogleBusinessLocation**](docs/Api/ConnectApi.md#selectgooglebusinesslocation) | **POST** /v1/connect/googlebusiness/select-location | Select Google Business Profile location
@@ -2131,6 +2136,8 @@ Class | Method | HTTP request | Description
 - [ConnectSlackChannelRequest](docs/Model/ConnectSlackChannelRequest.md)
 - [ConnectSnapchatAdsCredentials200Response](docs/Model/ConnectSnapchatAdsCredentials200Response.md)
 - [ConnectSnapchatAdsCredentialsRequest](docs/Model/ConnectSnapchatAdsCredentialsRequest.md)
+- [ConnectTradeDeskAdsCredentials200Response](docs/Model/ConnectTradeDeskAdsCredentials200Response.md)
+- [ConnectTradeDeskAdsCredentialsRequest](docs/Model/ConnectTradeDeskAdsCredentialsRequest.md)
 - [ConnectWebflowWithSiteToken200Response](docs/Model/ConnectWebflowWithSiteToken200Response.md)
 - [ConnectWebflowWithSiteToken200ResponseAccount](docs/Model/ConnectWebflowWithSiteToken200ResponseAccount.md)
 - [ConnectWebflowWithSiteTokenRequest](docs/Model/ConnectWebflowWithSiteTokenRequest.md)
@@ -2921,6 +2928,7 @@ Class | Method | HTTP request | Description
 - [GetAllAccountsHealth200ResponseAccountsInnerMessagingRestriction](docs/Model/GetAllAccountsHealth200ResponseAccountsInnerMessagingRestriction.md)
 - [GetAllAccountsHealth200ResponseAccountsInnerPublishingRestriction](docs/Model/GetAllAccountsHealth200ResponseAccountsInnerPublishingRestriction.md)
 - [GetAllAccountsHealth200ResponseSummary](docs/Model/GetAllAccountsHealth200ResponseSummary.md)
+- [GetAmazonAdsConnectUrl200Response](docs/Model/GetAmazonAdsConnectUrl200Response.md)
 - [GetAnalytics200Response](docs/Model/GetAnalytics200Response.md)
 - [GetAnalytics400Response](docs/Model/GetAnalytics400Response.md)
 - [GetAnalytics402Response](docs/Model/GetAnalytics402Response.md)
@@ -3744,6 +3752,8 @@ Class | Method | HTTP request | Description
 - [ListCampaignDrafts200Response](docs/Model/ListCampaignDrafts200Response.md)
 - [ListCampaignLedger200Response](docs/Model/ListCampaignLedger200Response.md)
 - [ListCampaignLedger200ResponsePagination](docs/Model/ListCampaignLedger200ResponsePagination.md)
+- [ListCampaignManagerProfiles200Response](docs/Model/ListCampaignManagerProfiles200Response.md)
+- [ListCampaignManagerProfiles200ResponseProfilesInner](docs/Model/ListCampaignManagerProfiles200ResponseProfilesInner.md)
 - [ListCampaignNegativeKeywords200Response](docs/Model/ListCampaignNegativeKeywords200Response.md)
 - [ListCampaignNegativeKeywords200ResponseKeywordsInner](docs/Model/ListCampaignNegativeKeywords200ResponseKeywordsInner.md)
 - [ListCampaignOrders200Response](docs/Model/ListCampaignOrders200Response.md)
@@ -4480,6 +4490,9 @@ Class | Method | HTTP request | Description
 - [SearchTweets200ResponsePagination](docs/Model/SearchTweets200ResponsePagination.md)
 - [SearchTweets200ResponseTweetsInner](docs/Model/SearchTweets200ResponseTweetsInner.md)
 - [SearchTweets200ResponseTweetsInnerAuthor](docs/Model/SearchTweets200ResponseTweetsInnerAuthor.md)
+- [SelectCampaignManagerProfile200Response](docs/Model/SelectCampaignManagerProfile200Response.md)
+- [SelectCampaignManagerProfile200ResponseAccount](docs/Model/SelectCampaignManagerProfile200ResponseAccount.md)
+- [SelectCampaignManagerProfileRequest](docs/Model/SelectCampaignManagerProfileRequest.md)
 - [SelectFacebookPage200Response](docs/Model/SelectFacebookPage200Response.md)
 - [SelectFacebookPage200ResponseAccount](docs/Model/SelectFacebookPage200ResponseAccount.md)
 - [SelectFacebookPage200ResponseFailedInner](docs/Model/SelectFacebookPage200ResponseFailedInner.md)
@@ -5564,6 +5577,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.746.0`
+- API version: `1.747.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

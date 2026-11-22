@@ -777,6 +777,8 @@ docs/Model/ConnectShopifyWithTokenRequest.md
 docs/Model/ConnectSlackChannelRequest.md
 docs/Model/ConnectSnapchatAdsCredentials200Response.md
 docs/Model/ConnectSnapchatAdsCredentialsRequest.md
+docs/Model/ConnectTradeDeskAdsCredentials200Response.md
+docs/Model/ConnectTradeDeskAdsCredentialsRequest.md
 docs/Model/ConnectWebflowWithSiteToken200Response.md
 docs/Model/ConnectWebflowWithSiteToken200ResponseAccount.md
 docs/Model/ConnectWebflowWithSiteTokenRequest.md
@@ -1567,6 +1569,7 @@ docs/Model/GetAllAccountsHealth200ResponseAccountsInnerAnalyticsSync.md
 docs/Model/GetAllAccountsHealth200ResponseAccountsInnerMessagingRestriction.md
 docs/Model/GetAllAccountsHealth200ResponseAccountsInnerPublishingRestriction.md
 docs/Model/GetAllAccountsHealth200ResponseSummary.md
+docs/Model/GetAmazonAdsConnectUrl200Response.md
 docs/Model/GetAnalytics200Response.md
 docs/Model/GetAnalytics400Response.md
 docs/Model/GetAnalytics402Response.md
@@ -2390,6 +2393,8 @@ docs/Model/ListCampaignAssets200ResponseStructuredSnippetsInner.md
 docs/Model/ListCampaignDrafts200Response.md
 docs/Model/ListCampaignLedger200Response.md
 docs/Model/ListCampaignLedger200ResponsePagination.md
+docs/Model/ListCampaignManagerProfiles200Response.md
+docs/Model/ListCampaignManagerProfiles200ResponseProfilesInner.md
 docs/Model/ListCampaignNegativeKeywords200Response.md
 docs/Model/ListCampaignNegativeKeywords200ResponseKeywordsInner.md
 docs/Model/ListCampaignOrders200Response.md
@@ -3126,6 +3131,9 @@ docs/Model/SearchTweets200ResponseMeta.md
 docs/Model/SearchTweets200ResponsePagination.md
 docs/Model/SearchTweets200ResponseTweetsInner.md
 docs/Model/SearchTweets200ResponseTweetsInnerAuthor.md
+docs/Model/SelectCampaignManagerProfile200Response.md
+docs/Model/SelectCampaignManagerProfile200ResponseAccount.md
+docs/Model/SelectCampaignManagerProfileRequest.md
 docs/Model/SelectFacebookPage200Response.md
 docs/Model/SelectFacebookPage200ResponseAccount.md
 docs/Model/SelectFacebookPage200ResponseFailedInner.md
@@ -4957,6 +4965,8 @@ lib/Model/ConnectShopifyWithTokenRequest.php
 lib/Model/ConnectSlackChannelRequest.php
 lib/Model/ConnectSnapchatAdsCredentials200Response.php
 lib/Model/ConnectSnapchatAdsCredentialsRequest.php
+lib/Model/ConnectTradeDeskAdsCredentials200Response.php
+lib/Model/ConnectTradeDeskAdsCredentialsRequest.php
 lib/Model/ConnectWebflowWithSiteToken200Response.php
 lib/Model/ConnectWebflowWithSiteToken200ResponseAccount.php
 lib/Model/ConnectWebflowWithSiteTokenRequest.php
@@ -5747,6 +5757,7 @@ lib/Model/GetAllAccountsHealth200ResponseAccountsInnerAnalyticsSync.php
 lib/Model/GetAllAccountsHealth200ResponseAccountsInnerMessagingRestriction.php
 lib/Model/GetAllAccountsHealth200ResponseAccountsInnerPublishingRestriction.php
 lib/Model/GetAllAccountsHealth200ResponseSummary.php
+lib/Model/GetAmazonAdsConnectUrl200Response.php
 lib/Model/GetAnalytics200Response.php
 lib/Model/GetAnalytics400Response.php
 lib/Model/GetAnalytics402Response.php
@@ -6570,6 +6581,8 @@ lib/Model/ListCampaignAssets200ResponseStructuredSnippetsInner.php
 lib/Model/ListCampaignDrafts200Response.php
 lib/Model/ListCampaignLedger200Response.php
 lib/Model/ListCampaignLedger200ResponsePagination.php
+lib/Model/ListCampaignManagerProfiles200Response.php
+lib/Model/ListCampaignManagerProfiles200ResponseProfilesInner.php
 lib/Model/ListCampaignNegativeKeywords200Response.php
 lib/Model/ListCampaignNegativeKeywords200ResponseKeywordsInner.php
 lib/Model/ListCampaignOrders200Response.php
@@ -7307,6 +7320,9 @@ lib/Model/SearchTweets200ResponseMeta.php
 lib/Model/SearchTweets200ResponsePagination.php
 lib/Model/SearchTweets200ResponseTweetsInner.php
 lib/Model/SearchTweets200ResponseTweetsInnerAuthor.php
+lib/Model/SelectCampaignManagerProfile200Response.php
+lib/Model/SelectCampaignManagerProfile200ResponseAccount.php
+lib/Model/SelectCampaignManagerProfileRequest.php
 lib/Model/SelectFacebookPage200Response.php
 lib/Model/SelectFacebookPage200ResponseAccount.php
 lib/Model/SelectFacebookPage200ResponseFailedInner.php
@@ -8361,3 +8377,11 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ConnectTradeDeskAdsCredentials200ResponseTest.php
+test/Model/ConnectTradeDeskAdsCredentialsRequestTest.php
+test/Model/GetAmazonAdsConnectUrl200ResponseTest.php
+test/Model/ListCampaignManagerProfiles200ResponseProfilesInnerTest.php
+test/Model/ListCampaignManagerProfiles200ResponseTest.php
+test/Model/SelectCampaignManagerProfile200ResponseAccountTest.php
+test/Model/SelectCampaignManagerProfile200ResponseTest.php
+test/Model/SelectCampaignManagerProfileRequestTest.php
