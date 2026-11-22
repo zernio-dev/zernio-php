@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **consent_scan** | [**\Zernio\Model\ConversionAuditReportConsentScan**](ConversionAuditReportConsentScan.md) |  | [optional]
 **tag_managers** | **string[]** |  | [optional]
 **other_networks** | [**\Zernio\Model\ConversionAuditReportOtherNetworksInner[]**](ConversionAuditReportOtherNetworksInner.md) | Ad networks found that the score does not cover. &#x60;relaySupported&#x60; is true when Zernio can send them conversions. | [optional]
+**other_networks_configured** | [**\Zernio\Model\ConversionAuditReportOtherNetworksInner[]**](ConversionAuditReportOtherNetworksInner.md) | Rendered scans: unscored ad networks found only in a Google Tag Manager container that the visit never saw load or send. Not counted in &#x60;otherNetworks&#x60;. | [optional]
 **favicon_url** | **string** | The site&#39;s icon. Absent when the site was unreachable. | [optional]
 **summary** | **string** | One-paragraph summary of the audit. |
 
