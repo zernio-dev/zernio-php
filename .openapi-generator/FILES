@@ -1477,6 +1477,8 @@ docs/Model/FoodMenuLabel.md
 docs/Model/FoodMenuSection.md
 docs/Model/ForwardEmailRequest.md
 docs/Model/ForwardingRule.md
+docs/Model/ForwardingRuleValueCondition.md
+docs/Model/ForwardingRuleValueOverride.md
 docs/Model/FreeBusyError.md
 docs/Model/FromASharedTemplate.md
 docs/Model/FromAZernioTemplate.md
@@ -5674,6 +5676,8 @@ lib/Model/FoodMenuLabel.php
 lib/Model/FoodMenuSection.php
 lib/Model/ForwardEmailRequest.php
 lib/Model/ForwardingRule.php
+lib/Model/ForwardingRuleValueCondition.php
+lib/Model/ForwardingRuleValueOverride.php
 lib/Model/FreeBusyError.php
 lib/Model/FromASharedTemplate.php
 lib/Model/FromAZernioTemplate.php
@@ -8395,3 +8399,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ForwardingRuleValueConditionTest.php
+test/Model/ForwardingRuleValueOverrideTest.php
