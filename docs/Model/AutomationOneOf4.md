@@ -19,5 +19,7 @@ Name | Type | Description | Notes
 **updated_at** | **\DateTime** |  |
 **template** | [**\Zernio\Model\AutomationRecordTemplate**](AutomationRecordTemplate.md) |  | [optional]
 **platform** | **string** | The account&#39;s platform. On TikTok, Threads, LinkedIn and YouTube it only posts the public reply. |
+**read_only** | **bool** | Always true when present. Present when the graph only comes near what the automation does. It is read here and edited through &#x60;/v1/comment-automations&#x60;; an edit here is refused. | [optional]
+**stats** | [**\Zernio\Model\AutomationOneOf4AllOfStats**](AutomationOneOf4AllOfStats.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

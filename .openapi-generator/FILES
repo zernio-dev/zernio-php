@@ -392,6 +392,7 @@ docs/Model/AutomationOneOf2.md
 docs/Model/AutomationOneOf3.md
 docs/Model/AutomationOneOf3AllOfEnrollments.md
 docs/Model/AutomationOneOf4.md
+docs/Model/AutomationOneOf4AllOfStats.md
 docs/Model/AutomationPostSchedule.md
 docs/Model/AutomationPostSubjects.md
 docs/Model/AutomationPreview.md
@@ -4580,6 +4581,7 @@ lib/Model/AutomationOneOf2.php
 lib/Model/AutomationOneOf3.php
 lib/Model/AutomationOneOf3AllOfEnrollments.php
 lib/Model/AutomationOneOf4.php
+lib/Model/AutomationOneOf4AllOfStats.php
 lib/Model/AutomationPostSchedule.php
 lib/Model/AutomationPostSubjects.php
 lib/Model/AutomationPreview.php
@@ -8377,11 +8379,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ConnectTradeDeskAdsCredentials200ResponseTest.php
-test/Model/ConnectTradeDeskAdsCredentialsRequestTest.php
-test/Model/GetAmazonAdsConnectUrl200ResponseTest.php
-test/Model/ListCampaignManagerProfiles200ResponseProfilesInnerTest.php
-test/Model/ListCampaignManagerProfiles200ResponseTest.php
-test/Model/SelectCampaignManagerProfile200ResponseAccountTest.php
-test/Model/SelectCampaignManagerProfile200ResponseTest.php
-test/Model/SelectCampaignManagerProfileRequestTest.php
+test/Model/AutomationOneOf4AllOfStatsTest.php

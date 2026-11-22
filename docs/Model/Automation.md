@@ -26,5 +26,7 @@ Name | Type | Description | Notes
 **enrollments** | [**\Zernio\Model\AutomationOneOf3AllOfEnrollments**](AutomationOneOf3AllOfEnrollments.md) |  |
 **or_triggers** | [**\Zernio\Model\CommentAutomationDefinitionOrTriggersInner[]**](CommentAutomationDefinitionOrTriggersInner.md) | A DM with the same keywords also starts it (&#x60;dm.keyword&#x60;), at the decision and with no comment to act on. Comment triggers with keywords only. | [optional]
 **graph** | [**\Zernio\Model\CommentAutomationDefinitionGraph**](CommentAutomationDefinitionGraph.md) |  |
+**read_only** | **bool** | Always true when present. Present when the graph only comes near what the automation does. It is read here and edited through &#x60;/v1/comment-automations&#x60;; an edit here is refused. | [optional]
+**stats** | [**\Zernio\Model\AutomationOneOf4AllOfStats**](AutomationOneOf4AllOfStats.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -1406,7 +1406,7 @@ listAutomations($account_id, $ad_account_id, $kind, $limit, $cursor): \Zernio\Mo
 
 List automations
 
-Lists the automations on the profiles your key can reach, newest first, across every kind: ad rules, event automations, scheduled automations, sequences and comment to DM.  Sequences and comment to DM need what `/v1/sequences` and `/v1/comment-automations` need: the inbox add-on, and a key with the `messages` group; without them they are left out.
+Lists the automations on the profiles your key can reach, newest first, across every kind: ad rules, event automations, scheduled automations, sequences, comment to DM and flows. One `cursor` pages them all.  Each kind is listed only for callers its own route lets read it; the others are left out, never an error:  - **Sequences, comment to DM and flows** need the inbox add-on and a key with the `messages` group, as `/v1/sequences`, `/v1/comment-automations` and `/v1/workflows` do. - **Ad rules, event and scheduled automations** need only access to their profile, as reading, pausing and deleting them does. Creating, editing, activating or previewing an ad rule needs the ads add-on.
 
 ### Example
 
@@ -1427,9 +1427,9 @@ $apiInstance = new Zernio\Api\AutomationsApi(
 );
 $account_id = 'account_id_example'; // string | Only automations on this account: the ads connection of an ad rule, or one of the `accountIds` of an event or scheduled automation.
 $ad_account_id = 'ad_account_id_example'; // string | Only ad rules checking this platform ad account.
-$kind = ad_rule,event; // string | Only these kinds, comma separated: `ad_rule`, `event`, `scheduled`, `sequence`, `comment`.
+$kind = ad_rule,event; // string | Only these kinds, comma separated: `ad_rule`, `event`, `scheduled`, `sequence`, `comment`, `workflow`.
 $limit = 50; // int
-$cursor = 'cursor_example'; // string | `nextCursor` from the previous page.
+$cursor = 'cursor_example'; // string | `nextCursor` from the previous page, sent back unchanged with the same `kind`, `accountId` and `adAccountId`.  Opaque: it holds the creation time and id of the page's last automation, and the next page is every kind's automations strictly older than it, so an automation created meanwhile never shifts or repeats a page.
 
 try {
     $result = $apiInstance->listAutomations($account_id, $ad_account_id, $kind, $limit, $cursor);
@@ -1445,9 +1445,9 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| Only automations on this account: the ads connection of an ad rule, or one of the &#x60;accountIds&#x60; of an event or scheduled automation. | [optional] |
 | **ad_account_id** | **string**| Only ad rules checking this platform ad account. | [optional] |
-| **kind** | **string**| Only these kinds, comma separated: &#x60;ad_rule&#x60;, &#x60;event&#x60;, &#x60;scheduled&#x60;, &#x60;sequence&#x60;, &#x60;comment&#x60;. | [optional] |
+| **kind** | **string**| Only these kinds, comma separated: &#x60;ad_rule&#x60;, &#x60;event&#x60;, &#x60;scheduled&#x60;, &#x60;sequence&#x60;, &#x60;comment&#x60;, &#x60;workflow&#x60;. | [optional] |
 | **limit** | **int**|  | [optional] [default to 50] |
-| **cursor** | **string**| &#x60;nextCursor&#x60; from the previous page. | [optional] |
+| **cursor** | **string**| &#x60;nextCursor&#x60; from the previous page, sent back unchanged with the same &#x60;kind&#x60;, &#x60;accountId&#x60; and &#x60;adAccountId&#x60;.  Opaque: it holds the creation time and id of the page&#39;s last automation, and the next page is every kind&#39;s automations strictly older than it, so an automation created meanwhile never shifts or repeats a page. | [optional] |
 
 ### Return type
 
