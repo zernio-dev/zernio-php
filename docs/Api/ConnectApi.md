@@ -14,8 +14,12 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**configureTikTokAdsBrandIdentity()**](ConnectApi.md#configureTikTokAdsBrandIdentity) | **PATCH** /v1/connect/tiktok-ads | Set TikTok brand identity |
 | [**connectAds()**](ConnectApi.md#connectAds) | **GET** /v1/connect/{platform}/ads | Connect ads for a platform |
 | [**connectAppLovinAdsCredentials()**](ConnectApi.md#connectAppLovinAdsCredentials) | **POST** /v1/connect/applovin-ads/credentials | Connect an AppLovin Axon account |
+| [**connectAttentiveCredentials()**](ConnectApi.md#connectAttentiveCredentials) | **POST** /v1/connect/attentive/credentials | Connect an Attentive company |
+| [**connectAwinCredentials()**](ConnectApi.md#connectAwinCredentials) | **POST** /v1/connect/awin/credentials | Connect an Awin advertiser |
 | [**connectBlueskyCredentials()**](ConnectApi.md#connectBlueskyCredentials) | **POST** /v1/connect/bluesky/credentials | Connect Bluesky account |
 | [**connectDiscordChannel()**](ConnectApi.md#connectDiscordChannel) | **POST** /v1/connect/discord | Connect a Discord channel |
+| [**connectImpactCredentials()**](ConnectApi.md#connectImpactCredentials) | **POST** /v1/connect/impact/credentials | Connect an Impact program |
+| [**connectKlaviyoCredentials()**](ConnectApi.md#connectKlaviyoCredentials) | **POST** /v1/connect/klaviyo/credentials | Connect a Klaviyo account |
 | [**connectLineCredentials()**](ConnectApi.md#connectLineCredentials) | **POST** /v1/connect/line/credentials | Connect LINE Official Account |
 | [**connectOpenAIAdsCredentials()**](ConnectApi.md#connectOpenAIAdsCredentials) | **POST** /v1/connect/openai-ads/credentials | Connect an OpenAI Ads account |
 | [**connectShopifyWithToken()**](ConnectApi.md#connectShopifyWithToken) | **POST** /v1/connect/shopify/token | Connect a Shopify store with a custom-app Admin token |
@@ -627,6 +631,126 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `connectAttentiveCredentials()`
+
+```php
+connectAttentiveCredentials($connect_attentive_credentials_request): \Zernio\Model\ConnectAttentiveCredentials200Response
+```
+
+Connect an Attentive company
+
+Connect Attentive with the API key of a custom app (Integrations, Custom apps) that can write Custom Events and eCommerce events.  Zernio reads the key's company from Attentive once to check it, then sends the events you forward to it to Attentive. Connecting the same company again replaces its key.  Requires the Ads add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$connect_attentive_credentials_request = {"apiKey":"attentive-api-key","profileId":"6507a1b2c3d4e5f6a7b8c9d0"}; // \Zernio\Model\ConnectAttentiveCredentialsRequest
+
+try {
+    $result = $apiInstance->connectAttentiveCredentials($connect_attentive_credentials_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->connectAttentiveCredentials: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **connect_attentive_credentials_request** | [**\Zernio\Model\ConnectAttentiveCredentialsRequest**](../Model/ConnectAttentiveCredentialsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\ConnectAttentiveCredentials200Response**](../Model/ConnectAttentiveCredentials200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `connectAwinCredentials()`
+
+```php
+connectAwinCredentials($connect_awin_credentials_request): \Zernio\Model\ConnectAwinCredentials200Response
+```
+
+Connect an Awin advertiser
+
+Connect Awin with your advertiser id and an API key (Settings, User settings, API credentials).  Zernio checks the key with one test order (`isTest`, not tracked by Awin) before saving it. Events sent with `testCode` reach Awin the same way.  Requires the Ads add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$connect_awin_credentials_request = {"apiKey":"awin-api-key","advertiserId":"1001","profileId":"6507a1b2c3d4e5f6a7b8c9d0"}; // \Zernio\Model\ConnectAwinCredentialsRequest
+
+try {
+    $result = $apiInstance->connectAwinCredentials($connect_awin_credentials_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->connectAwinCredentials: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **connect_awin_credentials_request** | [**\Zernio\Model\ConnectAwinCredentialsRequest**](../Model/ConnectAwinCredentialsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\ConnectAwinCredentials200Response**](../Model/ConnectAwinCredentials200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `connectBlueskyCredentials()`
 
 ```php
@@ -732,6 +856,126 @@ try {
 ### Return type
 
 void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `connectImpactCredentials()`
+
+```php
+connectImpactCredentials($connect_impact_credentials_request): \Zernio\Model\ConnectImpactCredentials200Response
+```
+
+Connect an Impact program
+
+Connect impact.com with an access token (Settings, API) that can read Campaigns and write Conversions, the program the conversions count in and the event type they count as.  Zernio lists the account's programs once to check the token, then sends the conversions you forward to it to `<programId>:<eventTypeId>`. Another event type of the same account is another forwarding rule with that `destinationId`.  Requires the Ads add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$connect_impact_credentials_request = {"accountSid":"IRaBcD1234567890","authToken":"impact-auth-token","programId":"12345","eventTypeId":"67890","profileId":"6507a1b2c3d4e5f6a7b8c9d0"}; // \Zernio\Model\ConnectImpactCredentialsRequest
+
+try {
+    $result = $apiInstance->connectImpactCredentials($connect_impact_credentials_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->connectImpactCredentials: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **connect_impact_credentials_request** | [**\Zernio\Model\ConnectImpactCredentialsRequest**](../Model/ConnectImpactCredentialsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\ConnectImpactCredentials200Response**](../Model/ConnectImpactCredentials200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `connectKlaviyoCredentials()`
+
+```php
+connectKlaviyoCredentials($connect_klaviyo_credentials_request): \Zernio\Model\ConnectKlaviyoCredentials200Response
+```
+
+Connect a Klaviyo account
+
+Connect Klaviyo with a private API key (Settings, API keys) that has the Events (write) and Accounts (read) scopes.  Zernio reads the key's account once to check it, then sends the events you forward to it (`POST /v1/events`, forwarding rules) to Klaviyo's Events API. Connecting the same account again replaces its key.  Requires the Ads add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$connect_klaviyo_credentials_request = {"apiKey":"pk_0123456789abcdef","profileId":"6507a1b2c3d4e5f6a7b8c9d0"}; // \Zernio\Model\ConnectKlaviyoCredentialsRequest
+
+try {
+    $result = $apiInstance->connectKlaviyoCredentials($connect_klaviyo_credentials_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->connectKlaviyoCredentials: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **connect_klaviyo_credentials_request** | [**\Zernio\Model\ConnectKlaviyoCredentialsRequest**](../Model/ConnectKlaviyoCredentialsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\ConnectKlaviyoCredentials200Response**](../Model/ConnectKlaviyoCredentials200Response.md)
 
 ### Authorization
 

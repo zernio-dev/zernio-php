@@ -751,6 +751,10 @@ docs/Model/ConnectAds200ResponseOneOf.md
 docs/Model/ConnectAds200ResponseOneOf1.md
 docs/Model/ConnectAppLovinAdsCredentials200Response.md
 docs/Model/ConnectAppLovinAdsCredentialsRequest.md
+docs/Model/ConnectAttentiveCredentials200Response.md
+docs/Model/ConnectAttentiveCredentialsRequest.md
+docs/Model/ConnectAwinCredentials200Response.md
+docs/Model/ConnectAwinCredentialsRequest.md
 docs/Model/ConnectBlueskyCredentials200Response.md
 docs/Model/ConnectBlueskyCredentialsRequest.md
 docs/Model/ConnectDiscordChannelRequest.md
@@ -758,6 +762,10 @@ docs/Model/ConnectHandoff.md
 docs/Model/ConnectHandoffAccountsInner.md
 docs/Model/ConnectHandoffError.md
 docs/Model/ConnectHandoffLink.md
+docs/Model/ConnectImpactCredentials200Response.md
+docs/Model/ConnectImpactCredentialsRequest.md
+docs/Model/ConnectKlaviyoCredentials200Response.md
+docs/Model/ConnectKlaviyoCredentialsRequest.md
 docs/Model/ConnectLineCredentials200Response.md
 docs/Model/ConnectLineCredentials200ResponseWebhook.md
 docs/Model/ConnectLineCredentialsRequest.md
@@ -3400,6 +3408,7 @@ docs/Model/TrackingSiteCustomHostname.md
 docs/Model/TrackingSiteCustomHostnameDnsRecord.md
 docs/Model/TrackingSiteInstall.md
 docs/Model/TrackingSitePeriodTotals.md
+docs/Model/TrackingSitePixel.md
 docs/Model/TrackingSiteProxy.md
 docs/Model/TrackingSiteProxyGoogleTagsInner.md
 docs/Model/TrackingSiteSetup.md
@@ -4922,6 +4931,10 @@ lib/Model/ConnectAds200ResponseOneOf.php
 lib/Model/ConnectAds200ResponseOneOf1.php
 lib/Model/ConnectAppLovinAdsCredentials200Response.php
 lib/Model/ConnectAppLovinAdsCredentialsRequest.php
+lib/Model/ConnectAttentiveCredentials200Response.php
+lib/Model/ConnectAttentiveCredentialsRequest.php
+lib/Model/ConnectAwinCredentials200Response.php
+lib/Model/ConnectAwinCredentialsRequest.php
 lib/Model/ConnectBlueskyCredentials200Response.php
 lib/Model/ConnectBlueskyCredentialsRequest.php
 lib/Model/ConnectDiscordChannelRequest.php
@@ -4929,6 +4942,10 @@ lib/Model/ConnectHandoff.php
 lib/Model/ConnectHandoffAccountsInner.php
 lib/Model/ConnectHandoffError.php
 lib/Model/ConnectHandoffLink.php
+lib/Model/ConnectImpactCredentials200Response.php
+lib/Model/ConnectImpactCredentialsRequest.php
+lib/Model/ConnectKlaviyoCredentials200Response.php
+lib/Model/ConnectKlaviyoCredentialsRequest.php
 lib/Model/ConnectLineCredentials200Response.php
 lib/Model/ConnectLineCredentials200ResponseWebhook.php
 lib/Model/ConnectLineCredentialsRequest.php
@@ -7572,6 +7589,7 @@ lib/Model/TrackingSiteCustomHostname.php
 lib/Model/TrackingSiteCustomHostnameDnsRecord.php
 lib/Model/TrackingSiteInstall.php
 lib/Model/TrackingSitePeriodTotals.php
+lib/Model/TrackingSitePixel.php
 lib/Model/TrackingSiteProxy.php
 lib/Model/TrackingSiteProxyGoogleTagsInner.php
 lib/Model/TrackingSiteSetup.php
@@ -8343,3 +8361,12 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ConnectAttentiveCredentials200ResponseTest.php
+test/Model/ConnectAttentiveCredentialsRequestTest.php
+test/Model/ConnectAwinCredentials200ResponseTest.php
+test/Model/ConnectAwinCredentialsRequestTest.php
+test/Model/ConnectImpactCredentials200ResponseTest.php
+test/Model/ConnectImpactCredentialsRequestTest.php
+test/Model/ConnectKlaviyoCredentials200ResponseTest.php
+test/Model/ConnectKlaviyoCredentialsRequestTest.php
+test/Model/TrackingSitePixelTest.php

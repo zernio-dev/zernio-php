@@ -20,5 +20,7 @@ Name | Type | Description | Notes
 **msclkid** | **string** | Microsoft Advertising click ID (the &#x60;msclkid&#x60; URL param Microsoft adds to ad clicks). Sent to Microsoft as &#x60;MicrosoftClickId&#x60; (offline goals) or &#x60;userData.msclkid&#x60; (UET tags), not hashed. | [optional]
 **sccid** | **string** | Snapchat click ID (the &#x60;ScCid&#x60; URL param Snap adds to ad clicks). Sent to Snapchat as &#x60;sc_click_id&#x60;, not hashed. | [optional]
 **scid** | **string** | Snap Pixel browser id (the &#x60;_scid&#x60; cookie). Sent to Snapchat as &#x60;sc_cookie1&#x60;, not hashed. | [optional]
+**irclickid** | **string** | Impact partner click id (the &#x60;irclickid&#x60; URL param Impact adds to partner links). Sent to Impact as &#x60;ClickId&#x60;. | [optional]
+**awc** | **string** | Awin click id (the &#x60;awc&#x60; URL param Awin adds to publisher links). Sent to Awin as the order&#39;s &#x60;awc&#x60;. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
