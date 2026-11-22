@@ -9,6 +9,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**addAdConversionAssociations()**](ConversionsApi.md#addAdConversionAssociations) | **POST** /v1/ads/conversions/destinations/{destinationId}/associations | Associate campaigns |
 | [**addConversionAssociations()**](ConversionsApi.md#addConversionAssociations) | **POST** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | Associate campaigns |
 | [**adjustConversions()**](ConversionsApi.md#adjustConversions) | **POST** /v1/ads/conversions/adjustments | Adjust uploaded conversions |
+| [**checkTrackingSiteProxy()**](ConversionsApi.md#checkTrackingSiteProxy) | **POST** /v1/tracking-sites/{siteId}/proxy-check | Check a tracking site&#39;s own-domain path |
 | [**createAdConversionDestination()**](ConversionsApi.md#createAdConversionDestination) | **POST** /v1/ads/conversions/destinations | Create a conversion destination |
 | [**createAdCustomConversion()**](ConversionsApi.md#createAdCustomConversion) | **POST** /v1/ads/conversions/custom-conversions | Create custom conversion |
 | [**createConversionAction()**](ConversionsApi.md#createConversionAction) | **POST** /v1/ads/conversions/actions | Create conversion action |
@@ -245,6 +246,66 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `checkTrackingSiteProxy()`
+
+```php
+checkTrackingSiteProxy($site_id): \Zernio\Model\CreateTrackingSite201Response
+```
+
+Check a tracking site's own-domain path
+
+Loads `https://<first domain><proxyPath>/z.js` from Zernio's servers and records whether your proxy serves the tag, signed, in `proxy.status`. Once `verified`, cookies come from your own domain and Safari keeps them; a connected Tag Manager container moves to the path. Also runs after `proxyPath` changes.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$site_id = 'site_id_example'; // string
+
+try {
+    $result = $apiInstance->checkTrackingSiteProxy($site_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->checkTrackingSiteProxy: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **site_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateTrackingSite201Response**](../Model/CreateTrackingSite201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
