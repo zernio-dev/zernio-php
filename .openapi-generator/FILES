@@ -812,7 +812,9 @@ docs/Model/ConversationAdAttribution.md
 docs/Model/ConversionAction.md
 docs/Model/ConversionActionTagSnippetsInner.md
 docs/Model/ConversionAuditAnswer.md
+docs/Model/ConversionAuditAnswerNetworksInner.md
 docs/Model/ConversionAuditAnswerPublicReport.md
+docs/Model/ConversionAuditAnswerTopFixesInner.md
 docs/Model/ConversionAuditMonitor.md
 docs/Model/ConversionAuditMonitorAnswer.md
 docs/Model/ConversionAuditMonitorScoreHistoryInner.md
@@ -5007,7 +5009,9 @@ lib/Model/ConversationAdAttribution.php
 lib/Model/ConversionAction.php
 lib/Model/ConversionActionTagSnippetsInner.php
 lib/Model/ConversionAuditAnswer.php
+lib/Model/ConversionAuditAnswerNetworksInner.php
 lib/Model/ConversionAuditAnswerPublicReport.php
+lib/Model/ConversionAuditAnswerTopFixesInner.php
 lib/Model/ConversionAuditMonitor.php
 lib/Model/ConversionAuditMonitorAnswer.php
 lib/Model/ConversionAuditMonitorScoreHistoryInner.php
@@ -8391,3 +8395,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ConversionAuditAnswerNetworksInnerTest.php
+test/Model/ConversionAuditAnswerTopFixesInnerTest.php
