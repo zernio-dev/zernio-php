@@ -296,7 +296,7 @@ createAutomation($automation_definition, $idempotency_key): \Zernio\Model\Create
 
 Create an automation
 
-Creates an automation. Its shape picks the kind:  - **Ad rule**: a `schedule` over campaigns, ad sets, ads, Google keywords or Google search terms, with metric `conditions` and ad `steps`. It stays paused unless `status` is `active`; preview it first with `POST /v1/automations/preview`. - **Event**: a Zernio event in `trigger.type`, such as `post.failed`, with notify steps. It is on unless `status` is `paused`. - **Scheduled**: a `schedule` over a profile's posts, with notify steps and an optional boost. It is on unless `status` is `paused`. - **Sequence**: an `enrollment` trigger on one messaging account, with message steps sent over time. It is on unless `status` is `draft`. It needs what `/v1/sequences` needs: the inbox add-on and a key with the `messages` group.  Everything an automation cannot hold is refused at once: the 400 lists every problem with its JSON path in `details.problems`.
+Creates an automation. Its shape picks the kind:  - **Ad rule**: a `schedule` over campaigns, ad sets, ads, Google keywords or Google search terms, with metric `conditions` and ad `steps`. It stays paused unless `status` is `active`; preview it first with `POST /v1/automations/preview`. - **Event**: a Zernio event in `trigger.type`, such as `post.failed`, with notify steps. It is on unless `status` is `paused`. - **Scheduled**: a `schedule` over a profile's posts, with notify steps and an optional boost. It is on unless `status` is `paused`. - **Sequence**: an `enrollment` trigger on one messaging account, with message steps sent over time. It is on unless `status` is `draft`. It needs what `/v1/sequences` needs: the inbox add-on and a key with the `messages` group. - **Comment to DM**: a comment door in `trigger.type`, such as `comment.keyword`, with a `graph` of the shapes `/v1/comment-automations` holds. It is on unless `status` is `paused`, and needs what `/v1/comment-automations` needs. A post that already has an active automation is a 409.  Everything an automation cannot hold is refused at once: the 400 lists every problem with its JSON path in `details.problems`.
 
 ### Example
 
@@ -1406,7 +1406,7 @@ listAutomations($account_id, $ad_account_id, $kind, $limit, $cursor): \Zernio\Mo
 
 List automations
 
-Lists the automations on the profiles your key can reach, newest first, across every kind: ad rules, event automations, scheduled automations and sequences. Sequences need what `/v1/sequences` needs: the inbox add-on, and a key with the `messages` group; without them they are left out.
+Lists the automations on the profiles your key can reach, newest first, across every kind: ad rules, event automations, scheduled automations, sequences and comment to DM.  Sequences and comment to DM need what `/v1/sequences` and `/v1/comment-automations` need: the inbox add-on, and a key with the `messages` group; without them they are left out.
 
 ### Example
 
@@ -1427,7 +1427,7 @@ $apiInstance = new Zernio\Api\AutomationsApi(
 );
 $account_id = 'account_id_example'; // string | Only automations on this account: the ads connection of an ad rule, or one of the `accountIds` of an event or scheduled automation.
 $ad_account_id = 'ad_account_id_example'; // string | Only ad rules checking this platform ad account.
-$kind = ad_rule,event; // string | Only these kinds, comma separated: `ad_rule`, `event`, `scheduled`, `sequence`.
+$kind = ad_rule,event; // string | Only these kinds, comma separated: `ad_rule`, `event`, `scheduled`, `sequence`, `comment`.
 $limit = 50; // int
 $cursor = 'cursor_example'; // string | `nextCursor` from the previous page.
 
@@ -1445,7 +1445,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| Only automations on this account: the ads connection of an ad rule, or one of the &#x60;accountIds&#x60; of an event or scheduled automation. | [optional] |
 | **ad_account_id** | **string**| Only ad rules checking this platform ad account. | [optional] |
-| **kind** | **string**| Only these kinds, comma separated: &#x60;ad_rule&#x60;, &#x60;event&#x60;, &#x60;scheduled&#x60;, &#x60;sequence&#x60;. | [optional] |
+| **kind** | **string**| Only these kinds, comma separated: &#x60;ad_rule&#x60;, &#x60;event&#x60;, &#x60;scheduled&#x60;, &#x60;sequence&#x60;, &#x60;comment&#x60;. | [optional] |
 | **limit** | **int**|  | [optional] [default to 50] |
 | **cursor** | **string**| &#x60;nextCursor&#x60; from the previous page. | [optional] |
 

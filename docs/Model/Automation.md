@@ -6,12 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** |  |
 **status** | **string** | Only a sequence can be a draft. |
-**trigger** | [**\Zernio\Model\SequenceAutomationDefinitionTrigger**](SequenceAutomationDefinitionTrigger.md) |  |
+**trigger** | [**\Zernio\Model\CommentAutomationDefinitionTrigger**](CommentAutomationDefinitionTrigger.md) |  |
 **subjects** | [**\Zernio\Model\AutomationPostSubjects**](AutomationPostSubjects.md) |  |
 **conditions** | [**\Zernio\Model\AdRuleConditions**](AdRuleConditions.md) |  |
 **alert** | [**\Zernio\Model\AutomationAlert**](AutomationAlert.md) |  | [optional]
 **steps** | [**\Zernio\Model\AutomationSequenceStep[]**](AutomationSequenceStep.md) | At least one step for an active sequence. Steps change only while it is a draft or paused. |
-**limits** | [**\Zernio\Model\SequenceAutomationDefinitionLimits**](SequenceAutomationDefinitionLimits.md) |  | [optional]
+**limits** | [**\Zernio\Model\CommentAutomationDefinitionLimits**](CommentAutomationDefinitionLimits.md) |  |
 **id** | **string** |  |
 **kind** | **string** |  |
 **version** | **string** | Send it back as &#x60;If-Match&#x60; when editing, so an edit made after someone else saved is refused. |
@@ -22,7 +22,9 @@ Name | Type | Description | Notes
 **template** | [**\Zernio\Model\AutomationRecordTemplate**](AutomationRecordTemplate.md) |  | [optional]
 **filter** | [**\Zernio\Model\AutomationFactCondition**](AutomationFactCondition.md) |  | [optional]
 **description** | **string** |  | [optional]
-**platform** | **string** | The account&#39;s platform. On &#x60;whatsapp&#x60; every step sends a template. |
+**platform** | **string** | The account&#39;s platform. On TikTok, Threads, LinkedIn and YouTube it only posts the public reply. |
 **enrollments** | [**\Zernio\Model\AutomationOneOf3AllOfEnrollments**](AutomationOneOf3AllOfEnrollments.md) |  |
+**or_triggers** | [**\Zernio\Model\CommentAutomationDefinitionOrTriggersInner[]**](CommentAutomationDefinitionOrTriggersInner.md) | A DM with the same keywords also starts it (&#x60;dm.keyword&#x60;), at the decision and with no comment to act on. Comment triggers with keywords only. | [optional]
+**graph** | [**\Zernio\Model\CommentAutomationDefinitionGraph**](CommentAutomationDefinitionGraph.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
