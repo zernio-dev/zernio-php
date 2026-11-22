@@ -25,6 +25,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**connectShopifyWithToken()**](ConnectApi.md#connectShopifyWithToken) | **POST** /v1/connect/shopify/token | Connect a Shopify store with a custom-app Admin token |
 | [**connectSlackChannel()**](ConnectApi.md#connectSlackChannel) | **POST** /v1/connect/slack | Connect a Slack channel |
 | [**connectSnapchatAdsCredentials()**](ConnectApi.md#connectSnapchatAdsCredentials) | **POST** /v1/connect/snapchat-ads/credentials | Connect a Snapchat Ads pixel |
+| [**connectTaboolaAdsCredentials()**](ConnectApi.md#connectTaboolaAdsCredentials) | **POST** /v1/connect/taboola-ads/credentials | Connect a Taboola account |
 | [**connectTradeDeskAdsCredentials()**](ConnectApi.md#connectTradeDeskAdsCredentials) | **POST** /v1/connect/tradedesk-ads/credentials | Connect a Trade Desk tracking tag |
 | [**connectWebflowWithSiteToken()**](ConnectApi.md#connectWebflowWithSiteToken) | **POST** /v1/connect/webflow/token | Connect Webflow with a site API token |
 | [**connectWechatCredentials()**](ConnectApi.md#connectWechatCredentials) | **POST** /v1/connect/wechat/credentials | Connect WeChat Official Account |
@@ -1280,6 +1281,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\ConnectSnapchatAdsCredentials200Response**](../Model/ConnectSnapchatAdsCredentials200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `connectTaboolaAdsCredentials()`
+
+```php
+connectTaboolaAdsCredentials($connect_taboola_ads_credentials_request): \Zernio\Model\ConnectTaboolaAdsCredentials200Response
+```
+
+Connect a Taboola account
+
+Connect a Taboola advertiser account by its numeric Account ID from Taboola Realize. Taboola's S2S postback takes no credential, so nothing secret is stored and nothing is checked with Taboola.  The account then receives the conversion events you forward to it (`POST /v1/events`, forwarding rules). Each event needs the Taboola click ID (`clickIds.tblci`).  Taboola counts an event only when its name equals the Event Name of a conversion rule in Realize. Rename events in the forwarding rule when they differ.  Requires the Ads add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$connect_taboola_ads_credentials_request = {"taboolaAccountId":"1234567","profileId":"6507a1b2c3d4e5f6a7b8c9d0"}; // \Zernio\Model\ConnectTaboolaAdsCredentialsRequest
+
+try {
+    $result = $apiInstance->connectTaboolaAdsCredentials($connect_taboola_ads_credentials_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->connectTaboolaAdsCredentials: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **connect_taboola_ads_credentials_request** | [**\Zernio\Model\ConnectTaboolaAdsCredentialsRequest**](../Model/ConnectTaboolaAdsCredentialsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\ConnectTaboolaAdsCredentials200Response**](../Model/ConnectTaboolaAdsCredentials200Response.md)
 
 ### Authorization
 

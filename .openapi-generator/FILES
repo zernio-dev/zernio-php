@@ -779,6 +779,8 @@ docs/Model/ConnectShopifyWithTokenRequest.md
 docs/Model/ConnectSlackChannelRequest.md
 docs/Model/ConnectSnapchatAdsCredentials200Response.md
 docs/Model/ConnectSnapchatAdsCredentialsRequest.md
+docs/Model/ConnectTaboolaAdsCredentials200Response.md
+docs/Model/ConnectTaboolaAdsCredentialsRequest.md
 docs/Model/ConnectTradeDeskAdsCredentials200Response.md
 docs/Model/ConnectTradeDeskAdsCredentialsRequest.md
 docs/Model/ConnectWebflowWithSiteToken200Response.md
@@ -4972,6 +4974,8 @@ lib/Model/ConnectShopifyWithTokenRequest.php
 lib/Model/ConnectSlackChannelRequest.php
 lib/Model/ConnectSnapchatAdsCredentials200Response.php
 lib/Model/ConnectSnapchatAdsCredentialsRequest.php
+lib/Model/ConnectTaboolaAdsCredentials200Response.php
+lib/Model/ConnectTaboolaAdsCredentialsRequest.php
 lib/Model/ConnectTradeDeskAdsCredentials200Response.php
 lib/Model/ConnectTradeDeskAdsCredentialsRequest.php
 lib/Model/ConnectWebflowWithSiteToken200Response.php
@@ -8387,3 +8391,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ConnectTaboolaAdsCredentials200ResponseTest.php
+test/Model/ConnectTaboolaAdsCredentialsRequestTest.php
