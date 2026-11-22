@@ -779,6 +779,9 @@ docs/Model/ConversionAction.md
 docs/Model/ConversionActionTagSnippetsInner.md
 docs/Model/ConversionAuditAnswer.md
 docs/Model/ConversionAuditAnswerPublicReport.md
+docs/Model/ConversionAuditMonitor.md
+docs/Model/ConversionAuditMonitorAnswer.md
+docs/Model/ConversionAuditMonitorScoreHistoryInner.md
 docs/Model/ConversionAuditReport.md
 docs/Model/ConversionAuditReportChecksInner.md
 docs/Model/ConversionAuditReportChecksInnerVerify.md
@@ -926,6 +929,7 @@ docs/Model/CreateContact200ResponseContact.md
 docs/Model/CreateContactRequest.md
 docs/Model/CreateConversionAction201Response.md
 docs/Model/CreateConversionActionRequest.md
+docs/Model/CreateConversionAuditMonitorRequest.md
 docs/Model/CreateConversionDestinationRequest.md
 docs/Model/CreateCreatorCampaign201Response.md
 docs/Model/CreateCreatorCampaignRequest.md
@@ -2400,6 +2404,7 @@ docs/Model/ListContacts200Response.md
 docs/Model/ListContacts200ResponseContactsInner.md
 docs/Model/ListContacts200ResponseFilters.md
 docs/Model/ListConversionActions200Response.md
+docs/Model/ListConversionAuditMonitors200Response.md
 docs/Model/ListCreatorCampaigns200Response.md
 docs/Model/ListCrmDeals200Response.md
 docs/Model/ListCrmOwners200Response.md
@@ -4923,6 +4928,9 @@ lib/Model/ConversionAction.php
 lib/Model/ConversionActionTagSnippetsInner.php
 lib/Model/ConversionAuditAnswer.php
 lib/Model/ConversionAuditAnswerPublicReport.php
+lib/Model/ConversionAuditMonitor.php
+lib/Model/ConversionAuditMonitorAnswer.php
+lib/Model/ConversionAuditMonitorScoreHistoryInner.php
 lib/Model/ConversionAuditReport.php
 lib/Model/ConversionAuditReportChecksInner.php
 lib/Model/ConversionAuditReportChecksInnerVerify.php
@@ -5070,6 +5078,7 @@ lib/Model/CreateContact200ResponseContact.php
 lib/Model/CreateContactRequest.php
 lib/Model/CreateConversionAction201Response.php
 lib/Model/CreateConversionActionRequest.php
+lib/Model/CreateConversionAuditMonitorRequest.php
 lib/Model/CreateConversionDestinationRequest.php
 lib/Model/CreateCreatorCampaign201Response.php
 lib/Model/CreateCreatorCampaignRequest.php
@@ -6544,6 +6553,7 @@ lib/Model/ListContacts200Response.php
 lib/Model/ListContacts200ResponseContactsInner.php
 lib/Model/ListContacts200ResponseFilters.php
 lib/Model/ListConversionActions200Response.php
+lib/Model/ListConversionAuditMonitors200Response.php
 lib/Model/ListCreatorCampaigns200Response.php
 lib/Model/ListCrmDeals200Response.php
 lib/Model/ListCrmOwners200Response.php
@@ -8289,15 +8299,8 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/MetaDatasetAuditDatasetTest.php
-test/Model/MetaDatasetAuditDatasetsInnerTest.php
-test/Model/MetaDatasetAuditEventsInnerDailyInnerTest.php
-test/Model/MetaDatasetAuditEventsInnerDedupInnerTest.php
-test/Model/MetaDatasetAuditEventsInnerDiagnosticsInnerTest.php
-test/Model/MetaDatasetAuditEventsInnerMatchKeysInnerTest.php
-test/Model/MetaDatasetAuditEventsInnerTest.php
-test/Model/MetaDatasetAuditFindingsInnerFixTest.php
-test/Model/MetaDatasetAuditFindingsInnerTest.php
-test/Model/MetaDatasetAuditTest.php
-test/Model/MetaDatasetAuditUnavailableInnerTest.php
-test/Model/MetaDatasetAuditWindowTest.php
+test/Model/ConversionAuditMonitorAnswerTest.php
+test/Model/ConversionAuditMonitorScoreHistoryInnerTest.php
+test/Model/ConversionAuditMonitorTest.php
+test/Model/CreateConversionAuditMonitorRequestTest.php
+test/Model/ListConversionAuditMonitors200ResponseTest.php

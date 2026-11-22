@@ -7,8 +7,11 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**auditConversionTracking()**](ConversionAuditApi.md#auditConversionTracking) | **GET** /v1/conversion-audit | Audit a site&#39;s ad conversion tracking |
+| [**createConversionAuditMonitor()**](ConversionAuditApi.md#createConversionAuditMonitor) | **POST** /v1/conversion-audit/monitors | Watch a domain |
+| [**deleteConversionAuditMonitor()**](ConversionAuditApi.md#deleteConversionAuditMonitor) | **DELETE** /v1/conversion-audit/monitors/{monitorId} | Stop watching a domain |
 | [**getLatestConversionAudit()**](ConversionAuditApi.md#getLatestConversionAudit) | **GET** /v1/conversion-audit/latest | Get a host&#39;s latest stored conversion audit |
 | [**getMetaConversionAudit()**](ConversionAuditApi.md#getMetaConversionAudit) | **GET** /v1/conversion-audit/meta-audit | Audit a connected Meta pixel from inside Events Manager |
+| [**listConversionAuditMonitors()**](ConversionAuditApi.md#listConversionAuditMonitors) | **GET** /v1/conversion-audit/monitors | List watched domains |
 
 
 ## `auditConversionTracking()`
@@ -57,6 +60,126 @@ try {
 ### Return type
 
 [**\Zernio\Model\ConversionAuditAnswer**](../Model/ConversionAuditAnswer.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createConversionAuditMonitor()`
+
+```php
+createConversionAuditMonitor($create_conversion_audit_monitor_request): \Zernio\Model\ConversionAuditMonitorAnswer
+```
+
+Watch a domain
+
+Watch a domain's conversion tracking. Zernio rescans its homepage once a day and emails the account's address when tracking breaks, with what changed and the fix prompt for a coding agent. A break is:  - a score drop of 5 points or more - an ad network that stops tracking or stops firing - a pixel that starts firing before the cookie banner is answered - a server-side path that disappears  A break is confirmed by a second scan before any email goes out. The first check compares against the host's stored report when it has one, so run `auditConversionTracking` first to start from today's state.  Watching a domain you already watch returns it with `created: false` and status `200`. An account can watch up to 25 domains.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionAuditApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_conversion_audit_monitor_request = new \Zernio\Model\CreateConversionAuditMonitorRequest(); // \Zernio\Model\CreateConversionAuditMonitorRequest
+
+try {
+    $result = $apiInstance->createConversionAuditMonitor($create_conversion_audit_monitor_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionAuditApi->createConversionAuditMonitor: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_conversion_audit_monitor_request** | [**\Zernio\Model\CreateConversionAuditMonitorRequest**](../Model/CreateConversionAuditMonitorRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\ConversionAuditMonitorAnswer**](../Model/ConversionAuditMonitorAnswer.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteConversionAuditMonitor()`
+
+```php
+deleteConversionAuditMonitor($monitor_id): \Zernio\Model\DeleteAutomationTemplate200Response
+```
+
+Stop watching a domain
+
+Stops the daily checks and alert emails for this domain. The host's public report stays.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionAuditApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$monitor_id = 'monitor_id_example'; // string | The monitor's `id`, from `listConversionAuditMonitors` or `createConversionAuditMonitor`.
+
+try {
+    $result = $apiInstance->deleteConversionAuditMonitor($monitor_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionAuditApi->deleteConversionAuditMonitor: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **monitor_id** | **string**| The monitor&#39;s &#x60;id&#x60;, from &#x60;listConversionAuditMonitors&#x60; or &#x60;createConversionAuditMonitor&#x60;. | |
+
+### Return type
+
+[**\Zernio\Model\DeleteAutomationTemplate200Response**](../Model/DeleteAutomationTemplate200Response.md)
 
 ### Authorization
 
@@ -181,6 +304,63 @@ try {
 ### Return type
 
 [**\Zernio\Model\MetaDatasetAudit**](../Model/MetaDatasetAudit.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listConversionAuditMonitors()`
+
+```php
+listConversionAuditMonitors(): \Zernio\Model\ListConversionAuditMonitors200Response
+```
+
+List watched domains
+
+The domains you watch with the Conversion Leak Report, each with its last score and the score of each daily check.  Zernio rescans every watched domain once a day. When tracking breaks, it emails you what changed and the fix prompt. `createConversionAuditMonitor` lists what counts as a break.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionAuditApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listConversionAuditMonitors();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionAuditApi->listConversionAuditMonitors: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\Zernio\Model\ListConversionAuditMonitors200Response**](../Model/ListConversionAuditMonitors200Response.md)
 
 ### Authorization
 
