@@ -24,7 +24,7 @@ addUsersToAdAudience($audience_id, $add_users_to_ad_audience_request): \Zernio\M
 
 Add users to audience
 
-Uploads customer emails (and phone numbers on Meta) to a customer list audience, hashed before they are sent.  Data is SHA256-hashed server-side before sending to the platform. Max 10,000 users per request.  ### Per-platform behavior  - **All platforms**: email is used everywhere. Phone is used on Meta only (other platforms ignore it). - **TikTok and Pinterest**: the first upload also provisions the audience (deferred create). - **LinkedIn**: uploads are full-replace. - **Reddit**: see below.  ### Reddit  - Emails are lowercased and trimmed before hashing, duplicates are sent once, and the upload goes out in batches of 2,500. - Reddit matches by email only: rows without a valid email count in `numInvalid`, and a request where no row has one is a 400. - Reddit audiences need the `redditads` connection, not the Reddit posting account (422).  ### Audience types  customer_list only. A LinkedIn `company_list` audience takes company rows, not people: send those to `POST /v1/ads/audiences/{audienceId}/companies`. This endpoint 422s for every other audience type.
+Uploads people to a customer list audience. Send each match key in plaintext or already SHA-256 hashed (64 hex characters): plaintext is normalized and hashed server-side, a hash is sent as is. Max 10,000 users per request.  ### Hashing it yourself  Hash the normalized value, or it will not match: email trimmed and lowercased; first and last name lowercased without punctuation; `birthYear` as `YYYY`, `birthMonth` and `birthDay` as two digits; `gender` as `m` or `f`; `country` as a lowercase ISO 3166-1 alpha-2 code.  Phone is the one key the platforms disagree on: Meta hashes the digits with the country code and no `+` (`14155551234`), Google wants E.164 with the `+` (`+14155551234`). Send phones in plaintext to match on both; a hashed phone is sent unchanged to each platform.  ### Which keys each platform uses  | Platform | Keys used | |---|---| | Meta | every key | | Google | `email`, `phone`, and the address (`firstName`, `lastName`, `country`, `zip`) when all four are present with `country` and `zip` in plaintext | | TikTok, LinkedIn, Pinterest, X, Reddit | `email` |  Keys a platform does not use are ignored. A row with none of the keys that platform uses counts in `numInvalid`.  ### Large lists  Send lists over 10,000 people as several requests to the same audience: each one adds to it, except on LinkedIn.  - **TikTok and Pinterest**: the first upload creates the audience on the platform, later uploads add to it. TikTok allows 24 updates per audience per day. - **LinkedIn**: each upload replaces the whole list (a list-upload segment holds one list), so send the full list in one request.  ### Reddit  - Duplicates are sent once, and the upload goes out in batches of 2,500. - A request where no row has an email is a 400. - Reddit audiences need the `redditads` connection, not the Reddit posting account (422).  ### Audience types  customer_list only. A LinkedIn `company_list` audience takes company rows, not people: send those to `POST /v1/ads/audiences/{audienceId}/companies`. This endpoint 422s for every other audience type.
 
 ### Example
 
@@ -327,12 +327,12 @@ try {
 ## `removeUsersFromAdAudience()`
 
 ```php
-removeUsersFromAdAudience($audience_id, $remove_users_from_ad_audience_request): \Zernio\Model\RemoveUsersFromAdAudience200Response
+removeUsersFromAdAudience($audience_id, $add_users_to_ad_audience_request): \Zernio\Model\RemoveUsersFromAdAudience200Response
 ```
 
 Remove users from audience
 
-Removes customer emails (and phone numbers on Meta) from a Meta or Reddit customer list audience. Same body as `POST /v1/ads/audiences/{audienceId}/users`: send plaintext rows, they are normalized and SHA256-hashed server-side exactly like an upload, so a row removes the person it added.  Meta and Reddit only, customer_list only. Every other platform returns 422 with code `feature_not_available`, and every other audience type returns 422. Max 10,000 users per request. The platform applies the removal asynchronously, so the audience size does not drop immediately. On Reddit `invalidEntrySamples` is always empty.
+Removes people from a Meta or Reddit customer list audience. Same body as `POST /v1/ads/audiences/{audienceId}/users`: plaintext keys are normalized and SHA-256 hashed exactly like an upload and hashed keys are sent as is, so a row removes the person it added.  Meta and Reddit only, customer_list only. Every other platform returns 422 with code `feature_not_available`, and every other audience type returns 422. Max 10,000 users per request. The platform applies the removal asynchronously, so the audience size does not drop immediately. On Reddit `invalidEntrySamples` is always empty.
 
 ### Example
 
@@ -352,10 +352,10 @@ $apiInstance = new Zernio\Api\AdAudiencesApi(
     $config
 );
 $audience_id = 'audience_id_example'; // string | The Zernio audience id (the id field of GET /v1/ads/audiences), not the platform segment id.
-$remove_users_from_ad_audience_request = new \Zernio\Model\RemoveUsersFromAdAudienceRequest(); // \Zernio\Model\RemoveUsersFromAdAudienceRequest
+$add_users_to_ad_audience_request = new \Zernio\Model\AddUsersToAdAudienceRequest(); // \Zernio\Model\AddUsersToAdAudienceRequest
 
 try {
-    $result = $apiInstance->removeUsersFromAdAudience($audience_id, $remove_users_from_ad_audience_request);
+    $result = $apiInstance->removeUsersFromAdAudience($audience_id, $add_users_to_ad_audience_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdAudiencesApi->removeUsersFromAdAudience: ', $e->getMessage(), PHP_EOL;
@@ -367,7 +367,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **audience_id** | **string**| The Zernio audience id (the id field of GET /v1/ads/audiences), not the platform segment id. | |
-| **remove_users_from_ad_audience_request** | [**\Zernio\Model\RemoveUsersFromAdAudienceRequest**](../Model/RemoveUsersFromAdAudienceRequest.md)|  | |
+| **add_users_to_ad_audience_request** | [**\Zernio\Model\AddUsersToAdAudienceRequest**](../Model/AddUsersToAdAudienceRequest.md)|  | |
 
 ### Return type
 

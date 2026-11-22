@@ -258,7 +258,6 @@ docs/Model/AddTrackingTagSharedAccount201Response.md
 docs/Model/AddTrackingTagSharedAccountRequest.md
 docs/Model/AddUsersToAdAudience200Response.md
 docs/Model/AddUsersToAdAudienceRequest.md
-docs/Model/AddUsersToAdAudienceRequestUsersInner.md
 docs/Model/AddWhatsAppGroupParticipantsRequest.md
 docs/Model/AdjustConversions200Response.md
 docs/Model/AdjustConversions200ResponseFailuresInner.md
@@ -331,6 +330,8 @@ docs/Model/AttachCampaignAssets201Response.md
 docs/Model/AttachCampaignAssetsRequest.md
 docs/Model/AttachNumberToSipTrunk200Response.md
 docs/Model/AttachNumberToSipTrunkRequest.md
+docs/Model/AudienceUploadUser.md
+docs/Model/AudienceUploadUserConsent.md
 docs/Model/AutoRecharge.md
 docs/Model/AutocompleteContacts200Response.md
 docs/Model/AutocompleteContacts200ResponseDataInner.md
@@ -2988,7 +2989,6 @@ docs/Model/RemoveUser200Response.md
 docs/Model/RemoveUser200ResponseRemovedUser.md
 docs/Model/RemoveUser403Response.md
 docs/Model/RemoveUsersFromAdAudience200Response.md
-docs/Model/RemoveUsersFromAdAudienceRequest.md
 docs/Model/RemoveWhatsAppGroupParticipantsRequest.md
 docs/Model/ReorderCommerceCollectionProductsRequest.md
 docs/Model/ReorderCommerceCollectionProductsRequestMovesInner.md
@@ -4429,7 +4429,6 @@ lib/Model/AddTrackingTagSharedAccount201Response.php
 lib/Model/AddTrackingTagSharedAccountRequest.php
 lib/Model/AddUsersToAdAudience200Response.php
 lib/Model/AddUsersToAdAudienceRequest.php
-lib/Model/AddUsersToAdAudienceRequestUsersInner.php
 lib/Model/AddWhatsAppGroupParticipantsRequest.php
 lib/Model/AdjustConversions200Response.php
 lib/Model/AdjustConversions200ResponseFailuresInner.php
@@ -4502,6 +4501,8 @@ lib/Model/AttachCampaignAssets201Response.php
 lib/Model/AttachCampaignAssetsRequest.php
 lib/Model/AttachNumberToSipTrunk200Response.php
 lib/Model/AttachNumberToSipTrunkRequest.php
+lib/Model/AudienceUploadUser.php
+lib/Model/AudienceUploadUserConsent.php
 lib/Model/AutoRecharge.php
 lib/Model/AutocompleteContacts200Response.php
 lib/Model/AutocompleteContacts200ResponseDataInner.php
@@ -7160,7 +7161,6 @@ lib/Model/RemoveUser200Response.php
 lib/Model/RemoveUser200ResponseRemovedUser.php
 lib/Model/RemoveUser403Response.php
 lib/Model/RemoveUsersFromAdAudience200Response.php
-lib/Model/RemoveUsersFromAdAudienceRequest.php
 lib/Model/RemoveWhatsAppGroupParticipantsRequest.php
 lib/Model/ReorderCommerceCollectionProductsRequest.php
 lib/Model/ReorderCommerceCollectionProductsRequestMovesInner.php
@@ -8343,15 +8343,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/AutomationOneOf4Test.php
-test/Model/CommentAutomationDefinitionGraphEdgesInnerTest.php
-test/Model/CommentAutomationDefinitionGraphNodesInnerTest.php
-test/Model/CommentAutomationDefinitionGraphTest.php
-test/Model/CommentAutomationDefinitionLimitsRepeatTest.php
-test/Model/CommentAutomationDefinitionLimitsTest.php
-test/Model/CommentAutomationDefinitionOrTriggersInnerTest.php
-test/Model/CommentAutomationDefinitionTest.php
-test/Model/CommentAutomationDefinitionTriggerTest.php
-test/Model/CommentAutomationFilterLeftTest.php
-test/Model/CommentAutomationFilterRightTest.php
-test/Model/CommentAutomationFilterTest.php
+test/Model/AudienceUploadUserConsentTest.php
+test/Model/AudienceUploadUserTest.php
