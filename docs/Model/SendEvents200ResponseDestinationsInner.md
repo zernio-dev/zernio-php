@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **platform** | **string** |  | [optional]
 **events_sent** | **int** | Events the platform accepted. | [optional]
 **events_failed** | **int** |  | [optional]
+**events_dropped** | **int** | Events this destination did not get because the visitor did not consent (see Consent above). | [optional]
+**drops** | [**\Zernio\Model\ConsentDrop[]**](ConsentDrop.md) |  | [optional]
 **failures** | [**\Zernio\Model\SendEvents200ResponseDestinationsInnerFailuresInner[]**](SendEvents200ResponseDestinationsInnerFailuresInner.md) |  | [optional]
 **error** | **string** | Set when the destination could not be reached at all (account disconnected, unsupported platform, platform error). | [optional]
 **retrying** | **bool** | The destination failed for now (platform error, timeout, rate limit) and the send is queued for retries; its outcome shows on GET /v1/events/{eventId}. | [optional]

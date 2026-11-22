@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **destination_id** | **string** | The destination (pixel, dataset or conversion action) id, the same as the forwarding rule&#39;s destinationId. | [optional]
 **sent_today** | **int** | Events the platform accepted today. | [optional]
 **failed_today** | **int** | Events that failed for good today. | [optional]
+**dropped_today** | [**\Zernio\Model\GetEventsOverview200ResponsePlatformsInnerDroppedToday**](GetEventsOverview200ResponsePlatformsInnerDroppedToday.md) |  | [optional]
 **last_sent_at** | **\DateTime** | Last accepted send in the last 30 days. | [optional]
 **last_event_name** | **string** | Name of the event in that send. | [optional]
 **last_error** | **string** | The platform&#39;s error on the last failed send in the last 30 days. | [optional]

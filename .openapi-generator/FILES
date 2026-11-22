@@ -773,6 +773,7 @@ docs/Model/ConnectedAccount.md
 docs/Model/ConnectedApp.md
 docs/Model/ConnectedMessagingAccount.md
 docs/Model/ConnectedStore.md
+docs/Model/ConsentDrop.md
 docs/Model/ContentRetentionResponse.md
 docs/Model/ConversationAdAttribution.md
 docs/Model/ConversionAction.md
@@ -1395,6 +1396,7 @@ docs/Model/EstimateAdReachRequest.md
 docs/Model/EventAutomationCheck.md
 docs/Model/EventAutomationCheckSubject.md
 docs/Model/EventAutomationDefinition.md
+docs/Model/EventConsent.md
 docs/Model/EventCorrection.md
 docs/Model/EventDestination.md
 docs/Model/Expired.md
@@ -1644,6 +1646,7 @@ docs/Model/GetEventsAccuracy200ResponseDestinationsInnerMatch.md
 docs/Model/GetEventsOverview200Response.md
 docs/Model/GetEventsOverview200ResponseEventNamesInner.md
 docs/Model/GetEventsOverview200ResponsePlatformsInner.md
+docs/Model/GetEventsOverview200ResponsePlatformsInnerDroppedToday.md
 docs/Model/GetEventsOverview200ResponseSitesInner.md
 docs/Model/GetEventsOverview200ResponseSitesInnerTotals.md
 docs/Model/GetEventsOverview200ResponseSourcesInner.md
@@ -3142,7 +3145,6 @@ docs/Model/SendConversions200Response.md
 docs/Model/SendConversions200ResponseFailuresInner.md
 docs/Model/SendConversions200ResponseFailuresInnerCode.md
 docs/Model/SendConversionsRequest.md
-docs/Model/SendConversionsRequestConsent.md
 docs/Model/SendDiscordDirectMessage200Response.md
 docs/Model/SendDiscordDirectMessage200ResponseAccount.md
 docs/Model/SendDiscordDirectMessage200ResponseRecipient.md
@@ -3158,7 +3160,6 @@ docs/Model/SendEvents200ResponseDestinationsInner.md
 docs/Model/SendEvents200ResponseDestinationsInnerFailuresInner.md
 docs/Model/SendEvents202Response.md
 docs/Model/SendEventsRequest.md
-docs/Model/SendEventsRequestConsent.md
 docs/Model/SendEventsRequestDestinationsInner.md
 docs/Model/SendGohighlevelPastWonDeals200Response.md
 docs/Model/SendInboxMessage200Response.md
@@ -4922,6 +4923,7 @@ lib/Model/ConnectedAccount.php
 lib/Model/ConnectedApp.php
 lib/Model/ConnectedMessagingAccount.php
 lib/Model/ConnectedStore.php
+lib/Model/ConsentDrop.php
 lib/Model/ContentRetentionResponse.php
 lib/Model/ConversationAdAttribution.php
 lib/Model/ConversionAction.php
@@ -5544,6 +5546,7 @@ lib/Model/EstimateAdReachRequest.php
 lib/Model/EventAutomationCheck.php
 lib/Model/EventAutomationCheckSubject.php
 lib/Model/EventAutomationDefinition.php
+lib/Model/EventConsent.php
 lib/Model/EventCorrection.php
 lib/Model/EventDestination.php
 lib/Model/Expired.php
@@ -5793,6 +5796,7 @@ lib/Model/GetEventsAccuracy200ResponseDestinationsInnerMatch.php
 lib/Model/GetEventsOverview200Response.php
 lib/Model/GetEventsOverview200ResponseEventNamesInner.php
 lib/Model/GetEventsOverview200ResponsePlatformsInner.php
+lib/Model/GetEventsOverview200ResponsePlatformsInnerDroppedToday.php
 lib/Model/GetEventsOverview200ResponseSitesInner.php
 lib/Model/GetEventsOverview200ResponseSitesInnerTotals.php
 lib/Model/GetEventsOverview200ResponseSourcesInner.php
@@ -7292,7 +7296,6 @@ lib/Model/SendConversions200Response.php
 lib/Model/SendConversions200ResponseFailuresInner.php
 lib/Model/SendConversions200ResponseFailuresInnerCode.php
 lib/Model/SendConversionsRequest.php
-lib/Model/SendConversionsRequestConsent.php
 lib/Model/SendDiscordDirectMessage200Response.php
 lib/Model/SendDiscordDirectMessage200ResponseAccount.php
 lib/Model/SendDiscordDirectMessage200ResponseRecipient.php
@@ -7308,7 +7311,6 @@ lib/Model/SendEvents200ResponseDestinationsInner.php
 lib/Model/SendEvents200ResponseDestinationsInnerFailuresInner.php
 lib/Model/SendEvents202Response.php
 lib/Model/SendEventsRequest.php
-lib/Model/SendEventsRequestConsent.php
 lib/Model/SendEventsRequestDestinationsInner.php
 lib/Model/SendGohighlevelPastWonDeals200Response.php
 lib/Model/SendInboxMessage200Response.php
@@ -8299,8 +8301,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ConversionAuditMonitorAnswerTest.php
-test/Model/ConversionAuditMonitorScoreHistoryInnerTest.php
-test/Model/ConversionAuditMonitorTest.php
-test/Model/CreateConversionAuditMonitorRequestTest.php
-test/Model/ListConversionAuditMonitors200ResponseTest.php
+test/Model/ConsentDropTest.php
+test/Model/EventConsentTest.php
+test/Model/GetEventsOverview200ResponsePlatformsInnerDroppedTodayTest.php
