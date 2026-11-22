@@ -450,7 +450,7 @@ try {
 ## `listWorkflowExecutions()`
 
 ```php
-listWorkflowExecutions($workflow_id, $status, $limit, $skip): \Zernio\Model\ListWorkflowExecutions200Response
+listWorkflowExecutions($workflow_id, $status, $limit, $skip, $cursor): \Zernio\Model\ListWorkflowExecutions200Response
 ```
 
 List workflow runs
@@ -478,9 +478,10 @@ $workflow_id = 'workflow_id_example'; // string
 $status = 'status_example'; // string
 $limit = 25; // int
 $skip = 0; // int
+$cursor = 'cursor_example'; // string | The previous page's pagination.nextCursor. Pages stay stable while runs start or end; skip applies after it. Page past the first 1000 runs with the cursor: a larger skip may be refused with 400.
 
 try {
-    $result = $apiInstance->listWorkflowExecutions($workflow_id, $status, $limit, $skip);
+    $result = $apiInstance->listWorkflowExecutions($workflow_id, $status, $limit, $skip, $cursor);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WorkflowsApi->listWorkflowExecutions: ', $e->getMessage(), PHP_EOL;
@@ -495,6 +496,7 @@ try {
 | **status** | **string**|  | [optional] |
 | **limit** | **int**|  | [optional] [default to 25] |
 | **skip** | **int**|  | [optional] [default to 0] |
+| **cursor** | **string**| The previous page&#39;s pagination.nextCursor. Pages stay stable while runs start or end; skip applies after it. Page past the first 1000 runs with the cursor: a larger skip may be refused with 400. | [optional] |
 
 ### Return type
 

@@ -2679,6 +2679,7 @@ docs/Model/ListWorkflowExecutionEvents200ResponseExecution.md
 docs/Model/ListWorkflowExecutions200Response.md
 docs/Model/ListWorkflowExecutions200ResponseExecutionsInner.md
 docs/Model/ListWorkflowExecutions200ResponseExecutionsInnerWaitingFor.md
+docs/Model/ListWorkflowExecutions200ResponsePagination.md
 docs/Model/ListWorkflowVersions200Response.md
 docs/Model/ListWorkflowVersions200ResponseVersionsInner.md
 docs/Model/ListWorkflows200Response.md
@@ -6871,6 +6872,7 @@ lib/Model/ListWorkflowExecutionEvents200ResponseExecution.php
 lib/Model/ListWorkflowExecutions200Response.php
 lib/Model/ListWorkflowExecutions200ResponseExecutionsInner.php
 lib/Model/ListWorkflowExecutions200ResponseExecutionsInnerWaitingFor.php
+lib/Model/ListWorkflowExecutions200ResponsePagination.php
 lib/Model/ListWorkflowVersions200Response.php
 lib/Model/ListWorkflowVersions200ResponseVersionsInner.php
 lib/Model/ListWorkflows200Response.php
@@ -8385,7 +8387,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/AutomationOneOf5Test.php
-test/Model/FlowAutomationDefinitionGraphTest.php
-test/Model/FlowAutomationDefinitionTest.php
-test/Model/FlowAutomationDefinitionTriggerTest.php
+test/Model/ListWorkflowExecutions200ResponsePaginationTest.php
