@@ -8395,5 +8395,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ConversionAuditAnswerNetworksInnerTest.php
-test/Model/ConversionAuditAnswerTopFixesInnerTest.php
