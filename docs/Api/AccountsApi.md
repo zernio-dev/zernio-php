@@ -13,6 +13,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getAllAccountsHealth()**](AccountsApi.md#getAllAccountsHealth) | **GET** /v1/accounts/health | Check accounts health |
 | [**getBlueskySettings()**](AccountsApi.md#getBlueskySettings) | **GET** /v1/accounts/{accountId}/bluesky-settings | Get Bluesky account settings |
 | [**getFollowerStats()**](AccountsApi.md#getFollowerStats) | **GET** /v1/accounts/follower-stats | Get follower stats |
+| [**getGohighlevelFunnelTracking()**](AccountsApi.md#getGohighlevelFunnelTracking) | **GET** /v1/accounts/{accountId}/gohighlevel-funnel-tracking | Get HighLevel funnel tracking |
 | [**getGohighlevelSettings()**](AccountsApi.md#getGohighlevelSettings) | **GET** /v1/accounts/{accountId}/gohighlevel-settings | Get HighLevel account settings |
 | [**getHubSpotSettings()**](AccountsApi.md#getHubSpotSettings) | **GET** /v1/accounts/{accountId}/hubspot-settings | Get HubSpot account settings |
 | [**getInstagramFollowStatus()**](AccountsApi.md#getInstagramFollowStatus) | **GET** /v1/accounts/{accountId}/follow-status/{userId} | Check whether an Instagram user follows the account |
@@ -23,11 +24,15 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**grantBusinessPartner()**](AccountsApi.md#grantBusinessPartner) | **POST** /v1/accounts/{accountId}/business-partners | Share the Page with a partner business |
 | [**listAccounts()**](AccountsApi.md#listAccounts) | **GET** /v1/accounts | List accounts |
 | [**listBusinessPartners()**](AccountsApi.md#listBusinessPartners) | **GET** /v1/accounts/{accountId}/business-partners | List partner businesses of the Page |
+| [**listGohighlevelAudienceSyncs()**](AccountsApi.md#listGohighlevelAudienceSyncs) | **GET** /v1/accounts/{accountId}/gohighlevel-audiences | List HighLevel tag audience syncs |
 | [**listHubSpotContactProperties()**](AccountsApi.md#listHubSpotContactProperties) | **GET** /v1/accounts/{accountId}/hubspot-settings/contact-properties | List HubSpot contact properties |
 | [**listTikTokCommercialMusic()**](AccountsApi.md#listTikTokCommercialMusic) | **GET** /v1/accounts/{accountId}/tiktok/commercial-music | List trending commercial music |
 | [**moveAccountToProfile()**](AccountsApi.md#moveAccountToProfile) | **PATCH** /v1/accounts/{accountId} | Move account to another profile |
 | [**revokeBusinessPartner()**](AccountsApi.md#revokeBusinessPartner) | **DELETE** /v1/accounts/{accountId}/business-partners | Revoke a partner business from the Page |
 | [**searchTikTokLocations()**](AccountsApi.md#searchTikTokLocations) | **GET** /v1/accounts/{accountId}/tiktok/locations | Search TikTok location tags |
+| [**sendGohighlevelPastWonDeals()**](AccountsApi.md#sendGohighlevelPastWonDeals) | **POST** /v1/accounts/{accountId}/gohighlevel-won-deals-backfill | Send past HighLevel won deals as conversions |
+| [**startGohighlevelAudienceSync()**](AccountsApi.md#startGohighlevelAudienceSync) | **POST** /v1/accounts/{accountId}/gohighlevel-audiences | Sync a HighLevel tag to ad audiences |
+| [**stopGohighlevelAudienceSync()**](AccountsApi.md#stopGohighlevelAudienceSync) | **DELETE** /v1/accounts/{accountId}/gohighlevel-audiences/{syncId} | Stop a HighLevel tag audience sync |
 | [**updateAccount()**](AccountsApi.md#updateAccount) | **PUT** /v1/accounts/{accountId} | Update account |
 | [**updateBlueskySettings()**](AccountsApi.md#updateBlueskySettings) | **PATCH** /v1/accounts/{accountId}/bluesky-settings | Update Bluesky account settings |
 | [**updateGohighlevelSettings()**](AccountsApi.md#updateGohighlevelSettings) | **PATCH** /v1/accounts/{accountId}/gohighlevel-settings | Update HighLevel account settings |
@@ -35,6 +40,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**updateSalesforceSettings()**](AccountsApi.md#updateSalesforceSettings) | **PATCH** /v1/accounts/{accountId}/salesforce-settings | Update Salesforce account settings |
 | [**updateSlackSettings()**](AccountsApi.md#updateSlackSettings) | **PATCH** /v1/accounts/{accountId}/slack-settings | Update Slack account settings |
 | [**updateStripeSettings()**](AccountsApi.md#updateStripeSettings) | **PATCH** /v1/accounts/{accountId}/stripe-settings | Update Stripe account settings |
+| [**verifyGohighlevelFunnelTracking()**](AccountsApi.md#verifyGohighlevelFunnelTracking) | **POST** /v1/accounts/{accountId}/gohighlevel-funnel-tracking/verify | Check the Zernio tag on a HighLevel funnel page |
 
 
 ## `deleteAccount()`
@@ -463,6 +469,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\FollowerStatsResponse**](../Model/FollowerStatsResponse.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getGohighlevelFunnelTracking()`
+
+```php
+getGohighlevelFunnelTracking($account_id): \Zernio\Model\GohighlevelFunnelTracking
+```
+
+Get HighLevel funnel tracking
+
+Get the Zernio tag for a connected HighLevel sub-account's funnels and websites, created on the first call, and the line to paste into each funnel's tracking code (the funnel's Settings, then Head tracking code).  Each funnel and website says whether it already carries the tag, and `live` whether the tag has sent its first visit. Visits on tagged pages tie ad clicks to the leads and sales HighLevel records.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The HighLevel account id from `listAccounts`.
+
+try {
+    $result = $apiInstance->getGohighlevelFunnelTracking($account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountsApi->getGohighlevelFunnelTracking: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The HighLevel account id from &#x60;listAccounts&#x60;. | |
+
+### Return type
+
+[**\Zernio\Model\GohighlevelFunnelTracking**](../Model/GohighlevelFunnelTracking.md)
 
 ### Authorization
 
@@ -1121,6 +1187,66 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listGohighlevelAudienceSyncs()`
+
+```php
+listGohighlevelAudienceSyncs($account_id): \Zernio\Model\GohighlevelAudienceSyncOverview
+```
+
+List HighLevel tag audience syncs
+
+List the tags of a connected HighLevel sub-account that Zernio keeps as customer list audiences on Meta and Reddit ad accounts, the ad accounts a tag can sync to (`targetChoices`), and the sub-account's tags. Pass a `targetChoices` entry to `startGohighlevelAudienceSync` to start a sync.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The HighLevel account id from `listAccounts`.
+
+try {
+    $result = $apiInstance->listGohighlevelAudienceSyncs($account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountsApi->listGohighlevelAudienceSyncs: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The HighLevel account id from &#x60;listAccounts&#x60;. | |
+
+### Return type
+
+[**\Zernio\Model\GohighlevelAudienceSyncOverview**](../Model/GohighlevelAudienceSyncOverview.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listHubSpotContactProperties()`
 
 ```php
@@ -1415,6 +1541,190 @@ try {
 ### Return type
 
 [**\Zernio\Model\SearchTikTokLocations200Response**](../Model/SearchTikTokLocations200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `sendGohighlevelPastWonDeals()`
+
+```php
+sendGohighlevelPastWonDeals($account_id): \Zernio\Model\SendGohighlevelPastWonDeals200Response
+```
+
+Send past HighLevel won deals as conversions
+
+Send the opportunities a connected HighLevel sub-account won in the last 90 days through the conversion relay. Each is stored as a Purchase conversion and forwarded to the profile's ad platforms when `reportToAds` is on.  Each call sends up to 50 and skips deals Zernio already holds, so calling again goes on with the rest. `remaining` says how many are left. A deal that fails is picked again on the next call, so stop when a call sends none.  Returns `relay_off` when the conversion relay is off (`updateGohighlevelSettings`). Needs a read-write key.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The HighLevel account id from `listAccounts`.
+
+try {
+    $result = $apiInstance->sendGohighlevelPastWonDeals($account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountsApi->sendGohighlevelPastWonDeals: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The HighLevel account id from &#x60;listAccounts&#x60;. | |
+
+### Return type
+
+[**\Zernio\Model\SendGohighlevelPastWonDeals200Response**](../Model/SendGohighlevelPastWonDeals200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `startGohighlevelAudienceSync()`
+
+```php
+startGohighlevelAudienceSync($account_id, $start_gohighlevel_audience_sync_request): \Zernio\Model\StartGohighlevelAudienceSync201Response
+```
+
+Sync a HighLevel tag to ad audiences
+
+Keep every HighLevel contact with a tag as a customer list audience on one or more Meta or Reddit ad accounts of the profile. Take `targets` from `targetChoices` of `listGohighlevelAudienceSyncs`.  Zernio creates one audience per ad account and fills it within a few minutes. A contact joins or leaves as soon as the tag is added to or removed from it, and every 6 hours Zernio re-reads the tag. Emails and phones are hashed before upload.  A tag syncs once per sub-account; stop it to change its ad accounts. Needs a read-write key.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The HighLevel account id from `listAccounts`.
+$start_gohighlevel_audience_sync_request = {"tag":"hot lead","targets":[{"accountId":"6650a1b2c3d4e5f6a7b8c9d0","adAccountId":"act_123456789"}]}; // \Zernio\Model\StartGohighlevelAudienceSyncRequest
+
+try {
+    $result = $apiInstance->startGohighlevelAudienceSync($account_id, $start_gohighlevel_audience_sync_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountsApi->startGohighlevelAudienceSync: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The HighLevel account id from &#x60;listAccounts&#x60;. | |
+| **start_gohighlevel_audience_sync_request** | [**\Zernio\Model\StartGohighlevelAudienceSyncRequest**](../Model/StartGohighlevelAudienceSyncRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\StartGohighlevelAudienceSync201Response**](../Model/StartGohighlevelAudienceSync201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `stopGohighlevelAudienceSync()`
+
+```php
+stopGohighlevelAudienceSync($account_id, $sync_id): \Zernio\Model\DeleteAccountGroup200Response
+```
+
+Stop a HighLevel tag audience sync
+
+Stop keeping a tag in sync. Its audiences stay on the ad accounts with their current members, so running ads keep their targeting; delete an audience with `deleteAdAudience`. Needs a read-write key.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The HighLevel account id from `listAccounts`.
+$sync_id = 'sync_id_example'; // string | The sync id from `listGohighlevelAudienceSyncs`.
+
+try {
+    $result = $apiInstance->stopGohighlevelAudienceSync($account_id, $sync_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountsApi->stopGohighlevelAudienceSync: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The HighLevel account id from &#x60;listAccounts&#x60;. | |
+| **sync_id** | **string**| The sync id from &#x60;listGohighlevelAudienceSyncs&#x60;. | |
+
+### Return type
+
+[**\Zernio\Model\DeleteAccountGroup200Response**](../Model/DeleteAccountGroup200Response.md)
 
 ### Authorization
 
@@ -1847,6 +2157,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\UpdateStripeSettings200Response**](../Model/UpdateStripeSettings200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `verifyGohighlevelFunnelTracking()`
+
+```php
+verifyGohighlevelFunnelTracking($account_id, $verify_gohighlevel_funnel_tracking_request): \Zernio\Model\GohighlevelFunnelTracking
+```
+
+Check the Zernio tag on a HighLevel funnel page
+
+Load a live funnel or website page and report whether it carries the sub-account's Zernio tag. A page that does adds its domain to the tag's domains, so visits there are tied to the contacts who fill its forms.  Returns the same funnel tracking state as `getGohighlevelFunnelTracking`, with `verified` set. Needs a read-write key.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The HighLevel account id from `listAccounts`.
+$verify_gohighlevel_funnel_tracking_request = {"url":"https://offer.yourdomain.com/optin"}; // \Zernio\Model\VerifyGohighlevelFunnelTrackingRequest
+
+try {
+    $result = $apiInstance->verifyGohighlevelFunnelTracking($account_id, $verify_gohighlevel_funnel_tracking_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountsApi->verifyGohighlevelFunnelTracking: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The HighLevel account id from &#x60;listAccounts&#x60;. | |
+| **verify_gohighlevel_funnel_tracking_request** | [**\Zernio\Model\VerifyGohighlevelFunnelTrackingRequest**](../Model/VerifyGohighlevelFunnelTrackingRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\GohighlevelFunnelTracking**](../Model/GohighlevelFunnelTracking.md)
 
 ### Authorization
 

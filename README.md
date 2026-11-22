@@ -107,6 +107,7 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**getAllAccountsHealth**](docs/Api/AccountsApi.md#getallaccountshealth) | **GET** /v1/accounts/health | Check accounts health
 *AccountsApi* | [**getBlueskySettings**](docs/Api/AccountsApi.md#getblueskysettings) | **GET** /v1/accounts/{accountId}/bluesky-settings | Get Bluesky account settings
 *AccountsApi* | [**getFollowerStats**](docs/Api/AccountsApi.md#getfollowerstats) | **GET** /v1/accounts/follower-stats | Get follower stats
+*AccountsApi* | [**getGohighlevelFunnelTracking**](docs/Api/AccountsApi.md#getgohighlevelfunneltracking) | **GET** /v1/accounts/{accountId}/gohighlevel-funnel-tracking | Get HighLevel funnel tracking
 *AccountsApi* | [**getGohighlevelSettings**](docs/Api/AccountsApi.md#getgohighlevelsettings) | **GET** /v1/accounts/{accountId}/gohighlevel-settings | Get HighLevel account settings
 *AccountsApi* | [**getHubSpotSettings**](docs/Api/AccountsApi.md#gethubspotsettings) | **GET** /v1/accounts/{accountId}/hubspot-settings | Get HubSpot account settings
 *AccountsApi* | [**getInstagramFollowStatus**](docs/Api/AccountsApi.md#getinstagramfollowstatus) | **GET** /v1/accounts/{accountId}/follow-status/{userId} | Check whether an Instagram user follows the account
@@ -117,11 +118,15 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**grantBusinessPartner**](docs/Api/AccountsApi.md#grantbusinesspartner) | **POST** /v1/accounts/{accountId}/business-partners | Share the Page with a partner business
 *AccountsApi* | [**listAccounts**](docs/Api/AccountsApi.md#listaccounts) | **GET** /v1/accounts | List accounts
 *AccountsApi* | [**listBusinessPartners**](docs/Api/AccountsApi.md#listbusinesspartners) | **GET** /v1/accounts/{accountId}/business-partners | List partner businesses of the Page
+*AccountsApi* | [**listGohighlevelAudienceSyncs**](docs/Api/AccountsApi.md#listgohighlevelaudiencesyncs) | **GET** /v1/accounts/{accountId}/gohighlevel-audiences | List HighLevel tag audience syncs
 *AccountsApi* | [**listHubSpotContactProperties**](docs/Api/AccountsApi.md#listhubspotcontactproperties) | **GET** /v1/accounts/{accountId}/hubspot-settings/contact-properties | List HubSpot contact properties
 *AccountsApi* | [**listTikTokCommercialMusic**](docs/Api/AccountsApi.md#listtiktokcommercialmusic) | **GET** /v1/accounts/{accountId}/tiktok/commercial-music | List trending commercial music
 *AccountsApi* | [**moveAccountToProfile**](docs/Api/AccountsApi.md#moveaccounttoprofile) | **PATCH** /v1/accounts/{accountId} | Move account to another profile
 *AccountsApi* | [**revokeBusinessPartner**](docs/Api/AccountsApi.md#revokebusinesspartner) | **DELETE** /v1/accounts/{accountId}/business-partners | Revoke a partner business from the Page
 *AccountsApi* | [**searchTikTokLocations**](docs/Api/AccountsApi.md#searchtiktoklocations) | **GET** /v1/accounts/{accountId}/tiktok/locations | Search TikTok location tags
+*AccountsApi* | [**sendGohighlevelPastWonDeals**](docs/Api/AccountsApi.md#sendgohighlevelpastwondeals) | **POST** /v1/accounts/{accountId}/gohighlevel-won-deals-backfill | Send past HighLevel won deals as conversions
+*AccountsApi* | [**startGohighlevelAudienceSync**](docs/Api/AccountsApi.md#startgohighlevelaudiencesync) | **POST** /v1/accounts/{accountId}/gohighlevel-audiences | Sync a HighLevel tag to ad audiences
+*AccountsApi* | [**stopGohighlevelAudienceSync**](docs/Api/AccountsApi.md#stopgohighlevelaudiencesync) | **DELETE** /v1/accounts/{accountId}/gohighlevel-audiences/{syncId} | Stop a HighLevel tag audience sync
 *AccountsApi* | [**updateAccount**](docs/Api/AccountsApi.md#updateaccount) | **PUT** /v1/accounts/{accountId} | Update account
 *AccountsApi* | [**updateBlueskySettings**](docs/Api/AccountsApi.md#updateblueskysettings) | **PATCH** /v1/accounts/{accountId}/bluesky-settings | Update Bluesky account settings
 *AccountsApi* | [**updateGohighlevelSettings**](docs/Api/AccountsApi.md#updategohighlevelsettings) | **PATCH** /v1/accounts/{accountId}/gohighlevel-settings | Update HighLevel account settings
@@ -129,6 +134,7 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**updateSalesforceSettings**](docs/Api/AccountsApi.md#updatesalesforcesettings) | **PATCH** /v1/accounts/{accountId}/salesforce-settings | Update Salesforce account settings
 *AccountsApi* | [**updateSlackSettings**](docs/Api/AccountsApi.md#updateslacksettings) | **PATCH** /v1/accounts/{accountId}/slack-settings | Update Slack account settings
 *AccountsApi* | [**updateStripeSettings**](docs/Api/AccountsApi.md#updatestripesettings) | **PATCH** /v1/accounts/{accountId}/stripe-settings | Update Stripe account settings
+*AccountsApi* | [**verifyGohighlevelFunnelTracking**](docs/Api/AccountsApi.md#verifygohighlevelfunneltracking) | **POST** /v1/accounts/{accountId}/gohighlevel-funnel-tracking/verify | Check the Zernio tag on a HighLevel funnel page
 *AdAccountsApi* | [**addAccountCallouts**](docs/Api/AdAccountsApi.md#addaccountcallouts) | **POST** /v1/ads/accounts/callouts | Add account callouts
 *AdAccountsApi* | [**addAccountSitelinks**](docs/Api/AdAccountsApi.md#addaccountsitelinks) | **POST** /v1/ads/accounts/sitelinks | Add account sitelinks
 *AdAccountsApi* | [**addAccountStructuredSnippets**](docs/Api/AdAccountsApi.md#addaccountstructuredsnippets) | **POST** /v1/ads/accounts/structured-snippets | Add account snippets
@@ -3334,6 +3340,13 @@ Class | Method | HTTP request | Description
 - [GetYoutubeCaptions200ResponseCuesInner](docs/Model/GetYoutubeCaptions200ResponseCuesInner.md)
 - [GetYoutubePlaylists200Response](docs/Model/GetYoutubePlaylists200Response.md)
 - [GetYoutubePlaylists200ResponsePlaylistsInner](docs/Model/GetYoutubePlaylists200ResponsePlaylistsInner.md)
+- [GohighlevelAudienceSync](docs/Model/GohighlevelAudienceSync.md)
+- [GohighlevelAudienceSyncAudiencesInner](docs/Model/GohighlevelAudienceSyncAudiencesInner.md)
+- [GohighlevelAudienceSyncOverview](docs/Model/GohighlevelAudienceSyncOverview.md)
+- [GohighlevelAudienceSyncOverviewTargetChoicesInner](docs/Model/GohighlevelAudienceSyncOverviewTargetChoicesInner.md)
+- [GohighlevelFunnelTracking](docs/Model/GohighlevelFunnelTracking.md)
+- [GohighlevelFunnelTrackingFunnelsInner](docs/Model/GohighlevelFunnelTrackingFunnelsInner.md)
+- [GohighlevelFunnelTrackingVerified](docs/Model/GohighlevelFunnelTrackingVerified.md)
 - [GohighlevelSettings](docs/Model/GohighlevelSettings.md)
 - [GoogleAdLabel](docs/Model/GoogleAdLabel.md)
 - [GoogleAdLabelAssignments](docs/Model/GoogleAdLabelAssignments.md)
@@ -4475,6 +4488,7 @@ Class | Method | HTTP request | Description
 - [SendEventsRequest](docs/Model/SendEventsRequest.md)
 - [SendEventsRequestConsent](docs/Model/SendEventsRequestConsent.md)
 - [SendEventsRequestDestinationsInner](docs/Model/SendEventsRequestDestinationsInner.md)
+- [SendGohighlevelPastWonDeals200Response](docs/Model/SendGohighlevelPastWonDeals200Response.md)
 - [SendInboxMessage200Response](docs/Model/SendInboxMessage200Response.md)
 - [SendInboxMessage200ResponseData](docs/Model/SendInboxMessage200ResponseData.md)
 - [SendInboxMessage200ResponseDataAttachmentsInner](docs/Model/SendInboxMessage200ResponseDataAttachmentsInner.md)
@@ -4609,6 +4623,9 @@ Class | Method | HTTP request | Description
 - [StartCreatorConnectRequest](docs/Model/StartCreatorConnectRequest.md)
 - [StartCreatorPayouts200Response](docs/Model/StartCreatorPayouts200Response.md)
 - [StartCreatorPayoutsRequest](docs/Model/StartCreatorPayoutsRequest.md)
+- [StartGohighlevelAudienceSync201Response](docs/Model/StartGohighlevelAudienceSync201Response.md)
+- [StartGohighlevelAudienceSyncRequest](docs/Model/StartGohighlevelAudienceSyncRequest.md)
+- [StartGohighlevelAudienceSyncRequestTargetsInner](docs/Model/StartGohighlevelAudienceSyncRequestTargetsInner.md)
 - [StartGoogleBusinessVerification200Response](docs/Model/StartGoogleBusinessVerification200Response.md)
 - [StartGoogleBusinessVerification200ResponseVerification](docs/Model/StartGoogleBusinessVerification200ResponseVerification.md)
 - [StartGoogleBusinessVerificationRequest](docs/Model/StartGoogleBusinessVerificationRequest.md)
@@ -5095,6 +5112,7 @@ Class | Method | HTTP request | Description
 - [ValueRuleSet](docs/Model/ValueRuleSet.md)
 - [Verification](docs/Model/Verification.md)
 - [VerifyCredential200Response](docs/Model/VerifyCredential200Response.md)
+- [VerifyGohighlevelFunnelTrackingRequest](docs/Model/VerifyGohighlevelFunnelTrackingRequest.md)
 - [VerifyOrgConnectionRequest](docs/Model/VerifyOrgConnectionRequest.md)
 - [VerifySmsRegistrationOtp200Response](docs/Model/VerifySmsRegistrationOtp200Response.md)
 - [VerifySmsRegistrationOtpRequest](docs/Model/VerifySmsRegistrationOtpRequest.md)
@@ -5489,6 +5507,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.734.1`
+- API version: `1.735.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

@@ -1995,6 +1995,13 @@ docs/Model/GetYoutubeCaptions200ResponseAvailableTracksInner.md
 docs/Model/GetYoutubeCaptions200ResponseCuesInner.md
 docs/Model/GetYoutubePlaylists200Response.md
 docs/Model/GetYoutubePlaylists200ResponsePlaylistsInner.md
+docs/Model/GohighlevelAudienceSync.md
+docs/Model/GohighlevelAudienceSyncAudiencesInner.md
+docs/Model/GohighlevelAudienceSyncOverview.md
+docs/Model/GohighlevelAudienceSyncOverviewTargetChoicesInner.md
+docs/Model/GohighlevelFunnelTracking.md
+docs/Model/GohighlevelFunnelTrackingFunnelsInner.md
+docs/Model/GohighlevelFunnelTrackingVerified.md
 docs/Model/GohighlevelSettings.md
 docs/Model/GoogleAdLabel.md
 docs/Model/GoogleAdLabelAssignments.md
@@ -3136,6 +3143,7 @@ docs/Model/SendEvents202Response.md
 docs/Model/SendEventsRequest.md
 docs/Model/SendEventsRequestConsent.md
 docs/Model/SendEventsRequestDestinationsInner.md
+docs/Model/SendGohighlevelPastWonDeals200Response.md
 docs/Model/SendInboxMessage200Response.md
 docs/Model/SendInboxMessage200ResponseData.md
 docs/Model/SendInboxMessage200ResponseDataAttachmentsInner.md
@@ -3270,6 +3278,9 @@ docs/Model/StartCreatorConnect200Response.md
 docs/Model/StartCreatorConnectRequest.md
 docs/Model/StartCreatorPayouts200Response.md
 docs/Model/StartCreatorPayoutsRequest.md
+docs/Model/StartGohighlevelAudienceSync201Response.md
+docs/Model/StartGohighlevelAudienceSyncRequest.md
+docs/Model/StartGohighlevelAudienceSyncRequestTargetsInner.md
 docs/Model/StartGoogleBusinessVerification200Response.md
 docs/Model/StartGoogleBusinessVerification200ResponseVerification.md
 docs/Model/StartGoogleBusinessVerificationRequest.md
@@ -3756,6 +3767,7 @@ docs/Model/ValueRuleCriterion.md
 docs/Model/ValueRuleSet.md
 docs/Model/Verification.md
 docs/Model/VerifyCredential200Response.md
+docs/Model/VerifyGohighlevelFunnelTrackingRequest.md
 docs/Model/VerifyOrgConnectionRequest.md
 docs/Model/VerifySmsRegistrationOtp200Response.md
 docs/Model/VerifySmsRegistrationOtpRequest.md
@@ -6115,6 +6127,13 @@ lib/Model/GetYoutubeCaptions200ResponseAvailableTracksInner.php
 lib/Model/GetYoutubeCaptions200ResponseCuesInner.php
 lib/Model/GetYoutubePlaylists200Response.php
 lib/Model/GetYoutubePlaylists200ResponsePlaylistsInner.php
+lib/Model/GohighlevelAudienceSync.php
+lib/Model/GohighlevelAudienceSyncAudiencesInner.php
+lib/Model/GohighlevelAudienceSyncOverview.php
+lib/Model/GohighlevelAudienceSyncOverviewTargetChoicesInner.php
+lib/Model/GohighlevelFunnelTracking.php
+lib/Model/GohighlevelFunnelTrackingFunnelsInner.php
+lib/Model/GohighlevelFunnelTrackingVerified.php
 lib/Model/GohighlevelSettings.php
 lib/Model/GoogleAdLabel.php
 lib/Model/GoogleAdLabelAssignments.php
@@ -7257,6 +7276,7 @@ lib/Model/SendEvents202Response.php
 lib/Model/SendEventsRequest.php
 lib/Model/SendEventsRequestConsent.php
 lib/Model/SendEventsRequestDestinationsInner.php
+lib/Model/SendGohighlevelPastWonDeals200Response.php
 lib/Model/SendInboxMessage200Response.php
 lib/Model/SendInboxMessage200ResponseData.php
 lib/Model/SendInboxMessage200ResponseDataAttachmentsInner.php
@@ -7391,6 +7411,9 @@ lib/Model/StartCreatorConnect200Response.php
 lib/Model/StartCreatorConnectRequest.php
 lib/Model/StartCreatorPayouts200Response.php
 lib/Model/StartCreatorPayoutsRequest.php
+lib/Model/StartGohighlevelAudienceSync201Response.php
+lib/Model/StartGohighlevelAudienceSyncRequest.php
+lib/Model/StartGohighlevelAudienceSyncRequestTargetsInner.php
 lib/Model/StartGoogleBusinessVerification200Response.php
 lib/Model/StartGoogleBusinessVerification200ResponseVerification.php
 lib/Model/StartGoogleBusinessVerificationRequest.php
@@ -7877,6 +7900,7 @@ lib/Model/ValueRuleCriterion.php
 lib/Model/ValueRuleSet.php
 lib/Model/Verification.php
 lib/Model/VerifyCredential200Response.php
+lib/Model/VerifyGohighlevelFunnelTrackingRequest.php
 lib/Model/VerifyOrgConnectionRequest.php
 lib/Model/VerifySmsRegistrationOtp200Response.php
 lib/Model/VerifySmsRegistrationOtpRequest.php
@@ -8241,3 +8265,15 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GohighlevelAudienceSyncAudiencesInnerTest.php
+test/Model/GohighlevelAudienceSyncOverviewTargetChoicesInnerTest.php
+test/Model/GohighlevelAudienceSyncOverviewTest.php
+test/Model/GohighlevelAudienceSyncTest.php
+test/Model/GohighlevelFunnelTrackingFunnelsInnerTest.php
+test/Model/GohighlevelFunnelTrackingTest.php
+test/Model/GohighlevelFunnelTrackingVerifiedTest.php
+test/Model/SendGohighlevelPastWonDeals200ResponseTest.php
+test/Model/StartGohighlevelAudienceSync201ResponseTest.php
+test/Model/StartGohighlevelAudienceSyncRequestTargetsInnerTest.php
+test/Model/StartGohighlevelAudienceSyncRequestTest.php
+test/Model/VerifyGohighlevelFunnelTrackingRequestTest.php
