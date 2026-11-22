@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** |  |
-**status** | **string** |  | [optional] [default to 'active']
-**trigger** | [**\Zernio\Model\CommentAutomationDefinitionTrigger**](CommentAutomationDefinitionTrigger.md) |  |
+**status** | **string** | A new flow is &#x60;draft&#x60; (the default) or &#x60;active&#x60;, which needs a complete graph. An active or paused flow never goes back to draft, and only an active flow can be paused. | [optional]
+**trigger** | [**\Zernio\Model\FlowAutomationDefinitionTrigger**](FlowAutomationDefinitionTrigger.md) |  |
 **subjects** | [**\Zernio\Model\AutomationPostSubjects**](AutomationPostSubjects.md) |  |
 **conditions** | [**\Zernio\Model\AdRuleConditions**](AdRuleConditions.md) |  |
 **alert** | [**\Zernio\Model\AutomationAlert**](AutomationAlert.md) |  | [optional]
@@ -15,6 +15,6 @@ Name | Type | Description | Notes
 **filter** | [**\Zernio\Model\AutomationFactCondition**](AutomationFactCondition.md) |  | [optional]
 **description** | **string** |  | [optional]
 **or_triggers** | [**\Zernio\Model\CommentAutomationDefinitionOrTriggersInner[]**](CommentAutomationDefinitionOrTriggersInner.md) | A DM with the same keywords also starts it (&#x60;dm.keyword&#x60;), at the decision and with no comment to act on. Comment triggers with keywords only. | [optional]
-**graph** | [**\Zernio\Model\CommentAutomationDefinitionGraph**](CommentAutomationDefinitionGraph.md) |  |
+**graph** | [**\Zernio\Model\FlowAutomationDefinitionGraph**](FlowAutomationDefinitionGraph.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

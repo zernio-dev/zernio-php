@@ -5,13 +5,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** |  | [optional]
-**status** | **string** |  | [optional]
-**trigger** | [**\Zernio\Model\AutomationTrigger**](AutomationTrigger.md) |  | [optional]
+**description** | **string** | Sequences and flows. | [optional]
+**status** | **string** | &#x60;draft&#x60; only for a sequence or a flow that has not left draft. | [optional]
+**trigger** | **object** | The trigger of the automation&#39;s kind. | [optional]
+**or_triggers** | **object[]** | Comment to DM. | [optional]
+**graph** | **object** | Comment to DM and flows: the whole graph, as read. | [optional]
 **subjects** | [**\Zernio\Model\UpdateAutomationRequestSubjects**](UpdateAutomationRequestSubjects.md) |  | [optional]
 **filter** | [**\Zernio\Model\AutomationFactCondition**](AutomationFactCondition.md) |  | [optional]
 **conditions** | [**\Zernio\Model\AdRuleConditions**](AdRuleConditions.md) |  | [optional]
 **alert** | [**\Zernio\Model\AutomationAlert**](AutomationAlert.md) |  | [optional]
 **steps** | [**\Zernio\Model\UpdateAutomationRequestStepsInner[]**](UpdateAutomationRequestStepsInner.md) | The steps the automation&#39;s kind takes. | [optional]
-**limits** | [**\Zernio\Model\UpdateAutomationRequestLimits**](UpdateAutomationRequestLimits.md) |  | [optional]
+**limits** | **object** | The limits of the automation&#39;s kind. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

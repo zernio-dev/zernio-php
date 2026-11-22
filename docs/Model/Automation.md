@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** |  |
-**status** | **string** | Only a sequence can be a draft. |
-**trigger** | [**\Zernio\Model\CommentAutomationDefinitionTrigger**](CommentAutomationDefinitionTrigger.md) |  |
+**status** | **string** | Only a sequence or a flow can be a draft. |
+**trigger** | [**\Zernio\Model\FlowAutomationDefinitionTrigger**](FlowAutomationDefinitionTrigger.md) |  |
 **subjects** | [**\Zernio\Model\AutomationPostSubjects**](AutomationPostSubjects.md) |  |
 **conditions** | [**\Zernio\Model\AdRuleConditions**](AdRuleConditions.md) |  |
 **alert** | [**\Zernio\Model\AutomationAlert**](AutomationAlert.md) |  | [optional]
@@ -15,17 +15,17 @@ Name | Type | Description | Notes
 **id** | **string** |  |
 **kind** | **string** |  |
 **version** | **string** | Send it back as &#x60;If-Match&#x60; when editing, so an edit made after someone else saved is refused. |
-**last_check_at** | **\DateTime** | Null until an ad rule first checks. Always null for event and scheduled automations; their checks list when they ran. |
-**next_check_at** | **\DateTime** | Null while paused. Always null for event, scheduled and sequence automations. |
+**last_check_at** | **\DateTime** | Null until an ad rule first checks. Always null for every other kind; the checks of event and scheduled automations list when they ran. |
+**next_check_at** | **\DateTime** | Null while paused. Always null for every kind but ad rules. |
 **created_at** | **\DateTime** |  |
 **updated_at** | **\DateTime** |  |
 **template** | [**\Zernio\Model\AutomationRecordTemplate**](AutomationRecordTemplate.md) |  | [optional]
 **filter** | [**\Zernio\Model\AutomationFactCondition**](AutomationFactCondition.md) |  | [optional]
 **description** | **string** |  | [optional]
-**platform** | **string** | The account&#39;s platform. On TikTok, Threads, LinkedIn and YouTube it only posts the public reply. |
+**platform** | **string** | The account&#39;s platform. |
 **enrollments** | [**\Zernio\Model\AutomationOneOf3AllOfEnrollments**](AutomationOneOf3AllOfEnrollments.md) |  |
 **or_triggers** | [**\Zernio\Model\CommentAutomationDefinitionOrTriggersInner[]**](CommentAutomationDefinitionOrTriggersInner.md) | A DM with the same keywords also starts it (&#x60;dm.keyword&#x60;), at the decision and with no comment to act on. Comment triggers with keywords only. | [optional]
-**graph** | [**\Zernio\Model\CommentAutomationDefinitionGraph**](CommentAutomationDefinitionGraph.md) |  |
+**graph** | [**\Zernio\Model\FlowAutomationDefinitionGraph**](FlowAutomationDefinitionGraph.md) |  |
 **read_only** | **bool** | Always true when present. Present when the graph only comes near what the automation does. It is read here and edited through &#x60;/v1/comment-automations&#x60;; an edit here is refused. | [optional]
 **stats** | [**\Zernio\Model\AutomationOneOf4AllOfStats**](AutomationOneOf4AllOfStats.md) |  |
 

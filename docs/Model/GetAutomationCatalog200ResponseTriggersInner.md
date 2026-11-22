@@ -5,10 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **kind** | **string** |  |
-**type** | **string** | &#x60;schedule&#x60;, &#x60;enrollment&#x60;, a comment door such as &#x60;comment.keyword&#x60; (comment to DM), or the Zernio event name. |
+**type** | **string** | &#x60;schedule&#x60;, &#x60;enrollment&#x60;, a comment door such as &#x60;comment.keyword&#x60; (comment to DM), a flow trigger such as &#x60;inbound_message&#x60;, or the Zernio event name. |
 **label** | **string** | Event triggers only. | [optional]
 **subject** | **string** | What an event is about, such as &#x60;post&#x60; or &#x60;account&#x60;. | [optional]
-**scope** | **object** | Which of &#x60;profileId&#x60; and &#x60;accountIds&#x60; an event trigger needs. | [optional]
+**scope** | **object** | Which of &#x60;profileId&#x60;, &#x60;accountId&#x60;, &#x60;accountIds&#x60; and &#x60;platformPostId&#x60; the trigger needs. | [optional]
+**platforms** | **string[]** | The platforms a sequence, comment to DM or flow trigger runs on. | [optional]
 **facts** | [**\Zernio\Model\GetAutomationCatalog200ResponseTriggersInnerFactsInner[]**](GetAutomationCatalog200ResponseTriggersInnerFactsInner.md) | The facts a &#x60;filter&#x60; can compare, for an event trigger. | [optional]
 **subjects** | **object[]** | Scheduled trigger only: what it can check (&#x60;post&#x60;), with the facts of each. | [optional]
 **every** | **string[]** |  | [optional]

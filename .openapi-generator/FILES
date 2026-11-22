@@ -393,6 +393,7 @@ docs/Model/AutomationOneOf3.md
 docs/Model/AutomationOneOf3AllOfEnrollments.md
 docs/Model/AutomationOneOf4.md
 docs/Model/AutomationOneOf4AllOfStats.md
+docs/Model/AutomationOneOf5.md
 docs/Model/AutomationPostSchedule.md
 docs/Model/AutomationPostSubjects.md
 docs/Model/AutomationPreview.md
@@ -1456,6 +1457,9 @@ docs/Model/FetchGoogleBusinessVerificationOptionsRequest.md
 docs/Model/FileItem.md
 docs/Model/FilePickerSession.md
 docs/Model/FileShareLink.md
+docs/Model/FlowAutomationDefinition.md
+docs/Model/FlowAutomationDefinitionGraph.md
+docs/Model/FlowAutomationDefinitionTrigger.md
 docs/Model/FollowUser200Response.md
 docs/Model/FollowUserRequest.md
 docs/Model/FollowerStatsResponse.md
@@ -3538,7 +3542,6 @@ docs/Model/UpdateAutoRechargeRequest.md
 docs/Model/UpdateAutomationAdAccountControlsRequest.md
 docs/Model/UpdateAutomationControlsRequest.md
 docs/Model/UpdateAutomationRequest.md
-docs/Model/UpdateAutomationRequestLimits.md
 docs/Model/UpdateAutomationRequestStepsInner.md
 docs/Model/UpdateAutomationRequestSubjects.md
 docs/Model/UpdateAutomationTemplateRequest.md
@@ -4582,6 +4585,7 @@ lib/Model/AutomationOneOf3.php
 lib/Model/AutomationOneOf3AllOfEnrollments.php
 lib/Model/AutomationOneOf4.php
 lib/Model/AutomationOneOf4AllOfStats.php
+lib/Model/AutomationOneOf5.php
 lib/Model/AutomationPostSchedule.php
 lib/Model/AutomationPostSubjects.php
 lib/Model/AutomationPreview.php
@@ -5645,6 +5649,9 @@ lib/Model/FetchGoogleBusinessVerificationOptionsRequest.php
 lib/Model/FileItem.php
 lib/Model/FilePickerSession.php
 lib/Model/FileShareLink.php
+lib/Model/FlowAutomationDefinition.php
+lib/Model/FlowAutomationDefinitionGraph.php
+lib/Model/FlowAutomationDefinitionTrigger.php
 lib/Model/FollowUser200Response.php
 lib/Model/FollowUserRequest.php
 lib/Model/FollowerStatsResponse.php
@@ -7728,7 +7735,6 @@ lib/Model/UpdateAutoRechargeRequest.php
 lib/Model/UpdateAutomationAdAccountControlsRequest.php
 lib/Model/UpdateAutomationControlsRequest.php
 lib/Model/UpdateAutomationRequest.php
-lib/Model/UpdateAutomationRequestLimits.php
 lib/Model/UpdateAutomationRequestStepsInner.php
 lib/Model/UpdateAutomationRequestSubjects.php
 lib/Model/UpdateAutomationTemplateRequest.php
@@ -8379,3 +8385,7 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/AutomationOneOf5Test.php
+test/Model/FlowAutomationDefinitionGraphTest.php
+test/Model/FlowAutomationDefinitionTest.php
+test/Model/FlowAutomationDefinitionTriggerTest.php
