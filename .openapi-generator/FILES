@@ -8361,12 +8361,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ConnectAttentiveCredentials200ResponseTest.php
-test/Model/ConnectAttentiveCredentialsRequestTest.php
-test/Model/ConnectAwinCredentials200ResponseTest.php
-test/Model/ConnectAwinCredentialsRequestTest.php
-test/Model/ConnectImpactCredentials200ResponseTest.php
-test/Model/ConnectImpactCredentialsRequestTest.php
-test/Model/ConnectKlaviyoCredentials200ResponseTest.php
-test/Model/ConnectKlaviyoCredentialsRequestTest.php
-test/Model/TrackingSitePixelTest.php
