@@ -820,6 +820,8 @@ docs/Model/ConnectLineCredentials200ResponseWebhook.md
 docs/Model/ConnectLineCredentialsRequest.md
 docs/Model/ConnectOpenAIAdsCredentials200Response.md
 docs/Model/ConnectOpenAIAdsCredentialsRequest.md
+docs/Model/ConnectOutbrainAdsCredentials200Response.md
+docs/Model/ConnectOutbrainAdsCredentialsRequest.md
 docs/Model/ConnectShopifyWithToken200Response.md
 docs/Model/ConnectShopifyWithToken200ResponseAccount.md
 docs/Model/ConnectShopifyWithTokenRequest.md
@@ -5079,6 +5081,8 @@ lib/Model/ConnectLineCredentials200ResponseWebhook.php
 lib/Model/ConnectLineCredentialsRequest.php
 lib/Model/ConnectOpenAIAdsCredentials200Response.php
 lib/Model/ConnectOpenAIAdsCredentialsRequest.php
+lib/Model/ConnectOutbrainAdsCredentials200Response.php
+lib/Model/ConnectOutbrainAdsCredentialsRequest.php
 lib/Model/ConnectShopifyWithToken200Response.php
 lib/Model/ConnectShopifyWithToken200ResponseAccount.php
 lib/Model/ConnectShopifyWithTokenRequest.php
@@ -8519,3 +8523,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ConnectOutbrainAdsCredentials200ResponseTest.php
+test/Model/ConnectOutbrainAdsCredentialsRequestTest.php

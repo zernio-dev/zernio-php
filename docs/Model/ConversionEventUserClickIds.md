@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **sccid** | **string** | Snapchat click ID (the &#x60;ScCid&#x60; URL param Snap adds to ad clicks). Sent to Snapchat as &#x60;sc_click_id&#x60;, not hashed. | [optional]
 **scid** | **string** | Snap Pixel browser id (the &#x60;_scid&#x60; cookie). Sent to Snapchat as &#x60;sc_cookie1&#x60;, not hashed. | [optional]
 **tblci** | **string** | Taboola click ID (the &#x60;tblci&#x60; URL param Taboola adds to ad clicks with its &#x60;{click_id}&#x60; macro). Sent to Taboola as &#x60;click-id&#x60;, not hashed. | [optional]
+**ob_click_id** | **string** | Outbrain click ID (the &#x60;ob_click_id&#x60; URL param, filled by the &#x60;{{ob_click_id}}&#x60; macro you add to the campaign&#39;s Track box). Sent to Outbrain as &#x60;ob_click_id&#x60;, not hashed. | [optional]
 **irclickid** | **string** | Impact partner click id (the &#x60;irclickid&#x60; URL param Impact adds to partner links). Sent to Impact as &#x60;ClickId&#x60;. | [optional]
 **awc** | **string** | Awin click id (the &#x60;awc&#x60; URL param Awin adds to publisher links). Sent to Awin as the order&#39;s &#x60;awc&#x60;. | [optional]
 **dclid** | **string** | Campaign Manager 360 / Display &amp; Video 360 click ID (the &#x60;dclid&#x60; URL param). Sent to Floodlight as is. | [optional]

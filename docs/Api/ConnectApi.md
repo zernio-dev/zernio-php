@@ -22,6 +22,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**connectKlaviyoCredentials()**](ConnectApi.md#connectKlaviyoCredentials) | **POST** /v1/connect/klaviyo/credentials | Connect a Klaviyo account |
 | [**connectLineCredentials()**](ConnectApi.md#connectLineCredentials) | **POST** /v1/connect/line/credentials | Connect LINE Official Account |
 | [**connectOpenAIAdsCredentials()**](ConnectApi.md#connectOpenAIAdsCredentials) | **POST** /v1/connect/openai-ads/credentials | Connect an OpenAI Ads account |
+| [**connectOutbrainAdsCredentials()**](ConnectApi.md#connectOutbrainAdsCredentials) | **POST** /v1/connect/outbrain-ads/credentials | Connect an Outbrain marketer |
 | [**connectShopifyWithToken()**](ConnectApi.md#connectShopifyWithToken) | **POST** /v1/connect/shopify/token | Connect a Shopify store with a custom-app Admin token |
 | [**connectSlackChannel()**](ConnectApi.md#connectSlackChannel) | **POST** /v1/connect/slack | Connect a Slack channel |
 | [**connectSnapchatAdsCredentials()**](ConnectApi.md#connectSnapchatAdsCredentials) | **POST** /v1/connect/snapchat-ads/credentials | Connect a Snapchat Ads pixel |
@@ -1103,6 +1104,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\ConnectOpenAIAdsCredentials200Response**](../Model/ConnectOpenAIAdsCredentials200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `connectOutbrainAdsCredentials()`
+
+```php
+connectOutbrainAdsCredentials($connect_outbrain_ads_credentials_request): \Zernio\Model\ConnectOutbrainAdsCredentials200Response
+```
+
+Connect an Outbrain marketer
+
+Connect an Outbrain marketer by its marketer id from Outbrain Amplify. Outbrain's server-to-server pixel takes no credential, so nothing secret is stored and nothing is checked with Outbrain.  The account then receives the conversion events you forward to it (`POST /v1/events`, forwarding rules). Each event needs the Outbrain click ID (`clickIds.ob_click_id`), which the campaign's Track box passes with `ob_click_id={{ob_click_id}}`.  Outbrain counts an event only when its name equals the name of an Event-Based Conversion in Amplify, case included. Rename events in the forwarding rule when they differ.  Requires the Ads add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$connect_outbrain_ads_credentials_request = {"outbrainMarketerId":"00f4b02153ee75f3c9dc4fc128ab0419ab","profileId":"6507a1b2c3d4e5f6a7b8c9d0"}; // \Zernio\Model\ConnectOutbrainAdsCredentialsRequest
+
+try {
+    $result = $apiInstance->connectOutbrainAdsCredentials($connect_outbrain_ads_credentials_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->connectOutbrainAdsCredentials: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **connect_outbrain_ads_credentials_request** | [**\Zernio\Model\ConnectOutbrainAdsCredentialsRequest**](../Model/ConnectOutbrainAdsCredentialsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\ConnectOutbrainAdsCredentials200Response**](../Model/ConnectOutbrainAdsCredentials200Response.md)
 
 ### Authorization
 
