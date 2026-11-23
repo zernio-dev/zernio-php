@@ -2879,7 +2879,7 @@ class ConnectApi
     /**
      * Operation connectAppLovinAdsCredentials
      *
-     * Connect an AppLovin Axon account
+     * Connect an AppLovin account
      *
      * @param  \Zernio\Model\ConnectAppLovinAdsCredentialsRequest $connect_app_lovin_ads_credentials_request connect_app_lovin_ads_credentials_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectAppLovinAdsCredentials'] to see the possible values for this operation
@@ -2897,7 +2897,7 @@ class ConnectApi
     /**
      * Operation connectAppLovinAdsCredentialsWithHttpInfo
      *
-     * Connect an AppLovin Axon account
+     * Connect an AppLovin account
      *
      * @param  \Zernio\Model\ConnectAppLovinAdsCredentialsRequest $connect_app_lovin_ads_credentials_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectAppLovinAdsCredentials'] to see the possible values for this operation
@@ -3010,7 +3010,7 @@ class ConnectApi
     /**
      * Operation connectAppLovinAdsCredentialsAsync
      *
-     * Connect an AppLovin Axon account
+     * Connect an AppLovin account
      *
      * @param  \Zernio\Model\ConnectAppLovinAdsCredentialsRequest $connect_app_lovin_ads_credentials_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectAppLovinAdsCredentials'] to see the possible values for this operation
@@ -3031,7 +3031,7 @@ class ConnectApi
     /**
      * Operation connectAppLovinAdsCredentialsAsyncWithHttpInfo
      *
-     * Connect an AppLovin Axon account
+     * Connect an AppLovin account
      *
      * @param  \Zernio\Model\ConnectAppLovinAdsCredentialsRequest $connect_app_lovin_ads_credentials_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectAppLovinAdsCredentials'] to see the possible values for this operation

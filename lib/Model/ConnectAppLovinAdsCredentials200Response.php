@@ -60,6 +60,7 @@ class ConnectAppLovinAdsCredentials200Response implements ModelInterface, ArrayA
     protected static $openAPITypes = [
         'account_id' => 'string',
         'event_key' => 'string',
+        'axon_account_id' => 'string',
         'account_name' => 'string',
         'redirect_url' => 'string'
     ];
@@ -74,6 +75,7 @@ class ConnectAppLovinAdsCredentials200Response implements ModelInterface, ArrayA
     protected static $openAPIFormats = [
         'account_id' => null,
         'event_key' => null,
+        'axon_account_id' => null,
         'account_name' => null,
         'redirect_url' => null
     ];
@@ -86,6 +88,7 @@ class ConnectAppLovinAdsCredentials200Response implements ModelInterface, ArrayA
     protected static array $openAPINullables = [
         'account_id' => false,
         'event_key' => false,
+        'axon_account_id' => false,
         'account_name' => false,
         'redirect_url' => false
     ];
@@ -178,6 +181,7 @@ class ConnectAppLovinAdsCredentials200Response implements ModelInterface, ArrayA
     protected static $attributeMap = [
         'account_id' => 'accountId',
         'event_key' => 'eventKey',
+        'axon_account_id' => 'axonAccountId',
         'account_name' => 'accountName',
         'redirect_url' => 'redirectUrl'
     ];
@@ -190,6 +194,7 @@ class ConnectAppLovinAdsCredentials200Response implements ModelInterface, ArrayA
     protected static $setters = [
         'account_id' => 'setAccountId',
         'event_key' => 'setEventKey',
+        'axon_account_id' => 'setAxonAccountId',
         'account_name' => 'setAccountName',
         'redirect_url' => 'setRedirectUrl'
     ];
@@ -202,6 +207,7 @@ class ConnectAppLovinAdsCredentials200Response implements ModelInterface, ArrayA
     protected static $getters = [
         'account_id' => 'getAccountId',
         'event_key' => 'getEventKey',
+        'axon_account_id' => 'getAxonAccountId',
         'account_name' => 'getAccountName',
         'redirect_url' => 'getRedirectUrl'
     ];
@@ -265,6 +271,7 @@ class ConnectAppLovinAdsCredentials200Response implements ModelInterface, ArrayA
     {
         $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('event_key', $data ?? [], null);
+        $this->setIfExists('axon_account_id', $data ?? [], null);
         $this->setIfExists('account_name', $data ?? [], null);
         $this->setIfExists('redirect_url', $data ?? [], null);
     }
@@ -351,7 +358,7 @@ class ConnectAppLovinAdsCredentials200Response implements ModelInterface, ArrayA
     /**
      * Sets event_key
      *
-     * @param string|null $event_key event_key
+     * @param string|null $event_key Present when the request sent the conversion keys.
      *
      * @return self
      */
@@ -361,6 +368,33 @@ class ConnectAppLovinAdsCredentials200Response implements ModelInterface, ArrayA
             throw new \InvalidArgumentException('non-nullable event_key cannot be null');
         }
         $this->container['event_key'] = $event_key;
+
+        return $this;
+    }
+
+    /**
+     * Gets axon_account_id
+     *
+     * @return string|null
+     */
+    public function getAxonAccountId()
+    {
+        return $this->container['axon_account_id'];
+    }
+
+    /**
+     * Sets axon_account_id
+     *
+     * @param string|null $axon_account_id The AppLovin account id. Present when the request sent the Campaign Management keys.
+     *
+     * @return self
+     */
+    public function setAxonAccountId($axon_account_id)
+    {
+        if (is_null($axon_account_id)) {
+            throw new \InvalidArgumentException('non-nullable axon_account_id cannot be null');
+        }
+        $this->container['axon_account_id'] = $axon_account_id;
 
         return $this;
     }

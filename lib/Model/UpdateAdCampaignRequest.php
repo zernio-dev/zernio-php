@@ -531,7 +531,7 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets bid_strategy
      *
-     * @param \Zernio\Model\BidStrategy|null $bid_strategy **Meta + Google.**  - Meta: the campaign default that ad sets inherit unless they override it. - Google: the campaign's own bidding strategy. LOWEST_COST_WITHOUT_CAP = Maximize Conversions, COST_CAP + bidAmount = Target CPA, LOWEST_COST_WITH_MIN_ROAS + roasAverageFloor = Target ROAS, LOWEST_COST_WITH_BID_CAP + bidAmount = Maximize Clicks with a CPC ceiling. - Google: portfolioBidStrategyId attaches a portfolio strategy instead.
+     * @param \Zernio\Model\BidStrategy|null $bid_strategy **Meta, Google and AppLovin.**  - Meta: the campaign default that ad sets inherit unless they override it. - Google: the campaign's own bidding strategy. LOWEST_COST_WITHOUT_CAP = Maximize Conversions, COST_CAP + bidAmount = Target CPA, LOWEST_COST_WITH_MIN_ROAS + roasAverageFloor = Target ROAS, LOWEST_COST_WITH_BID_CAP + bidAmount = Maximize Clicks with a CPC ceiling. - Google: portfolioBidStrategyId attaches a portfolio strategy instead. - AppLovin: sets the campaign goal value; the goal type itself cannot change. COST_CAP + bidAmount for a CPI, CPE or CPP goal, LOWEST_COST_WITH_MIN_ROAS + roasAverageFloor for a ROAS goal. - AppLovin app limits, checked before AppLovin is called: CPI below 200, CPE and CPP below 500, AD_ROAS at least 0.1, CHK_ROAS at least 0.01, BLD_ROAS at least 0.05. - AppLovin: a goal set per country, or the other goal family, is a 422.
      *
      * @return self
      */
@@ -558,7 +558,7 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets bid_amount
      *
-     * @param float|null $bid_amount **Google only.** Whole currency units (USD: 12 = $12.00). Max CPC for LOWEST_COST_WITH_BID_CAP, CPA target for COST_CAP; required for both.
+     * @param float|null $bid_amount **Google and AppLovin.** Whole currency units (USD: 12 = $12.00). Google: max CPC for LOWEST_COST_WITH_BID_CAP, CPA target for COST_CAP; required for both. AppLovin: the CPI, CPE or CPP goal value, with COST_CAP.
      *
      * @return self
      */
@@ -585,7 +585,7 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets roas_average_floor
      *
-     * @param float|null $roas_average_floor **Google only.** Decimal ROAS multiplier (2.0 = 2.0x), required for LOWEST_COST_WITH_MIN_ROAS.
+     * @param float|null $roas_average_floor **Google and AppLovin.** Decimal ROAS multiplier (2.0 = 2.0x), required for LOWEST_COST_WITH_MIN_ROAS. AppLovin: the ROAS goal value.
      *
      * @return self
      */
@@ -872,7 +872,7 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets name
      *
-     * @param string|null $name **Meta and Reddit.** Rename the campaign.
+     * @param string|null $name **Meta, Reddit and AppLovin.** Rename the campaign.
      *
      * @return self
      */

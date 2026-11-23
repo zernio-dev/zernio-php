@@ -655,7 +655,7 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**completeWhatsAppPhoneSelection**](docs/Api/ConnectApi.md#completewhatsappphoneselection) | **POST** /v1/connect/whatsapp/select-phone-number | Complete number selection
 *ConnectApi* | [**configureTikTokAdsBrandIdentity**](docs/Api/ConnectApi.md#configuretiktokadsbrandidentity) | **PATCH** /v1/connect/tiktok-ads | Set TikTok brand identity
 *ConnectApi* | [**connectAds**](docs/Api/ConnectApi.md#connectads) | **GET** /v1/connect/{platform}/ads | Connect ads for a platform
-*ConnectApi* | [**connectAppLovinAdsCredentials**](docs/Api/ConnectApi.md#connectapplovinadscredentials) | **POST** /v1/connect/applovin-ads/credentials | Connect an AppLovin Axon account
+*ConnectApi* | [**connectAppLovinAdsCredentials**](docs/Api/ConnectApi.md#connectapplovinadscredentials) | **POST** /v1/connect/applovin-ads/credentials | Connect an AppLovin account
 *ConnectApi* | [**connectAttentiveCredentials**](docs/Api/ConnectApi.md#connectattentivecredentials) | **POST** /v1/connect/attentive/credentials | Connect an Attentive company
 *ConnectApi* | [**connectAwinCredentials**](docs/Api/ConnectApi.md#connectawincredentials) | **POST** /v1/connect/awin/credentials | Connect an Awin advertiser
 *ConnectApi* | [**connectBlueskyCredentials**](docs/Api/ConnectApi.md#connectblueskycredentials) | **POST** /v1/connect/bluesky/credentials | Connect Bluesky account
@@ -1690,6 +1690,11 @@ Class | Method | HTTP request | Description
 - [ApiKey](docs/Model/ApiKey.md)
 - [ApiKeyCreatedBy](docs/Model/ApiKeyCreatedBy.md)
 - [ApiKeyProfileIdsInner](docs/Model/ApiKeyProfileIdsInner.md)
+- [AppLovinAdsPlatformData](docs/Model/AppLovinAdsPlatformData.md)
+- [AppLovinAdsPlatformDataAssetsInner](docs/Model/AppLovinAdsPlatformDataAssetsInner.md)
+- [AppLovinAdsPlatformDataAssetsInnerOneOf](docs/Model/AppLovinAdsPlatformDataAssetsInnerOneOf.md)
+- [AppLovinAdsPlatformDataBrandInfo](docs/Model/AppLovinAdsPlatformDataBrandInfo.md)
+- [AppLovinAdsPlatformDataTracking](docs/Model/AppLovinAdsPlatformDataTracking.md)
 - [AppealSmsRegistration200Response](docs/Model/AppealSmsRegistration200Response.md)
 - [AppealSmsRegistrationRequest](docs/Model/AppealSmsRegistrationRequest.md)
 - [ApplyGoogleRecommendations200Response](docs/Model/ApplyGoogleRecommendations200Response.md)
@@ -2243,6 +2248,9 @@ Class | Method | HTTP request | Description
 - [CreateAdCampaign200Response](docs/Model/CreateAdCampaign200Response.md)
 - [CreateAdCampaign201Response](docs/Model/CreateAdCampaign201Response.md)
 - [CreateAdCampaignRequest](docs/Model/CreateAdCampaignRequest.md)
+- [CreateAdCampaignRequestMetrosInner](docs/Model/CreateAdCampaignRequestMetrosInner.md)
+- [CreateAdCampaignRequestPlatformSpecificData](docs/Model/CreateAdCampaignRequestPlatformSpecificData.md)
+- [CreateAdCampaignRequestRegionsInner](docs/Model/CreateAdCampaignRequestRegionsInner.md)
 - [CreateAdCatalog201Response](docs/Model/CreateAdCatalog201Response.md)
 - [CreateAdCatalogFeed201Response](docs/Model/CreateAdCatalogFeed201Response.md)
 - [CreateAdCatalogFeedRequest](docs/Model/CreateAdCatalogFeedRequest.md)

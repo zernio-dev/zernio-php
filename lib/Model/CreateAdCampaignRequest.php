@@ -72,7 +72,10 @@ class CreateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'status' => 'string',
         'start_date' => '\DateTime',
         'end_date' => '\DateTime',
-        'platform_specific_data' => '\Zernio\Model\AmazonAdsCampaignPlatformData',
+        'countries' => 'string[]',
+        'regions' => '\Zernio\Model\CreateAdCampaignRequestRegionsInner[]',
+        'metros' => '\Zernio\Model\CreateAdCampaignRequestMetrosInner[]',
+        'platform_specific_data' => '\Zernio\Model\CreateAdCampaignRequestPlatformSpecificData',
         'location_targeting_type' => '\Zernio\Model\GoogleLocationTargetingType',
         'bid_strategy' => 'string',
         'bid_amount' => 'float',
@@ -105,6 +108,9 @@ class CreateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'status' => null,
         'start_date' => 'date-time',
         'end_date' => 'date-time',
+        'countries' => null,
+        'regions' => null,
+        'metros' => null,
         'platform_specific_data' => null,
         'location_targeting_type' => null,
         'bid_strategy' => null,
@@ -136,6 +142,9 @@ class CreateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'status' => false,
         'start_date' => false,
         'end_date' => false,
+        'countries' => false,
+        'regions' => false,
+        'metros' => false,
         'platform_specific_data' => false,
         'location_targeting_type' => false,
         'bid_strategy' => false,
@@ -247,6 +256,9 @@ class CreateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'status' => 'status',
         'start_date' => 'startDate',
         'end_date' => 'endDate',
+        'countries' => 'countries',
+        'regions' => 'regions',
+        'metros' => 'metros',
         'platform_specific_data' => 'platformSpecificData',
         'location_targeting_type' => 'locationTargetingType',
         'bid_strategy' => 'bidStrategy',
@@ -278,6 +290,9 @@ class CreateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'status' => 'setStatus',
         'start_date' => 'setStartDate',
         'end_date' => 'setEndDate',
+        'countries' => 'setCountries',
+        'regions' => 'setRegions',
+        'metros' => 'setMetros',
         'platform_specific_data' => 'setPlatformSpecificData',
         'location_targeting_type' => 'setLocationTargetingType',
         'bid_strategy' => 'setBidStrategy',
@@ -309,6 +324,9 @@ class CreateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'status' => 'getStatus',
         'start_date' => 'getStartDate',
         'end_date' => 'getEndDate',
+        'countries' => 'getCountries',
+        'regions' => 'getRegions',
+        'metros' => 'getMetros',
         'platform_specific_data' => 'getPlatformSpecificData',
         'location_targeting_type' => 'getLocationTargetingType',
         'bid_strategy' => 'getBidStrategy',
@@ -513,6 +531,9 @@ class CreateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('status', $data ?? [], 'PAUSED');
         $this->setIfExists('start_date', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
+        $this->setIfExists('countries', $data ?? [], null);
+        $this->setIfExists('regions', $data ?? [], null);
+        $this->setIfExists('metros', $data ?? [], null);
         $this->setIfExists('platform_specific_data', $data ?? [], null);
         $this->setIfExists('location_targeting_type', $data ?? [], null);
         $this->setIfExists('bid_strategy', $data ?? [], null);
@@ -1021,7 +1042,7 @@ class CreateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets start_date
      *
-     * @param \DateTime|null $start_date Reddit and Amazon only (400 elsewhere). Campaign start (ISO 8601); a value without an offset is read in the ad account time zone. Requires a campaign budget (`budgetAmount` + `budgetType`, 400 otherwise). Defaults to now.
+     * @param \DateTime|null $start_date Reddit, Amazon and AppLovin only (400 elsewhere). Campaign start (ISO 8601); a value without an offset is read in the ad account time zone. Requires a campaign budget (`budgetAmount` + `budgetType`, 400 otherwise). AppLovin reads it in UTC and refuses a start before today. Defaults to now.
      *
      * @return self
      */
@@ -1048,7 +1069,7 @@ class CreateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets end_date
      *
-     * @param \DateTime|null $end_date Reddit and Amazon only (400 elsewhere). Campaign end (ISO 8601); a value without an offset is read in the ad account time zone. Requires a campaign budget (400 otherwise), and is required for `budgetType: lifetime`.
+     * @param \DateTime|null $end_date Reddit, Amazon and AppLovin only (400 elsewhere). Campaign end (ISO 8601); a value without an offset is read in the ad account time zone. Requires a campaign budget (400 otherwise), and is required for `budgetType: lifetime`. On AppLovin no endDate means continuous delivery.
      *
      * @return self
      */
@@ -1063,9 +1084,90 @@ class CreateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
+     * Gets countries
+     *
+     * @return string[]|null
+     */
+    public function getCountries()
+    {
+        return $this->container['countries'];
+    }
+
+    /**
+     * Sets countries
+     *
+     * @param string[]|null $countries AppLovin only (400 elsewhere), where the campaign carries the targeting: the countries it serves, at least one.
+     *
+     * @return self
+     */
+    public function setCountries($countries)
+    {
+        if (is_null($countries)) {
+            throw new \InvalidArgumentException('non-nullable countries cannot be null');
+        }
+        $this->container['countries'] = $countries;
+
+        return $this;
+    }
+
+    /**
+     * Gets regions
+     *
+     * @return \Zernio\Model\CreateAdCampaignRequestRegionsInner[]|null
+     */
+    public function getRegions()
+    {
+        return $this->container['regions'];
+    }
+
+    /**
+     * Sets regions
+     *
+     * @param \Zernio\Model\CreateAdCampaignRequestRegionsInner[]|null $regions AppLovin only (400 elsewhere). US state codes (`CA` or `US-CA`), with `US` in countries. Never together with metros.
+     *
+     * @return self
+     */
+    public function setRegions($regions)
+    {
+        if (is_null($regions)) {
+            throw new \InvalidArgumentException('non-nullable regions cannot be null');
+        }
+        $this->container['regions'] = $regions;
+
+        return $this;
+    }
+
+    /**
+     * Gets metros
+     *
+     * @return \Zernio\Model\CreateAdCampaignRequestMetrosInner[]|null
+     */
+    public function getMetros()
+    {
+        return $this->container['metros'];
+    }
+
+    /**
+     * Sets metros
+     *
+     * @param \Zernio\Model\CreateAdCampaignRequestMetrosInner[]|null $metros AppLovin only (400 elsewhere). AppLovin metro names, with `US` in countries. Never together with regions.
+     *
+     * @return self
+     */
+    public function setMetros($metros)
+    {
+        if (is_null($metros)) {
+            throw new \InvalidArgumentException('non-nullable metros cannot be null');
+        }
+        $this->container['metros'] = $metros;
+
+        return $this;
+    }
+
+    /**
      * Gets platform_specific_data
      *
-     * @return \Zernio\Model\AmazonAdsCampaignPlatformData|null
+     * @return \Zernio\Model\CreateAdCampaignRequestPlatformSpecificData|null
      */
     public function getPlatformSpecificData()
     {
@@ -1075,7 +1177,7 @@ class CreateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets platform_specific_data
      *
-     * @param \Zernio\Model\AmazonAdsCampaignPlatformData|null $platform_specific_data Amazon Ads only (400 elsewhere), and required there: the ad product and its campaign settings.
+     * @param \Zernio\Model\CreateAdCampaignRequestPlatformSpecificData|null $platform_specific_data platform_specific_data
      *
      * @return self
      */

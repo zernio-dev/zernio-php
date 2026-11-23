@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * CreateStandaloneAdRequestPlatformSpecificData Class Doc Comment
  *
  * @category Class
- * @description Platform-specific options. The platform is derived from &#x60;accountId&#x60;; options for a different platform return a 400. LinkedIn (campaign bidding and delivery controls), Meta (the bid trio) and Amazon Ads (required: the ad product, products, creative and targeting) have options today.  **Amazon Ads**: see &#x60;AmazonAdsPlatformData&#x60;. Amazon has no dry run, so &#x60;validateOnly&#x60; returns a 501.  **Meta**  - &#x60;bidStrategy&#x60;, &#x60;bidAmount&#x60; and &#x60;roasAverageFloor&#x60; may be sent here instead of at the root (the preferred home going forward). Sending them in BOTH places returns a 400 (&#x60;mutually_exclusive_fields&#x60;). - Sending any bid field in &#x60;adSetId&#x60; attach mode is a 400 (the ad set already has its bid). - &#x60;dailyMinSpendTarget&#x60; / &#x60;lifetimeMinSpendTarget&#x60; set the new ad set&#39;s minimum spend and live here only; also rejected in &#x60;adSetId&#x60; attach mode.
+ * @description Platform-specific options. The platform is derived from &#x60;accountId&#x60;; options for a different platform return a 400. LinkedIn (campaign bidding and delivery controls), Meta (the bid trio) Amazon Ads (required: the ad product, products, creative and targeting) and AppLovin (the campaign and creative set) have options today.  **Amazon Ads**: see &#x60;AmazonAdsPlatformData&#x60;. Amazon has no dry run, so &#x60;validateOnly&#x60; returns a 501.  **AppLovin**  - A new campaign needs &#x60;campaignType&#x60; (&#x60;APP&#x60; or &#x60;WEB&#x60;), the goal and, for an app, &#x60;os&#x60;, &#x60;packageName&#x60; and &#x60;tracking&#x60;. With &#x60;existingCampaignId&#x60;, only the creative set fields (&#x60;assets&#x60;, &#x60;languages&#x60;, &#x60;brandInfo&#x60;) apply. - Zernio checks every documented AppLovin rule (goal value limits, ROAS day targets, US-only regions and metros, the asset combination, brand info lengths) before calling AppLovin, because 100 refused calls in five minutes lock the AppLovin account for a day. &#x60;validateOnly&#x60; runs those checks and calls nothing.  **Meta**  - &#x60;bidStrategy&#x60;, &#x60;bidAmount&#x60; and &#x60;roasAverageFloor&#x60; may be sent here instead of at the root (the preferred home going forward). Sending them in BOTH places returns a 400 (&#x60;mutually_exclusive_fields&#x60;). - Sending any bid field in &#x60;adSetId&#x60; attach mode is a 400 (the ad set already has its bid). - &#x60;dailyMinSpendTarget&#x60; / &#x60;lifetimeMinSpendTarget&#x60; set the new ad set&#39;s minimum spend and live here only; also rejected in &#x60;adSetId&#x60; attach mode.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -81,7 +81,24 @@ class CreateStandaloneAdRequestPlatformSpecificData implements ModelInterface, A
         'daily_min_spend_target' => 'float',
         'lifetime_min_spend_target' => 'float',
         'customer_lifecycle' => '\Zernio\Model\MetaCustomerLifecycle',
-        'ad_schedule' => '\Zernio\Model\MetaAdScheduleInner[]'
+        'ad_schedule' => '\Zernio\Model\MetaAdScheduleInner[]',
+        'campaign_type' => 'string',
+        'os' => 'string',
+        'package_name' => 'string',
+        'itunes_id' => 'int',
+        'website_url' => 'string',
+        'bidding_strategy' => 'string',
+        'goal_type' => 'string',
+        'goal_value' => 'float',
+        'country_goal_values' => 'array<string,float>',
+        'roas_day_target' => 'string',
+        'event_target' => 'string',
+        'country_budgets' => 'array<string,float>',
+        'tracking' => '\Zernio\Model\AppLovinAdsPlatformDataTracking',
+        'audience_strategy' => 'string',
+        'assets' => '\Zernio\Model\AppLovinAdsPlatformDataAssetsInner[]',
+        'languages' => 'string[]',
+        'brand_info' => '\Zernio\Model\AppLovinAdsPlatformDataBrandInfo'
     ];
 
     /**
@@ -114,7 +131,24 @@ class CreateStandaloneAdRequestPlatformSpecificData implements ModelInterface, A
         'daily_min_spend_target' => null,
         'lifetime_min_spend_target' => null,
         'customer_lifecycle' => null,
-        'ad_schedule' => null
+        'ad_schedule' => null,
+        'campaign_type' => null,
+        'os' => null,
+        'package_name' => null,
+        'itunes_id' => null,
+        'website_url' => 'uri',
+        'bidding_strategy' => null,
+        'goal_type' => null,
+        'goal_value' => null,
+        'country_goal_values' => null,
+        'roas_day_target' => null,
+        'event_target' => null,
+        'country_budgets' => null,
+        'tracking' => null,
+        'audience_strategy' => null,
+        'assets' => null,
+        'languages' => null,
+        'brand_info' => null
     ];
 
     /**
@@ -145,7 +179,24 @@ class CreateStandaloneAdRequestPlatformSpecificData implements ModelInterface, A
         'daily_min_spend_target' => false,
         'lifetime_min_spend_target' => false,
         'customer_lifecycle' => false,
-        'ad_schedule' => false
+        'ad_schedule' => false,
+        'campaign_type' => false,
+        'os' => false,
+        'package_name' => false,
+        'itunes_id' => false,
+        'website_url' => false,
+        'bidding_strategy' => false,
+        'goal_type' => false,
+        'goal_value' => false,
+        'country_goal_values' => false,
+        'roas_day_target' => false,
+        'event_target' => false,
+        'country_budgets' => false,
+        'tracking' => false,
+        'audience_strategy' => false,
+        'assets' => false,
+        'languages' => false,
+        'brand_info' => false
     ];
 
     /**
@@ -256,7 +307,24 @@ class CreateStandaloneAdRequestPlatformSpecificData implements ModelInterface, A
         'daily_min_spend_target' => 'dailyMinSpendTarget',
         'lifetime_min_spend_target' => 'lifetimeMinSpendTarget',
         'customer_lifecycle' => 'customerLifecycle',
-        'ad_schedule' => 'adSchedule'
+        'ad_schedule' => 'adSchedule',
+        'campaign_type' => 'campaignType',
+        'os' => 'os',
+        'package_name' => 'packageName',
+        'itunes_id' => 'itunesId',
+        'website_url' => 'websiteUrl',
+        'bidding_strategy' => 'biddingStrategy',
+        'goal_type' => 'goalType',
+        'goal_value' => 'goalValue',
+        'country_goal_values' => 'countryGoalValues',
+        'roas_day_target' => 'roasDayTarget',
+        'event_target' => 'eventTarget',
+        'country_budgets' => 'countryBudgets',
+        'tracking' => 'tracking',
+        'audience_strategy' => 'audienceStrategy',
+        'assets' => 'assets',
+        'languages' => 'languages',
+        'brand_info' => 'brandInfo'
     ];
 
     /**
@@ -287,7 +355,24 @@ class CreateStandaloneAdRequestPlatformSpecificData implements ModelInterface, A
         'daily_min_spend_target' => 'setDailyMinSpendTarget',
         'lifetime_min_spend_target' => 'setLifetimeMinSpendTarget',
         'customer_lifecycle' => 'setCustomerLifecycle',
-        'ad_schedule' => 'setAdSchedule'
+        'ad_schedule' => 'setAdSchedule',
+        'campaign_type' => 'setCampaignType',
+        'os' => 'setOs',
+        'package_name' => 'setPackageName',
+        'itunes_id' => 'setItunesId',
+        'website_url' => 'setWebsiteUrl',
+        'bidding_strategy' => 'setBiddingStrategy',
+        'goal_type' => 'setGoalType',
+        'goal_value' => 'setGoalValue',
+        'country_goal_values' => 'setCountryGoalValues',
+        'roas_day_target' => 'setRoasDayTarget',
+        'event_target' => 'setEventTarget',
+        'country_budgets' => 'setCountryBudgets',
+        'tracking' => 'setTracking',
+        'audience_strategy' => 'setAudienceStrategy',
+        'assets' => 'setAssets',
+        'languages' => 'setLanguages',
+        'brand_info' => 'setBrandInfo'
     ];
 
     /**
@@ -318,7 +403,24 @@ class CreateStandaloneAdRequestPlatformSpecificData implements ModelInterface, A
         'daily_min_spend_target' => 'getDailyMinSpendTarget',
         'lifetime_min_spend_target' => 'getLifetimeMinSpendTarget',
         'customer_lifecycle' => 'getCustomerLifecycle',
-        'ad_schedule' => 'getAdSchedule'
+        'ad_schedule' => 'getAdSchedule',
+        'campaign_type' => 'getCampaignType',
+        'os' => 'getOs',
+        'package_name' => 'getPackageName',
+        'itunes_id' => 'getItunesId',
+        'website_url' => 'getWebsiteUrl',
+        'bidding_strategy' => 'getBiddingStrategy',
+        'goal_type' => 'getGoalType',
+        'goal_value' => 'getGoalValue',
+        'country_goal_values' => 'getCountryGoalValues',
+        'roas_day_target' => 'getRoasDayTarget',
+        'event_target' => 'getEventTarget',
+        'country_budgets' => 'getCountryBudgets',
+        'tracking' => 'getTracking',
+        'audience_strategy' => 'getAudienceStrategy',
+        'assets' => 'getAssets',
+        'languages' => 'getLanguages',
+        'brand_info' => 'getBrandInfo'
     ];
 
     /**
@@ -367,6 +469,24 @@ class CreateStandaloneAdRequestPlatformSpecificData implements ModelInterface, A
     public const COST_TYPE_CPV = 'CPV';
     public const CREATIVE_SELECTION_OPTIMIZED = 'OPTIMIZED';
     public const CREATIVE_SELECTION_ROUND_ROBIN = 'ROUND_ROBIN';
+    public const CAMPAIGN_TYPE_APP = 'APP';
+    public const CAMPAIGN_TYPE_WEB = 'WEB';
+    public const OS_IOS = 'IOS';
+    public const OS_ANDROID = 'ANDROID';
+    public const BIDDING_STRATEGY_TARGET_GOAL_WITH_CPI_BILLING = 'TARGET_GOAL_WITH_CPI_BILLING';
+    public const BIDDING_STRATEGY_AUTO_BIDDING_WITH_CPM_BILLING = 'AUTO_BIDDING_WITH_CPM_BILLING';
+    public const GOAL_TYPE_CPI = 'CPI';
+    public const GOAL_TYPE_CPE = 'CPE';
+    public const GOAL_TYPE_CPP = 'CPP';
+    public const GOAL_TYPE_AD_ROAS = 'AD_ROAS';
+    public const GOAL_TYPE_CHK_ROAS = 'CHK_ROAS';
+    public const GOAL_TYPE_BLD_ROAS = 'BLD_ROAS';
+    public const ROAS_DAY_TARGET_DAY0 = 'DAY0';
+    public const ROAS_DAY_TARGET_DAY7 = 'DAY7';
+    public const ROAS_DAY_TARGET_DAY28 = 'DAY28';
+    public const AUDIENCE_STRATEGY_UNIVERSAL = 'UNIVERSAL';
+    public const AUDIENCE_STRATEGY_PROSPECTING = 'PROSPECTING';
+    public const AUDIENCE_STRATEGY_DISCOVERY = 'DISCOVERY';
 
     /**
      * Gets allowable values of the enum
@@ -392,6 +512,90 @@ class CreateStandaloneAdRequestPlatformSpecificData implements ModelInterface, A
         return [
             self::CREATIVE_SELECTION_OPTIMIZED,
             self::CREATIVE_SELECTION_ROUND_ROBIN,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCampaignTypeAllowableValues()
+    {
+        return [
+            self::CAMPAIGN_TYPE_APP,
+            self::CAMPAIGN_TYPE_WEB,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getOsAllowableValues()
+    {
+        return [
+            self::OS_IOS,
+            self::OS_ANDROID,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getBiddingStrategyAllowableValues()
+    {
+        return [
+            self::BIDDING_STRATEGY_TARGET_GOAL_WITH_CPI_BILLING,
+            self::BIDDING_STRATEGY_AUTO_BIDDING_WITH_CPM_BILLING,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getGoalTypeAllowableValues()
+    {
+        return [
+            self::GOAL_TYPE_CPI,
+            self::GOAL_TYPE_CPE,
+            self::GOAL_TYPE_CPP,
+            self::GOAL_TYPE_AD_ROAS,
+            self::GOAL_TYPE_CHK_ROAS,
+            self::GOAL_TYPE_BLD_ROAS,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getRoasDayTargetAllowableValues()
+    {
+        return [
+            self::ROAS_DAY_TARGET_DAY0,
+            self::ROAS_DAY_TARGET_DAY7,
+            self::ROAS_DAY_TARGET_DAY28,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAudienceStrategyAllowableValues()
+    {
+        return [
+            self::AUDIENCE_STRATEGY_UNIVERSAL,
+            self::AUDIENCE_STRATEGY_PROSPECTING,
+            self::AUDIENCE_STRATEGY_DISCOVERY,
         ];
     }
 
@@ -433,6 +637,23 @@ class CreateStandaloneAdRequestPlatformSpecificData implements ModelInterface, A
         $this->setIfExists('lifetime_min_spend_target', $data ?? [], null);
         $this->setIfExists('customer_lifecycle', $data ?? [], null);
         $this->setIfExists('ad_schedule', $data ?? [], null);
+        $this->setIfExists('campaign_type', $data ?? [], null);
+        $this->setIfExists('os', $data ?? [], null);
+        $this->setIfExists('package_name', $data ?? [], null);
+        $this->setIfExists('itunes_id', $data ?? [], null);
+        $this->setIfExists('website_url', $data ?? [], null);
+        $this->setIfExists('bidding_strategy', $data ?? [], null);
+        $this->setIfExists('goal_type', $data ?? [], null);
+        $this->setIfExists('goal_value', $data ?? [], null);
+        $this->setIfExists('country_goal_values', $data ?? [], null);
+        $this->setIfExists('roas_day_target', $data ?? [], null);
+        $this->setIfExists('event_target', $data ?? [], null);
+        $this->setIfExists('country_budgets', $data ?? [], null);
+        $this->setIfExists('tracking', $data ?? [], null);
+        $this->setIfExists('audience_strategy', $data ?? [], null);
+        $this->setIfExists('assets', $data ?? [], null);
+        $this->setIfExists('languages', $data ?? [], null);
+        $this->setIfExists('brand_info', $data ?? [], null);
     }
 
     /**
@@ -486,6 +707,68 @@ class CreateStandaloneAdRequestPlatformSpecificData implements ModelInterface, A
 
         if (!is_null($this->container['ad_schedule']) && (count($this->container['ad_schedule']) < 1)) {
             $invalidProperties[] = "invalid value for 'ad_schedule', number of items must be greater than or equal to 1.";
+        }
+
+        $allowedValues = $this->getCampaignTypeAllowableValues();
+        if (!is_null($this->container['campaign_type']) && !in_array($this->container['campaign_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'campaign_type', must be one of '%s'",
+                $this->container['campaign_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getOsAllowableValues();
+        if (!is_null($this->container['os']) && !in_array($this->container['os'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'os', must be one of '%s'",
+                $this->container['os'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getBiddingStrategyAllowableValues();
+        if (!is_null($this->container['bidding_strategy']) && !in_array($this->container['bidding_strategy'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'bidding_strategy', must be one of '%s'",
+                $this->container['bidding_strategy'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getGoalTypeAllowableValues();
+        if (!is_null($this->container['goal_type']) && !in_array($this->container['goal_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'goal_type', must be one of '%s'",
+                $this->container['goal_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getRoasDayTargetAllowableValues();
+        if (!is_null($this->container['roas_day_target']) && !in_array($this->container['roas_day_target'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'roas_day_target', must be one of '%s'",
+                $this->container['roas_day_target'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getAudienceStrategyAllowableValues();
+        if (!is_null($this->container['audience_strategy']) && !in_array($this->container['audience_strategy'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'audience_strategy', must be one of '%s'",
+                $this->container['audience_strategy'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if (!is_null($this->container['assets']) && (count($this->container['assets']) > 40)) {
+            $invalidProperties[] = "invalid value for 'assets', number of items must be less than or equal to 40.";
+        }
+
+        if (!is_null($this->container['assets']) && (count($this->container['assets']) < 1)) {
+            $invalidProperties[] = "invalid value for 'assets', number of items must be greater than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -1147,6 +1430,532 @@ class CreateStandaloneAdRequestPlatformSpecificData implements ModelInterface, A
             throw new \InvalidArgumentException('invalid length for $ad_schedule when calling CreateStandaloneAdRequestPlatformSpecificData., number of items must be greater than or equal to 1.');
         }
         $this->container['ad_schedule'] = $ad_schedule;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaign_type
+     *
+     * @return string|null
+     */
+    public function getCampaignType()
+    {
+        return $this->container['campaign_type'];
+    }
+
+    /**
+     * Sets campaign_type
+     *
+     * @param string|null $campaign_type Required for a new campaign.
+     *
+     * @return self
+     */
+    public function setCampaignType($campaign_type)
+    {
+        if (is_null($campaign_type)) {
+            throw new \InvalidArgumentException('non-nullable campaign_type cannot be null');
+        }
+        $allowedValues = $this->getCampaignTypeAllowableValues();
+        if (!in_array($campaign_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'campaign_type', must be one of '%s'",
+                    $campaign_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['campaign_type'] = $campaign_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets os
+     *
+     * @return string|null
+     */
+    public function getOs()
+    {
+        return $this->container['os'];
+    }
+
+    /**
+     * Sets os
+     *
+     * @param string|null $os APP campaigns. Required.
+     *
+     * @return self
+     */
+    public function setOs($os)
+    {
+        if (is_null($os)) {
+            throw new \InvalidArgumentException('non-nullable os cannot be null');
+        }
+        $allowedValues = $this->getOsAllowableValues();
+        if (!in_array($os, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'os', must be one of '%s'",
+                    $os,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['os'] = $os;
+
+        return $this;
+    }
+
+    /**
+     * Gets package_name
+     *
+     * @return string|null
+     */
+    public function getPackageName()
+    {
+        return $this->container['package_name'];
+    }
+
+    /**
+     * Sets package_name
+     *
+     * @param string|null $package_name APP campaigns. Required.
+     *
+     * @return self
+     */
+    public function setPackageName($package_name)
+    {
+        if (is_null($package_name)) {
+            throw new \InvalidArgumentException('non-nullable package_name cannot be null');
+        }
+        $this->container['package_name'] = $package_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets itunes_id
+     *
+     * @return int|null
+     */
+    public function getItunesId()
+    {
+        return $this->container['itunes_id'];
+    }
+
+    /**
+     * Sets itunes_id
+     *
+     * @param int|null $itunes_id iOS APP campaigns. Required.
+     *
+     * @return self
+     */
+    public function setItunesId($itunes_id)
+    {
+        if (is_null($itunes_id)) {
+            throw new \InvalidArgumentException('non-nullable itunes_id cannot be null');
+        }
+        $this->container['itunes_id'] = $itunes_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets website_url
+     *
+     * @return string|null
+     */
+    public function getWebsiteUrl()
+    {
+        return $this->container['website_url'];
+    }
+
+    /**
+     * Sets website_url
+     *
+     * @param string|null $website_url WEB campaigns. Required unless linkUrl is sent.
+     *
+     * @return self
+     */
+    public function setWebsiteUrl($website_url)
+    {
+        if (is_null($website_url)) {
+            throw new \InvalidArgumentException('non-nullable website_url cannot be null');
+        }
+        $this->container['website_url'] = $website_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets bidding_strategy
+     *
+     * @return string|null
+     */
+    public function getBiddingStrategy()
+    {
+        return $this->container['bidding_strategy'];
+    }
+
+    /**
+     * Sets bidding_strategy
+     *
+     * @param string|null $bidding_strategy Defaults to CPI billing for a CPI goal, CPM billing otherwise. TARGET_GOAL_WITH_CPI_BILLING takes an APP campaign with a CPI goal only. Set at creation only.
+     *
+     * @return self
+     */
+    public function setBiddingStrategy($bidding_strategy)
+    {
+        if (is_null($bidding_strategy)) {
+            throw new \InvalidArgumentException('non-nullable bidding_strategy cannot be null');
+        }
+        $allowedValues = $this->getBiddingStrategyAllowableValues();
+        if (!in_array($bidding_strategy, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'bidding_strategy', must be one of '%s'",
+                    $bidding_strategy,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['bidding_strategy'] = $bidding_strategy;
+
+        return $this;
+    }
+
+    /**
+     * Gets goal_type
+     *
+     * @return string|null
+     */
+    public function getGoalType()
+    {
+        return $this->container['goal_type'];
+    }
+
+    /**
+     * Sets goal_type
+     *
+     * @param string|null $goal_type APP takes all, WEB takes CPE, CPP and CHK_ROAS. Defaults from goal: app_promotion is CPI, conversions CPP, lead_generation CPE. Set at creation only.
+     *
+     * @return self
+     */
+    public function setGoalType($goal_type)
+    {
+        if (is_null($goal_type)) {
+            throw new \InvalidArgumentException('non-nullable goal_type cannot be null');
+        }
+        $allowedValues = $this->getGoalTypeAllowableValues();
+        if (!in_array($goal_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'goal_type', must be one of '%s'",
+                    $goal_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['goal_type'] = $goal_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets goal_value
+     *
+     * @return float|null
+     */
+    public function getGoalValue()
+    {
+        return $this->container['goal_value'];
+    }
+
+    /**
+     * Sets goal_value
+     *
+     * @param float|null $goal_value The goal for every country (a cost, or a ROAS ratio). APP limits: CPI below 200, CPE and CPP below 500, AD_ROAS at least 0.1, CHK_ROAS at least 0.01, BLD_ROAS at least 0.05. Send this or countryGoalValues.
+     *
+     * @return self
+     */
+    public function setGoalValue($goal_value)
+    {
+        if (is_null($goal_value)) {
+            throw new \InvalidArgumentException('non-nullable goal_value cannot be null');
+        }
+        $this->container['goal_value'] = $goal_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets country_goal_values
+     *
+     * @return array<string,float>|null
+     */
+    public function getCountryGoalValues()
+    {
+        return $this->container['country_goal_values'];
+    }
+
+    /**
+     * Sets country_goal_values
+     *
+     * @param array<string,float>|null $country_goal_values Per-country goal values for targeted countries.
+     *
+     * @return self
+     */
+    public function setCountryGoalValues($country_goal_values)
+    {
+        if (is_null($country_goal_values)) {
+            throw new \InvalidArgumentException('non-nullable country_goal_values cannot be null');
+        }
+        $this->container['country_goal_values'] = $country_goal_values;
+
+        return $this;
+    }
+
+    /**
+     * Gets roas_day_target
+     *
+     * @return string|null
+     */
+    public function getRoasDayTarget()
+    {
+        return $this->container['roas_day_target'];
+    }
+
+    /**
+     * Sets roas_day_target
+     *
+     * @param string|null $roas_day_target Required for ROAS goals (and WEB CPP). APP takes DAY7 or DAY28, WEB DAY0 or DAY7.
+     *
+     * @return self
+     */
+    public function setRoasDayTarget($roas_day_target)
+    {
+        if (is_null($roas_day_target)) {
+            throw new \InvalidArgumentException('non-nullable roas_day_target cannot be null');
+        }
+        $allowedValues = $this->getRoasDayTargetAllowableValues();
+        if (!in_array($roas_day_target, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'roas_day_target', must be one of '%s'",
+                    $roas_day_target,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['roas_day_target'] = $roas_day_target;
+
+        return $this;
+    }
+
+    /**
+     * Gets event_target
+     *
+     * @return string|null
+     */
+    public function getEventTarget()
+    {
+        return $this->container['event_target'];
+    }
+
+    /**
+     * Sets event_target
+     *
+     * @param string|null $event_target Required for a CPE goal.
+     *
+     * @return self
+     */
+    public function setEventTarget($event_target)
+    {
+        if (is_null($event_target)) {
+            throw new \InvalidArgumentException('non-nullable event_target cannot be null');
+        }
+        $this->container['event_target'] = $event_target;
+
+        return $this;
+    }
+
+    /**
+     * Gets country_budgets
+     *
+     * @return array<string,float>|null
+     */
+    public function getCountryBudgets()
+    {
+        return $this->container['country_budgets'];
+    }
+
+    /**
+     * Sets country_budgets
+     *
+     * @param array<string,float>|null $country_budgets Per-country daily budgets, instead of budgetAmount. AppLovin budgets are daily only.
+     *
+     * @return self
+     */
+    public function setCountryBudgets($country_budgets)
+    {
+        if (is_null($country_budgets)) {
+            throw new \InvalidArgumentException('non-nullable country_budgets cannot be null');
+        }
+        $this->container['country_budgets'] = $country_budgets;
+
+        return $this;
+    }
+
+    /**
+     * Gets tracking
+     *
+     * @return \Zernio\Model\AppLovinAdsPlatformDataTracking|null
+     */
+    public function getTracking()
+    {
+        return $this->container['tracking'];
+    }
+
+    /**
+     * Sets tracking
+     *
+     * @param \Zernio\Model\AppLovinAdsPlatformDataTracking|null $tracking tracking
+     *
+     * @return self
+     */
+    public function setTracking($tracking)
+    {
+        if (is_null($tracking)) {
+            throw new \InvalidArgumentException('non-nullable tracking cannot be null');
+        }
+        $this->container['tracking'] = $tracking;
+
+        return $this;
+    }
+
+    /**
+     * Gets audience_strategy
+     *
+     * @return string|null
+     */
+    public function getAudienceStrategy()
+    {
+        return $this->container['audience_strategy'];
+    }
+
+    /**
+     * Sets audience_strategy
+     *
+     * @param string|null $audience_strategy WEB campaigns.
+     *
+     * @return self
+     */
+    public function setAudienceStrategy($audience_strategy)
+    {
+        if (is_null($audience_strategy)) {
+            throw new \InvalidArgumentException('non-nullable audience_strategy cannot be null');
+        }
+        $allowedValues = $this->getAudienceStrategyAllowableValues();
+        if (!in_array($audience_strategy, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'audience_strategy', must be one of '%s'",
+                    $audience_strategy,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['audience_strategy'] = $audience_strategy;
+
+        return $this;
+    }
+
+    /**
+     * Gets assets
+     *
+     * @return \Zernio\Model\AppLovinAdsPlatformDataAssetsInner[]|null
+     */
+    public function getAssets()
+    {
+        return $this->container['assets'];
+    }
+
+    /**
+     * Sets assets
+     *
+     * @param \Zernio\Model\AppLovinAdsPlatformDataAssetsInner[]|null $assets The creative set media: URLs Zernio uploads to AppLovin, or ids of assets already there. Needs a HOSTED_HTML asset, or an IMG_INTER_P image plus a VID_LONG_P or VID_SHORT_P video.
+     *
+     * @return self
+     */
+    public function setAssets($assets)
+    {
+        if (is_null($assets)) {
+            throw new \InvalidArgumentException('non-nullable assets cannot be null');
+        }
+
+        if ((count($assets) > 40)) {
+            throw new \InvalidArgumentException('invalid value for $assets when calling CreateStandaloneAdRequestPlatformSpecificData., number of items must be less than or equal to 40.');
+        }
+        if ((count($assets) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $assets when calling CreateStandaloneAdRequestPlatformSpecificData., number of items must be greater than or equal to 1.');
+        }
+        $this->container['assets'] = $assets;
+
+        return $this;
+    }
+
+    /**
+     * Gets languages
+     *
+     * @return string[]|null
+     */
+    public function getLanguages()
+    {
+        return $this->container['languages'];
+    }
+
+    /**
+     * Sets languages
+     *
+     * @param string[]|null $languages Creative set languages as AppLovin names them. All languages by default.
+     *
+     * @return self
+     */
+    public function setLanguages($languages)
+    {
+        if (is_null($languages)) {
+            throw new \InvalidArgumentException('non-nullable languages cannot be null');
+        }
+        $this->container['languages'] = $languages;
+
+        return $this;
+    }
+
+    /**
+     * Gets brand_info
+     *
+     * @return \Zernio\Model\AppLovinAdsPlatformDataBrandInfo|null
+     */
+    public function getBrandInfo()
+    {
+        return $this->container['brand_info'];
+    }
+
+    /**
+     * Sets brand_info
+     *
+     * @param \Zernio\Model\AppLovinAdsPlatformDataBrandInfo|null $brand_info brand_info
+     *
+     * @return self
+     */
+    public function setBrandInfo($brand_info)
+    {
+        if (is_null($brand_info)) {
+            throw new \InvalidArgumentException('non-nullable brand_info cannot be null');
+        }
+        $this->container['brand_info'] = $brand_info;
 
         return $this;
     }

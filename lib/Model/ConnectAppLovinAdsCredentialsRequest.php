@@ -36,6 +36,7 @@ use \Zernio\ObjectSerializer;
  * ConnectAppLovinAdsCredentialsRequest Class Doc Comment
  *
  * @category Class
+ * @description Send apiKey with eventKey, campaignApiKey with accountId, or all four. Each pair goes together (400 otherwise).
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -60,6 +61,9 @@ class ConnectAppLovinAdsCredentialsRequest implements ModelInterface, ArrayAcces
     protected static $openAPITypes = [
         'api_key' => 'string',
         'event_key' => 'string',
+        'campaign_api_key' => 'string',
+        'account_id' => 'string',
+        'reconnect_account_id' => 'string',
         'report_key' => 'string',
         'name' => 'string',
         'profile_id' => 'string',
@@ -77,6 +81,9 @@ class ConnectAppLovinAdsCredentialsRequest implements ModelInterface, ArrayAcces
     protected static $openAPIFormats = [
         'api_key' => null,
         'event_key' => null,
+        'campaign_api_key' => null,
+        'account_id' => null,
+        'reconnect_account_id' => null,
         'report_key' => null,
         'name' => null,
         'profile_id' => null,
@@ -92,6 +99,9 @@ class ConnectAppLovinAdsCredentialsRequest implements ModelInterface, ArrayAcces
     protected static array $openAPINullables = [
         'api_key' => false,
         'event_key' => false,
+        'campaign_api_key' => false,
+        'account_id' => false,
+        'reconnect_account_id' => false,
         'report_key' => false,
         'name' => false,
         'profile_id' => false,
@@ -187,6 +197,9 @@ class ConnectAppLovinAdsCredentialsRequest implements ModelInterface, ArrayAcces
     protected static $attributeMap = [
         'api_key' => 'apiKey',
         'event_key' => 'eventKey',
+        'campaign_api_key' => 'campaignApiKey',
+        'account_id' => 'accountId',
+        'reconnect_account_id' => 'reconnectAccountId',
         'report_key' => 'reportKey',
         'name' => 'name',
         'profile_id' => 'profileId',
@@ -202,6 +215,9 @@ class ConnectAppLovinAdsCredentialsRequest implements ModelInterface, ArrayAcces
     protected static $setters = [
         'api_key' => 'setApiKey',
         'event_key' => 'setEventKey',
+        'campaign_api_key' => 'setCampaignApiKey',
+        'account_id' => 'setAccountId',
+        'reconnect_account_id' => 'setReconnectAccountId',
         'report_key' => 'setReportKey',
         'name' => 'setName',
         'profile_id' => 'setProfileId',
@@ -217,6 +233,9 @@ class ConnectAppLovinAdsCredentialsRequest implements ModelInterface, ArrayAcces
     protected static $getters = [
         'api_key' => 'getApiKey',
         'event_key' => 'getEventKey',
+        'campaign_api_key' => 'getCampaignApiKey',
+        'account_id' => 'getAccountId',
+        'reconnect_account_id' => 'getReconnectAccountId',
         'report_key' => 'getReportKey',
         'name' => 'getName',
         'profile_id' => 'getProfileId',
@@ -283,6 +302,9 @@ class ConnectAppLovinAdsCredentialsRequest implements ModelInterface, ArrayAcces
     {
         $this->setIfExists('api_key', $data ?? [], null);
         $this->setIfExists('event_key', $data ?? [], null);
+        $this->setIfExists('campaign_api_key', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('reconnect_account_id', $data ?? [], null);
         $this->setIfExists('report_key', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('profile_id', $data ?? [], null);
@@ -317,12 +339,10 @@ class ConnectAppLovinAdsCredentialsRequest implements ModelInterface, ArrayAcces
     {
         $invalidProperties = [];
 
-        if ($this->container['api_key'] === null) {
-            $invalidProperties[] = "'api_key' can't be null";
+        if (!is_null($this->container['account_id']) && !preg_match("/^\\d{1,20}$/", $this->container['account_id'])) {
+            $invalidProperties[] = "invalid value for 'account_id', must be conform to the pattern /^\\d{1,20}$/.";
         }
-        if ($this->container['event_key'] === null) {
-            $invalidProperties[] = "'event_key' can't be null";
-        }
+
         if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 100)) {
             $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 100.";
         }
@@ -348,7 +368,7 @@ class ConnectAppLovinAdsCredentialsRequest implements ModelInterface, ArrayAcces
     /**
      * Gets api_key
      *
-     * @return string
+     * @return string|null
      */
     public function getApiKey()
     {
@@ -358,7 +378,7 @@ class ConnectAppLovinAdsCredentialsRequest implements ModelInterface, ArrayAcces
     /**
      * Sets api_key
      *
-     * @param string $api_key Conversion API key from the Keys page of Axon Ads Manager.
+     * @param string|null $api_key Conversion API key from the Keys page of AppLovin Axon Ads Manager. Sent with eventKey.
      *
      * @return self
      */
@@ -375,7 +395,7 @@ class ConnectAppLovinAdsCredentialsRequest implements ModelInterface, ArrayAcces
     /**
      * Gets event_key
      *
-     * @return string
+     * @return string|null
      */
     public function getEventKey()
     {
@@ -385,7 +405,7 @@ class ConnectAppLovinAdsCredentialsRequest implements ModelInterface, ArrayAcces
     /**
      * Sets event_key
      *
-     * @param string $event_key Event Key from the Keys page of Axon Ads Manager: 8 to 128 letters, digits, dots, dashes or underscores.
+     * @param string|null $event_key Event Key from the Keys page of AppLovin Axon Ads Manager: 8 to 128 letters, digits, dots, dashes or underscores. Sent with apiKey.
      *
      * @return self
      */
@@ -395,6 +415,92 @@ class ConnectAppLovinAdsCredentialsRequest implements ModelInterface, ArrayAcces
             throw new \InvalidArgumentException('non-nullable event_key cannot be null');
         }
         $this->container['event_key'] = $event_key;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaign_api_key
+     *
+     * @return string|null
+     */
+    public function getCampaignApiKey()
+    {
+        return $this->container['campaign_api_key'];
+    }
+
+    /**
+     * Sets campaign_api_key
+     *
+     * @param string|null $campaign_api_key Campaign Management API key from the Keys page of ads.axon.ai (visible to account Admins only). Sent with accountId. Lets Zernio read, create and manage campaigns and creative sets.
+     *
+     * @return self
+     */
+    public function setCampaignApiKey($campaign_api_key)
+    {
+        if (is_null($campaign_api_key)) {
+            throw new \InvalidArgumentException('non-nullable campaign_api_key cannot be null');
+        }
+        $this->container['campaign_api_key'] = $campaign_api_key;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_id
+     *
+     * @return string|null
+     */
+    public function getAccountId()
+    {
+        return $this->container['account_id'];
+    }
+
+    /**
+     * Sets account_id
+     *
+     * @param string|null $account_id Numeric AppLovin account id (Account menu, then Go to settings, in ads.axon.ai). Sent with campaignApiKey.
+     *
+     * @return self
+     */
+    public function setAccountId($account_id)
+    {
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        }
+
+        if ((!preg_match("/^\\d{1,20}$/", ObjectSerializer::toString($account_id)))) {
+            throw new \InvalidArgumentException("invalid value for \$account_id when calling ConnectAppLovinAdsCredentialsRequest., must conform to the pattern /^\\d{1,20}$/.");
+        }
+
+        $this->container['account_id'] = $account_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets reconnect_account_id
+     *
+     * @return string|null
+     */
+    public function getReconnectAccountId()
+    {
+        return $this->container['reconnect_account_id'];
+    }
+
+    /**
+     * Sets reconnect_account_id
+     *
+     * @param string|null $reconnect_account_id The Zernio id of the AppLovin connection being reconnected (a connection on this profile). The keys sent update that connection, which keeps its identity, instead of creating one: send it to add or replace keys on an existing connection.
+     *
+     * @return self
+     */
+    public function setReconnectAccountId($reconnect_account_id)
+    {
+        if (is_null($reconnect_account_id)) {
+            throw new \InvalidArgumentException('non-nullable reconnect_account_id cannot be null');
+        }
+        $this->container['reconnect_account_id'] = $reconnect_account_id;
 
         return $this;
     }

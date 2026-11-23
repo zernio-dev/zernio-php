@@ -329,6 +329,11 @@ docs/Model/ApiChangelogOperationRef.md
 docs/Model/ApiKey.md
 docs/Model/ApiKeyCreatedBy.md
 docs/Model/ApiKeyProfileIdsInner.md
+docs/Model/AppLovinAdsPlatformData.md
+docs/Model/AppLovinAdsPlatformDataAssetsInner.md
+docs/Model/AppLovinAdsPlatformDataAssetsInnerOneOf.md
+docs/Model/AppLovinAdsPlatformDataBrandInfo.md
+docs/Model/AppLovinAdsPlatformDataTracking.md
 docs/Model/AppealSmsRegistration200Response.md
 docs/Model/AppealSmsRegistrationRequest.md
 docs/Model/ApplyGoogleRecommendations200Response.md
@@ -882,6 +887,9 @@ docs/Model/CreateAdAudienceRequest.md
 docs/Model/CreateAdCampaign200Response.md
 docs/Model/CreateAdCampaign201Response.md
 docs/Model/CreateAdCampaignRequest.md
+docs/Model/CreateAdCampaignRequestMetrosInner.md
+docs/Model/CreateAdCampaignRequestPlatformSpecificData.md
+docs/Model/CreateAdCampaignRequestRegionsInner.md
 docs/Model/CreateAdCatalog201Response.md
 docs/Model/CreateAdCatalogFeed201Response.md
 docs/Model/CreateAdCatalogFeedRequest.md
@@ -4562,6 +4570,11 @@ lib/Model/ApiChangelogOperationRef.php
 lib/Model/ApiKey.php
 lib/Model/ApiKeyCreatedBy.php
 lib/Model/ApiKeyProfileIdsInner.php
+lib/Model/AppLovinAdsPlatformData.php
+lib/Model/AppLovinAdsPlatformDataAssetsInner.php
+lib/Model/AppLovinAdsPlatformDataAssetsInnerOneOf.php
+lib/Model/AppLovinAdsPlatformDataBrandInfo.php
+lib/Model/AppLovinAdsPlatformDataTracking.php
 lib/Model/AppealSmsRegistration200Response.php
 lib/Model/AppealSmsRegistrationRequest.php
 lib/Model/ApplyGoogleRecommendations200Response.php
@@ -5115,6 +5128,9 @@ lib/Model/CreateAdAudienceRequest.php
 lib/Model/CreateAdCampaign200Response.php
 lib/Model/CreateAdCampaign201Response.php
 lib/Model/CreateAdCampaignRequest.php
+lib/Model/CreateAdCampaignRequestMetrosInner.php
+lib/Model/CreateAdCampaignRequestPlatformSpecificData.php
+lib/Model/CreateAdCampaignRequestRegionsInner.php
 lib/Model/CreateAdCatalog201Response.php
 lib/Model/CreateAdCatalogFeed201Response.php
 lib/Model/CreateAdCatalogFeedRequest.php
@@ -8467,4 +8483,11 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetEventsAccuracy200ResponseDestinationsInnerFailureReasonsInnerTest.php
+test/Model/AppLovinAdsPlatformDataAssetsInnerOneOfTest.php
+test/Model/AppLovinAdsPlatformDataAssetsInnerTest.php
+test/Model/AppLovinAdsPlatformDataBrandInfoTest.php
+test/Model/AppLovinAdsPlatformDataTest.php
+test/Model/AppLovinAdsPlatformDataTrackingTest.php
+test/Model/CreateAdCampaignRequestMetrosInnerTest.php
+test/Model/CreateAdCampaignRequestPlatformSpecificDataTest.php
+test/Model/CreateAdCampaignRequestRegionsInnerTest.php
