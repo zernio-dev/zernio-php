@@ -1927,7 +1927,7 @@ try {
 ## `getAdsTimeline()`
 
 ```php
-getAdsTimeline($account_id, $ad_account_id, $from_date, $to_date, $platform, $compare): \Zernio\Model\AdsTimelineResponse
+getAdsTimeline($account_id, $ad_account_id, $from_date, $to_date, $platform, $breakdown, $compare): \Zernio\Model\AdsTimelineResponse
 ```
 
 Get daily account metrics
@@ -1956,10 +1956,11 @@ $ad_account_id = 'ad_account_id_example'; // string | Optional platform-native a
 $from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Inclusive start of metrics range (YYYY-MM-DD). Defaults to 90 days ago.
 $to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Inclusive end of metrics range (YYYY-MM-DD). Defaults to today. Max 730-day range.
 $platform = 'platform_example'; // string | Restrict to one platform.
+$breakdown = 'breakdown_example'; // string | Set to `adAccount` to keep one row per day and platform ad account, each carrying its `adAccountId`, instead of one row per day and currency. Two connections that reach the same ad account both return it: add their timelines per `adAccountId` to count it once.
 $compare = 'compare_example'; // string | Set to `previous` to also return `previousRows` for the period of the same length that ends the day before `fromDate`, with that period as `previousRange`. Needs a `fromDate` (sent or defaulted); `toDate` alone answers 400.
 
 try {
-    $result = $apiInstance->getAdsTimeline($account_id, $ad_account_id, $from_date, $to_date, $platform, $compare);
+    $result = $apiInstance->getAdsTimeline($account_id, $ad_account_id, $from_date, $to_date, $platform, $breakdown, $compare);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdCampaignsApi->getAdsTimeline: ', $e->getMessage(), PHP_EOL;
@@ -1975,6 +1976,7 @@ try {
 | **from_date** | **\DateTime**| Inclusive start of metrics range (YYYY-MM-DD). Defaults to 90 days ago. | [optional] |
 | **to_date** | **\DateTime**| Inclusive end of metrics range (YYYY-MM-DD). Defaults to today. Max 730-day range. | [optional] |
 | **platform** | **string**| Restrict to one platform. | [optional] |
+| **breakdown** | **string**| Set to &#x60;adAccount&#x60; to keep one row per day and platform ad account, each carrying its &#x60;adAccountId&#x60;, instead of one row per day and currency. Two connections that reach the same ad account both return it: add their timelines per &#x60;adAccountId&#x60; to count it once. | [optional] |
 | **compare** | **string**| Set to &#x60;previous&#x60; to also return &#x60;previousRows&#x60; for the period of the same length that ends the day before &#x60;fromDate&#x60;, with that period as &#x60;previousRange&#x60;. Needs a &#x60;fromDate&#x60; (sent or defaulted); &#x60;toDate&#x60; alone answers 400. | [optional] |
 
 ### Return type

@@ -10565,6 +10565,7 @@ class AdCampaignsApi
      * @param  \DateTime|null $from_date Inclusive start of metrics range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date Inclusive end of metrics range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
      * @param  string|null $platform Restrict to one platform. (optional)
+     * @param  string|null $breakdown Set to &#x60;adAccount&#x60; to keep one row per day and platform ad account, each carrying its &#x60;adAccountId&#x60;, instead of one row per day and currency. Two connections that reach the same ad account both return it: add their timelines per &#x60;adAccountId&#x60; to count it once. (optional)
      * @param  string|null $compare Set to &#x60;previous&#x60; to also return &#x60;previousRows&#x60; for the period of the same length that ends the day before &#x60;fromDate&#x60;, with that period as &#x60;previousRange&#x60;. Needs a &#x60;fromDate&#x60; (sent or defaulted); &#x60;toDate&#x60; alone answers 400. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdsTimeline'] to see the possible values for this operation
      *
@@ -10572,9 +10573,9 @@ class AdCampaignsApi
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\AdsTimelineResponse|\Zernio\Model\GetAdsTimeline202Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject5
      */
-    public function getAdsTimeline($account_id, $ad_account_id = null, $from_date = null, $to_date = null, $platform = null, $compare = null, string $contentType = self::contentTypes['getAdsTimeline'][0])
+    public function getAdsTimeline($account_id, $ad_account_id = null, $from_date = null, $to_date = null, $platform = null, $breakdown = null, $compare = null, string $contentType = self::contentTypes['getAdsTimeline'][0])
     {
-        list($response) = $this->getAdsTimelineWithHttpInfo($account_id, $ad_account_id, $from_date, $to_date, $platform, $compare, $contentType);
+        list($response) = $this->getAdsTimelineWithHttpInfo($account_id, $ad_account_id, $from_date, $to_date, $platform, $breakdown, $compare, $contentType);
         return $response;
     }
 
@@ -10588,6 +10589,7 @@ class AdCampaignsApi
      * @param  \DateTime|null $from_date Inclusive start of metrics range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date Inclusive end of metrics range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
      * @param  string|null $platform Restrict to one platform. (optional)
+     * @param  string|null $breakdown Set to &#x60;adAccount&#x60; to keep one row per day and platform ad account, each carrying its &#x60;adAccountId&#x60;, instead of one row per day and currency. Two connections that reach the same ad account both return it: add their timelines per &#x60;adAccountId&#x60; to count it once. (optional)
      * @param  string|null $compare Set to &#x60;previous&#x60; to also return &#x60;previousRows&#x60; for the period of the same length that ends the day before &#x60;fromDate&#x60;, with that period as &#x60;previousRange&#x60;. Needs a &#x60;fromDate&#x60; (sent or defaulted); &#x60;toDate&#x60; alone answers 400. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdsTimeline'] to see the possible values for this operation
      *
@@ -10595,9 +10597,9 @@ class AdCampaignsApi
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\AdsTimelineResponse|\Zernio\Model\GetAdsTimeline202Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject5, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAdsTimelineWithHttpInfo($account_id, $ad_account_id = null, $from_date = null, $to_date = null, $platform = null, $compare = null, string $contentType = self::contentTypes['getAdsTimeline'][0])
+    public function getAdsTimelineWithHttpInfo($account_id, $ad_account_id = null, $from_date = null, $to_date = null, $platform = null, $breakdown = null, $compare = null, string $contentType = self::contentTypes['getAdsTimeline'][0])
     {
-        $request = $this->getAdsTimelineRequest($account_id, $ad_account_id, $from_date, $to_date, $platform, $compare, $contentType);
+        $request = $this->getAdsTimelineRequest($account_id, $ad_account_id, $from_date, $to_date, $platform, $breakdown, $compare, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -10748,15 +10750,16 @@ class AdCampaignsApi
      * @param  \DateTime|null $from_date Inclusive start of metrics range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date Inclusive end of metrics range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
      * @param  string|null $platform Restrict to one platform. (optional)
+     * @param  string|null $breakdown Set to &#x60;adAccount&#x60; to keep one row per day and platform ad account, each carrying its &#x60;adAccountId&#x60;, instead of one row per day and currency. Two connections that reach the same ad account both return it: add their timelines per &#x60;adAccountId&#x60; to count it once. (optional)
      * @param  string|null $compare Set to &#x60;previous&#x60; to also return &#x60;previousRows&#x60; for the period of the same length that ends the day before &#x60;fromDate&#x60;, with that period as &#x60;previousRange&#x60;. Needs a &#x60;fromDate&#x60; (sent or defaulted); &#x60;toDate&#x60; alone answers 400. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdsTimeline'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAdsTimelineAsync($account_id, $ad_account_id = null, $from_date = null, $to_date = null, $platform = null, $compare = null, string $contentType = self::contentTypes['getAdsTimeline'][0])
+    public function getAdsTimelineAsync($account_id, $ad_account_id = null, $from_date = null, $to_date = null, $platform = null, $breakdown = null, $compare = null, string $contentType = self::contentTypes['getAdsTimeline'][0])
     {
-        return $this->getAdsTimelineAsyncWithHttpInfo($account_id, $ad_account_id, $from_date, $to_date, $platform, $compare, $contentType)
+        return $this->getAdsTimelineAsyncWithHttpInfo($account_id, $ad_account_id, $from_date, $to_date, $platform, $breakdown, $compare, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -10774,16 +10777,17 @@ class AdCampaignsApi
      * @param  \DateTime|null $from_date Inclusive start of metrics range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date Inclusive end of metrics range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
      * @param  string|null $platform Restrict to one platform. (optional)
+     * @param  string|null $breakdown Set to &#x60;adAccount&#x60; to keep one row per day and platform ad account, each carrying its &#x60;adAccountId&#x60;, instead of one row per day and currency. Two connections that reach the same ad account both return it: add their timelines per &#x60;adAccountId&#x60; to count it once. (optional)
      * @param  string|null $compare Set to &#x60;previous&#x60; to also return &#x60;previousRows&#x60; for the period of the same length that ends the day before &#x60;fromDate&#x60;, with that period as &#x60;previousRange&#x60;. Needs a &#x60;fromDate&#x60; (sent or defaulted); &#x60;toDate&#x60; alone answers 400. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdsTimeline'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAdsTimelineAsyncWithHttpInfo($account_id, $ad_account_id = null, $from_date = null, $to_date = null, $platform = null, $compare = null, string $contentType = self::contentTypes['getAdsTimeline'][0])
+    public function getAdsTimelineAsyncWithHttpInfo($account_id, $ad_account_id = null, $from_date = null, $to_date = null, $platform = null, $breakdown = null, $compare = null, string $contentType = self::contentTypes['getAdsTimeline'][0])
     {
         $returnType = '\Zernio\Model\AdsTimelineResponse';
-        $request = $this->getAdsTimelineRequest($account_id, $ad_account_id, $from_date, $to_date, $platform, $compare, $contentType);
+        $request = $this->getAdsTimelineRequest($account_id, $ad_account_id, $from_date, $to_date, $platform, $breakdown, $compare, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -10829,13 +10833,14 @@ class AdCampaignsApi
      * @param  \DateTime|null $from_date Inclusive start of metrics range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date Inclusive end of metrics range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
      * @param  string|null $platform Restrict to one platform. (optional)
+     * @param  string|null $breakdown Set to &#x60;adAccount&#x60; to keep one row per day and platform ad account, each carrying its &#x60;adAccountId&#x60;, instead of one row per day and currency. Two connections that reach the same ad account both return it: add their timelines per &#x60;adAccountId&#x60; to count it once. (optional)
      * @param  string|null $compare Set to &#x60;previous&#x60; to also return &#x60;previousRows&#x60; for the period of the same length that ends the day before &#x60;fromDate&#x60;, with that period as &#x60;previousRange&#x60;. Needs a &#x60;fromDate&#x60; (sent or defaulted); &#x60;toDate&#x60; alone answers 400. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdsTimeline'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAdsTimelineRequest($account_id, $ad_account_id = null, $from_date = null, $to_date = null, $platform = null, $compare = null, string $contentType = self::contentTypes['getAdsTimeline'][0])
+    public function getAdsTimelineRequest($account_id, $ad_account_id = null, $from_date = null, $to_date = null, $platform = null, $breakdown = null, $compare = null, string $contentType = self::contentTypes['getAdsTimeline'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -10844,6 +10849,7 @@ class AdCampaignsApi
                 'Missing the required parameter $account_id when calling getAdsTimeline'
             );
         }
+
 
 
 
@@ -10898,6 +10904,15 @@ class AdCampaignsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $platform,
             'platform', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $breakdown,
+            'breakdown', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

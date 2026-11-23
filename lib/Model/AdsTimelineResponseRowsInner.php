@@ -60,6 +60,7 @@ class AdsTimelineResponseRowsInner implements ModelInterface, ArrayAccess, \Json
     protected static $openAPITypes = [
         'date' => '\DateTime',
         'currency' => 'string',
+        'ad_account_id' => 'string',
         'spend' => 'float',
         'impressions' => 'int',
         'reach' => 'int',
@@ -88,6 +89,7 @@ class AdsTimelineResponseRowsInner implements ModelInterface, ArrayAccess, \Json
     protected static $openAPIFormats = [
         'date' => 'date',
         'currency' => null,
+        'ad_account_id' => null,
         'spend' => null,
         'impressions' => null,
         'reach' => null,
@@ -114,6 +116,7 @@ class AdsTimelineResponseRowsInner implements ModelInterface, ArrayAccess, \Json
     protected static array $openAPINullables = [
         'date' => false,
         'currency' => true,
+        'ad_account_id' => true,
         'spend' => false,
         'impressions' => false,
         'reach' => false,
@@ -220,6 +223,7 @@ class AdsTimelineResponseRowsInner implements ModelInterface, ArrayAccess, \Json
     protected static $attributeMap = [
         'date' => 'date',
         'currency' => 'currency',
+        'ad_account_id' => 'adAccountId',
         'spend' => 'spend',
         'impressions' => 'impressions',
         'reach' => 'reach',
@@ -246,6 +250,7 @@ class AdsTimelineResponseRowsInner implements ModelInterface, ArrayAccess, \Json
     protected static $setters = [
         'date' => 'setDate',
         'currency' => 'setCurrency',
+        'ad_account_id' => 'setAdAccountId',
         'spend' => 'setSpend',
         'impressions' => 'setImpressions',
         'reach' => 'setReach',
@@ -272,6 +277,7 @@ class AdsTimelineResponseRowsInner implements ModelInterface, ArrayAccess, \Json
     protected static $getters = [
         'date' => 'getDate',
         'currency' => 'getCurrency',
+        'ad_account_id' => 'getAdAccountId',
         'spend' => 'getSpend',
         'impressions' => 'getImpressions',
         'reach' => 'getReach',
@@ -349,6 +355,7 @@ class AdsTimelineResponseRowsInner implements ModelInterface, ArrayAccess, \Json
     {
         $this->setIfExists('date', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
+        $this->setIfExists('ad_account_id', $data ?? [], null);
         $this->setIfExists('spend', $data ?? [], null);
         $this->setIfExists('impressions', $data ?? [], null);
         $this->setIfExists('reach', $data ?? [], null);
@@ -466,6 +473,40 @@ class AdsTimelineResponseRowsInner implements ModelInterface, ArrayAccess, \Json
             }
         }
         $this->container['currency'] = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Gets ad_account_id
+     *
+     * @return string|null
+     */
+    public function getAdAccountId()
+    {
+        return $this->container['ad_account_id'];
+    }
+
+    /**
+     * Sets ad_account_id
+     *
+     * @param string|null $ad_account_id Only with `breakdown=adAccount`. The platform ad account of this row (e.g. Meta `act_…`); null for rows ingested before 2026-05-13. Added 2026-11-23.
+     *
+     * @return self
+     */
+    public function setAdAccountId($ad_account_id)
+    {
+        if (is_null($ad_account_id)) {
+            array_push($this->openAPINullablesSetToNull, 'ad_account_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ad_account_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['ad_account_id'] = $ad_account_id;
 
         return $this;
     }

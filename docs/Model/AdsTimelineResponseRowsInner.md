@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **date** | **\DateTime** |  | [optional]
 **currency** | **string** | ISO 4217 currency of every money field in this row (spend, cpc, cpm, costPerConversion, purchaseValue, actionValues). Null when the currency of the row&#39;s ad accounts is unknown. Added 2026-10-23.  An account whose ad accounts bill in different currencies gets one row per currency for that day, never a sum across currencies. | [optional]
+**ad_account_id** | **string** | Only with &#x60;breakdown&#x3D;adAccount&#x60;. The platform ad account of this row (e.g. Meta &#x60;act_…&#x60;); null for rows ingested before 2026-05-13. Added 2026-11-23. | [optional]
 **spend** | **float** | Native currency units (matches /ads/tree convention), in &#x60;currency&#x60;. | [optional]
 **impressions** | **int** |  | [optional]
 **reach** | **int** | Reach summed across the account&#39;s ads for this single day. A person seen by two ads the same day counts twice, and reach is de-duplicated per day only: do NOT sum it across days (people reached on multiple days would be double-counted). | [optional]
