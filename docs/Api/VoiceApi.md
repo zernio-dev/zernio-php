@@ -328,12 +328,12 @@ This endpoint does not need any parameter.
 ## `deleteSipTrunk()`
 
 ```php
-deleteSipTrunk($id): \Zernio\Model\DeleteSmsSenderId200Response
+deleteSipTrunk($id): \Zernio\Model\DeleteSipTrunk200Response
 ```
 
 Delete a SIP trunk
 
-Tears down the trunk and its carrier-side objects. Refused while any number is still attached: detach them first.
+Detaches every number still attached to the trunk (their inbound calls go back to Zernio calling), then tears down the trunk and its carrier-side objects. Its credentials stop working immediately.
 
 ### Example
 
@@ -370,7 +370,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\DeleteSmsSenderId200Response**](../Model/DeleteSmsSenderId200Response.md)
+[**\Zernio\Model\DeleteSipTrunk200Response**](../Model/DeleteSipTrunk200Response.md)
 
 ### Authorization
 

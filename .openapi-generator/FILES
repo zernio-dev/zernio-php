@@ -1361,6 +1361,7 @@ docs/Model/DeleteInboxReviewReplyRequest.md
 docs/Model/DeleteOAuthApp200Response.md
 docs/Model/DeleteOrgConnection200Response.md
 docs/Model/DeleteOrgConnection200ResponseData.md
+docs/Model/DeleteSipTrunk200Response.md
 docs/Model/DeleteSmsOptOut200Response.md
 docs/Model/DeleteSmsSenderId200Response.md
 docs/Model/DeleteTestLead200Response.md
@@ -5605,6 +5606,7 @@ lib/Model/DeleteInboxReviewReplyRequest.php
 lib/Model/DeleteOAuthApp200Response.php
 lib/Model/DeleteOrgConnection200Response.php
 lib/Model/DeleteOrgConnection200ResponseData.php
+lib/Model/DeleteSipTrunk200Response.php
 lib/Model/DeleteSmsOptOut200Response.php
 lib/Model/DeleteSmsSenderId200Response.php
 lib/Model/DeleteTestLead200Response.php
@@ -8489,3 +8491,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/DeleteSipTrunk200ResponseTest.php
