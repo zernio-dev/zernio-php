@@ -443,7 +443,12 @@ docs/Model/AutomationProblems.md
 docs/Model/AutomationProblemsProblemsInner.md
 docs/Model/AutomationRecord.md
 docs/Model/AutomationRecordTemplate.md
+docs/Model/AutomationRun.md
+docs/Model/AutomationRunDetail.md
+docs/Model/AutomationRunDetailAllOfTrace.md
 docs/Model/AutomationRunResult.md
+docs/Model/AutomationRunSteps.md
+docs/Model/AutomationRunSubject.md
 docs/Model/AutomationScheduleTrigger.md
 docs/Model/AutomationScheduleTriggerQuietHours.md
 docs/Model/AutomationScheduleTriggerTimesInner.md
@@ -1641,6 +1646,7 @@ docs/Model/GetAutomationCatalog200ResponseSubjectsInnerStepsInner.md
 docs/Model/GetAutomationCatalog200ResponseTriggersInner.md
 docs/Model/GetAutomationCatalog200ResponseTriggersInnerFactsInner.md
 docs/Model/GetAutomationControls200Response.md
+docs/Model/GetAutomationRun200Response.md
 docs/Model/GetBalance200Response.md
 docs/Model/GetBalance200ResponseHeld.md
 docs/Model/GetBalance200ResponsePayoutLocksInner.md
@@ -2413,6 +2419,7 @@ docs/Model/ListApiKeys200Response.md
 docs/Model/ListAutomationActions200Response.md
 docs/Model/ListAutomationApprovals200Response.md
 docs/Model/ListAutomationChecks200Response.md
+docs/Model/ListAutomationRuns200Response.md
 docs/Model/ListAutomationTemplates200Response.md
 docs/Model/ListAutomations200Response.md
 docs/Model/ListBidStrategies200Response.md
@@ -4688,7 +4695,12 @@ lib/Model/AutomationProblems.php
 lib/Model/AutomationProblemsProblemsInner.php
 lib/Model/AutomationRecord.php
 lib/Model/AutomationRecordTemplate.php
+lib/Model/AutomationRun.php
+lib/Model/AutomationRunDetail.php
+lib/Model/AutomationRunDetailAllOfTrace.php
 lib/Model/AutomationRunResult.php
+lib/Model/AutomationRunSteps.php
+lib/Model/AutomationRunSubject.php
 lib/Model/AutomationScheduleTrigger.php
 lib/Model/AutomationScheduleTriggerQuietHours.php
 lib/Model/AutomationScheduleTriggerTimesInner.php
@@ -5886,6 +5898,7 @@ lib/Model/GetAutomationCatalog200ResponseSubjectsInnerStepsInner.php
 lib/Model/GetAutomationCatalog200ResponseTriggersInner.php
 lib/Model/GetAutomationCatalog200ResponseTriggersInnerFactsInner.php
 lib/Model/GetAutomationControls200Response.php
+lib/Model/GetAutomationRun200Response.php
 lib/Model/GetBalance200Response.php
 lib/Model/GetBalance200ResponseHeld.php
 lib/Model/GetBalance200ResponsePayoutLocksInner.php
@@ -6658,6 +6671,7 @@ lib/Model/ListApiKeys200Response.php
 lib/Model/ListAutomationActions200Response.php
 lib/Model/ListAutomationApprovals200Response.php
 lib/Model/ListAutomationChecks200Response.php
+lib/Model/ListAutomationRuns200Response.php
 lib/Model/ListAutomationTemplates200Response.php
 lib/Model/ListAutomations200Response.php
 lib/Model/ListBidStrategies200Response.php
@@ -8491,3 +8505,10 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/AutomationRunDetailAllOfTraceTest.php
+test/Model/AutomationRunDetailTest.php
+test/Model/AutomationRunStepsTest.php
+test/Model/AutomationRunSubjectTest.php
+test/Model/AutomationRunTest.php
+test/Model/GetAutomationRun200ResponseTest.php
+test/Model/ListAutomationRuns200ResponseTest.php

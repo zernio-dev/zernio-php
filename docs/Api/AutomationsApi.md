@@ -18,6 +18,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getAutomationApproval()**](AutomationsApi.md#getAutomationApproval) | **GET** /v1/automations/{automationId}/approvals/{approvalId} | Get an approval request |
 | [**getAutomationCatalog()**](AutomationsApi.md#getAutomationCatalog) | **GET** /v1/automations/catalog | Get the automations catalog |
 | [**getAutomationControls()**](AutomationsApi.md#getAutomationControls) | **GET** /v1/automations/controls | Get automation controls |
+| [**getAutomationRun()**](AutomationsApi.md#getAutomationRun) | **GET** /v1/automations/{automationId}/runs/{runId} | Get one run of an automation |
 | [**getAutomationTemplate()**](AutomationsApi.md#getAutomationTemplate) | **GET** /v1/automations/templates/{templateId} | Get an automation template |
 | [**getSharedAutomationTemplate()**](AutomationsApi.md#getSharedAutomationTemplate) | **GET** /v1/automations/templates/shared/{shareToken} | Get a shared automation template |
 | [**getZernioAutomationTemplate()**](AutomationsApi.md#getZernioAutomationTemplate) | **GET** /v1/automations/templates/zernio/{templateId} | Get a Zernio automation template |
@@ -27,6 +28,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listAutomationActions()**](AutomationsApi.md#listAutomationActions) | **GET** /v1/automations/actions | List automation actions |
 | [**listAutomationApprovals()**](AutomationsApi.md#listAutomationApprovals) | **GET** /v1/automations/{automationId}/approvals | List an automation&#39;s approval requests |
 | [**listAutomationChecks()**](AutomationsApi.md#listAutomationChecks) | **GET** /v1/automations/{automationId}/checks | List an automation&#39;s checks |
+| [**listAutomationRuns()**](AutomationsApi.md#listAutomationRuns) | **GET** /v1/automations/{automationId}/runs | List an automation&#39;s runs |
 | [**listAutomationTemplates()**](AutomationsApi.md#listAutomationTemplates) | **GET** /v1/automations/templates | List automation templates |
 | [**listAutomations()**](AutomationsApi.md#listAutomations) | **GET** /v1/automations | List automations |
 | [**pauseAutomation()**](AutomationsApi.md#pauseAutomation) | **POST** /v1/automations/{automationId}/pause | Turn an automation off |
@@ -766,6 +768,68 @@ This endpoint does not need any parameter.
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getAutomationRun()`
+
+```php
+getAutomationRun($automation_id, $run_id): \Zernio\Model\GetAutomationRun200Response
+```
+
+Get one run of an automation
+
+The run with each step it took, where its store keeps them: a flow run's nodes, a comment to DM log's DM and public reply, an ad rule, event or scheduled check's actions.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AutomationsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$automation_id = 'automation_id_example'; // string
+$run_id = 'run_id_example'; // string
+
+try {
+    $result = $apiInstance->getAutomationRun($automation_id, $run_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AutomationsApi->getAutomationRun: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **automation_id** | **string**|  | |
+| **run_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\GetAutomationRun200Response**](../Model/GetAutomationRun200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getAutomationTemplate()`
 
 ```php
@@ -1324,6 +1388,74 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListAutomationChecks200Response**](../Model/ListAutomationChecks200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listAutomationRuns()`
+
+```php
+listAutomationRuns($automation_id, $status, $since, $limit, $cursor): \Zernio\Model\ListAutomationRuns200Response
+```
+
+List an automation's runs
+
+Every run of any kind of automation, newest first, in one shape. Flows read both their run stores, comment to DM reads its engine runs and its older trigger logs, and ad rules, event and scheduled automations list their checks that acted or tried to (`/checks` lists every check).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AutomationsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$automation_id = 'automation_id_example'; // string
+$status = 'status_example'; // string
+$since = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Only runs started at or after this time.
+$limit = 20; // int
+$cursor = 'cursor_example'; // string | `nextCursor` from the previous page.
+
+try {
+    $result = $apiInstance->listAutomationRuns($automation_id, $status, $since, $limit, $cursor);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AutomationsApi->listAutomationRuns: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **automation_id** | **string**|  | |
+| **status** | **string**|  | [optional] |
+| **since** | **\DateTime**| Only runs started at or after this time. | [optional] |
+| **limit** | **int**|  | [optional] [default to 20] |
+| **cursor** | **string**| &#x60;nextCursor&#x60; from the previous page. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListAutomationRuns200Response**](../Model/ListAutomationRuns200Response.md)
 
 ### Authorization
 
