@@ -8465,6 +8465,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ConnectTradeDeskAdsPartner200ResponseAdvertisersInnerTest.php
-test/Model/ConnectTradeDeskAdsPartner200ResponseTest.php
-test/Model/ConnectTradeDeskAdsPartnerRequestTest.php
