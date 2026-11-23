@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **tiktok_item_id** | **string** | TikTok only, with &#x60;live&#x3D;true&#x60;: the TikTok post a Spark ad runs (&#x60;tiktok_item_id&#x60;). | [optional]
 **lead_gen_form_id** | **string** | Meta: the instant form the call to action opens (&#x60;call_to_action.value.lead_gen_form_id&#x60;, or the asset feed&#39;s &#x60;call_to_actions&#x60; on a dynamic creative), the same value as the &#x60;leadGenFormId&#x60; create input. Absent on ads without a lead form. | [optional]
 **caption** | **string** | Meta: the display link of a link (image) ad (&#x60;link_data.caption&#x60;). Absent when the creative has none. | [optional]
+**call_to_action_link** | **string** | Meta: the &#x60;GET_DIRECTIONS&#x60; map location sent as &#x60;callToActionLink&#x60; on POST /v1/ads/create, the same value as that input. Absent on ads created without it; null once PUT /v1/ads/{adId} changed the call to action, which points the button back at &#x60;linkUrl&#x60;. | [optional]
 **image_hash** | **string** | Meta: the ad image hash (&#x60;image_hash&#x60;), reusable as &#x60;imageHash&#x60; on POST /v1/ads/create within the same ad account. &#x60;thumbnailUrl&#x60; and &#x60;mediaUrls&#x60; carry its stable full resolution permalink when Meta resolves it. | [optional]
 **url_tags** | **string** | Meta: the creative&#39;s &#x60;url_tags&#x60; query string appended to the destination URL. | [optional]
 **final_urls** | **string[]** | Google RSA only. Replaces final URLs. Omitted lists stay unchanged. | [optional]

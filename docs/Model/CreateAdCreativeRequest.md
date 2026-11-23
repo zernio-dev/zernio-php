@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **description** | **string** | Link description below the headline; omitted &#x3D; Meta scrapes the destination&#39;s OG description. | [optional]
 **call_to_action** | **string** | CTA type (same whitelist as POST /v1/ads/create). | [optional] [default to 'LEARN_MORE']
 **link_url** | **string** |  |
+**call_to_action_link** | **string** | The map location a &#x60;GET_DIRECTIONS&#x60; button opens, while &#x60;linkUrl&#x60; stays the creative&#39;s website link. Requires &#x60;callToAction: GET_DIRECTIONS&#x60; and an image creative (&#x60;imageUrl&#x60; or &#x60;imageHash&#x60;), 400 otherwise; a &#x60;GET_DIRECTIONS&#x60; image creative without it is a 400 too. | [optional]
 **image_url** | **string** | Publicly reachable image; uploaded to the account&#39;s library server-side. | [optional]
 **image_hash** | **string** | Existing library image hash (POST /v1/ads/images or GET /v1/ads/images). | [optional]
 **carousel_cards** | [**\Zernio\Model\CreateAdCreativeRequestCarouselCardsInner[]**](CreateAdCreativeRequestCarouselCardsInner.md) |  | [optional]
