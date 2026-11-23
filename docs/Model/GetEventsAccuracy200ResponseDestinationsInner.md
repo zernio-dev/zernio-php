@@ -20,5 +20,6 @@ Name | Type | Description | Notes
 **deliveries** | [**\Zernio\Model\GetEventsAccuracy200ResponseDestinationsInnerDeliveries**](GetEventsAccuracy200ResponseDestinationsInnerDeliveries.md) |  | [optional]
 **match** | [**\Zernio\Model\GetEventsAccuracy200ResponseDestinationsInnerMatch**](GetEventsAccuracy200ResponseDestinationsInnerMatch.md) |  | [optional]
 **match_rate** | **float** | &#x60;match.identified / match.events&#x60;. &#x60;null&#x60; with nothing sent. | [optional]
+**failure_reasons** | [**\Zernio\Model\GetEventsAccuracy200ResponseDestinationsInnerFailureReasonsInner[]**](GetEventsAccuracy200ResponseDestinationsInnerFailureReasonsInner.md) | Why the destination refused events in the period, by refusal code, most events first (at most 5). Empty when it refused none. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
