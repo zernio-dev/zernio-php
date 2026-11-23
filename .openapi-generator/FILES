@@ -413,6 +413,12 @@ docs/Model/AutomationCheck.md
 docs/Model/AutomationConditionResult.md
 docs/Model/AutomationControls.md
 docs/Model/AutomationDefinition.md
+docs/Model/AutomationEventActionStep.md
+docs/Model/AutomationEventActionStepOneOf.md
+docs/Model/AutomationEventActionStepOneOf1.md
+docs/Model/AutomationEventActionStepOneOf2.md
+docs/Model/AutomationEventActionStepOneOf3.md
+docs/Model/AutomationEventActionStepOneOf4.md
 docs/Model/AutomationEventLimits.md
 docs/Model/AutomationEventTrigger.md
 docs/Model/AutomationFactCondition.md
@@ -1487,6 +1493,7 @@ docs/Model/EstimateAdReachRequest.md
 docs/Model/EventAutomationCheck.md
 docs/Model/EventAutomationCheckSubject.md
 docs/Model/EventAutomationDefinition.md
+docs/Model/EventAutomationDefinitionStepsInner.md
 docs/Model/EventConsent.md
 docs/Model/EventCorrection.md
 docs/Model/EventDestination.md
@@ -4674,6 +4681,12 @@ lib/Model/AutomationCheck.php
 lib/Model/AutomationConditionResult.php
 lib/Model/AutomationControls.php
 lib/Model/AutomationDefinition.php
+lib/Model/AutomationEventActionStep.php
+lib/Model/AutomationEventActionStepOneOf.php
+lib/Model/AutomationEventActionStepOneOf1.php
+lib/Model/AutomationEventActionStepOneOf2.php
+lib/Model/AutomationEventActionStepOneOf3.php
+lib/Model/AutomationEventActionStepOneOf4.php
 lib/Model/AutomationEventLimits.php
 lib/Model/AutomationEventTrigger.php
 lib/Model/AutomationFactCondition.php
@@ -5748,6 +5761,7 @@ lib/Model/EstimateAdReachRequest.php
 lib/Model/EventAutomationCheck.php
 lib/Model/EventAutomationCheckSubject.php
 lib/Model/EventAutomationDefinition.php
+lib/Model/EventAutomationDefinitionStepsInner.php
 lib/Model/EventConsent.php
 lib/Model/EventCorrection.php
 lib/Model/EventDestination.php
@@ -8523,5 +8537,10 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ConnectOutbrainAdsCredentials200ResponseTest.php
-test/Model/ConnectOutbrainAdsCredentialsRequestTest.php
+test/Model/AutomationEventActionStepOneOf1Test.php
+test/Model/AutomationEventActionStepOneOf2Test.php
+test/Model/AutomationEventActionStepOneOf3Test.php
+test/Model/AutomationEventActionStepOneOf4Test.php
+test/Model/AutomationEventActionStepOneOfTest.php
+test/Model/AutomationEventActionStepTest.php
+test/Model/EventAutomationDefinitionStepsInnerTest.php
