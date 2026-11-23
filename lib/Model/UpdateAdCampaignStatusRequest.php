@@ -249,6 +249,7 @@ class UpdateAdCampaignStatusRequest implements ModelInterface, ArrayAccess, \Jso
     public const PLATFORM_MICROSOFT = 'microsoft';
     public const PLATFORM_AMAZON = 'amazon';
     public const PLATFORM_TRADEDESK = 'tradedesk';
+    public const PLATFORM_SNAPCHAT = 'snapchat';
 
     /**
      * Gets allowable values of the enum
@@ -283,6 +284,7 @@ class UpdateAdCampaignStatusRequest implements ModelInterface, ArrayAccess, \Jso
             self::PLATFORM_MICROSOFT,
             self::PLATFORM_AMAZON,
             self::PLATFORM_TRADEDESK,
+            self::PLATFORM_SNAPCHAT,
         ];
     }
 

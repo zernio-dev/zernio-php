@@ -331,6 +331,7 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
     public const PLATFORM_MICROSOFT = 'microsoft';
     public const PLATFORM_AMAZON = 'amazon';
     public const PLATFORM_TRADEDESK = 'tradedesk';
+    public const PLATFORM_SNAPCHAT = 'snapchat';
 
     /**
      * Gets allowable values of the enum
@@ -352,6 +353,7 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
             self::PLATFORM_MICROSOFT,
             self::PLATFORM_AMAZON,
             self::PLATFORM_TRADEDESK,
+            self::PLATFORM_SNAPCHAT,
         ];
     }
 

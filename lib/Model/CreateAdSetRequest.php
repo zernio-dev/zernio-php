@@ -334,6 +334,7 @@ class CreateAdSetRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public const PLATFORM_TWITTER = 'twitter';
     public const PLATFORM_OPENAI = 'openai';
     public const PLATFORM_REDDIT = 'reddit';
+    public const PLATFORM_SNAPCHAT = 'snapchat';
     public const STATUS_ACTIVE = 'ACTIVE';
     public const STATUS_PAUSED = 'PAUSED';
     public const BUDGET_TYPE_DAILY = 'daily';
@@ -359,6 +360,7 @@ class CreateAdSetRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             self::PLATFORM_TWITTER,
             self::PLATFORM_OPENAI,
             self::PLATFORM_REDDIT,
+            self::PLATFORM_SNAPCHAT,
         ];
     }
 
@@ -574,7 +576,7 @@ class CreateAdSetRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets platform
      *
-     * @param string $platform \"google\" and \"reddit\" are implemented; every other value returns 501.
+     * @param string $platform \"google\", \"reddit\" and \"snapchat\" are implemented; every other value returns 501.
      *
      * @return self
      */

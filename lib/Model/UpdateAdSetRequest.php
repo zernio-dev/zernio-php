@@ -346,6 +346,7 @@ class UpdateAdSetRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public const PLATFORM_TWITTER = 'twitter';
     public const PLATFORM_OPENAI = 'openai';
     public const PLATFORM_REDDIT = 'reddit';
+    public const PLATFORM_SNAPCHAT = 'snapchat';
     public const STATUS_ACTIVE = 'active';
     public const STATUS_PAUSED = 'paused';
 
@@ -366,6 +367,7 @@ class UpdateAdSetRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             self::PLATFORM_TWITTER,
             self::PLATFORM_OPENAI,
             self::PLATFORM_REDDIT,
+            self::PLATFORM_SNAPCHAT,
         ];
     }
 

@@ -253,6 +253,8 @@ class BulkUpdateAdCampaignStatusRequestCampaignsInner implements ModelInterface,
     public const PLATFORM_OPENAIADS = 'openaiads';
     public const PLATFORM_REDDITADS = 'redditads';
     public const PLATFORM_MICROSOFTADS = 'microsoftads';
+    public const PLATFORM_SNAPCHAT = 'snapchat';
+    public const PLATFORM_SNAPCHATADS = 'snapchatads';
 
     /**
      * Gets allowable values of the enum
@@ -280,6 +282,8 @@ class BulkUpdateAdCampaignStatusRequestCampaignsInner implements ModelInterface,
             self::PLATFORM_OPENAIADS,
             self::PLATFORM_REDDITADS,
             self::PLATFORM_MICROSOFTADS,
+            self::PLATFORM_SNAPCHAT,
+            self::PLATFORM_SNAPCHATADS,
         ];
     }
 
