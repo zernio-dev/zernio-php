@@ -113,6 +113,7 @@ docs/Model/ActivateWorkflow200Response.md
 docs/Model/ActivateWorkflow200ResponseWorkflow.md
 docs/Model/Ad.md
 docs/Model/AdAccountMetricsResponse.md
+docs/Model/AdAccountMetricsResponseMeta.md
 docs/Model/AdActivationStatus.md
 docs/Model/AdAnalyticsResponse.md
 docs/Model/AdAnalyticsResponseAd.md
@@ -623,6 +624,7 @@ docs/Model/CampaignDraftCommentsInner.md
 docs/Model/CampaignDraftCounts.md
 docs/Model/CampaignLedgerEntry.md
 docs/Model/CampaignMetricRow.md
+docs/Model/CampaignMetricRowDailyInner.md
 docs/Model/CampaignMetricsResponse.md
 docs/Model/CampaignMetricsResponseMeta.md
 docs/Model/CampaignParticipant.md
@@ -4341,6 +4343,7 @@ lib/Model/ActivateWorkflow200Response.php
 lib/Model/ActivateWorkflow200ResponseWorkflow.php
 lib/Model/Ad.php
 lib/Model/AdAccountMetricsResponse.php
+lib/Model/AdAccountMetricsResponseMeta.php
 lib/Model/AdActivationStatus.php
 lib/Model/AdAnalyticsResponse.php
 lib/Model/AdAnalyticsResponseAd.php
@@ -4851,6 +4854,7 @@ lib/Model/CampaignDraftCommentsInner.php
 lib/Model/CampaignDraftCounts.php
 lib/Model/CampaignLedgerEntry.php
 lib/Model/CampaignMetricRow.php
+lib/Model/CampaignMetricRowDailyInner.php
 lib/Model/CampaignMetricsResponse.php
 lib/Model/CampaignMetricsResponseMeta.php
 lib/Model/CampaignParticipant.php
@@ -8457,3 +8461,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/AdAccountMetricsResponseMetaTest.php
+test/Model/CampaignMetricRowDailyInnerTest.php

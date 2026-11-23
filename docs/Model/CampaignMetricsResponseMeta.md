@@ -8,5 +8,6 @@ Name | Type | Description | Notes
 **stale_since** | **string** | With stale&#x3D;true: when the oldest stored copy used stopped being fresh. |
 **from_date** | **string** |  |
 **to_date** | **string** |  |
+**missing_ids** | **string[]** | With metrics, asked campaignIds that are not campaigns the caller can see. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

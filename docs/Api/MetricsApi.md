@@ -9,7 +9,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getAccountMetrics()**](MetricsApi.md#getAccountMetrics) | **GET** /v1/metrics/accounts | Read follower and post totals per account, platform or scope over time |
 | [**getAdAccountMetrics()**](MetricsApi.md#getAdAccountMetrics) | **GET** /v1/metrics/ad-accounts | Read the uploaded results summed across ad accounts |
 | [**getAdMetrics()**](MetricsApi.md#getAdMetrics) | **GET** /v1/metrics/ads | Read ad metrics by id, or one ad day by day with breakdowns |
-| [**getCampaignMetrics()**](MetricsApi.md#getCampaignMetrics) | **GET** /v1/metrics/campaigns | Read the uploaded results of each campaign over a window |
+| [**getCampaignMetrics()**](MetricsApi.md#getCampaignMetrics) | **GET** /v1/metrics/campaigns | Read the delivery metrics or the uploaded results of each campaign over a window |
 | [**getInboxMetrics()**](MetricsApi.md#getInboxMetrics) | **GET** /v1/metrics/inbox | Read message volume and response times |
 | [**getInsightMetrics()**](MetricsApi.md#getInsightMetrics) | **GET** /v1/metrics/insights | Read live account or post insights from the platform |
 | [**getMetricsCatalog()**](MetricsApi.md#getMetricsCatalog) | **GET** /v1/metrics/catalog | List the metrics, groupings and limits of each metrics endpoint |
@@ -237,12 +237,12 @@ try {
 ## `getCampaignMetrics()`
 
 ```php
-getCampaignMetrics($from_date, $to_date, $limit, $cursor, $campaign_id): \Zernio\Model\CampaignMetricsResponse
+getCampaignMetrics($from_date, $to_date, $limit, $cursor, $campaign_id, $metrics, $granularity): \Zernio\Model\CampaignMetricsResponse
 ```
 
-Read the uploaded results of each campaign over a window
+Read the delivery metrics or the uploaded results of each campaign over a window
 
-Sums, per campaign, each result metric you uploaded (one key per metric, as `GET /v1/ads/campaign-results/metrics` lists them), with `cac_percent`, `cost_per_sale`, `cost_per_qualified_lead`, `lead_to_sale` and `qualified_rate` next to them, over `fromDate` to `toDate` (both required, at most 400 days).  Filter with `campaignId` (platform campaign ids); pages with `cursor`.
+Without `metrics`, sums per campaign each result metric you uploaded (one key per metric, as `GET /v1/ads/campaign-results/metrics` lists them), with `cac_percent`, `cost_per_sale`, `cost_per_qualified_lead`, `lead_to_sale` and `qualified_rate` next to them, over `fromDate` to `toDate` (both required, at most 400 days). Filter with `campaignId` (platform campaign ids); pages with `cursor`.  With `metrics` (for example `metrics=spend,impressions,clicks,ctr`), sums the delivery metrics of every ad of each campaign in `campaignId` (required, up to 100) from the stored daily rows. Every campaign comes on one page with its `currency`, and `granularity=day` adds one point per day.  A query reads at most 9,200 campaign days (100 campaigns for 92 days, 23 for 400) and answers 422 `query_too_large` beyond that. Breakdowns stay live in the platform queries, such as `POST /v1/metrics/platform-queries/meta-ads`.
 
 ### Example
 
@@ -265,10 +265,12 @@ $from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | First da
 $to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Last day, inclusive. The range is at most 400 days.
 $limit = 50; // int | Rows per page, 50 by default, 100 at most.
 $cursor = 'cursor_example'; // string | pagination.nextCursor of the previous page, sent with the same query.
-$campaign_id = 'campaign_id_example'; // string | Comma-separated platform campaign ids.
+$campaign_id = 'campaign_id_example'; // string | Comma-separated platform campaign ids. Required with metrics, up to 100.
+$metrics = 'metrics_example'; // string | Comma-separated delivery metrics, as GET /v1/metrics/catalog?entity=campaigns lists them (spend, impressions, reach, clicks, ctr, cpc, cpm, conversions, roas, actions, funnel, video counts...).
+$granularity = 'total'; // string | day adds one point per day to each campaign. Needs metrics.
 
 try {
-    $result = $apiInstance->getCampaignMetrics($from_date, $to_date, $limit, $cursor, $campaign_id);
+    $result = $apiInstance->getCampaignMetrics($from_date, $to_date, $limit, $cursor, $campaign_id, $metrics, $granularity);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MetricsApi->getCampaignMetrics: ', $e->getMessage(), PHP_EOL;
@@ -283,7 +285,9 @@ try {
 | **to_date** | **\DateTime**| Last day, inclusive. The range is at most 400 days. | |
 | **limit** | **int**| Rows per page, 50 by default, 100 at most. | [optional] [default to 50] |
 | **cursor** | **string**| pagination.nextCursor of the previous page, sent with the same query. | [optional] |
-| **campaign_id** | **string**| Comma-separated platform campaign ids. | [optional] |
+| **campaign_id** | **string**| Comma-separated platform campaign ids. Required with metrics, up to 100. | [optional] |
+| **metrics** | **string**| Comma-separated delivery metrics, as GET /v1/metrics/catalog?entity&#x3D;campaigns lists them (spend, impressions, reach, clicks, ctr, cpc, cpm, conversions, roas, actions, funnel, video counts...). | [optional] |
+| **granularity** | **string**| day adds one point per day to each campaign. Needs metrics. | [optional] [default to &#39;total&#39;] |
 
 ### Return type
 
