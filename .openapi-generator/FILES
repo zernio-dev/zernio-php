@@ -202,6 +202,9 @@ docs/Model/AdRuleScheduleQuietHours.md
 docs/Model/AdRuleScheduleTimesInner.md
 docs/Model/AdSchedule.md
 docs/Model/AdScheduleWindow.md
+docs/Model/AdSetMetricRow.md
+docs/Model/AdSetMetricsResponse.md
+docs/Model/AdSetMetricsResponseMeta.md
 docs/Model/AdStatus.md
 docs/Model/AdTracking.md
 docs/Model/AdTreeAdSet.md
@@ -4443,6 +4446,9 @@ lib/Model/AdRuleScheduleQuietHours.php
 lib/Model/AdRuleScheduleTimesInner.php
 lib/Model/AdSchedule.php
 lib/Model/AdScheduleWindow.php
+lib/Model/AdSetMetricRow.php
+lib/Model/AdSetMetricsResponse.php
+lib/Model/AdSetMetricsResponseMeta.php
 lib/Model/AdStatus.php
 lib/Model/AdTracking.php
 lib/Model/AdTreeAdSet.php
@@ -8483,3 +8489,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/AdSetMetricRowTest.php
+test/Model/AdSetMetricsResponseMetaTest.php
+test/Model/AdSetMetricsResponseTest.php

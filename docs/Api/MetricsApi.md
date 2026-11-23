@@ -9,6 +9,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getAccountMetrics()**](MetricsApi.md#getAccountMetrics) | **GET** /v1/metrics/accounts | Read follower and post totals per account, platform or scope over time |
 | [**getAdAccountMetrics()**](MetricsApi.md#getAdAccountMetrics) | **GET** /v1/metrics/ad-accounts | Read the uploaded results summed across ad accounts |
 | [**getAdMetrics()**](MetricsApi.md#getAdMetrics) | **GET** /v1/metrics/ads | Read ad metrics by id, or one ad day by day with breakdowns |
+| [**getAdSetMetrics()**](MetricsApi.md#getAdSetMetrics) | **GET** /v1/metrics/ad-sets | Read the delivery metrics of ad sets over a window |
 | [**getCampaignMetrics()**](MetricsApi.md#getCampaignMetrics) | **GET** /v1/metrics/campaigns | Read the delivery metrics or the uploaded results of each campaign over a window |
 | [**getInboxMetrics()**](MetricsApi.md#getInboxMetrics) | **GET** /v1/metrics/inbox | Read message volume and response times |
 | [**getInsightMetrics()**](MetricsApi.md#getInsightMetrics) | **GET** /v1/metrics/insights | Read live account or post insights from the platform |
@@ -220,6 +221,80 @@ try {
 ### Return type
 
 [**\Zernio\Model\AdMetricsResponse**](../Model/AdMetricsResponse.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getAdSetMetrics()`
+
+```php
+getAdSetMetrics($from_date, $to_date, $metrics, $limit, $cursor, $ad_set_id, $campaign_id, $granularity): \Zernio\Model\AdSetMetricsResponse
+```
+
+Read the delivery metrics of ad sets over a window
+
+Sums the delivery metrics of every ad of each ad set from the stored daily rows, over `fromDate` to `toDate` (both required, at most 400 days). Send the ad sets by id with `adSetId` (up to 100), or one `campaignId` for its ad sets, paged with `cursor`.  Each ad set comes with its `campaignId` and the `currency` of its ad account, and `granularity=day` adds one point per day. A query reads at most 9,200 ad set days (100 ad sets for 92 days, 23 for 400) and answers 422 `query_too_large` beyond that.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\MetricsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | First day, inclusive.
+$to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Last day, inclusive. The range is at most 400 days.
+$metrics = 'metrics_example'; // string | Comma-separated delivery metrics, as GET /v1/metrics/catalog?entity=ad-sets lists them (spend, impressions, reach, clicks, ctr, cpc, cpm, conversions, roas...).
+$limit = 50; // int | With campaignId, ad sets per page, 50 by default, 100 at most.
+$cursor = 'cursor_example'; // string | With campaignId, pagination.nextCursor of the previous page, sent with the same query.
+$ad_set_id = 'ad_set_id_example'; // string | Comma-separated platform ad set ids, up to 100. Send adSetId or campaignId.
+$campaign_id = 'campaign_id_example'; // string | One platform campaign id, for its ad sets. Send adSetId or campaignId.
+$granularity = 'total'; // string | day adds one point per day to each ad set.
+
+try {
+    $result = $apiInstance->getAdSetMetrics($from_date, $to_date, $metrics, $limit, $cursor, $ad_set_id, $campaign_id, $granularity);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MetricsApi->getAdSetMetrics: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **from_date** | **\DateTime**| First day, inclusive. | |
+| **to_date** | **\DateTime**| Last day, inclusive. The range is at most 400 days. | |
+| **metrics** | **string**| Comma-separated delivery metrics, as GET /v1/metrics/catalog?entity&#x3D;ad-sets lists them (spend, impressions, reach, clicks, ctr, cpc, cpm, conversions, roas...). | |
+| **limit** | **int**| With campaignId, ad sets per page, 50 by default, 100 at most. | [optional] [default to 50] |
+| **cursor** | **string**| With campaignId, pagination.nextCursor of the previous page, sent with the same query. | [optional] |
+| **ad_set_id** | **string**| Comma-separated platform ad set ids, up to 100. Send adSetId or campaignId. | [optional] |
+| **campaign_id** | **string**| One platform campaign id, for its ad sets. Send adSetId or campaignId. | [optional] |
+| **granularity** | **string**| day adds one point per day to each ad set. | [optional] [default to &#39;total&#39;] |
+
+### Return type
+
+[**\Zernio\Model\AdSetMetricsResponse**](../Model/AdSetMetricsResponse.md)
 
 ### Authorization
 
