@@ -78,7 +78,8 @@ class UpdateAdRequestCreative implements ModelInterface, ArrayAccess, \JsonSeria
         'video_id' => 'string',
         'existing_creative_id' => 'string',
         'lead_gen_form_id' => 'string',
-        'caption' => 'string'
+        'caption' => 'string',
+        'call_to_action_link' => 'string'
     ];
 
     /**
@@ -108,7 +109,8 @@ class UpdateAdRequestCreative implements ModelInterface, ArrayAccess, \JsonSeria
         'video_id' => null,
         'existing_creative_id' => null,
         'lead_gen_form_id' => null,
-        'caption' => null
+        'caption' => null,
+        'call_to_action_link' => null
     ];
 
     /**
@@ -136,7 +138,8 @@ class UpdateAdRequestCreative implements ModelInterface, ArrayAccess, \JsonSeria
         'video_id' => false,
         'existing_creative_id' => false,
         'lead_gen_form_id' => false,
-        'caption' => false
+        'caption' => false,
+        'call_to_action_link' => false
     ];
 
     /**
@@ -244,7 +247,8 @@ class UpdateAdRequestCreative implements ModelInterface, ArrayAccess, \JsonSeria
         'video_id' => 'videoId',
         'existing_creative_id' => 'existingCreativeId',
         'lead_gen_form_id' => 'leadGenFormId',
-        'caption' => 'caption'
+        'caption' => 'caption',
+        'call_to_action_link' => 'callToActionLink'
     ];
 
     /**
@@ -272,7 +276,8 @@ class UpdateAdRequestCreative implements ModelInterface, ArrayAccess, \JsonSeria
         'video_id' => 'setVideoId',
         'existing_creative_id' => 'setExistingCreativeId',
         'lead_gen_form_id' => 'setLeadGenFormId',
-        'caption' => 'setCaption'
+        'caption' => 'setCaption',
+        'call_to_action_link' => 'setCallToActionLink'
     ];
 
     /**
@@ -300,7 +305,8 @@ class UpdateAdRequestCreative implements ModelInterface, ArrayAccess, \JsonSeria
         'video_id' => 'getVideoId',
         'existing_creative_id' => 'getExistingCreativeId',
         'lead_gen_form_id' => 'getLeadGenFormId',
-        'caption' => 'getCaption'
+        'caption' => 'getCaption',
+        'call_to_action_link' => 'getCallToActionLink'
     ];
 
     /**
@@ -414,6 +420,7 @@ class UpdateAdRequestCreative implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('existing_creative_id', $data ?? [], null);
         $this->setIfExists('lead_gen_form_id', $data ?? [], null);
         $this->setIfExists('caption', $data ?? [], null);
+        $this->setIfExists('call_to_action_link', $data ?? [], null);
     }
 
     /**
@@ -1130,6 +1137,33 @@ class UpdateAdRequestCreative implements ModelInterface, ArrayAccess, \JsonSeria
         }
 
         $this->container['caption'] = $caption;
+
+        return $this;
+    }
+
+    /**
+     * Gets call_to_action_link
+     *
+     * @return string|null
+     */
+    public function getCallToActionLink()
+    {
+        return $this->container['call_to_action_link'];
+    }
+
+    /**
+     * Sets call_to_action_link
+     *
+     * @param string|null $call_to_action_link Meta only. The map location the `GET_DIRECTIONS` button opens, while the ad link stays as it is. Send it with `callToAction: GET_DIRECTIONS`.  - 400 with any other `callToAction`, with a value that is not an `fbgeo://` location, and on other networks. - 422 on video ads (their only link is the button, so change `linkUrl`), on lead ads, and on asset feed creatives that list their calls to action in the feed. - Required with `callToAction: GET_DIRECTIONS` on a full image creative (headline, body, callToAction, linkUrl, imageUrl), and on a partial edit of an image ad whose button has no location yet. Without it the request is a 400, and no other field of it reaches Meta.
+     *
+     * @return self
+     */
+    public function setCallToActionLink($call_to_action_link)
+    {
+        if (is_null($call_to_action_link)) {
+            throw new \InvalidArgumentException('non-nullable call_to_action_link cannot be null');
+        }
+        $this->container['call_to_action_link'] = $call_to_action_link;
 
         return $this;
     }

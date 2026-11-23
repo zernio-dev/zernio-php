@@ -64,7 +64,8 @@ class UpdateAdTrackingTagsRequestCreative implements ModelInterface, ArrayAccess
         'call_to_action' => 'string',
         'link_url' => 'string',
         'image_url' => 'string',
-        'video_url' => 'string'
+        'video_url' => 'string',
+        'call_to_action_link' => 'string'
     ];
 
     /**
@@ -80,7 +81,8 @@ class UpdateAdTrackingTagsRequestCreative implements ModelInterface, ArrayAccess
         'call_to_action' => null,
         'link_url' => 'uri',
         'image_url' => 'uri',
-        'video_url' => 'uri'
+        'video_url' => 'uri',
+        'call_to_action_link' => null
     ];
 
     /**
@@ -94,7 +96,8 @@ class UpdateAdTrackingTagsRequestCreative implements ModelInterface, ArrayAccess
         'call_to_action' => false,
         'link_url' => false,
         'image_url' => false,
-        'video_url' => false
+        'video_url' => false,
+        'call_to_action_link' => false
     ];
 
     /**
@@ -188,7 +191,8 @@ class UpdateAdTrackingTagsRequestCreative implements ModelInterface, ArrayAccess
         'call_to_action' => 'callToAction',
         'link_url' => 'linkUrl',
         'image_url' => 'imageUrl',
-        'video_url' => 'videoUrl'
+        'video_url' => 'videoUrl',
+        'call_to_action_link' => 'callToActionLink'
     ];
 
     /**
@@ -202,7 +206,8 @@ class UpdateAdTrackingTagsRequestCreative implements ModelInterface, ArrayAccess
         'call_to_action' => 'setCallToAction',
         'link_url' => 'setLinkUrl',
         'image_url' => 'setImageUrl',
-        'video_url' => 'setVideoUrl'
+        'video_url' => 'setVideoUrl',
+        'call_to_action_link' => 'setCallToActionLink'
     ];
 
     /**
@@ -216,7 +221,8 @@ class UpdateAdTrackingTagsRequestCreative implements ModelInterface, ArrayAccess
         'call_to_action' => 'getCallToAction',
         'link_url' => 'getLinkUrl',
         'image_url' => 'getImageUrl',
-        'video_url' => 'getVideoUrl'
+        'video_url' => 'getVideoUrl',
+        'call_to_action_link' => 'getCallToActionLink'
     ];
 
     /**
@@ -282,6 +288,7 @@ class UpdateAdTrackingTagsRequestCreative implements ModelInterface, ArrayAccess
         $this->setIfExists('link_url', $data ?? [], null);
         $this->setIfExists('image_url', $data ?? [], null);
         $this->setIfExists('video_url', $data ?? [], null);
+        $this->setIfExists('call_to_action_link', $data ?? [], null);
     }
 
     /**
@@ -499,6 +506,33 @@ class UpdateAdTrackingTagsRequestCreative implements ModelInterface, ArrayAccess
             throw new \InvalidArgumentException('non-nullable video_url cannot be null');
         }
         $this->container['video_url'] = $video_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets call_to_action_link
+     *
+     * @return string|null
+     */
+    public function getCallToActionLink()
+    {
+        return $this->container['call_to_action_link'];
+    }
+
+    /**
+     * Sets call_to_action_link
+     *
+     * @param string|null $call_to_action_link The Get Directions button location, required to rebuild a `GET_DIRECTIONS` image creative (400 without it). Only with `callToAction: GET_DIRECTIONS`.
+     *
+     * @return self
+     */
+    public function setCallToActionLink($call_to_action_link)
+    {
+        if (is_null($call_to_action_link)) {
+            throw new \InvalidArgumentException('non-nullable call_to_action_link cannot be null');
+        }
+        $this->container['call_to_action_link'] = $call_to_action_link;
 
         return $this;
     }

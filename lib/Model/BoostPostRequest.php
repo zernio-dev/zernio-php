@@ -2191,7 +2191,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets call_to_action
      *
-     * @param string|null $call_to_action CTA button label. Non-messaging CTAs require `linkUrl`. WHATSAPP_MESSAGE, MESSAGE_PAGE, and INSTAGRAM_MESSAGE do not require a URL and reject linkUrl.  **Meta**: the CTA enum of POST /v1/ads/create plus `VIEW_INSTAGRAM_PROFILE`, `WHATSAPP_MESSAGE`, `MESSAGE_PAGE`, and `INSTAGRAM_MESSAGE`. VIEW_INSTAGRAM_PROFILE requires linkUrl; the messaging CTAs select their destination automatically.  **TikTok**: pass-through to `call_to_action` on the Spark Ad creative; the platform validates the value. See TikTok's \"Enumeration - Call-to-Action\".
+     * @param string|null $call_to_action CTA button label. Non-messaging CTAs require `linkUrl`. WHATSAPP_MESSAGE, MESSAGE_PAGE, and INSTAGRAM_MESSAGE do not require a URL and reject linkUrl.  **Meta**: the CTA enum of POST /v1/ads/create plus `VIEW_INSTAGRAM_PROFILE`, `WHATSAPP_MESSAGE`, `MESSAGE_PAGE`, and `INSTAGRAM_MESSAGE`. VIEW_INSTAGRAM_PROFILE requires linkUrl; the messaging CTAs select their destination automatically.  **Meta** `GET_DIRECTIONS` is a 400: Meta opens that button on a map location, and a boost's only button link is `linkUrl`, a website. Create the ad with POST /v1/ads/create and `callToActionLink` instead.  **TikTok**: pass-through to `call_to_action` on the Spark Ad creative; the platform validates the value. See TikTok's \"Enumeration - Call-to-Action\".
      *
      * @return self
      */
