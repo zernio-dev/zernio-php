@@ -8,7 +8,8 @@ Name | Type | Description | Notes
 **adjustment_time** | **float** | When the adjustment occurred, unix seconds. |
 **order_id** | **string** | Transaction ID of the original conversion (the &#x60;eventId&#x60; you sent). Recommended; required for ENHANCEMENT. | [optional]
 **gclid** | **string** | Alternative key. The original click ID. Pair with &#x60;conversionTime&#x60;. Not valid for ENHANCEMENT. | [optional]
-**conversion_time** | **float** | The original conversion&#39;s time, unix seconds. Required when identifying by &#x60;gclid&#x60;. | [optional]
+**conversion_time** | **float** | The original conversion&#39;s time, unix seconds. Required when identifying by &#x60;gclid&#x60; or &#x60;msclkid&#x60;. | [optional]
+**msclkid** | **string** | Microsoft Ads only, and required there. The click ID the conversion was sent with. Pair with &#x60;conversionTime&#x60;. | [optional]
 **restatement_value** | **float** | RESTATEMENT only. The corrected TOTAL conversion value. | [optional]
 **currency** | **string** | RESTATEMENT only. ISO 4217 currency for &#x60;restatementValue&#x60;. | [optional]
 **user** | [**\Zernio\Model\AdjustConversionsRequestAdjustmentsInnerUser**](AdjustConversionsRequestAdjustmentsInnerUser.md) |  | [optional]
