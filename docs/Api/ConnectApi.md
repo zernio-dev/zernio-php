@@ -2960,7 +2960,7 @@ try {
 ## `getGohighlevelConnectUrl()`
 
 ```php
-getGohighlevelConnectUrl($profile_id, $redirect_url): \Zernio\Model\GetGohighlevelConnectUrl200Response
+getGohighlevelConnectUrl($profile_id, $redirect_url, $reconnect_account_id): \Zernio\Model\GetGohighlevelConnectUrl200Response
 ```
 
 Get HighLevel OAuth connect URL
@@ -2991,9 +2991,10 @@ $apiInstance = new Zernio\Api\ConnectApi(
 );
 $profile_id = 'profile_id_example'; // string | Your Zernio profile ID (get from /v1/profiles).
 $redirect_url = 'redirect_url_example'; // string | Custom redirect after connection. Must be an absolute http(s) URL or custom app scheme such as `myapp://callback`; relative and unsafe URLs return 400.
+$reconnect_account_id = 'reconnect_account_id_example'; // string | The GoHighLevel location connection being reconnected. In a workspace with no billing set up, the connect is allowed only when it returns to that same location.
 
 try {
-    $result = $apiInstance->getGohighlevelConnectUrl($profile_id, $redirect_url);
+    $result = $apiInstance->getGohighlevelConnectUrl($profile_id, $redirect_url, $reconnect_account_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConnectApi->getGohighlevelConnectUrl: ', $e->getMessage(), PHP_EOL;
@@ -3006,6 +3007,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **profile_id** | **string**| Your Zernio profile ID (get from /v1/profiles). | |
 | **redirect_url** | **string**| Custom redirect after connection. Must be an absolute http(s) URL or custom app scheme such as &#x60;myapp://callback&#x60;; relative and unsafe URLs return 400. | [optional] |
+| **reconnect_account_id** | **string**| The GoHighLevel location connection being reconnected. In a workspace with no billing set up, the connect is allowed only when it returns to that same location. | [optional] |
 
 ### Return type
 
@@ -3185,7 +3187,7 @@ try {
 ## `getHubSpotConnectUrl()`
 
 ```php
-getHubSpotConnectUrl($profile_id, $redirect_url): \Zernio\Model\GetHubSpotConnectUrl200Response
+getHubSpotConnectUrl($profile_id, $redirect_url, $reconnect_account_id): \Zernio\Model\GetHubSpotConnectUrl200Response
 ```
 
 Get HubSpot OAuth connect URL
@@ -3216,9 +3218,10 @@ $apiInstance = new Zernio\Api\ConnectApi(
 );
 $profile_id = 'profile_id_example'; // string | Your Zernio profile ID (get from /v1/profiles).
 $redirect_url = 'redirect_url_example'; // string | Custom redirect after connection. Must be an absolute http(s) URL or custom app scheme such as `myapp://callback`; relative and unsafe URLs return 400.
+$reconnect_account_id = 'reconnect_account_id_example'; // string | The HubSpot portal connection being reconnected. In a workspace with no billing set up, the connect is allowed only when it returns to that same portal.
 
 try {
-    $result = $apiInstance->getHubSpotConnectUrl($profile_id, $redirect_url);
+    $result = $apiInstance->getHubSpotConnectUrl($profile_id, $redirect_url, $reconnect_account_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConnectApi->getHubSpotConnectUrl: ', $e->getMessage(), PHP_EOL;
@@ -3231,6 +3234,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **profile_id** | **string**| Your Zernio profile ID (get from /v1/profiles). | |
 | **redirect_url** | **string**| Custom redirect after connection. Must be an absolute http(s) URL or custom app scheme such as &#x60;myapp://callback&#x60;; relative and unsafe URLs return 400. | [optional] |
+| **reconnect_account_id** | **string**| The HubSpot portal connection being reconnected. In a workspace with no billing set up, the connect is allowed only when it returns to that same portal. | [optional] |
 
 ### Return type
 
@@ -3732,7 +3736,7 @@ try {
 ## `getSalesforceConnectUrl()`
 
 ```php
-getSalesforceConnectUrl($profile_id, $environment, $redirect_url): \Zernio\Model\GetSalesforceConnectUrl200Response
+getSalesforceConnectUrl($profile_id, $environment, $redirect_url, $reconnect_account_id): \Zernio\Model\GetSalesforceConnectUrl200Response
 ```
 
 Get Salesforce OAuth connect URL
@@ -3764,9 +3768,10 @@ $apiInstance = new Zernio\Api\ConnectApi(
 $profile_id = 'profile_id_example'; // string | Your Zernio profile ID (get from /v1/profiles).
 $environment = 'production'; // string | Sign in at login.salesforce.com (`production`, also Developer Edition orgs) or test.salesforce.com (`sandbox`).
 $redirect_url = 'redirect_url_example'; // string | Custom redirect after connection. Must be an absolute http(s) URL or custom app scheme such as `myapp://callback`; relative and unsafe URLs return 400.
+$reconnect_account_id = 'reconnect_account_id_example'; // string | The Salesforce org connection being reconnected. In a workspace with no billing set up, the connect is allowed only when it returns to that same org.
 
 try {
-    $result = $apiInstance->getSalesforceConnectUrl($profile_id, $environment, $redirect_url);
+    $result = $apiInstance->getSalesforceConnectUrl($profile_id, $environment, $redirect_url, $reconnect_account_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConnectApi->getSalesforceConnectUrl: ', $e->getMessage(), PHP_EOL;
@@ -3780,6 +3785,7 @@ try {
 | **profile_id** | **string**| Your Zernio profile ID (get from /v1/profiles). | |
 | **environment** | **string**| Sign in at login.salesforce.com (&#x60;production&#x60;, also Developer Edition orgs) or test.salesforce.com (&#x60;sandbox&#x60;). | [optional] [default to &#39;production&#39;] |
 | **redirect_url** | **string**| Custom redirect after connection. Must be an absolute http(s) URL or custom app scheme such as &#x60;myapp://callback&#x60;; relative and unsafe URLs return 400. | [optional] |
+| **reconnect_account_id** | **string**| The Salesforce org connection being reconnected. In a workspace with no billing set up, the connect is allowed only when it returns to that same org. | [optional] |
 
 ### Return type
 
@@ -4058,7 +4064,7 @@ try {
 ## `getWebflowConnectUrl()`
 
 ```php
-getWebflowConnectUrl($profile_id, $redirect_url): \Zernio\Model\GetWebflowConnectUrl200Response
+getWebflowConnectUrl($profile_id, $redirect_url, $reconnect_account_id): \Zernio\Model\GetWebflowConnectUrl200Response
 ```
 
 Get Webflow OAuth URL
@@ -4089,9 +4095,10 @@ $apiInstance = new Zernio\Api\ConnectApi(
 );
 $profile_id = 'profile_id_example'; // string | Your Zernio profile ID (get from /v1/profiles).
 $redirect_url = 'redirect_url_example'; // string | Custom redirect after connection. Must be an absolute http(s) URL or custom app scheme such as `myapp://callback`; relative and unsafe URLs return 400.
+$reconnect_account_id = 'reconnect_account_id_example'; // string | The Webflow site connection being reconnected. In a workspace with no billing set up, the connect is allowed only when it returns to that same site.
 
 try {
-    $result = $apiInstance->getWebflowConnectUrl($profile_id, $redirect_url);
+    $result = $apiInstance->getWebflowConnectUrl($profile_id, $redirect_url, $reconnect_account_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConnectApi->getWebflowConnectUrl: ', $e->getMessage(), PHP_EOL;
@@ -4104,6 +4111,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **profile_id** | **string**| Your Zernio profile ID (get from /v1/profiles). | |
 | **redirect_url** | **string**| Custom redirect after connection. Must be an absolute http(s) URL or custom app scheme such as &#x60;myapp://callback&#x60;; relative and unsafe URLs return 400. | [optional] |
+| **reconnect_account_id** | **string**| The Webflow site connection being reconnected. In a workspace with no billing set up, the connect is allowed only when it returns to that same site. | [optional] |
 
 ### Return type
 
@@ -4242,7 +4250,7 @@ try {
 ## `getWixConnectUrl()`
 
 ```php
-getWixConnectUrl($profile_id, $redirect_url): \Zernio\Model\GetWixConnectUrl200Response
+getWixConnectUrl($profile_id, $redirect_url, $reconnect_account_id): \Zernio\Model\GetWixConnectUrl200Response
 ```
 
 Get Wix site install URL
@@ -4273,9 +4281,10 @@ $apiInstance = new Zernio\Api\ConnectApi(
 );
 $profile_id = 'profile_id_example'; // string | Your Zernio profile ID (get from /v1/profiles).
 $redirect_url = 'redirect_url_example'; // string | Custom redirect after connection. Must be an absolute http(s) URL or custom app scheme such as `myapp://callback`; relative and unsafe URLs return 400.
+$reconnect_account_id = 'reconnect_account_id_example'; // string | The Wix site connection being reconnected. In a workspace with no billing set up, the connect is allowed only when it returns to that same site.
 
 try {
-    $result = $apiInstance->getWixConnectUrl($profile_id, $redirect_url);
+    $result = $apiInstance->getWixConnectUrl($profile_id, $redirect_url, $reconnect_account_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConnectApi->getWixConnectUrl: ', $e->getMessage(), PHP_EOL;
@@ -4288,6 +4297,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **profile_id** | **string**| Your Zernio profile ID (get from /v1/profiles). | |
 | **redirect_url** | **string**| Custom redirect after connection. Must be an absolute http(s) URL or custom app scheme such as &#x60;myapp://callback&#x60;; relative and unsafe URLs return 400. | [optional] |
+| **reconnect_account_id** | **string**| The Wix site connection being reconnected. In a workspace with no billing set up, the connect is allowed only when it returns to that same site. | [optional] |
 
 ### Return type
 
@@ -4309,7 +4319,7 @@ try {
 ## `getWordPressAuthUrl()`
 
 ```php
-getWordPressAuthUrl($profile_id, $redirect_url): \Zernio\Model\GetWordPressAuthUrl200Response
+getWordPressAuthUrl($profile_id, $redirect_url, $reconnect_account_id): \Zernio\Model\GetWordPressAuthUrl200Response
 ```
 
 Get WordPress.com OAuth connect URL
@@ -4340,9 +4350,10 @@ $apiInstance = new Zernio\Api\ConnectApi(
 );
 $profile_id = 'profile_id_example'; // string | Your Zernio profile ID (get from /v1/profiles).
 $redirect_url = 'redirect_url_example'; // string | Custom redirect after connection. Must be an absolute http(s) URL or custom app scheme such as `myapp://callback`; relative and unsafe URLs return 400.
+$reconnect_account_id = 'reconnect_account_id_example'; // string | The WordPress site connection being reconnected. In a workspace with no billing set up, the connect is allowed only when it returns to that same site.
 
 try {
-    $result = $apiInstance->getWordPressAuthUrl($profile_id, $redirect_url);
+    $result = $apiInstance->getWordPressAuthUrl($profile_id, $redirect_url, $reconnect_account_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConnectApi->getWordPressAuthUrl: ', $e->getMessage(), PHP_EOL;
@@ -4355,6 +4366,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **profile_id** | **string**| Your Zernio profile ID (get from /v1/profiles). | |
 | **redirect_url** | **string**| Custom redirect after connection. Must be an absolute http(s) URL or custom app scheme such as &#x60;myapp://callback&#x60;; relative and unsafe URLs return 400. | [optional] |
+| **reconnect_account_id** | **string**| The WordPress site connection being reconnected. In a workspace with no billing set up, the connect is allowed only when it returns to that same site. | [optional] |
 
 ### Return type
 

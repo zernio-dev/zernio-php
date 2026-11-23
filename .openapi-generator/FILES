@@ -8483,11 +8483,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/AppLovinAdsPlatformDataAssetsInnerOneOfTest.php
-test/Model/AppLovinAdsPlatformDataAssetsInnerTest.php
-test/Model/AppLovinAdsPlatformDataBrandInfoTest.php
-test/Model/AppLovinAdsPlatformDataTest.php
-test/Model/AppLovinAdsPlatformDataTrackingTest.php
-test/Model/CreateAdCampaignRequestMetrosInnerTest.php
-test/Model/CreateAdCampaignRequestPlatformSpecificDataTest.php
-test/Model/CreateAdCampaignRequestRegionsInnerTest.php
