@@ -9,7 +9,8 @@ Name | Type | Description | Notes
 **score** | **float** | Conversion tracking score, 0-100. Higher means a more complete setup and less signal at risk. |
 **grade** | **string** | Letter grade for the score. |
 **score_range** | [**\Zernio\Model\ConversionAuditReportScoreRange**](ConversionAuditReportScoreRange.md) |  | [optional]
-**estimated_signal_loss_pct** | **float** | Average share of conversions at risk on the networks with no visible server-side path, 0-100. |
+**estimated_signal_loss_pct** | **float** | Share of the conversions across every network that fires which is at risk if the networks without a verified server path run browser-only, 0-100. A verified network counts as 0. Consent checks and tags that never fire are not counted here; &#x60;gradeReason&#x60; says how they affect the grade. |
+**grade_reason** | **string** | One plain line tying the grade to &#x60;estimatedSignalLossPct&#x60;: whether the grade comes mostly from the conversions at risk or from what that share leaves out (consent, tags not firing, matching), named. Absent when the score lost no points. | [optional]
 **platforms** | [**\Zernio\Model\ConversionAuditReportPlatformsInner[]**](ConversionAuditReportPlatformsInner.md) | One finding per ad platform the scan looked for. |
 **browser_only** | **bool** | True when every active platform is tracked browser-only. |
 **consent_manager** | **string** | Consent manager found on the page, or null. |
