@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **last_message** | **string** |  | [optional]
 **last_message_at** | **\DateTime** |  | [optional]
 **updated_time** | **\DateTime** |  | [optional]
-**participants** | [**\Zernio\Model\UpdateFacebookPage200ResponseSelectedPage[]**](UpdateFacebookPage200ResponseSelectedPage.md) |  | [optional]
+**participants** | [**\Zernio\Model\ConnectTradeDeskAdsPartner200ResponseAdvertisersInner[]**](ConnectTradeDeskAdsPartner200ResponseAdvertisersInner.md) |  | [optional]
 **instagram_profile** | [**\Zernio\Model\ListInboxConversations200ResponseDataInnerInstagramProfile**](ListInboxConversations200ResponseDataInnerInstagramProfile.md) |  | [optional]
 **metadata** | [**\Zernio\Model\InboxConversationAdMetadata**](InboxConversationAdMetadata.md) |  | [optional]
 **ad_attribution** | [**\Zernio\Model\ConversationAdAttribution**](ConversationAdAttribution.md) |  | [optional]

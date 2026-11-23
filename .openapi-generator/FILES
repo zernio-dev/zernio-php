@@ -814,6 +814,9 @@ docs/Model/ConnectTaboolaAdsCredentials200Response.md
 docs/Model/ConnectTaboolaAdsCredentialsRequest.md
 docs/Model/ConnectTradeDeskAdsCredentials200Response.md
 docs/Model/ConnectTradeDeskAdsCredentialsRequest.md
+docs/Model/ConnectTradeDeskAdsPartner200Response.md
+docs/Model/ConnectTradeDeskAdsPartner200ResponseAdvertisersInner.md
+docs/Model/ConnectTradeDeskAdsPartnerRequest.md
 docs/Model/ConnectWebflowWithSiteToken200Response.md
 docs/Model/ConnectWebflowWithSiteToken200ResponseAccount.md
 docs/Model/ConnectWebflowWithSiteTokenRequest.md
@@ -3663,7 +3666,6 @@ docs/Model/UpdateEmailDraftRequest.md
 docs/Model/UpdateEmailSignatureRequest.md
 docs/Model/UpdateEmailThread200Response.md
 docs/Model/UpdateFacebookPage200Response.md
-docs/Model/UpdateFacebookPage200ResponseSelectedPage.md
 docs/Model/UpdateFacebookPageInfoRequest.md
 docs/Model/UpdateFacebookPageRequest.md
 docs/Model/UpdateFileRequest.md
@@ -5044,6 +5046,9 @@ lib/Model/ConnectTaboolaAdsCredentials200Response.php
 lib/Model/ConnectTaboolaAdsCredentialsRequest.php
 lib/Model/ConnectTradeDeskAdsCredentials200Response.php
 lib/Model/ConnectTradeDeskAdsCredentialsRequest.php
+lib/Model/ConnectTradeDeskAdsPartner200Response.php
+lib/Model/ConnectTradeDeskAdsPartner200ResponseAdvertisersInner.php
+lib/Model/ConnectTradeDeskAdsPartnerRequest.php
 lib/Model/ConnectWebflowWithSiteToken200Response.php
 lib/Model/ConnectWebflowWithSiteToken200ResponseAccount.php
 lib/Model/ConnectWebflowWithSiteTokenRequest.php
@@ -7894,7 +7899,6 @@ lib/Model/UpdateEmailDraftRequest.php
 lib/Model/UpdateEmailSignatureRequest.php
 lib/Model/UpdateEmailThread200Response.php
 lib/Model/UpdateFacebookPage200Response.php
-lib/Model/UpdateFacebookPage200ResponseSelectedPage.php
 lib/Model/UpdateFacebookPageInfoRequest.php
 lib/Model/UpdateFacebookPageRequest.php
 lib/Model/UpdateFileRequest.php
@@ -8461,5 +8465,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/AdAccountMetricsResponseMetaTest.php
-test/Model/CampaignMetricRowDailyInnerTest.php
+test/Model/ConnectTradeDeskAdsPartner200ResponseAdvertisersInnerTest.php
+test/Model/ConnectTradeDeskAdsPartner200ResponseTest.php
+test/Model/ConnectTradeDeskAdsPartnerRequestTest.php

@@ -27,6 +27,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**connectSnapchatAdsCredentials()**](ConnectApi.md#connectSnapchatAdsCredentials) | **POST** /v1/connect/snapchat-ads/credentials | Connect a Snapchat Ads pixel |
 | [**connectTaboolaAdsCredentials()**](ConnectApi.md#connectTaboolaAdsCredentials) | **POST** /v1/connect/taboola-ads/credentials | Connect a Taboola account |
 | [**connectTradeDeskAdsCredentials()**](ConnectApi.md#connectTradeDeskAdsCredentials) | **POST** /v1/connect/tradedesk-ads/credentials | Connect a Trade Desk tracking tag |
+| [**connectTradeDeskAdsPartner()**](ConnectApi.md#connectTradeDeskAdsPartner) | **POST** /v1/connect/tradedesk-ads/partner | Connect a Trade Desk partner for ads management |
 | [**connectWebflowWithSiteToken()**](ConnectApi.md#connectWebflowWithSiteToken) | **POST** /v1/connect/webflow/token | Connect Webflow with a site API token |
 | [**connectWechatCredentials()**](ConnectApi.md#connectWechatCredentials) | **POST** /v1/connect/wechat/credentials | Connect WeChat Official Account |
 | [**connectWhatsAppCredentials()**](ConnectApi.md#connectWhatsAppCredentials) | **POST** /v1/connect/whatsapp/credentials | Connect WhatsApp via credentials |
@@ -1401,6 +1402,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\ConnectTradeDeskAdsCredentials200Response**](../Model/ConnectTradeDeskAdsCredentials200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `connectTradeDeskAdsPartner()`
+
+```php
+connectTradeDeskAdsPartner($connect_trade_desk_ads_partner_request): \Zernio\Model\ConnectTradeDeskAdsPartner200Response
+```
+
+Connect a Trade Desk partner for ads management
+
+Connects a Trade Desk partner with an API token for ads management. Sending conversions to a tracking tag is a separate connection: `POST /v1/connect/tradedesk-ads/credentials`.  Connects a Trade Desk partner with an API token. The Trade Desk has no OAuth: your Trade Desk account manager enables API access for your user, who then creates a token in the Partner Portal under Manage API Tokens.  Zernio lists the partner's advertisers with the token before saving anything. Each advertiser becomes an ad account of the connection (`GET /v1/ads/accounts`), and `adAccountIds` keeps only some of them. The token is stored encrypted and never returned.  Requires the Ads add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$connect_trade_desk_ads_partner_request = {"partnerId":"ptn1234","apiToken":"YOUR_TTD_API_TOKEN","profileId":"6507a1b2c3d4e5f6a7b8c9d0"}; // \Zernio\Model\ConnectTradeDeskAdsPartnerRequest
+
+try {
+    $result = $apiInstance->connectTradeDeskAdsPartner($connect_trade_desk_ads_partner_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->connectTradeDeskAdsPartner: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **connect_trade_desk_ads_partner_request** | [**\Zernio\Model\ConnectTradeDeskAdsPartnerRequest**](../Model/ConnectTradeDeskAdsPartnerRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\ConnectTradeDeskAdsPartner200Response**](../Model/ConnectTradeDeskAdsPartner200Response.md)
 
 ### Authorization
 

@@ -11,6 +11,6 @@ Name | Type | Description | Notes
 **authorized_at** | **\DateTime** |  | [optional]
 **last_used_at** | **\DateTime** | Last time any of the client&#39;s live tokens authenticated a request. | [optional]
 **token_count** | **int** | Live tokens held by the client (an active session is typically one access plus one refresh token). | [optional]
-**workspaces** | [**\Zernio\Model\UpdateFacebookPage200ResponseSelectedPage[]**](UpdateFacebookPage200ResponseSelectedPage.md) | The workspaces chosen when the app was authorized. Present only for accounts with workspaces enabled; empty for an app authorized before the choice existed. | [optional]
+**workspaces** | [**\Zernio\Model\ConnectTradeDeskAdsPartner200ResponseAdvertisersInner[]**](ConnectTradeDeskAdsPartner200ResponseAdvertisersInner.md) | The workspaces chosen when the app was authorized. Present only for accounts with workspaces enabled; empty for an app authorized before the choice existed. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

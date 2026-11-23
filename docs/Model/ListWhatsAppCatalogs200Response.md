@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **waba_id** | **string** |  | [optional]
-**catalogs** | [**\Zernio\Model\UpdateFacebookPage200ResponseSelectedPage[]**](UpdateFacebookPage200ResponseSelectedPage.md) |  | [optional]
+**catalogs** | [**\Zernio\Model\ConnectTradeDeskAdsPartner200ResponseAdvertisersInner[]**](ConnectTradeDeskAdsPartner200ResponseAdvertisersInner.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
