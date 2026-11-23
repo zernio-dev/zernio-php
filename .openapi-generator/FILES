@@ -487,6 +487,9 @@ docs/Model/AutomationTemplatePublisher.md
 docs/Model/AutomationTemplateShare.md
 docs/Model/AutomationTemplateTargetResult.md
 docs/Model/AutomationTemplateTargetResultError.md
+docs/Model/AutomationTestDecision.md
+docs/Model/AutomationTestDecisionMatchedInner.md
+docs/Model/AutomationTestDecisionPlannedStepsInner.md
 docs/Model/AutomationTrigger.md
 docs/Model/BalanceRequiredError.md
 docs/Model/BatchAdCatalogProducts202Response.md
@@ -1647,6 +1650,8 @@ docs/Model/GetAutomationCatalog200ResponseTriggersInner.md
 docs/Model/GetAutomationCatalog200ResponseTriggersInnerFactsInner.md
 docs/Model/GetAutomationControls200Response.md
 docs/Model/GetAutomationRun200Response.md
+docs/Model/GetAutomationTestSample200Response.md
+docs/Model/GetAutomationTestSample200ResponseSample.md
 docs/Model/GetBalance200Response.md
 docs/Model/GetBalance200ResponseHeld.md
 docs/Model/GetBalance200ResponsePayoutLocksInner.md
@@ -3457,6 +3462,8 @@ docs/Model/TargetingSpecCustomLocationsInner.md
 docs/Model/TargetingSpecExcludedLocations.md
 docs/Model/TargetingSpecExcludedLocationsCitiesInner.md
 docs/Model/TelegramPlatformData.md
+docs/Model/TestAutomation200Response.md
+docs/Model/TestAutomationRequest.md
 docs/Model/TestWebhookRequest.md
 docs/Model/ThreadsPlatformData.md
 docs/Model/TikTokAdsPlatformQueryBody.md
@@ -4739,6 +4746,9 @@ lib/Model/AutomationTemplatePublisher.php
 lib/Model/AutomationTemplateShare.php
 lib/Model/AutomationTemplateTargetResult.php
 lib/Model/AutomationTemplateTargetResultError.php
+lib/Model/AutomationTestDecision.php
+lib/Model/AutomationTestDecisionMatchedInner.php
+lib/Model/AutomationTestDecisionPlannedStepsInner.php
 lib/Model/AutomationTrigger.php
 lib/Model/BalanceRequiredError.php
 lib/Model/BatchAdCatalogProducts202Response.php
@@ -5899,6 +5909,8 @@ lib/Model/GetAutomationCatalog200ResponseTriggersInner.php
 lib/Model/GetAutomationCatalog200ResponseTriggersInnerFactsInner.php
 lib/Model/GetAutomationControls200Response.php
 lib/Model/GetAutomationRun200Response.php
+lib/Model/GetAutomationTestSample200Response.php
+lib/Model/GetAutomationTestSample200ResponseSample.php
 lib/Model/GetBalance200Response.php
 lib/Model/GetBalance200ResponseHeld.php
 lib/Model/GetBalance200ResponsePayoutLocksInner.php
@@ -7710,6 +7722,8 @@ lib/Model/TargetingSpecCustomLocationsInner.php
 lib/Model/TargetingSpecExcludedLocations.php
 lib/Model/TargetingSpecExcludedLocationsCitiesInner.php
 lib/Model/TelegramPlatformData.php
+lib/Model/TestAutomation200Response.php
+lib/Model/TestAutomationRequest.php
 lib/Model/TestWebhookRequest.php
 lib/Model/ThreadsPlatformData.php
 lib/Model/TikTokAdsPlatformQueryBody.php
@@ -8505,3 +8519,10 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/AutomationTestDecisionMatchedInnerTest.php
+test/Model/AutomationTestDecisionPlannedStepsInnerTest.php
+test/Model/AutomationTestDecisionTest.php
+test/Model/GetAutomationTestSample200ResponseSampleTest.php
+test/Model/GetAutomationTestSample200ResponseTest.php
+test/Model/TestAutomation200ResponseTest.php
+test/Model/TestAutomationRequestTest.php

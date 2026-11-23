@@ -20,6 +20,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getAutomationControls()**](AutomationsApi.md#getAutomationControls) | **GET** /v1/automations/controls | Get automation controls |
 | [**getAutomationRun()**](AutomationsApi.md#getAutomationRun) | **GET** /v1/automations/{automationId}/runs/{runId} | Get one run of an automation |
 | [**getAutomationTemplate()**](AutomationsApi.md#getAutomationTemplate) | **GET** /v1/automations/templates/{templateId} | Get an automation template |
+| [**getAutomationTestSample()**](AutomationsApi.md#getAutomationTestSample) | **GET** /v1/automations/{automationId}/test/sample | Get a sample test body for an automation |
 | [**getSharedAutomationTemplate()**](AutomationsApi.md#getSharedAutomationTemplate) | **GET** /v1/automations/templates/shared/{shareToken} | Get a shared automation template |
 | [**getZernioAutomationTemplate()**](AutomationsApi.md#getZernioAutomationTemplate) | **GET** /v1/automations/templates/zernio/{templateId} | Get a Zernio automation template |
 | [**installAutomationTemplate()**](AutomationsApi.md#installAutomationTemplate) | **POST** /v1/automations/templates/{templateId}/install | Install an automation template |
@@ -36,6 +37,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**previewAutomationDraft()**](AutomationsApi.md#previewAutomationDraft) | **POST** /v1/automations/preview | Preview an unsaved automation |
 | [**rejectAutomationApproval()**](AutomationsApi.md#rejectAutomationApproval) | **POST** /v1/automations/{automationId}/approvals/{approvalId}/reject | Reject an approval request |
 | [**takeOverAutomation()**](AutomationsApi.md#takeOverAutomation) | **POST** /v1/automations/{automationId}/take-over | Take over an automation |
+| [**testAutomation()**](AutomationsApi.md#testAutomation) | **POST** /v1/automations/{automationId}/test | Test an automation on a sample event |
 | [**updateAutomation()**](AutomationsApi.md#updateAutomation) | **PATCH** /v1/automations/{automationId} | Edit an automation |
 | [**updateAutomationAdAccountControls()**](AutomationsApi.md#updateAutomationAdAccountControls) | **PATCH** /v1/automations/controls/ad-accounts | Update one ad account&#39;s controls |
 | [**updateAutomationControls()**](AutomationsApi.md#updateAutomationControls) | **PATCH** /v1/automations/controls | Turn every ad automation off or on |
@@ -876,6 +878,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\CreateAutomationTemplate201Response**](../Model/CreateAutomationTemplate201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getAutomationTestSample()`
+
+```php
+getAutomationTestSample($automation_id): \Zernio\Model\GetAutomationTestSample200Response
+```
+
+Get a sample test body for an automation
+
+A body `POST /v1/automations/{automationId}/test` accepts for this automation: a comment with its first keyword, an inbound event its flow's trigger takes, its event's webhook payload with sample values, or the contact a sequence enrolled last. Kinds that read live data instead take no event.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AutomationsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$automation_id = 'automation_id_example'; // string
+
+try {
+    $result = $apiInstance->getAutomationTestSample($automation_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AutomationsApi->getAutomationTestSample: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **automation_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\GetAutomationTestSample200Response**](../Model/GetAutomationTestSample200Response.md)
 
 ### Authorization
 
@@ -1902,6 +1964,68 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `testAutomation()`
+
+```php
+testAutomation($automation_id, $test_automation_request): \Zernio\Model\TestAutomation200Response
+```
+
+Test an automation on a sample event
+
+Runs one sample through the automation's own decision code and says whether it would run, what it matched and the steps it would take. Nothing is claimed, sent or written, whatever the automation does.  What each kind reads:  - Comment to DM: a comment (`event.text`, `event.platformPostId`). - Flow: an inbound event (`event.trigger`, `event.text`, `event.firstMessage`). - Event automation: the event's webhook payload, or the sample payload when `event` is left out. - Ad rule: the ad account as it is now, like a preview. `subjectId` narrows to one object. - Scheduled automation: the posts it would check now, and its next check. `subjectId` narrows to one post. - Sequence: the contact in `subjectId`.  A paused or draft automation is tested as if it were live, and answers `wouldRun: false` with its status as `reason`. Cooldowns, daily caps and a conversation's live run read history and are left out. `GET /v1/automations/{automationId}/test/sample` returns a body to start from.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AutomationsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$automation_id = 'automation_id_example'; // string
+$test_automation_request = new \Zernio\Model\TestAutomationRequest(); // \Zernio\Model\TestAutomationRequest
+
+try {
+    $result = $apiInstance->testAutomation($automation_id, $test_automation_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AutomationsApi->testAutomation: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **automation_id** | **string**|  | |
+| **test_automation_request** | [**\Zernio\Model\TestAutomationRequest**](../Model/TestAutomationRequest.md)|  | [optional] |
+
+### Return type
+
+[**\Zernio\Model\TestAutomation200Response**](../Model/TestAutomation200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
