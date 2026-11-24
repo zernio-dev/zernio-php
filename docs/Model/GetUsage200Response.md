@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **period** | [**\Zernio\Model\UsageMeteringPeriod**](UsageMeteringPeriod.md) |  | [optional]
 **tax** | [**\Zernio\Model\UsageMeteringTax**](UsageMeteringTax.md) |  | [optional]
 **attribution** | [**\Zernio\Model\UsageMeteringAttribution**](UsageMeteringAttribution.md) |  | [optional]
+**incomplete** | **bool** | Check it before rebilling. Present and true when a read behind the split failed: a group&#39;s spend can then be lower than the real one (it is &#x60;unattributed&#x60; in a full breakdown, missing from a view of some profiles or accounts). Retry in a minute. | [optional]
 **scope** | [**\Zernio\Model\UsageMeteringScope**](UsageMeteringScope.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
