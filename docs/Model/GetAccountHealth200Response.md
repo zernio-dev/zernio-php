@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 **inbound_activity** | [**\Zernio\Model\InboundActivity**](InboundActivity.md) |  | [optional]
 **publishing_restriction** | [**\Zernio\Model\GetAllAccountsHealth200ResponseAccountsInnerPublishingRestriction**](GetAllAccountsHealth200ResponseAccountsInnerPublishingRestriction.md) |  | [optional]
 **messaging_restriction** | [**\Zernio\Model\GetAccountHealth200ResponseMessagingRestriction**](GetAccountHealth200ResponseMessagingRestriction.md) |  | [optional]
-**coexistence_history_sync** | [**\Zernio\Model\GetAccountHealth200ResponseCoexistenceHistorySync**](GetAccountHealth200ResponseCoexistenceHistorySync.md) |  | [optional]
+**coexistence_history_sync** | [**\Zernio\Model\CoexistenceHistorySync**](CoexistenceHistorySync.md) |  | [optional]
 **platform_connection** | [**\Zernio\Model\GetAccountHealth200ResponsePlatformConnection**](GetAccountHealth200ResponsePlatformConnection.md) |  | [optional]
 **line_webhook** | [**\Zernio\Model\GetAccountHealth200ResponseLineWebhook**](GetAccountHealth200ResponseLineWebhook.md) |  | [optional]
 
