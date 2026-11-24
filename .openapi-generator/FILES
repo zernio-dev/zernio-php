@@ -8537,10 +8537,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/AutomationEventActionStepOneOf1Test.php
-test/Model/AutomationEventActionStepOneOf2Test.php
-test/Model/AutomationEventActionStepOneOf3Test.php
-test/Model/AutomationEventActionStepOneOf4Test.php
-test/Model/AutomationEventActionStepOneOfTest.php
-test/Model/AutomationEventActionStepTest.php
-test/Model/EventAutomationDefinitionStepsInnerTest.php
