@@ -35,6 +35,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**connectWhatsAppEmbeddedSignup()**](ConnectApi.md#connectWhatsAppEmbeddedSignup) | **POST** /v1/connect/whatsapp/embedded-signup | Connect WhatsApp from Embedded Signup |
 | [**connectWhopAdsCredentials()**](ConnectApi.md#connectWhopAdsCredentials) | **POST** /v1/connect/whop-ads/credentials | Connect a Whop account |
 | [**connectWordPressWithApplicationPassword()**](ConnectApi.md#connectWordPressWithApplicationPassword) | **POST** /v1/connect/wordpress/token | Connect self-hosted WordPress with an application password |
+| [**createConnectCustomDomain()**](ConnectApi.md#createConnectCustomDomain) | **POST** /v1/connect/custom-domains | Add a custom domain |
 | [**createGoogleBusinessLocation()**](ConnectApi.md#createGoogleBusinessLocation) | **POST** /v1/accounts/{accountId}/gmb-locations | Create Google Business Profile location |
 | [**createGoogleOrgConnection()**](ConnectApi.md#createGoogleOrgConnection) | **POST** /v1/connect/google/org | Start a Google Workspace organization connection |
 | [**createMicrosoftOrgConnection()**](ConnectApi.md#createMicrosoftOrgConnection) | **POST** /v1/connect/microsoft/org | Start a Microsoft 365 organization connection |
@@ -42,10 +43,12 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**createPinterestBoard()**](ConnectApi.md#createPinterestBoard) | **POST** /v1/accounts/{accountId}/pinterest-boards | Create Pinterest board |
 | [**createPlatformInvite()**](ConnectApi.md#createPlatformInvite) | **POST** /v1/platform-invites | Create a connect link |
 | [**createYoutubePlaylist()**](ConnectApi.md#createYoutubePlaylist) | **POST** /v1/accounts/{accountId}/youtube-playlists | Create YouTube playlist |
+| [**deleteConnectCustomDomain()**](ConnectApi.md#deleteConnectCustomDomain) | **DELETE** /v1/connect/custom-domains/{domainId} | Remove a custom domain |
 | [**deleteOAuthApp()**](ConnectApi.md#deleteOAuthApp) | **DELETE** /v1/connect/oauth-apps/{appId} | Remove an OAuth app |
 | [**deleteOrgConnection()**](ConnectApi.md#deleteOrgConnection) | **DELETE** /v1/org-connections/{orgConnectionId} | Delete an organization connection |
 | [**getAmazonAdsConnectUrl()**](ConnectApi.md#getAmazonAdsConnectUrl) | **GET** /v1/connect/amazonads | Get Amazon Ads OAuth connect URL |
 | [**getCampaignManagerConnectUrl()**](ConnectApi.md#getCampaignManagerConnectUrl) | **GET** /v1/connect/campaignmanager360 | Get Campaign Manager 360 OAuth connect URL |
+| [**getConnectCustomDomain()**](ConnectApi.md#getConnectCustomDomain) | **GET** /v1/connect/custom-domains/{domainId} | Get a custom domain |
 | [**getConnectHandoff()**](ConnectApi.md#getConnectHandoff) | **GET** /v1/connect/handoffs/{handoffId} | Get a phone handoff |
 | [**getConnectUrl()**](ConnectApi.md#getConnectUrl) | **GET** /v1/connect/{platform} | Get OAuth connect URL |
 | [**getConnectWelcomeScreen()**](ConnectApi.md#getConnectWelcomeScreen) | **GET** /v1/connect/welcome-screen | Get the saved welcome screen |
@@ -79,6 +82,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**handleOAuthCallback()**](ConnectApi.md#handleOAuthCallback) | **POST** /v1/connect/{platform} | Complete OAuth callback |
 | [**initiateTelegramConnect()**](ConnectApi.md#initiateTelegramConnect) | **POST** /v1/connect/telegram | Connect Telegram directly |
 | [**listCampaignManagerProfiles()**](ConnectApi.md#listCampaignManagerProfiles) | **GET** /v1/connect/campaignmanager360/profiles | List Campaign Manager 360 profiles for a pending connect |
+| [**listConnectCustomDomains()**](ConnectApi.md#listConnectCustomDomains) | **GET** /v1/connect/custom-domains | List the workspace&#39;s custom domains |
 | [**listFacebookPages()**](ConnectApi.md#listFacebookPages) | **GET** /v1/connect/facebook/select-page | List Facebook pages |
 | [**listGoogleAnalyticsProperties()**](ConnectApi.md#listGoogleAnalyticsProperties) | **GET** /v1/connect/googleanalytics/properties | List Google Analytics properties for a pending connect |
 | [**listGoogleBusinessCategories()**](ConnectApi.md#listGoogleBusinessCategories) | **GET** /v1/accounts/{accountId}/gmb-categories | List Google Business Profile categories |
@@ -107,6 +111,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**setRedditPostFlair()**](ConnectApi.md#setRedditPostFlair) | **POST** /v1/accounts/{accountId}/reddit-flairs | Set Reddit post flair |
 | [**startMicrosoftAdminConsent()**](ConnectApi.md#startMicrosoftAdminConsent) | **GET** /v1/connect/microsoft/admin-consent | Admin-consent link for a Microsoft tenant |
 | [**testOAuthApp()**](ConnectApi.md#testOAuthApp) | **POST** /v1/connect/oauth-apps/{appId}/test | Check an OAuth app&#39;s keys |
+| [**updateConnectCustomDomain()**](ConnectApi.md#updateConnectCustomDomain) | **PATCH** /v1/connect/custom-domains/{domainId} | Turn a custom domain on or off for connect |
 | [**updateConnectWelcomeScreen()**](ConnectApi.md#updateConnectWelcomeScreen) | **PUT** /v1/connect/welcome-screen | Save the welcome screen |
 | [**updateFacebookPage()**](ConnectApi.md#updateFacebookPage) | **PUT** /v1/accounts/{accountId}/facebook-page | Update Facebook page |
 | [**updateGmbLocation()**](ConnectApi.md#updateGmbLocation) | **PUT** /v1/accounts/{accountId}/gmb-locations | Update Google Business Profile location |
@@ -116,6 +121,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**updatePinterestBoards()**](ConnectApi.md#updatePinterestBoards) | **PUT** /v1/accounts/{accountId}/pinterest-boards | Set default Pinterest board |
 | [**updateRedditSubreddits()**](ConnectApi.md#updateRedditSubreddits) | **PUT** /v1/accounts/{accountId}/reddit-subreddits | Set default subreddit |
 | [**updateYoutubeDefaultPlaylist()**](ConnectApi.md#updateYoutubeDefaultPlaylist) | **PUT** /v1/accounts/{accountId}/youtube-playlists | Set default YouTube playlist |
+| [**verifyConnectCustomDomain()**](ConnectApi.md#verifyConnectCustomDomain) | **POST** /v1/connect/custom-domains/{domainId}/verify | Check a custom domain&#39;s DNS records now |
 | [**verifyOrgConnection()**](ConnectApi.md#verifyOrgConnection) | **POST** /v1/org-connections/{orgConnectionId}/verify | Verify an organization connection |
 | [**voteRedditThing()**](ConnectApi.md#voteRedditThing) | **POST** /v1/accounts/{accountId}/reddit-vote | Vote on a Reddit post or comment |
 
@@ -1909,6 +1915,66 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `createConnectCustomDomain()`
+
+```php
+createConnectCustomDomain($create_connect_custom_domain_request): \Zernio\Model\CreateConnectCustomDomain201Response
+```
+
+Add a custom domain
+
+Adds a subdomain you control. The answer lists the two DNS records to add at your DNS provider: a CNAME that points the subdomain at Zernio and a TXT record that proves it is yours.  Nothing is registered until the TXT record is found; then the certificate is issued and `status` turns `active`, usually within minutes.  Connect links only move to the domain once it is active and `connectEnabled` is true. Requires the workspace settings permission (owner or admin).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_connect_custom_domain_request = new \Zernio\Model\CreateConnectCustomDomainRequest(); // \Zernio\Model\CreateConnectCustomDomainRequest
+
+try {
+    $result = $apiInstance->createConnectCustomDomain($create_connect_custom_domain_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->createConnectCustomDomain: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_connect_custom_domain_request** | [**\Zernio\Model\CreateConnectCustomDomainRequest**](../Model/CreateConnectCustomDomainRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateConnectCustomDomain201Response**](../Model/CreateConnectCustomDomain201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `createGoogleBusinessLocation()`
 
 ```php
@@ -2337,6 +2403,65 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `deleteConnectCustomDomain()`
+
+```php
+deleteConnectCustomDomain($domain_id)
+```
+
+Remove a custom domain
+
+Removes the domain and its certificate. New connect links open on zernio.com again and links already sent on the domain stop working; you can then delete both DNS records. Requires the workspace settings permission (owner or admin).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$domain_id = 'domain_id_example'; // string | The custom domain's id.
+
+try {
+    $apiInstance->deleteConnectCustomDomain($domain_id);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->deleteConnectCustomDomain: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **domain_id** | **string**| The custom domain&#39;s id. | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `deleteOAuthApp()`
 
 ```php
@@ -2589,6 +2714,66 @@ try {
 ### Authorization
 
 [connectToken](../../README.md#connectToken), [bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getConnectCustomDomain()`
+
+```php
+getConnectCustomDomain($domain_id): \Zernio\Model\CreateConnectCustomDomain201Response
+```
+
+Get a custom domain
+
+The custom domain with its status and DNS records.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$domain_id = 'domain_id_example'; // string | The custom domain's id.
+
+try {
+    $result = $apiInstance->getConnectCustomDomain($domain_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->getConnectCustomDomain: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **domain_id** | **string**| The custom domain&#39;s id. | |
+
+### Return type
+
+[**\Zernio\Model\CreateConnectCustomDomain201Response**](../Model/CreateConnectCustomDomain201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -4760,6 +4945,63 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listConnectCustomDomains()`
+
+```php
+listConnectCustomDomains(): \Zernio\Model\ListConnectCustomDomains200Response
+```
+
+List the workspace's custom domains
+
+The custom domains of the workspace the request acts in. A custom domain puts the hosted connect screens (the welcome screen and the result screen) on your own subdomain, such as `connect.yourbrand.com`, instead of zernio.com.  A workspace has at most one today; the list leaves room for more. Guide: [Use your own domain for connect](https://docs.zernio.com/guides/custom-domains).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listConnectCustomDomains();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->listConnectCustomDomains: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\Zernio\Model\ListConnectCustomDomains200Response**](../Model/ListConnectCustomDomains200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listFacebookPages()`
 
 ```php
@@ -6567,6 +6809,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `updateConnectCustomDomain()`
+
+```php
+updateConnectCustomDomain($domain_id, $update_connect_custom_domain_request): \Zernio\Model\CreateConnectCustomDomain201Response
+```
+
+Turn a custom domain on or off for connect
+
+With `connectEnabled` true, new connect links open on the domain once it is active; with false they open on zernio.com again. Links already sent keep working. Requires the workspace settings permission (owner or admin).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$domain_id = 'domain_id_example'; // string | The custom domain's id.
+$update_connect_custom_domain_request = new \Zernio\Model\UpdateConnectCustomDomainRequest(); // \Zernio\Model\UpdateConnectCustomDomainRequest
+
+try {
+    $result = $apiInstance->updateConnectCustomDomain($domain_id, $update_connect_custom_domain_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->updateConnectCustomDomain: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **domain_id** | **string**| The custom domain&#39;s id. | |
+| **update_connect_custom_domain_request** | [**\Zernio\Model\UpdateConnectCustomDomainRequest**](../Model/UpdateConnectCustomDomainRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateConnectCustomDomain201Response**](../Model/CreateConnectCustomDomain201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `updateConnectWelcomeScreen()`
 
 ```php
@@ -7117,6 +7421,66 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `verifyConnectCustomDomain()`
+
+```php
+verifyConnectCustomDomain($domain_id): \Zernio\Model\CreateConnectCustomDomain201Response
+```
+
+Check a custom domain's DNS records now
+
+Looks for the DNS records right away instead of waiting for the hourly check, and asks the certificate authority to validate again. Calls within 30 seconds of the last check answer that check.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$domain_id = 'domain_id_example'; // string | The custom domain's id.
+
+try {
+    $result = $apiInstance->verifyConnectCustomDomain($domain_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->verifyConnectCustomDomain: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **domain_id** | **string**| The custom domain&#39;s id. | |
+
+### Return type
+
+[**\Zernio\Model\CreateConnectCustomDomain201Response**](../Model/CreateConnectCustomDomain201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

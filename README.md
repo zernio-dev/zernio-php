@@ -685,6 +685,7 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**connectWhatsAppEmbeddedSignup**](docs/Api/ConnectApi.md#connectwhatsappembeddedsignup) | **POST** /v1/connect/whatsapp/embedded-signup | Connect WhatsApp from Embedded Signup
 *ConnectApi* | [**connectWhopAdsCredentials**](docs/Api/ConnectApi.md#connectwhopadscredentials) | **POST** /v1/connect/whop-ads/credentials | Connect a Whop account
 *ConnectApi* | [**connectWordPressWithApplicationPassword**](docs/Api/ConnectApi.md#connectwordpresswithapplicationpassword) | **POST** /v1/connect/wordpress/token | Connect self-hosted WordPress with an application password
+*ConnectApi* | [**createConnectCustomDomain**](docs/Api/ConnectApi.md#createconnectcustomdomain) | **POST** /v1/connect/custom-domains | Add a custom domain
 *ConnectApi* | [**createGoogleBusinessLocation**](docs/Api/ConnectApi.md#creategooglebusinesslocation) | **POST** /v1/accounts/{accountId}/gmb-locations | Create Google Business Profile location
 *ConnectApi* | [**createGoogleOrgConnection**](docs/Api/ConnectApi.md#creategoogleorgconnection) | **POST** /v1/connect/google/org | Start a Google Workspace organization connection
 *ConnectApi* | [**createMicrosoftOrgConnection**](docs/Api/ConnectApi.md#createmicrosoftorgconnection) | **POST** /v1/connect/microsoft/org | Start a Microsoft 365 organization connection
@@ -692,10 +693,12 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**createPinterestBoard**](docs/Api/ConnectApi.md#createpinterestboard) | **POST** /v1/accounts/{accountId}/pinterest-boards | Create Pinterest board
 *ConnectApi* | [**createPlatformInvite**](docs/Api/ConnectApi.md#createplatforminvite) | **POST** /v1/platform-invites | Create a connect link
 *ConnectApi* | [**createYoutubePlaylist**](docs/Api/ConnectApi.md#createyoutubeplaylist) | **POST** /v1/accounts/{accountId}/youtube-playlists | Create YouTube playlist
+*ConnectApi* | [**deleteConnectCustomDomain**](docs/Api/ConnectApi.md#deleteconnectcustomdomain) | **DELETE** /v1/connect/custom-domains/{domainId} | Remove a custom domain
 *ConnectApi* | [**deleteOAuthApp**](docs/Api/ConnectApi.md#deleteoauthapp) | **DELETE** /v1/connect/oauth-apps/{appId} | Remove an OAuth app
 *ConnectApi* | [**deleteOrgConnection**](docs/Api/ConnectApi.md#deleteorgconnection) | **DELETE** /v1/org-connections/{orgConnectionId} | Delete an organization connection
 *ConnectApi* | [**getAmazonAdsConnectUrl**](docs/Api/ConnectApi.md#getamazonadsconnecturl) | **GET** /v1/connect/amazonads | Get Amazon Ads OAuth connect URL
 *ConnectApi* | [**getCampaignManagerConnectUrl**](docs/Api/ConnectApi.md#getcampaignmanagerconnecturl) | **GET** /v1/connect/campaignmanager360 | Get Campaign Manager 360 OAuth connect URL
+*ConnectApi* | [**getConnectCustomDomain**](docs/Api/ConnectApi.md#getconnectcustomdomain) | **GET** /v1/connect/custom-domains/{domainId} | Get a custom domain
 *ConnectApi* | [**getConnectHandoff**](docs/Api/ConnectApi.md#getconnecthandoff) | **GET** /v1/connect/handoffs/{handoffId} | Get a phone handoff
 *ConnectApi* | [**getConnectUrl**](docs/Api/ConnectApi.md#getconnecturl) | **GET** /v1/connect/{platform} | Get OAuth connect URL
 *ConnectApi* | [**getConnectWelcomeScreen**](docs/Api/ConnectApi.md#getconnectwelcomescreen) | **GET** /v1/connect/welcome-screen | Get the saved welcome screen
@@ -729,6 +732,7 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**handleOAuthCallback**](docs/Api/ConnectApi.md#handleoauthcallback) | **POST** /v1/connect/{platform} | Complete OAuth callback
 *ConnectApi* | [**initiateTelegramConnect**](docs/Api/ConnectApi.md#initiatetelegramconnect) | **POST** /v1/connect/telegram | Connect Telegram directly
 *ConnectApi* | [**listCampaignManagerProfiles**](docs/Api/ConnectApi.md#listcampaignmanagerprofiles) | **GET** /v1/connect/campaignmanager360/profiles | List Campaign Manager 360 profiles for a pending connect
+*ConnectApi* | [**listConnectCustomDomains**](docs/Api/ConnectApi.md#listconnectcustomdomains) | **GET** /v1/connect/custom-domains | List the workspace&#39;s custom domains
 *ConnectApi* | [**listFacebookPages**](docs/Api/ConnectApi.md#listfacebookpages) | **GET** /v1/connect/facebook/select-page | List Facebook pages
 *ConnectApi* | [**listGoogleAnalyticsProperties**](docs/Api/ConnectApi.md#listgoogleanalyticsproperties) | **GET** /v1/connect/googleanalytics/properties | List Google Analytics properties for a pending connect
 *ConnectApi* | [**listGoogleBusinessCategories**](docs/Api/ConnectApi.md#listgooglebusinesscategories) | **GET** /v1/accounts/{accountId}/gmb-categories | List Google Business Profile categories
@@ -757,6 +761,7 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**setRedditPostFlair**](docs/Api/ConnectApi.md#setredditpostflair) | **POST** /v1/accounts/{accountId}/reddit-flairs | Set Reddit post flair
 *ConnectApi* | [**startMicrosoftAdminConsent**](docs/Api/ConnectApi.md#startmicrosoftadminconsent) | **GET** /v1/connect/microsoft/admin-consent | Admin-consent link for a Microsoft tenant
 *ConnectApi* | [**testOAuthApp**](docs/Api/ConnectApi.md#testoauthapp) | **POST** /v1/connect/oauth-apps/{appId}/test | Check an OAuth app&#39;s keys
+*ConnectApi* | [**updateConnectCustomDomain**](docs/Api/ConnectApi.md#updateconnectcustomdomain) | **PATCH** /v1/connect/custom-domains/{domainId} | Turn a custom domain on or off for connect
 *ConnectApi* | [**updateConnectWelcomeScreen**](docs/Api/ConnectApi.md#updateconnectwelcomescreen) | **PUT** /v1/connect/welcome-screen | Save the welcome screen
 *ConnectApi* | [**updateFacebookPage**](docs/Api/ConnectApi.md#updatefacebookpage) | **PUT** /v1/accounts/{accountId}/facebook-page | Update Facebook page
 *ConnectApi* | [**updateGmbLocation**](docs/Api/ConnectApi.md#updategmblocation) | **PUT** /v1/accounts/{accountId}/gmb-locations | Update Google Business Profile location
@@ -766,6 +771,7 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**updatePinterestBoards**](docs/Api/ConnectApi.md#updatepinterestboards) | **PUT** /v1/accounts/{accountId}/pinterest-boards | Set default Pinterest board
 *ConnectApi* | [**updateRedditSubreddits**](docs/Api/ConnectApi.md#updateredditsubreddits) | **PUT** /v1/accounts/{accountId}/reddit-subreddits | Set default subreddit
 *ConnectApi* | [**updateYoutubeDefaultPlaylist**](docs/Api/ConnectApi.md#updateyoutubedefaultplaylist) | **PUT** /v1/accounts/{accountId}/youtube-playlists | Set default YouTube playlist
+*ConnectApi* | [**verifyConnectCustomDomain**](docs/Api/ConnectApi.md#verifyconnectcustomdomain) | **POST** /v1/connect/custom-domains/{domainId}/verify | Check a custom domain&#39;s DNS records now
 *ConnectApi* | [**verifyOrgConnection**](docs/Api/ConnectApi.md#verifyorgconnection) | **POST** /v1/org-connections/{orgConnectionId}/verify | Verify an organization connection
 *ConnectApi* | [**voteRedditThing**](docs/Api/ConnectApi.md#voteredditthing) | **POST** /v1/accounts/{accountId}/reddit-vote | Vote on a Reddit post or comment
 *ConnectedAppsApi* | [**listConnectedApps**](docs/Api/ConnectedAppsApi.md#listconnectedapps) | **GET** /v1/me/connected-apps | List connected apps
@@ -2186,6 +2192,8 @@ Class | Method | HTTP request | Description
 - [ConnectAwinCredentialsRequest](docs/Model/ConnectAwinCredentialsRequest.md)
 - [ConnectBlueskyCredentials200Response](docs/Model/ConnectBlueskyCredentials200Response.md)
 - [ConnectBlueskyCredentialsRequest](docs/Model/ConnectBlueskyCredentialsRequest.md)
+- [ConnectCustomDomain](docs/Model/ConnectCustomDomain.md)
+- [ConnectCustomDomainRecordsInner](docs/Model/ConnectCustomDomainRecordsInner.md)
 - [ConnectDiscordChannelRequest](docs/Model/ConnectDiscordChannelRequest.md)
 - [ConnectHandoff](docs/Model/ConnectHandoff.md)
 - [ConnectHandoffAccountsInner](docs/Model/ConnectHandoffAccountsInner.md)
@@ -2394,6 +2402,8 @@ Class | Method | HTTP request | Description
 - [CreateCommerceRefund200Response](docs/Model/CreateCommerceRefund200Response.md)
 - [CreateCommerceRefund201Response](docs/Model/CreateCommerceRefund201Response.md)
 - [CreateCommerceRefundRequest](docs/Model/CreateCommerceRefundRequest.md)
+- [CreateConnectCustomDomain201Response](docs/Model/CreateConnectCustomDomain201Response.md)
+- [CreateConnectCustomDomainRequest](docs/Model/CreateConnectCustomDomainRequest.md)
 - [CreateContact200Response](docs/Model/CreateContact200Response.md)
 - [CreateContact200ResponseChannel](docs/Model/CreateContact200ResponseChannel.md)
 - [CreateContact200ResponseContact](docs/Model/CreateContact200ResponseContact.md)
@@ -3888,6 +3898,7 @@ Class | Method | HTTP request | Description
 - [ListCommerceProductMetafields200Response](docs/Model/ListCommerceProductMetafields200Response.md)
 - [ListCommerceProducts200Response](docs/Model/ListCommerceProducts200Response.md)
 - [ListCommerceRedirects200Response](docs/Model/ListCommerceRedirects200Response.md)
+- [ListConnectCustomDomains200Response](docs/Model/ListConnectCustomDomains200Response.md)
 - [ListConnectedApps200Response](docs/Model/ListConnectedApps200Response.md)
 - [ListContactGroups200Response](docs/Model/ListContactGroups200Response.md)
 - [ListContactGroups200ResponseDataInner](docs/Model/ListContactGroups200ResponseDataInner.md)
@@ -5065,6 +5076,7 @@ Class | Method | HTTP request | Description
 - [UpdateCommerceProductPricesRequestVariantsInnerPrice](docs/Model/UpdateCommerceProductPricesRequestVariantsInnerPrice.md)
 - [UpdateCommerceProductRequest](docs/Model/UpdateCommerceProductRequest.md)
 - [UpdateCommerceRedirectRequest](docs/Model/UpdateCommerceRedirectRequest.md)
+- [UpdateConnectCustomDomainRequest](docs/Model/UpdateConnectCustomDomainRequest.md)
 - [UpdateConnectWelcomeScreenRequest](docs/Model/UpdateConnectWelcomeScreenRequest.md)
 - [UpdateContact200Response](docs/Model/UpdateContact200Response.md)
 - [UpdateContact200ResponseContact](docs/Model/UpdateContact200ResponseContact.md)
@@ -5685,6 +5697,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.824.2`
+- API version: `1.825.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

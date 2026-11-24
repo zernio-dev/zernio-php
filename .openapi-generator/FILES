@@ -816,6 +816,8 @@ docs/Model/ConnectAwinCredentials200Response.md
 docs/Model/ConnectAwinCredentialsRequest.md
 docs/Model/ConnectBlueskyCredentials200Response.md
 docs/Model/ConnectBlueskyCredentialsRequest.md
+docs/Model/ConnectCustomDomain.md
+docs/Model/ConnectCustomDomainRecordsInner.md
 docs/Model/ConnectDiscordChannelRequest.md
 docs/Model/ConnectHandoff.md
 docs/Model/ConnectHandoffAccountsInner.md
@@ -1024,6 +1026,8 @@ docs/Model/CreateCommerceRedirectRequest.md
 docs/Model/CreateCommerceRefund200Response.md
 docs/Model/CreateCommerceRefund201Response.md
 docs/Model/CreateCommerceRefundRequest.md
+docs/Model/CreateConnectCustomDomain201Response.md
+docs/Model/CreateConnectCustomDomainRequest.md
 docs/Model/CreateContact200Response.md
 docs/Model/CreateContact200ResponseChannel.md
 docs/Model/CreateContact200ResponseContact.md
@@ -2518,6 +2522,7 @@ docs/Model/ListCommercePriceLists200Response.md
 docs/Model/ListCommerceProductMetafields200Response.md
 docs/Model/ListCommerceProducts200Response.md
 docs/Model/ListCommerceRedirects200Response.md
+docs/Model/ListConnectCustomDomains200Response.md
 docs/Model/ListConnectedApps200Response.md
 docs/Model/ListContactGroups200Response.md
 docs/Model/ListContactGroups200ResponseDataInner.md
@@ -3695,6 +3700,7 @@ docs/Model/UpdateCommerceProductPricesRequestVariantsInner.md
 docs/Model/UpdateCommerceProductPricesRequestVariantsInnerPrice.md
 docs/Model/UpdateCommerceProductRequest.md
 docs/Model/UpdateCommerceRedirectRequest.md
+docs/Model/UpdateConnectCustomDomainRequest.md
 docs/Model/UpdateConnectWelcomeScreenRequest.md
 docs/Model/UpdateContact200Response.md
 docs/Model/UpdateContact200ResponseContact.md
@@ -5101,6 +5107,8 @@ lib/Model/ConnectAwinCredentials200Response.php
 lib/Model/ConnectAwinCredentialsRequest.php
 lib/Model/ConnectBlueskyCredentials200Response.php
 lib/Model/ConnectBlueskyCredentialsRequest.php
+lib/Model/ConnectCustomDomain.php
+lib/Model/ConnectCustomDomainRecordsInner.php
 lib/Model/ConnectDiscordChannelRequest.php
 lib/Model/ConnectHandoff.php
 lib/Model/ConnectHandoffAccountsInner.php
@@ -5309,6 +5317,8 @@ lib/Model/CreateCommerceRedirectRequest.php
 lib/Model/CreateCommerceRefund200Response.php
 lib/Model/CreateCommerceRefund201Response.php
 lib/Model/CreateCommerceRefundRequest.php
+lib/Model/CreateConnectCustomDomain201Response.php
+lib/Model/CreateConnectCustomDomainRequest.php
 lib/Model/CreateContact200Response.php
 lib/Model/CreateContact200ResponseChannel.php
 lib/Model/CreateContact200ResponseContact.php
@@ -6803,6 +6813,7 @@ lib/Model/ListCommercePriceLists200Response.php
 lib/Model/ListCommerceProductMetafields200Response.php
 lib/Model/ListCommerceProducts200Response.php
 lib/Model/ListCommerceRedirects200Response.php
+lib/Model/ListConnectCustomDomains200Response.php
 lib/Model/ListConnectedApps200Response.php
 lib/Model/ListContactGroups200Response.php
 lib/Model/ListContactGroups200ResponseDataInner.php
@@ -7981,6 +7992,7 @@ lib/Model/UpdateCommerceProductPricesRequestVariantsInner.php
 lib/Model/UpdateCommerceProductPricesRequestVariantsInnerPrice.php
 lib/Model/UpdateCommerceProductRequest.php
 lib/Model/UpdateCommerceRedirectRequest.php
+lib/Model/UpdateConnectCustomDomainRequest.php
 lib/Model/UpdateConnectWelcomeScreenRequest.php
 lib/Model/UpdateContact200Response.php
 lib/Model/UpdateContact200ResponseContact.php
@@ -8571,3 +8583,9 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ConnectCustomDomainRecordsInnerTest.php
+test/Model/ConnectCustomDomainTest.php
+test/Model/CreateConnectCustomDomain201ResponseTest.php
+test/Model/CreateConnectCustomDomainRequestTest.php
+test/Model/ListConnectCustomDomains200ResponseTest.php
+test/Model/UpdateConnectCustomDomainRequestTest.php
