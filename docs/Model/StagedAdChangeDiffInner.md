@@ -4,9 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**field** | **string** |  |
+**field** | **string** | The dotted path of the value in the request body. |
 **before** | **mixed** |  |
 **after** | **mixed** |  |
-**before_available** | **bool** | False when the live read of the object does not return this field, so &#x60;before&#x60; is unknown. |
+**before_available** | **bool** | False when the live read of the object does not return this field, so &#x60;before&#x60; is unknown. The field is still staged. |
+**added** | **mixed[]** | Only on a list of plain values (strings or numbers) with &#x60;beforeAvailable&#x60; true: the values in &#x60;after&#x60; that are not in &#x60;before&#x60;. Order is ignored. | [optional]
+**removed** | **mixed[]** | Only on a list of plain values (strings or numbers) with &#x60;beforeAvailable&#x60; true: the values in &#x60;before&#x60; that are not in &#x60;after&#x60;. Order is ignored. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
