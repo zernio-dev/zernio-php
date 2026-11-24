@@ -108,7 +108,7 @@ $has_reply = True; // bool | Filter by reply status
 $sort_by = 'date'; // string | rating puts reviews without a star rating last in both orders.
 $sort_order = 'desc'; // string
 $limit = 25; // int
-$cursor = 'cursor_example'; // string
+$cursor = 'cursor_example'; // string | Pass back pagination.nextCursor of the previous page unchanged, with the same sortBy and sortOrder.
 $account_id = 'account_id_example'; // string | One account id, or several comma-separated.
 
 try {
@@ -131,7 +131,7 @@ try {
 | **sort_by** | **string**| rating puts reviews without a star rating last in both orders. | [optional] [default to &#39;date&#39;] |
 | **sort_order** | **string**|  | [optional] [default to &#39;desc&#39;] |
 | **limit** | **int**|  | [optional] [default to 25] |
-| **cursor** | **string**|  | [optional] |
+| **cursor** | **string**| Pass back pagination.nextCursor of the previous page unchanged, with the same sortBy and sortOrder. | [optional] |
 | **account_id** | **string**| One account id, or several comma-separated. | [optional] |
 
 ### Return type
