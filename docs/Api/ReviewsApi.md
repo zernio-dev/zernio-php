@@ -81,7 +81,7 @@ listInboxReviews($profile_id, $platform, $min_rating, $max_rating, $has_reply, $
 
 List reviews
 
-Fetch reviews from all connected Facebook Pages and Google Business Profile accounts. Aggregates data with filtering and sorting options. Supported platforms: Facebook, Google Business Profile.  Each account's reviews are read from the platform page by page within a 20-second budget per request, so very large accounts can come back truncated. Each account's listing is cached for up to 60 seconds.
+Fetch reviews from all connected Facebook Pages and Google Business Profile accounts. Aggregates data with filtering and sorting options. Supported platforms: Facebook, Google Business Profile.  Each account's reviews are read from the platform page by page within a 20-second budget per request, so very large accounts can come back truncated; those accounts are listed in meta.truncatedAccounts. Each account's listing is cached for up to 60 seconds.
 
 ### Example
 
@@ -109,7 +109,7 @@ $sort_by = 'date'; // string
 $sort_order = 'desc'; // string
 $limit = 25; // int
 $cursor = 'cursor_example'; // string
-$account_id = 'account_id_example'; // string | Filter by specific account ID
+$account_id = 'account_id_example'; // string | One account id, or several comma-separated.
 
 try {
     $result = $apiInstance->listInboxReviews($profile_id, $platform, $min_rating, $max_rating, $has_reply, $sort_by, $sort_order, $limit, $cursor, $account_id);
@@ -132,7 +132,7 @@ try {
 | **sort_order** | **string**|  | [optional] [default to &#39;desc&#39;] |
 | **limit** | **int**|  | [optional] [default to 25] |
 | **cursor** | **string**|  | [optional] |
-| **account_id** | **string**| Filter by specific account ID | [optional] |
+| **account_id** | **string**| One account id, or several comma-separated. | [optional] |
 
 ### Return type
 

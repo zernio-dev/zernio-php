@@ -2617,6 +2617,7 @@ docs/Model/ListInboxReviews200ResponseDataInner.md
 docs/Model/ListInboxReviews200ResponseDataInnerPhotosInner.md
 docs/Model/ListInboxReviews200ResponseDataInnerReply.md
 docs/Model/ListInboxReviews200ResponseDataInnerReviewer.md
+docs/Model/ListInboxReviews200ResponseMeta.md
 docs/Model/ListInboxReviews200ResponseSummary.md
 docs/Model/ListInstagramLiveMedia200Response.md
 docs/Model/ListInstagramMediaCollaborators200Response.md
@@ -6900,6 +6901,7 @@ lib/Model/ListInboxReviews200ResponseDataInner.php
 lib/Model/ListInboxReviews200ResponseDataInnerPhotosInner.php
 lib/Model/ListInboxReviews200ResponseDataInnerReply.php
 lib/Model/ListInboxReviews200ResponseDataInnerReviewer.php
+lib/Model/ListInboxReviews200ResponseMeta.php
 lib/Model/ListInboxReviews200ResponseSummary.php
 lib/Model/ListInstagramLiveMedia200Response.php
 lib/Model/ListInstagramMediaCollaborators200Response.php
@@ -8567,3 +8569,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ListInboxReviews200ResponseMetaTest.php
