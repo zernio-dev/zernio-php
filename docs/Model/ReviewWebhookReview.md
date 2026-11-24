@@ -5,8 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | Platform review ID (e.g. \&quot;accounts/123/locations/456/reviews/789\&quot; for Google Business Profile). |
-**platform** | **string** | Platform the review originated on. Currently Google Business Profile only. |
-**rating** | **int** | Star rating the reviewer gave. |
+**platform** | **string** | Platform the review originated on (Google Business Profile or Facebook Pages). |
+**rating** | **int** | Star rating the reviewer gave. Null for a Facebook recommendation without stars. |
+**recommendation_type** | **string** | Facebook only. Whether the reviewer recommended the Page. | [optional]
 **text** | **string** | Review text content. May be empty if the reviewer left only a rating. |
 **reviewer** | [**\Zernio\Model\ReviewWebhookReviewReviewer**](ReviewWebhookReviewReviewer.md) |  |
 **created_at** | **\DateTime** |  |
