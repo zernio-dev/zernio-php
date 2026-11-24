@@ -63,7 +63,8 @@ class GetEventsOverview200ResponseSitesInner implements ModelInterface, ArrayAcc
         'hits_today' => 'int',
         'last_active_on' => '\DateTime',
         'event_names_last_week' => 'string[]',
-        'totals' => '\Zernio\Model\GetEventsOverview200ResponseSitesInnerTotals'
+        'totals' => '\Zernio\Model\GetEventsOverview200ResponseSitesInnerTotals',
+        'sends_nowhere' => 'bool'
     ];
 
     /**
@@ -79,7 +80,8 @@ class GetEventsOverview200ResponseSitesInner implements ModelInterface, ArrayAcc
         'hits_today' => null,
         'last_active_on' => 'date',
         'event_names_last_week' => null,
-        'totals' => null
+        'totals' => null,
+        'sends_nowhere' => null
     ];
 
     /**
@@ -93,7 +95,8 @@ class GetEventsOverview200ResponseSitesInner implements ModelInterface, ArrayAcc
         'hits_today' => false,
         'last_active_on' => true,
         'event_names_last_week' => false,
-        'totals' => false
+        'totals' => false,
+        'sends_nowhere' => false
     ];
 
     /**
@@ -187,7 +190,8 @@ class GetEventsOverview200ResponseSitesInner implements ModelInterface, ArrayAcc
         'hits_today' => 'hitsToday',
         'last_active_on' => 'lastActiveOn',
         'event_names_last_week' => 'eventNamesLastWeek',
-        'totals' => 'totals'
+        'totals' => 'totals',
+        'sends_nowhere' => 'sendsNowhere'
     ];
 
     /**
@@ -201,7 +205,8 @@ class GetEventsOverview200ResponseSitesInner implements ModelInterface, ArrayAcc
         'hits_today' => 'setHitsToday',
         'last_active_on' => 'setLastActiveOn',
         'event_names_last_week' => 'setEventNamesLastWeek',
-        'totals' => 'setTotals'
+        'totals' => 'setTotals',
+        'sends_nowhere' => 'setSendsNowhere'
     ];
 
     /**
@@ -215,7 +220,8 @@ class GetEventsOverview200ResponseSitesInner implements ModelInterface, ArrayAcc
         'hits_today' => 'getHitsToday',
         'last_active_on' => 'getLastActiveOn',
         'event_names_last_week' => 'getEventNamesLastWeek',
-        'totals' => 'getTotals'
+        'totals' => 'getTotals',
+        'sends_nowhere' => 'getSendsNowhere'
     ];
 
     /**
@@ -281,6 +287,7 @@ class GetEventsOverview200ResponseSitesInner implements ModelInterface, ArrayAcc
         $this->setIfExists('last_active_on', $data ?? [], null);
         $this->setIfExists('event_names_last_week', $data ?? [], null);
         $this->setIfExists('totals', $data ?? [], null);
+        $this->setIfExists('sends_nowhere', $data ?? [], null);
     }
 
     /**
@@ -490,6 +497,33 @@ class GetEventsOverview200ResponseSitesInner implements ModelInterface, ArrayAcc
             throw new \InvalidArgumentException('non-nullable totals cannot be null');
         }
         $this->container['totals'] = $totals;
+
+        return $this;
+    }
+
+    /**
+     * Gets sends_nowhere
+     *
+     * @return bool|null
+     */
+    public function getSendsNowhere()
+    {
+        return $this->container['sends_nowhere'];
+    }
+
+    /**
+     * Sets sends_nowhere
+     *
+     * @param bool|null $sends_nowhere Whether no forwarding rule of the profile to an ad platform uses the site (its own events, or server events its visits complete) and its tag fires no ad pixel in the browser.
+     *
+     * @return self
+     */
+    public function setSendsNowhere($sends_nowhere)
+    {
+        if (is_null($sends_nowhere)) {
+            throw new \InvalidArgumentException('non-nullable sends_nowhere cannot be null');
+        }
+        $this->container['sends_nowhere'] = $sends_nowhere;
 
         return $this;
     }

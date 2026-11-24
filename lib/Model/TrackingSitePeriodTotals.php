@@ -63,7 +63,9 @@ class TrackingSitePeriodTotals implements ModelInterface, ArrayAccess, \JsonSeri
         'bots' => 'int',
         'consented' => 'int',
         'purchases' => 'int',
-        'recovered' => 'int'
+        'recovered' => 'int',
+        'leads' => 'int',
+        'checkouts' => 'int'
     ];
 
     /**
@@ -78,7 +80,9 @@ class TrackingSitePeriodTotals implements ModelInterface, ArrayAccess, \JsonSeri
         'bots' => null,
         'consented' => null,
         'purchases' => null,
-        'recovered' => null
+        'recovered' => null,
+        'leads' => null,
+        'checkouts' => null
     ];
 
     /**
@@ -91,7 +95,9 @@ class TrackingSitePeriodTotals implements ModelInterface, ArrayAccess, \JsonSeri
         'bots' => false,
         'consented' => false,
         'purchases' => false,
-        'recovered' => false
+        'recovered' => false,
+        'leads' => false,
+        'checkouts' => false
     ];
 
     /**
@@ -184,7 +190,9 @@ class TrackingSitePeriodTotals implements ModelInterface, ArrayAccess, \JsonSeri
         'bots' => 'bots',
         'consented' => 'consented',
         'purchases' => 'purchases',
-        'recovered' => 'recovered'
+        'recovered' => 'recovered',
+        'leads' => 'leads',
+        'checkouts' => 'checkouts'
     ];
 
     /**
@@ -197,7 +205,9 @@ class TrackingSitePeriodTotals implements ModelInterface, ArrayAccess, \JsonSeri
         'bots' => 'setBots',
         'consented' => 'setConsented',
         'purchases' => 'setPurchases',
-        'recovered' => 'setRecovered'
+        'recovered' => 'setRecovered',
+        'leads' => 'setLeads',
+        'checkouts' => 'setCheckouts'
     ];
 
     /**
@@ -210,7 +220,9 @@ class TrackingSitePeriodTotals implements ModelInterface, ArrayAccess, \JsonSeri
         'bots' => 'getBots',
         'consented' => 'getConsented',
         'purchases' => 'getPurchases',
-        'recovered' => 'getRecovered'
+        'recovered' => 'getRecovered',
+        'leads' => 'getLeads',
+        'checkouts' => 'getCheckouts'
     ];
 
     /**
@@ -275,6 +287,8 @@ class TrackingSitePeriodTotals implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('consented', $data ?? [], null);
         $this->setIfExists('purchases', $data ?? [], null);
         $this->setIfExists('recovered', $data ?? [], null);
+        $this->setIfExists('leads', $data ?? [], null);
+        $this->setIfExists('checkouts', $data ?? [], null);
     }
 
     /**
@@ -450,6 +464,60 @@ class TrackingSitePeriodTotals implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable recovered cannot be null');
         }
         $this->container['recovered'] = $recovered;
+
+        return $this;
+    }
+
+    /**
+     * Gets leads
+     *
+     * @return int|null
+     */
+    public function getLeads()
+    {
+        return $this->container['leads'];
+    }
+
+    /**
+     * Sets leads
+     *
+     * @param int|null $leads Leads recorded on the site without bots.
+     *
+     * @return self
+     */
+    public function setLeads($leads)
+    {
+        if (is_null($leads)) {
+            throw new \InvalidArgumentException('non-nullable leads cannot be null');
+        }
+        $this->container['leads'] = $leads;
+
+        return $this;
+    }
+
+    /**
+     * Gets checkouts
+     *
+     * @return int|null
+     */
+    public function getCheckouts()
+    {
+        return $this->container['checkouts'];
+    }
+
+    /**
+     * Sets checkouts
+     *
+     * @param int|null $checkouts Checkouts started on the site without bots.
+     *
+     * @return self
+     */
+    public function setCheckouts($checkouts)
+    {
+        if (is_null($checkouts)) {
+            throw new \InvalidArgumentException('non-nullable checkouts cannot be null');
+        }
+        $this->container['checkouts'] = $checkouts;
 
         return $this;
     }
