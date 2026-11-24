@@ -65,6 +65,8 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
         'gbraid' => 'string',
         'wbraid' => 'string',
         'li_fat_id' => 'string',
+        'ttclid' => 'string',
+        'ttp' => 'string',
         'epik' => 'string',
         'rdt_cid' => 'string',
         'rdt_uuid' => 'string',
@@ -99,6 +101,8 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
         'gbraid' => null,
         'wbraid' => null,
         'li_fat_id' => null,
+        'ttclid' => null,
+        'ttp' => null,
         'epik' => null,
         'rdt_cid' => null,
         'rdt_uuid' => null,
@@ -131,6 +135,8 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
         'gbraid' => false,
         'wbraid' => false,
         'li_fat_id' => false,
+        'ttclid' => false,
+        'ttp' => false,
         'epik' => false,
         'rdt_cid' => false,
         'rdt_uuid' => false,
@@ -243,6 +249,8 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
         'gbraid' => 'gbraid',
         'wbraid' => 'wbraid',
         'li_fat_id' => 'li_fat_id',
+        'ttclid' => 'ttclid',
+        'ttp' => 'ttp',
         'epik' => 'epik',
         'rdt_cid' => 'rdt_cid',
         'rdt_uuid' => 'rdt_uuid',
@@ -275,6 +283,8 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
         'gbraid' => 'setGbraid',
         'wbraid' => 'setWbraid',
         'li_fat_id' => 'setLiFatId',
+        'ttclid' => 'setTtclid',
+        'ttp' => 'setTtp',
         'epik' => 'setEpik',
         'rdt_cid' => 'setRdtCid',
         'rdt_uuid' => 'setRdtUuid',
@@ -307,6 +317,8 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
         'gbraid' => 'getGbraid',
         'wbraid' => 'getWbraid',
         'li_fat_id' => 'getLiFatId',
+        'ttclid' => 'getTtclid',
+        'ttp' => 'getTtp',
         'epik' => 'getEpik',
         'rdt_cid' => 'getRdtCid',
         'rdt_uuid' => 'getRdtUuid',
@@ -390,6 +402,8 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
         $this->setIfExists('gbraid', $data ?? [], null);
         $this->setIfExists('wbraid', $data ?? [], null);
         $this->setIfExists('li_fat_id', $data ?? [], null);
+        $this->setIfExists('ttclid', $data ?? [], null);
+        $this->setIfExists('ttp', $data ?? [], null);
         $this->setIfExists('epik', $data ?? [], null);
         $this->setIfExists('rdt_cid', $data ?? [], null);
         $this->setIfExists('rdt_uuid', $data ?? [], null);
@@ -610,6 +624,60 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable li_fat_id cannot be null');
         }
         $this->container['li_fat_id'] = $li_fat_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets ttclid
+     *
+     * @return string|null
+     */
+    public function getTtclid()
+    {
+        return $this->container['ttclid'];
+    }
+
+    /**
+     * Sets ttclid
+     *
+     * @param string|null $ttclid TikTok click ID (the `ttclid` URL param TikTok adds to ad clicks). Sent to TikTok pixel destinations as `user.ttclid`, not hashed.
+     *
+     * @return self
+     */
+    public function setTtclid($ttclid)
+    {
+        if (is_null($ttclid)) {
+            throw new \InvalidArgumentException('non-nullable ttclid cannot be null');
+        }
+        $this->container['ttclid'] = $ttclid;
+
+        return $this;
+    }
+
+    /**
+     * Gets ttp
+     *
+     * @return string|null
+     */
+    public function getTtp()
+    {
+        return $this->container['ttp'];
+    }
+
+    /**
+     * Sets ttp
+     *
+     * @param string|null $ttp TikTok Pixel browser id (the `_ttp` cookie). Sent to TikTok pixel destinations as `user.ttp`, not hashed. Offline Event Sets match on email and phone only.
+     *
+     * @return self
+     */
+    public function setTtp($ttp)
+    {
+        if (is_null($ttp)) {
+            throw new \InvalidArgumentException('non-nullable ttp cannot be null');
+        }
+        $this->container['ttp'] = $ttp;
 
         return $this;
     }

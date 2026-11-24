@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **gbraid** | **string** | Google iOS 14.5+ app attribution ID. | [optional]
 **wbraid** | **string** | Google iOS 14.5+ web-to-app attribution ID. | [optional]
 **li_fat_id** | **string** | LinkedIn first-party ad tracking click ID. Captured by parsing &#x60;li_fat_id&#x60; from landing-page URLs after the advertiser enables enhanced conversion tracking on the LinkedIn Insight Tag. Sent to LinkedIn as the LINKEDIN_FIRST_PARTY_ADS_TRACKING_UUID userId. Opaque token, not hashed. | [optional]
+**ttclid** | **string** | TikTok click ID (the &#x60;ttclid&#x60; URL param TikTok adds to ad clicks). Sent to TikTok pixel destinations as &#x60;user.ttclid&#x60;, not hashed. | [optional]
+**ttp** | **string** | TikTok Pixel browser id (the &#x60;_ttp&#x60; cookie). Sent to TikTok pixel destinations as &#x60;user.ttp&#x60;, not hashed. Offline Event Sets match on email and phone only. | [optional]
 **epik** | **string** | Pinterest click ID (the &#x60;epik&#x60; URL param or &#x60;_epik&#x60; cookie). Sent to Pinterest as &#x60;click_id&#x60;, not hashed. | [optional]
 **rdt_cid** | **string** | Reddit click ID (the &#x60;rdt_cid&#x60; URL param Reddit adds to ad clicks). Sent to Reddit as &#x60;click_id&#x60;, not hashed. | [optional]
 **rdt_uuid** | **string** | Reddit Pixel browser id (the &#x60;_rdt_uuid&#x60; first-party cookie). Sent to Reddit as &#x60;user.uuid&#x60;, not hashed. | [optional]
