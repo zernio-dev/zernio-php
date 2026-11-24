@@ -127,7 +127,7 @@ Name | Type | Description | Notes
 **user_os** | **string[]** | Meta only. Operating systems and version ranges, such as iOS_ver_14.0_and_above or Android. Emitted as user_os. May also be supplied inside targeting. | [optional]
 **user_device** | **string[]** | Meta only. Device models such as iPhone. Emitted as user_device. May also be supplied inside targeting. | [optional]
 **is_skadnetwork_attribution** | **bool** | Meta app promotion only. Immutable campaign flag. Set true for iOS 14+ SKAdNetwork campaigns and supply promotedObject.applicationId plus promotedObject.objectStoreUrl. The campaign receives promotedObject only when this flag is true. Cannot be changed on an existing campaign. | [optional]
-**campaign_attribution** | **string** | Meta ad-set attribution. Required as SKADNETWORK for iOS 14+ app promotion or a SKAdNetwork campaign. Requires AUCTION buying. Standalone Meta ad-set creation is not supported; use this field on /v1/ads/create. | [optional]
+**campaign_attribution** | **string** | Meta ad-set attribution. SKADNETWORK for a SKAdNetwork campaign, AEM for an iOS 14+ AEM campaign without isSkadnetworkAttribution. With existingCampaignId, omit it to follow the campaign; a value that conflicts with the campaign is rejected. Requires AUCTION buying. Use this field on /v1/ads/create. | [optional]
 **promoted_object** | [**\Zernio\Model\AdPromotedObject**](AdPromotedObject.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
