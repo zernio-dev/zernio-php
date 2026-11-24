@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**stage** | **bool** | Send true to stage this create instead of sending it. Nothing is created on the ad network; the response is &#x60;202&#x60; with the staged change. Create it with POST /v1/ads/changes/{changeId}/confirm. Meta and Google only; not with &#x60;validateOnly&#x60; or a presigned media URL. | [optional]
 **account_id** | **string** |  |
 **ad_account_id** | **string** |  |
 **name** | **string** | Omitted, the ad is named &#x60;Ad &lt;YYYY-MM-DD HH:MM:SS&gt;&#x60; (UTC) and the response reports it in &#x60;appliedDefaults.name&#x60;. | [optional]

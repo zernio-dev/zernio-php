@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**stage** | **bool** | Send true to stage this create instead of sending it. Nothing is created on the ad network; the response is &#x60;202&#x60; with the staged change. Create it with POST /v1/ads/changes/{changeId}/confirm. Meta and Google only; cannot be combined with &#x60;validateOnly&#x60;. | [optional]
 **account_id** | **string** | Zernio SocialAccount id (posting or ads variant); its platform decides where the campaign is created. |
 **ad_account_id** | **string** | Platform ad account id (Meta act_&lt;n&gt;, Google customer id, LinkedIn account id, ...). |
 **name** | **string** |  |
