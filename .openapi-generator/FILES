@@ -8547,7 +8547,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/FixedTest.php
-test/Model/ForwardingRuleEventValueTest.php
-test/Model/OriginalTest.php
-test/Model/PercentTest.php
