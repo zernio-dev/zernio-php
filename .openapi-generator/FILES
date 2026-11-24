@@ -8557,8 +8557,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Api/AdChangesApiTest.php
-test/Model/GetAdChange200ResponseTest.php
-test/Model/StagedAdChangeDiffInnerTest.php
-test/Model/StagedAdChangeErrorTest.php
-test/Model/StagedAdChangeTest.php
