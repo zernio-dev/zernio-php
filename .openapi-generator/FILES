@@ -11,6 +11,7 @@ docs/Api/AdAccountsApi.md
 docs/Api/AdAudiencesApi.md
 docs/Api/AdCampaignResultsApi.md
 docs/Api/AdCampaignsApi.md
+docs/Api/AdChangesApi.md
 docs/Api/AdCreativesApi.md
 docs/Api/AdInsightsApi.md
 docs/Api/AdLibraryApi.md
@@ -1605,6 +1606,7 @@ docs/Model/GetAdCampaignDetails200Response.md
 docs/Model/GetAdCatalogBatch200Response.md
 docs/Model/GetAdCatalogBatch200ResponseBatch.md
 docs/Model/GetAdCatalogBatch200ResponseBatchErrorsInner.md
+docs/Model/GetAdChange200Response.md
 docs/Model/GetAdComments200Response.md
 docs/Model/GetAdComments200ResponseMeta.md
 docs/Model/GetAdComments200ResponsePagination.md
@@ -3412,6 +3414,9 @@ docs/Model/SmsRegistrationReviewRequestPointsInner.md
 docs/Model/SnapchatPlatformData.md
 docs/Model/SocialAccount.md
 docs/Model/SocialAccountProfileId.md
+docs/Model/StagedAdChange.md
+docs/Model/StagedAdChangeDiffInner.md
+docs/Model/StagedAdChangeError.md
 docs/Model/StartBusinessAgentEvalRun202Response.md
 docs/Model/StartBusinessAgentEvalRunRequest.md
 docs/Model/StartCreatorConnect200Response.md
@@ -4280,6 +4285,7 @@ lib/Api/AdAccountsApi.php
 lib/Api/AdAudiencesApi.php
 lib/Api/AdCampaignResultsApi.php
 lib/Api/AdCampaignsApi.php
+lib/Api/AdChangesApi.php
 lib/Api/AdCreativesApi.php
 lib/Api/AdInsightsApi.php
 lib/Api/AdLibraryApi.php
@@ -5878,6 +5884,7 @@ lib/Model/GetAdCampaignDetails200Response.php
 lib/Model/GetAdCatalogBatch200Response.php
 lib/Model/GetAdCatalogBatch200ResponseBatch.php
 lib/Model/GetAdCatalogBatch200ResponseBatchErrorsInner.php
+lib/Model/GetAdChange200Response.php
 lib/Model/GetAdComments200Response.php
 lib/Model/GetAdComments200ResponseMeta.php
 lib/Model/GetAdComments200ResponsePagination.php
@@ -7686,6 +7693,9 @@ lib/Model/SmsRegistrationReviewRequestPointsInner.php
 lib/Model/SnapchatPlatformData.php
 lib/Model/SocialAccount.php
 lib/Model/SocialAccountProfileId.php
+lib/Model/StagedAdChange.php
+lib/Model/StagedAdChangeDiffInner.php
+lib/Model/StagedAdChangeError.php
 lib/Model/StartBusinessAgentEvalRun202Response.php
 lib/Model/StartBusinessAgentEvalRunRequest.php
 lib/Model/StartCreatorConnect200Response.php
@@ -8547,3 +8557,8 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Api/AdChangesApiTest.php
+test/Model/GetAdChange200ResponseTest.php
+test/Model/StagedAdChangeDiffInnerTest.php
+test/Model/StagedAdChangeErrorTest.php
+test/Model/StagedAdChangeTest.php
