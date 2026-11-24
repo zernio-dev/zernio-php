@@ -9,6 +9,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**confirmAdChange()**](AdChangesApi.md#confirmAdChange) | **POST** /v1/ads/changes/{changeId}/confirm | Confirm a staged ad change |
 | [**discardAdChange()**](AdChangesApi.md#discardAdChange) | **DELETE** /v1/ads/changes/{changeId} | Discard a staged ad change |
 | [**getAdChange()**](AdChangesApi.md#getAdChange) | **GET** /v1/ads/changes/{changeId} | Get a staged ad change |
+| [**listAdChanges()**](AdChangesApi.md#listAdChanges) | **GET** /v1/ads/changes | List staged ad changes |
 
 
 ## `confirmAdChange()`
@@ -176,6 +177,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetAdChange200Response**](../Model/GetAdChange200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listAdChanges()`
+
+```php
+listAdChanges($limit, $cursor): \Zernio\Model\ListAdChanges200Response
+```
+
+List staged ad changes
+
+Lists the ad changes waiting to be confirmed or discarded, newest first. A confirmed or failed change is not listed; read it by id.  Each item is a summary without the diff. Read one change to get its before/after values.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdChangesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$limit = 50; // int | How many changes to return.
+$cursor = 'cursor_example'; // string | The `nextCursor` of the previous page, unchanged.
+
+try {
+    $result = $apiInstance->listAdChanges($limit, $cursor);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdChangesApi->listAdChanges: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **limit** | **int**| How many changes to return. | [optional] [default to 50] |
+| **cursor** | **string**| The &#x60;nextCursor&#x60; of the previous page, unchanged. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListAdChanges200Response**](../Model/ListAdChanges200Response.md)
 
 ### Authorization
 

@@ -2387,6 +2387,7 @@ docs/Model/ListAdCatalogProductSets200Response.md
 docs/Model/ListAdCatalogProductSets200ResponseProductSetsInner.md
 docs/Model/ListAdCatalogProducts200Response.md
 docs/Model/ListAdCatalogs200Response.md
+docs/Model/ListAdChanges200Response.md
 docs/Model/ListAdConversionAssociations200Response.md
 docs/Model/ListAdConversionAssociations200ResponseAssociationsInner.md
 docs/Model/ListAdConversionDestinations200Response.md
@@ -3419,6 +3420,7 @@ docs/Model/SocialAccountProfileId.md
 docs/Model/StagedAdChange.md
 docs/Model/StagedAdChangeDiffInner.md
 docs/Model/StagedAdChangeError.md
+docs/Model/StagedAdChangeSummary.md
 docs/Model/StartBusinessAgentEvalRun202Response.md
 docs/Model/StartBusinessAgentEvalRunRequest.md
 docs/Model/StartCreatorConnect200Response.md
@@ -6667,6 +6669,7 @@ lib/Model/ListAdCatalogProductSets200Response.php
 lib/Model/ListAdCatalogProductSets200ResponseProductSetsInner.php
 lib/Model/ListAdCatalogProducts200Response.php
 lib/Model/ListAdCatalogs200Response.php
+lib/Model/ListAdChanges200Response.php
 lib/Model/ListAdConversionAssociations200Response.php
 lib/Model/ListAdConversionAssociations200ResponseAssociationsInner.php
 lib/Model/ListAdConversionDestinations200Response.php
@@ -7700,6 +7703,7 @@ lib/Model/SocialAccountProfileId.php
 lib/Model/StagedAdChange.php
 lib/Model/StagedAdChangeDiffInner.php
 lib/Model/StagedAdChangeError.php
+lib/Model/StagedAdChangeSummary.php
 lib/Model/StartBusinessAgentEvalRun202Response.php
 lib/Model/StartBusinessAgentEvalRunRequest.php
 lib/Model/StartCreatorConnect200Response.php
@@ -8561,3 +8565,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ListAdChanges200ResponseTest.php
+test/Model/StagedAdChangeSummaryTest.php
