@@ -102,10 +102,10 @@ $apiInstance = new Zernio\Api\ReviewsApi(
 );
 $profile_id = 'profile_id_example'; // string
 $platform = 'platform_example'; // string
-$min_rating = 56; // int
-$max_rating = 56; // int
+$min_rating = 56; // int | Reviews without a star rating (Facebook recommendations) never match.
+$max_rating = 56; // int | Reviews without a star rating (Facebook recommendations) never match.
 $has_reply = True; // bool | Filter by reply status
-$sort_by = 'date'; // string
+$sort_by = 'date'; // string | rating puts reviews without a star rating last in both orders.
 $sort_order = 'desc'; // string
 $limit = 25; // int
 $cursor = 'cursor_example'; // string
@@ -125,10 +125,10 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **profile_id** | **string**|  | [optional] |
 | **platform** | **string**|  | [optional] |
-| **min_rating** | **int**|  | [optional] |
-| **max_rating** | **int**|  | [optional] |
+| **min_rating** | **int**| Reviews without a star rating (Facebook recommendations) never match. | [optional] |
+| **max_rating** | **int**| Reviews without a star rating (Facebook recommendations) never match. | [optional] |
 | **has_reply** | **bool**| Filter by reply status | [optional] |
-| **sort_by** | **string**|  | [optional] [default to &#39;date&#39;] |
+| **sort_by** | **string**| rating puts reviews without a star rating last in both orders. | [optional] [default to &#39;date&#39;] |
 | **sort_order** | **string**|  | [optional] [default to &#39;desc&#39;] |
 | **limit** | **int**|  | [optional] [default to 25] |
 | **cursor** | **string**|  | [optional] |
