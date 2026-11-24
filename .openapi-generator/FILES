@@ -1525,6 +1525,7 @@ docs/Model/FetchGoogleBusinessVerificationOptionsRequest.md
 docs/Model/FileItem.md
 docs/Model/FilePickerSession.md
 docs/Model/FileShareLink.md
+docs/Model/Fixed.md
 docs/Model/FlowAutomationDefinition.md
 docs/Model/FlowAutomationDefinitionGraph.md
 docs/Model/FlowAutomationDefinitionTrigger.md
@@ -1541,6 +1542,7 @@ docs/Model/FoodMenuLabel.md
 docs/Model/FoodMenuSection.md
 docs/Model/ForwardEmailRequest.md
 docs/Model/ForwardingRule.md
+docs/Model/ForwardingRuleEventValue.md
 docs/Model/ForwardingRuleValueCondition.md
 docs/Model/ForwardingRuleValueOverride.md
 docs/Model/FreeBusyError.md
@@ -2884,6 +2886,7 @@ docs/Model/OrderImessageSenderRequestContact.md
 docs/Model/OrgConnection.md
 docs/Model/OrgConnectionSetup.md
 docs/Model/OrgConnectionSetupDnsRecord.md
+docs/Model/Original.md
 docs/Model/OwnedPhoneNumber.md
 docs/Model/OwnedPhoneNumberFeatures.md
 docs/Model/OwnedPhoneNumberProfileId.md
@@ -2895,6 +2898,7 @@ docs/Model/PayoutBatchItem.md
 docs/Model/PayoutBatchItemCreator.md
 docs/Model/Pending.md
 docs/Model/PerPost.md
+docs/Model/Percent.md
 docs/Model/PhoneNumberStockWatch.md
 docs/Model/PinDiscordMessage200Response.md
 docs/Model/PinInboxComment200Response.md
@@ -5794,6 +5798,7 @@ lib/Model/FetchGoogleBusinessVerificationOptionsRequest.php
 lib/Model/FileItem.php
 lib/Model/FilePickerSession.php
 lib/Model/FileShareLink.php
+lib/Model/Fixed.php
 lib/Model/FlowAutomationDefinition.php
 lib/Model/FlowAutomationDefinitionGraph.php
 lib/Model/FlowAutomationDefinitionTrigger.php
@@ -5810,6 +5815,7 @@ lib/Model/FoodMenuLabel.php
 lib/Model/FoodMenuSection.php
 lib/Model/ForwardEmailRequest.php
 lib/Model/ForwardingRule.php
+lib/Model/ForwardingRuleEventValue.php
 lib/Model/ForwardingRuleValueCondition.php
 lib/Model/ForwardingRuleValueOverride.php
 lib/Model/FreeBusyError.php
@@ -7154,6 +7160,7 @@ lib/Model/OrderImessageSenderRequestContact.php
 lib/Model/OrgConnection.php
 lib/Model/OrgConnectionSetup.php
 lib/Model/OrgConnectionSetupDnsRecord.php
+lib/Model/Original.php
 lib/Model/OwnedPhoneNumber.php
 lib/Model/OwnedPhoneNumberFeatures.php
 lib/Model/OwnedPhoneNumberProfileId.php
@@ -7165,6 +7172,7 @@ lib/Model/PayoutBatchItem.php
 lib/Model/PayoutBatchItemCreator.php
 lib/Model/Pending.php
 lib/Model/PerPost.php
+lib/Model/Percent.php
 lib/Model/PhoneNumberStockWatch.php
 lib/Model/PinDiscordMessage200Response.php
 lib/Model/PinInboxComment200Response.php
@@ -8539,3 +8547,7 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/FixedTest.php
+test/Model/ForwardingRuleEventValueTest.php
+test/Model/OriginalTest.php
+test/Model/PercentTest.php
