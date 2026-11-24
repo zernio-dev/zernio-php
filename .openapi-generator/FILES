@@ -3284,6 +3284,7 @@ docs/Model/SendEmailRequestAttachmentsInner.md
 docs/Model/SendEvents200Response.md
 docs/Model/SendEvents200ResponseDestinationsInner.md
 docs/Model/SendEvents200ResponseDestinationsInnerFailuresInner.md
+docs/Model/SendEvents200ResponseDestinationsInnerSkippedInner.md
 docs/Model/SendEvents202Response.md
 docs/Model/SendEventsRequest.md
 docs/Model/SendEventsRequestDestinationsInner.md
@@ -7569,6 +7570,7 @@ lib/Model/SendEmailRequestAttachmentsInner.php
 lib/Model/SendEvents200Response.php
 lib/Model/SendEvents200ResponseDestinationsInner.php
 lib/Model/SendEvents200ResponseDestinationsInnerFailuresInner.php
+lib/Model/SendEvents200ResponseDestinationsInnerSkippedInner.php
 lib/Model/SendEvents202Response.php
 lib/Model/SendEventsRequest.php
 lib/Model/SendEventsRequestDestinationsInner.php
@@ -8569,3 +8571,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/SendEvents200ResponseDestinationsInnerSkippedInnerTest.php

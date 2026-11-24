@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **events_failed** | **int** |  | [optional]
 **events_dropped** | **int** | Events this destination did not get because the visitor did not consent (see Consent above). | [optional]
 **drops** | [**\Zernio\Model\ConsentDrop[]**](ConsentDrop.md) |  | [optional]
+**events_skipped** | **int** | Events not sent again because this destination already accepted them (same eventId and eventName within 48 hours), another request is sending them right now, or an earlier event in this request has the same eventId and eventName. | [optional]
+**skipped** | [**\Zernio\Model\SendEvents200ResponseDestinationsInnerSkippedInner[]**](SendEvents200ResponseDestinationsInnerSkippedInner.md) |  | [optional]
 **failures** | [**\Zernio\Model\SendEvents200ResponseDestinationsInnerFailuresInner[]**](SendEvents200ResponseDestinationsInnerFailuresInner.md) |  | [optional]
 **error** | **string** | Set when the destination could not be reached at all (account disconnected, unsupported platform, platform error). | [optional]
 **retrying** | **bool** | The destination failed for now (platform error, timeout, rate limit) and the send is queued for retries; its outcome shows on GET /v1/events/{eventId}. | [optional]
