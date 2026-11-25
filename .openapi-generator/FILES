@@ -578,12 +578,13 @@ docs/Model/BusinessAgentBudget.md
 docs/Model/BusinessAgentBusinessInformation.md
 docs/Model/BusinessAgentBusinessInformationContactInfo.md
 docs/Model/BusinessAgentConnector.md
-docs/Model/BusinessAgentConnectorAllOfConnectionStatus.md
+docs/Model/BusinessAgentConnectorConnectionStatus.md
 docs/Model/BusinessAgentConnectorInput.md
 docs/Model/BusinessAgentConnectorInputAuthConfig.md
 docs/Model/BusinessAgentConnectorInputUserAuthInjectionConfig.md
 docs/Model/BusinessAgentConnectorTool.md
 docs/Model/BusinessAgentConnectorToolInput.md
+docs/Model/BusinessAgentConnectorUserAuthInjectionConfig.md
 docs/Model/BusinessAgentEventStatus.md
 docs/Model/BusinessAgentFaq.md
 docs/Model/BusinessAgentFaqInput.md
@@ -4870,12 +4871,13 @@ lib/Model/BusinessAgentBudget.php
 lib/Model/BusinessAgentBusinessInformation.php
 lib/Model/BusinessAgentBusinessInformationContactInfo.php
 lib/Model/BusinessAgentConnector.php
-lib/Model/BusinessAgentConnectorAllOfConnectionStatus.php
+lib/Model/BusinessAgentConnectorConnectionStatus.php
 lib/Model/BusinessAgentConnectorInput.php
 lib/Model/BusinessAgentConnectorInputAuthConfig.php
 lib/Model/BusinessAgentConnectorInputUserAuthInjectionConfig.php
 lib/Model/BusinessAgentConnectorTool.php
 lib/Model/BusinessAgentConnectorToolInput.php
+lib/Model/BusinessAgentConnectorUserAuthInjectionConfig.php
 lib/Model/BusinessAgentEventStatus.php
 lib/Model/BusinessAgentFaq.php
 lib/Model/BusinessAgentFaqInput.php
@@ -8585,4 +8587,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/StartGoogleBusinessVerificationRequestMailerContactTest.php
+test/Model/BusinessAgentConnectorConnectionStatusTest.php
+test/Model/BusinessAgentConnectorUserAuthInjectionConfigTest.php
