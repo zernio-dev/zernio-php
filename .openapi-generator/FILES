@@ -3441,6 +3441,7 @@ docs/Model/StartGohighlevelAudienceSyncRequestTargetsInner.md
 docs/Model/StartGoogleBusinessVerification200Response.md
 docs/Model/StartGoogleBusinessVerification200ResponseVerification.md
 docs/Model/StartGoogleBusinessVerificationRequest.md
+docs/Model/StartGoogleBusinessVerificationRequestMailerContact.md
 docs/Model/StartMicrosoftAdminConsent200Response.md
 docs/Model/StartMicrosoftAdminConsent200ResponseData.md
 docs/Model/StartOAuth.md
@@ -7733,6 +7734,7 @@ lib/Model/StartGohighlevelAudienceSyncRequestTargetsInner.php
 lib/Model/StartGoogleBusinessVerification200Response.php
 lib/Model/StartGoogleBusinessVerification200ResponseVerification.php
 lib/Model/StartGoogleBusinessVerificationRequest.php
+lib/Model/StartGoogleBusinessVerificationRequestMailerContact.php
 lib/Model/StartMicrosoftAdminConsent200Response.php
 lib/Model/StartMicrosoftAdminConsent200ResponseData.php
 lib/Model/StartOAuth.php
@@ -8583,3 +8585,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/StartGoogleBusinessVerificationRequestMailerContactTest.php

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **language_code** | **string** |  | [optional]
 **phone_number** | **string** | For PHONE_CALL / SMS. | [optional]
 **email_address** | **string** | For EMAIL. | [optional]
-**mailer_contact** | **object** | For ADDRESS (postcard) verification. | [optional]
+**mailer_contact** | [**\Zernio\Model\StartGoogleBusinessVerificationRequestMailerContact**](StartGoogleBusinessVerificationRequestMailerContact.md) |  | [optional]
 **context** | **object** | ServiceBusinessContext (e.g. service address). Required for service-area businesses. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
