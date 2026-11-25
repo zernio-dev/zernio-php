@@ -836,7 +836,7 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
     $config
 );
 $ad_id = 'ad_id_example'; // string | Internal Zernio ad ID or indexed platform ad ID.
-$comment_id = 'comment_id_example'; // string | TikTok comment ID from the ad comment listing.
+$comment_id = 'comment_id_example'; // string | TikTok comment ID from the ad comment listing. A Meta comment ID (post_comment) answers 501 with the inbox comment endpoints to use.
 $since = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start date of the comment lookup window. Defaults to 30 days before until.
 $until = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End date of the comment lookup window. Defaults to today in UTC.
 
@@ -853,7 +853,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_id** | **string**| Internal Zernio ad ID or indexed platform ad ID. | |
-| **comment_id** | **string**| TikTok comment ID from the ad comment listing. | |
+| **comment_id** | **string**| TikTok comment ID from the ad comment listing. A Meta comment ID (post_comment) answers 501 with the inbox comment endpoints to use. | |
 | **since** | **\DateTime**| Start date of the comment lookup window. Defaults to 30 days before until. | [optional] |
 | **until** | **\DateTime**| End date of the comment lookup window. Defaults to today in UTC. | [optional] |
 
@@ -1952,7 +1952,7 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
     $config
 );
 $ad_id = 'ad_id_example'; // string | Internal Zernio ad ID or indexed platform ad ID.
-$comment_id = 'comment_id_example'; // string | TikTok comment ID from the ad comment listing.
+$comment_id = 'comment_id_example'; // string | TikTok comment ID from the ad comment listing. A Meta comment ID (post_comment) answers 501 with the inbox comment endpoints to use.
 $hide_ad_comment_request = {"hidden":true}; // \Zernio\Model\HideAdCommentRequest
 $since = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start date of the comment lookup window. Defaults to 30 days before until.
 $until = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End date of the comment lookup window. Defaults to today in UTC.
@@ -1970,7 +1970,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_id** | **string**| Internal Zernio ad ID or indexed platform ad ID. | |
-| **comment_id** | **string**| TikTok comment ID from the ad comment listing. | |
+| **comment_id** | **string**| TikTok comment ID from the ad comment listing. A Meta comment ID (post_comment) answers 501 with the inbox comment endpoints to use. | |
 | **hide_ad_comment_request** | [**\Zernio\Model\HideAdCommentRequest**](../Model/HideAdCommentRequest.md)|  | |
 | **since** | **\DateTime**| Start date of the comment lookup window. Defaults to 30 days before until. | [optional] |
 | **until** | **\DateTime**| End date of the comment lookup window. Defaults to today in UTC. | [optional] |
@@ -3950,7 +3950,7 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
     $config
 );
 $ad_id = 'ad_id_example'; // string | Internal Zernio ad ID or indexed platform ad ID.
-$comment_id = 'comment_id_example'; // string | TikTok comment ID from the ad comment listing.
+$comment_id = 'comment_id_example'; // string | TikTok comment ID from the ad comment listing. A Meta comment ID (post_comment) answers 501 with the inbox comment endpoints to use.
 $reply_to_ad_comment_request = {"text":"Thanks for your question!"}; // \Zernio\Model\ReplyToAdCommentRequest
 $since = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start date of the comment lookup window. Defaults to 30 days before until.
 $until = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End date of the comment lookup window. Defaults to today in UTC.
@@ -3968,7 +3968,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_id** | **string**| Internal Zernio ad ID or indexed platform ad ID. | |
-| **comment_id** | **string**| TikTok comment ID from the ad comment listing. | |
+| **comment_id** | **string**| TikTok comment ID from the ad comment listing. A Meta comment ID (post_comment) answers 501 with the inbox comment endpoints to use. | |
 | **reply_to_ad_comment_request** | [**\Zernio\Model\ReplyToAdCommentRequest**](../Model/ReplyToAdCommentRequest.md)|  | |
 | **since** | **\DateTime**| Start date of the comment lookup window. Defaults to 30 days before until. | [optional] |
 | **until** | **\DateTime**| End date of the comment lookup window. Defaults to today in UTC. | [optional] |
