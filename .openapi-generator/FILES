@@ -8583,9 +8583,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ConnectCustomDomainRecordsInnerTest.php
-test/Model/ConnectCustomDomainTest.php
-test/Model/CreateConnectCustomDomain201ResponseTest.php
-test/Model/CreateConnectCustomDomainRequestTest.php
-test/Model/ListConnectCustomDomains200ResponseTest.php
-test/Model/UpdateConnectCustomDomainRequestTest.php
