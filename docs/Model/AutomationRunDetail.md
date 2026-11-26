@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **subject** | [**\Zernio\Model\AutomationRunSubject**](AutomationRunSubject.md) |  |
 **started_at** | **\DateTime** |  |
 **ended_at** | **\DateTime** |  |
-**exit_reason** | **string** | Why an exited or failed run stopped, for example &#x60;replied&#x60;, &#x60;unsubscribed&#x60; or &#x60;skipped&#x60;. |
+**exit_reason** | **string** | Why an exited or failed run stopped, for example &#x60;handoff&#x60; (a flow handed the conversation to a person), &#x60;wait_expired&#x60;, &#x60;superseded&#x60;, &#x60;replied&#x60;, &#x60;unsubscribed&#x60; or &#x60;skipped&#x60;. |
 **error** | **string** |  |
 **steps** | [**\Zernio\Model\AutomationRunSteps**](AutomationRunSteps.md) |  |
 **trace** | [**\Zernio\Model\AutomationRunDetailAllOfTrace[]**](AutomationRunDetailAllOfTrace.md) | Each step in order. Null where the run&#39;s store keeps no step by step record (runs on the automation engine keep where they are and how many steps they took). |
