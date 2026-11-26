@@ -233,12 +233,12 @@ try {
 ## `backtestAutomationDraft()`
 
 ```php
-backtestAutomationDraft($automation_definition, $days): \Zernio\Model\AutomationBacktest
+backtestAutomationDraft($create_automation_request, $days): \Zernio\Model\AutomationBacktest
 ```
 
 Backtest an unsaved automation
 
-Replays an automation over past days on stored daily metrics, without saving it or changing anything. It refuses what saving would refuse.  Each day lists what it would have done. Its own changes carry into later days, but the metrics stay what really happened. `notes` says what the replay could not know.  Only ad automations can be backtested, on at most 5,000 ads.
+Replays an automation over past days on stored daily metrics, without saving it or changing anything. It refuses what saving would refuse.  Each day lists what it would have done. Its own changes carry into later days, but the metrics stay what really happened. `notes` says what the replay could not know.  Only ad automations can be backtested, on at most 5,000 ads.  The draft can instead be sent as `name` and an automation `graph` (`AutomationGraph`), replayed exactly as its own shape would be. A comment to DM or flow graph is refused (`not_supported`).
 
 ### Example
 
@@ -257,11 +257,11 @@ $apiInstance = new Zernio\Api\AutomationsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$automation_definition = new \Zernio\Model\AutomationDefinition(); // \Zernio\Model\AutomationDefinition
+$create_automation_request = new \Zernio\Model\CreateAutomationRequest(); // \Zernio\Model\CreateAutomationRequest
 $days = 30; // int | How many whole days before today to replay. Today is not replayed.
 
 try {
-    $result = $apiInstance->backtestAutomationDraft($automation_definition, $days);
+    $result = $apiInstance->backtestAutomationDraft($create_automation_request, $days);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AutomationsApi->backtestAutomationDraft: ', $e->getMessage(), PHP_EOL;
@@ -272,7 +272,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **automation_definition** | [**\Zernio\Model\AutomationDefinition**](../Model/AutomationDefinition.md)|  | |
+| **create_automation_request** | [**\Zernio\Model\CreateAutomationRequest**](../Model/CreateAutomationRequest.md)|  | |
 | **days** | **int**| How many whole days before today to replay. Today is not replayed. | [optional] [default to 30] |
 
 ### Return type
@@ -1787,12 +1787,12 @@ try {
 ## `previewAutomationDraft()`
 
 ```php
-previewAutomationDraft($automation_definition, $limit): \Zernio\Model\AutomationPreview
+previewAutomationDraft($create_automation_request, $limit): \Zernio\Model\AutomationPreview
 ```
 
 Preview an unsaved automation
 
-Shows what an ad rule would do if it ran now, without saving it or changing anything: every object it checks, each condition with its actual value, and the steps a match would run. It refuses what saving would refuse.  Event and scheduled automations cannot be previewed yet (400, `not_supported`).
+Shows what an ad rule would do if it ran now, without saving it or changing anything: every object it checks, each condition with its actual value, and the steps a match would run. It refuses what saving would refuse.  Event and scheduled automations cannot be previewed yet (400, `not_supported`).  The draft can instead be sent as `name` and an automation `graph` (`AutomationGraph`), previewed exactly as its own shape would be. A comment to DM or flow graph is refused (`not_supported`).
 
 ### Example
 
@@ -1811,11 +1811,11 @@ $apiInstance = new Zernio\Api\AutomationsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$automation_definition = new \Zernio\Model\AutomationDefinition(); // \Zernio\Model\AutomationDefinition
+$create_automation_request = new \Zernio\Model\CreateAutomationRequest(); // \Zernio\Model\CreateAutomationRequest
 $limit = 100; // int | How many subjects to list, matches first. `evaluated` and `matched` always count them all.
 
 try {
-    $result = $apiInstance->previewAutomationDraft($automation_definition, $limit);
+    $result = $apiInstance->previewAutomationDraft($create_automation_request, $limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AutomationsApi->previewAutomationDraft: ', $e->getMessage(), PHP_EOL;
@@ -1826,7 +1826,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **automation_definition** | [**\Zernio\Model\AutomationDefinition**](../Model/AutomationDefinition.md)|  | |
+| **create_automation_request** | [**\Zernio\Model\CreateAutomationRequest**](../Model/CreateAutomationRequest.md)|  | |
 | **limit** | **int**| How many subjects to list, matches first. &#x60;evaluated&#x60; and &#x60;matched&#x60; always count them all. | [optional] [default to 100] |
 
 ### Return type

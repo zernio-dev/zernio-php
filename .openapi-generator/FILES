@@ -8607,11 +8607,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/AutomationGraphEdgesInnerTest.php
-test/Model/AutomationGraphLimitsTest.php
-test/Model/AutomationGraphNodesInnerPositionTest.php
-test/Model/AutomationGraphNodesInnerTest.php
-test/Model/AutomationGraphTest.php
-test/Model/AutomationGraphTriggersInnerTest.php
-test/Model/CreateAutomationRequestTest.php
-test/Model/GraphAutomationDefinitionTest.php
