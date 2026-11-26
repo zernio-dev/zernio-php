@@ -5,7 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | The change id, used in /v1/ads/changes/{changeId}. |
-**type** | **string** | Which write was staged: a status route, the update route of a campaign, an ad set or an ad, the campaign targeting route, or one of the create routes (POST /v1/ads/create, POST /v1/ads/campaigns, POST /v1/ads/ad-sets). |
+**type** | **string** | Which write was staged: a status route, an update route (campaign, ad set, ad), the campaign targeting route or a create route. &#x60;operation&#x60; is any other ads write, staged as its request and named by &#x60;request&#x60;. It has no live read, so its diff shows the new values only. |
+**request** | [**\Zernio\Model\StagedAdChangeRequest**](StagedAdChangeRequest.md) |  | [optional]
 **platform** | **string** | The ad platform of the object, as the write route names it. |
 **account_id** | **string** | The connected account the write goes through. |
 **ad_account_id** | **string** | The ad account id on the platform. |
@@ -16,7 +17,7 @@ Name | Type | Description | Notes
 **diff** | [**\Zernio\Model\StagedAdChangeDiffInner[]**](StagedAdChangeDiffInner.md) | One entry per value of the staged request that the write would change.  - A nested field is flattened: each leaf is one entry under its dotted path (&#x60;budget.amount&#x60;, &#x60;targeting.ageMin&#x60;, &#x60;creative.headline&#x60;). - A list is one entry. - A leaf whose value on the ad network already equals the requested value is left out, so the list can be empty. - &#x60;stage&#x60; and other flags that only steer the write are never listed. |
 **created_by** | **string** | The user who staged the change. |
 **confirmed_by** | **string** | The user who confirmed the change. Null while nobody has, and after a confirm that left the change staged. | [optional]
-**stale** | **bool** | Present and true on a staged change whose last confirm was refused with &#x60;change_target_changed&#x60;. &#x60;error&#x60; then says why. Discard it and stage it again from the current values. | [optional]
+**stale** | **bool** | Present and true on a staged change whose last confirm was refused with &#x60;change_target_changed&#x60;. &#x60;error&#x60; then says why. Refresh it with PATCH /v1/ads/changes/{changeId} (no body), or discard it and stage it again. | [optional]
 **created_at** | **\DateTime** |  |
 **finished_at** | **\DateTime** | When the confirm ended, as &#x60;confirmed&#x60; or &#x60;failed&#x60;. A finished change is deleted 7 days later, a failed create 30 days later. |
 **result** | **array<string,mixed>** | Present once &#x60;confirmed&#x60;: the response body of the write. | [optional]
