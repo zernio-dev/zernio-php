@@ -3641,6 +3641,7 @@ docs/Model/UpdateAdSetRequestPlatformSpecificDataPromotedObject.md
 docs/Model/UpdateAdSetRequestRegionalRegulationIdentitiesValue.md
 docs/Model/UpdateAdSetRequestSmartTargeting.md
 docs/Model/UpdateAdSetStatus200Response.md
+docs/Model/UpdateAdSetStatusRequest.md
 docs/Model/UpdateAdStatus200Response.md
 docs/Model/UpdateAdStatusRequest.md
 docs/Model/UpdateAdTrackingTags200Response.md
@@ -7946,6 +7947,7 @@ lib/Model/UpdateAdSetRequestPlatformSpecificDataPromotedObject.php
 lib/Model/UpdateAdSetRequestRegionalRegulationIdentitiesValue.php
 lib/Model/UpdateAdSetRequestSmartTargeting.php
 lib/Model/UpdateAdSetStatus200Response.php
+lib/Model/UpdateAdSetStatusRequest.php
 lib/Model/UpdateAdStatus200Response.php
 lib/Model/UpdateAdStatusRequest.php
 lib/Model/UpdateAdTrackingTags200Response.php
@@ -8609,4 +8611,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/WebhookPayloadMessageSentMetadataTemplateButtonsInnerTest.php
+test/Model/UpdateAdSetStatusRequestTest.php

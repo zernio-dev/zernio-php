@@ -4281,7 +4281,7 @@ try {
 ## `updateAdSetStatus()`
 
 ```php
-updateAdSetStatus($ad_set_id, $update_ad_campaign_status_request, $idempotency_key): \Zernio\Model\UpdateAdSetStatus200Response
+updateAdSetStatus($ad_set_id, $update_ad_set_status_request, $idempotency_key): \Zernio\Model\UpdateAdSetStatus200Response
 ```
 
 Pause or resume a single ad set
@@ -4306,11 +4306,11 @@ $apiInstance = new Zernio\Api\AdCampaignsApi(
     $config
 );
 $ad_set_id = 'ad_set_id_example'; // string | Platform ad set ID
-$update_ad_campaign_status_request = new \Zernio\Model\UpdateAdCampaignStatusRequest(); // \Zernio\Model\UpdateAdCampaignStatusRequest
+$update_ad_set_status_request = new \Zernio\Model\UpdateAdSetStatusRequest(); // \Zernio\Model\UpdateAdSetStatusRequest
 $idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago.
 
 try {
-    $result = $apiInstance->updateAdSetStatus($ad_set_id, $update_ad_campaign_status_request, $idempotency_key);
+    $result = $apiInstance->updateAdSetStatus($ad_set_id, $update_ad_set_status_request, $idempotency_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdCampaignsApi->updateAdSetStatus: ', $e->getMessage(), PHP_EOL;
@@ -4322,7 +4322,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_set_id** | **string**| Platform ad set ID | |
-| **update_ad_campaign_status_request** | [**\Zernio\Model\UpdateAdCampaignStatusRequest**](../Model/UpdateAdCampaignStatusRequest.md)|  | |
+| **update_ad_set_status_request** | [**\Zernio\Model\UpdateAdSetStatusRequest**](../Model/UpdateAdSetStatusRequest.md)|  | |
 | **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago. | [optional] |
 
 ### Return type
