@@ -4,6 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**template_name** | **string** | WhatsApp template sends only. Name of the approved template that was sent. | [optional]
+**template_language** | **string** | WhatsApp template sends only. Language code of the approved template that was sent. | [optional]
+**template_header** | [**\Zernio\Model\WebhookPayloadMessageSentMetadataTemplateHeader**](WebhookPayloadMessageSentMetadataTemplateHeader.md) |  | [optional]
+**template_footer** | **string** | WhatsApp template sends only. Footer text of the template. Absent when the template has no footer, and on bulk, broadcast and automation sends. | [optional]
 **unsupported** | [**\Zernio\Model\WebhookPayloadMessageSentMetadataUnsupported**](WebhookPayloadMessageSentMetadataUnsupported.md) |  | [optional]
 **meta_interactive** | **array<string,mixed>** | Instagram/Facebook only. The buttons, quickReplies and/or template this outgoing message carried, as sent (tracked urls included when link tracking wrapped a button). Absent when the send carried none. | [optional]
 **location** | [**\Zernio\Model\WebhookPayloadMessageSentMetadataLocation**](WebhookPayloadMessageSentMetadataLocation.md) |  | [optional]
