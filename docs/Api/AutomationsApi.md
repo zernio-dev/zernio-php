@@ -295,12 +295,12 @@ try {
 ## `createAutomation()`
 
 ```php
-createAutomation($automation_definition, $idempotency_key): \Zernio\Model\CreateAutomation201Response
+createAutomation($create_automation_request, $idempotency_key): \Zernio\Model\CreateAutomation201Response
 ```
 
 Create an automation
 
-Creates an automation. Its trigger picks the kind:  - **Ad rule**: a `schedule` over campaigns, ad sets, ads, Google keywords or Google search terms, with metric `conditions` and ad `steps`. It stays paused unless `status` is `active`; preview it first with `POST /v1/automations/preview`. - **Event**: a Zernio event in `trigger.type`, such as `post.failed`, with notify steps. It is on unless `status` is `paused`. - **Scheduled**: a `schedule` over a profile's posts, with notify steps and an optional boost. It is on unless `status` is `paused`. - **Sequence**: an `enrollment` trigger on one messaging account, with message steps sent over time. It is on unless `status` is `draft`. It needs what `/v1/sequences` needs: the inbox add-on and a key with the `messages` group. - **Comment to DM**: a comment door in `trigger.type`, such as `comment.keyword`, with a `graph` of the shapes `/v1/comment-automations` holds. It is on unless `status` is `paused`, and needs what `/v1/comment-automations` needs. A post that already has an active automation is a 409. - **Flow** (`kind` is `workflow`): a flow trigger such as `inbound_message` (or a `graph` whose trigger node names it) on one account, with the builder's `graph`. It is a draft unless `status` is `active`, which needs a complete graph; `paused` is refused. It needs the inbox add-on and a full-access key.  Everything an automation cannot hold is refused at once: the 400 lists every problem with its JSON path in `details.problems`.
+Creates an automation. Its trigger picks the kind:  - **Ad rule**: a `schedule` over campaigns, ad sets, ads, Google keywords or Google search terms, with metric `conditions` and ad `steps`. It stays paused unless `status` is `active`; preview it first with `POST /v1/automations/preview`. - **Event**: a Zernio event in `trigger.type`, such as `post.failed`, with notify steps. It is on unless `status` is `paused`. - **Scheduled**: a `schedule` over a profile's posts, with notify steps and an optional boost. It is on unless `status` is `paused`. - **Sequence**: an `enrollment` trigger on one messaging account, with message steps sent over time. It is on unless `status` is `draft`. It needs what `/v1/sequences` needs: the inbox add-on and a key with the `messages` group. - **Comment to DM**: a comment door in `trigger.type`, such as `comment.keyword`, with a `graph` of the shapes `/v1/comment-automations` holds. It is on unless `status` is `paused`, and needs what `/v1/comment-automations` needs. A post that already has an active automation is a 409. - **Flow** (`kind` is `workflow`): a flow trigger such as `inbound_message` (or a `graph` whose trigger node names it) on one account, with the builder's `graph`. It is a draft unless `status` is `active`, which needs a complete graph; `paused` is refused. It needs the inbox add-on and a full-access key.  An ad rule, event, scheduled automation or sequence can instead be sent as `name`, `status` and an automation `graph` (`AutomationGraph`, the one its response carries). The graph's trigger picks the kind, and it is saved exactly as its own shape would be.  A comment to DM or flow sent as an automation graph is refused (`not_supported`).  Everything an automation cannot hold is refused at once: the 400 lists every problem with its JSON path in `details.problems`.
 
 ### Example
 
@@ -319,11 +319,11 @@ $apiInstance = new Zernio\Api\AutomationsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$automation_definition = {"name":"Stop losers","status":"active","trigger":{"type":"schedule","every":"1h"},"subjects":{"each":"ad","adAccounts":[{"accountId":"6731a0c2e4b0f1a2b3c4d5e6","adAccountId":"act_1234567890"}]},"conditions":{"all":[{"metric":"spend","window":"last_3d","op":">","value":50},{"metric":"conversions","window":"last_3d","op":"<","value":1}]},"steps":[{"type":"ads.pause"},{"type":"notify.send"}],"limits":{"cooldown":"3d"}}; // \Zernio\Model\AutomationDefinition
+$create_automation_request = {"name":"Stop losers","status":"active","trigger":{"type":"schedule","every":"1h"},"subjects":{"each":"ad","adAccounts":[{"accountId":"6731a0c2e4b0f1a2b3c4d5e6","adAccountId":"act_1234567890"}]},"conditions":{"all":[{"metric":"spend","window":"last_3d","op":">","value":50},{"metric":"conversions","window":"last_3d","op":"<","value":1}]},"steps":[{"type":"ads.pause"},{"type":"notify.send"}],"limits":{"cooldown":"3d"}}; // \Zernio\Model\CreateAutomationRequest
 $idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago.
 
 try {
-    $result = $apiInstance->createAutomation($automation_definition, $idempotency_key);
+    $result = $apiInstance->createAutomation($create_automation_request, $idempotency_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AutomationsApi->createAutomation: ', $e->getMessage(), PHP_EOL;
@@ -334,7 +334,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **automation_definition** | [**\Zernio\Model\AutomationDefinition**](../Model/AutomationDefinition.md)|  | |
+| **create_automation_request** | [**\Zernio\Model\CreateAutomationRequest**](../Model/CreateAutomationRequest.md)|  | |
 | **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago. | [optional] |
 
 ### Return type

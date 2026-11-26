@@ -430,6 +430,12 @@ docs/Model/AutomationFactConditionOneOf1.md
 docs/Model/AutomationFactConditionOneOf2.md
 docs/Model/AutomationFactConditionOneOfValue.md
 docs/Model/AutomationFactResult.md
+docs/Model/AutomationGraph.md
+docs/Model/AutomationGraphEdgesInner.md
+docs/Model/AutomationGraphLimits.md
+docs/Model/AutomationGraphNodesInner.md
+docs/Model/AutomationGraphNodesInnerPosition.md
+docs/Model/AutomationGraphTriggersInner.md
 docs/Model/AutomationLimits.md
 docs/Model/AutomationNotifyStep.md
 docs/Model/AutomationNotifyStepToInner.md
@@ -951,6 +957,7 @@ docs/Model/CreateAdSetRequestPromotedObject.md
 docs/Model/CreateApiKey201Response.md
 docs/Model/CreateApiKeyRequest.md
 docs/Model/CreateAutomation201Response.md
+docs/Model/CreateAutomationRequest.md
 docs/Model/CreateAutomationTemplate201Response.md
 docs/Model/CreateAutomationTemplateRequest.md
 docs/Model/CreateBidStrategy201Response.md
@@ -2214,6 +2221,7 @@ docs/Model/GrantBusinessPartner200ResponsePartner.md
 docs/Model/GrantBusinessPartner201Response.md
 docs/Model/GrantBusinessPartner201ResponsePartner.md
 docs/Model/GrantBusinessPartnerRequest.md
+docs/Model/GraphAutomationDefinition.md
 docs/Model/HandleOAuthCallbackRequest.md
 docs/Model/HideAdComment200Response.md
 docs/Model/HideAdCommentRequest.md
@@ -4725,6 +4733,12 @@ lib/Model/AutomationFactConditionOneOf1.php
 lib/Model/AutomationFactConditionOneOf2.php
 lib/Model/AutomationFactConditionOneOfValue.php
 lib/Model/AutomationFactResult.php
+lib/Model/AutomationGraph.php
+lib/Model/AutomationGraphEdgesInner.php
+lib/Model/AutomationGraphLimits.php
+lib/Model/AutomationGraphNodesInner.php
+lib/Model/AutomationGraphNodesInnerPosition.php
+lib/Model/AutomationGraphTriggersInner.php
 lib/Model/AutomationLimits.php
 lib/Model/AutomationNotifyStep.php
 lib/Model/AutomationNotifyStepToInner.php
@@ -5246,6 +5260,7 @@ lib/Model/CreateAdSetRequestPromotedObject.php
 lib/Model/CreateApiKey201Response.php
 lib/Model/CreateApiKeyRequest.php
 lib/Model/CreateAutomation201Response.php
+lib/Model/CreateAutomationRequest.php
 lib/Model/CreateAutomationTemplate201Response.php
 lib/Model/CreateAutomationTemplateRequest.php
 lib/Model/CreateBidStrategy201Response.php
@@ -6509,6 +6524,7 @@ lib/Model/GrantBusinessPartner200ResponsePartner.php
 lib/Model/GrantBusinessPartner201Response.php
 lib/Model/GrantBusinessPartner201ResponsePartner.php
 lib/Model/GrantBusinessPartnerRequest.php
+lib/Model/GraphAutomationDefinition.php
 lib/Model/HandleOAuthCallbackRequest.php
 lib/Model/HideAdComment200Response.php
 lib/Model/HideAdCommentRequest.php
@@ -8591,3 +8607,11 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/AutomationGraphEdgesInnerTest.php
+test/Model/AutomationGraphLimitsTest.php
+test/Model/AutomationGraphNodesInnerPositionTest.php
+test/Model/AutomationGraphNodesInnerTest.php
+test/Model/AutomationGraphTest.php
+test/Model/AutomationGraphTriggersInnerTest.php
+test/Model/CreateAutomationRequestTest.php
+test/Model/GraphAutomationDefinitionTest.php

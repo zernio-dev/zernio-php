@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **created_at** | **\DateTime** |  |
 **updated_at** | **\DateTime** |  |
 **template** | [**\Zernio\Model\AutomationRecordTemplate**](AutomationRecordTemplate.md) |  | [optional]
+**graph** | [**\Zernio\Model\AutomationGraph**](AutomationGraph.md) |  | [optional]
 **platform** | **string** | The account&#39;s platform. On &#x60;whatsapp&#x60; every step sends a template. |
 **enrollments** | [**\Zernio\Model\AutomationOneOf3AllOfEnrollments**](AutomationOneOf3AllOfEnrollments.md) |  |
 
