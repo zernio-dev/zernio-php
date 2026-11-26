@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**unsupported** | [**\Zernio\Model\WebhookPayloadMessageSentMetadataUnsupported**](WebhookPayloadMessageSentMetadataUnsupported.md) |  | [optional]
 **meta_interactive** | **array<string,mixed>** | Instagram/Facebook only. The buttons, quickReplies and/or template this outgoing message carried, as sent (tracked urls included when link tracking wrapped a button). Absent when the send carried none. | [optional]
 **location** | [**\Zernio\Model\WebhookPayloadMessageSentMetadataLocation**](WebhookPayloadMessageSentMetadataLocation.md) |  | [optional]
 **contacts** | **array<string,mixed>[]** | WhatsApp only. The contact cards this message carries. The message &#x60;text&#x60; is only the emoji preview (&#x60;👤 &lt;name&gt;&#x60;); the cards live here.  - API sends: the &#x60;contacts&#x60; array exactly as given to the inbox send API (&#x60;name&#x60;, &#x60;phones[].phone&#x60; / &#x60;type&#x60;, &#x60;emails[]&#x60;). - Coexistence echoes of a card shared from the WhatsApp Business app: Meta&#39;s shape (&#x60;phones[].wa_id&#x60;, &#x60;vcard&#x60;). | [optional]
