@@ -5,12 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | The change id, used in /v1/ads/changes/{changeId}. |
-**type** | **string** | Which write was staged: a status route, an update route (campaign, ad set, ad), the campaign targeting route or a create route. &#x60;operation&#x60; is any other ads write, staged as its request and named by &#x60;request&#x60;. It has no live read, so its diff shows the new values only. |
+**type** | **string** | Which write was staged: a status route, an update route (campaign, ad set, ad), the campaign targeting route or a create route. &#x60;operation&#x60; is any other ads write, staged as its request and named by &#x60;request&#x60;. It has no live read, so its diff shows the sent values only. |
 **request** | [**\Zernio\Model\StagedAdChangeRequest**](StagedAdChangeRequest.md) |  | [optional]
 **platform** | **string** | The ad platform of the object, as the write route names it. |
 **account_id** | **string** | The connected account the write goes through. |
 **ad_account_id** | **string** | The ad account id on the platform. |
-**target_id** | **string** | The object the change applies to: the platform campaign id, the platform ad set id, or the Zernio ad id. Null for a create, whose object does not exist yet. |
+**target_id** | **string** | The object the change applies to: the platform campaign id, the platform ad set id, or the Zernio ad id. A write staged as its request with no such object carries the last id of its path. Null when there is none, as for a create. |
 **target_name** | **string** | The name of the object when the change was staged, or the name a create will give it. Null when it is not known. | [optional]
 **creates** | **bool** | Present and true when the change creates a new object. Every diff entry then has &#x60;before: null&#x60; and &#x60;beforeAvailable: false&#x60;. | [optional]
 **status** | **string** | - &#x60;staged&#x60;: waiting to be confirmed or discarded. - &#x60;confirming&#x60;: a confirm is running. A change left here for 15 minutes ends as &#x60;failed&#x60; with error code &#x60;change_outcome_unknown&#x60;, and is never applied again automatically. - &#x60;confirmed&#x60;: applied. &#x60;result&#x60; holds what the write returned. - &#x60;failed&#x60;: not applied. &#x60;error&#x60; says why. |
