@@ -4158,6 +4158,7 @@ docs/Model/WebhookPayloadMessageSentMessageAttachmentsInner.md
 docs/Model/WebhookPayloadMessageSentMessageSender.md
 docs/Model/WebhookPayloadMessageSentMetadata.md
 docs/Model/WebhookPayloadMessageSentMetadataLocation.md
+docs/Model/WebhookPayloadMessageSentMetadataTemplateButtonsInner.md
 docs/Model/WebhookPayloadMessageSentMetadataTemplateHeader.md
 docs/Model/WebhookPayloadMessageSentMetadataUnsupported.md
 docs/Model/WebhookPayloadNotificationSent.md
@@ -8462,6 +8463,7 @@ lib/Model/WebhookPayloadMessageSentMessageAttachmentsInner.php
 lib/Model/WebhookPayloadMessageSentMessageSender.php
 lib/Model/WebhookPayloadMessageSentMetadata.php
 lib/Model/WebhookPayloadMessageSentMetadataLocation.php
+lib/Model/WebhookPayloadMessageSentMetadataTemplateButtonsInner.php
 lib/Model/WebhookPayloadMessageSentMetadataTemplateHeader.php
 lib/Model/WebhookPayloadMessageSentMetadataUnsupported.php
 lib/Model/WebhookPayloadNotificationSent.php
@@ -8607,3 +8609,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/WebhookPayloadMessageSentMetadataTemplateButtonsInnerTest.php
