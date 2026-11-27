@@ -19,6 +19,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getInboxConversationMessages()**](MessagesApi.md#getInboxConversationMessages) | **GET** /v1/inbox/conversations/{conversationId}/messages | List messages |
 | [**getInboxUnreadCount()**](MessagesApi.md#getInboxUnreadCount) | **GET** /v1/inbox/unread-count | Count unread conversations |
 | [**getMessageAttachment()**](MessagesApi.md#getMessageAttachment) | **GET** /v1/inbox/conversations/{conversationId}/messages/{messageId}/attachments/{index} | Resolve message attachment |
+| [**getMessengerContact()**](MessagesApi.md#getMessengerContact) | **GET** /v1/inbox/conversations/{conversationId}/messenger-contact | Get a Messenger contact&#39;s language, time zone and gender |
 | [**listConversationLabels()**](MessagesApi.md#listConversationLabels) | **GET** /v1/inbox/conversations/{conversationId}/labels | List the labels on a conversation |
 | [**listInboxConversations()**](MessagesApi.md#listInboxConversations) | **GET** /v1/inbox/conversations | List conversations |
 | [**listInboxLabels()**](MessagesApi.md#listInboxLabels) | **GET** /v1/inbox/labels | List the Page&#39;s conversation labels |
@@ -843,6 +844,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetMessageAttachment200Response**](../Model/GetMessageAttachment200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getMessengerContact()`
+
+```php
+getMessengerContact($conversation_id, $account_id): \Zernio\Model\GetMessengerContact200Response
+```
+
+Get a Messenger contact's language, time zone and gender
+
+Reads the language, time zone and gender of the person in a Facebook Messenger conversation, live from Meta with the Page token.  Available on Facebook Page conversations only. Instagram and every other platform answer 400 `platform_not_supported`.  Meta shares each field only when the person made it available, so any field can be `null`. A null field is not an error.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\MessagesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$conversation_id = 'conversation_id_example'; // string | The conversation ID
+$account_id = 'account_id_example'; // string | The Facebook social account ID
+
+try {
+    $result = $apiInstance->getMessengerContact($conversation_id, $account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MessagesApi->getMessengerContact: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **conversation_id** | **string**| The conversation ID | |
+| **account_id** | **string**| The Facebook social account ID | |
+
+### Return type
+
+[**\Zernio\Model\GetMessengerContact200Response**](../Model/GetMessengerContact200Response.md)
 
 ### Authorization
 

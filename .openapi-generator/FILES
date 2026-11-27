@@ -1955,6 +1955,8 @@ docs/Model/GetLtvCohorts200ResponseCohortsInnerRevenue.md
 docs/Model/GetMediaPresignedUrl200Response.md
 docs/Model/GetMediaPresignedUrlRequest.md
 docs/Model/GetMessageAttachment200Response.md
+docs/Model/GetMessengerContact200Response.md
+docs/Model/GetMessengerContact200ResponseData.md
 docs/Model/GetMessengerGetStarted200Response.md
 docs/Model/GetMessengerGetStarted200ResponseData.md
 docs/Model/GetMessengerGreeting200Response.md
@@ -6280,6 +6282,8 @@ lib/Model/GetLtvCohorts200ResponseCohortsInnerRevenue.php
 lib/Model/GetMediaPresignedUrl200Response.php
 lib/Model/GetMediaPresignedUrlRequest.php
 lib/Model/GetMessageAttachment200Response.php
+lib/Model/GetMessengerContact200Response.php
+lib/Model/GetMessengerContact200ResponseData.php
 lib/Model/GetMessengerGetStarted200Response.php
 lib/Model/GetMessengerGetStarted200ResponseData.php
 lib/Model/GetMessengerGreeting200Response.php
@@ -8651,6 +8655,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/InstagramHashtagMediaTest.php
-test/Model/InstagramHashtagResearchHashtagTest.php
-test/Model/InstagramHashtagResearchTest.php
+test/Model/GetMessengerContact200ResponseDataTest.php
+test/Model/GetMessengerContact200ResponseTest.php
