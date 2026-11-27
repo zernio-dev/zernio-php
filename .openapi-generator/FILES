@@ -266,6 +266,7 @@ docs/Model/AddUsersToAdAudienceRequest.md
 docs/Model/AddWhatsAppGroupParticipantsRequest.md
 docs/Model/AdjustConversions200Response.md
 docs/Model/AdjustConversions200ResponseFailuresInner.md
+docs/Model/AdjustConversions200ResponseFailuresInnerCode.md
 docs/Model/AdjustConversionsRequest.md
 docs/Model/AdjustConversionsRequestAdjustmentsInner.md
 docs/Model/AdjustConversionsRequestAdjustmentsInnerUser.md
@@ -4585,6 +4586,7 @@ lib/Model/AddUsersToAdAudienceRequest.php
 lib/Model/AddWhatsAppGroupParticipantsRequest.php
 lib/Model/AdjustConversions200Response.php
 lib/Model/AdjustConversions200ResponseFailuresInner.php
+lib/Model/AdjustConversions200ResponseFailuresInnerCode.php
 lib/Model/AdjustConversionsRequest.php
 lib/Model/AdjustConversionsRequestAdjustmentsInner.php
 lib/Model/AdjustConversionsRequestAdjustmentsInnerUser.php
@@ -8639,6 +8641,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetInboxUnreadCount200ResponseDataTest.php
-test/Model/GetInboxUnreadCount200ResponseMetaTest.php
-test/Model/GetInboxUnreadCount200ResponseTest.php
+test/Model/AdjustConversions200ResponseFailuresInnerCodeTest.php
