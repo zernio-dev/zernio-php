@@ -29,7 +29,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `createAdCreative()`
 
 ```php
-createAdCreative($create_ad_creative_request): \Zernio\Model\CreateAdCreative201Response
+createAdCreative($create_ad_creative_request): \Zernio\Model\AdWriteValidation
 ```
 
 Create a standalone creative
@@ -71,7 +71,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\CreateAdCreative201Response**](../Model/CreateAdCreative201Response.md)
+[**\Zernio\Model\AdWriteValidation**](../Model/AdWriteValidation.md)
 
 ### Authorization
 

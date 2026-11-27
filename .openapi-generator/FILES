@@ -222,6 +222,8 @@ docs/Model/AdTreeCampaignPromotedObject.md
 docs/Model/AdTreeCampaignSchedule.md
 docs/Model/AdTreeResponse.md
 docs/Model/AdTreeResponsePreviousRange.md
+docs/Model/AdWriteValidation.md
+docs/Model/AdWriteValidationResult.md
 docs/Model/AddAccountCallouts201Response.md
 docs/Model/AddAccountCallouts201ResponseCalloutsInner.md
 docs/Model/AddAccountCalloutsRequest.md
@@ -4542,6 +4544,8 @@ lib/Model/AdTreeCampaignPromotedObject.php
 lib/Model/AdTreeCampaignSchedule.php
 lib/Model/AdTreeResponse.php
 lib/Model/AdTreeResponsePreviousRange.php
+lib/Model/AdWriteValidation.php
+lib/Model/AdWriteValidationResult.php
 lib/Model/AddAccountCallouts201Response.php
 lib/Model/AddAccountCallouts201ResponseCalloutsInner.php
 lib/Model/AddAccountCalloutsRequest.php
@@ -8641,3 +8645,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/AdWriteValidationResultTest.php
+test/Model/AdWriteValidationTest.php

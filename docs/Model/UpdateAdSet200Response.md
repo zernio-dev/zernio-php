@@ -4,6 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**validate_only** | **bool** | Present and true when the request was sent with validateOnly: nothing was changed. The other fields of a real update are then absent. | [optional]
+**results** | [**\Zernio\Model\AdWriteValidationResult[]**](AdWriteValidationResult.md) | validateOnly only: one entry, the object Meta validated. | [optional]
+**message** | **string** | validateOnly only: what was validated. | [optional]
 **budget** | [**\Zernio\Model\AdBudget**](AdBudget.md) |  | [optional]
 **budget_level** | **string** |  | [optional]
 **status** | **string** | As in PUT /v1/ads/ad-sets/{adSetId}/status: delivery derived from the switches read back. | [optional]

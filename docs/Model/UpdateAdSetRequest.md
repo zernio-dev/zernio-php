@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**validate_only** | **bool** | Meta only. Sends every write of this update to Meta with &#x60;execution_options: [\&quot;validate_only\&quot;]&#x60;. Meta checks it and changes nothing; Zernio stores nothing and fires no webhook.  - Answers &#x60;200&#x60; with &#x60;{ validateOnly: true, results, message }&#x60;, the shape of a validateOnly POST /v1/ads/create.  - The checks Zernio runs before the write (body, bid strategy, live ads allowance) run as for a real update.  - &#x60;true&#x60; on any other platform is a 400 naming &#x60;validateOnly&#x60;; &#x60;false&#x60; is ignored.  - Cannot be combined with &#x60;stage&#x60; (400 &#x60;mutually_exclusive_fields&#x60;). Counts toward the Meta ad account write guard.  - Idempotency-Key storage is bypassed, so the real update can reuse the key. | [optional]
 **stage** | **bool** | Send true to stage this change instead of applying it. Nothing is written to the ad network; the response is &#x60;202&#x60; with the staged change and its diff. Apply it with POST /v1/ads/changes/{changeId}/confirm. Meta, Google, TikTok, X, Snapchat and Reddit; cannot be combined with &#x60;validateOnly&#x60; or &#x60;dryRun&#x60;. | [optional]
 **platform** | **string** |  |
 **budget** | [**\Zernio\Model\UpdateAdSetRequestBudget**](UpdateAdSetRequestBudget.md) |  | [optional]

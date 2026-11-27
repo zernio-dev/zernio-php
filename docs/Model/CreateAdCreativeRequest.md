@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **stage** | **bool** | Send true to store this write as a staged change instead of applying it. The response is &#x60;202&#x60; with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later. Cannot be combined with &#x60;validateOnly&#x60;. | [optional]
+**validate_only** | **bool** | Sends the creative to Meta with &#x60;execution_options: [\&quot;validate_only\&quot;]&#x60;. Meta checks it and creates nothing.  - No image is uploaded: &#x60;imageUrl&#x60; and the card images are sent by URL.  - Answers &#x60;200&#x60; with &#x60;{ validateOnly: true, results, message }&#x60;, the shape of a validateOnly POST /v1/ads/create.  - &#x60;false&#x60; is ignored. Cannot be combined with &#x60;stage&#x60;. Counts toward the Meta ad account write guard. | [optional]
 **account_id** | **string** | Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token and Page. |
 **ad_account_id** | **string** | Platform ad account id (Meta act_&lt;n&gt;, Google customer id, LinkedIn account id, ...). |
 **headline** | **string** |  |
