@@ -157,7 +157,7 @@ getWhatsAppNumberInfo($account_id): \Zernio\Model\GetWhatsAppNumberInfo200Respon
 
 Get number status
 
-Live snapshot of a connected number straight from Meta.  ### Phone-number node  - display number - display name + approval - quality rating - messaging-limit tier - throughput - official-business badge - connection status - health_status  ### Owning WhatsApp Business Account  - name - business verification - timezone - health_status  ### Why live  It is fetched live because Meta updates quality/tier/name/health over time. The call also refreshes the cached values shown on the connection card.
+Live snapshot of a connected number straight from Meta.  ### Phone-number node  - display number - display name + approval - quality rating - messaging-limit tier - throughput - official-business badge - connection status - health_status  ### Owning WhatsApp Business Account  - name - business verification - timezone - billing currency - health_status  ### Why live  It is fetched live because Meta updates quality/tier/name/health over time. The call also refreshes the cached values shown on the connection card.
 
 ### Example
 
