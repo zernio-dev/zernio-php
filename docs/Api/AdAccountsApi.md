@@ -877,7 +877,7 @@ try {
 ## `deleteAdNegativeKeywordList()`
 
 ```php
-deleteAdNegativeKeywordList($list_id, $account_id, $idempotency_key, $ad_account_id, $customer_id, $platform): \Zernio\Model\DeleteAdNegativeKeywordList200Response
+deleteAdNegativeKeywordList($list_id, $account_id, $stage, $idempotency_key, $ad_account_id, $customer_id, $platform): \Zernio\Model\DeleteAdNegativeKeywordList200Response
 ```
 
 Delete a negative keyword list
@@ -903,13 +903,14 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
 );
 $list_id = 'list_id_example'; // string
 $account_id = 'account_id_example'; // string
+$stage = True; // bool | Send true to store this write as a staged change instead of applying it. The response is `202` with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later.
 $idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago.
 $ad_account_id = 'ad_account_id_example'; // string
 $customer_id = 'customer_id_example'; // string
 $platform = 'platform_example'; // string
 
 try {
-    $result = $apiInstance->deleteAdNegativeKeywordList($list_id, $account_id, $idempotency_key, $ad_account_id, $customer_id, $platform);
+    $result = $apiInstance->deleteAdNegativeKeywordList($list_id, $account_id, $stage, $idempotency_key, $ad_account_id, $customer_id, $platform);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdAccountsApi->deleteAdNegativeKeywordList: ', $e->getMessage(), PHP_EOL;
@@ -922,6 +923,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **list_id** | **string**|  | |
 | **account_id** | **string**|  | |
+| **stage** | **bool**| Send true to store this write as a staged change instead of applying it. The response is &#x60;202&#x60; with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later. | [optional] |
 | **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago. | [optional] |
 | **ad_account_id** | **string**|  | [optional] |
 | **customer_id** | **string**|  | [optional] |
@@ -947,7 +949,7 @@ try {
 ## `deleteValueRuleSet()`
 
 ```php
-deleteValueRuleSet($value_rule_set_id, $account_id): \Zernio\Model\DeleteValueRuleSet200Response
+deleteValueRuleSet($value_rule_set_id, $account_id, $stage): \Zernio\Model\DeleteValueRuleSet200Response
 ```
 
 Delete a value rule set
@@ -973,9 +975,10 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
 );
 $value_rule_set_id = 'value_rule_set_id_example'; // string | Platform value rule set id.
 $account_id = 'account_id_example'; // string | Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token.
+$stage = True; // bool | Send true to store this write as a staged change instead of applying it. The response is `202` with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later.
 
 try {
-    $result = $apiInstance->deleteValueRuleSet($value_rule_set_id, $account_id);
+    $result = $apiInstance->deleteValueRuleSet($value_rule_set_id, $account_id, $stage);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdAccountsApi->deleteValueRuleSet: ', $e->getMessage(), PHP_EOL;
@@ -988,6 +991,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **value_rule_set_id** | **string**| Platform value rule set id. | |
 | **account_id** | **string**| Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. | |
+| **stage** | **bool**| Send true to store this write as a staged change instead of applying it. The response is &#x60;202&#x60; with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later. | [optional] |
 
 ### Return type
 
@@ -1009,7 +1013,7 @@ try {
 ## `detachAdLabel()`
 
 ```php
-detachAdLabel($label_id, $account_id, $ad_account_id, $customer_id, $campaign_ids, $ad_set_ids, $ad_ids, $keyword_ids): \Zernio\Model\DetachAdLabel200Response
+detachAdLabel($label_id, $account_id, $stage, $ad_account_id, $customer_id, $campaign_ids, $ad_set_ids, $ad_ids, $keyword_ids): \Zernio\Model\DetachAdLabel200Response
 ```
 
 Detach a Google Ads label
@@ -1035,6 +1039,7 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
 );
 $label_id = 'label_id_example'; // string | Google label id
 $account_id = 'account_id_example'; // string | Zernio Google Ads connection id.
+$stage = True; // bool | Send true to store this write as a staged change instead of applying it. The response is `202` with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later.
 $ad_account_id = 'ad_account_id_example'; // string | Platform ad account ID (Google customer ID, digits only). Required when the connection has multiple customers.
 $customer_id = 'customer_id_example'; // string | Alias of adAccountId, kept for existing callers
 $campaign_ids = array('campaign_ids_example'); // string[] | Google campaign ids. Repeat the parameter or pass a comma-separated list.
@@ -1043,7 +1048,7 @@ $ad_ids = array('ad_ids_example'); // string[] | Google ad group ad ids, {adGrou
 $keyword_ids = array('keyword_ids_example'); // string[] | Google keyword criterion ids, {adGroupId}~{criterionId}. Repeat the parameter or pass a comma-separated list.
 
 try {
-    $result = $apiInstance->detachAdLabel($label_id, $account_id, $ad_account_id, $customer_id, $campaign_ids, $ad_set_ids, $ad_ids, $keyword_ids);
+    $result = $apiInstance->detachAdLabel($label_id, $account_id, $stage, $ad_account_id, $customer_id, $campaign_ids, $ad_set_ids, $ad_ids, $keyword_ids);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdAccountsApi->detachAdLabel: ', $e->getMessage(), PHP_EOL;
@@ -1056,6 +1061,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **label_id** | **string**| Google label id | |
 | **account_id** | **string**| Zernio Google Ads connection id. | |
+| **stage** | **bool**| Send true to store this write as a staged change instead of applying it. The response is &#x60;202&#x60; with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later. | [optional] |
 | **ad_account_id** | **string**| Platform ad account ID (Google customer ID, digits only). Required when the connection has multiple customers. | [optional] |
 | **customer_id** | **string**| Alias of adAccountId, kept for existing callers | [optional] |
 | **campaign_ids** | [**string[]**](../Model/string.md)| Google campaign ids. Repeat the parameter or pass a comma-separated list. | [optional] |
@@ -3469,7 +3475,7 @@ try {
 ## `removeAccountCallout()`
 
 ```php
-removeAccountCallout($account_id, $asset_id, $ad_account_id, $customer_id): \Zernio\Model\RemoveAccountCallout200Response
+removeAccountCallout($account_id, $asset_id, $stage, $ad_account_id, $customer_id): \Zernio\Model\RemoveAccountCallout200Response
 ```
 
 Remove account callout
@@ -3495,11 +3501,12 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
 );
 $account_id = 'account_id_example'; // string | Zernio Google Ads connection id.
 $asset_id = 'asset_id_example'; // string | Numeric Google Ads asset id.
+$stage = True; // bool | Send true to store this write as a staged change instead of applying it. The response is `202` with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later.
 $ad_account_id = 'ad_account_id_example'; // string | Platform ad account ID (Google customer ID, digits only). Required when the connection has multiple customers.
 $customer_id = 'customer_id_example'; // string | Alias of adAccountId, kept for existing callers
 
 try {
-    $result = $apiInstance->removeAccountCallout($account_id, $asset_id, $ad_account_id, $customer_id);
+    $result = $apiInstance->removeAccountCallout($account_id, $asset_id, $stage, $ad_account_id, $customer_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdAccountsApi->removeAccountCallout: ', $e->getMessage(), PHP_EOL;
@@ -3512,6 +3519,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| Zernio Google Ads connection id. | |
 | **asset_id** | **string**| Numeric Google Ads asset id. | |
+| **stage** | **bool**| Send true to store this write as a staged change instead of applying it. The response is &#x60;202&#x60; with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later. | [optional] |
 | **ad_account_id** | **string**| Platform ad account ID (Google customer ID, digits only). Required when the connection has multiple customers. | [optional] |
 | **customer_id** | **string**| Alias of adAccountId, kept for existing callers | [optional] |
 
@@ -3535,7 +3543,7 @@ try {
 ## `removeAccountSitelink()`
 
 ```php
-removeAccountSitelink($account_id, $asset_id, $ad_account_id, $customer_id): \Zernio\Model\RemoveAccountCallout200Response
+removeAccountSitelink($account_id, $asset_id, $stage, $ad_account_id, $customer_id): \Zernio\Model\RemoveAccountCallout200Response
 ```
 
 Remove account sitelink
@@ -3561,11 +3569,12 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
 );
 $account_id = 'account_id_example'; // string | Zernio Google Ads connection id.
 $asset_id = 'asset_id_example'; // string | Numeric Google Ads asset id.
+$stage = True; // bool | Send true to store this write as a staged change instead of applying it. The response is `202` with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later.
 $ad_account_id = 'ad_account_id_example'; // string | Platform ad account ID (Google customer ID, digits only). Required when the connection has multiple customers.
 $customer_id = 'customer_id_example'; // string | Alias of adAccountId, kept for existing callers
 
 try {
-    $result = $apiInstance->removeAccountSitelink($account_id, $asset_id, $ad_account_id, $customer_id);
+    $result = $apiInstance->removeAccountSitelink($account_id, $asset_id, $stage, $ad_account_id, $customer_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdAccountsApi->removeAccountSitelink: ', $e->getMessage(), PHP_EOL;
@@ -3578,6 +3587,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| Zernio Google Ads connection id. | |
 | **asset_id** | **string**| Numeric Google Ads asset id. | |
+| **stage** | **bool**| Send true to store this write as a staged change instead of applying it. The response is &#x60;202&#x60; with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later. | [optional] |
 | **ad_account_id** | **string**| Platform ad account ID (Google customer ID, digits only). Required when the connection has multiple customers. | [optional] |
 | **customer_id** | **string**| Alias of adAccountId, kept for existing callers | [optional] |
 
@@ -3601,7 +3611,7 @@ try {
 ## `removeAccountStructuredSnippet()`
 
 ```php
-removeAccountStructuredSnippet($account_id, $asset_id, $ad_account_id, $customer_id): \Zernio\Model\RemoveAccountCallout200Response
+removeAccountStructuredSnippet($account_id, $asset_id, $stage, $ad_account_id, $customer_id): \Zernio\Model\RemoveAccountCallout200Response
 ```
 
 Remove account snippet
@@ -3627,11 +3637,12 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
 );
 $account_id = 'account_id_example'; // string | Zernio Google Ads connection id.
 $asset_id = 'asset_id_example'; // string | Numeric Google Ads asset id.
+$stage = True; // bool | Send true to store this write as a staged change instead of applying it. The response is `202` with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later.
 $ad_account_id = 'ad_account_id_example'; // string | Platform ad account ID (Google customer ID, digits only). Required when the connection has multiple customers.
 $customer_id = 'customer_id_example'; // string | Alias of adAccountId, kept for existing callers
 
 try {
-    $result = $apiInstance->removeAccountStructuredSnippet($account_id, $asset_id, $ad_account_id, $customer_id);
+    $result = $apiInstance->removeAccountStructuredSnippet($account_id, $asset_id, $stage, $ad_account_id, $customer_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdAccountsApi->removeAccountStructuredSnippet: ', $e->getMessage(), PHP_EOL;
@@ -3644,6 +3655,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| Zernio Google Ads connection id. | |
 | **asset_id** | **string**| Numeric Google Ads asset id. | |
+| **stage** | **bool**| Send true to store this write as a staged change instead of applying it. The response is &#x60;202&#x60; with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later. | [optional] |
 | **ad_account_id** | **string**| Platform ad account ID (Google customer ID, digits only). Required when the connection has multiple customers. | [optional] |
 | **customer_id** | **string**| Alias of adAccountId, kept for existing callers | [optional] |
 
@@ -3667,7 +3679,7 @@ try {
 ## `removeAdAccountUser()`
 
 ```php
-removeAdAccountUser($account_id, $ad_account_id, $user_id): \Zernio\Model\RemoveAdAccountUser200Response
+removeAdAccountUser($account_id, $ad_account_id, $user_id, $stage): \Zernio\Model\RemoveAdAccountUser200Response
 ```
 
 Remove a user from an ad account
@@ -3694,9 +3706,10 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
 $account_id = 'account_id_example'; // string | Zernio SocialAccount id used to resolve the Meta token.
 $ad_account_id = 'ad_account_id_example'; // string | Meta ad account id (act_<n>).
 $user_id = 'user_id_example'; // string | Business-scoped user id.
+$stage = True; // bool | Send true to store this write as a staged change instead of applying it. The response is `202` with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later.
 
 try {
-    $result = $apiInstance->removeAdAccountUser($account_id, $ad_account_id, $user_id);
+    $result = $apiInstance->removeAdAccountUser($account_id, $ad_account_id, $user_id, $stage);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdAccountsApi->removeAdAccountUser: ', $e->getMessage(), PHP_EOL;
@@ -3710,6 +3723,7 @@ try {
 | **account_id** | **string**| Zernio SocialAccount id used to resolve the Meta token. | |
 | **ad_account_id** | **string**| Meta ad account id (act_&lt;n&gt;). | |
 | **user_id** | **string**| Business-scoped user id. | |
+| **stage** | **bool**| Send true to store this write as a staged change instead of applying it. The response is &#x60;202&#x60; with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later. | [optional] |
 
 ### Return type
 
@@ -3731,7 +3745,7 @@ try {
 ## `removeAdLabel()`
 
 ```php
-removeAdLabel($label_id, $account_id, $ad_account_id, $customer_id): \Zernio\Model\RemoveAdLabel200Response
+removeAdLabel($label_id, $account_id, $stage, $ad_account_id, $customer_id): \Zernio\Model\RemoveAdLabel200Response
 ```
 
 Remove a Google Ads label
@@ -3757,11 +3771,12 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
 );
 $label_id = 'label_id_example'; // string | Google label id
 $account_id = 'account_id_example'; // string | Zernio SocialAccount id (Google Ads)
+$stage = True; // bool | Send true to store this write as a staged change instead of applying it. The response is `202` with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later.
 $ad_account_id = 'ad_account_id_example'; // string | Google customer id. Required when the connection has multiple customers.
 $customer_id = 'customer_id_example'; // string | Alias of adAccountId
 
 try {
-    $result = $apiInstance->removeAdLabel($label_id, $account_id, $ad_account_id, $customer_id);
+    $result = $apiInstance->removeAdLabel($label_id, $account_id, $stage, $ad_account_id, $customer_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdAccountsApi->removeAdLabel: ', $e->getMessage(), PHP_EOL;
@@ -3774,6 +3789,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **label_id** | **string**| Google label id | |
 | **account_id** | **string**| Zernio SocialAccount id (Google Ads) | |
+| **stage** | **bool**| Send true to store this write as a staged change instead of applying it. The response is &#x60;202&#x60; with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later. | [optional] |
 | **ad_account_id** | **string**| Google customer id. Required when the connection has multiple customers. | [optional] |
 | **customer_id** | **string**| Alias of adAccountId | [optional] |
 
@@ -3797,7 +3813,7 @@ try {
 ## `removePageUser()`
 
 ```php
-removePageUser($account_id, $page_id, $user_id): \Zernio\Model\RemovePageUser200Response
+removePageUser($account_id, $page_id, $user_id, $stage): \Zernio\Model\RemovePageUser200Response
 ```
 
 Remove a user from a Page
@@ -3824,9 +3840,10 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
 $account_id = 'account_id_example'; // string | Zernio SocialAccount id used to resolve the Meta token.
 $page_id = 'page_id_example'; // string | Facebook Page id.
 $user_id = 'user_id_example'; // string | Business-scoped user id.
+$stage = True; // bool | Send true to store this write as a staged change instead of applying it. The response is `202` with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later.
 
 try {
-    $result = $apiInstance->removePageUser($account_id, $page_id, $user_id);
+    $result = $apiInstance->removePageUser($account_id, $page_id, $user_id, $stage);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdAccountsApi->removePageUser: ', $e->getMessage(), PHP_EOL;
@@ -3840,6 +3857,7 @@ try {
 | **account_id** | **string**| Zernio SocialAccount id used to resolve the Meta token. | |
 | **page_id** | **string**| Facebook Page id. | |
 | **user_id** | **string**| Business-scoped user id. | |
+| **stage** | **bool**| Send true to store this write as a staged change instead of applying it. The response is &#x60;202&#x60; with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later. | [optional] |
 
 ### Return type
 
@@ -3993,7 +4011,7 @@ try {
 ## `revokeAdAccountUserInvitation()`
 
 ```php
-revokeAdAccountUserInvitation($account_id, $ad_account_id, $invitation_id): \Zernio\Model\RevokeAdAccountUserInvitation200Response
+revokeAdAccountUserInvitation($account_id, $ad_account_id, $invitation_id, $stage): \Zernio\Model\RevokeAdAccountUserInvitation200Response
 ```
 
 Revoke a user access invitation
@@ -4020,9 +4038,10 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
 $account_id = 'account_id_example'; // string | Google ads SocialAccount id.
 $ad_account_id = 'ad_account_id_example'; // string | Google Ads customer id, digits only.
 $invitation_id = 'invitation_id_example'; // string | Numeric invitation id from GET /v1/ads/accounts/user-invitations.
+$stage = True; // bool | Send true to store this write as a staged change instead of applying it. The response is `202` with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later.
 
 try {
-    $result = $apiInstance->revokeAdAccountUserInvitation($account_id, $ad_account_id, $invitation_id);
+    $result = $apiInstance->revokeAdAccountUserInvitation($account_id, $ad_account_id, $invitation_id, $stage);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdAccountsApi->revokeAdAccountUserInvitation: ', $e->getMessage(), PHP_EOL;
@@ -4036,6 +4055,7 @@ try {
 | **account_id** | **string**| Google ads SocialAccount id. | |
 | **ad_account_id** | **string**| Google Ads customer id, digits only. | |
 | **invitation_id** | **string**| Numeric invitation id from GET /v1/ads/accounts/user-invitations. | |
+| **stage** | **bool**| Send true to store this write as a staged change instead of applying it. The response is &#x60;202&#x60; with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later. | [optional] |
 
 ### Return type
 
@@ -4605,7 +4625,7 @@ try {
 ## `withdrawAdAccountUserInvitationApproval()`
 
 ```php
-withdrawAdAccountUserInvitationApproval($account_id, $ad_account_id, $multi_party_auth_review_id): \Zernio\Model\WithdrawAdAccountUserInvitationApproval200Response
+withdrawAdAccountUserInvitationApproval($account_id, $ad_account_id, $multi_party_auth_review_id, $stage): \Zernio\Model\WithdrawAdAccountUserInvitationApproval200Response
 ```
 
 Withdraw an invitation awaiting multi-party approval
@@ -4632,9 +4652,10 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
 $account_id = 'account_id_example'; // string | Google ads SocialAccount id.
 $ad_account_id = 'ad_account_id_example'; // string | Google Ads customer id, digits only.
 $multi_party_auth_review_id = 'multi_party_auth_review_id_example'; // string | Numeric review id from POST /v1/ads/accounts/user-invitations or GET /v1/ads/accounts/user-invitations/pending-approvals.
+$stage = True; // bool | Send true to store this write as a staged change instead of applying it. The response is `202` with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later.
 
 try {
-    $result = $apiInstance->withdrawAdAccountUserInvitationApproval($account_id, $ad_account_id, $multi_party_auth_review_id);
+    $result = $apiInstance->withdrawAdAccountUserInvitationApproval($account_id, $ad_account_id, $multi_party_auth_review_id, $stage);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdAccountsApi->withdrawAdAccountUserInvitationApproval: ', $e->getMessage(), PHP_EOL;
@@ -4648,6 +4669,7 @@ try {
 | **account_id** | **string**| Google ads SocialAccount id. | |
 | **ad_account_id** | **string**| Google Ads customer id, digits only. | |
 | **multi_party_auth_review_id** | **string**| Numeric review id from POST /v1/ads/accounts/user-invitations or GET /v1/ads/accounts/user-invitations/pending-approvals. | |
+| **stage** | **bool**| Send true to store this write as a staged change instead of applying it. The response is &#x60;202&#x60; with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later. | [optional] |
 
 ### Return type
 

@@ -141,7 +141,7 @@ try {
 ## `deleteAdAudience()`
 
 ```php
-deleteAdAudience($audience_id): \Zernio\Model\DeleteAccountGroup200Response
+deleteAdAudience($audience_id, $stage): \Zernio\Model\DeleteAccountGroup200Response
 ```
 
 Delete custom audience
@@ -166,9 +166,10 @@ $apiInstance = new Zernio\Api\AdAudiencesApi(
     $config
 );
 $audience_id = 'audience_id_example'; // string
+$stage = True; // bool | Send true to store this write as a staged change instead of applying it. The response is `202` with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later.
 
 try {
-    $result = $apiInstance->deleteAdAudience($audience_id);
+    $result = $apiInstance->deleteAdAudience($audience_id, $stage);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdAudiencesApi->deleteAdAudience: ', $e->getMessage(), PHP_EOL;
@@ -180,6 +181,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **audience_id** | **string**|  | |
+| **stage** | **bool**| Send true to store this write as a staged change instead of applying it. The response is &#x60;202&#x60; with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later. | [optional] |
 
 ### Return type
 

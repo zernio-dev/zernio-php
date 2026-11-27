@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**stage** | **bool** | Send true to store this write as a staged change instead of applying it. The response is &#x60;202&#x60; with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later. Cannot be combined with &#x60;validateOnly&#x60;. | [optional]
 **ad_set_id** | **string** | Destination platform ad set id (defaults to the source&#39;s ad set) | [optional]
 **status_option** | **string** |  | [optional] [default to 'PAUSED']
 **rename_strategy** | **string** | Meta&#39;s native &#x60;rename_strategy&#x60; values. An ad has no copied children, so &#x60;DEEP_RENAME&#x60; and &#x60;ONLY_TOP_LEVEL_RENAME&#x60; both rename the copy with &#x60;renamePrefix&#x60; / &#x60;renameSuffix&#x60;, and &#x60;NO_RENAME&#x60; keeps the source name. With no rename option at all, Meta appends its own &#x60; - Copy&#x60; suffix. | [optional]

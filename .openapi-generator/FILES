@@ -3166,6 +3166,7 @@ docs/Model/RespondToSmsRegistrationReview200Response.md
 docs/Model/RespondToSmsRegistrationReviewRequest.md
 docs/Model/RespondToSmsRegistrationReviewRequestAnswersInner.md
 docs/Model/ResponseTimeBucket.md
+docs/Model/RestageAdChangeRequest.md
 docs/Model/RestateEvent200Response.md
 docs/Model/RestateEventRequest.md
 docs/Model/RestoreWorkflowVersion200Response.md
@@ -3441,6 +3442,7 @@ docs/Model/SocialAccountProfileId.md
 docs/Model/StagedAdChange.md
 docs/Model/StagedAdChangeDiffInner.md
 docs/Model/StagedAdChangeError.md
+docs/Model/StagedAdChangeLeftBehindInner.md
 docs/Model/StagedAdChangeRequest.md
 docs/Model/StagedAdChangeRequestQueryValue.md
 docs/Model/StagedAdChangeSummary.md
@@ -7481,6 +7483,7 @@ lib/Model/RespondToSmsRegistrationReview200Response.php
 lib/Model/RespondToSmsRegistrationReviewRequest.php
 lib/Model/RespondToSmsRegistrationReviewRequestAnswersInner.php
 lib/Model/ResponseTimeBucket.php
+lib/Model/RestageAdChangeRequest.php
 lib/Model/RestateEvent200Response.php
 lib/Model/RestateEventRequest.php
 lib/Model/RestoreWorkflowVersion200Response.php
@@ -7756,6 +7759,7 @@ lib/Model/SocialAccountProfileId.php
 lib/Model/StagedAdChange.php
 lib/Model/StagedAdChangeDiffInner.php
 lib/Model/StagedAdChangeError.php
+lib/Model/StagedAdChangeLeftBehindInner.php
 lib/Model/StagedAdChangeRequest.php
 lib/Model/StagedAdChangeRequestQueryValue.php
 lib/Model/StagedAdChangeSummary.php
@@ -8629,4 +8633,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/SendEvents200ResponseWarningsInnerTest.php
+test/Model/RestageAdChangeRequestTest.php
+test/Model/StagedAdChangeLeftBehindInnerTest.php

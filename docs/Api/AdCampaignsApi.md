@@ -821,7 +821,7 @@ try {
 ## `deleteAd()`
 
 ```php
-deleteAd($ad_id): \Zernio\Model\DeleteAccountGroup200Response
+deleteAd($ad_id, $stage): \Zernio\Model\DeleteAccountGroup200Response
 ```
 
 Cancel an ad
@@ -846,9 +846,10 @@ $apiInstance = new Zernio\Api\AdCampaignsApi(
     $config
 );
 $ad_id = 'ad_id_example'; // string
+$stage = True; // bool | Send true to store this write as a staged change instead of applying it. The response is `202` with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later.
 
 try {
-    $result = $apiInstance->deleteAd($ad_id);
+    $result = $apiInstance->deleteAd($ad_id, $stage);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdCampaignsApi->deleteAd: ', $e->getMessage(), PHP_EOL;
@@ -860,6 +861,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_id** | **string**|  | |
+| **stage** | **bool**| Send true to store this write as a staged change instead of applying it. The response is &#x60;202&#x60; with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later. | [optional] |
 
 ### Return type
 
@@ -943,7 +945,7 @@ try {
 ## `deleteAdSet()`
 
 ```php
-deleteAdSet($ad_set_id): \Zernio\Model\DeleteAdSet200Response
+deleteAdSet($ad_set_id, $stage): \Zernio\Model\DeleteAdSet200Response
 ```
 
 Delete an ad set
@@ -968,9 +970,10 @@ $apiInstance = new Zernio\Api\AdCampaignsApi(
     $config
 );
 $ad_set_id = 'ad_set_id_example'; // string | Platform ad set ID
+$stage = True; // bool | Send true to store this write as a staged change instead of applying it. The response is `202` with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later.
 
 try {
-    $result = $apiInstance->deleteAdSet($ad_set_id);
+    $result = $apiInstance->deleteAdSet($ad_set_id, $stage);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdCampaignsApi->deleteAdSet: ', $e->getMessage(), PHP_EOL;
@@ -982,6 +985,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_set_id** | **string**| Platform ad set ID | |
+| **stage** | **bool**| Send true to store this write as a staged change instead of applying it. The response is &#x60;202&#x60; with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later. | [optional] |
 
 ### Return type
 
@@ -3441,7 +3445,7 @@ try {
 ## `removeAdGroupAssets()`
 
 ```php
-removeAdGroupAssets($ad_set_id, $account_id, $asset_resource_names, $ad_group_asset_resource_names, $ad_account_id, $customer_id): \Zernio\Model\RemoveCampaignAssets200Response
+removeAdGroupAssets($ad_set_id, $account_id, $asset_resource_names, $ad_group_asset_resource_names, $stage, $ad_account_id, $customer_id): \Zernio\Model\RemoveCampaignAssets200Response
 ```
 
 Remove ad-group assets
@@ -3469,11 +3473,12 @@ $ad_set_id = 'ad_set_id_example'; // string | Numeric Google platform id.
 $account_id = 'account_id_example'; // string | Zernio Google Ads connection id.
 $asset_resource_names = array('asset_resource_names_example'); // string[] | Asset resource names, retained for compatibility. Repeat the parameter or pass a comma-separated list.
 $ad_group_asset_resource_names = array('ad_group_asset_resource_names_example'); // string[] | ad_group_asset resource names to remove, e.g. customers/1234567890/adGroupAssets/456~123~CALLOUT. Repeat the parameter or pass a comma-separated list.
+$stage = True; // bool | Send true to store this write as a staged change instead of applying it. The response is `202` with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later.
 $ad_account_id = 'ad_account_id_example'; // string | Platform ad account ID (Google customer ID, digits only). Required when the connection has multiple customers.
 $customer_id = 'customer_id_example'; // string | Alias of adAccountId, kept for existing callers
 
 try {
-    $result = $apiInstance->removeAdGroupAssets($ad_set_id, $account_id, $asset_resource_names, $ad_group_asset_resource_names, $ad_account_id, $customer_id);
+    $result = $apiInstance->removeAdGroupAssets($ad_set_id, $account_id, $asset_resource_names, $ad_group_asset_resource_names, $stage, $ad_account_id, $customer_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdCampaignsApi->removeAdGroupAssets: ', $e->getMessage(), PHP_EOL;
@@ -3488,6 +3493,7 @@ try {
 | **account_id** | **string**| Zernio Google Ads connection id. | |
 | **asset_resource_names** | [**string[]**](../Model/string.md)| Asset resource names, retained for compatibility. Repeat the parameter or pass a comma-separated list. | |
 | **ad_group_asset_resource_names** | [**string[]**](../Model/string.md)| ad_group_asset resource names to remove, e.g. customers/1234567890/adGroupAssets/456~123~CALLOUT. Repeat the parameter or pass a comma-separated list. | |
+| **stage** | **bool**| Send true to store this write as a staged change instead of applying it. The response is &#x60;202&#x60; with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later. | [optional] |
 | **ad_account_id** | **string**| Platform ad account ID (Google customer ID, digits only). Required when the connection has multiple customers. | [optional] |
 | **customer_id** | **string**| Alias of adAccountId, kept for existing callers | [optional] |
 
@@ -3511,7 +3517,7 @@ try {
 ## `removeAdKeyword()`
 
 ```php
-removeAdKeyword($keyword_id, $idempotency_key): \Zernio\Model\RemoveAdKeyword200Response
+removeAdKeyword($keyword_id, $stage, $idempotency_key): \Zernio\Model\RemoveAdKeyword200Response
 ```
 
 Remove a Search keyword
@@ -3536,10 +3542,11 @@ $apiInstance = new Zernio\Api\AdCampaignsApi(
     $config
 );
 $keyword_id = 'keyword_id_example'; // string | Zernio keyword ID (`id`), or Google's native `{adSetId}~{platformCriterionId}` (the tail of `resourceName`, e.g. 1234567890~987654321). A bare criterion id is rejected because it is only unique within its ad group.
+$stage = True; // bool | Send true to store this write as a staged change instead of applying it. The response is `202` with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later.
 $idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago.
 
 try {
-    $result = $apiInstance->removeAdKeyword($keyword_id, $idempotency_key);
+    $result = $apiInstance->removeAdKeyword($keyword_id, $stage, $idempotency_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdCampaignsApi->removeAdKeyword: ', $e->getMessage(), PHP_EOL;
@@ -3551,6 +3558,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **keyword_id** | **string**| Zernio keyword ID (&#x60;id&#x60;), or Google&#39;s native &#x60;{adSetId}~{platformCriterionId}&#x60; (the tail of &#x60;resourceName&#x60;, e.g. 1234567890~987654321). A bare criterion id is rejected because it is only unique within its ad group. | |
+| **stage** | **bool**| Send true to store this write as a staged change instead of applying it. The response is &#x60;202&#x60; with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later. | [optional] |
 | **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago. | [optional] |
 
 ### Return type
@@ -3573,7 +3581,7 @@ try {
 ## `removeCampaignAssets()`
 
 ```php
-removeCampaignAssets($campaign_id, $account_id, $asset_resource_names, $campaign_asset_resource_names, $ad_account_id, $customer_id): \Zernio\Model\RemoveCampaignAssets200Response
+removeCampaignAssets($campaign_id, $account_id, $asset_resource_names, $campaign_asset_resource_names, $stage, $ad_account_id, $customer_id): \Zernio\Model\RemoveCampaignAssets200Response
 ```
 
 Remove campaign assets
@@ -3601,11 +3609,12 @@ $campaign_id = 'campaign_id_example'; // string | Numeric Google platform id.
 $account_id = 'account_id_example'; // string | Zernio Google Ads connection id.
 $asset_resource_names = array('asset_resource_names_example'); // string[] | Asset resource names, retained for compatibility. Repeat the parameter or pass a comma-separated list.
 $campaign_asset_resource_names = array('campaign_asset_resource_names_example'); // string[] | campaign_asset resource names to remove, e.g. customers/1234567890/campaignAssets/456~123~CALLOUT. Repeat the parameter or pass a comma-separated list.
+$stage = True; // bool | Send true to store this write as a staged change instead of applying it. The response is `202` with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later.
 $ad_account_id = 'ad_account_id_example'; // string | Platform ad account ID (Google customer ID, digits only). Required when the connection has multiple customers.
 $customer_id = 'customer_id_example'; // string | Alias of adAccountId, kept for existing callers
 
 try {
-    $result = $apiInstance->removeCampaignAssets($campaign_id, $account_id, $asset_resource_names, $campaign_asset_resource_names, $ad_account_id, $customer_id);
+    $result = $apiInstance->removeCampaignAssets($campaign_id, $account_id, $asset_resource_names, $campaign_asset_resource_names, $stage, $ad_account_id, $customer_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdCampaignsApi->removeCampaignAssets: ', $e->getMessage(), PHP_EOL;
@@ -3620,6 +3629,7 @@ try {
 | **account_id** | **string**| Zernio Google Ads connection id. | |
 | **asset_resource_names** | [**string[]**](../Model/string.md)| Asset resource names, retained for compatibility. Repeat the parameter or pass a comma-separated list. | |
 | **campaign_asset_resource_names** | [**string[]**](../Model/string.md)| campaign_asset resource names to remove, e.g. customers/1234567890/campaignAssets/456~123~CALLOUT. Repeat the parameter or pass a comma-separated list. | |
+| **stage** | **bool**| Send true to store this write as a staged change instead of applying it. The response is &#x60;202&#x60; with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later. | [optional] |
 | **ad_account_id** | **string**| Platform ad account ID (Google customer ID, digits only). Required when the connection has multiple customers. | [optional] |
 | **customer_id** | **string**| Alias of adAccountId, kept for existing callers | [optional] |
 
@@ -3643,7 +3653,7 @@ try {
 ## `removeGoogleAssetGroup()`
 
 ```php
-removeGoogleAssetGroup($campaign_id, $asset_group_id, $validate_only): \Zernio\Model\RemoveGoogleAssetGroup200Response
+removeGoogleAssetGroup($campaign_id, $asset_group_id, $stage, $validate_only): \Zernio\Model\RemoveGoogleAssetGroup200Response
 ```
 
 Remove a Performance Max asset group
@@ -3669,10 +3679,11 @@ $apiInstance = new Zernio\Api\AdCampaignsApi(
 );
 $campaign_id = 'campaign_id_example'; // string
 $asset_group_id = 'asset_group_id_example'; // string
+$stage = True; // bool | Send true to store this write as a staged change instead of applying it. The response is `202` with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later.
 $validate_only = false; // bool
 
 try {
-    $result = $apiInstance->removeGoogleAssetGroup($campaign_id, $asset_group_id, $validate_only);
+    $result = $apiInstance->removeGoogleAssetGroup($campaign_id, $asset_group_id, $stage, $validate_only);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdCampaignsApi->removeGoogleAssetGroup: ', $e->getMessage(), PHP_EOL;
@@ -3685,6 +3696,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **campaign_id** | **string**|  | |
 | **asset_group_id** | **string**|  | |
+| **stage** | **bool**| Send true to store this write as a staged change instead of applying it. The response is &#x60;202&#x60; with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later. | [optional] |
 | **validate_only** | **bool**|  | [optional] [default to false] |
 
 ### Return type

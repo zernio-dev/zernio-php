@@ -2900,7 +2900,7 @@ try {
 ## `removeCustomConversionGoal()`
 
 ```php
-removeCustomConversionGoal($goal_id, $account_id, $ad_account_id, $customer_id): \Zernio\Model\RemoveCustomConversionGoal200Response
+removeCustomConversionGoal($goal_id, $account_id, $stage, $ad_account_id, $customer_id): \Zernio\Model\RemoveCustomConversionGoal200Response
 ```
 
 Remove a custom conversion goal
@@ -2926,11 +2926,12 @@ $apiInstance = new Zernio\Api\ConversionsApi(
 );
 $goal_id = 'goal_id_example'; // string | Google custom conversion goal id
 $account_id = 'account_id_example'; // string | Zernio SocialAccount id (Google Ads)
+$stage = True; // bool | Send true to store this write as a staged change instead of applying it. The response is `202` with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later.
 $ad_account_id = 'ad_account_id_example'; // string | Google customer id. Required when the connection has multiple customers.
 $customer_id = 'customer_id_example'; // string | Alias of adAccountId
 
 try {
-    $result = $apiInstance->removeCustomConversionGoal($goal_id, $account_id, $ad_account_id, $customer_id);
+    $result = $apiInstance->removeCustomConversionGoal($goal_id, $account_id, $stage, $ad_account_id, $customer_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConversionsApi->removeCustomConversionGoal: ', $e->getMessage(), PHP_EOL;
@@ -2943,6 +2944,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **goal_id** | **string**| Google custom conversion goal id | |
 | **account_id** | **string**| Zernio SocialAccount id (Google Ads) | |
+| **stage** | **bool**| Send true to store this write as a staged change instead of applying it. The response is &#x60;202&#x60; with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later. | [optional] |
 | **ad_account_id** | **string**| Google customer id. Required when the connection has multiple customers. | [optional] |
 | **customer_id** | **string**| Alias of adAccountId | [optional] |
 

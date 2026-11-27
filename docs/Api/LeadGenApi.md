@@ -22,7 +22,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `archiveLeadForm()`
 
 ```php
-archiveLeadForm($form_id, $account_id): \Zernio\Model\ArchiveLeadForm200Response
+archiveLeadForm($form_id, $account_id, $stage): \Zernio\Model\ArchiveLeadForm200Response
 ```
 
 Archive a lead form
@@ -48,9 +48,10 @@ $apiInstance = new Zernio\Api\LeadGenApi(
 );
 $form_id = 'form_id_example'; // string | Numeric form id (Meta leadgen_form id or LinkedIn leadForm id).
 $account_id = 'account_id_example'; // string | Connected Meta ads, facebook, instagram or linkedin ads account id (selects the platform).  - A Meta ads connection resolves its Page through the Facebook account linked to the same profile. - An Instagram account uses the Page its ads run under: its own linked Page, else the Facebook or business-login Meta ads account on the same profile.
+$stage = True; // bool | Send true to store this write as a staged change instead of applying it. The response is `202` with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later.
 
 try {
-    $result = $apiInstance->archiveLeadForm($form_id, $account_id);
+    $result = $apiInstance->archiveLeadForm($form_id, $account_id, $stage);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadGenApi->archiveLeadForm: ', $e->getMessage(), PHP_EOL;
@@ -63,6 +64,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **form_id** | **string**| Numeric form id (Meta leadgen_form id or LinkedIn leadForm id). | |
 | **account_id** | **string**| Connected Meta ads, facebook, instagram or linkedin ads account id (selects the platform).  - A Meta ads connection resolves its Page through the Facebook account linked to the same profile. - An Instagram account uses the Page its ads run under: its own linked Page, else the Facebook or business-login Meta ads account on the same profile. | |
+| **stage** | **bool**| Send true to store this write as a staged change instead of applying it. The response is &#x60;202&#x60; with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later. | [optional] |
 
 ### Return type
 

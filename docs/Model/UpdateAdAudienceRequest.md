@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**stage** | **bool** | Send true to store this write as a staged change instead of applying it. The response is &#x60;202&#x60; with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later. Cannot be combined with &#x60;validateOnly&#x60;. | [optional]
 **name** | **string** |  | [optional]
 **description** | **string** |  | [optional]
 **spec** | [**\ZernioModelTargetingSpec**](\ZernioModelTargetingSpec.md) | Full replacement for the stored targeting spec. | [optional]

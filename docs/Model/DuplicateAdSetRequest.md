@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**stage** | **bool** | Send true to store this write as a staged change instead of applying it. The response is &#x60;202&#x60; with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later. Cannot be combined with &#x60;validateOnly&#x60;. | [optional]
 **platform** | **string** |  |
 **campaign_id** | **string** | Destination platform campaign id (defaults to the source&#39;s campaign) | [optional]
 **deep_copy** | **bool** | Copy child ads + creatives | [optional] [default to true]

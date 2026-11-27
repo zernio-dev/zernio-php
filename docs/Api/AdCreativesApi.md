@@ -89,7 +89,7 @@ try {
 ## `deleteAdCreative()`
 
 ```php
-deleteAdCreative($creative_id, $account_id): \Zernio\Model\DeleteAdCreative200Response
+deleteAdCreative($creative_id, $account_id, $stage): \Zernio\Model\DeleteAdCreative200Response
 ```
 
 Delete a creative
@@ -115,9 +115,10 @@ $apiInstance = new Zernio\Api\AdCreativesApi(
 );
 $creative_id = 'creative_id_example'; // string | Platform creative id
 $account_id = 'account_id_example'; // string | Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token.
+$stage = True; // bool | Send true to store this write as a staged change instead of applying it. The response is `202` with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later.
 
 try {
-    $result = $apiInstance->deleteAdCreative($creative_id, $account_id);
+    $result = $apiInstance->deleteAdCreative($creative_id, $account_id, $stage);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdCreativesApi->deleteAdCreative: ', $e->getMessage(), PHP_EOL;
@@ -130,6 +131,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **creative_id** | **string**| Platform creative id | |
 | **account_id** | **string**| Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. | |
+| **stage** | **bool**| Send true to store this write as a staged change instead of applying it. The response is &#x60;202&#x60; with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later. | [optional] |
 
 ### Return type
 
@@ -151,7 +153,7 @@ try {
 ## `deleteAdVideo()`
 
 ```php
-deleteAdVideo($video_id, $account_id, $ad_account_id): \Zernio\Model\DeleteAdVideo200Response
+deleteAdVideo($video_id, $account_id, $ad_account_id, $stage): \Zernio\Model\DeleteAdVideo200Response
 ```
 
 Delete an ad video
@@ -178,9 +180,10 @@ $apiInstance = new Zernio\Api\AdCreativesApi(
 $video_id = 'video_id_example'; // string | Meta ad video id (numeric).
 $account_id = 'account_id_example'; // string | Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token.
 $ad_account_id = 'ad_account_id_example'; // string | Meta ad account id (act_<n>) that owns the video.
+$stage = True; // bool | Send true to store this write as a staged change instead of applying it. The response is `202` with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later.
 
 try {
-    $result = $apiInstance->deleteAdVideo($video_id, $account_id, $ad_account_id);
+    $result = $apiInstance->deleteAdVideo($video_id, $account_id, $ad_account_id, $stage);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdCreativesApi->deleteAdVideo: ', $e->getMessage(), PHP_EOL;
@@ -194,6 +197,7 @@ try {
 | **video_id** | **string**| Meta ad video id (numeric). | |
 | **account_id** | **string**| Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. | |
 | **ad_account_id** | **string**| Meta ad account id (act_&lt;n&gt;) that owns the video. | |
+| **stage** | **bool**| Send true to store this write as a staged change instead of applying it. The response is &#x60;202&#x60; with the change, and POST /v1/ads/changes/{changeId}/confirm applies it later. | [optional] |
 
 ### Return type
 
