@@ -17,6 +17,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**editInboxMessage()**](MessagesApi.md#editInboxMessage) | **PATCH** /v1/inbox/conversations/{conversationId}/messages/{messageId} | Edit message |
 | [**getInboxConversation()**](MessagesApi.md#getInboxConversation) | **GET** /v1/inbox/conversations/{conversationId} | Get conversation |
 | [**getInboxConversationMessages()**](MessagesApi.md#getInboxConversationMessages) | **GET** /v1/inbox/conversations/{conversationId}/messages | List messages |
+| [**getInboxUnreadCount()**](MessagesApi.md#getInboxUnreadCount) | **GET** /v1/inbox/unread-count | Count unread conversations |
 | [**getMessageAttachment()**](MessagesApi.md#getMessageAttachment) | **GET** /v1/inbox/conversations/{conversationId}/messages/{messageId}/attachments/{index} | Resolve message attachment |
 | [**listConversationLabels()**](MessagesApi.md#listConversationLabels) | **GET** /v1/inbox/conversations/{conversationId}/labels | List the labels on a conversation |
 | [**listInboxConversations()**](MessagesApi.md#listInboxConversations) | **GET** /v1/inbox/conversations | List conversations |
@@ -722,6 +723,72 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getInboxUnreadCount()`
+
+```php
+getInboxUnreadCount($profile_id, $platform, $account_id, $status): \Zernio\Model\GetInboxUnreadCount200Response
+```
+
+Count unread conversations
+
+Count the conversations holding at least one unread incoming message, across the connected messaging accounts. Use it for an unread badge instead of paging GET /v1/inbox/conversations?unread=true, which lists the same conversations.  Read state is kept by Zernio, not by the platform. An incoming message stays unread until its conversation is marked read, in one of two ways:  - POST /v1/inbox/conversations/{conversationId}/read. - On Telegram, Slack, SMS, RCS, iMessage, email and TikTok, reading its messages with GET /v1/inbox/conversations/{conversationId}/messages.  Messages you send never count, and replayed Meta history is stored as already read.  - The count stops at 1000. `capped: true` means there are at least that many. - Read from a replica, so it can trail a conversation you just marked read by about a second. - On Bluesky and Reddit, a listed thread whose messages Zernio has not pulled yet has no local read state and is not counted. - In the shared WhatsApp and iMessage sandboxes, only your own test conversations count.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\MessagesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$profile_id = 'profile_id_example'; // string | Count only accounts in this profile
+$platform = 'platform_example'; // string | Count only accounts on this platform
+$account_id = 'account_id_example'; // string | Count only this account
+$status = 'status_example'; // string | Count only conversations with this status. Both are counted when omitted, as GET /v1/inbox/conversations lists both.
+
+try {
+    $result = $apiInstance->getInboxUnreadCount($profile_id, $platform, $account_id, $status);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MessagesApi->getInboxUnreadCount: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **profile_id** | **string**| Count only accounts in this profile | [optional] |
+| **platform** | **string**| Count only accounts on this platform | [optional] |
+| **account_id** | **string**| Count only this account | [optional] |
+| **status** | **string**| Count only conversations with this status. Both are counted when omitted, as GET /v1/inbox/conversations lists both. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\GetInboxUnreadCount200Response**](../Model/GetInboxUnreadCount200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getMessageAttachment()`
 
 ```php
@@ -855,7 +922,7 @@ try {
 ## `listInboxConversations()`
 
 ```php
-listInboxConversations($profile_id, $platform, $updated_since, $status, $folder, $sort_order, $limit, $cursor, $account_id, $tags): \Zernio\Model\ListInboxConversations200Response
+listInboxConversations($profile_id, $platform, $updated_since, $status, $folder, $sort_order, $limit, $cursor, $account_id, $tags, $unread): \Zernio\Model\ListInboxConversations200Response
 ```
 
 List conversations
@@ -889,9 +956,10 @@ $limit = 50; // int | Maximum number of conversations to return; values above 10
 $cursor = 'cursor_example'; // string | Pagination cursor for next page
 $account_id = 'account_id_example'; // string | Filter by specific account ID
 $tags = 'tags_example'; // string | Comma-separated contact tags. Returns only conversations whose contact has any of them. Cannot be combined with folder=requests.
+$unread = True; // bool | `true` returns only conversations holding at least one unread incoming message.  Read state is kept by Zernio, not by the platform. An incoming message stays unread until its conversation is marked read, in one of two ways:  - POST /v1/inbox/conversations/{conversationId}/read. - On Telegram, Slack, SMS, RCS, iMessage, email and TikTok, reading its messages with GET /v1/inbox/conversations/{conversationId}/messages.  Messages you send never count, and replayed Meta history is stored as already read.  - On Bluesky and Reddit, a listed thread whose messages Zernio has not pulled yet (it pulls them when the thread is opened or when background polling reaches it) has no local read state and is not returned. - Cannot be combined with `folder=requests` or `updatedSince`.  To render a badge without paging, use GET /v1/inbox/unread-count.
 
 try {
-    $result = $apiInstance->listInboxConversations($profile_id, $platform, $updated_since, $status, $folder, $sort_order, $limit, $cursor, $account_id, $tags);
+    $result = $apiInstance->listInboxConversations($profile_id, $platform, $updated_since, $status, $folder, $sort_order, $limit, $cursor, $account_id, $tags, $unread);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MessagesApi->listInboxConversations: ', $e->getMessage(), PHP_EOL;
@@ -912,6 +980,7 @@ try {
 | **cursor** | **string**| Pagination cursor for next page | [optional] |
 | **account_id** | **string**| Filter by specific account ID | [optional] |
 | **tags** | **string**| Comma-separated contact tags. Returns only conversations whose contact has any of them. Cannot be combined with folder&#x3D;requests. | [optional] |
+| **unread** | **bool**| &#x60;true&#x60; returns only conversations holding at least one unread incoming message.  Read state is kept by Zernio, not by the platform. An incoming message stays unread until its conversation is marked read, in one of two ways:  - POST /v1/inbox/conversations/{conversationId}/read. - On Telegram, Slack, SMS, RCS, iMessage, email and TikTok, reading its messages with GET /v1/inbox/conversations/{conversationId}/messages.  Messages you send never count, and replayed Meta history is stored as already read.  - On Bluesky and Reddit, a listed thread whose messages Zernio has not pulled yet (it pulls them when the thread is opened or when background polling reaches it) has no local read state and is not returned. - Cannot be combined with &#x60;folder&#x3D;requests&#x60; or &#x60;updatedSince&#x60;.  To render a badge without paging, use GET /v1/inbox/unread-count. | [optional] |
 
 ### Return type
 

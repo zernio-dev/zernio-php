@@ -1894,6 +1894,9 @@ docs/Model/GetInboxSourceBreakdown200ResponseSourcesInner.md
 docs/Model/GetInboxSourceBreakdown200ResponseSourcesInnerByPlatformInner.md
 docs/Model/GetInboxTopAccounts200Response.md
 docs/Model/GetInboxTopAccounts200ResponseAccountsInner.md
+docs/Model/GetInboxUnreadCount200Response.md
+docs/Model/GetInboxUnreadCount200ResponseData.md
+docs/Model/GetInboxUnreadCount200ResponseMeta.md
 docs/Model/GetInboxVolume200Response.md
 docs/Model/GetInboxVolume200ResponseByPlatformInner.md
 docs/Model/GetInboxVolume200ResponseSummary.md
@@ -6210,6 +6213,9 @@ lib/Model/GetInboxSourceBreakdown200ResponseSourcesInner.php
 lib/Model/GetInboxSourceBreakdown200ResponseSourcesInnerByPlatformInner.php
 lib/Model/GetInboxTopAccounts200Response.php
 lib/Model/GetInboxTopAccounts200ResponseAccountsInner.php
+lib/Model/GetInboxUnreadCount200Response.php
+lib/Model/GetInboxUnreadCount200ResponseData.php
+lib/Model/GetInboxUnreadCount200ResponseMeta.php
 lib/Model/GetInboxVolume200Response.php
 lib/Model/GetInboxVolume200ResponseByPlatformInner.php
 lib/Model/GetInboxVolume200ResponseSummary.php
@@ -8633,5 +8639,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/RestageAdChangeRequestTest.php
-test/Model/StagedAdChangeLeftBehindInnerTest.php
+test/Model/GetInboxUnreadCount200ResponseDataTest.php
+test/Model/GetInboxUnreadCount200ResponseMetaTest.php
+test/Model/GetInboxUnreadCount200ResponseTest.php
