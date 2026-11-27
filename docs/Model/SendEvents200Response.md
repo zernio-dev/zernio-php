@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **events_received** | **int** | Events in the request. | [optional]
 **stored** | **bool** | Whether the events were stored for reporting (always false with testCode). | [optional]
 **test_code** | **string** | The test code forwarded to every destination, or &#x60;null&#x60; when the request carried none. | [optional]
+**warnings** | [**\Zernio\Model\SendEvents200ResponseWarningsInner[]**](SendEvents200ResponseWarningsInner.md) | Left out when there is nothing to warn about. &#x60;no_destination&#x60;: no forwarding rule took the events, so they were stored but sent to no platform. | [optional]
 **destinations** | [**\Zernio\Model\SendEvents200ResponseDestinationsInner[]**](SendEvents200ResponseDestinationsInner.md) |  | [optional]
 **queued_destinations** | **int** | Destinations whose sends were queued (all of them with &#x60;mode: async&#x60;, retries with &#x60;sync&#x60;). | [optional]
 
