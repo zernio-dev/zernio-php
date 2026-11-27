@@ -15,6 +15,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**pinPost()**](PostsApi.md#pinPost) | **POST** /v1/posts/{postId}/pin | Pin post |
 | [**retryPost()**](PostsApi.md#retryPost) | **POST** /v1/posts/{postId}/retry | Retry failed post |
 | [**reviewPost()**](PostsApi.md#reviewPost) | **POST** /v1/posts/{postId}/review | Approve or reject a post |
+| [**setPostCommentsEnabled()**](PostsApi.md#setPostCommentsEnabled) | **POST** /v1/posts/{postId}/comments-enabled | Turn comments on or off |
 | [**unpinPost()**](PostsApi.md#unpinPost) | **POST** /v1/posts/{postId}/unpin | Unpin post |
 | [**unpublishPost()**](PostsApi.md#unpublishPost) | **POST** /v1/posts/{postId}/unpublish | Unpublish post |
 | [**updatePost()**](PostsApi.md#updatePost) | **PUT** /v1/posts/{postId} | Update post |
@@ -603,6 +604,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\PostGetResponse**](../Model/PostGetResponse.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `setPostCommentsEnabled()`
+
+```php
+setPostCommentsEnabled($post_id, $set_post_comments_enabled_request): \Zernio\Model\SetPostCommentsEnabledResponse
+```
+
+Turn comments on or off
+
+Turns comments on or off on a published Instagram post, Reel or carousel, after publishing. Works for accounts connected through Instagram Login and through Facebook Login.  Only Instagram posts are supported; any other platform answers 400 `platform_not_supported`. To turn comments off at publish time instead, send `commentsEnabled: false` in the Instagram platform options when creating the post.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\PostsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$post_id = 'post_id_example'; // string
+$set_post_comments_enabled_request = {"platform":"instagram","enabled":false}; // \Zernio\Model\SetPostCommentsEnabledRequest
+
+try {
+    $result = $apiInstance->setPostCommentsEnabled($post_id, $set_post_comments_enabled_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PostsApi->setPostCommentsEnabled: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **post_id** | **string**|  | |
+| **set_post_comments_enabled_request** | [**\Zernio\Model\SetPostCommentsEnabledRequest**](../Model/SetPostCommentsEnabledRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\SetPostCommentsEnabledResponse**](../Model/SetPostCommentsEnabledResponse.md)
 
 ### Authorization
 

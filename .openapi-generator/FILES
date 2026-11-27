@@ -3423,6 +3423,8 @@ docs/Model/SetMessengerIceBreakersRequest.md
 docs/Model/SetMessengerMenuRequest.md
 docs/Model/SetPartnershipAdPermission200Response.md
 docs/Model/SetPartnershipAdPermissionRequest.md
+docs/Model/SetPostCommentsEnabledRequest.md
+docs/Model/SetPostCommentsEnabledResponse.md
 docs/Model/SetRedditPostFlairRequest.md
 docs/Model/SetTagNewAds200Response.md
 docs/Model/SetTagNewAdsRequest.md
@@ -7751,6 +7753,8 @@ lib/Model/SetMessengerIceBreakersRequest.php
 lib/Model/SetMessengerMenuRequest.php
 lib/Model/SetPartnershipAdPermission200Response.php
 lib/Model/SetPartnershipAdPermissionRequest.php
+lib/Model/SetPostCommentsEnabledRequest.php
+lib/Model/SetPostCommentsEnabledResponse.php
 lib/Model/SetRedditPostFlairRequest.php
 lib/Model/SetTagNewAds200Response.php
 lib/Model/SetTagNewAdsRequest.php
@@ -8655,5 +8659,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetMessengerContact200ResponseDataTest.php
-test/Model/GetMessengerContact200ResponseTest.php
+test/Model/SetPostCommentsEnabledRequestTest.php
+test/Model/SetPostCommentsEnabledResponseTest.php
