@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **audience_expansion_enabled** | **bool** | Enable LinkedIn audience expansion. Defaults to false. | [optional]
 **offsite_delivery_enabled** | **bool** | Deliver on the LinkedIn Audience Network. Defaults to false. | [optional]
 **connected_television_only** | **bool** | Restrict delivery to Connected TV inventory. | [optional]
+**image_link_format** | **string** | LinkedIn shape of an &#x60;imageUrl&#x60; with &#x60;linkUrl&#x60; ad on POST /v1/ads/create.  - &#x60;article&#x60; (default): an article link ad (&#x60;content.article&#x60;, image as the thumbnail). - &#x60;single_image&#x60;: a Single Image Ad (the image as the post media, &#x60;linkUrl&#x60; as the landing page, &#x60;callToAction&#x60; as the button).  &#x60;single_image&#x60; works only with &#x60;imageUrl&#x60;, returns 400 with &#x60;longHeadline&#x60; (LinkedIn does not show it on this format), and is rejected on boost. | [optional] [default to 'article']
 **carousel** | [**\Zernio\Model\LinkedInAdsPlatformDataCarousel**](LinkedInAdsPlatformDataCarousel.md) |  | [optional]
 **document** | [**\Zernio\Model\LinkedInAdsPlatformDataDocument**](LinkedInAdsPlatformDataDocument.md) |  | [optional]
 **spotlight** | [**\Zernio\Model\LinkedInAdsPlatformDataSpotlight**](LinkedInAdsPlatformDataSpotlight.md) |  | [optional]
