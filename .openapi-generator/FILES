@@ -2315,6 +2315,9 @@ docs/Model/InstagramBusinessDiscoveryMediaInnerChildrenInner.md
 docs/Model/InstagramBusinessDiscoveryProfile.md
 docs/Model/InstagramDemographicsResponse.md
 docs/Model/InstagramDemographicsResponseDemographicsValueInner.md
+docs/Model/InstagramHashtagMedia.md
+docs/Model/InstagramHashtagResearch.md
+docs/Model/InstagramHashtagResearchHashtag.md
 docs/Model/InstagramLiveMedia.md
 docs/Model/InstagramMediaCollaborator.md
 docs/Model/InstagramMentionedComment.md
@@ -6637,6 +6640,9 @@ lib/Model/InstagramBusinessDiscoveryMediaInnerChildrenInner.php
 lib/Model/InstagramBusinessDiscoveryProfile.php
 lib/Model/InstagramDemographicsResponse.php
 lib/Model/InstagramDemographicsResponseDemographicsValueInner.php
+lib/Model/InstagramHashtagMedia.php
+lib/Model/InstagramHashtagResearch.php
+lib/Model/InstagramHashtagResearchHashtag.php
 lib/Model/InstagramLiveMedia.php
 lib/Model/InstagramMediaCollaborator.php
 lib/Model/InstagramMentionedComment.php
@@ -8645,3 +8651,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/InstagramHashtagMediaTest.php
+test/Model/InstagramHashtagResearchHashtagTest.php
+test/Model/InstagramHashtagResearchTest.php

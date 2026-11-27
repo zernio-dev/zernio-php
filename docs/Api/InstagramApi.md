@@ -17,6 +17,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listInstagramStories()**](InstagramApi.md#listInstagramStories) | **GET** /v1/accounts/{accountId}/instagram/stories | List active Instagram stories |
 | [**listInstagramTaggedMedia()**](InstagramApi.md#listInstagramTaggedMedia) | **GET** /v1/accounts/{accountId}/instagram/tags | List the posts an Instagram account is tagged in |
 | [**searchInstagramAudio()**](InstagramApi.md#searchInstagramAudio) | **GET** /v1/accounts/{accountId}/instagram/audio | Search Instagram audio |
+| [**searchInstagramHashtag()**](InstagramApi.md#searchInstagramHashtag) | **GET** /v1/accounts/{accountId}/instagram/hashtag-search | Search public Instagram media by hashtag |
 
 
 ## `getInstagramAudio()`
@@ -691,6 +692,70 @@ try {
 ### Return type
 
 [**\Zernio\Model\SearchInstagramAudio200Response**](../Model/SearchInstagramAudio200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `searchInstagramHashtag()`
+
+```php
+searchInstagramHashtag($account_id, $hashtag, $limit): \Zernio\Model\InstagramHashtagResearch
+```
+
+Search public Instagram media by hashtag
+
+Resolves a hashtag to its Instagram hashtag ID, then returns the top and the recent public media carrying it, read through one of your connected Instagram accounts. Useful for trend, content and competitor research.  Requires an Instagram account connected via **Facebook Login**. Meta serves hashtag search on graph.facebook.com only, so accounts connected with classic Instagram Login receive a 400 (`instagram_hashtag_search_requires_facebook_login`) and must be reconnected choosing the Facebook option.  **Weekly limit:** Meta lets one Instagram account search at most 30 unique hashtags in a rolling 7 days.  - Searching a hashtag again inside the window does not count twice. - `recentlySearchedCount` shows how much of the budget is used. - Past the limit the request answers 429   `instagram_hashtag_search_limit_reached` until older searches leave   the window. - Another connected account has its own budget.  `recentMedia` only holds media published in the last 24 hours. Meta returns no media for hashtags it considers sensitive or offensive, and never returns the author's username. Media URLs are temporary.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\InstagramApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The ID of a connected Instagram account (Facebook Login).
+$hashtag = interiordesign; // string | One hashtag: letters, digits or \"_\", with or without the leading #. Case-insensitive.
+$limit = 24; // int | How many media to return in each of topMedia and recentMedia.
+
+try {
+    $result = $apiInstance->searchInstagramHashtag($account_id, $hashtag, $limit);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling InstagramApi->searchInstagramHashtag: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The ID of a connected Instagram account (Facebook Login). | |
+| **hashtag** | **string**| One hashtag: letters, digits or \&quot;_\&quot;, with or without the leading #. Case-insensitive. | |
+| **limit** | **int**| How many media to return in each of topMedia and recentMedia. | [optional] [default to 24] |
+
+### Return type
+
+[**\Zernio\Model\InstagramHashtagResearch**](../Model/InstagramHashtagResearch.md)
 
 ### Authorization
 
