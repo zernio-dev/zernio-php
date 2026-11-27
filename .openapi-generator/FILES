@@ -547,6 +547,7 @@ docs/Model/BoostPostRequestSchedule.md
 docs/Model/BoostPostRequestSmartTargeting.md
 docs/Model/BoostPostRequestSparkPostsInner.md
 docs/Model/BoostPostRequestTargeting.md
+docs/Model/BoostPostRequestTargetingAdvantageAudience.md
 docs/Model/BoostPostRequestTargetingCitiesInner.md
 docs/Model/BoostPostRequestTargetingCustomLocationsInner.md
 docs/Model/BoostPostRequestTracking.md
@@ -1206,6 +1207,7 @@ docs/Model/CreateStandaloneAd201ResponseOneOf1.md
 docs/Model/CreateStandaloneAdRequest.md
 docs/Model/CreateStandaloneAdRequestAdditionalDescriptionsInner.md
 docs/Model/CreateStandaloneAdRequestAdditionalHeadlinesInner.md
+docs/Model/CreateStandaloneAdRequestAdvantageAudience.md
 docs/Model/CreateStandaloneAdRequestBehaviorsInner.md
 docs/Model/CreateStandaloneAdRequestBrandIdentity.md
 docs/Model/CreateStandaloneAdRequestCarouselCardsInner.md
@@ -1333,6 +1335,7 @@ docs/Model/CrmNativePropertiesValue.md
 docs/Model/CrmOwner.md
 docs/Model/CrosspostDiscordMessage200Response.md
 docs/Model/CtwaAdRequestBody.md
+docs/Model/CtwaAdRequestBodyAdvantageAudience.md
 docs/Model/CtwaAdRequestBodyCitiesInner.md
 docs/Model/CtwaAdRequestBodyCreativesInner.md
 docs/Model/CtwaAdRequestBodyCreativesInnerVideo.md
@@ -3627,6 +3630,7 @@ docs/Model/UpdateAdRequest.md
 docs/Model/UpdateAdRequestBudget.md
 docs/Model/UpdateAdRequestCreative.md
 docs/Model/UpdateAdRequestTargeting.md
+docs/Model/UpdateAdRequestTargetingAdvantageAudience.md
 docs/Model/UpdateAdRequestTargetingDevicesInner.md
 docs/Model/UpdateAdRequestTargetingDevicesInnerOneOf.md
 docs/Model/UpdateAdRequestTargetingInterestsInner.md
@@ -4855,6 +4859,7 @@ lib/Model/BoostPostRequestSchedule.php
 lib/Model/BoostPostRequestSmartTargeting.php
 lib/Model/BoostPostRequestSparkPostsInner.php
 lib/Model/BoostPostRequestTargeting.php
+lib/Model/BoostPostRequestTargetingAdvantageAudience.php
 lib/Model/BoostPostRequestTargetingCitiesInner.php
 lib/Model/BoostPostRequestTargetingCustomLocationsInner.php
 lib/Model/BoostPostRequestTracking.php
@@ -5514,6 +5519,7 @@ lib/Model/CreateStandaloneAd201ResponseOneOf1.php
 lib/Model/CreateStandaloneAdRequest.php
 lib/Model/CreateStandaloneAdRequestAdditionalDescriptionsInner.php
 lib/Model/CreateStandaloneAdRequestAdditionalHeadlinesInner.php
+lib/Model/CreateStandaloneAdRequestAdvantageAudience.php
 lib/Model/CreateStandaloneAdRequestBehaviorsInner.php
 lib/Model/CreateStandaloneAdRequestBrandIdentity.php
 lib/Model/CreateStandaloneAdRequestCarouselCardsInner.php
@@ -5641,6 +5647,7 @@ lib/Model/CrmNativePropertiesValue.php
 lib/Model/CrmOwner.php
 lib/Model/CrosspostDiscordMessage200Response.php
 lib/Model/CtwaAdRequestBody.php
+lib/Model/CtwaAdRequestBodyAdvantageAudience.php
 lib/Model/CtwaAdRequestBodyCitiesInner.php
 lib/Model/CtwaAdRequestBodyCreativesInner.php
 lib/Model/CtwaAdRequestBodyCreativesInnerVideo.php
@@ -7936,6 +7943,7 @@ lib/Model/UpdateAdRequest.php
 lib/Model/UpdateAdRequestBudget.php
 lib/Model/UpdateAdRequestCreative.php
 lib/Model/UpdateAdRequestTargeting.php
+lib/Model/UpdateAdRequestTargetingAdvantageAudience.php
 lib/Model/UpdateAdRequestTargetingDevicesInner.php
 lib/Model/UpdateAdRequestTargetingDevicesInnerOneOf.php
 lib/Model/UpdateAdRequestTargetingInterestsInner.php
@@ -8617,3 +8625,7 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/BoostPostRequestTargetingAdvantageAudienceTest.php
+test/Model/CreateStandaloneAdRequestAdvantageAudienceTest.php
+test/Model/CtwaAdRequestBodyAdvantageAudienceTest.php
+test/Model/UpdateAdRequestTargetingAdvantageAudienceTest.php

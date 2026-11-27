@@ -15,6 +15,6 @@ Name | Type | Description | Notes
 **metros** | [**\Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInnerOneOf[]**](UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInnerOneOf.md) | DMA / metro-area targeting. &#x60;key&#x60; is the platform&#39;s metro ID (e.g. Meta &#x60;DMA:807&#x60;). | [optional]
 **custom_locations** | [**\Zernio\Model\BoostPostRequestTargetingCustomLocationsInner[]**](BoostPostRequestTargetingCustomLocationsInner.md) | Point-radius (lat/lng) targeting (Meta custom_locations). No geo &#x60;key&#x60; lookup needed. | [optional]
 **interests** | [**\Zernio\Model\UpdateAdRequestTargetingInterestsInner[]**](UpdateAdRequestTargetingInterestsInner.md) | Interest objects from /v1/ads/interests. Each must include id and name. | [optional]
-**advantage_audience** | **int** | Meta only. 0 &#x3D; disabled (default), 1 &#x3D; enabled. | [optional]
+**advantage_audience** | [**\Zernio\Model\BoostPostRequestTargetingAdvantageAudience**](BoostPostRequestTargetingAdvantageAudience.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

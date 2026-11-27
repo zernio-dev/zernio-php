@@ -13,6 +13,6 @@ Name | Type | Description | Notes
 **locations** | [**\Zernio\Model\UpdateAdRequestTargetingLocations**](UpdateAdRequestTargetingLocations.md) |  | [optional]
 **languages** | **string[]** | Google only. The FULL new language set for the campaign, as Google language codes (ISO 639-1, plus variants such as &#x60;zh_CN&#x60;). An unknown code returns 400. | [optional]
 **interests** | [**\Zernio\Model\UpdateAdRequestTargetingInterestsInner[]**](UpdateAdRequestTargetingInterestsInner.md) | Interest objects from /v1/ads/interests. Each must include id and name. | [optional]
-**advantage_audience** | **int** | Meta only. Omit to preserve the existing setting on update. 0 &#x3D; disabled, 1 &#x3D; enabled. | [optional]
+**advantage_audience** | [**\Zernio\Model\UpdateAdRequestTargetingAdvantageAudience**](UpdateAdRequestTargetingAdvantageAudience.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

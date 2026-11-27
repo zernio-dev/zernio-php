@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** |  |
-**description** | **string** | Sequences. | [optional]
+**description** | **string** | Sequences and flows. | [optional]
 **status** | **string** |  | [optional]
 **graph** | [**\Zernio\Model\AutomationGraph**](AutomationGraph.md) |  |
 
