@@ -8625,7 +8625,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/BoostPostRequestTargetingAdvantageAudienceTest.php
-test/Model/CreateStandaloneAdRequestAdvantageAudienceTest.php
-test/Model/CtwaAdRequestBodyAdvantageAudienceTest.php
-test/Model/UpdateAdRequestTargetingAdvantageAudienceTest.php
