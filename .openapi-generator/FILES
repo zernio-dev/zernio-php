@@ -3441,6 +3441,7 @@ docs/Model/StagedAdChange.md
 docs/Model/StagedAdChangeDiffInner.md
 docs/Model/StagedAdChangeError.md
 docs/Model/StagedAdChangeRequest.md
+docs/Model/StagedAdChangeRequestQueryValue.md
 docs/Model/StagedAdChangeSummary.md
 docs/Model/StagedAdChangeSummaryError.md
 docs/Model/StagedAdChangeSummaryRequest.md
@@ -7754,6 +7755,7 @@ lib/Model/StagedAdChange.php
 lib/Model/StagedAdChangeDiffInner.php
 lib/Model/StagedAdChangeError.php
 lib/Model/StagedAdChangeRequest.php
+lib/Model/StagedAdChangeRequestQueryValue.php
 lib/Model/StagedAdChangeSummary.php
 lib/Model/StagedAdChangeSummaryError.php
 lib/Model/StagedAdChangeSummaryRequest.php
@@ -8625,3 +8627,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/StagedAdChangeRequestQueryValueTest.php
