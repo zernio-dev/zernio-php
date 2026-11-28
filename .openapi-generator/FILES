@@ -8685,7 +8685,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetStoreSettings200ResponseTest.php
-test/Model/StoreSettingsTest.php
-test/Model/UpdateStoreSettings200ResponseTest.php
-test/Model/UpdateStoreSettingsRequestTest.php
