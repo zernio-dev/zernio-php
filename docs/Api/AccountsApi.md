@@ -19,6 +19,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getInstagramFollowStatus()**](AccountsApi.md#getInstagramFollowStatus) | **GET** /v1/accounts/{accountId}/follow-status/{userId} | Check whether an Instagram user follows the account |
 | [**getSalesforceSettings()**](AccountsApi.md#getSalesforceSettings) | **GET** /v1/accounts/{accountId}/salesforce-settings | Get Salesforce account settings |
 | [**getSlackSettings()**](AccountsApi.md#getSlackSettings) | **GET** /v1/accounts/{accountId}/slack-settings | Get Slack account settings |
+| [**getStoreSettings()**](AccountsApi.md#getStoreSettings) | **GET** /v1/accounts/{accountId}/store-settings | Get Shopify or WooCommerce store settings |
 | [**getStripeSettings()**](AccountsApi.md#getStripeSettings) | **GET** /v1/accounts/{accountId}/stripe-settings | Get Stripe account settings |
 | [**getTikTokCreatorInfo()**](AccountsApi.md#getTikTokCreatorInfo) | **GET** /v1/accounts/{accountId}/tiktok/creator-info | Get TikTok creator info |
 | [**grantBusinessPartner()**](AccountsApi.md#grantBusinessPartner) | **POST** /v1/accounts/{accountId}/business-partners | Share the Page with a partner business |
@@ -39,6 +40,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**updateHubSpotSettings()**](AccountsApi.md#updateHubSpotSettings) | **PATCH** /v1/accounts/{accountId}/hubspot-settings | Update HubSpot account settings |
 | [**updateSalesforceSettings()**](AccountsApi.md#updateSalesforceSettings) | **PATCH** /v1/accounts/{accountId}/salesforce-settings | Update Salesforce account settings |
 | [**updateSlackSettings()**](AccountsApi.md#updateSlackSettings) | **PATCH** /v1/accounts/{accountId}/slack-settings | Update Slack account settings |
+| [**updateStoreSettings()**](AccountsApi.md#updateStoreSettings) | **PATCH** /v1/accounts/{accountId}/store-settings | Update Shopify or WooCommerce store settings |
 | [**updateStripeSettings()**](AccountsApi.md#updateStripeSettings) | **PATCH** /v1/accounts/{accountId}/stripe-settings | Update Stripe account settings |
 | [**verifyGohighlevelFunnelTracking()**](AccountsApi.md#verifyGohighlevelFunnelTracking) | **POST** /v1/accounts/{accountId}/gohighlevel-funnel-tracking/verify | Check the Zernio tag on a HighLevel funnel page |
 
@@ -833,6 +835,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetSlackSettings200Response**](../Model/GetSlackSettings200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getStoreSettings()`
+
+```php
+getStoreSettings($account_id): \Zernio\Model\GetStoreSettings200Response
+```
+
+Get Shopify or WooCommerce store settings
+
+Read whether a connected Shopify store's or WordPress (WooCommerce) site's orders go to the ad platforms.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+
+try {
+    $result = $apiInstance->getStoreSettings($account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountsApi->getStoreSettings: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\GetStoreSettings200Response**](../Model/GetStoreSettings200Response.md)
 
 ### Authorization
 
@@ -2095,6 +2157,68 @@ try {
 ### Return type
 
 void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateStoreSettings()`
+
+```php
+updateStoreSettings($account_id, $update_store_settings_request): \Zernio\Model\UpdateStoreSettings200Response
+```
+
+Update Shopify or WooCommerce store settings
+
+Turn sending a store's paid orders to the ad platforms on or off. Orders are always stored and counted in campaign results; this only decides whether they are also forwarded. Meta and TikTok get them only from a forwarding rule whose sources list the store (`shopify` or `woocommerce`).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+$update_store_settings_request = new \Zernio\Model\UpdateStoreSettingsRequest(); // \Zernio\Model\UpdateStoreSettingsRequest
+
+try {
+    $result = $apiInstance->updateStoreSettings($account_id, $update_store_settings_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountsApi->updateStoreSettings: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+| **update_store_settings_request** | [**\Zernio\Model\UpdateStoreSettingsRequest**](../Model/UpdateStoreSettingsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\UpdateStoreSettings200Response**](../Model/UpdateStoreSettings200Response.md)
 
 ### Authorization
 

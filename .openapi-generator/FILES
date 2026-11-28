@@ -2020,6 +2020,7 @@ docs/Model/GetSmsRegistration200ResponseCampaignContent.md
 docs/Model/GetSmsUsage200Response.md
 docs/Model/GetSmsUsage200ResponseGroupsInner.md
 docs/Model/GetSmsUsage200ResponseTotals.md
+docs/Model/GetStoreSettings200Response.md
 docs/Model/GetStripeConnectUrl200Response.md
 docs/Model/GetStripeSettings200Response.md
 docs/Model/GetSubredditRules200Response.md
@@ -3494,6 +3495,7 @@ docs/Model/StartWhatsAppCallerIdVerification200Response.md
 docs/Model/StartWhatsAppCallerIdVerificationRequest.md
 docs/Model/StorePixelInstall.md
 docs/Model/StorePixelInstallTagsInner.md
+docs/Model/StoreSettings.md
 docs/Model/StoredEvent.md
 docs/Model/StoredEventAd.md
 docs/Model/StoredEventCampaign.md
@@ -3853,6 +3855,8 @@ docs/Model/UpdateSequenceRequest.md
 docs/Model/UpdateSequenceRequestStepsInner.md
 docs/Model/UpdateSequenceRequestStepsInnerTemplate.md
 docs/Model/UpdateSlackSettingsRequest.md
+docs/Model/UpdateStoreSettings200Response.md
+docs/Model/UpdateStoreSettingsRequest.md
 docs/Model/UpdateStripeSettings200Response.md
 docs/Model/UpdateStripeSettingsRequest.md
 docs/Model/UpdateTrackingLinkRequest.md
@@ -6358,6 +6362,7 @@ lib/Model/GetSmsRegistration200ResponseCampaignContent.php
 lib/Model/GetSmsUsage200Response.php
 lib/Model/GetSmsUsage200ResponseGroupsInner.php
 lib/Model/GetSmsUsage200ResponseTotals.php
+lib/Model/GetStoreSettings200Response.php
 lib/Model/GetStripeConnectUrl200Response.php
 lib/Model/GetStripeSettings200Response.php
 lib/Model/GetSubredditRules200Response.php
@@ -7833,6 +7838,7 @@ lib/Model/StartWhatsAppCallerIdVerification200Response.php
 lib/Model/StartWhatsAppCallerIdVerificationRequest.php
 lib/Model/StorePixelInstall.php
 lib/Model/StorePixelInstallTagsInner.php
+lib/Model/StoreSettings.php
 lib/Model/StoredEvent.php
 lib/Model/StoredEventAd.php
 lib/Model/StoredEventCampaign.php
@@ -8192,6 +8198,8 @@ lib/Model/UpdateSequenceRequest.php
 lib/Model/UpdateSequenceRequestStepsInner.php
 lib/Model/UpdateSequenceRequestStepsInnerTemplate.php
 lib/Model/UpdateSlackSettingsRequest.php
+lib/Model/UpdateStoreSettings200Response.php
+lib/Model/UpdateStoreSettingsRequest.php
 lib/Model/UpdateStripeSettings200Response.php
 lib/Model/UpdateStripeSettingsRequest.php
 lib/Model/UpdateTrackingLinkRequest.php
@@ -8677,3 +8685,7 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetStoreSettings200ResponseTest.php
+test/Model/StoreSettingsTest.php
+test/Model/UpdateStoreSettings200ResponseTest.php
+test/Model/UpdateStoreSettingsRequestTest.php
