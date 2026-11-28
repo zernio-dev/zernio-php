@@ -1965,6 +1965,7 @@ docs/Model/GetMessengerGetStarted200ResponseData.md
 docs/Model/GetMessengerGreeting200Response.md
 docs/Model/GetMessengerIceBreakers200Response.md
 docs/Model/GetMessengerMenu200Response.md
+docs/Model/GetMetaSavedAudience200Response.md
 docs/Model/GetPageWebhookSubscription200Response.md
 docs/Model/GetPayoutBatch200Response.md
 docs/Model/GetPendingOAuthData200Response.md
@@ -2680,6 +2681,8 @@ docs/Model/ListLogs200ResponseLogsInner.md
 docs/Model/ListLogs200ResponsePagination.md
 docs/Model/ListMetaBusinessUsers200Response.md
 docs/Model/ListMetaBusinesses200Response.md
+docs/Model/ListMetaSavedAudiences200Response.md
+docs/Model/ListMetaSavedAudiences200ResponsePaging.md
 docs/Model/ListOAuthApps200Response.md
 docs/Model/ListOAuthApps200ResponsePagination.md
 docs/Model/ListOrgConnectionUsers200Response.md
@@ -2861,6 +2864,7 @@ docs/Model/MetaProductFeed.md
 docs/Model/MetaProductFeedSchedule.md
 docs/Model/MetaProductSet.md
 docs/Model/MetaRecoveredWritesInner.md
+docs/Model/MetaSavedAudience.md
 docs/Model/MetricDefinition.md
 docs/Model/MetricEntity.md
 docs/Model/MetricEntityAttributionsInner.md
@@ -6299,6 +6303,7 @@ lib/Model/GetMessengerGetStarted200ResponseData.php
 lib/Model/GetMessengerGreeting200Response.php
 lib/Model/GetMessengerIceBreakers200Response.php
 lib/Model/GetMessengerMenu200Response.php
+lib/Model/GetMetaSavedAudience200Response.php
 lib/Model/GetPageWebhookSubscription200Response.php
 lib/Model/GetPayoutBatch200Response.php
 lib/Model/GetPendingOAuthData200Response.php
@@ -7014,6 +7019,8 @@ lib/Model/ListLogs200ResponseLogsInner.php
 lib/Model/ListLogs200ResponsePagination.php
 lib/Model/ListMetaBusinessUsers200Response.php
 lib/Model/ListMetaBusinesses200Response.php
+lib/Model/ListMetaSavedAudiences200Response.php
+lib/Model/ListMetaSavedAudiences200ResponsePaging.php
 lib/Model/ListOAuthApps200Response.php
 lib/Model/ListOAuthApps200ResponsePagination.php
 lib/Model/ListOrgConnectionUsers200Response.php
@@ -7195,6 +7202,7 @@ lib/Model/MetaProductFeed.php
 lib/Model/MetaProductFeedSchedule.php
 lib/Model/MetaProductSet.php
 lib/Model/MetaRecoveredWritesInner.php
+lib/Model/MetaSavedAudience.php
 lib/Model/MetricDefinition.php
 lib/Model/MetricEntity.php
 lib/Model/MetricEntityAttributionsInner.php
@@ -8669,8 +8677,7 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/BlockFacebookUser200ResponseTest.php
-test/Model/FacebookBlockedUserRefTest.php
-test/Model/FacebookBlockedUserTest.php
-test/Model/ListFacebookBlockedUsers200ResponseTest.php
-test/Model/UnblockFacebookUser200ResponseTest.php
+test/Model/GetMetaSavedAudience200ResponseTest.php
+test/Model/ListMetaSavedAudiences200ResponsePagingTest.php
+test/Model/ListMetaSavedAudiences200ResponseTest.php
+test/Model/MetaSavedAudienceTest.php

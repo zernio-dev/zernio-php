@@ -10,7 +10,9 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**createAdAudience()**](AdAudiencesApi.md#createAdAudience) | **POST** /v1/ads/audiences | Create custom audience |
 | [**deleteAdAudience()**](AdAudiencesApi.md#deleteAdAudience) | **DELETE** /v1/ads/audiences/{audienceId} | Delete custom audience |
 | [**getAdAudience()**](AdAudiencesApi.md#getAdAudience) | **GET** /v1/ads/audiences/{audienceId} | Get audience details |
+| [**getMetaSavedAudience()**](AdAudiencesApi.md#getMetaSavedAudience) | **GET** /v1/ads/saved-audiences/{savedAudienceId} | Read a Meta saved audience |
 | [**listAdAudiences()**](AdAudiencesApi.md#listAdAudiences) | **GET** /v1/ads/audiences | List custom audiences |
+| [**listMetaSavedAudiences()**](AdAudiencesApi.md#listMetaSavedAudiences) | **GET** /v1/ads/saved-audiences | List Meta saved audiences |
 | [**removeUsersFromAdAudience()**](AdAudiencesApi.md#removeUsersFromAdAudience) | **DELETE** /v1/ads/audiences/{audienceId}/users | Remove users from audience |
 | [**replaceAdAudienceCompanies()**](AdAudiencesApi.md#replaceAdAudienceCompanies) | **POST** /v1/ads/audiences/{audienceId}/companies | Replace audience companies |
 | [**updateAdAudience()**](AdAudiencesApi.md#updateAdAudience) | **PUT** /v1/ads/audiences/{audienceId} | Update an audience |
@@ -260,6 +262,70 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getMetaSavedAudience()`
+
+```php
+getMetaSavedAudience($saved_audience_id, $account_id, $ad_account_id): \Zernio\Model\GetMetaSavedAudience200Response
+```
+
+Read a Meta saved audience
+
+Reads one saved audience of a Meta ad account, including the targeting spec it holds.  Meta's SavedAudience node does not say which ad account owns it, so the audience is looked up in the named ad account's `GET /act_X/saved_audiences` (up to 1,000 saved audiences). An id that is not on that ad account answers 404.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAudiencesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$saved_audience_id = 'saved_audience_id_example'; // string | Meta saved audience id.
+$account_id = 'account_id_example'; // string | Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token.
+$ad_account_id = 'ad_account_id_example'; // string | Meta ad account id (act_<n>) that holds the saved audience.
+
+try {
+    $result = $apiInstance->getMetaSavedAudience($saved_audience_id, $account_id, $ad_account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAudiencesApi->getMetaSavedAudience: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **saved_audience_id** | **string**| Meta saved audience id. | |
+| **account_id** | **string**| Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. | |
+| **ad_account_id** | **string**| Meta ad account id (act_&lt;n&gt;) that holds the saved audience. | |
+
+### Return type
+
+[**\Zernio\Model\GetMetaSavedAudience200Response**](../Model/GetMetaSavedAudience200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listAdAudiences()`
 
 ```php
@@ -312,6 +378,72 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListAdAudiences200Response**](../Model/ListAdAudiences200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listMetaSavedAudiences()`
+
+```php
+listMetaSavedAudiences($account_id, $ad_account_id, $limit, $after): \Zernio\Model\ListMetaSavedAudiences200Response
+```
+
+List Meta saved audiences
+
+Lists the saved audiences of a Meta ad account, read live from Meta (`GET /act_X/saved_audiences`).  These are Meta's own saved audiences, the ones made in Ads Manager, not the Zernio `saved_targeting` audiences of `/v1/ads/audiences`. Meta's Marketing API exposes saved audiences read-only: they are created, edited and deleted in Ads Manager.  To target an ad set at a saved audience, send its `targeting` as `rawTargeting` on `POST /v1/ads/create`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAudiencesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token.
+$ad_account_id = 'ad_account_id_example'; // string | Meta ad account id (act_<n>).
+$limit = 25; // int | Rows per page
+$after = 'after_example'; // string | Cursor from paging.after of the previous page.
+
+try {
+    $result = $apiInstance->listMetaSavedAudiences($account_id, $ad_account_id, $limit, $after);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAudiencesApi->listMetaSavedAudiences: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. | |
+| **ad_account_id** | **string**| Meta ad account id (act_&lt;n&gt;). | |
+| **limit** | **int**| Rows per page | [optional] [default to 25] |
+| **after** | **string**| Cursor from paging.after of the previous page. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListMetaSavedAudiences200Response**](../Model/ListMetaSavedAudiences200Response.md)
 
 ### Authorization
 
