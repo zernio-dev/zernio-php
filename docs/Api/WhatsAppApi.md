@@ -1851,7 +1851,7 @@ listWhatsAppConversions($account_id, $limit): \Zernio\Model\ListWhatsAppConversi
 
 List conversion events
 
-Returns the most recent conversion events sent through `POST /v1/whatsapp/conversions` for the given WhatsApp account.  It is sourced from delivery logs (Axiom `late` dataset), so the visible window is bounded by log retention (about 30 days). Useful for rendering a \"recent activity\" panel on the conversions setup tab without standing up a parallel persistence layer.  ### Per-event payload  It mirrors the structured log we write on every successful send:  - `eventName` - `conversationId` - `eventsReceived` - `eventsFailed` - `traceId` - `durationMs` - the wall-clock `timestamp`
+Returns the most recent conversion events sent through `POST /v1/whatsapp/conversions` for the given WhatsApp account.  It is sourced from delivery logs (Axiom `late` dataset), so the visible window is bounded by log retention (about 30 days). Useful for rendering a \"recent activity\" panel on the conversions setup tab without standing up a parallel persistence layer.  ### Per-event payload  It mirrors the structured log we write on every successful send:  - `eventName` - `eventId` - `hasClickId` - `conversationId` - `eventsReceived` - `eventsFailed` - `traceId` - `durationMs` - the wall-clock `timestamp`
 
 ### Example
 
@@ -2286,7 +2286,7 @@ try {
 ## `sendWhatsAppConversion()`
 
 ```php
-sendWhatsAppConversion($send_whats_app_conversion_request): \Zernio\Model\SendWhatsAppConversion200Response
+sendWhatsAppConversion($send_whats_app_conversion_request, $idempotency_key): \Zernio\Model\SendWhatsAppConversion200Response
 ```
 
 Send WhatsApp conversion event
@@ -2311,9 +2311,10 @@ $apiInstance = new Zernio\Api\WhatsAppApi(
     $config
 );
 $send_whats_app_conversion_request = new \Zernio\Model\SendWhatsAppConversionRequest(); // \Zernio\Model\SendWhatsAppConversionRequest
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago.
 
 try {
-    $result = $apiInstance->sendWhatsAppConversion($send_whats_app_conversion_request);
+    $result = $apiInstance->sendWhatsAppConversion($send_whats_app_conversion_request, $idempotency_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WhatsAppApi->sendWhatsAppConversion: ', $e->getMessage(), PHP_EOL;
@@ -2325,6 +2326,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **send_whats_app_conversion_request** | [**\Zernio\Model\SendWhatsAppConversionRequest**](../Model/SendWhatsAppConversionRequest.md)|  | |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago. | [optional] |
 
 ### Return type
 

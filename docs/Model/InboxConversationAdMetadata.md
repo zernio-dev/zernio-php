@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **ctwa_video_url** | **string** | WhatsApp only. Video of the ad creative at click time (video ads). | [optional]
 **ctwa_thumbnail_url** | **string** | WhatsApp only. Thumbnail of the ad video at click time (video ads). | [optional]
 **ctwa_captured_at** | **\DateTime** | WhatsApp only. When Zernio stored this referral. Always present when a WhatsApp referral was captured. | [optional]
+**ctwa_message_id** | **string** | WhatsApp only. The wamid of the inbound message the referral arrived on, the &#x60;id&#x60; of that message in the messages list. When only a Meta automatic event supplied the click id, the message Meta flagged. | [optional]
 **meta_ad_id** | **string** | Instagram and Facebook only. The Meta ad ID the user clicked. Present for ad clicks; absent when the capture came from an ig.me / m.me ref link. | [optional]
 **meta_ad_source** | **string** | Instagram and Facebook only. Meta-supplied source identifier: ADS for ad clicks; SHORTLINK, SHORTLINKS or IGME-SOURCE-LINK for ref links (treat as opaque). | [optional]
 **meta_ad_type** | **string** | Instagram and Facebook only. Meta-supplied referral type, for example OPEN_THREAD. | [optional]
