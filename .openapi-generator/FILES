@@ -842,6 +842,8 @@ docs/Model/ConnectKlaviyoCredentialsRequest.md
 docs/Model/ConnectLineCredentials200Response.md
 docs/Model/ConnectLineCredentials200ResponseWebhook.md
 docs/Model/ConnectLineCredentialsRequest.md
+docs/Model/ConnectMailchimpCredentials200Response.md
+docs/Model/ConnectMailchimpCredentialsRequest.md
 docs/Model/ConnectOpenAIAdsCredentials200Response.md
 docs/Model/ConnectOpenAIAdsCredentialsRequest.md
 docs/Model/ConnectOutbrainAdsCredentials200Response.md
@@ -5184,6 +5186,8 @@ lib/Model/ConnectKlaviyoCredentialsRequest.php
 lib/Model/ConnectLineCredentials200Response.php
 lib/Model/ConnectLineCredentials200ResponseWebhook.php
 lib/Model/ConnectLineCredentialsRequest.php
+lib/Model/ConnectMailchimpCredentials200Response.php
+lib/Model/ConnectMailchimpCredentialsRequest.php
 lib/Model/ConnectOpenAIAdsCredentials200Response.php
 lib/Model/ConnectOpenAIAdsCredentialsRequest.php
 lib/Model/ConnectOutbrainAdsCredentials200Response.php
@@ -8685,3 +8689,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ConnectMailchimpCredentials200ResponseTest.php
+test/Model/ConnectMailchimpCredentialsRequestTest.php

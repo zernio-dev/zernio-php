@@ -21,6 +21,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**connectImpactCredentials()**](ConnectApi.md#connectImpactCredentials) | **POST** /v1/connect/impact/credentials | Connect an Impact program |
 | [**connectKlaviyoCredentials()**](ConnectApi.md#connectKlaviyoCredentials) | **POST** /v1/connect/klaviyo/credentials | Connect a Klaviyo account |
 | [**connectLineCredentials()**](ConnectApi.md#connectLineCredentials) | **POST** /v1/connect/line/credentials | Connect LINE Official Account |
+| [**connectMailchimpCredentials()**](ConnectApi.md#connectMailchimpCredentials) | **POST** /v1/connect/mailchimp/credentials | Connect a Mailchimp account |
 | [**connectOpenAIAdsCredentials()**](ConnectApi.md#connectOpenAIAdsCredentials) | **POST** /v1/connect/openai-ads/credentials | Connect an OpenAI Ads account |
 | [**connectOutbrainAdsCredentials()**](ConnectApi.md#connectOutbrainAdsCredentials) | **POST** /v1/connect/outbrain-ads/credentials | Connect an Outbrain marketer |
 | [**connectShopifyWithToken()**](ConnectApi.md#connectShopifyWithToken) | **POST** /v1/connect/shopify/token | Connect a Shopify store with a custom-app Admin token |
@@ -1050,6 +1051,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\ConnectLineCredentials200Response**](../Model/ConnectLineCredentials200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `connectMailchimpCredentials()`
+
+```php
+connectMailchimpCredentials($connect_mailchimp_credentials_request): \Zernio\Model\ConnectMailchimpCredentials200Response
+```
+
+Connect a Mailchimp account
+
+Connect Mailchimp with an API key (Profile, Extras, API keys). The key ends with its data center, such as `-us6`.  Zernio reads the key's account once to check it. Connecting the same account again replaces its key.  Each event you forward to one of its audiences (`POST /v1/events`, forwarding rules) adds the email as a transactional contact when it is new (an existing member keeps its status), tags it with the event name and records the event on it.  Requires the Ads add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$connect_mailchimp_credentials_request = {"apiKey":"0123456789abcdef0123456789abcdef-us6","profileId":"6507a1b2c3d4e5f6a7b8c9d0"}; // \Zernio\Model\ConnectMailchimpCredentialsRequest
+
+try {
+    $result = $apiInstance->connectMailchimpCredentials($connect_mailchimp_credentials_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->connectMailchimpCredentials: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **connect_mailchimp_credentials_request** | [**\Zernio\Model\ConnectMailchimpCredentialsRequest**](../Model/ConnectMailchimpCredentialsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\ConnectMailchimpCredentials200Response**](../Model/ConnectMailchimpCredentials200Response.md)
 
 ### Authorization
 
