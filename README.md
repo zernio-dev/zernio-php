@@ -79,6 +79,7 @@ Class | Method | HTTP request | Description
 *AccountGroupsApi* | [**deleteAccountGroup**](docs/Api/AccountGroupsApi.md#deleteaccountgroup) | **DELETE** /v1/account-groups/{groupId} | Delete group
 *AccountGroupsApi* | [**listAccountGroups**](docs/Api/AccountGroupsApi.md#listaccountgroups) | **GET** /v1/account-groups | List groups
 *AccountGroupsApi* | [**updateAccountGroup**](docs/Api/AccountGroupsApi.md#updateaccountgroup) | **PUT** /v1/account-groups/{groupId} | Update group
+*AccountSettingsApi* | [**blockFacebookUser**](docs/Api/AccountSettingsApi.md#blockfacebookuser) | **POST** /v1/accounts/{accountId}/facebook-blocked-users | Block a person on a Facebook Page
 *AccountSettingsApi* | [**deleteInstagramIceBreakers**](docs/Api/AccountSettingsApi.md#deleteinstagramicebreakers) | **DELETE** /v1/accounts/{accountId}/instagram-ice-breakers | Delete IG ice breakers
 *AccountSettingsApi* | [**deleteMessengerGetStarted**](docs/Api/AccountSettingsApi.md#deletemessengergetstarted) | **DELETE** /v1/accounts/{accountId}/messenger-get-started | Delete FB Get Started button
 *AccountSettingsApi* | [**deleteMessengerGreeting**](docs/Api/AccountSettingsApi.md#deletemessengergreeting) | **DELETE** /v1/accounts/{accountId}/messenger-greeting | Delete FB greeting text
@@ -93,12 +94,14 @@ Class | Method | HTTP request | Description
 *AccountSettingsApi* | [**getMessengerMenu**](docs/Api/AccountSettingsApi.md#getmessengermenu) | **GET** /v1/accounts/{accountId}/messenger-menu | Get persistent menu
 *AccountSettingsApi* | [**getTelegramCommands**](docs/Api/AccountSettingsApi.md#gettelegramcommands) | **GET** /v1/accounts/{accountId}/telegram-commands | Get TG bot commands
 *AccountSettingsApi* | [**getWechatServerConfig**](docs/Api/AccountSettingsApi.md#getwechatserverconfig) | **GET** /v1/accounts/{accountId}/wechat-server-config | Get WeChat server config
+*AccountSettingsApi* | [**listFacebookBlockedUsers**](docs/Api/AccountSettingsApi.md#listfacebookblockedusers) | **GET** /v1/accounts/{accountId}/facebook-blocked-users | List the people blocked on a Facebook Page
 *AccountSettingsApi* | [**setInstagramIceBreakers**](docs/Api/AccountSettingsApi.md#setinstagramicebreakers) | **PUT** /v1/accounts/{accountId}/instagram-ice-breakers | Set IG ice breakers
 *AccountSettingsApi* | [**setMessengerGetStarted**](docs/Api/AccountSettingsApi.md#setmessengergetstarted) | **PUT** /v1/accounts/{accountId}/messenger-get-started | Set FB Get Started button
 *AccountSettingsApi* | [**setMessengerGreeting**](docs/Api/AccountSettingsApi.md#setmessengergreeting) | **PUT** /v1/accounts/{accountId}/messenger-greeting | Set FB greeting text
 *AccountSettingsApi* | [**setMessengerIceBreakers**](docs/Api/AccountSettingsApi.md#setmessengericebreakers) | **PUT** /v1/accounts/{accountId}/messenger-ice-breakers | Set FB ice breakers
 *AccountSettingsApi* | [**setMessengerMenu**](docs/Api/AccountSettingsApi.md#setmessengermenu) | **PUT** /v1/accounts/{accountId}/messenger-menu | Set persistent menu
 *AccountSettingsApi* | [**setTelegramCommands**](docs/Api/AccountSettingsApi.md#settelegramcommands) | **PUT** /v1/accounts/{accountId}/telegram-commands | Set TG bot commands
+*AccountSettingsApi* | [**unblockFacebookUser**](docs/Api/AccountSettingsApi.md#unblockfacebookuser) | **DELETE** /v1/accounts/{accountId}/facebook-blocked-users | Unblock a person on a Facebook Page
 *AccountSettingsApi* | [**updateFacebookPageInfo**](docs/Api/AccountSettingsApi.md#updatefacebookpageinfo) | **PATCH** /v1/accounts/{accountId}/facebook-page-info | Update a Facebook Page&#39;s public info
 *AccountsApi* | [**deleteAccount**](docs/Api/AccountsApi.md#deleteaccount) | **DELETE** /v1/accounts/{accountId} | Disconnect account
 *AccountsApi* | [**getAccount**](docs/Api/AccountsApi.md#getaccount) | **GET** /v1/accounts/{accountId} | Get account
@@ -1908,6 +1911,7 @@ Class | Method | HTTP request | Description
 - [BillingSnapshotPeriod](docs/Model/BillingSnapshotPeriod.md)
 - [BillingSnapshotPlan](docs/Model/BillingSnapshotPlan.md)
 - [BillingSnapshotStatus](docs/Model/BillingSnapshotStatus.md)
+- [BlockFacebookUser200Response](docs/Model/BlockFacebookUser200Response.md)
 - [BlockWhatsAppUsers200Response](docs/Model/BlockWhatsAppUsers200Response.md)
 - [BlockWhatsAppUsers200ResponseBlockedInner](docs/Model/BlockWhatsAppUsers200ResponseBlockedInner.md)
 - [BlockWhatsAppUsers200ResponseFailedInner](docs/Model/BlockWhatsAppUsers200ResponseFailedInner.md)
@@ -2906,6 +2910,8 @@ Class | Method | HTTP request | Description
 - [ExternalPostSummary](docs/Model/ExternalPostSummary.md)
 - [ExternalPostSummaryAnalytics](docs/Model/ExternalPostSummaryAnalytics.md)
 - [ExternalPostWebhookPost](docs/Model/ExternalPostWebhookPost.md)
+- [FacebookBlockedUser](docs/Model/FacebookBlockedUser.md)
+- [FacebookBlockedUserRef](docs/Model/FacebookBlockedUserRef.md)
 - [FacebookOrInstagramPost](docs/Model/FacebookOrInstagramPost.md)
 - [FacebookPageInfo](docs/Model/FacebookPageInfo.md)
 - [FacebookPlatformData](docs/Model/FacebookPlatformData.md)
@@ -3965,6 +3971,7 @@ Class | Method | HTTP request | Description
 - [ListEvents200Response](docs/Model/ListEvents200Response.md)
 - [ListEvents200ResponseEventsInner](docs/Model/ListEvents200ResponseEventsInner.md)
 - [ListEvents200ResponseEventsInnerAllOfDeliveriesInner](docs/Model/ListEvents200ResponseEventsInnerAllOfDeliveriesInner.md)
+- [ListFacebookBlockedUsers200Response](docs/Model/ListFacebookBlockedUsers200Response.md)
 - [ListFacebookPages200Response](docs/Model/ListFacebookPages200Response.md)
 - [ListFacebookPages200ResponsePagesInner](docs/Model/ListFacebookPages200ResponsePagesInner.md)
 - [ListFacebookTaggedPosts200Response](docs/Model/ListFacebookTaggedPosts200Response.md)
@@ -4969,6 +4976,7 @@ Class | Method | HTTP request | Description
 - [TwitterPlatformDataPoll](docs/Model/TwitterPlatformDataPoll.md)
 - [TwitterPlatformDataSensitiveMedia](docs/Model/TwitterPlatformDataSensitiveMedia.md)
 - [TwitterPlatformDataThreadItemsInner](docs/Model/TwitterPlatformDataThreadItemsInner.md)
+- [UnblockFacebookUser200Response](docs/Model/UnblockFacebookUser200Response.md)
 - [UnblockWhatsAppUsers200Response](docs/Model/UnblockWhatsAppUsers200Response.md)
 - [UnblockWhatsAppUsersRequest](docs/Model/UnblockWhatsAppUsersRequest.md)
 - [UndoAdRuleActivity200Response](docs/Model/UndoAdRuleActivity200Response.md)
@@ -5741,6 +5749,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.866.0`
+- API version: `1.867.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

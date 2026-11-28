@@ -526,6 +526,7 @@ docs/Model/BillingSnapshotLegacyLimits.md
 docs/Model/BillingSnapshotPeriod.md
 docs/Model/BillingSnapshotPlan.md
 docs/Model/BillingSnapshotStatus.md
+docs/Model/BlockFacebookUser200Response.md
 docs/Model/BlockWhatsAppUsers200Response.md
 docs/Model/BlockWhatsAppUsers200ResponseBlockedInner.md
 docs/Model/BlockWhatsAppUsers200ResponseFailedInner.md
@@ -1524,6 +1525,8 @@ docs/Model/ExternalPostMediaItem.md
 docs/Model/ExternalPostSummary.md
 docs/Model/ExternalPostSummaryAnalytics.md
 docs/Model/ExternalPostWebhookPost.md
+docs/Model/FacebookBlockedUser.md
+docs/Model/FacebookBlockedUserRef.md
 docs/Model/FacebookOrInstagramPost.md
 docs/Model/FacebookPageInfo.md
 docs/Model/FacebookPlatformData.md
@@ -2583,6 +2586,7 @@ docs/Model/ListEventNames200ResponseNamesInner.md
 docs/Model/ListEvents200Response.md
 docs/Model/ListEvents200ResponseEventsInner.md
 docs/Model/ListEvents200ResponseEventsInnerAllOfDeliveriesInner.md
+docs/Model/ListFacebookBlockedUsers200Response.md
 docs/Model/ListFacebookPages200Response.md
 docs/Model/ListFacebookPages200ResponsePagesInner.md
 docs/Model/ListFacebookTaggedPosts200Response.md
@@ -3587,6 +3591,7 @@ docs/Model/TwitterPlatformData.md
 docs/Model/TwitterPlatformDataPoll.md
 docs/Model/TwitterPlatformDataSensitiveMedia.md
 docs/Model/TwitterPlatformDataThreadItemsInner.md
+docs/Model/UnblockFacebookUser200Response.md
 docs/Model/UnblockWhatsAppUsers200Response.md
 docs/Model/UnblockWhatsAppUsersRequest.md
 docs/Model/UndoAdRuleActivity200Response.md
@@ -4855,6 +4860,7 @@ lib/Model/BillingSnapshotLegacyLimits.php
 lib/Model/BillingSnapshotPeriod.php
 lib/Model/BillingSnapshotPlan.php
 lib/Model/BillingSnapshotStatus.php
+lib/Model/BlockFacebookUser200Response.php
 lib/Model/BlockWhatsAppUsers200Response.php
 lib/Model/BlockWhatsAppUsers200ResponseBlockedInner.php
 lib/Model/BlockWhatsAppUsers200ResponseFailedInner.php
@@ -5853,6 +5859,8 @@ lib/Model/ExternalPostMediaItem.php
 lib/Model/ExternalPostSummary.php
 lib/Model/ExternalPostSummaryAnalytics.php
 lib/Model/ExternalPostWebhookPost.php
+lib/Model/FacebookBlockedUser.php
+lib/Model/FacebookBlockedUserRef.php
 lib/Model/FacebookOrInstagramPost.php
 lib/Model/FacebookPageInfo.php
 lib/Model/FacebookPlatformData.php
@@ -6912,6 +6920,7 @@ lib/Model/ListEventNames200ResponseNamesInner.php
 lib/Model/ListEvents200Response.php
 lib/Model/ListEvents200ResponseEventsInner.php
 lib/Model/ListEvents200ResponseEventsInnerAllOfDeliveriesInner.php
+lib/Model/ListFacebookBlockedUsers200Response.php
 lib/Model/ListFacebookPages200Response.php
 lib/Model/ListFacebookPages200ResponsePagesInner.php
 lib/Model/ListFacebookTaggedPosts200Response.php
@@ -7917,6 +7926,7 @@ lib/Model/TwitterPlatformData.php
 lib/Model/TwitterPlatformDataPoll.php
 lib/Model/TwitterPlatformDataSensitiveMedia.php
 lib/Model/TwitterPlatformDataThreadItemsInner.php
+lib/Model/UnblockFacebookUser200Response.php
 lib/Model/UnblockWhatsAppUsers200Response.php
 lib/Model/UnblockWhatsAppUsersRequest.php
 lib/Model/UndoAdRuleActivity200Response.php
@@ -8659,5 +8669,8 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/SetPostCommentsEnabledRequestTest.php
-test/Model/SetPostCommentsEnabledResponseTest.php
+test/Model/BlockFacebookUser200ResponseTest.php
+test/Model/FacebookBlockedUserRefTest.php
+test/Model/FacebookBlockedUserTest.php
+test/Model/ListFacebookBlockedUsers200ResponseTest.php
+test/Model/UnblockFacebookUser200ResponseTest.php

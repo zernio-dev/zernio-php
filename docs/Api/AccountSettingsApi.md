@@ -6,6 +6,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**blockFacebookUser()**](AccountSettingsApi.md#blockFacebookUser) | **POST** /v1/accounts/{accountId}/facebook-blocked-users | Block a person on a Facebook Page |
 | [**deleteInstagramIceBreakers()**](AccountSettingsApi.md#deleteInstagramIceBreakers) | **DELETE** /v1/accounts/{accountId}/instagram-ice-breakers | Delete IG ice breakers |
 | [**deleteMessengerGetStarted()**](AccountSettingsApi.md#deleteMessengerGetStarted) | **DELETE** /v1/accounts/{accountId}/messenger-get-started | Delete FB Get Started button |
 | [**deleteMessengerGreeting()**](AccountSettingsApi.md#deleteMessengerGreeting) | **DELETE** /v1/accounts/{accountId}/messenger-greeting | Delete FB greeting text |
@@ -20,14 +21,78 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getMessengerMenu()**](AccountSettingsApi.md#getMessengerMenu) | **GET** /v1/accounts/{accountId}/messenger-menu | Get persistent menu |
 | [**getTelegramCommands()**](AccountSettingsApi.md#getTelegramCommands) | **GET** /v1/accounts/{accountId}/telegram-commands | Get TG bot commands |
 | [**getWechatServerConfig()**](AccountSettingsApi.md#getWechatServerConfig) | **GET** /v1/accounts/{accountId}/wechat-server-config | Get WeChat server config |
+| [**listFacebookBlockedUsers()**](AccountSettingsApi.md#listFacebookBlockedUsers) | **GET** /v1/accounts/{accountId}/facebook-blocked-users | List the people blocked on a Facebook Page |
 | [**setInstagramIceBreakers()**](AccountSettingsApi.md#setInstagramIceBreakers) | **PUT** /v1/accounts/{accountId}/instagram-ice-breakers | Set IG ice breakers |
 | [**setMessengerGetStarted()**](AccountSettingsApi.md#setMessengerGetStarted) | **PUT** /v1/accounts/{accountId}/messenger-get-started | Set FB Get Started button |
 | [**setMessengerGreeting()**](AccountSettingsApi.md#setMessengerGreeting) | **PUT** /v1/accounts/{accountId}/messenger-greeting | Set FB greeting text |
 | [**setMessengerIceBreakers()**](AccountSettingsApi.md#setMessengerIceBreakers) | **PUT** /v1/accounts/{accountId}/messenger-ice-breakers | Set FB ice breakers |
 | [**setMessengerMenu()**](AccountSettingsApi.md#setMessengerMenu) | **PUT** /v1/accounts/{accountId}/messenger-menu | Set persistent menu |
 | [**setTelegramCommands()**](AccountSettingsApi.md#setTelegramCommands) | **PUT** /v1/accounts/{accountId}/telegram-commands | Set TG bot commands |
+| [**unblockFacebookUser()**](AccountSettingsApi.md#unblockFacebookUser) | **DELETE** /v1/accounts/{accountId}/facebook-blocked-users | Unblock a person on a Facebook Page |
 | [**updateFacebookPageInfo()**](AccountSettingsApi.md#updateFacebookPageInfo) | **PATCH** /v1/accounts/{accountId}/facebook-page-info | Update a Facebook Page&#39;s public info |
 
+
+## `blockFacebookUser()`
+
+```php
+blockFacebookUser($account_id, $facebook_blocked_user_ref): \Zernio\Model\BlockFacebookUser200Response
+```
+
+Block a person on a Facebook Page
+
+Blocks one person on the Page selected on a `facebook` account. Send `psid` for a Messenger contact (the participant id of a Facebook inbox conversation) or `userId` for a page-scoped user id or a Page id, never both.  `blocked` is Meta's answer for the id. Meta refuses to block someone again too soon after unblocking them, and caps how many people a Page can block: both come back as `platform_api_error`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AccountSettingsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The ID of a connected Facebook account.
+$facebook_blocked_user_ref = {"psid":"6123456789012345"}; // \Zernio\Model\FacebookBlockedUserRef
+
+try {
+    $result = $apiInstance->blockFacebookUser($account_id, $facebook_blocked_user_ref);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountSettingsApi->blockFacebookUser: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The ID of a connected Facebook account. | |
+| **facebook_blocked_user_ref** | [**\Zernio\Model\FacebookBlockedUserRef**](../Model/FacebookBlockedUserRef.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\BlockFacebookUser200Response**](../Model/BlockFacebookUser200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `deleteInstagramIceBreakers()`
 
@@ -866,6 +931,70 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listFacebookBlockedUsers()`
+
+```php
+listFacebookBlockedUsers($account_id, $limit, $cursor): \Zernio\Model\ListFacebookBlockedUsers200Response
+```
+
+List the people blocked on a Facebook Page
+
+Returns the people blocked on the Page selected on a `facebook` account, as Meta returns them from the Page's `blocked` edge.  Cursor-paginated: pass `nextCursor` from the previous response as `cursor` to read the next page. `nextCursor` is null when there are no more pages.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AccountSettingsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The ID of a connected Facebook account.
+$limit = 25; // int | Page size.
+$cursor = 'cursor_example'; // string | The `nextCursor` of the previous page.
+
+try {
+    $result = $apiInstance->listFacebookBlockedUsers($account_id, $limit, $cursor);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountSettingsApi->listFacebookBlockedUsers: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The ID of a connected Facebook account. | |
+| **limit** | **int**| Page size. | [optional] [default to 25] |
+| **cursor** | **string**| The &#x60;nextCursor&#x60; of the previous page. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListFacebookBlockedUsers200Response**](../Model/ListFacebookBlockedUsers200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `setInstagramIceBreakers()`
 
 ```php
@@ -1229,6 +1358,70 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `unblockFacebookUser()`
+
+```php
+unblockFacebookUser($account_id, $psid, $user_id): \Zernio\Model\UnblockFacebookUser200Response
+```
+
+Unblock a person on a Facebook Page
+
+Unblocks one person on the Page selected on a `facebook` account. Pass `psid` for a Messenger contact or `userId` for a page-scoped user id or a Page id, never both.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AccountSettingsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The ID of a connected Facebook account.
+$psid = 'psid_example'; // string | Page-scoped id of a Messenger contact. Set this or `userId`.
+$user_id = 'user_id_example'; // string | A page-scoped Facebook user id or a Page id. Set this or `psid`.
+
+try {
+    $result = $apiInstance->unblockFacebookUser($account_id, $psid, $user_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountSettingsApi->unblockFacebookUser: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The ID of a connected Facebook account. | |
+| **psid** | **string**| Page-scoped id of a Messenger contact. Set this or &#x60;userId&#x60;. | [optional] |
+| **user_id** | **string**| A page-scoped Facebook user id or a Page id. Set this or &#x60;psid&#x60;. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\UnblockFacebookUser200Response**](../Model/UnblockFacebookUser200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
